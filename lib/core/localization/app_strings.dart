@@ -116,6 +116,7 @@ class AppStrings {
     );
     return _t('$grouped Koin', '$grouped Coins');
   }
+
   String get coinEarnFromRankTitle =>
       _t('Hadiah Skor Global mingguan', 'Weekly Skor Global reward');
   String get coinEarnFromRankSubtitle => _t(
@@ -302,8 +303,7 @@ class AppStrings {
     'Tiap soal dikejar waktu. Pilih sendiri berapa lama per soalnya.',
     'Every question is against the clock. You pick how long each one gets.',
   );
-  String get examPerQuestionLabel =>
-      _t('Waktu per soal', 'Time per question');
+  String get examPerQuestionLabel => _t('Waktu per soal', 'Time per question');
   String examSecondsShort(int seconds) => _t('$seconds dtk', '$seconds s');
   String examStartTimed(int seconds) => _t(
     'Mulai — $seconds detik per soal',
@@ -1329,6 +1329,7 @@ class AppStrings {
       _t('Iklan ditutup sebelum selesai.', 'Ad was closed before finishing.');
   String get unlockAllModulesTitle =>
       _t('Buka Semua Modul!', 'Unlock All Modules!');
+
   /// Labels the "Free" chest in `PaywallScreen`'s mini plan-comparison
   /// strip — deliberately not "Free Plan" the way the onboarding
   /// picker's chip says it, since this screen's whole point is "here's
@@ -1361,18 +1362,12 @@ class AppStrings {
   // — stripped here too since `plan_intro_screen.dart`'s own bullet list
   // already prepends its own check-circle icon before this text, so the
   // emoji was only ever doubling up with a marker already there.
-  String get benefitExclusiveCardSkins => _t(
-    'Skin Battle Card eksklusif',
-    'Exclusive Battle Card skins',
-  );
-  String get benefitFullMaterials => _t(
-    'Materi pembelajaran lengkap',
-    'Complete learning materials',
-  );
-  String get benefitPremiumPractice => _t(
-    'Latihan soal premium',
-    'Premium practice questions',
-  );
+  String get benefitExclusiveCardSkins =>
+      _t('Skin Battle Card eksklusif', 'Exclusive Battle Card skins');
+  String get benefitFullMaterials =>
+      _t('Materi pembelajaran lengkap', 'Complete learning materials');
+  String get benefitPremiumPractice =>
+      _t('Latihan soal premium', 'Premium practice questions');
   String get benefitNoAds => _t('Bebas iklan', 'Ad-free');
 
   // --- Plan intro (Free vs Premium, shown once after the age question) ---
@@ -1438,14 +1433,11 @@ class AppStrings {
   String get planIntroValueAdsFree => _t('Bebas Iklan', 'Ad-free');
   String get planIntroStartPremiumButton =>
       _t('Mulai Premium', 'Start Premium');
-  String get planIntroUseFreeButton =>
-      _t('Gunakan Free Plan', 'Use Free Plan');
+  String get planIntroUseFreeButton => _t('Gunakan Free Plan', 'Use Free Plan');
   // Never a hardcoded number — see upgradePremiumButton's own doc
   // comment for why the price always comes from the store.
-  String planIntroPriceLabel(String? price) => _t(
-    price ?? 'Memuat harga...',
-    price ?? 'Loading price...',
-  );
+  String planIntroPriceLabel(String? price) =>
+      _t(price ?? 'Memuat harga...', price ?? 'Loading price...');
   String get planIntroCancelAnytime =>
       _t('Batalkan kapan saja', 'Cancel anytime');
   String get planIntroAllFeatures =>
@@ -1895,6 +1887,40 @@ class AppStrings {
     '$fromName challenged you — $tierLabel',
   );
 
+  // Challenge picker (Mode Kartu > Battle > Tantang) — moved here from
+  // Profile's chat list / clan member list, see BattleChallengeScreen's
+  // own doc comment for why.
+  String get battleChallengeEntryButton =>
+      _t('Tantang Teman & Clan', 'Challenge Friend & Clan');
+  String get battleChallengeEntrySubtitle =>
+      _t('Pilih siapa yang mau kamu tantang', 'Pick who you want to challenge');
+  String get battleChallengePickOpponentTitle =>
+      _t('Pilih Lawan', 'Pick an Opponent');
+  String get battleChallengeModeFriend => _t('Teman', 'Friend');
+  String get battleChallengeModeClan => _t('Clan', 'Clan');
+  String get battleChallengeNoFriendsTitle =>
+      _t('Belum punya teman', "You don't have any friends yet");
+  String get battleChallengeNoFriendsBody => _t(
+    'Tambahkan teman dulu lewat menu Tambah Teman di Profil untuk bisa '
+        'menantang mereka bertanding.',
+    'Add a friend first from the Add Friend menu on Profile to be able '
+        'to challenge them.',
+  );
+  String get battleChallengeNoClansTitle =>
+      _t('Belum punya clan', "You don't have a clan yet");
+  String get battleChallengeNoClansBody => _t(
+    'Buat atau gabung clan dulu lewat tab Clan di Papan Peringkat untuk '
+        'bisa menantang anggotanya.',
+    'Create or join a clan first from the Clan tab on the leaderboard '
+        'to be able to challenge its members.',
+  );
+  String get battleChallengeSelectClanHint =>
+      _t('Pilih clan...', 'Choose a clan...');
+  String get battleChallengeNoOtherMembers => _t(
+    'Belum ada anggota lain di clan ini.',
+    'No other members in this clan yet.',
+  );
+
   // Tahap 3 butir 10 — matchmaking publik (see NOTES_CARD_GAME_MODE.md).
   // Dropped the "(dev)" this carried while the screen was reachable only
   // through a hand-edited main.dart — it is on the Home page now.
@@ -2086,9 +2112,10 @@ class AppStrings {
   String get cardGameTabShop => _t('Toko', 'Shop');
   String get cardGameLobbyHint => _t(
     'Bintang hanya bergerak di pertandingan publik dan lawan bot. '
-        'Lawan teman lewat Chat di Profil — santai, tanpa risiko.',
-    'Stars only move in public and bot matches. Challenge a friend '
-        'from Chat in your profile — casual, nothing at stake.',
+        'Lawan teman/clan lewat tombol Tantang di tab Battle — santai, '
+        'tanpa risiko.',
+    'Stars only move in public and bot matches. Challenge a friend or '
+        'clan mate from the Battle tab — casual, nothing at stake.',
   );
   String deckTabHeading(String tierContent) =>
       _t('Dekmu: $tierContent', 'Your deck: $tierContent');
@@ -2153,6 +2180,7 @@ class AppStrings {
       'Handed out during an event. Not sold, not earned with stars.',
     ),
   };
+
   /// What's still missing for an achievement skin — both the star gap
   /// and the Premium requirement, added 2026-08-24 when the tier changed
   /// from stars-alone to stars-and-Premium. Composes the right sentence
@@ -2181,6 +2209,7 @@ class AppStrings {
       'Needs $required stars (you have $owned) and a Premium subscription',
     );
   }
+
   String get cardSkinBuyInShop => _t(
     'Beli di tab Toko dengan uang atau koin, atau gratis kalau kamu Premium.',
     'Buy it in the Shop tab with money or coins, or free if you\'re Premium.',

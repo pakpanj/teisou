@@ -1,19 +1,12 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_loading.dart';
-import '../../data/models/battle_invite.dart';
 import '../../data/models/clan_membership.dart';
 import '../../data/models/friend.dart';
 import '../../data/repositories/direct_message_repository.dart';
-import '../battle/battle_challenge.dart';
-import '../battle/battle_invite_providers.dart';
-import '../battle/battle_screen.dart';
 import 'clan_providers.dart';
 import 'friend_providers.dart';
 import 'widgets/clan_chat_screen.dart';
@@ -40,7 +33,6 @@ class _ChatHubScreenState extends ConsumerState<ChatHubScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
@@ -60,187 +52,9 @@ class _ChatHubScreenState extends ConsumerState<ChatHubScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          const _PendingBattleInvitesStrip(),
-          Expanded(
-            child: _mode == _ChatMode.clan
-                ? const _ClanChatList()
-                : const _PersonalChatList(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// Pending "Tantang" challenges for the signed-in learner — shown above
-/// both chat lists here (not tucked inside just one mode), since a
-/// challenge can arrive from either a friend or a clan mate and is
-/// time-sensitive (2-minute expiry, see `BattleInvite.expiresAt`).
-/// Collapsed to nothing when there are none, same "never a permanent
-/// slice of the screen" discipline as Clan tab's own
-/// `_PendingInvitesStrip`.
-class _PendingBattleInvitesStrip extends ConsumerWidget {
-  const _PendingBattleInvitesStrip();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final invitesAsync = ref.watch(myPendingBattleInvitesProvider);
-    final invites = invitesAsync.valueOrNull ?? const [];
-    if (invites.isEmpty) return const SizedBox.shrink();
-
-    final s = ref.watch(appStringsProvider);
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: context.palette.primaryCoral.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            s.pendingBattleInvitesTitle(invites.length),
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: context.palette.textNavy,
-            ),
-          ),
-          for (final invite in invites)
-            _BattleInviteRow(invite: invite, strings: s),
-        ],
-      ),
-    );
-  }
-}
-
-class _BattleInviteRow extends ConsumerStatefulWidget {
-  final BattleInvite invite;
-  final AppStrings strings;
-
-  const _BattleInviteRow({required this.invite, required this.strings});
-
-  @override
-  ConsumerState<_BattleInviteRow> createState() => _BattleInviteRowState();
-}
-
-class _BattleInviteRowState extends ConsumerState<_BattleInviteRow> {
-  bool _responding = false;
-
-  Future<void> _decline() async {
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    setState(() => _responding = true);
-    try {
-      // The match first, so the challenger stops waiting now rather than
-      // sitting out the invite's full two minutes for an answer that has
-      // already been given. Best-effort — a failure here only costs them
-      // that wait, and must not stop the row from being dismissed.
-      try {
-        await ref
-            .read(battleRepositoryProvider)
-            .respondToMatchInvite(matchId: widget.invite.matchId, accept: false);
-      } catch (_) {}
-      await ref.read(battleInviteRepositoryProvider).respondToInvite(
-            uid: uid,
-            invite: widget.invite,
-            accept: false,
-          );
-    } catch (_) {
-      if (!mounted) return;
-      setState(() => _responding = false);
-    }
-    // On success the row disappears on its own via watchMyInvites' own
-    // `status == pending` filter — nothing else to reset here.
-  }
-
-  Future<void> _accept() async {
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    setState(() => _responding = true);
-
-    // Claiming the match is **not** fire-and-forget, unlike the invite
-    // row's own status below. It is what releases the waiting challenger
-    // into the arena, and it is what starts the round clock — joining
-    // without it means playing alone against a clock that never began.
-    // It can also legitimately fail: the challenger may have cancelled a
-    // moment earlier, and then there is no match left to join.
-    bool claimed;
-    try {
-      claimed = await ref
-          .read(battleRepositoryProvider)
-          .respondToMatchInvite(matchId: widget.invite.matchId, accept: true);
-    } catch (_) {
-      claimed = false;
-    }
-    if (!mounted) return;
-    if (!claimed) {
-      setState(() => _responding = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(widget.strings.battleInviteGoneAway)),
-      );
-      return;
-    }
-
-    try {
-      // This one stays fire-and-forget: the invite row's status only
-      // decides how long it lingers in the pending list, and the match
-      // has already been joined by the time that matters.
-      unawaited(
-        ref.read(battleInviteRepositoryProvider).respondToInvite(
-              uid: uid,
-              invite: widget.invite,
-              accept: true,
-            ),
-      );
-    } catch (_) {
-      // Deliberately swallowed — see the comment above.
-    }
-    if (!mounted) return;
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => BattleScreen(matchId: widget.invite.matchId),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tierLabel = cardTierContentLabel(
-      widget.invite.cardTierContent,
-      widget.strings,
-    );
-    return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              widget.strings.battleInvitedBy(widget.invite.fromName, tierLabel),
-              style: TextStyle(color: context.palette.textNavy, fontSize: 13),
-            ),
-          ),
-          if (_responding)
-            const SizedBox(
-              width: 18,
-              height: 18,
-              child: CircularProgressIndicator(strokeWidth: 2),
-            )
-          else ...[
-            TextButton(
-              onPressed: _decline,
-              child: Text(widget.strings.declineInvite),
-            ),
-            FilledButton(
-              onPressed: _accept,
-              child: Text(widget.strings.acceptInvite),
-            ),
-          ],
-        ],
-      ),
+      body: _mode == _ChatMode.clan
+          ? const _ClanChatList()
+          : const _PersonalChatList(),
     );
   }
 }
@@ -366,7 +180,9 @@ class _ClanChatRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lastMessage = ref.watch(clanLastMessageProvider(clan.code)).valueOrNull;
+    final lastMessage = ref
+        .watch(clanLastMessageProvider(clan.code))
+        .valueOrNull;
     final unread = ref.watch(clanChatUnreadProvider(clan.code));
 
     return _ChatRow(
@@ -423,13 +239,15 @@ class _PersonalChatRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
     if (myUid == null) return const SizedBox.shrink();
-    final conversationId =
-        DirectMessageRepository.conversationId(myUid, friend.uid);
-    final lastMessage =
-        ref.watch(directLastMessageProvider(conversationId)).valueOrNull;
+    final conversationId = DirectMessageRepository.conversationId(
+      myUid,
+      friend.uid,
+    );
+    final lastMessage = ref
+        .watch(directLastMessageProvider(conversationId))
+        .valueOrNull;
     final unread = ref.watch(directChatUnreadProvider(conversationId));
 
     return _ChatRow(
@@ -439,11 +257,6 @@ class _PersonalChatRow extends ConsumerWidget {
       previewText: lastMessage?.text,
       time: lastMessage?.createdAt,
       unread: unread,
-      trailingAction: ChallengeButton(
-        targetUid: friend.uid,
-        targetName: friend.displayName,
-        source: BattleInviteSource.friend,
-      ),
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => DirectMessageScreen(
@@ -470,11 +283,6 @@ class _ChatRow extends ConsumerWidget {
   final bool unread;
   final VoidCallback onTap;
 
-  /// The friend list's `⚔️ Tantang` button — `null` for clan rows, which
-  /// challenge from `ClanMembersScreen` instead (a clan's own chat row
-  /// here represents the whole group, not one challengeable person).
-  final Widget? trailingAction;
-
   const _ChatRow({
     required this.title,
     required this.avatarLabel,
@@ -483,7 +291,6 @@ class _ChatRow extends ConsumerWidget {
     required this.time,
     required this.unread,
     required this.onTap,
-    this.trailingAction,
   });
 
   @override
@@ -492,8 +299,8 @@ class _ChatRow extends ConsumerWidget {
     final preview = previewText == null
         ? s.directMessageEmpty
         : previewSenderName == null
-            ? previewText!
-            : '$previewSenderName: $previewText';
+        ? previewText!
+        : '$previewSenderName: $previewText';
 
     return InkWell(
       onTap: onTap,
@@ -503,7 +310,9 @@ class _ChatRow extends ConsumerWidget {
           children: [
             CircleAvatar(
               radius: 24,
-              backgroundColor: context.palette.primaryCoral.withValues(alpha: 0.15),
+              backgroundColor: context.palette.primaryCoral.withValues(
+                alpha: 0.15,
+              ),
               child: Text(
                 avatarLabel.isEmpty ? '🐱' : avatarLabel[0].toUpperCase(),
                 style: TextStyle(
@@ -570,7 +379,6 @@ class _ChatRow extends ConsumerWidget {
                   ),
               ],
             ),
-            ?trailingAction,
           ],
         ),
       ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,7 +10,9 @@ import '../../core/theme/app_palette.dart';
 import '../../data/models/battle_invite.dart';
 import '../../data/models/card_game_rank.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
+import 'battle_invite_providers.dart';
 import 'battle_invite_waiting_screen.dart';
+import 'battle_screen.dart';
 
 /// Human-readable label for a [CardTierContent] — the same 5 values
 /// `CardGameTierX.cardContent` maps a rank tier to, but shown here as a
@@ -83,7 +87,8 @@ Future<void> sendBattleChallenge({
     final myProfile = ref.read(userProfileProvider).valueOrNull;
     if (myUid == null) throw StateError('not signed in');
 
-    final myName = myProfile?.resolveDisplayName(myUser) ??
+    final myName =
+        myProfile?.resolveDisplayName(myUser) ??
         (myUser?.displayName ?? s.defaultLearnerName);
     final myPhotoUrl = myUser?.photoURL;
     final myAvatarType = myProfile?.avatarType ?? AvatarType.google;
@@ -101,7 +106,9 @@ Future<void> sendBattleChallenge({
       allKanji: cardData.$2,
     );
 
-    matchId = await ref.read(battleRepositoryProvider).createMatch(
+    matchId = await ref
+        .read(battleRepositoryProvider)
+        .createMatch(
           firstCandidateUid: myUid,
           firstCandidateDeck: myDeck,
           secondCandidateUid: targetUid,
@@ -116,7 +123,9 @@ Future<void> sendBattleChallenge({
 
     final now = DateTime.now();
     expiresAt = now.add(const Duration(minutes: 2));
-    await ref.read(battleInviteRepositoryProvider).sendInvite(
+    await ref
+        .read(battleInviteRepositoryProvider)
+        .sendInvite(
           targetUid: targetUid,
           invite: BattleInvite(
             id: '',
@@ -133,7 +142,9 @@ Future<void> sendBattleChallenge({
           ),
         );
 
-    await ref.read(notificationRepositoryProvider).create(
+    await ref
+        .read(notificationRepositoryProvider)
+        .create(
           targetUid,
           title: s.battleChallengeNotificationTitle(myName),
           body: s.battleChallengeNotificationBody(
@@ -144,8 +155,9 @@ Future<void> sendBattleChallenge({
   } catch (_) {
     if (context.mounted) Navigator.of(context).pop(); // close sending dialog
     if (context.mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.battleChallengeFailed)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.battleChallengeFailed)));
     }
     return;
   }
@@ -202,12 +214,12 @@ class ChallengeButton extends ConsumerWidget {
       ),
       onPressed: online
           ? () => sendBattleChallenge(
-                context: context,
-                ref: ref,
-                targetUid: targetUid,
-                targetName: targetName,
-                source: source,
-              )
+              context: context,
+              ref: ref,
+              targetUid: targetUid,
+              targetName: targetName,
+              source: source,
+            )
           : null,
     );
   }
@@ -255,6 +267,179 @@ class _TierPickerSheet extends ConsumerWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Pending "Tantang" challenges for the signed-in learner — lives on Card
+/// Battle's own Battle tab, alongside [BattleChallengeScreen]. Used to sit
+/// on Profile's `ChatHubScreen` instead; moved here for the same reason
+/// challenging itself moved — accepting into a match is a Card Battle
+/// action, not a chat one. A challenge can arrive from either a friend or
+/// a clan mate and is time-sensitive (2-minute expiry, see
+/// `BattleInvite.expiresAt`), so this shows regardless of which of the two
+/// sent it. Collapses to nothing when there are none, same "never a
+/// permanent slice of the screen" discipline as Clan tab's own
+/// `_PendingInvitesStrip`.
+class PendingBattleInvitesStrip extends ConsumerWidget {
+  const PendingBattleInvitesStrip({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final invitesAsync = ref.watch(myPendingBattleInvitesProvider);
+    final invites = invitesAsync.valueOrNull ?? const [];
+    if (invites.isEmpty) return const SizedBox.shrink();
+
+    final s = ref.watch(appStringsProvider);
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: context.palette.primaryCoral.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            s.pendingBattleInvitesTitle(invites.length),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: context.palette.textNavy,
+            ),
+          ),
+          for (final invite in invites)
+            _BattleInviteRow(invite: invite, strings: s),
+        ],
+      ),
+    );
+  }
+}
+
+class _BattleInviteRow extends ConsumerStatefulWidget {
+  final BattleInvite invite;
+  final AppStrings strings;
+
+  const _BattleInviteRow({required this.invite, required this.strings});
+
+  @override
+  ConsumerState<_BattleInviteRow> createState() => _BattleInviteRowState();
+}
+
+class _BattleInviteRowState extends ConsumerState<_BattleInviteRow> {
+  bool _responding = false;
+
+  Future<void> _decline() async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    setState(() => _responding = true);
+    try {
+      // The match first, so the challenger stops waiting now rather than
+      // sitting out the invite's full two minutes for an answer that has
+      // already been given. Best-effort — a failure here only costs them
+      // that wait, and must not stop the row from being dismissed.
+      try {
+        await ref
+            .read(battleRepositoryProvider)
+            .respondToMatchInvite(
+              matchId: widget.invite.matchId,
+              accept: false,
+            );
+      } catch (_) {}
+      await ref
+          .read(battleInviteRepositoryProvider)
+          .respondToInvite(uid: uid, invite: widget.invite, accept: false);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _responding = false);
+    }
+    // On success the row disappears on its own via watchMyInvites' own
+    // `status == pending` filter — nothing else to reset here.
+  }
+
+  Future<void> _accept() async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    setState(() => _responding = true);
+
+    // Claiming the match is **not** fire-and-forget, unlike the invite
+    // row's own status below. It is what releases the waiting challenger
+    // into the arena, and it is what starts the round clock — joining
+    // without it means playing alone against a clock that never began.
+    // It can also legitimately fail: the challenger may have cancelled a
+    // moment earlier, and then there is no match left to join.
+    bool claimed;
+    try {
+      claimed = await ref
+          .read(battleRepositoryProvider)
+          .respondToMatchInvite(matchId: widget.invite.matchId, accept: true);
+    } catch (_) {
+      claimed = false;
+    }
+    if (!mounted) return;
+    if (!claimed) {
+      setState(() => _responding = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(widget.strings.battleInviteGoneAway)),
+      );
+      return;
+    }
+
+    try {
+      // This one stays fire-and-forget: the invite row's status only
+      // decides how long it lingers in the pending list, and the match
+      // has already been joined by the time that matters.
+      unawaited(
+        ref
+            .read(battleInviteRepositoryProvider)
+            .respondToInvite(uid: uid, invite: widget.invite, accept: true),
+      );
+    } catch (_) {
+      // Deliberately swallowed — see the comment above.
+    }
+    if (!mounted) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => BattleScreen(matchId: widget.invite.matchId),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tierLabel = cardTierContentLabel(
+      widget.invite.cardTierContent,
+      widget.strings,
+    );
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              widget.strings.battleInvitedBy(widget.invite.fromName, tierLabel),
+              style: TextStyle(color: context.palette.textNavy, fontSize: 13),
+            ),
+          ),
+          if (_responding)
+            const SizedBox(
+              width: 18,
+              height: 18,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          else ...[
+            TextButton(
+              onPressed: _decline,
+              child: Text(widget.strings.declineInvite),
+            ),
+            FilledButton(
+              onPressed: _accept,
+              child: Text(widget.strings.acceptInvite),
+            ),
+          ],
+        ],
       ),
     );
   }

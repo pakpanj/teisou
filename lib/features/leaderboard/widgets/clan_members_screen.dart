@@ -4,10 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_loading.dart';
-import '../../../data/models/battle_invite.dart' show BattleInviteSource;
 import '../../../data/models/clan_member.dart';
 import '../../../data/models/leaderboard_entry.dart';
-import '../../battle/battle_challenge.dart' show ChallengeButton;
 import '../clan_providers.dart';
 import '../leaderboard_screen.dart' show LeaderboardAvatar;
 import 'search_invite_screen.dart';
@@ -100,7 +98,11 @@ class _MemberRow extends ConsumerWidget {
   bool get _canChangeRole =>
       myRole == ClanRole.leader && !_isSelf && member.role != ClanRole.leader;
 
-  Future<void> _setRole(BuildContext context, WidgetRef ref, ClanRole role) async {
+  Future<void> _setRole(
+    BuildContext context,
+    WidgetRef ref,
+    ClanRole role,
+  ) async {
     final s = ref.read(appStringsProvider);
     try {
       await ref
@@ -109,8 +111,9 @@ class _MemberRow extends ConsumerWidget {
       ref.invalidate(clanMembersProvider(code));
     } catch (_) {
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.roleChangeFailed)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.roleChangeFailed)));
     }
   }
 
@@ -143,8 +146,9 @@ class _MemberRow extends ConsumerWidget {
       ref.invalidate(clanRankingProvider(code));
     } catch (_) {
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.kickFailed)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.kickFailed)));
     }
   }
 
@@ -236,14 +240,11 @@ class _MemberRow extends ConsumerWidget {
             if (_canKick)
               IconButton(
                 tooltip: s.kickMember,
-                icon: Icon(Icons.person_remove, color: context.palette.errorRed),
+                icon: Icon(
+                  Icons.person_remove,
+                  color: context.palette.errorRed,
+                ),
                 onPressed: () => _kick(context, ref),
-              ),
-            if (!_isSelf)
-              ChallengeButton(
-                targetUid: member.uid,
-                targetName: member.displayName,
-                source: BattleInviteSource.clan,
               ),
           ],
         ),

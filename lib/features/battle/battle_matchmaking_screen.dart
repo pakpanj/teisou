@@ -10,7 +10,9 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../data/models/card_game_rank.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
-import 'battle_challenge.dart' show cardTierContentLabel;
+import 'battle_challenge.dart'
+    show PendingBattleInvitesStrip, cardTierContentLabel;
+import 'battle_challenge_screen.dart';
 import 'battle_screen.dart';
 import 'widgets/rank_standing.dart';
 import 'widgets/search_radar.dart';
@@ -40,8 +42,7 @@ class BattleMatchmakingBody extends ConsumerStatefulWidget {
 
 enum _MatchmakingState { idle, searching, fallingBackToBot }
 
-class _BattleMatchmakingBodyState
-    extends ConsumerState<BattleMatchmakingBody> {
+class _BattleMatchmakingBodyState extends ConsumerState<BattleMatchmakingBody> {
   /// How long to wait for a human before falling back to a bot. Named
   /// because the progress bar divides by it — an inline 20 in two places
   /// is how a bar ends up out of step with the countdown it draws.
@@ -72,7 +73,9 @@ class _BattleMatchmakingBodyState
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     final tier = _queuedTier;
     if (myUid != null && tier != null) {
-      ref.read(matchmakingRepositoryProvider).leaveQueue(tier: tier, uid: myUid);
+      ref
+          .read(matchmakingRepositoryProvider)
+          .leaveQueue(tier: tier, uid: myUid);
       ref.read(matchmakingRepositoryProvider).clearMatchResult(myUid);
     }
     super.dispose();
@@ -115,19 +118,19 @@ class _BattleMatchmakingBodyState
           .read(matchmakingRepositoryProvider)
           .joinQueue(tier: tier, uid: myUid)
           .catchError((Object e) {
-        // Surfaced only when the write genuinely fails. A write that
-        // merely never lands is left to the countdown, which ends in a
-        // bot match — a better answer than an error message.
-        if (mounted) setState(() => _error = '$e');
-      }),
+            // Surfaced only when the write genuinely fails. A write that
+            // merely never lands is left to the countdown, which ends in a
+            // bot match — a better answer than an error message.
+            if (mounted) setState(() => _error = '$e');
+          }),
     );
 
     _resultSubscription = ref
         .read(matchmakingRepositoryProvider)
         .watchMatchResult(myUid)
         .listen((matchId) {
-      if (matchId != null) _joinMatch(matchId, tier, myUid);
-    });
+          if (matchId != null) _joinMatch(matchId, tier, myUid);
+        });
 
     _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) {
@@ -170,9 +173,9 @@ class _BattleMatchmakingBodyState
   /// press Cancel to get back to a button that starts a game.
   Future<void> _openMatch(String matchId) async {
     if (!mounted) return;
-    await Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)),
-    );
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)));
     if (!mounted) return;
     setState(() {
       _state = _MatchmakingState.idle;
@@ -273,11 +276,11 @@ class _BattleMatchmakingBodyState
       // the only control on the screen in that state.
       final matchmaking = ref.read(matchmakingRepositoryProvider);
       unawaited(
-        matchmaking.leaveQueue(tier: tier, uid: myUid).catchError((Object _) {}),
+        matchmaking
+            .leaveQueue(tier: tier, uid: myUid)
+            .catchError((Object _) {}),
       );
-      unawaited(
-        matchmaking.clearMatchResult(myUid).catchError((Object _) {}),
-      );
+      unawaited(matchmaking.clearMatchResult(myUid).catchError((Object _) {}));
     }
     if (!mounted) return;
     setState(() {
@@ -292,38 +295,55 @@ class _BattleMatchmakingBodyState
     final rankAsync = ref.watch(cardGameRankProvider);
 
     return rankAsync.when(
-        data: (rank) => Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RankStanding(rank: rank, strings: s),
-              const SizedBox(height: 12),
-              Text(
-                s.battleMatchmakingDescription(
-                  cardTierContentLabel(rank.tier.cardContent, s),
-                ),
+      data: (rank) => Column(
+        children: [
+          // An incoming "Tantang" challenge can arrive whether or not a
+          // public search is running — visible the moment this tab
+          // opens, not tucked inside the idle-only column below.
+          const PendingBattleInvitesStrip(),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RankStanding(rank: rank, strings: s),
+                  const SizedBox(height: 12),
+                  Text(
+                    s.battleMatchmakingDescription(
+                      cardTierContentLabel(rank.tier.cardContent, s),
+                    ),
+                  ),
+                  if (_error != null) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                      _error!,
+                      style: TextStyle(color: context.palette.errorRed),
+                    ),
+                  ],
+                  // Centred in what is left rather than pinned under the
+                  // description: the deck and the button are the point of
+                  // this screen, and pinned to the top they sat above a
+                  // screen's worth of nothing.
+                  Expanded(
+                    child: Center(child: _buildStateWidget(context, s, rank)),
+                  ),
+                ],
               ),
-              if (_error != null) ...[
-                const SizedBox(height: 8),
-                Text(_error!, style: TextStyle(color: context.palette.errorRed)),
-              ],
-              // Centred in what is left rather than pinned under the
-              // description: the deck and the button are the point of
-              // this screen, and pinned to the top they sat above a
-              // screen's worth of nothing.
-              Expanded(
-                child: Center(child: _buildStateWidget(context, s, rank)),
-              ),
-            ],
+            ),
           ),
-        ),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('$e')),
+        ],
+      ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (e, _) => Center(child: Text('$e')),
     );
   }
 
-  Widget _buildStateWidget(BuildContext context, AppStrings s, CardGameRank rank) {
+  Widget _buildStateWidget(
+    BuildContext context,
+    AppStrings s,
+    CardGameRank rank,
+  ) {
     switch (_state) {
       case _MatchmakingState.idle:
         return Column(
@@ -347,6 +367,19 @@ class _BattleMatchmakingBodyState
                   ),
                 ),
               ),
+            ),
+            const SizedBox(height: 12),
+            // Challenging a specific friend/clan mate instead of the
+            // public queue — see BattleChallengeScreen's own doc comment
+            // for why this lives here now and not on Profile.
+            OutlinedButton.icon(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const BattleChallengeScreen(),
+                ),
+              ),
+              icon: const Icon(Icons.sports_esports),
+              label: Text(s.battleChallengeEntryButton),
             ),
           ],
         );
