@@ -160,21 +160,58 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              const MascotWidget(mood: MascotMood.proud, size: 150),
-              const SizedBox(height: 20),
-              Text(
-                s.unlockAllModulesTitle,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: context.palette.textNavy,
+              // Same gold-light/purple-dark gradient as the Profile
+              // Premium card and the plan-intro price card — this was the
+              // one Premium surface still ignoring the theme.
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 28),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      context.palette.premiumCardStart,
+                      context.palette.premiumCardEnd,
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color:
+                          context.palette.premiumCardEnd.withValues(alpha: 0.35),
+                      blurRadius: 14,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                s.unlockAllModulesSubtitle,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: context.palette.textNavy),
+                child: Column(
+                  children: [
+                    const MascotWidget(
+                      mood: MascotMood.proud,
+                      size: 130,
+                      showBackdrop: false,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      s.unlockAllModulesTitle,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      s.unlockAllModulesSubtitle,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.92),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 24),
               _BenefitList(strings: s),
@@ -187,7 +224,12 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               if (IapProducts.purchasesEnabled) ...[
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: context.palette.premiumCardEnd,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                    ),
                     onPressed: () => _purchase.buy(context, s),
                     child: Text(s.upgradePremiumButton(_purchase.price)),
                   ),

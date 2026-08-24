@@ -96,14 +96,14 @@ class _PremiumCardState extends ConsumerState<PremiumCard> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            context.palette.premiumGoldStart,
-            context.palette.premiumGoldEnd,
+            context.palette.premiumCardStart,
+            context.palette.premiumCardEnd,
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: context.palette.premiumGoldEnd.withValues(alpha: 0.35),
+            color: context.palette.premiumCardEnd.withValues(alpha: 0.35),
             blurRadius: 14,
             offset: const Offset(0, 6),
           ),
@@ -224,7 +224,7 @@ class _UpgradeContent extends StatelessWidget {
               child: FilledButton(
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.white,
-                  foregroundColor: context.palette.premiumGoldEnd,
+                  foregroundColor: context.palette.premiumCardEnd,
                 ),
                 onPressed: busy ? null : onBuy,
                 child: busy
@@ -233,7 +233,7 @@ class _UpgradeContent extends StatelessWidget {
                         width: 16,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          color: context.palette.premiumGoldEnd,
+                          color: context.palette.premiumCardEnd,
                         ),
                       )
                     : Text(s.upgradePremiumButton(price)),

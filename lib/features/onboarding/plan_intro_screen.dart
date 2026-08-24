@@ -113,15 +113,6 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
                   ),
                 ),
               ),
-            if (_page == 1)
-              Positioned(
-                top: 8,
-                right: 12,
-                child: TextButton(
-                  onPressed: _finish,
-                  child: Text(s.planIntroSkip),
-                ),
-              ),
             Positioned(
               bottom: 10,
               left: 0,
@@ -372,52 +363,71 @@ class _PlanSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.fromLTRB(16, 20, 16, 22),
       decoration: BoxDecoration(
         color: context.palette.cardWhite,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(18),
         border: Border.all(
           color: highlighted
               ? context.palette.premiumGoldStart
               : context.palette.mutedSurface,
           width: highlighted ? 1.5 : 1,
         ),
+        boxShadow: highlighted
+            ? [
+                BoxShadow(
+                  color: context.palette.premiumGoldStart
+                      .withValues(alpha: 0.18),
+                  blurRadius: 14,
+                  offset: const Offset(0, 6),
+                ),
+              ]
+            : null,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: iconColor, size: 28),
-          const SizedBox(height: 8),
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: iconColor.withValues(alpha: 0.12),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, color: iconColor, size: 22),
+          ),
+          const SizedBox(height: 14),
           Text(
             title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 13,
+              fontSize: 15,
               color: context.palette.textNavy,
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 4),
           Text(
             subtitle,
             style: TextStyle(
-              fontSize: 10.5,
+              fontSize: 11.5,
               color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 16),
           for (final bullet in bullets)
             Padding(
-              padding: const EdgeInsets.only(bottom: 6),
+              padding: const EdgeInsets.only(bottom: 12),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check, size: 14, color: iconColor),
-                  const SizedBox(width: 6),
+                  Icon(Icons.check_circle, size: 16, color: iconColor),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       bullet,
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: 12,
+                        height: 1.25,
                         color: context.palette.textNavy,
                       ),
                     ),
@@ -431,7 +441,11 @@ class _PlanSummaryCard extends StatelessWidget {
   }
 }
 
-class _ComparePage extends ConsumerWidget {
+/// Which plan the page 2 picker currently has selected — drives both the
+/// detail box's content and the single CTA button's label/action below it.
+enum _Plan { free, premium }
+
+class _ComparePage extends ConsumerStatefulWidget {
   final AppStrings strings;
   final PremiumPurchaseFlow purchase;
   final VoidCallback onSkip;
@@ -443,8 +457,18 @@ class _ComparePage extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final s = strings;
+  ConsumerState<_ComparePage> createState() => _ComparePageState();
+}
+
+class _ComparePageState extends ConsumerState<_ComparePage> {
+  // Premium first — this page exists to sell Premium, so the picker opens
+  // on the plan the page is trying to show off, not a neutral default.
+  _Plan _selected = _Plan.premium;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = widget.strings;
+    final isPremium = _selected == _Plan.premium;
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(24, 56, 24, 40),
       child: Column(
@@ -460,29 +484,56 @@ class _ComparePage extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
           const MascotWidget(mood: MascotMood.excited, size: 110),
-          const SizedBox(height: 16),
-          _ComparisonTable(strings: s),
           const SizedBox(height: 20),
-          _PremiumPriceCard(strings: s, purchase: purchase),
+          _PlanPickerToggle(
+            selected: _selected,
+            freeLabel: s.planIntroFreeTitle,
+            premiumLabel: s.planIntroPremiumTitle,
+            onChanged: (plan) => setState(() => _selected = plan),
+          ),
+          const SizedBox(height: 16),
+          _PlanDetailBox(strings: s, premium: isPremium),
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 220),
+            transitionBuilder: (child, animation) =>
+                FadeTransition(opacity: animation, child: child),
+            child: isPremium
+                ? Padding(
+                    key: const ValueKey('premium-price'),
+                    padding: const EdgeInsets.only(top: 20),
+                    child: _PremiumPriceCard(
+                      strings: s,
+                      purchase: widget.purchase,
+                    ),
+                  )
+                : const SizedBox.shrink(key: ValueKey('free-price')),
+          ),
           const SizedBox(height: 20),
           SizedBox(
             width: double.infinity,
-            child: FilledButton.icon(
-              style: FilledButton.styleFrom(
-                backgroundColor: context.palette.premiumGoldStart,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-              ),
-              onPressed: () async {
-                await purchase.buy(context, s);
-              },
-              icon: const Icon(Icons.workspace_premium),
-              label: Text(s.planIntroStartPremiumButton),
-            ),
-          ),
-          const SizedBox(height: 8),
-          TextButton(
-            onPressed: onSkip,
-            child: Text(s.planIntroUseFreeButton),
+            child: isPremium
+                ? FilledButton.icon(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: context.palette.premiumGoldStart,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () async {
+                      await widget.purchase.buy(context, s);
+                    },
+                    icon: const Icon(Icons.workspace_premium),
+                    label: Text(s.planIntroStartPremiumButton),
+                  )
+                : OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                          color: context.palette.primaryCoral, width: 1.5),
+                      foregroundColor: context.palette.primaryCoral,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: widget.onSkip,
+                    child: Text(s.planIntroUseFreeButton),
+                  ),
           ),
         ],
       ),
@@ -490,112 +541,225 @@ class _ComparePage extends ConsumerWidget {
   }
 }
 
-class _ComparisonTable extends StatelessWidget {
-  final AppStrings strings;
+/// A tappable — and swipeable — segmented picker replacing the old static
+/// side-by-side comparison. One plan is "on" at a time; [_PlanDetailBox]
+/// and the CTA button below react to whichever one that is.
+class _PlanPickerToggle extends StatelessWidget {
+  final _Plan selected;
+  final String freeLabel;
+  final String premiumLabel;
+  final ValueChanged<_Plan> onChanged;
 
-  const _ComparisonTable({required this.strings});
+  const _PlanPickerToggle({
+    required this.selected,
+    required this.freeLabel,
+    required this.premiumLabel,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onHorizontalDragEnd: (details) {
+        final v = details.primaryVelocity ?? 0;
+        if (v > 200) {
+          onChanged(_Plan.free);
+        } else if (v < -200) {
+          onChanged(_Plan.premium);
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: context.palette.mutedSurface,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: _PickerSegment(
+                label: freeLabel,
+                icon: Icons.card_giftcard,
+                active: selected == _Plan.free,
+                activeColor: context.palette.secondaryBlue,
+                onTap: () => onChanged(_Plan.free),
+              ),
+            ),
+            Expanded(
+              child: _PickerSegment(
+                label: premiumLabel,
+                icon: Icons.workspace_premium,
+                active: selected == _Plan.premium,
+                activeColor: context.palette.premiumGoldEnd,
+                onTap: () => onChanged(_Plan.premium),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PickerSegment extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final bool active;
+  final Color activeColor;
+  final VoidCallback onTap;
+
+  const _PickerSegment({
+    required this.label,
+    required this.icon,
+    required this.active,
+    required this.activeColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: active ? context.palette.cardWhite : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: active
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.08),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+              : null,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 16,
+              color: active
+                  ? activeColor
+                  : context.palette.textNavy.withValues(alpha: 0.45),
+            ),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: active ? FontWeight.bold : FontWeight.w500,
+                color: active
+                    ? context.palette.textNavy
+                    : context.palette.textNavy.withValues(alpha: 0.45),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The enlarged detail box beneath the picker — shows every feature row
+/// for whichever plan [premium] currently points at, one column instead
+/// of the old two-column table, so the picker above genuinely drives what
+/// this renders rather than just decorating an unchanged table.
+class _PlanDetailBox extends StatelessWidget {
+  final AppStrings strings;
+  final bool premium;
+
+  const _PlanDetailBox({required this.strings, required this.premium});
 
   @override
   Widget build(BuildContext context) {
     final s = strings;
-    final rows = <(String, String, String)>[
-      (s.planIntroRowKanji, s.planIntroValueKanjiFree, s.planIntroValueKanjiPremium),
-      (s.planIntroRowBunpou, s.planIntroValueBunpouFree, s.planIntroValueBunpouPremium),
-      (s.planIntroRowPartikelKaiwaChoukai, s.planIntroValueLocked, s.planIntroValueUnlocked),
-      (s.planIntroRowCardSkins, s.planIntroValueBasic, s.planIntroValueExclusive),
-      (s.planIntroRowPractice, s.planIntroValueBasic, s.planIntroValuePremium),
-      (s.planIntroRowAds, s.planIntroValueAdsShown, s.planIntroValueAdsFree),
+    final rows = <(IconData, String, String)>[
+      (
+        Icons.menu_book,
+        s.planIntroRowKanji,
+        premium ? s.planIntroValueKanjiPremium : s.planIntroValueKanjiFree,
+      ),
+      (
+        Icons.school,
+        s.planIntroRowBunpou,
+        premium ? s.planIntroValueBunpouPremium : s.planIntroValueBunpouFree,
+      ),
+      (
+        Icons.lock_open,
+        s.planIntroRowPartikelKaiwaChoukai,
+        premium ? s.planIntroValueUnlocked : s.planIntroValueLocked,
+      ),
+      (
+        Icons.style,
+        s.planIntroRowCardSkins,
+        premium ? s.planIntroValueExclusive : s.planIntroValueBasic,
+      ),
+      (
+        Icons.fitness_center,
+        s.planIntroRowPractice,
+        premium ? s.planIntroValuePremium : s.planIntroValueBasic,
+      ),
+      (
+        Icons.block,
+        s.planIntroRowAds,
+        premium ? s.planIntroValueAdsFree : s.planIntroValueAdsShown,
+      ),
     ];
-    return Container(
+    final accent =
+        premium ? context.palette.premiumGoldEnd : context.palette.secondaryBlue;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 220),
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
       decoration: BoxDecoration(
         color: context.palette.cardWhite,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(
+          color: premium
+              ? context.palette.premiumGoldStart.withValues(alpha: 0.45)
+              : context.palette.divider,
+          width: 1.4,
+        ),
       ),
-      clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
-          Row(
-            children: [
-              const Expanded(flex: 3, child: SizedBox()),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    s.planIntroFreeTitle,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11,
-                      color: context.palette.textNavy.withValues(alpha: 0.6),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  color: context.palette.premiumGoldStart.withValues(alpha: 0.12),
-                  child: Text(
-                    s.planIntroPremiumTitle,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11,
-                      color: context.palette.premiumGoldEnd,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          for (final row in rows)
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          for (var i = 0; i < rows.length; i++) ...[
+            if (i > 0) Divider(height: 1, color: context.palette.divider),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              child: Row(
+                children: [
+                  Icon(rows[i].$1, size: 20, color: accent),
+                  const SizedBox(width: 14),
+                  Expanded(
                     child: Text(
-                      row.$1,
+                      rows[i].$2,
                       style: TextStyle(
-                        fontSize: 11.5,
+                        fontSize: 13,
                         color: context.palette.textNavy,
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    row.$2,
-                    textAlign: TextAlign.center,
+                  const SizedBox(width: 8),
+                  Text(
+                    rows[i].$3,
+                    textAlign: TextAlign.right,
                     style: TextStyle(
-                      fontSize: 11,
-                      color: context.palette.textNavy.withValues(alpha: 0.55),
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w700,
+                      color: accent,
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    color: context.palette.premiumGoldStart.withValues(alpha: 0.06),
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(
-                      row.$3,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        color: context.palette.textNavy,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
+          ],
         ],
       ),
     );

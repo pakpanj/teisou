@@ -71,11 +71,27 @@ void main() {
       find.text('Pilih paket terbaik untuk kebutuhanmu'),
       findsOneWidget,
     );
+    // The picker opens on Premium, so the single dynamic CTA button reads
+    // "Mulai Premium" — "Gunakan Free Plan" only appears once the picker
+    // is switched to Free.
     expect(find.text('Mulai Premium'), findsOneWidget);
+    expect(find.text('Gunakan Free Plan'), findsNothing);
+    // The skip button was removed outright — the picker below the back
+    // arrow is the only way to move between plans now.
+    expect(find.text('Lewati'), findsNothing);
+  });
+
+  testWidgets('switching the picker to Free swaps the CTA to "Gunakan '
+      'Free Plan"', (tester) async {
+    await pump(tester);
+    await tester.tap(find.text('Lanjutkan'));
+    await settlePageChange(tester);
+
+    await tester.tap(find.text('FREE PLAN'));
+    await tester.pump();
+
     expect(find.text('Gunakan Free Plan'), findsOneWidget);
-    // Skip and back only make sense once there's somewhere to skip past
-    // or back to — both appear starting on this second page.
-    expect(find.text('Lewati'), findsOneWidget);
+    expect(find.text('Mulai Premium'), findsNothing);
   });
 
   testWidgets('"Gunakan Free Plan" marks the intro seen so the gate '
@@ -97,6 +113,8 @@ void main() {
     await tester.pump();
     await tester.tap(find.text('Lanjutkan'));
     await settlePageChange(tester);
+    await tester.tap(find.text('FREE PLAN'));
+    await tester.pump();
     await tester.tap(find.text('Gunakan Free Plan'));
     await tester.pump();
 

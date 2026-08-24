@@ -36,6 +36,18 @@ class AppPalette extends ThemeExtension<AppPalette> {
   final Color premiumGoldEnd;
   final Color freeBadgeGrey;
 
+  /// The Premium card's own background gradient — gold in light mode
+  /// (same values as [premiumGoldStart]/[premiumGoldEnd]), but a dark
+  /// plum-purple in dark mode. Gold read as a jarring, warning-coloured
+  /// patch against a dark screen; purple keeps the "this is special"
+  /// weight without fighting the rest of the dark palette. Kept as its
+  /// own pair rather than reusing [premiumGoldStart]/[premiumGoldEnd]
+  /// directly so the two can diverge per theme — the gold tier badge
+  /// elsewhere on Profile stays gold in both themes on purpose; only
+  /// this card's background changes.
+  final Color premiumCardStart;
+  final Color premiumCardEnd;
+
   /// Laid over the profile header's cover art so the avatar, name and motto
   /// stay legible on top of any of the 19 covers. White at 62% in light
   /// mode; in dark mode it has to be a dark wash instead, or a light cover
@@ -73,6 +85,8 @@ class AppPalette extends ThemeExtension<AppPalette> {
     required this.premiumGoldStart,
     required this.premiumGoldEnd,
     required this.freeBadgeGrey,
+    required this.premiumCardStart,
+    required this.premiumCardEnd,
     required this.headerScrim,
     required this.divider,
     required this.mutedSurface,
@@ -96,6 +110,8 @@ class AppPalette extends ThemeExtension<AppPalette> {
     premiumGoldStart: AppColors.premiumGoldStart,
     premiumGoldEnd: AppColors.premiumGoldEnd,
     freeBadgeGrey: AppColors.freeBadgeGrey,
+    premiumCardStart: AppColors.premiumGoldStart,
+    premiumCardEnd: AppColors.premiumGoldEnd,
     headerScrim: Color(0x9EFFFFFF), // white @ 62%
     divider: Color(0x141E2A47), // textNavy @ 8%
     mutedSurface: Color(0xFFF5F5F5),
@@ -121,6 +137,8 @@ class AppPalette extends ThemeExtension<AppPalette> {
     premiumGoldStart: Color(0xFFF6D365),
     premiumGoldEnd: Color(0xFFC9A227),
     freeBadgeGrey: Color(0xFF8A93A1),
+    premiumCardStart: Color(0xFF5B3E96),
+    premiumCardEnd: Color(0xFF241A42),
     headerScrim: Color(0xB3121620), // background @ 70%
     divider: Color(0x1FE8EAF0), // textNavy @ 12%
     mutedSurface: Color(0xFF181C27),
@@ -143,6 +161,8 @@ class AppPalette extends ThemeExtension<AppPalette> {
     Color? premiumGoldStart,
     Color? premiumGoldEnd,
     Color? freeBadgeGrey,
+    Color? premiumCardStart,
+    Color? premiumCardEnd,
     Color? headerScrim,
     Color? divider,
     Color? mutedSurface,
@@ -163,6 +183,8 @@ class AppPalette extends ThemeExtension<AppPalette> {
       premiumGoldStart: premiumGoldStart ?? this.premiumGoldStart,
       premiumGoldEnd: premiumGoldEnd ?? this.premiumGoldEnd,
       freeBadgeGrey: freeBadgeGrey ?? this.freeBadgeGrey,
+      premiumCardStart: premiumCardStart ?? this.premiumCardStart,
+      premiumCardEnd: premiumCardEnd ?? this.premiumCardEnd,
       headerScrim: headerScrim ?? this.headerScrim,
       divider: divider ?? this.divider,
       mutedSurface: mutedSurface ?? this.mutedSurface,
@@ -190,6 +212,9 @@ class AppPalette extends ThemeExtension<AppPalette> {
           Color.lerp(premiumGoldStart, other.premiumGoldStart, t)!,
       premiumGoldEnd: Color.lerp(premiumGoldEnd, other.premiumGoldEnd, t)!,
       freeBadgeGrey: Color.lerp(freeBadgeGrey, other.freeBadgeGrey, t)!,
+      premiumCardStart:
+          Color.lerp(premiumCardStart, other.premiumCardStart, t)!,
+      premiumCardEnd: Color.lerp(premiumCardEnd, other.premiumCardEnd, t)!,
       headerScrim: Color.lerp(headerScrim, other.headerScrim, t)!,
       divider: Color.lerp(divider, other.divider, t)!,
       mutedSurface: Color.lerp(mutedSurface, other.mutedSurface, t)!,

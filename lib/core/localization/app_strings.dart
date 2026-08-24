@@ -84,7 +84,52 @@ class AppStrings {
   // --- Bottom nav ---
   String get navHome => _t('Home', 'Home');
   String get navExam => _t('Ujian', 'Exam');
+  String get navShop => _t('Toko', 'Shop');
   String get navProfile => _t('Profil', 'Profile');
+
+  // --- Toko (top-level shop tab: skins, avatars, frames, covers) --------
+  String get shopScreenTitle => _t('Toko', 'Shop');
+  String get shopTabSkins => _t('Skin Kartu', 'Card Skins');
+  String get shopTabAvatar => _t('Avatar', 'Avatar');
+  String get shopTabFrame => _t('Bingkai', 'Frame');
+  String get shopTabCover => _t('Sampul', 'Cover');
+
+  // --- Coins ---------------------------------------------------------
+  String get coinBalanceLabel => _t('Koin', 'Coins');
+  String coinBalanceAmount(int amount) => _t('$amount koin', '$amount coins');
+  String get coinTopUpTitle => _t('Top Up Koin', 'Top Up Coins');
+  String get coinTopUpSubtitle => _t(
+    'Dapatkan koin lewat top up, atau jadi juara 1-3 di Skor Global '
+        'tiap minggu.',
+    'Get coins by topping up, or by placing 1st-3rd on Skor Global '
+        'each week.',
+  );
+  // One formatter for every pack instead of a getter per size — six
+  // packs (100/200/350/500/700/1000) would otherwise mean six near-
+  // identical getters, and a pack added or resized later would need a
+  // new one instead of just an entry in `IapProducts.coinPackAmounts`.
+  String coinPackLabel(int amount) {
+    final digits = amount.toString();
+    final grouped = digits.replaceAllMapped(
+      RegExp(r'\B(?=(\d{3})+(?!\d))'),
+      (m) => _t('.', ','),
+    );
+    return _t('$grouped Koin', '$grouped Coins');
+  }
+  String get coinEarnFromRankTitle =>
+      _t('Hadiah Skor Global mingguan', 'Weekly Skor Global reward');
+  String get coinEarnFromRankSubtitle => _t(
+    'Juara 1: 500 koin · Juara 2: 300 koin · Juara 3: 100 koin — '
+        'dihitung ulang tiap minggu.',
+    '1st: 500 coins · 2nd: 300 coins · 3rd: 100 coins — recalculated '
+        'every week.',
+  );
+  String get coinBuyTopUp => _t('Top Up', 'Top Up');
+  // Items priced in coins, still "Segera" until a real coin-spend flow
+  // exists (see the Toko "Koin" tier plan) — the top-up half above is
+  // real and live; spending is not built yet.
+  String get coinTierComingSoon =>
+      _t('Segera bisa dibeli pakai koin', 'Coin purchase coming soon');
 
   // --- Modules section ---
   // Section headers, ordered the way someone actually learns Japanese:
