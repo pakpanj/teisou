@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/app_language.dart';
+
 /// One selectable avatar frame/border overlay. Real art is a transparent-
 /// center PNG at [assetPath] (filename must match [id], e.g. `frame_gold`
 /// -> `assets/frames/frame_gold.png`), drawn centered over the avatar and
@@ -13,7 +15,15 @@ class FramePreset {
   final String id;
   final String label;
 
-  const FramePreset({required this.id, required this.label});
+  /// English counterpart — see [CoverPreset.labelEn]'s doc comment for the
+  /// same reasoning. Added once [label] actually started rendering in the
+  /// picker (it used to be dead data, see the note on [FramePresets] below).
+  final String labelEn;
+
+  const FramePreset({required this.id, required this.label, required this.labelEn});
+
+  String labelFor(AppLanguage language) =>
+      language == AppLanguage.english ? labelEn : label;
 
   String get assetPath => 'assets/frames/$id.png';
 }
@@ -65,36 +75,33 @@ class FrameOverlay extends StatelessWidget {
 /// 384 still oversamples that at 4x density while cutting the source's 35MB
 /// by 92%. Re-cut from the originals if a bigger avatar is ever introduced.
 ///
-/// [FramePreset.label] is not rendered anywhere today — `_FrameGrid` shows
-/// each frame as art only, and just the "no frame" tile carries text — so
-/// these stay plain Indonesian strings. If a label ever becomes visible,
-/// give [FramePreset] a `labelEn` + `labelFor(language)` pair the way
-/// [CoverPreset] does (its labels *are* rendered, and shipped untranslated
-/// into the English picker until that was added); don't ship these as-is.
+/// [FramePreset.label] now renders as a caption below each tile — see
+/// `AvatarPickerSheet`'s `_FrameTile` — matching how [CoverPreset]'s label
+/// always has and how [AvatarPreset] now does too, added 2026-08-24.
 class FramePresets {
   FramePresets._();
 
   static const all = <FramePreset>[
-    FramePreset(id: 'frame_sakura_fuji', label: 'Sakura & Fuji'),
-    FramePreset(id: 'frame_halloween', label: 'Halloween'),
-    FramePreset(id: 'frame_sakura', label: 'Sakura'),
-    FramePreset(id: 'frame_autumn', label: 'Musim Gugur'),
-    FramePreset(id: 'frame_winter', label: 'Musim Dingin'),
-    FramePreset(id: 'frame_spring_garden', label: 'Taman Musim Semi'),
-    FramePreset(id: 'frame_ocean', label: 'Bawah Laut'),
-    FramePreset(id: 'frame_night_sky', label: 'Langit Malam'),
-    FramePreset(id: 'frame_jungle', label: 'Rimba Tropis'),
-    FramePreset(id: 'frame_mushroom_fairy', label: 'Peri Jamur'),
-    FramePreset(id: 'frame_fairytale', label: 'Negeri Dongeng'),
-    FramePreset(id: 'frame_witch', label: 'Penyihir'),
-    FramePreset(id: 'frame_steampunk', label: 'Steampunk'),
-    FramePreset(id: 'frame_space', label: 'Antariksa'),
-    FramePreset(id: 'frame_music', label: 'Musik & Seni'),
-    FramePreset(id: 'frame_cat', label: 'Kucing'),
-    FramePreset(id: 'frame_gaming', label: 'Gaming'),
-    FramePreset(id: 'frame_retro_pc', label: 'Komputer Retro'),
-    FramePreset(id: 'frame_moon_crystal', label: 'Bulan & Kristal'),
-    FramePreset(id: 'frame_calligraphy', label: 'Kaligrafi'),
+    FramePreset(id: 'frame_sakura_fuji', label: 'Sakura & Fuji', labelEn: 'Sakura & Fuji'),
+    FramePreset(id: 'frame_halloween', label: 'Halloween', labelEn: 'Halloween'),
+    FramePreset(id: 'frame_sakura', label: 'Sakura', labelEn: 'Sakura'),
+    FramePreset(id: 'frame_autumn', label: 'Musim Gugur', labelEn: 'Autumn'),
+    FramePreset(id: 'frame_winter', label: 'Musim Dingin', labelEn: 'Winter'),
+    FramePreset(id: 'frame_spring_garden', label: 'Taman Musim Semi', labelEn: 'Spring Garden'),
+    FramePreset(id: 'frame_ocean', label: 'Bawah Laut', labelEn: 'Underwater'),
+    FramePreset(id: 'frame_night_sky', label: 'Langit Malam', labelEn: 'Night Sky'),
+    FramePreset(id: 'frame_jungle', label: 'Rimba Tropis', labelEn: 'Tropical Jungle'),
+    FramePreset(id: 'frame_mushroom_fairy', label: 'Peri Jamur', labelEn: 'Mushroom Fairy'),
+    FramePreset(id: 'frame_fairytale', label: 'Negeri Dongeng', labelEn: 'Fairytale Land'),
+    FramePreset(id: 'frame_witch', label: 'Penyihir', labelEn: 'Witch'),
+    FramePreset(id: 'frame_steampunk', label: 'Steampunk', labelEn: 'Steampunk'),
+    FramePreset(id: 'frame_space', label: 'Antariksa', labelEn: 'Outer Space'),
+    FramePreset(id: 'frame_music', label: 'Musik & Seni', labelEn: 'Music & Art'),
+    FramePreset(id: 'frame_cat', label: 'Kucing', labelEn: 'Cat'),
+    FramePreset(id: 'frame_gaming', label: 'Gaming', labelEn: 'Gaming'),
+    FramePreset(id: 'frame_retro_pc', label: 'Komputer Retro', labelEn: 'Retro Computer'),
+    FramePreset(id: 'frame_moon_crystal', label: 'Bulan & Kristal', labelEn: 'Moon & Crystal'),
+    FramePreset(id: 'frame_calligraphy', label: 'Kaligrafi', labelEn: 'Calligraphy'),
   ];
 
   static FramePreset? byId(String? id) {

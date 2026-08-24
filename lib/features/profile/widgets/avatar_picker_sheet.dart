@@ -7,6 +7,7 @@ import '../../../core/providers.dart';
 import '../../../core/services/coin_spend_service.dart';
 import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../../data/models/app_language.dart';
 import '../../../data/models/user_profile.dart';
 import '../../paywall/paywall_screen.dart';
 
@@ -330,6 +331,7 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
         _SectionTitle(s.freePresetsSection),
         _PresetGrid(
           presets: AvatarPresets.free,
+          language: s.language,
           isSelected: (preset) =>
               profile?.avatarType == AvatarType.presetFree &&
               profile?.avatarValue == preset.id,
@@ -353,6 +355,7 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
                       avatarIdUnlocked(p.id) || AvatarPresets.isCoinUnlockable(p.id))
                   .toList()
               : AvatarPresets.premium,
+          language: s.language,
           isSelected: (preset) =>
               profile?.avatarType == AvatarType.presetPremium &&
               profile?.avatarValue == preset.id,
@@ -556,6 +559,7 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
 
     return _FrameGrid(
       frames: frames,
+      language: s.language,
       selectedId: profile?.frameId,
       noFrameLabel: s.noFrameLabel,
       isUnlocked: frameIdUnlocked,
@@ -694,6 +698,7 @@ class _GoogleAvatarTile extends StatelessWidget {
 
 class _PresetGrid extends StatelessWidget {
   final List<AvatarPreset> presets;
+  final AppLanguage language;
   final bool Function(AvatarPreset) isSelected;
   final bool Function(AvatarPreset) locked;
   final void Function(AvatarPreset) onTap;
@@ -707,6 +712,7 @@ class _PresetGrid extends StatelessWidget {
 
   const _PresetGrid({
     required this.presets,
+    required this.language,
     required this.isSelected,
     required this.locked,
     required this.onTap,
@@ -723,12 +729,17 @@ class _PresetGrid extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
+        // < 1 so each cell has extra height below the square art for the
+        // name caption (see `_PresetTile`) — a plain 1:1 cell only fits the
+        // artwork itself.
+        childAspectRatio: 0.78,
       ),
       itemBuilder: (context, index) {
         final preset = presets[index];
         final isLocked = locked(preset);
         return _PresetTile(
           preset: preset,
+          label: preset.labelFor(language),
           selected: isSelected(preset),
           locked: isLocked,
           coinPrice: isLocked ? coinPriceFor?.call(preset) : null,
@@ -741,6 +752,7 @@ class _PresetGrid extends StatelessWidget {
 
 class _PresetTile extends StatelessWidget {
   final AvatarPreset preset;
+  final String label;
   final bool selected;
   final bool locked;
   final int? coinPrice;
@@ -748,6 +760,7 @@ class _PresetTile extends StatelessWidget {
 
   const _PresetTile({
     required this.preset,
+    required this.label,
     required this.selected,
     required this.locked,
     required this.onTap,
@@ -759,54 +772,74 @@ class _PresetTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
-      child: Stack(
+      // The name sits below the artwork as its own caption, not baked into
+      // the image — the badges (selected check, lock, coin price) stay
+      // overlaid on the art itself since they're status, not identity.
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: AvatarPresetArt(
-                preset: preset,
-                imageSize: double.infinity,
-                emojiFontSize: 28,
-                fit: BoxFit.cover,
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: AvatarPresetArt(
+                    preset: preset,
+                    imageSize: double.infinity,
+                    emojiFontSize: 28,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
+              if (selected)
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: context.palette.primaryCoral, width: 2),
+                    ),
+                  ),
+                ),
+              if (selected)
+                Positioned(
+                  right: 4,
+                  top: 4,
+                  child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
+                ),
+              if (locked && coinPrice != null)
+                Positioned(
+                  right: 4,
+                  top: 4,
+                  child: _CoinPriceBadge(price: coinPrice!),
+                )
+              else if (locked)
+                Positioned(
+                  right: 4,
+                  top: 4,
+                  child: Container(
+                    padding: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: context.palette.textNavy,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.lock, color: Colors.white, size: 12),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
             ),
           ),
-          if (selected)
-            Positioned.fill(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: context.palette.primaryCoral, width: 2),
-                ),
-              ),
-            ),
-          if (selected)
-            Positioned(
-              right: 4,
-              top: 4,
-              child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
-            ),
-          if (locked && coinPrice != null)
-            Positioned(
-              right: 4,
-              top: 4,
-              child: _CoinPriceBadge(price: coinPrice!),
-            )
-          else if (locked)
-            Positioned(
-              right: 4,
-              top: 4,
-              child: Container(
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  color: context.palette.textNavy,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(Icons.lock, color: Colors.white, size: 12),
-              ),
-            ),
         ],
       ),
     );
@@ -856,6 +889,7 @@ class _CoinPriceBadge extends StatelessWidget {
 /// [CoverPresets.fallback] staying unlocked.
 class _FrameGrid extends StatelessWidget {
   final List<FramePreset> frames;
+  final AppLanguage language;
   final String? selectedId;
   final String noFrameLabel;
 
@@ -872,6 +906,7 @@ class _FrameGrid extends StatelessWidget {
 
   const _FrameGrid({
     required this.frames,
+    required this.language,
     required this.selectedId,
     required this.noFrameLabel,
     required this.isUnlocked,
@@ -889,12 +924,19 @@ class _FrameGrid extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
+        // Same reasoning as `_PresetGrid`'s — room below the art for the
+        // name caption.
+        childAspectRatio: 0.78,
       ),
       itemBuilder: (context, index) {
         if (index == 0) {
+          // The "no frame" tile has no separate caption below it — its
+          // whole box already shows [noFrameLabel] as its content, unlike
+          // a real preset where the box is pure artwork.
           return _FrameTile(
             selected: selectedId == null,
             locked: false,
+            caption: null,
             child: Text(noFrameLabel, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, color: context.palette.textNavy)),
             onTap: () => onTap(null),
           );
@@ -904,6 +946,7 @@ class _FrameGrid extends StatelessWidget {
         return _FrameTile(
           selected: selectedId == preset.id,
           locked: locked,
+          caption: preset.labelFor(language),
           coinPrice: locked ? coinPriceFor(preset.id) : null,
           // Sized off the tile rather than a fixed 40 — these are detailed
           // wreath illustrations, and at 40 inside a ~92 tile they rendered
@@ -927,12 +970,18 @@ class _FrameTile extends StatelessWidget {
   final bool selected;
   final bool locked;
   final int? coinPrice;
+
+  /// The name shown below the tile, as its own line — not drawn inside the
+  /// artwork. Null only for the "no frame" tile, whose box already carries
+  /// [child] as text.
+  final String? caption;
   final Widget child;
   final VoidCallback onTap;
 
   const _FrameTile({
     required this.selected,
     required this.locked,
+    required this.caption,
     required this.child,
     required this.onTap,
     this.coinPrice,
@@ -940,49 +989,70 @@ class _FrameTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final box = Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: context.palette.cardWhite,
+            borderRadius: BorderRadius.circular(16),
+            border: selected
+                ? Border.all(color: context.palette.primaryCoral, width: 2)
+                : null,
+          ),
+          alignment: Alignment.center,
+          child: Opacity(opacity: locked ? 0.35 : 1, child: child),
+        ),
+        if (selected)
+          Positioned(
+            right: 4,
+            top: 4,
+            child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
+          ),
+        if (locked && coinPrice != null)
+          Positioned(
+            right: 4,
+            top: 4,
+            child: _CoinPriceBadge(price: coinPrice!),
+          )
+        else if (locked)
+          Positioned(
+            right: 4,
+            top: 4,
+            child: Container(
+              padding: const EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                color: context.palette.textNavy,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.lock, color: Colors.white, size: 12),
+            ),
+          ),
+      ],
+    );
+    final caption = this.caption;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: context.palette.cardWhite,
-              borderRadius: BorderRadius.circular(16),
-              border: selected
-                  ? Border.all(color: context.palette.primaryCoral, width: 2)
-                  : null,
-            ),
-            alignment: Alignment.center,
-            child: Opacity(opacity: locked ? 0.35 : 1, child: child),
-          ),
-          if (selected)
-            Positioned(
-              right: 4,
-              top: 4,
-              child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
-            ),
-          if (locked && coinPrice != null)
-            Positioned(
-              right: 4,
-              top: 4,
-              child: _CoinPriceBadge(price: coinPrice!),
-            )
-          else if (locked)
-            Positioned(
-              right: 4,
-              top: 4,
-              child: Container(
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  color: context.palette.textNavy,
-                  shape: BoxShape.circle,
+      child: caption == null
+          ? box
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(child: box),
+                const SizedBox(height: 4),
+                Text(
+                  caption,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
+                  ),
                 ),
-                child: const Icon(Icons.lock, color: Colors.white, size: 12),
-              ),
+              ],
             ),
-        ],
-      ),
     );
   }
 }

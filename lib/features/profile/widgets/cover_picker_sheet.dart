@@ -237,7 +237,10 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
         crossAxisCount: 2,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
-        childAspectRatio: 1.3,
+        // Lower than the artwork's own 1.3 ratio — the name used to be
+        // drawn over the image itself; now it's a caption below, so each
+        // cell needs the extra height for that line.
+        childAspectRatio: 1.05,
       ),
       itemBuilder: (context, index) {
         final preset = covers[index];
@@ -299,98 +302,110 @@ class _CoverTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The name used to be drawn as text overlaid on the artwork itself
+    // (bottom-left corner, white-on-image so it stayed readable over a
+    // dark scene). It's now a plain caption below the tile instead — the
+    // same treatment `_PresetTile`/`_FrameTile` give avatars and frames,
+    // and closer to how the "Skin Kartu" tab shows its own items (name
+    // beside/below the thumbnail, never baked into it).
+    final art = LayoutBuilder(
+      builder: (context, constraints) {
+        return Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                border: selected
+                    ? Border.all(color: context.palette.primaryCoral, width: 2)
+                    : null,
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: Stack(
+                children: [
+                  CoverArt(
+                    preset: preset,
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight,
+                  ),
+                  if (locked)
+                    Container(
+                      width: constraints.maxWidth,
+                      height: constraints.maxHeight,
+                      color: Colors.black.withValues(alpha: 0.35),
+                    ),
+                ],
+              ),
+            ),
+            if (selected)
+              Positioned(
+                right: 6,
+                top: 6,
+                child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
+              ),
+            if (locked && coinPrice != null)
+              Positioned(
+                right: 6,
+                top: 6,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: context.palette.tertiaryAmber,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.monetization_on, color: Colors.white, size: 12),
+                      const SizedBox(width: 3),
+                      Text(
+                        '$coinPrice',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            else if (locked)
+              Positioned(
+                right: 6,
+                top: 6,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: Colors.black54,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.lock, color: Colors.white, size: 14),
+                ),
+              ),
+          ],
+        );
+      },
+    );
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: selected
-                      ? Border.all(color: context.palette.primaryCoral, width: 2)
-                      : null,
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: Stack(
-                  children: [
-                    CoverArt(
-                      preset: preset,
-                      width: constraints.maxWidth,
-                      height: constraints.maxHeight,
-                    ),
-                    if (locked)
-                      Container(
-                        width: constraints.maxWidth,
-                        height: constraints.maxHeight,
-                        color: Colors.black.withValues(alpha: 0.35),
-                      ),
-                  ],
-                ),
-              ),
-              if (selected)
-                Positioned(
-                  right: 6,
-                  top: 6,
-                  child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
-                ),
-              if (locked && coinPrice != null)
-                Positioned(
-                  right: 6,
-                  top: 6,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-                    decoration: BoxDecoration(
-                      color: context.palette.tertiaryAmber,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.monetization_on, color: Colors.white, size: 12),
-                        const SizedBox(width: 3),
-                        Text(
-                          '$coinPrice',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              else if (locked)
-                Positioned(
-                  right: 6,
-                  top: 6,
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: const BoxDecoration(
-                      color: Colors.black54,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.lock, color: Colors.white, size: 14),
-                  ),
-                ),
-              Positioned(
-                left: 8,
-                bottom: 6,
-                child: Text(
-                  preset.labelFor(language),
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: locked ? Colors.white : context.palette.textNavy,
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(child: art),
+          const SizedBox(height: 4),
+          Text(
+            preset.labelFor(language),
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
+            ),
+          ),
+        ],
       ),
     );
   }
