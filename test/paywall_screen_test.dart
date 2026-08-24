@@ -19,10 +19,12 @@ void main() {
     await tester.pump();
 
     expect(find.text('Buka Semua Modul!'), findsOneWidget);
-    expect(find.text('⭐ Skin Battle Card eksklusif'), findsOneWidget);
-    expect(find.text('📚 Materi pembelajaran lengkap'), findsOneWidget);
-    expect(find.text('📝 Latihan soal premium'), findsOneWidget);
-    expect(find.text('🚫 Bebas iklan'), findsOneWidget);
+    // Emoji prefixes were dropped 2026-08-24 in favour of real icon
+    // badge art (`assets/premium_icons/`) — see `PremiumIcons`.
+    expect(find.text('Skin Battle Card eksklusif'), findsOneWidget);
+    expect(find.text('Materi pembelajaran lengkap'), findsOneWidget);
+    expect(find.text('Latihan soal premium'), findsOneWidget);
+    expect(find.text('Bebas iklan'), findsOneWidget);
     // The buy button follows the master switch: offering a purchase that
     // cannot complete reads as a broken app, not as a shop that has not
     // opened yet.

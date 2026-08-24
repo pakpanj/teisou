@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/services/iap_service.dart';
 import '../../core/constants/iap_products.dart';
+import '../../core/constants/premium_icons.dart';
 import 'module_access.dart';
 
 import '../../core/localization/app_strings.dart';
@@ -197,11 +198,12 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 ),
                 child: Column(
                   children: [
-                    const MascotWidget(
-                      mood: MascotMood.proud,
-                      size: 130,
-                      showBackdrop: false,
-                    ),
+                    // The mascot plus its four feature badges floating
+                    // around it — the same "hero with orbiting icons"
+                    // composition the user's reference image used, built
+                    // from the six premium-icon assets generated
+                    // 2026-08-24 (see `PremiumIcons`'s own doc comment).
+                    const _MascotWithBadges(),
                     const SizedBox(height: 12),
                     Text(
                       s.unlockAllModulesTitle,
@@ -223,6 +225,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
+              // Where you are vs. what's on offer, said in one glance —
+              // the same "two chests" metaphor the reference used for
+              // its plan picker, just as a comparison strip here rather
+              // than a pickable choice: this screen is a paywall, not
+              // the onboarding plan picker, so there's nothing to
+              // actually select on the Free side.
+              _PlanChestStrip(strings: s),
               const SizedBox(height: 24),
               _BenefitList(strings: s),
               const SizedBox(height: 28),
@@ -312,16 +322,149 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 }
 
+/// The cat plus its four feature badges, floating around it the way the
+/// user's reference image floated icon badges around its own mascot —
+/// see [_FeatureBadge] and `PremiumIcons`'s doc comment for where the
+/// art came from.
+class _MascotWithBadges extends StatelessWidget {
+  const _MascotWithBadges();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 220,
+      height: 178,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: const [
+          MascotWidget(mood: MascotMood.proud, size: 130, showBackdrop: false),
+          Positioned(top: 2, left: 0, child: _FeatureBadge(PremiumIcons.skin)),
+          Positioned(top: -4, right: 4, child: _FeatureBadge(PremiumIcons.kanji)),
+          Positioned(bottom: 10, left: 6, child: _FeatureBadge(PremiumIcons.kaiwa)),
+          Positioned(bottom: 4, right: 0, child: _FeatureBadge(PremiumIcons.noAds)),
+        ],
+      ),
+    );
+  }
+}
+
+/// One floating icon badge. The art already carries its own circular
+/// backdrop (see `PremiumIcons`'s doc comment), so this only adds the
+/// drop shadow that makes it read as floating in front of the mascot
+/// rather than pasted flat behind it.
+class _FeatureBadge extends StatelessWidget {
+  final String asset;
+
+  const _FeatureBadge(this.asset);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 44,
+      height: 44,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.22),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Image.asset(asset, fit: BoxFit.contain),
+    );
+  }
+}
+
+/// "Where you are" vs. "what's on offer", the two-chest comparison from
+/// the reference image — see the doc comment where this is placed in
+/// `PaywallScreen.build` for why it's a comparison strip here rather
+/// than a pickable choice like the onboarding flow's own chest cards.
+class _PlanChestStrip extends StatelessWidget {
+  final AppStrings strings;
+
+  const _PlanChestStrip({required this.strings});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = strings;
+    return Row(
+      children: [
+        Expanded(
+          child: _PlanChestTile(
+            asset: PremiumIcons.chestFree,
+            label: s.paywallCurrentPlanLabel,
+            dimmed: true,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Icon(
+            Icons.arrow_forward_rounded,
+            color: context.palette.textNavy.withValues(alpha: 0.35),
+          ),
+        ),
+        Expanded(
+          child: _PlanChestTile(
+            asset: PremiumIcons.chestPremium,
+            label: s.profilePremiumUpgradeTitle,
+            dimmed: false,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _PlanChestTile extends StatelessWidget {
+  final String asset;
+  final String label;
+  final bool dimmed;
+
+  const _PlanChestTile({
+    required this.asset,
+    required this.label,
+    required this.dimmed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Opacity(
+          opacity: dimmed ? 0.55 : 1,
+          child: Image.asset(asset, width: 64, height: 64),
+        ),
+        const SizedBox(height: 6),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 11.5,
+            fontWeight: dimmed ? FontWeight.normal : FontWeight.bold,
+            color: context.palette.textNavy.withValues(alpha: dimmed ? 0.55 : 1),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _BenefitList extends StatelessWidget {
   final AppStrings strings;
 
   const _BenefitList({required this.strings});
 
-  List<String> get _benefits => [
-        strings.benefitExclusiveCardSkins,
-        strings.benefitFullMaterials,
-        strings.benefitPremiumPractice,
-        strings.benefitNoAds,
+  /// Icon asset paired with its label, in display order — one badge per
+  /// benefit, replacing the plain green checkmark this list used to
+  /// draw before the icon art existed.
+  List<(String, String)> get _benefits => [
+        (PremiumIcons.skin, strings.benefitExclusiveCardSkins),
+        (PremiumIcons.kanji, strings.benefitFullMaterials),
+        (PremiumIcons.kaiwa, strings.benefitPremiumPractice),
+        (PremiumIcons.noAds, strings.benefitNoAds),
       ];
 
   @override
@@ -329,14 +472,14 @@ class _BenefitList extends StatelessWidget {
     return Column(
       children: _benefits
           .map(
-            (benefit) => Padding(
+            (entry) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Row(
                 children: [
-                  Icon(Icons.check_circle, color: context.palette.successGreen, size: 20),
+                  Image.asset(entry.$1, width: 32, height: 32),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(benefit, style: TextStyle(color: context.palette.textNavy)),
+                    child: Text(entry.$2, style: TextStyle(color: context.palette.textNavy)),
                   ),
                 ],
               ),

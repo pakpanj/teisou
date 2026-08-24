@@ -1329,6 +1329,11 @@ class AppStrings {
       _t('Iklan ditutup sebelum selesai.', 'Ad was closed before finishing.');
   String get unlockAllModulesTitle =>
       _t('Buka Semua Modul!', 'Unlock All Modules!');
+  /// Labels the "Free" chest in `PaywallScreen`'s mini plan-comparison
+  /// strip — deliberately not "Free Plan" the way the onboarding
+  /// picker's chip says it, since this screen's whole point is "here's
+  /// where you already are", not offering it as a choice.
+  String get paywallCurrentPlanLabel => _t('Paketmu sekarang', 'Your plan now');
   String get unlockAllModulesSubtitle => _t(
     'Akses penuh Kanji, Partikel, Bunpou, dan lebih banyak lagi',
     'Full access to Kanji, Partikel, Bunpou, and more',
@@ -1351,19 +1356,24 @@ class AppStrings {
     '$moduleTitle terbuka — berlaku untuk 1x ganti foto.',
     '$moduleTitle unlocked — good for one photo change.',
   );
+  // Emoji prefixes lived on these four until 2026-08-24, when real icon
+  // badge art (`assets/premium_icons/`) replaced them on `PaywallScreen`
+  // — stripped here too since `plan_intro_screen.dart`'s own bullet list
+  // already prepends its own check-circle icon before this text, so the
+  // emoji was only ever doubling up with a marker already there.
   String get benefitExclusiveCardSkins => _t(
-    '⭐ Skin Battle Card eksklusif',
-    '⭐ Exclusive Battle Card skins',
+    'Skin Battle Card eksklusif',
+    'Exclusive Battle Card skins',
   );
   String get benefitFullMaterials => _t(
-    '📚 Materi pembelajaran lengkap',
-    '📚 Complete learning materials',
+    'Materi pembelajaran lengkap',
+    'Complete learning materials',
   );
   String get benefitPremiumPractice => _t(
-    '📝 Latihan soal premium',
-    '📝 Premium practice questions',
+    'Latihan soal premium',
+    'Premium practice questions',
   );
-  String get benefitNoAds => _t('🚫 Bebas iklan', '🚫 Ad-free');
+  String get benefitNoAds => _t('Bebas iklan', 'Ad-free');
 
   // --- Plan intro (Free vs Premium, shown once after the age question) ---
   String get planIntroWelcomeTitle =>

@@ -130,10 +130,12 @@ void main() {
       await tester.pump();
 
       expect(find.text('Unlock All Modules!'), findsOneWidget);
-      expect(find.text('⭐ Exclusive Battle Card skins'), findsOneWidget);
-      expect(find.text('📚 Complete learning materials'), findsOneWidget);
-      expect(find.text('📝 Premium practice questions'), findsOneWidget);
-      expect(find.text('🚫 Ad-free'), findsOneWidget);
+      // Emoji prefixes were dropped 2026-08-24 in favour of real icon
+      // badge art (`assets/premium_icons/`) — see `PremiumIcons`.
+      expect(find.text('Exclusive Battle Card skins'), findsOneWidget);
+      expect(find.text('Complete learning materials'), findsOneWidget);
+      expect(find.text('Premium practice questions'), findsOneWidget);
+      expect(find.text('Ad-free'), findsOneWidget);
       expect(find.text('Watch Ad for 24-Hour Preview'), findsOneWidget);
       expect(find.text('Buka Semua Modul!'), findsNothing);
     },
