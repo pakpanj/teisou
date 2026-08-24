@@ -7,6 +7,7 @@ import '../../../core/providers.dart';
 import '../../../core/services/coin_spend_service.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../paywall/paywall_screen.dart';
+import 'avatar_picker_sheet.dart' show PickerSectionTitle;
 
 /// The `moduleId` watching an ad on [PaywallScreen] grants a one-time
 /// unlock for — the 4 [CoverPresets.lockedIds] below.
@@ -220,7 +221,7 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
 
-    final covers = widget.shopMode
+    final baseCovers = widget.shopMode
         ? CoverPresets.all
             .where((c) =>
                 !CoverPresets.isLocked(c.id) ||
@@ -229,6 +230,80 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
             .toList()
         : CoverPresets.all;
 
+    // Same owned-vs-not split as `AvatarPickerBody`/`FramePickerBody` —
+    // see the former's doc comment above its own `isLocked`.
+    bool isLocked(CoverPreset c) =>
+        CoverPresets.isLocked(c.id) && !coverIdUnlocked(c.id);
+    final owned = baseCovers.where((c) => !isLocked(c)).toList();
+    final notOwned = baseCovers.where(isLocked).toList();
+
+    void handleTap(CoverPreset preset) {
+      if (uid == null) return;
+      if (!isLocked(preset)) {
+        final consumeReward = !isPremium &&
+            CoverPresets.isAdUnlockable(preset.id) &&
+            _adRewardActive &&
+            !_unlockedCoverIds.contains(preset.id);
+        _select(uid, preset.id, consumeReward: consumeReward);
+        return;
+      }
+      if (CoverPresets.isCoinUnlockable(preset.id)) {
+        _buyWithCoins(context, preset.id);
+        return;
+      }
+      _openPaywall(context, showAdOption: CoverPresets.isAdUnlockable(preset.id));
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        PickerSectionTitle(s.ownedSectionTitle),
+        _CoverGrid(
+          covers: owned,
+          language: s.language,
+          // A user who has never picked a cover has no stored coverId, and
+          // now sees the fallback preset highlighted instead of a separate
+          // "Default" tile — see CoverPresets.fallback.
+          selectedId: selectedId ?? CoverPresets.fallback.id,
+          locked: false,
+          onTap: uid == null ? null : handleTap,
+        ),
+        if (notOwned.isNotEmpty) ...[
+          PickerSectionTitle(s.notOwnedSectionTitle),
+          _CoverGrid(
+            covers: notOwned,
+            language: s.language,
+            selectedId: selectedId ?? CoverPresets.fallback.id,
+            locked: true,
+            onTap: uid == null ? null : handleTap,
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// The cover grid itself, drawn from [covers] — the caller already splits
+/// [CoverPresets.all] into an owned grid and a not-owned grid, so every
+/// tile in one call is uniformly [locked] or not, same shape as
+/// `_FrameGrid` in `avatar_picker_sheet.dart`.
+class _CoverGrid extends StatelessWidget {
+  final List<CoverPreset> covers;
+  final AppLanguage language;
+  final String? selectedId;
+  final bool locked;
+  final void Function(CoverPreset preset)? onTap;
+
+  const _CoverGrid({
+    required this.covers,
+    required this.language,
+    required this.selectedId,
+    required this.locked,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -244,39 +319,15 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
       ),
       itemBuilder: (context, index) {
         final preset = covers[index];
-        final isLocked =
-            CoverPresets.isLocked(preset.id) && !coverIdUnlocked(preset.id);
         return _CoverTile(
           preset: preset,
-          language: s.language,
-          // A user who has never picked a cover has no stored coverId, and
-          // now sees the fallback preset highlighted instead of a separate
-          // "Default" tile — see CoverPresets.fallback.
-          selected: (selectedId ?? CoverPresets.fallback.id) == preset.id,
-          locked: isLocked,
-          coinPrice: isLocked && CoverPresets.isCoinUnlockable(preset.id)
+          language: language,
+          selected: selectedId == preset.id,
+          locked: locked,
+          coinPrice: locked && CoverPresets.isCoinUnlockable(preset.id)
               ? CoverPresets.coinPrice
               : null,
-          onTap: uid == null
-              ? null
-              : () {
-                  if (!isLocked) {
-                    final consumeReward = !isPremium &&
-                        CoverPresets.isAdUnlockable(preset.id) &&
-                        _adRewardActive &&
-                        !_unlockedCoverIds.contains(preset.id);
-                    _select(uid, preset.id, consumeReward: consumeReward);
-                    return;
-                  }
-                  if (CoverPresets.isCoinUnlockable(preset.id)) {
-                    _buyWithCoins(context, preset.id);
-                    return;
-                  }
-                  _openPaywall(
-                    context,
-                    showAdOption: CoverPresets.isAdUnlockable(preset.id),
-                  );
-                },
+          onTap: onTap == null ? null : () => onTap!(preset),
         );
       },
     );

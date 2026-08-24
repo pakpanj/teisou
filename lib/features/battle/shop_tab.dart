@@ -98,6 +98,11 @@ class _ShopTabState extends ConsumerState<ShopTab> {
     final iap = ref.read(iapServiceProvider);
     final owned = ref.watch(ownedSkinsProvider).valueOrNull ?? const <String>{};
     final paid = CardSkinPresets.ofSource(CardSkinSource.paid).toList();
+    // Owned-vs-not split, same as the Avatar/Bingkai/Sampul tabs — see
+    // `AvatarPickerBody`'s doc comment above its own `isLocked` for the
+    // reasoning behind grouping by ownership rather than a flat list.
+    final ownedSkins = paid.where((skin) => owned.contains(skin.id)).toList();
+    final notOwnedSkins = paid.where((skin) => !owned.contains(skin.id)).toList();
     // With purchases switched off the store is never asked anything, so
     // `isAvailable` is false — but saying "the store is not available on
     // this device" would blame the phone for a decision made here. The
@@ -134,16 +139,36 @@ class _ShopTabState extends ConsumerState<ShopTab> {
           ),
         ),
         const SizedBox(height: 14),
-        for (final skin in paid) ...[
-          _ShopRow(
-            skin: skin,
-            label: skin.labelFor(s.language),
-            price: iap.productFor(IapProducts.productIdForSkin(skin.id))?.price,
-            owned: owned.contains(skin.id),
-            busy: _buying == skin.id,
-            onBuy: () => _buy(skin),
-          ),
-          const SizedBox(height: 12),
+        if (ownedSkins.isNotEmpty) ...[
+          _SectionLabel(s.ownedSectionTitle, palette: palette),
+          const SizedBox(height: 8),
+          for (final skin in ownedSkins) ...[
+            _ShopRow(
+              skin: skin,
+              label: skin.labelFor(s.language),
+              price: iap.productFor(IapProducts.productIdForSkin(skin.id))?.price,
+              owned: true,
+              busy: false,
+              onBuy: () => _buy(skin),
+            ),
+            const SizedBox(height: 12),
+          ],
+          const SizedBox(height: 6),
+        ],
+        if (notOwnedSkins.isNotEmpty) ...[
+          _SectionLabel(s.notOwnedSectionTitle, palette: palette),
+          const SizedBox(height: 8),
+          for (final skin in notOwnedSkins) ...[
+            _ShopRow(
+              skin: skin,
+              label: skin.labelFor(s.language),
+              price: iap.productFor(IapProducts.productIdForSkin(skin.id))?.price,
+              owned: false,
+              busy: _buying == skin.id,
+              onBuy: () => _buy(skin),
+            ),
+            const SizedBox(height: 12),
+          ],
         ],
         const SizedBox(height: 8),
         // Required by both stores, and the only way back for someone who
@@ -190,6 +215,26 @@ class _Notice extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// "Sudah Dimiliki"/"Belum Dimiliki" above each half of the skin list —
+/// same wording and reasoning as the Avatar/Bingkai/Sampul tabs' owned-vs-
+/// not split, kept as a small local widget rather than importing across
+/// features (`avatar_picker_sheet.dart`'s `PickerSectionTitle` lives under
+/// `features/profile/`, this screen under `features/battle/`).
+class _SectionLabel extends StatelessWidget {
+  final String text;
+  final AppPalette palette;
+
+  const _SectionLabel(this.text, {required this.palette});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(fontWeight: FontWeight.bold, color: palette.textNavy),
     );
   }
 }

@@ -1519,8 +1519,11 @@ class AppStrings {
   String get accountPhotoSection => _t('Foto Akun', 'Account Photo');
   String get googleAccountPhotoLabel =>
       _t('Foto akun Google', 'Google account photo');
-  String get freePresetsSection => _t('Preset Gratis', 'Free Presets');
-  String get premiumPresetsSection => _t('Preset Premium', 'Premium Presets');
+  // Avatar/frame/cover pickers group tiles by ownership, not by
+  // free/premium — see `AvatarPickerBody`/`FramePickerBody`/
+  // `CoverPickerBody`'s `isLocked` splits, added 2026-08-24.
+  String get ownedSectionTitle => _t('Sudah Dimiliki', 'Already Owned');
+  String get notOwnedSectionTitle => _t('Belum Dimiliki', 'Not Yet Owned');
   String get avatarSaveFailed => _t(
     'Gagal menyimpan avatar, coba lagi.',
     'Failed to save avatar, try again.',
@@ -1549,7 +1552,6 @@ class AppStrings {
   String get coverPremiumTitle => _t('Sampul Premium', 'Cover Premium');
   String get frameSection => _t('Bingkai', 'Frame');
   String get pickFrameTitle => _t('Pilih Bingkai', 'Choose Frame');
-  String get noFrameLabel => _t('Tanpa Bingkai', 'No Frame');
   String get frameSaveFailed => _t(
     'Gagal menyimpan bingkai, coba lagi.',
     'Failed to save frame, try again.',

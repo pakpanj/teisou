@@ -44,6 +44,11 @@ const KIND_FIELD = {
  */
 const COIN_IDS = {
   avatar: new Set([
+    "neko_artist",
+    "neko_graduate",
+    "neko_ninja",
+    "neko_samurai",
+    "neko_kimono",
     "neko_matcha",
     "neko_sailor",
     "neko_detective",

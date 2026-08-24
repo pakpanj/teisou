@@ -71,8 +71,11 @@ class AvatarPresetArt extends StatelessWidget {
   }
 }
 
-/// Definitions for all 20 avatar presets (8 free + 12 premium), keyed by id
+/// Definitions for all 20 avatar presets (3 free + 17 premium), keyed by id
 /// so they can be added to or edited here without touching picker UI code.
+/// (3 free was 8 until 2026-08-24, when 5 — Seniman, Wisudawan, Ninja,
+/// Samurai, Kimono — were moved into [premium]/[coinIds] at explicit
+/// request, so they now cost coins.)
 /// Real PNG art for all 20 (`neko_circles` set) lives in `assets/avatars/`
 /// — every image is already a complete circular illustration with its own
 /// backdrop baked in, so presets carry no separate background color; render
@@ -84,14 +87,17 @@ class AvatarPresets {
     AvatarPreset(id: 'neko_sensei', emoji: '🧑‍🏫', premium: false, label: 'Guru', labelEn: 'Teacher'),
     AvatarPreset(id: 'neko_cheerleader', emoji: '📣', premium: false, label: 'Pemandu Sorak', labelEn: 'Cheerleader'),
     AvatarPreset(id: 'neko_bookworm', emoji: '📚', premium: false, label: 'Kutu Buku', labelEn: 'Bookworm'),
-    AvatarPreset(id: 'neko_artist', emoji: '🎨', premium: false, label: 'Seniman', labelEn: 'Artist'),
-    AvatarPreset(id: 'neko_graduate', emoji: '🎓', premium: false, label: 'Wisudawan', labelEn: 'Graduate'),
-    AvatarPreset(id: 'neko_ninja', emoji: '🥷', premium: false, label: 'Ninja', labelEn: 'Ninja'),
-    AvatarPreset(id: 'neko_samurai', emoji: '⚔️', premium: false, label: 'Samurai', labelEn: 'Samurai'),
-    AvatarPreset(id: 'neko_kimono', emoji: '🎋', premium: false, label: 'Kimono', labelEn: 'Kimono'),
   ];
 
   static const premium = [
+    // Moved here from `free` (2026-08-24) at explicit request — these 5
+    // now require a coin purchase, same as `neko_matcha` etc. below. See
+    // [coinIds].
+    AvatarPreset(id: 'neko_artist', emoji: '🎨', premium: true, label: 'Seniman', labelEn: 'Artist'),
+    AvatarPreset(id: 'neko_graduate', emoji: '🎓', premium: true, label: 'Wisudawan', labelEn: 'Graduate'),
+    AvatarPreset(id: 'neko_ninja', emoji: '🥷', premium: true, label: 'Ninja', labelEn: 'Ninja'),
+    AvatarPreset(id: 'neko_samurai', emoji: '⚔️', premium: true, label: 'Samurai', labelEn: 'Samurai'),
+    AvatarPreset(id: 'neko_kimono', emoji: '🎋', premium: true, label: 'Kimono', labelEn: 'Kimono'),
     AvatarPreset(id: 'neko_matcha', emoji: '🍵', premium: true, label: 'Matcha', labelEn: 'Matcha'),
     AvatarPreset(id: 'neko_chef', emoji: '👨‍🍳', premium: true, label: 'Koki', labelEn: 'Chef'),
     AvatarPreset(id: 'neko_sailor', emoji: '⚓', premium: true, label: 'Pelaut', labelEn: 'Sailor'),
@@ -116,7 +122,7 @@ class AvatarPresets {
     return null;
   }
 
-  /// Of the 12 locked presets, the 3 reachable with a single-use
+  /// Of the 17 locked presets, the 3 reachable with a single-use
   /// rewarded ad — a taster tier, per the 2026-08-24 split between
   /// "watch an ad", "spend coins", and "subscribe". Everything in
   /// [premium] that is in neither this set nor [coinIds] is
@@ -127,11 +133,18 @@ class AvatarPresets {
     'neko_traveler',
   };
 
-  /// The 6 permanently buyable with coins (see `CoinSpendService`), at a
-  /// flat [coinPrice] each — deliberately not priced per-item; that
-  /// would be a second economy-balancing decision layered on top of the
-  /// tier split itself.
+  /// Permanently buyable with coins (see `CoinSpendService`), at a flat
+  /// [coinPrice] each — deliberately not priced per-item; that would be a
+  /// second economy-balancing decision layered on top of the tier split
+  /// itself. `neko_artist`/`neko_graduate`/`neko_ninja`/`neko_samurai`/
+  /// `neko_kimono` joined this set 2026-08-24 when they moved out of
+  /// [free] — before that they cost nothing at all.
   static const coinIds = {
+    'neko_artist',
+    'neko_graduate',
+    'neko_ninja',
+    'neko_samurai',
+    'neko_kimono',
     'neko_matcha',
     'neko_sailor',
     'neko_detective',

@@ -36,7 +36,7 @@ void main() {
       }
     });
 
-    test('the three tiers partition all 12 locked avatars', () {
+    test('the three tiers partition every locked avatar', () {
       final premiumOnlyIds =
           locked.where(AvatarPresets.isPremiumOnly).toSet();
       expect(

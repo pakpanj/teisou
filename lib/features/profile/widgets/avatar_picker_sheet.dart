@@ -308,11 +308,65 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
     final s = ref.watch(appStringsProvider);
     final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
 
+    // Free presets are always unlocked; a premium one is locked unless it's
+    // been earned/bought or the account is Premium — see
+    // `avatarIdUnlocked`'s own doc comment above for the three-tier logic.
+    bool isLocked(AvatarPreset preset) => preset.premium && !avatarIdUnlocked(preset.id);
+
+    final visiblePremium = widget.shopMode
+        ? AvatarPresets.premium
+            .where((p) => avatarIdUnlocked(p.id) || AvatarPresets.isCoinUnlockable(p.id))
+            .toList()
+        : AvatarPresets.premium;
+    // One combined list, split by ownership rather than by free/premium —
+    // per explicit request, so a learner sees what they already have
+    // separately from what's still to unlock, instead of a "Preset
+    // Gratis"/"Preset Premium" split that mixed owned and locked tiles
+    // together inside "Premium".
+    final allPresets = [...AvatarPresets.free, ...visiblePremium];
+    final owned = allPresets.where((p) => !isLocked(p)).toList();
+    final notOwned = allPresets.where(isLocked).toList();
+
+    bool isSelected(AvatarPreset preset) {
+      final type = preset.premium ? AvatarType.presetPremium : AvatarType.presetFree;
+      return profile?.avatarType == type && profile?.avatarValue == preset.id;
+    }
+
+    void handleTap(AvatarPreset preset) {
+      final id = preset.id;
+      if (!isLocked(preset)) {
+        if (uid == null) return;
+        // Only an ad-tier id newly unlocked by the still-active reward
+        // should ever consume it — a coin-bought or premium-unlocked id
+        // must not accidentally burn an unrelated ad reward sitting
+        // active for a different tile.
+        final consumeReward = preset.premium &&
+            !isPremium &&
+            AvatarPresets.isAdUnlockable(id) &&
+            _adRewardActive &&
+            !_unlockedAvatarIds.contains(id);
+        _select(
+          uid,
+          preset.premium ? AvatarType.presetPremium : AvatarType.presetFree,
+          id,
+          displayName: displayName,
+          photoUrl: user?.photoURL,
+          consumeReward: consumeReward,
+        );
+        return;
+      }
+      if (AvatarPresets.isCoinUnlockable(id)) {
+        _buyWithCoins(context, preset);
+        return;
+      }
+      _openPaywall(context, showAdOption: AvatarPresets.isAdUnlockable(id));
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (user != null && !user.isAnonymous && user.photoURL != null) ...[
-          _SectionTitle(s.accountPhotoSection),
+          PickerSectionTitle(s.accountPhotoSection),
           _GoogleAvatarTile(
             photoUrl: user.photoURL!,
             label: s.googleAccountPhotoLabel,
@@ -328,71 +382,28 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
                     ),
           ),
         ],
-        _SectionTitle(s.freePresetsSection),
+        PickerSectionTitle(s.ownedSectionTitle),
         _PresetGrid(
-          presets: AvatarPresets.free,
+          presets: owned,
           language: s.language,
-          isSelected: (preset) =>
-              profile?.avatarType == AvatarType.presetFree &&
-              profile?.avatarValue == preset.id,
+          isSelected: isSelected,
           locked: (_) => false,
-          onTap: (preset) {
-            if (uid == null) return;
-            _select(
-              uid,
-              AvatarType.presetFree,
-              preset.id,
-              displayName: displayName,
-              photoUrl: user?.photoURL,
-            );
-          },
+          onTap: handleTap,
         ),
-        _SectionTitle(s.premiumPresetsSection),
-        _PresetGrid(
-          presets: widget.shopMode
-              ? AvatarPresets.premium
-                  .where((p) =>
-                      avatarIdUnlocked(p.id) || AvatarPresets.isCoinUnlockable(p.id))
-                  .toList()
-              : AvatarPresets.premium,
-          language: s.language,
-          isSelected: (preset) =>
-              profile?.avatarType == AvatarType.presetPremium &&
-              profile?.avatarValue == preset.id,
-          locked: (preset) => !avatarIdUnlocked(preset.id),
-          coinPriceFor: (preset) =>
-              AvatarPresets.isCoinUnlockable(preset.id)
-                  ? AvatarPresets.coinPrice
-                  : null,
-          onTap: (preset) {
-            final id = preset.id;
-            if (avatarIdUnlocked(id)) {
-              if (uid == null) return;
-              // Only an ad-tier id newly unlocked by the still-active
-              // reward should ever consume it — a coin-bought or
-              // premium-unlocked id must not accidentally burn an
-              // unrelated ad reward sitting active for a different tile.
-              final consumeReward = !isPremium &&
-                  AvatarPresets.isAdUnlockable(id) &&
-                  _adRewardActive &&
-                  !_unlockedAvatarIds.contains(id);
-              _select(
-                uid,
-                AvatarType.presetPremium,
-                id,
-                displayName: displayName,
-                photoUrl: user?.photoURL,
-                consumeReward: consumeReward,
-              );
-              return;
-            }
-            if (AvatarPresets.isCoinUnlockable(id)) {
-              _buyWithCoins(context, preset);
-              return;
-            }
-            _openPaywall(context, showAdOption: AvatarPresets.isAdUnlockable(id));
-          },
-        ),
+        if (notOwned.isNotEmpty) ...[
+          PickerSectionTitle(s.notOwnedSectionTitle),
+          _PresetGrid(
+            presets: notOwned,
+            language: s.language,
+            isSelected: isSelected,
+            locked: (_) => true,
+            coinPriceFor: (preset) =>
+                AvatarPresets.isCoinUnlockable(preset.id)
+                    ? AvatarPresets.coinPrice
+                    : null,
+            onTap: handleTap,
+          ),
+        ],
       ],
     );
   }
@@ -548,7 +559,7 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
       return FramePresets.isAdUnlockable(id) && _frameAdRewardActive;
     }
 
-    final frames = widget.shopMode
+    final baseFrames = widget.shopMode
         ? FramePresets.all
             .where((f) =>
                 !FramePresets.isLocked(f.id) ||
@@ -557,34 +568,56 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
             .toList()
         : FramePresets.all;
 
-    return _FrameGrid(
-      frames: frames,
-      language: s.language,
-      selectedId: profile?.frameId,
-      noFrameLabel: s.noFrameLabel,
-      isUnlocked: frameIdUnlocked,
-      coinPriceFor: (id) =>
-          FramePresets.isCoinUnlockable(id) ? FramePresets.coinPrice : null,
-      onTap: (frameId) {
-        if (uid == null) return;
-        if (frameId == null || frameIdUnlocked(frameId)) {
-          final consumeReward = frameId != null &&
-              !isPremium &&
-              FramePresets.isAdUnlockable(frameId) &&
-              _frameAdRewardActive &&
-              !_unlockedFrameIds.contains(frameId);
-          _selectFrame(uid, frameId, consumeReward: consumeReward);
-          return;
-        }
-        if (FramePresets.isCoinUnlockable(frameId)) {
-          _buyWithCoins(context, frameId);
-          return;
-        }
-        _openFramePaywall(
-          context,
-          showAdOption: FramePresets.isAdUnlockable(frameId),
-        );
-      },
+    // Same owned-vs-not split as `AvatarPickerBody`'s — see its doc
+    // comment above `isLocked`.
+    bool isLocked(FramePreset f) => FramePresets.isLocked(f.id) && !frameIdUnlocked(f.id);
+    final owned = baseFrames.where((f) => !isLocked(f)).toList();
+    final notOwned = baseFrames.where(isLocked).toList();
+
+    void handleTap(String frameId) {
+      if (uid == null) return;
+      if (frameIdUnlocked(frameId)) {
+        final consumeReward = !isPremium &&
+            FramePresets.isAdUnlockable(frameId) &&
+            _frameAdRewardActive &&
+            !_unlockedFrameIds.contains(frameId);
+        _selectFrame(uid, frameId, consumeReward: consumeReward);
+        return;
+      }
+      if (FramePresets.isCoinUnlockable(frameId)) {
+        _buyWithCoins(context, frameId);
+        return;
+      }
+      _openFramePaywall(
+        context,
+        showAdOption: FramePresets.isAdUnlockable(frameId),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        PickerSectionTitle(s.ownedSectionTitle),
+        _FrameGrid(
+          frames: owned,
+          language: s.language,
+          selectedId: profile?.frameId,
+          coinPriceFor: (_) => null,
+          onTap: handleTap,
+        ),
+        if (notOwned.isNotEmpty) ...[
+          PickerSectionTitle(s.notOwnedSectionTitle),
+          _FrameGrid(
+            frames: notOwned,
+            language: s.language,
+            selectedId: profile?.frameId,
+            locked: true,
+            coinPriceFor: (id) =>
+                FramePresets.isCoinUnlockable(id) ? FramePresets.coinPrice : null,
+            onTap: handleTap,
+          ),
+        ],
+      ],
     );
   }
 }
@@ -633,10 +666,14 @@ class _PickerModeTab extends StatelessWidget {
   }
 }
 
-class _SectionTitle extends StatelessWidget {
+/// A small bold section header — "Sudah Dimiliki"/"Belum Dimiliki" above an
+/// owned/not-owned grid, "Foto Akun" above the Google-photo tile, and so
+/// on. Public (not `_`-prefixed) so [CoverPickerBody] in a different file
+/// can reuse the exact same header instead of a near-duplicate copy.
+class PickerSectionTitle extends StatelessWidget {
   final String title;
 
-  const _SectionTitle(this.title);
+  const PickerSectionTitle(this.title, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -881,35 +918,36 @@ class _CoinPriceBadge extends StatelessWidget {
   }
 }
 
-/// Grid of selectable avatar frames/borders: a "no frame" tile (index 0,
-/// always available) followed by [FramePresets.all]. Mirrors
-/// [CoverPickerSheet]'s default-plus-presets grid shape, including its
-/// lock-behind-a-single-use-ad pattern for [FramePresets.lockedIds] — the
-/// "no frame" tile is never locked, same reasoning as
-/// [CoverPresets.fallback] staying unlocked.
+/// Grid of selectable avatar frames/borders, drawn from [frames] — the
+/// caller (`_FramePickerBodyState.build`) already splits [FramePresets.all]
+/// into an owned grid and a not-owned grid, so every tile in one call is
+/// uniformly [locked] or not; there's no more per-tile lock lookup here.
+///
+/// **There used to be a "no frame" tile at index 0** (always available,
+/// picking it cleared `profile.frameId`) — removed at explicit request. A
+/// learner can still end up with no frame (a fresh profile's `frameId` is
+/// null by default), just not by picking it back off from here.
 class _FrameGrid extends StatelessWidget {
   final List<FramePreset> frames;
   final AppLanguage language;
   final String? selectedId;
-  final String noFrameLabel;
 
-  /// Per-id, tier-aware — replaces a blanket `frameUnlocked: bool` that
-  /// used to apply the ad reward to every locked frame uniformly. See
-  /// `_FramePickerBodyState.frameIdUnlocked`'s doc comment.
-  final bool Function(String id) isUnlocked;
+  /// True for every tile in this grid, or false for every tile — the
+  /// caller passes one `_FrameGrid` per section (owned / not owned), never
+  /// a mixed list.
+  final bool locked;
 
-  /// Non-null for a locked, unowned frame that should show its coin
-  /// price instead of a plain padlock.
+  /// Non-null for a locked frame that should show its coin price instead
+  /// of a plain padlock. Ignored (never called) for the owned grid.
   final int? Function(String id) coinPriceFor;
 
-  final void Function(String? frameId) onTap;
+  final void Function(String frameId) onTap;
 
   const _FrameGrid({
     required this.frames,
     required this.language,
     required this.selectedId,
-    required this.noFrameLabel,
-    required this.isUnlocked,
+    this.locked = false,
     required this.coinPriceFor,
     required this.onTap,
   });
@@ -919,7 +957,7 @@ class _FrameGrid extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: frames.length + 1,
+      itemCount: frames.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 12,
@@ -929,20 +967,7 @@ class _FrameGrid extends StatelessWidget {
         childAspectRatio: 0.78,
       ),
       itemBuilder: (context, index) {
-        if (index == 0) {
-          // The "no frame" tile has no separate caption below it — its
-          // whole box already shows [noFrameLabel] as its content, unlike
-          // a real preset where the box is pure artwork.
-          return _FrameTile(
-            selected: selectedId == null,
-            locked: false,
-            caption: null,
-            child: Text(noFrameLabel, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, color: context.palette.textNavy)),
-            onTap: () => onTap(null),
-          );
-        }
-        final preset = frames[index - 1];
-        final locked = FramePresets.isLocked(preset.id) && !isUnlocked(preset.id);
+        final preset = frames[index];
         return _FrameTile(
           selected: selectedId == preset.id,
           locked: locked,
@@ -972,9 +997,8 @@ class _FrameTile extends StatelessWidget {
   final int? coinPrice;
 
   /// The name shown below the tile, as its own line — not drawn inside the
-  /// artwork. Null only for the "no frame" tile, whose box already carries
-  /// [child] as text.
-  final String? caption;
+  /// artwork.
+  final String caption;
   final Widget child;
   final VoidCallback onTap;
 
@@ -1029,30 +1053,27 @@ class _FrameTile extends StatelessWidget {
           ),
       ],
     );
-    final caption = this.caption;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
-      child: caption == null
-          ? box
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(child: box),
-                const SizedBox(height: 4),
-                Text(
-                  caption,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
-                  ),
-                ),
-              ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(child: box),
+          const SizedBox(height: 4),
+          Text(
+            caption,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
             ),
+          ),
+        ],
+      ),
     );
   }
 }
