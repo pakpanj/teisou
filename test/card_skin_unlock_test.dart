@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/core/constants/card_skins.dart';
@@ -67,7 +68,20 @@ void main() {
         'paid family', () {
       final gold = skinOf('emas_kencana');
       expect(isCardSkinUnlocked(gold, starTotal: 0, premium: true), isFalse);
-      final event = CardSkinPresets.ofSource(CardSkinSource.event).first;
+      // No event skin exists in the real list right now (the 7 illustrated
+      // ones were removed 2026-08-24 for bad art), so this constructs its
+      // own rather than reaching for `ofSource(event).first`, which would
+      // throw on an empty list — the source/unlock rule is what's under
+      // test here, not today's actual catalogue.
+      const event = CardSkinPreset(
+        id: 'test_event_skin',
+        label: 'Test',
+        labelEn: 'Test',
+        pattern: CardSkinPattern.plain,
+        start: Color(0xFF000000),
+        end: Color(0xFF000000),
+        source: CardSkinSource.event,
+      );
       expect(isCardSkinUnlocked(event, starTotal: 0, premium: true), isFalse);
     });
 

@@ -206,76 +206,16 @@ class CardSkinPresets {
       illustrated: true,
     ),
     // --- Event: dibagikan saat acara, tidak dijual, bukan dari bintang ---
-    CardSkinPreset(
-      id: 'moonlit_sakura',
-      label: 'Sakura Rembulan',
-      labelEn: 'Moonlit Sakura',
-      pattern: CardSkinPattern.sakura,
-      start: Color(0xFFFDE6EF),
-      end: Color(0xFFE7A9C6),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
-    CardSkinPreset(
-      id: 'great_wave',
-      label: 'Ombak Besar',
-      labelEn: 'Great Wave',
-      pattern: CardSkinPattern.seigaiha,
-      start: Color(0xFFE8F1F8),
-      end: Color(0xFF9BBBD4),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
-    CardSkinPreset(
-      id: 'kitsune',
-      label: 'Kitsune',
-      labelEn: 'Kitsune',
-      pattern: CardSkinPattern.asanoha,
-      start: Color(0xFFFFF0E2),
-      end: Color(0xFFE8A66A),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
-    CardSkinPreset(
-      id: 'butterfly_dream',
-      label: 'Mimpi Kupu-kupu',
-      labelEn: 'Butterfly Dream',
-      pattern: CardSkinPattern.stars,
-      start: Color(0xFFF3ECFB),
-      end: Color(0xFFBFA3E0),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
-    CardSkinPreset(
-      id: 'tanabata',
-      label: 'Tanabata',
-      labelEn: 'Tanabata',
-      pattern: CardSkinPattern.stars,
-      start: Color(0xFFEAF2FB),
-      end: Color(0xFF9CB6DC),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
-    CardSkinPreset(
-      id: 'hina_matsuri',
-      label: 'Hina Matsuri',
-      labelEn: 'Hina Matsuri',
-      pattern: CardSkinPattern.sakura,
-      start: Color(0xFFFFF0F4),
-      end: Color(0xFFE9A7BC),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
-    CardSkinPreset(
-      id: 'crimson_oni',
-      label: 'Oni Merah',
-      labelEn: 'Crimson Oni',
-      pattern: CardSkinPattern.plain,
-      start: Color(0xFFF6DCD8),
-      end: Color(0xFFB4553F),
-      source: CardSkinSource.event,
-      illustrated: true,
-    ),
+    // The 7 illustrated event skins that used to live here (Sakura
+    // Rembulan, Ombak Besar, Kitsune, Mimpi Kupu-kupu, Tanabata, Hina
+    // Matsuri, Oni Merah) were removed 2026-08-24 — the art didn't match
+    // the card's real aspect ratio and read as low-quality on an actual
+    // card back. No event system has ever existed to grant them anyway
+    // (see [CardSkinSource.event]'s own doc comment), so removing them
+    // cost nothing functionally. `CardSkinSource.event` stays defined for
+    // whenever a real event system and real art exist; `ofSource(event)`
+    // is simply empty until then, and the picker's own "no unlocked
+    // event skins" branch already handles an empty list correctly.
     CardSkinPreset(
       id: 'sakura_gold',
       label: 'Sakura Emas',
