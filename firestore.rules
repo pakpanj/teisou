@@ -70,6 +70,30 @@ service cloud.firestore {
       }
     }
 
+    // Global Points internal state — the `pointsAwarded` idempotency
+    // markers and `repeatCycles` decay counters `functions/
+    // global_points.js` reads/writes inside its own transaction.
+    // Deliberately its own TOP-LEVEL collection, not a subcollection
+    // under `users/{uid}` — the `match /users/{uid} { match
+    // /{document=**} { allow read, write: if owner } }` block above
+    // grants full read/write on ANY subcollection path under a user's
+    // own document, with no way to carve out an exception from inside
+    // that same match tree (Firestore rules union multiple matching
+    // blocks; a narrower `allow ... if false` elsewhere would not
+    // override a broader grant already in effect). Putting this here
+    // instead, sealed exactly like `rankSkipExams/{uid}` above, is the
+    // only way to keep it genuinely out of the client's reach: a
+    // learner able to write their own `repeatCycles` doc could reset
+    // their own decay counter to `n=1` before every attempt and defeat
+    // the entire anti-farming design; able to write `pointsAwarded`,
+    // could fabricate a marker to hide an attempt from a later audit,
+    // or delete a real one to trigger a double-award on retry.
+    match /globalPointsState/{uid} {
+      match /{document=**} {
+        allow read, write: if false;
+      }
+    }
+
     // Leaderboard — semua bisa baca, hanya bisa tulis data sendiri.
     //
     // Lima field `cardGame*` (tingkat/divisi/bintang/musim/total bintang
@@ -87,12 +111,25 @@ service cloud.firestore {
     // tetap bisa lewat `set(merge:true)` tanpa terblokir.
     match /leaderboard/{uid} {
       allow read: if request.auth != null;
+      // `globalPoints` (Top Global's ranking number, Formula C — see
+      // functions/global_points.js) is locked the exact same way as the
+      // five `cardGame*` fields right below it, for the exact same
+      // reason: its only writer is a Cloud Function
+      // (onKanaExamHistoryCreated and its three siblings), running with
+      // Admin SDK privileges that don't go through this file at all.
+      // Without this lock the whole point of Formula C's anti-farming
+      // design (repeat-cycle decay, computed only inside the trigger) is
+      // decorative — any client could just write any number here
+      // directly. `globalPointsUpdatedAt` travels with it since it's
+      // meaningless without the value it timestamps.
       allow create: if request.auth != null && request.auth.uid == uid
           && !('cardGameTier' in request.resource.data)
           && !('cardGameDivision' in request.resource.data)
           && !('cardGameStars' in request.resource.data)
           && !('cardGameSeason' in request.resource.data)
-          && !('cardGameStarTotal' in request.resource.data);
+          && !('cardGameStarTotal' in request.resource.data)
+          && !('globalPoints' in request.resource.data)
+          && !('globalPointsUpdatedAt' in request.resource.data);
       allow update: if request.auth != null && request.auth.uid == uid
           && request.resource.data.get('cardGameTier', null)
               == resource.data.get('cardGameTier', null)
@@ -103,7 +140,11 @@ service cloud.firestore {
           && request.resource.data.get('cardGameSeason', null)
               == resource.data.get('cardGameSeason', null)
           && request.resource.data.get('cardGameStarTotal', null)
-              == resource.data.get('cardGameStarTotal', null);
+              == resource.data.get('cardGameStarTotal', null)
+          && request.resource.data.get('globalPoints', null)
+              == resource.data.get('globalPoints', null)
+          && request.resource.data.get('globalPointsUpdatedAt', null)
+              == resource.data.get('globalPointsUpdatedAt', null);
       // Sengaja tidak ada `allow delete` juga — beda dari `users/{uid}`
       // di atas, rule lama di sini (satu `allow write` polos) memang
       // sudah membolehkan hapus-sendiri sejak awal, jadi ini bukan

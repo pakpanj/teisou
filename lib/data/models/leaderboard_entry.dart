@@ -40,6 +40,26 @@ class LeaderboardEntry {
   /// since their stored-vs-computed comparison would look already in sync.
   final double? globalScore;
 
+  /// Global Points (Formula C) — the Top Global leaderboard's ranking
+  /// number as of the Final Decision Memo: uncapped, accumulates forever,
+  /// written **only** by the four `onDocumentCreated` Cloud Function
+  /// triggers in `functions/global_points.js` (`firestore.rules` refuses
+  /// every client write to this field — see
+  /// `test/firestore_rules_global_points_test.dart`). Distinct from
+  /// [globalScore] above, which is an older, capped, average-based
+  /// number kept unchanged for its own purposes — the two are never
+  /// added together or otherwise conflated.
+  ///
+  /// Absent (not `0`) on any account that has never had a Global Points
+  /// attempt trigger-processed yet (every pre-migration account, until
+  /// the 90-day backfill runs — see `backfill_global_points.js`).
+  /// Deliberately read as `?? 0` at display/sort sites rather than
+  /// defaulted here, so a genuinely-absent value stays visibly
+  /// distinguishable in this model from a stored `0` for anyone who ever
+  /// needs to tell the two apart (mirrors [globalScore]'s own
+  /// null-vs-zero reasoning above).
+  final double? globalPoints;
+
   /// Denormalized lowercase copy of [displayName], stored purely so
   /// `LeaderboardRepository.searchPublicUsers` can `orderBy` + prefix-range
   /// it (Firestore has no case-insensitive query). Same absent-vs-stale
@@ -144,6 +164,7 @@ class LeaderboardEntry {
     this.kanjiComboRecordCount = 0,
     this.kanjiComboRecordAvg = 0,
     this.globalScore,
+    this.globalPoints,
     this.displayNameLower,
     this.userId,
     this.coverId,
@@ -181,6 +202,7 @@ class LeaderboardEntry {
       kanjiComboRecordCount: (map['kanjiComboRecordCount'] as num?)?.toInt() ?? 0,
       kanjiComboRecordAvg: (map['kanjiComboRecordAvg'] as num?)?.toDouble() ?? 0,
       globalScore: (map['globalScore'] as num?)?.toDouble(),
+      globalPoints: (map['globalPoints'] as num?)?.toDouble(),
       displayNameLower: map['displayNameLower'] as String?,
       userId: map['userId'] as String?,
       coverId: map['coverId'] as String?,
@@ -219,6 +241,11 @@ class LeaderboardEntry {
         'kanjiComboRecordCount': kanjiComboRecordCount,
         'kanjiComboRecordAvg': kanjiComboRecordAvg,
         'globalScore': globalScore ?? computedGlobalScore,
+        // globalPoints is deliberately NEVER written here — this map is
+        // what client call sites hand to Firestore, and `firestore.rules`
+        // refuses a client write that even mentions the field on create,
+        // let alone changes it on update. Its only writer is the Cloud
+        // Function transaction in `functions/global_points.js`.
         'coverId': coverId,
         'frameId': frameId,
         'babCompletedCount': babCompletedCount,

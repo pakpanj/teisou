@@ -319,3 +319,15 @@ exports.spendCoins = require("./spend_coins").spendCoins;
 // grade them. Grading is server-side by necessity — see rank_skip.js.
 exports.startRankSkipExam = require("./rank_skip").startRankSkipExam;
 exports.submitRankSkipExam = require("./rank_skip").submitRankSkipExam;
+
+// Global Points (Top Global leaderboard) — one trigger per exam-history
+// collection, same registration shape as the four onDocumentCreated
+// triggers above. `firestore.rules` refuses every client write to
+// `leaderboard/{uid}.globalPoints`, so these four are its only writers.
+// See global_points.js for the formula, repeat-key, and idempotency
+// logic — this file only wires each collection's path to it.
+const {globalPointsTriggerFor} = require("./global_points");
+exports.onKanaExamHistoryCreated = globalPointsTriggerFor("kana");
+exports.onDokkaiExamHistoryCreated = globalPointsTriggerFor("dokkai");
+exports.onChoukaiExamHistoryCreated = globalPointsTriggerFor("choukai");
+exports.onKanjiComboExamHistoryCreated = globalPointsTriggerFor("kanjiCombo");

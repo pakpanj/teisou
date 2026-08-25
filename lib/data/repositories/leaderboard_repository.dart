@@ -41,11 +41,40 @@ class LeaderboardRepository {
   /// this stored copy; every displayed number is recomputed client-side via
   /// [LeaderboardEntry.computedGlobalScore] — see [backfillGlobalScore] for
   /// how docs predating the field get pulled back into the ranking.
+  ///
+  /// **No longer what "Top Global" sorts by** — see [globalPointsField]
+  /// below. Kept alive for the Clan tab (`sortByGlobalScore`) and for
+  /// [backfillGlobalScore] itself, both untouched by the Global Points
+  /// rollout; only [watchTop]/[rankOf] moved to the new field.
   static const globalScoreField = 'globalScore';
 
+  /// Field name of Global Points (Formula C) — the Top Global
+  /// leaderboard's ranking number as of the Final Decision Memo. Written
+  /// **only** by the four Cloud Function triggers in
+  /// `functions/global_points.js`; `firestore.rules` refuses every
+  /// client write to it (see `test/firestore_rules_global_points_test.dart`).
+  ///
+  /// Unlike [globalScoreField], there is deliberately **no backfill/
+  /// self-heal method here** for the client to call — a client that
+  /// cannot write this field at all cannot self-heal it either. A doc
+  /// missing this field (every account until the one-time
+  /// `backfill_global_points.js` run processes it, or until its owner's
+  /// first post-migration exam attempt) simply does not appear in
+  /// [watchTop]'s `orderBy` — the same accepted "absence, not a gap to
+  /// repair" behavior [watchTopByCardGameStars] already documents for
+  /// [cardGameStarTotalField], which has the identical
+  /// only-a-function-can-write-it shape.
+  static const globalPointsField = 'globalPoints';
+
+  /// The "Top Global" leaderboard — sorted by [globalPointsField]
+  /// (Formula C), not the older [globalScoreField]. See the Final
+  /// Decision Memo for why: an uncapped, accumulate-forever number that
+  /// actually rewards doing more exams is what "Top Global" is meant to
+  /// reward, which a capped running-average per category structurally
+  /// cannot do.
   Stream<List<LeaderboardEntry>> watchTop({int limit = 20}) {
     return _collection
-        .orderBy(globalScoreField, descending: true)
+        .orderBy(globalPointsField, descending: true)
         .limit(limit)
         .snapshots()
         .map(
@@ -137,12 +166,16 @@ class LeaderboardRepository {
     return sorted;
   }
 
-  /// Ranks an already-fetched [entry] (1-based). Takes the entry rather than
-  /// a uid so the caller can reuse the single [getSelf] read the screen's
-  /// header already does, leaving only the count query below.
+  /// Ranks an already-fetched [entry] on the Top Global ([watchTop])
+  /// leaderboard (1-based). Takes the entry rather than a uid so the
+  /// caller can reuse the single [getSelf] read the screen's header
+  /// already does, leaving only the count query below. Must sort on the
+  /// exact same field [watchTop] does ([globalPointsField]), or a
+  /// learner's displayed "Peringkat ke-N" would disagree with their
+  /// actual position in that same list.
   Future<int> rankOf(LeaderboardEntry entry) async {
     final higher = await _collection
-        .where(globalScoreField, isGreaterThan: entry.computedGlobalScore)
+        .where(globalPointsField, isGreaterThan: entry.globalPoints ?? 0)
         .count()
         .get();
     return (higher.count ?? 0) + 1;
