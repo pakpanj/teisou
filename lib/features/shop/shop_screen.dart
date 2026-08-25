@@ -45,54 +45,101 @@ import 'widgets/coin_balance_bar.dart';
 /// Skor Global reward) — there is no coin-priced item to actually spend
 /// them on yet; that's a separate follow-up once the tier split from the
 /// plan-intro/premium redesign session is applied to real presets.
-class ShopScreen extends ConsumerWidget {
+///
+/// **Category switching is tap-only, not swipe.** This used to be a
+/// [TabBarView] — which is a horizontal [PageView] under the hood — sitting
+/// one level inside `HomeScreen`'s own horizontal [PageView] (Home ↔ Ujian
+/// ↔ Toko ↔ Profil). Two nested scrollables on the same axis with no
+/// arbitration between them is exactly the kind of thing Flutter's gesture
+/// arena resolves inconsistently: a fresh Toko let the outer swipe win,
+/// but once this tab's own controller had any drag/settle history (one
+/// chip tap, one partial internal drag) it started winning instead,
+/// silently swallowing the app's own Home/Ujian/Toko/Profil swipe. An
+/// [IndexedStack] driven only by [TabBar] taps has no horizontal
+/// [Scrollable] of its own to compete with the outer one — the conflict is
+/// removed rather than arbitrated, the same fix [CardGameShell] already
+/// uses successfully for its own four tabs.
+class ShopScreen extends ConsumerStatefulWidget {
   const ShopScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ShopScreen> createState() => _ShopScreenState();
+}
+
+class _ShopScreenState extends ConsumerState<ShopScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  int _index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Drives the TabBar's own tap/indicator behaviour only — nothing here
+    // reads from a TabBarView, so there is no swipeable body attached to
+    // it at all.
+    _tabController = TabController(length: 4, vsync: this)
+      ..addListener(() {
+        if (_tabController.index != _index) {
+          setState(() => _index = _tabController.index);
+        }
+      });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        backgroundColor: context.palette.background,
-        appBar: AppBar(
-          title: Text(s.shopScreenTitle),
-          bottom: TabBar(
-            isScrollable: true,
-            labelColor: context.palette.primaryCoral,
-            unselectedLabelColor: context.palette.textNavy.withValues(
-              alpha: 0.55,
-            ),
-            indicatorColor: context.palette.primaryCoral,
-            tabs: [
-              Tab(text: s.shopTabSkins),
-              Tab(text: s.shopTabAvatar),
-              Tab(text: s.shopTabFrame),
-              Tab(text: s.shopTabCover),
-            ],
+    return Scaffold(
+      backgroundColor: context.palette.background,
+      appBar: AppBar(
+        title: Text(s.shopScreenTitle),
+        bottom: TabBar(
+          controller: _tabController,
+          isScrollable: true,
+          labelColor: context.palette.primaryCoral,
+          unselectedLabelColor: context.palette.textNavy.withValues(
+            alpha: 0.55,
           ),
-        ),
-        body: Column(
-          children: [
-            const CoinBalanceBar(),
-            const Expanded(
-              child: TabBarView(
-                children: [
-                  ShopTab(),
-                  _ShopSubPage(
-                    child: AvatarPickerBody(popOnSelect: false, shopMode: true),
-                  ),
-                  _ShopSubPage(
-                    child: FramePickerBody(popOnSelect: false, shopMode: true),
-                  ),
-                  _ShopSubPage(
-                    child: CoverPickerBody(popOnSelect: false, shopMode: true),
-                  ),
-                ],
-              ),
-            ),
+          indicatorColor: context.palette.primaryCoral,
+          tabs: [
+            Tab(text: s.shopTabSkins),
+            Tab(text: s.shopTabAvatar),
+            Tab(text: s.shopTabFrame),
+            Tab(text: s.shopTabCover),
           ],
         ),
+      ),
+      body: Column(
+        children: [
+          const CoinBalanceBar(),
+          Expanded(
+            // IndexedStack, not a TabBarView: every category is built and
+            // kept alive regardless of which is showing (matching what
+            // AutomaticKeepAliveClientMixin already gave the old
+            // TabBarView), but with no Scrollable of its own — see the
+            // class doc comment above for why that is the point.
+            child: IndexedStack(
+              index: _index,
+              children: const [
+                ShopTab(),
+                _ShopSubPage(
+                  child: AvatarPickerBody(popOnSelect: false, shopMode: true),
+                ),
+                _ShopSubPage(
+                  child: FramePickerBody(popOnSelect: false, shopMode: true),
+                ),
+                _ShopSubPage(
+                  child: CoverPickerBody(popOnSelect: false, shopMode: true),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
