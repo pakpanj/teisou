@@ -47,13 +47,30 @@ const _vowelRowGroups = <List<String>>[
   ['や', 'ゆ', 'よ'],
 ];
 
-const _smallY = {'ゃ', 'ゅ', 'ょ'};
+/// Both scripts — onyomi are written in katakana throughout this dataset
+/// (ギョウ, ビャク, シュウ), and a hiragana-only set here mis-segments a
+/// katakana contraction into two separate mora (ギ, ョ, ウ instead of
+/// ギョ, ウ), which then lets the orphaned small-y drift onto an
+/// unrelated consonant during mutation — a real, reported bug (行 -> a
+/// stray ョ; 白's ビャク -> ボャク/ベャク/ビャグ; see
+/// `test/kanji_combo_distractor_test.dart`'s "Q1 regression" group for
+/// the exact reproduction).
+const _smallY = {'ゃ', 'ゅ', 'ょ', 'ャ', 'ュ', 'ョ'};
 
 /// Mora a real Japanese reading may never *start* with - ん/ン never opens
 /// a word, and を/ヲ exists only as the object-marker particle, never as a
 /// word's first syllable. A distractor starting with one of these would
 /// look immediately, obviously fake to a learner.
-const _invalidStartMora = {'ん', 'ン', 'を', 'ヲ'};
+///
+/// Also includes a bare small-y (ゃゅょ/ャュョ) on its own — not a real
+/// mora at all, only ever valid merged onto a preceding consonant
+/// (きゃ/ギョ etc., handled by [_splitMora]). Defense-in-depth alongside
+/// the Q1 fix to [_smallY]: with mora segmentation now correct, a
+/// mutation should never isolate one on its own again, but a distractor
+/// starting with a lone small-y would be an immediately obvious fake to
+/// a learner the same way ん/を is, so it stays rejected here too rather
+/// than relying on segmentation alone to prevent it.
+const _invalidStartMora = {'ん', 'ン', 'を', 'ヲ', 'ゃ', 'ゅ', 'ょ', 'ャ', 'ュ', 'ョ'};
 
 String _toHiragana(String s) => String.fromCharCodes(
       s.runes.map((r) => (r >= 0x30A1 && r <= 0x30F6) ? r - 0x60 : r),
@@ -457,6 +474,18 @@ class KanjiComboRepository {
     return entry.character + reading.substring(dash + 1);
   }
 
+  /// Strips the internal okurigana boundary marker ("-", e.g. "お-える")
+  /// before a reading is ever shown as an answer option — the marker is
+  /// bookkeeping [_splitMora]/[generateMutationDistractors] need to know
+  /// where a mutation may not touch, never something a learner should
+  /// see. [_readingPrompt] already strips it for the *prompt*; this is
+  /// the equivalent for *options*, a real, reported gap (a kunyomi
+  /// reading question displayed raw strings like "お-える"/"お-ある", the
+  /// dash misread as a chōonpu — see `test/kanji_combo_distractor_test.dart`'s
+  /// "Q2 regression" group for the exact reproduction). Onyomi readings
+  /// never contain "-" at all, so this is a no-op for them.
+  String _stripOkuriganaMarker(String reading) => reading.replaceAll('-', '');
+
   List<KanjiComboQuestion> _buildSingleKanjiQuestions(
     List<KanjiEntry> pool, {
     required int count,
@@ -497,12 +526,24 @@ class KanjiComboRepository {
           3,
         );
       }
-      final options = [correctAnswer, ...distractors]..shuffle(_random);
+      // Distractors/correctAnswer for a reading question are generated
+      // and mutated against the RAW reading (with its "-" okurigana
+      // marker still in place, since generateMutationDistractors needs
+      // it to know which position is immutable) — stripped only here,
+      // right before anything is actually shown to the learner. Meaning
+      // questions never contain "-" to begin with, so this is a no-op
+      // for them.
+      final displayAnswer =
+          askReading ? _stripOkuriganaMarker(correctAnswer) : correctAnswer;
+      final displayDistractors = askReading
+          ? distractors.map(_stripOkuriganaMarker).toSet()
+          : distractors;
+      final options = [displayAnswer, ...displayDistractors]..shuffle(_random);
       return KanjiComboQuestion(
         id: 'kombo_$i',
         prompt: prompt,
         options: options,
-        correctIndex: options.indexOf(correctAnswer),
+        correctIndex: options.indexOf(displayAnswer),
         promptLabel: askReading ? labels.reading : labels.meaning,
       );
     });

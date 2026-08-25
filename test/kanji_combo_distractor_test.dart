@@ -82,6 +82,16 @@ void main() {
       // the question distinguished which of the two was actually being
       // asked. The prompt must now carry whichever okurigana matches the
       // reading actually marked correct.
+      //
+      // **Detection changed by the Q2 fix**: this used to find a
+      // kunyomi-with-okurigana question by checking whether the
+      // *displayed option* still contained the internal "-" marker.
+      // Since the Q2 fix now strips that marker before display (the
+      // whole point of the fix — see the "Q2 regression" group below),
+      // that signal no longer exists on `q.options` at all. `q.prompt`'s
+      // own length is now the only externally-observable signal: a
+      // bare-character prompt is length 1, a prompt with attached
+      // okurigana is longer — exactly what `_readingPrompt` guarantees.
       final repo = KanjiComboRepository(
         kanjiRepository: KanjiRepository(),
         kotobaRepository: KotobaRepository(),
@@ -101,22 +111,16 @@ void main() {
           );
           for (final q in questions) {
             if (q.promptLabel != labels.reading) continue;
-            final correctAnswer = q.options[q.correctIndex];
-            final dash = correctAnswer.indexOf('-');
-            if (dash == -1) continue; // onyomi — no okurigana to show
+            if (q.prompt.length <= 1) continue; // bare character — no okurigana to show
             kunyomiReadingQuestionsChecked++;
-            final okurigana = correctAnswer.substring(dash + 1);
+            final okuriganaSuffix = q.prompt.substring(1);
+            final displayAnswer = q.options[q.correctIndex];
             expect(
-              q.prompt.endsWith(okurigana),
+              displayAnswer.endsWith(okuriganaSuffix),
               isTrue,
-              reason: 'prompt "${q.prompt}" does not carry the okurigana '
-                  'from its own correct answer "$correctAnswer"',
-            );
-            expect(
-              q.prompt.length,
-              greaterThan(1),
-              reason: 'prompt "${q.prompt}" is just the bare character, '
-                  'giving no way to tell which kunyomi is being asked',
+              reason: 'prompt "${q.prompt}" attaches suffix '
+                  '"$okuriganaSuffix", but the correct option '
+                  '"$displayAnswer" does not end with it',
             );
           }
         }
@@ -124,8 +128,9 @@ void main() {
       expect(kunyomiReadingQuestionsChecked, greaterThan(20));
     });
 
-    test('an onyomi reading question still shows only the bare character '
-        '— onyomi never carries okurigana to disambiguate with', () async {
+    test('an onyomi reading question (or a single-reading kunyomi with no '
+        'okurigana to disambiguate) still shows only the bare character',
+        () async {
       final repo = KanjiComboRepository(
         kanjiRepository: KanjiRepository(),
         kotobaRepository: KotobaRepository(),
@@ -134,7 +139,7 @@ void main() {
       );
       const labels = KanjiComboLabels();
 
-      var onyomiReadingQuestionsChecked = 0;
+      var bareCharacterReadingQuestionsChecked = 0;
       for (var run = 0; run < 8; run++) {
         final questions = await repo.generateQuestions(
           JlptLevel.n1,
@@ -144,14 +149,13 @@ void main() {
         );
         for (final q in questions) {
           if (q.promptLabel != labels.reading) continue;
-          final correctAnswer = q.options[q.correctIndex];
-          if (correctAnswer.contains('-')) continue; // kunyomi, covered above
-          onyomiReadingQuestionsChecked++;
+          if (q.prompt.length != 1) continue; // has okurigana, covered above
+          bareCharacterReadingQuestionsChecked++;
           expect(q.prompt.length, 1, reason: 'onyomi prompt "${q.prompt}" '
               'should be exactly the bare character');
         }
       }
-      expect(onyomiReadingQuestionsChecked, greaterThan(20));
+      expect(bareCharacterReadingQuestionsChecked, greaterThan(20));
     });
   });
 
@@ -226,6 +230,148 @@ void main() {
       expect(isValidKotobaStart('じじょう'), isTrue);
       expect(isValidKotobaStart('きん'), isTrue);
     });
+
+    test('rejects a lone/orphaned small-y as the first mora (Q3) — the '
+        'exact malformed shape a mis-segmented katakana contraction '
+        'produces (see the katakana-small-y group below)', () {
+      expect(isValidKotobaStart('ょギ'), isFalse);
+      expect(isValidKotobaStart('ゃク'), isFalse);
+      expect(isValidKotobaStart('ョギ'), isFalse);
+      expect(isValidKotobaStart('ャク'), isFalse);
+    });
+  });
+
+  group('katakana small-y contraction — Q1 regression (行/白/終 bug '
+      'report: ギョウ/ビャク/シュウ)', () {
+    test('_moraCount treats a katakana contraction as ONE mora, not two '
+        '— 行\'s ギョウ (correct: ギョ+ウ, 2 mora) used to be mis-segmented '
+        'into 3 (ギ+ョ+ウ) exactly like a lone hiragana small-y would '
+        'never be', () {
+      // 白: ビャク = ビャ+ク (2 mora). 行: ギョウ = ギョ+ウ (2 mora).
+      // 終 (onyomi, only reading — _randomReadingWithKind always picks
+      // it since onyomi.length == 1): シュウ = シュ+ウ (2 mora).
+      expect(_moraCount('ビャク'), 2, reason: 'ビ+ャ must merge into one mora, matching ぎゃ/しゅ etc.');
+      expect(_moraCount('ギョウ'), 2, reason: 'ギ+ョ must merge into one mora');
+      expect(_moraCount('シュウ'), 2, reason: 'シ+ュ must merge into one mora');
+    });
+
+    test('mutating 白\'s onyomi (ビャク) never orphans the small-y into a '
+        'lone ャ glued onto an unrelated consonant — the reported '
+        'ボャク/ベャク/ビャグ strings are NOT banned outright (once ビャ is '
+        'correctly treated as one mora, ボャク/ベャク are legitimate '
+        'vowel-shift mutations of it and ビャグ a legitimate dakuten '
+        'mutation of ク — all three are now well-formed, valid '
+        'distractors; the bug was the 3-mora garbling, not these '
+        'specific strings)', () {
+      final random = Random(101);
+      final distractors = generateMutationDistractors('ビャク', 10, random);
+      expect(distractors, isNotEmpty);
+      for (final d in distractors) {
+        expect(_moraCount(d), 2, reason: 'ビャク -> "$d" changed mora count (small-y mis-segmentation)');
+        expect(isValidKotobaStart(d), isTrue, reason: '"$d" starts with an orphaned small-y or banned mora');
+      }
+    });
+
+    test('mutating 行\'s onyomi (ギョウ) never orphans the small-y', () {
+      final random = Random(102);
+      final distractors = generateMutationDistractors('ギョウ', 10, random);
+      expect(distractors, isNotEmpty);
+      for (final d in distractors) {
+        expect(_moraCount(d), 2, reason: 'ギョウ -> "$d" changed mora count (small-y mis-segmentation)');
+        expect(isValidKotobaStart(d), isTrue, reason: '"$d" starts with an orphaned small-y or banned mora');
+      }
+    });
+
+    test('mutating 終\'s onyomi (シュウ) never orphans the small-y', () {
+      final random = Random(103);
+      final distractors = generateMutationDistractors('シュウ', 10, random);
+      expect(distractors, isNotEmpty);
+      for (final d in distractors) {
+        expect(_moraCount(d), 2, reason: 'シュウ -> "$d" changed mora count (small-y mis-segmentation)');
+        expect(isValidKotobaStart(d), isTrue, reason: '"$d" starts with an orphaned small-y or banned mora');
+      }
+    });
+  });
+
+  group('okurigana marker leaking into displayed options — Q2 regression '
+      '(終 bug report: おーある/おーえれ/おーえる/えーえる)', () {
+    test('_readingPrompt-equivalent stripping: no reading-question option, '
+        'across a full generateQuestions pipeline run over every level, '
+        'ever contains the internal "-" okurigana marker — it must be '
+        'stripped the same way the prompt already is', () async {
+      final repo = KanjiComboRepository(
+        kanjiRepository: KanjiRepository(),
+        kotobaRepository: KotobaRepository(),
+        kotobaCategoryRepository: KotobaCategoryRepository(),
+        random: Random(201),
+      );
+      const labels = KanjiComboLabels();
+
+      var readingQuestionsChecked = 0;
+      for (final level in JlptLevel.values) {
+        for (var run = 0; run < 6; run++) {
+          final questions = await repo.generateQuestions(
+            level,
+            combination: false,
+            labels: labels,
+            count: 50,
+          );
+          for (final q in questions) {
+            if (q.promptLabel != labels.reading) continue;
+            readingQuestionsChecked++;
+            for (final option in q.options) {
+              expect(
+                option.contains('-'),
+                isFalse,
+                reason: 'kanji "${q.prompt}": option "$option" leaks the '
+                    'internal okurigana marker "-" — options: ${q.options}',
+              );
+            }
+          }
+        }
+      }
+      expect(readingQuestionsChecked, greaterThan(100));
+    });
+
+    test('no reading-question option, across the same full pipeline run, '
+        'starts with an orphaned small-y character either (Q1+Q3 '
+        'end-to-end, not just the unit-level generateMutationDistractors '
+        'check above)', () async {
+      final repo = KanjiComboRepository(
+        kanjiRepository: KanjiRepository(),
+        kotobaRepository: KotobaRepository(),
+        kotobaCategoryRepository: KotobaCategoryRepository(),
+        random: Random(202),
+      );
+      const labels = KanjiComboLabels();
+      const smallY = {'ゃ', 'ゅ', 'ょ', 'ャ', 'ュ', 'ョ'};
+
+      var readingQuestionsChecked = 0;
+      for (final level in JlptLevel.values) {
+        for (var run = 0; run < 6; run++) {
+          final questions = await repo.generateQuestions(
+            level,
+            combination: false,
+            labels: labels,
+            count: 50,
+          );
+          for (final q in questions) {
+            if (q.promptLabel != labels.reading) continue;
+            readingQuestionsChecked++;
+            for (final option in q.options) {
+              if (option.isEmpty) continue;
+              expect(
+                smallY.contains(option[0]),
+                isFalse,
+                reason: 'kanji "${q.prompt}": option "$option" starts '
+                    'with an orphaned small-y — options: ${q.options}',
+              );
+            }
+          }
+        }
+      }
+      expect(readingQuestionsChecked, greaterThan(100));
+    });
   });
 }
 
@@ -233,7 +379,10 @@ int _moraCount(String reading) {
   var count = 0;
   var i = 0;
   final chars = reading.runes.map(String.fromCharCode).toList();
-  const smallY = {'ゃ', 'ゅ', 'ょ'};
+  // Both scripts — a hiragana-only set here would make this helper carry
+  // the exact same Q1 mis-segmentation bug being tested for, silently
+  // passing readings it should be counting wrong.
+  const smallY = {'ゃ', 'ゅ', 'ょ', 'ャ', 'ュ', 'ョ'};
   while (i < chars.length) {
     if (chars[i] == '-') {
       i += 1;
