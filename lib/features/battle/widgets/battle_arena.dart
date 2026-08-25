@@ -83,6 +83,7 @@ class BattlePlayerChip extends StatelessWidget {
                     mood: MascotMood.curious,
                     size: 44,
                     showBackdrop: true,
+                    cardBattleSkin: true,
                   ),
                 )
               : entry != null

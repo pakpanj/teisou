@@ -199,8 +199,23 @@ class _BattleInviteWaitingScreenState
             mainAxisSize: MainAxisSize.min,
             children: [
               MascotWidget(
+                // Neither `worried` nor `searching` has a costumed pose,
+                // and (unlike `searching` in `SearchRadar`, which reuses
+                // `thinking`) this screen deliberately keeps its own
+                // pending state on the real `searching` mood rather than
+                // reusing `thinking` here too — with both of
+                // `searching`'s only two call sites remapped, the mood
+                // would be selected nowhere in the app at all, which
+                // `mascot_mood_coverage_test.dart` exists specifically to
+                // catch. So both branches here fall back to real standard
+                // art instead: `cardBattleSkin` must stay false for the
+                // whole widget, or a stray `true` would silently ask for
+                // a nonexistent `card_battle/{mood}.png` and fall through
+                // to the emoji — exactly what this mapping exists to
+                // avoid. See AUDIT_CARD_BATTLE_MASCOT_MAPPING_IMPACT.md.
                 mood: done ? MascotMood.worried : MascotMood.searching,
                 size: 150,
+                cardBattleSkin: false,
               ),
               const SizedBox(height: 24),
               Text(

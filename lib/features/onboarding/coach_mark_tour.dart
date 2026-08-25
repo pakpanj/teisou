@@ -110,12 +110,20 @@ class CoachMarkTour extends StatefulWidget {
     required this.nextLabel,
     required this.finishLabel,
     required this.skipLabel,
+    this.cardBattleSkin = false,
   });
 
   final List<CoachStep> steps;
   final String nextLabel;
   final String finishLabel;
   final String skipLabel;
+
+  /// Whether the mascot in this tour wears Card Battle's costumed art
+  /// (`assets/mascot/card_battle/`) instead of the shared set every other
+  /// tour uses. [CoachMarkTour] itself is shared by every module's
+  /// tutorial — this stays false everywhere except Card Battle's own
+  /// tour, so Home/module tutorials keep the regular mascot.
+  final bool cardBattleSkin;
 
   @override
   State<CoachMarkTour> createState() => _CoachMarkTourState();
@@ -265,6 +273,7 @@ class _CoachMarkTourState extends State<CoachMarkTour> {
                 palette: palette,
                 label: isLast ? widget.finishLabel : widget.nextLabel,
                 onNext: _next,
+                cardBattleSkin: widget.cardBattleSkin,
               ),
             ),
           ),
@@ -399,6 +408,7 @@ class _MascotSays extends StatelessWidget {
     required this.palette,
     required this.label,
     required this.onNext,
+    this.cardBattleSkin = false,
   });
 
   final MascotMood mood;
@@ -406,13 +416,19 @@ class _MascotSays extends StatelessWidget {
   final AppPalette palette;
   final String label;
   final VoidCallback onNext;
+  final bool cardBattleSkin;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        MascotWidget(mood: mood, size: 116, showBackdrop: false),
+        MascotWidget(
+          mood: mood,
+          size: 116,
+          showBackdrop: false,
+          cardBattleSkin: cardBattleSkin,
+        ),
         const SizedBox(width: 6),
         Expanded(
           child: Container(

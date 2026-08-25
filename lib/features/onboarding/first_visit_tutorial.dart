@@ -30,6 +30,7 @@ class FirstVisitTutorial extends ConsumerStatefulWidget {
     this.steps,
     this.finishLabel,
     this.tour,
+    this.cardBattleSkin = false,
   });
 
   /// Which walkthrough, and therefore which "seen" flag.
@@ -48,6 +49,11 @@ class FirstVisitTutorial extends ConsumerStatefulWidget {
   /// rather than replacing it — see [CoachMarkTour]. [steps] and
   /// [finishLabel] are ignored.
   final List<CoachStep> Function(AppStrings)? tour;
+
+  /// Whether [tour]'s mascot wears Card Battle's costumed art instead of
+  /// the shared set every other tutorial (Home, module tours) uses. Only
+  /// Card Battle's own wrapper should ever pass true.
+  final bool cardBattleSkin;
 
   @override
   ConsumerState<FirstVisitTutorial> createState() => _FirstVisitTutorialState();
@@ -113,6 +119,7 @@ class _FirstVisitTutorialState extends ConsumerState<FirstVisitTutorial> {
                 nextLabel: ref.read(appStringsProvider).tourNext,
                 finishLabel: ref.read(appStringsProvider).tourFinish,
                 skipLabel: ref.read(appStringsProvider).tutorialSkip,
+                cardBattleSkin: widget.cardBattleSkin,
               ),
             )
           : MaterialPageRoute<void>(

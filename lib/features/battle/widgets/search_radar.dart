@@ -6,13 +6,20 @@ import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/mascot_widget.dart';
 
 /// The "looking for someone" dial from the redesign: rings, a sweeping
-/// beam, and the mascot in the middle with its magnifying glass.
+/// beam, and the mascot in the middle.
 ///
 /// **It is showing that the app is doing something, not what it found.**
 /// Matchmaking gives no progress to report — a player is either paired
 /// or not — so a bar that filled would be a lie. A sweep says "still
 /// looking" honestly, and the countdown beneath it carries the only real
 /// number there is.
+///
+/// **The mascot itself wears `thinking`, not a dedicated `searching`
+/// costume** — `searching` has no costumed pose yet, and `thinking`'s own
+/// "still working something out" reads close enough that the seam
+/// against this widget's own outward-scanning sweep is minor, not a
+/// mismatch worth blocking on. See
+/// `AUDIT_CARD_BATTLE_MASCOT_MAPPING_IMPACT.md` for the full reasoning.
 class SearchRadar extends StatefulWidget {
   const SearchRadar({super.key, this.size = 190});
 
@@ -55,9 +62,10 @@ class _SearchRadarState extends State<SearchRadar>
             ),
           ),
           MascotWidget(
-            mood: MascotMood.searching,
+            mood: MascotMood.thinking,
             size: widget.size * 0.52,
             showBackdrop: false,
+            cardBattleSkin: true,
           ),
         ],
       ),

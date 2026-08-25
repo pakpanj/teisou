@@ -93,6 +93,7 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
     return FirstVisitTutorial(
       id: TutorialId.cardGame,
       tour: cardGameTutorialSteps,
+      cardBattleSkin: true,
       child: Scaffold(
       backgroundColor: palette.background,
       appBar: AppBar(title: Text(titles[_tab])),
@@ -274,6 +275,7 @@ class _LobbyTab extends ConsumerWidget {
                     nextLabel: s.tourNext,
                     finishLabel: s.cardTutorialStart,
                     skipLabel: s.tutorialSkip,
+                    cardBattleSkin: true,
                   ),
                 ),
               ),
@@ -395,6 +397,7 @@ class _LobbyHeader extends ConsumerWidget {
           mood: MascotMood.battleReady,
           size: 54,
           showBackdrop: false,
+          cardBattleSkin: true,
         ),
       ],
     );

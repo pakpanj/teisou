@@ -824,20 +824,31 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         ? null
         : ended.difference(started);
 
+    // Never `sad`, even on a loss — the same rule MascotCoach already
+    // follows for wrong answers: the audience is children, and a mascot
+    // that looks let down by them is the thing this app decided not to
+    // do.
+    final resultMood = isDraw
+        ? MascotMood.curious
+        : (iWon ? MascotMood.cheering : MascotMood.encouraging);
+    // `encouraging` has no costumed pose yet, and reusing one of the
+    // seven that do exist would undercut exactly what this mood is for
+    // — every costumed pose reads positive-to-neutral, none reads as
+    // gently reassuring the way a loss needs. So it falls back to the
+    // real standard art instead of a mismatched costume; `curious`
+    // (draw) and `cheering` (win) both have costumes and keep wearing
+    // them. See AUDIT_CARD_BATTLE_MASCOT_MAPPING_IMPACT.md.
+    final resultMascotSkin = resultMood != MascotMood.encouraging;
+
     return BattleBackdrop(
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20),
         children: [
           Center(
             child: MascotWidget(
-              // Never `sad`, even on a loss — the same rule MascotCoach
-              // already follows for wrong answers: the audience is
-              // children, and a mascot that looks let down by them is
-              // the thing this app decided not to do.
-              mood: isDraw
-                  ? MascotMood.curious
-                  : (iWon ? MascotMood.cheering : MascotMood.encouraging),
+              mood: resultMood,
               size: 120,
+              cardBattleSkin: resultMascotSkin,
             ),
           ),
           const SizedBox(height: 8),

@@ -433,7 +433,16 @@ class _BattleMatchmakingBodyState extends ConsumerState<BattleMatchmakingBody> {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const MascotWidget(mood: MascotMood.excited, size: 120),
+            const MascotWidget(
+              // `excited` has no costumed pose yet — `determined` ("fists
+              // up, ready") already means "about to start a fight",
+              // which fits "no human found, playing a bot" as well as a
+              // dedicated pose would. See
+              // AUDIT_CARD_BATTLE_MASCOT_MAPPING_IMPACT.md.
+              mood: MascotMood.determined,
+              size: 120,
+              cardBattleSkin: true,
+            ),
             const SizedBox(height: 12),
             Text(
               s.battleMatchmakingFallingBackToBot,

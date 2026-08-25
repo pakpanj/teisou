@@ -126,6 +126,18 @@ class MascotWidget extends StatefulWidget {
   final bool groundShadow;
   final bool showBackdrop;
 
+  /// When true, resolves art from `assets/mascot/card_battle/{mood}.png`
+  /// instead of the shared `assets/mascot/{mood}.png` set.
+  ///
+  /// Card Battle's lobby and its own tutorial wear a ninja/sakura
+  /// costumed version of the same seven moods every other screen uses —
+  /// [MascotMood] itself carries no notion of "which module", so the
+  /// costume is purely a asset-folder choice made by the caller, not a
+  /// second mood set. Every other screen (Home, exams, Profile, module
+  /// tutorials) must leave this false so they keep showing the regular
+  /// mascot.
+  final bool cardBattleSkin;
+
   const MascotWidget({
     super.key,
     required this.mood,
@@ -133,7 +145,12 @@ class MascotWidget extends StatefulWidget {
     this.onTap,
     this.showBackdrop = true,
     this.groundShadow = false,
+    this.cardBattleSkin = false,
   });
+
+  /// The folder a given [cardBattleSkin] choice resolves art from.
+  static String _folderFor(bool cardBattleSkin) =>
+      cardBattleSkin ? 'assets/mascot/card_battle' : 'assets/mascot';
 
   /// How wide the decoded bitmap is for a mascot of [size].
   ///
@@ -155,9 +172,10 @@ class MascotWidget extends StatefulWidget {
     MascotMood mood, {
     required double size,
     required bool showBackdrop,
+    bool cardBattleSkin = false,
   }) {
     return ResizeImage(
-      AssetImage('assets/mascot/${mood.name}.png'),
+      AssetImage('${_folderFor(cardBattleSkin)}/${mood.name}.png'),
       width: decodeWidthFor(size: size, showBackdrop: showBackdrop),
     );
   }
@@ -545,7 +563,7 @@ class _MascotWidgetState extends State<MascotWidget>
     // leave a ring of the disc visible around itself.
     final extent = widget.size * (widget.showBackdrop ? 0.72 : 1.0);
     return Image.asset(
-      'assets/mascot/${widget.mood.name}.png',
+      '${MascotWidget._folderFor(widget.cardBattleSkin)}/${widget.mood.name}.png',
       width: extent,
       height: extent,
       fit: BoxFit.contain,
