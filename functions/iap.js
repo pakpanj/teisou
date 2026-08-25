@@ -1,7 +1,11 @@
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 
-const {subscriptionGrants, productGrants} = require("./iap_states");
+const {
+  subscriptionGrants,
+  productGrants,
+  expiryFromResponse,
+} = require("./iap_states");
 
 /**
  * Turning a store purchase into an entitlement.
@@ -90,6 +94,11 @@ function publisher() {
  *
  * The decision itself lives in `iap_states.js`, away from the HTTP
  * plumbing, because it is the part worth testing.
+ *
+ * **Returns the raw Play response on success** (`response.data`) so the
+ * caller can read metadata off it — today that's just [applyExpiry]
+ * reading `lineItems[0].expiryTime` — without this function needing to
+ * know anything about what that metadata is used for.
  */
 async function verifyWithPlay({productId, purchaseToken, packageName, uid}) {
   const api = publisher();
@@ -121,6 +130,7 @@ async function verifyWithPlay({productId, purchaseToken, packageName, uid}) {
   if (!grants) {
     throw new HttpsError("permission-denied", "Purchase is not active.");
   }
+  return response.data;
 }
 
 /**
@@ -158,6 +168,33 @@ function entitlementFor(productId) {
   return null;
 }
 
+/**
+ * Folds a subscription purchase's expiry, if Play reported one that
+ * parses, into an already-built [patch] — mutates and returns the same
+ * object, mirroring [entitlementFor]'s own plain-object-patch style.
+ *
+ * Kept separate from [entitlementFor] rather than merged into it: that
+ * function only ever needs `productId` and is called once, early,
+ * purely to validate the id and shape the base patch — before
+ * `verifyWithPlay` has even run, so there is no Play response yet to
+ * read an expiry off of. This runs after, once one exists.
+ *
+ * A no-op for anything but the premium product, and a no-op when
+ * [expiryFromResponse] returns `null` — **deliberately never writes
+ * `expiresAt: null`**. `entitlementFor`'s premium patch never sets the
+ * key at all unless this adds it, so an unset key here means the
+ * Firestore `set(..., {merge: true})` call downstream leaves whatever
+ * `subscription.expiresAt` was already stored completely untouched,
+ * rather than clobbering a previously-known-good date with nothing —
+ * exactly the failure this function exists to avoid.
+ */
+function applyExpiry(patch, productId, playResponse) {
+  if (productId !== PREMIUM_PRODUCT) return patch;
+  const expiresAt = expiryFromResponse(playResponse);
+  if (expiresAt) patch.subscription.expiresAt = expiresAt;
+  return patch;
+}
+
 exports.verifyPurchase = onCall(async (request) => {
   const uid = request.auth && request.auth.uid;
   if (!uid) {
@@ -191,12 +228,13 @@ exports.verifyPurchase = onCall(async (request) => {
     );
   }
 
-  await verifyWithPlay({
+  const playResponse = await verifyWithPlay({
     productId,
     purchaseToken,
     packageName: ANDROID_PACKAGE,
     uid,
   });
+  applyExpiry(patch, productId, playResponse);
 
   const db = getFirestore();
   const userRef = db.collection("users").doc(uid);
@@ -248,6 +286,7 @@ exports.verifyPurchase = onCall(async (request) => {
 });
 
 module.exports.entitlementFor = entitlementFor;
+module.exports.applyExpiry = applyExpiry;
 module.exports.playConfigured = playConfigured;
 // Reused by subscription_notifications.js so the RTDN handler talks to
 // the same lazily-built Android Publisher client and the same package

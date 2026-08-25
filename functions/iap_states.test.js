@@ -1,7 +1,11 @@
 const test = require("node:test");
 const assert = require("node:assert");
 
-const {subscriptionGrants, productGrants} = require("./iap_states");
+const {
+  subscriptionGrants,
+  productGrants,
+  expiryFromResponse,
+} = require("./iap_states");
 
 const UID = "uid-abc";
 const other = "uid-someone-else";
@@ -133,4 +137,51 @@ test("a product token from another account does not grant", () => {
       }, UID),
       false,
   );
+});
+
+test("a real expiryTime parses to the matching Date", () => {
+  const result = expiryFromResponse({
+    lineItems: [{productId: "teisou_premium_monthly",
+      expiryTime: "2026-09-24T10:00:00.000Z"}],
+  });
+  assert.ok(result instanceof Date);
+  assert.strictEqual(result.toISOString(), "2026-09-24T10:00:00.000Z");
+});
+
+test("an unparseable expiryTime string yields null, not Invalid Date", () => {
+  const result = expiryFromResponse({
+    lineItems: [{expiryTime: "not-a-real-date"}],
+  });
+  assert.strictEqual(result, null);
+});
+
+test("a missing lineItems array yields null", () => {
+  assert.strictEqual(expiryFromResponse({}), null);
+  assert.strictEqual(expiryFromResponse({lineItems: []}), null);
+  assert.strictEqual(expiryFromResponse({lineItems: "not-an-array"}), null);
+});
+
+test("a lineItems entry with no expiryTime yields null", () => {
+  assert.strictEqual(
+      expiryFromResponse({lineItems: [{productId: "x"}]}),
+      null,
+  );
+});
+
+test("expiryTime that is not a string (already a Date, a number) yields "
+    + "null rather than guessing its shape", () => {
+  assert.strictEqual(
+      expiryFromResponse({lineItems: [{expiryTime: 1700000000000}]}),
+      null,
+  );
+  assert.strictEqual(
+      expiryFromResponse({lineItems: [{expiryTime: new Date()}]}),
+      null,
+  );
+});
+
+test("a malformed or empty response yields null, never throws", () => {
+  for (const response of [null, undefined, "", 0, []]) {
+    assert.strictEqual(expiryFromResponse(response), null);
+  }
 });

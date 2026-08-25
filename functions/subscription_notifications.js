@@ -1,7 +1,7 @@
 const {onMessagePublished} = require("firebase-functions/v2/pubsub");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 
-const {subscriptionGrants} = require("./iap_states");
+const {subscriptionGrants, expiryFromResponse} = require("./iap_states");
 const {publisher, ANDROID_PACKAGE, playConfigured} = require("./iap");
 
 /**
@@ -56,6 +56,30 @@ function extractSubscriptionToken(messageJson) {
     : null;
 }
 
+/**
+ * The `subscription` patch this handler writes, given whether the token
+ * is still active and Play's own response to re-derive an expiry from.
+ * Split out as its own pure function — same reasoning as
+ * [extractSubscriptionToken] above — so `tier`/`updatedAt`/`expiresAt`
+ * consistency is testable without a live Firestore or Pub/Sub emulator.
+ *
+ * **Never sets `expiresAt: null`.** When [expiryFromResponse] can't find
+ * a valid one, the key is left out of the patch entirely — the
+ * downstream `set(..., {merge: true})` then leaves whatever
+ * `subscription.expiresAt` was already stored completely untouched,
+ * rather than clobbering a previously-known-good date with nothing. This
+ * mirrors `iap.js`'s [applyExpiry] exactly, for the same reason.
+ */
+function buildSubscriptionPatch(active, response) {
+  const patch = {
+    tier: active ? "premium" : "free",
+    updatedAt: FieldValue.serverTimestamp(),
+  };
+  const expiresAt = expiryFromResponse(response);
+  if (expiresAt) patch.expiresAt = expiresAt;
+  return patch;
+}
+
 exports.onPlayRtdn = onMessagePublished(RTDN_TOPIC, async (event) => {
   if (!playConfigured()) {
     // Same fail-closed posture as verifyPurchase, mirrored the other
@@ -99,12 +123,10 @@ exports.onPlayRtdn = onMessagePublished(RTDN_TOPIC, async (event) => {
 
   const active = subscriptionGrants(response.data, externalId);
   await getFirestore().collection("users").doc(externalId).set({
-    subscription: {
-      tier: active ? "premium" : "free",
-      updatedAt: FieldValue.serverTimestamp(),
-    },
+    subscription: buildSubscriptionPatch(active, response.data),
   }, {merge: true});
 });
 
 module.exports.extractSubscriptionToken = extractSubscriptionToken;
+module.exports.buildSubscriptionPatch = buildSubscriptionPatch;
 module.exports.RTDN_TOPIC = RTDN_TOPIC;

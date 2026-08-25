@@ -70,9 +70,41 @@ function productGrants(response, uid) {
   return response.obfuscatedExternalAccountId === uid;
 }
 
+/**
+ * The subscription's own expiry, read from a `purchases.subscriptionsv2.get`
+ * response — pure metadata, never consulted by [subscriptionGrants] to
+ * decide entitlement. `subscriptionState` alone stays the only source of
+ * truth for whether a purchase grants; this exists only so
+ * `subscription.expiresAt` has something honest to show a learner
+ * ("renews on..."/"expired on...").
+ *
+ * `lineItems` is an array because Play's API supports multi-line
+ * subscriptions (add-ons); this app sells exactly one base plan with no
+ * add-ons, so `lineItems[0]` is assumed to be the only entry — worth
+ * re-checking here if that ever changes.
+ *
+ * Returns `null` for anything that isn't a real, parseable date —
+ * missing `lineItems`, a missing/non-string `expiryTime`, or a string
+ * that parses to `Invalid Date` — so a caller can tell "no expiry known"
+ * apart from "expiry is right now", and is never tempted to write a
+ * bogus date over a previously-known-good one. Callers must not write
+ * this value into Firestore when it's `null`; see `iap.js`/
+ * `subscription_notifications.js`'s own comments at their write sites
+ * for why a missing expiry must never overwrite one already stored.
+ */
+function expiryFromResponse(response) {
+  const item = response && Array.isArray(response.lineItems) ?
+    response.lineItems[0] : null;
+  const raw = item && item.expiryTime;
+  if (typeof raw !== "string") return null;
+  const date = new Date(raw);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
 module.exports = {
   GRANTING_SUBSCRIPTION_STATES,
   PRODUCT_PURCHASED,
   subscriptionGrants,
   productGrants,
+  expiryFromResponse,
 };
