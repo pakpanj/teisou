@@ -99,3 +99,58 @@ List<CoachStep> choukaiTourSteps(AppStrings s) => [
     mood: MascotMood.explaining,
   ),
 ];
+
+/// Card Game Mode's own walkthrough — migrated from a full-screen
+/// slideshow (`OnboardingScreen`) to a coach-mark tour over the real
+/// lobby, matching every other module here. The mode has rules the home
+/// screen never mentions — a star ladder, cards that get harder with
+/// your rank, and ten seconds to choose one for your opponent — a player
+/// who is not told finds all three out by losing.
+///
+/// Five real widgets on `_LobbyTab`, reused across seven steps where two
+/// steps are naturally about the same widget (e.g. the star count and
+/// the tier both live on the rank card) rather than inventing a sixth or
+/// seventh anchor with nothing distinct to point at.
+const kTutorialCardGameHeader = 'cardGame.header';
+const kTutorialCardGameDeck = 'cardGame.deck';
+const kTutorialCardGameRank = 'cardGame.rank';
+const kTutorialCardGameRankSkip = 'cardGame.rankSkip';
+const kTutorialCardGameSearch = 'cardGame.search';
+
+List<CoachStep> cardGameTutorialSteps(AppStrings s) => [
+  CoachStep(
+    anchorId: kTutorialCardGameHeader,
+    message: s.cardTutorialWelcome,
+    mood: MascotMood.battleReady,
+  ),
+  CoachStep(
+    anchorId: kTutorialCardGameDeck,
+    message: s.cardTutorialCards,
+    mood: MascotMood.explaining,
+  ),
+  CoachStep(
+    anchorId: kTutorialCardGameDeck,
+    message: s.cardTutorialChoose,
+    mood: MascotMood.thinking,
+  ),
+  CoachStep(
+    anchorId: kTutorialCardGameRank,
+    message: s.cardTutorialStars,
+    mood: MascotMood.proud,
+  ),
+  CoachStep(
+    anchorId: kTutorialCardGameRank,
+    message: s.cardTutorialTiers,
+    mood: MascotMood.determined,
+  ),
+  CoachStep(
+    anchorId: kTutorialCardGameRankSkip,
+    message: s.cardTutorialSkip,
+    mood: MascotMood.curious,
+  ),
+  CoachStep(
+    anchorId: kTutorialCardGameSearch,
+    message: s.cardTutorialReady,
+    mood: MascotMood.cheering,
+  ),
+];

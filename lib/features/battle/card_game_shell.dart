@@ -13,8 +13,9 @@ import '../leaderboard/leaderboard_providers.dart';
 import '../../core/widgets/user_avatar.dart';
 import 'battle_matchmaking_screen.dart';
 import 'card_skin_picker_screen.dart';
+import '../onboarding/coach_mark_tour.dart';
 import '../onboarding/first_visit_tutorial.dart';
-import '../onboarding/onboarding_screen.dart';
+import '../onboarding/module_tours.dart';
 import 'deck_tab.dart';
 import 'rank_skip_screen.dart';
 import 'widgets/recent_matches_section.dart';
@@ -91,8 +92,7 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
 
     return FirstVisitTutorial(
       id: TutorialId.cardGame,
-      steps: cardGameTutorialSteps,
-      finishLabel: s.cardTutorialStart,
+      tour: cardGameTutorialSteps,
       child: Scaffold(
       backgroundColor: palette.background,
       appBar: AppBar(title: Text(titles[_tab])),
@@ -155,46 +155,58 @@ class _LobbyTab extends ConsumerWidget {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: [
-          _LobbyHeader(rank: rank, starTotal: starTotal, strings: s),
+          TutorialTarget(
+            id: kTutorialCardGameHeader,
+            child: _LobbyHeader(rank: rank, starTotal: starTotal, strings: s),
+          ),
           const SizedBox(height: 14),
-          RankCard(rank: rank, starTotal: starTotal, strings: s),
+          TutorialTarget(
+            id: kTutorialCardGameRank,
+            child: RankCard(rank: rank, starTotal: starTotal, strings: s),
+          ),
           const SizedBox(height: 14),
-          _DeckStrip(rank: rank, strings: s),
+          TutorialTarget(
+            id: kTutorialCardGameDeck,
+            child: _DeckStrip(rank: rank, strings: s),
+          ),
           const SizedBox(height: 18),
           // Renders nothing until there is history, so a new player sees
           // the button move up rather than an empty heading.
           const RecentMatchesSection(),
-          Center(
-            child: SizedBox(
-              width: 280,
-              height: 62,
-              child: FilledButton(
-                onPressed: onFindOpponent,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.sports_kabaddi, size: 22),
-                    const SizedBox(width: 10),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          s.battleMatchmakingSearchButton,
-                          style: const TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
+          TutorialTarget(
+            id: kTutorialCardGameSearch,
+            child: Center(
+              child: SizedBox(
+                width: 280,
+                height: 62,
+                child: FilledButton(
+                  onPressed: onFindOpponent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.sports_kabaddi, size: 22),
+                      const SizedBox(width: 10),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            s.battleMatchmakingSearchButton,
+                            style: const TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          s.cardGameSearchSubtitle,
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: Colors.white.withValues(alpha: 0.85),
+                          Text(
+                            s.cardGameSearchSubtitle,
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.white.withValues(alpha: 0.85),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -204,32 +216,35 @@ class _LobbyTab extends ConsumerWidget {
           // under the search button rather than beside it: climbing is
           // still the normal route, and this is the exception for
           // someone who arrived already knowing kanji.
-          Center(
-            child: TextButton.icon(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const RankSkipScreen(),
+          TutorialTarget(
+            id: kTutorialCardGameRankSkip,
+            child: Center(
+              child: TextButton.icon(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const RankSkipScreen(),
+                  ),
                 ),
-              ),
-              icon: Icon(Icons.trending_up, color: palette.primaryCoral),
-              label: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    s.rankSkipEntry,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: palette.primaryCoral,
+                icon: Icon(Icons.trending_up, color: palette.primaryCoral),
+                label: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      s.rankSkipEntry,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: palette.primaryCoral,
+                      ),
                     ),
-                  ),
-                  Text(
-                    s.rankSkipEntrySubtitle,
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: palette.textNavy.withValues(alpha: 0.6),
+                    Text(
+                      s.rankSkipEntrySubtitle,
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: palette.textNavy.withValues(alpha: 0.6),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -239,16 +254,26 @@ class _LobbyTab extends ConsumerWidget {
           // cards and a ten-second choosing window is not one to leave
           // unexplained to anyone who skipped it — or to a tester, who
           // would otherwise have to clear the app's data to see it.
+          //
+          // Pushed as the same transparent coach-mark route
+          // `FirstVisitTutorial` uses internally (not through that
+          // widget itself, which would also touch the "seen" flag — a
+          // replay must not re-arm or disturb it either way). This is
+          // also the one place able to give the tour its own finish
+          // label (`cardTutorialStart`, "Mulai Bertanding") rather than
+          // the generic one `FirstVisitTutorial`'s first-run path uses
+          // for every module's tour.
           Center(
             child: TextButton.icon(
               onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => OnboardingScreen(
-                    steps: cardGameTutorialSteps,
+                PageRouteBuilder<void>(
+                  opaque: false,
+                  barrierColor: Colors.transparent,
+                  pageBuilder: (_, _, _) => CoachMarkTour(
+                    steps: cardGameTutorialSteps(s),
+                    nextLabel: s.tourNext,
                     finishLabel: s.cardTutorialStart,
-                    // A replay only closes itself; the seen flag stays
-                    // set, since this is not the first visit.
-                    onFinished: () => Navigator.of(context).pop(),
+                    skipLabel: s.tutorialSkip,
                   ),
                 ),
               ),

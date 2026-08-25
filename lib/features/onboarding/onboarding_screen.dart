@@ -28,25 +28,6 @@ List<OnboardingStep> onboardingSteps(AppStrings s) => [
       OnboardingStep(mood: MascotMood.cheering, message: s.tutorialReady),
     ];
 
-/// What the mascot says the first time Card Game Mode is opened.
-///
-/// Separate from [onboardingSteps] because the mode has rules the home
-/// screen never mentions — a star ladder, cards that get harder with
-/// your rank, and ten seconds to choose one for your opponent. A player
-/// who is not told finds all three out by losing.
-List<OnboardingStep> cardGameTutorialSteps(AppStrings s) => [
-      OnboardingStep(
-        mood: MascotMood.battleReady,
-        message: s.cardTutorialWelcome,
-      ),
-      OnboardingStep(mood: MascotMood.explaining, message: s.cardTutorialCards),
-      OnboardingStep(mood: MascotMood.thinking, message: s.cardTutorialChoose),
-      OnboardingStep(mood: MascotMood.proud, message: s.cardTutorialStars),
-      OnboardingStep(mood: MascotMood.determined, message: s.cardTutorialTiers),
-      OnboardingStep(mood: MascotMood.curious, message: s.cardTutorialSkip),
-      OnboardingStep(mood: MascotMood.cheering, message: s.cardTutorialReady),
-    ];
-
 /// The mascot walking a first-time learner through the app.
 ///
 /// **Deliberately its own screen rather than a spotlight over the real

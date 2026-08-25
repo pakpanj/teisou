@@ -62,6 +62,21 @@ void main() {
             'wrap them in a TutorialTarget and add a step, at lines $missed');
   });
 
+  test('the Toko bottom-nav tab (index 2) has a real anchor, not null — '
+      'the gap a prior audit found: Ujian and Profil were both wired but '
+      'Toko silently fell through to the `_ => null` default', () {
+    final match = RegExp(
+      r'final anchorId = switch \(index\) \{(.*?)\};',
+      dotAll: true,
+    ).firstMatch(home);
+    expect(match, isNotNull, reason: 'the bottom nav anchor switch was not found');
+    final body = match!.group(1)!;
+    final index2 = RegExp(r'2\s*=>\s*(\w+),').firstMatch(body);
+    expect(index2, isNotNull, reason: 'index 2 has no case at all in the switch');
+    expect(index2!.group(1), 'kTutorialShop',
+        reason: 'index 2 (Toko) still maps to something other than its own anchor');
+  });
+
   test('no card is pointed at twice', () {
     final ids = steps.map((s) => s.anchorId).toList();
     expect(ids.toSet().length, ids.length);

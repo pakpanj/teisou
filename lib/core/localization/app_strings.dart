@@ -1062,6 +1062,10 @@ class AppStrings {
     'Ujian ada di sini — coba kalau mau tahu sudah sampai mana.',
     'Exams live here — take one to see how far you have come.',
   );
+  String get tourShop => _t(
+    'Toko ada di sini — tukar bintang dan koinmu dengan skin dan hiasan.',
+    'The shop lives here — trade your stars and coins for skins and decor.',
+  );
   String get tourProfile => _t(
     'Fotomu, peringkat, dan lencana ada di sini. Selamat belajar!',
     'Your picture, rank and badges live here. Enjoy!',

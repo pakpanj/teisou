@@ -8,6 +8,7 @@ import 'package:kana_master/core/theme/app_theme.dart';
 import 'package:kana_master/core/widgets/mascot_widget.dart';
 import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/repositories/onboarding_repository.dart';
+import 'package:kana_master/features/onboarding/module_tours.dart';
 import 'package:kana_master/features/onboarding/onboarding_screen.dart';
 
 /// The mascot's first-run tutorial.

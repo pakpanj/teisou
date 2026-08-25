@@ -27,6 +27,10 @@ void main() {
     TutorialId.choukai: choukaiTourSteps(s),
     TutorialId.bunpou: bunpouTourSteps(s),
     TutorialId.particle: particleTourSteps(s),
+    // Migrated from a full-screen OnboardingScreen slideshow to a real
+    // CoachMarkTour, same as every module above — now genuinely covered
+    // by the same checks instead of needing its own separate ones.
+    TutorialId.cardGame: cardGameTutorialSteps(s),
   };
 
   /// Every screen file, read once.
@@ -39,9 +43,9 @@ void main() {
   };
 
   test('every module has a walkthrough', () {
-    // Home and cardGame are covered by their own tests; everything else
-    // in the enum is a module and owes the learner an explanation.
-    final covered = {...tours.keys, TutorialId.home, TutorialId.cardGame};
+    // Home is covered by its own test (home_tour_test.dart); everything
+    // else in the enum is a module and owes the learner an explanation.
+    final covered = {...tours.keys, TutorialId.home};
     expect(TutorialId.values.toSet().difference(covered), isEmpty,
         reason: 'a TutorialId with no tour is a module that silently opens '
             'with no walkthrough at all');
@@ -90,6 +94,7 @@ void main() {
         choukaiTourSteps(strings),
         bunpouTourSteps(strings),
         particleTourSteps(strings),
+        cardGameTutorialSteps(strings),
       ].expand((t) => t);
       for (final step in all) {
         expect(step.message.trim(), isNotEmpty);
@@ -118,6 +123,11 @@ String _constantFor(String anchorId) {
     'module.quizIcon': 'kTutorialQuizIcon',
     'module.firstItem': 'kTutorialFirstItem',
     'module.secondItem': 'kTutorialSecondItem',
+    'cardGame.header': 'kTutorialCardGameHeader',
+    'cardGame.deck': 'kTutorialCardGameDeck',
+    'cardGame.rank': 'kTutorialCardGameRank',
+    'cardGame.rankSkip': 'kTutorialCardGameRankSkip',
+    'cardGame.search': 'kTutorialCardGameSearch',
   };
   return named[anchorId]!;
 }

@@ -20,6 +20,7 @@ const kTutorialChoukai = 'home.choukai';
 const kTutorialBunpou = 'home.bunpou';
 const kTutorialPartikel = 'home.partikel';
 const kTutorialExamTab = 'home.examTab';
+const kTutorialShop = 'home.shop';
 const kTutorialProfileTab = 'home.profileTab';
 
 /// The mascot walking a first-time learner around the real home screen.
@@ -100,6 +101,11 @@ List<CoachStep> homeTourSteps(AppStrings s) => [
     anchorId: kTutorialExamTab,
     message: s.tourExam,
     mood: MascotMood.determined,
+  ),
+  CoachStep(
+    anchorId: kTutorialShop,
+    message: s.tourShop,
+    mood: MascotMood.curious,
   ),
   CoachStep(
     anchorId: kTutorialProfileTab,

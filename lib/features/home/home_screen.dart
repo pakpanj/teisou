@@ -309,6 +309,7 @@ class _BottomNavBar extends ConsumerWidget {
             // than by label so a translated label cannot break it.
             final anchorId = switch (index) {
               1 => kTutorialExamTab,
+              2 => kTutorialShop,
               3 => kTutorialProfileTab,
               _ => null,
             };
