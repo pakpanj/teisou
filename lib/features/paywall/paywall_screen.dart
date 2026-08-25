@@ -80,12 +80,17 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         IapOutcome.cancelled => s.purchaseCancelled,
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
+        IapOutcome.pendingVerification => s.purchasePendingVerification,
       };
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
       // Only a delivered purchase closes the paywall. A cancelled one
       // leaves the learner where they were, which is where they chose to
-      // be.
+      // be — and pendingVerification must not pop either: the purchase
+      // already succeeded from the buyer's side, and IapService
+      // .notePremiumConfirmed fires a real `delivered` on this same
+      // stream once Firestore confirms it, whichever path actually
+      // resolves it.
       if (outcome == IapOutcome.delivered) Navigator.of(context).maybePop();
     });
   }

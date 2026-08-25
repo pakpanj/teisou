@@ -42,6 +42,11 @@ class _CoinTopUpSheetState extends ConsumerState<CoinTopUpSheet> {
         IapOutcome.cancelled => s.purchaseCancelled,
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
+        // In practice unreachable for a coin pack — `verifyWithPlay`
+        // only retries the subscription product (see `functions/iap.js`)
+        // — but IapOutcome is shared across every purchase type, so the
+        // switch stays exhaustive here too.
+        IapOutcome.pendingVerification => s.purchasePendingVerification,
       };
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));

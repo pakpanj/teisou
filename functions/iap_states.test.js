@@ -5,6 +5,7 @@ const {
   subscriptionGrants,
   productGrants,
   expiryFromResponse,
+  isRetryablePlayState,
 } = require("./iap_states");
 
 const UID = "uid-abc";
@@ -183,5 +184,70 @@ test("expiryTime that is not a string (already a Date, a number) yields "
 test("a malformed or empty response yields null, never throws", () => {
   for (const response of [null, undefined, "", 0, []]) {
     assert.strictEqual(expiryFromResponse(response), null);
+  }
+});
+
+test("no subscriptionState at all looks like propagation lag", () => {
+  assert.strictEqual(isRetryablePlayState({}), true);
+  assert.strictEqual(isRetryablePlayState({subscriptionState: null}), true);
+  assert.strictEqual(isRetryablePlayState({subscriptionState: ""}), true);
+});
+
+test("PENDING and UNSPECIFIED look like propagation lag", () => {
+  assert.strictEqual(
+      isRetryablePlayState({subscriptionState: "SUBSCRIPTION_STATE_PENDING"}),
+      true,
+  );
+  assert.strictEqual(
+      isRetryablePlayState({
+        subscriptionState: "SUBSCRIPTION_STATE_UNSPECIFIED",
+      }),
+      true,
+  );
+});
+
+test("a granting state with no account id attached yet is retryable", () => {
+  assert.strictEqual(
+      isRetryablePlayState({subscriptionState: "SUBSCRIPTION_STATE_ACTIVE"}),
+      true,
+  );
+  assert.strictEqual(
+      isRetryablePlayState({
+        subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+        externalAccountIdentifiers: {},
+      }),
+      true,
+  );
+});
+
+test("a granting state WITH an account id is not retryable — subscriptionGrants "
+    + "would already have said yes, there is nothing left to wait for", () => {
+  assert.strictEqual(
+      isRetryablePlayState({
+        subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+        externalAccountIdentifiers: {obfuscatedExternalAccountId: UID},
+      }),
+      false,
+  );
+});
+
+test("a definitive rejection is never retryable", () => {
+  for (const state of [
+    "SUBSCRIPTION_STATE_CANCELED",
+    "SUBSCRIPTION_STATE_EXPIRED",
+    "SUBSCRIPTION_STATE_ON_HOLD",
+    "SUBSCRIPTION_STATE_PAUSED",
+  ]) {
+    assert.strictEqual(
+        isRetryablePlayState({subscriptionState: state}),
+        false,
+        state,
+    );
+  }
+});
+
+test("a malformed response is not retryable rather than looping forever", () => {
+  for (const response of [null, undefined, "", 0, []]) {
+    assert.strictEqual(isRetryablePlayState(response), false);
   }
 });

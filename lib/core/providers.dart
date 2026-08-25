@@ -74,6 +74,7 @@ import 'services/presence_service.dart';
 import 'services/romaji_converter.dart';
 import 'services/rank_skip_service.dart';
 import 'services/tts_service.dart';
+import '../data/repositories/identity_choice_repository.dart';
 import '../data/repositories/onboarding_repository.dart';
 
 final languageRepositoryProvider = Provider<LanguageRepository>(
@@ -160,6 +161,42 @@ final replayHomeTourProvider = StateProvider<int>((ref) => 0);
 final hasSeenTutorialProvider = FutureProvider.family<bool, TutorialId>(
   (ref, id) => ref.watch(onboardingRepositoryProvider).hasSeen(id),
 );
+
+final identityChoiceRepositoryProvider = Provider<IdentityChoiceRepository>(
+  (ref) => IdentityChoiceRepository(),
+);
+
+/// Whether `main.dart`'s `_IdentityGate` (Google vs Guest, shown right
+/// after the age question) should be skipped on this launch — either
+/// because the gate itself already ran once, or because this install
+/// predates the gate entirely.
+///
+/// **The migration, in one read**: an install that has already finished
+/// [hasSeenTutorialProvider]`(TutorialId.home)` has necessarily already
+/// been through the *entire* old chain — `_AudienceGate` ->
+/// `_PlanIntroGate` -> `_PreloadGate` -> Home's own tour, dismissed —
+/// which is proof this device is not new, regardless of whether the
+/// account behind it is anonymous, Google-linked, free, or Premium: none
+/// of those are read here at all, on purpose, so this can never be wrong
+/// about *why* an install is old. On that proof, the choice is marked
+/// made silently (no gate shown, ever, retroactively) rather than left to
+/// re-check the same proof on every future launch.
+///
+/// A device that has never finished the home tour — a fresh install, or
+/// one genuinely stuck mid-onboarding from before this gate existed —
+/// sees the gate normally.
+final identityChoiceMadeProvider = FutureProvider<bool>((ref) async {
+  final repo = ref.watch(identityChoiceRepositoryProvider);
+  if (await repo.hasChosen()) return true;
+
+  final wasAlreadyOnboarded =
+      await ref.watch(onboardingRepositoryProvider).hasSeen(TutorialId.home);
+  if (wasAlreadyOnboarded) {
+    await repo.markChosen();
+    return true;
+  }
+  return false;
+});
 
 /// Whether `PlanIntroFlow` (the Free-vs-Premium screen shown right after
 /// the age question) should be shown on this launch — see
@@ -534,9 +571,22 @@ final userProfileProvider = StreamProvider<UserProfile>((ref) async* {
 /// Buying things. One instance for the app's life, because the store's
 /// purchase stream has to be listened to continuously — a purchase can
 /// land while the app is closed and arrive on the next launch.
+///
+/// Also watches [subscriptionProvider] (Firestore's own
+/// `subscription.tier`, the real source of truth) for the whole app's
+/// life — this is what lets `IapService.notePremiumConfirmed` turn a
+/// live entitlement change into a real `IapOutcome.delivered`, closing
+/// out any purchase still sitting in `pendingVerification` however that
+/// entitlement actually landed (a retry, an RTDN reconciliation, a
+/// restore). See that method's own doc comment for the full path.
 final iapServiceProvider = Provider<IapService>((ref) {
   final service = IapService();
   ref.onDispose(service.dispose);
+  ref.listen(subscriptionProvider, (previous, next) {
+    if (next.valueOrNull?.isPremium ?? false) {
+      service.notePremiumConfirmed();
+    }
+  });
   return service;
 });
 

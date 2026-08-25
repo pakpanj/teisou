@@ -101,10 +101,54 @@ function expiryFromResponse(response) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
+/**
+ * Whether a subscription response that did **not** grant looks like Play
+ * still catching up on a purchase that just happened, rather than a real
+ * rejection — the propagation race documented on `verifyWithPlay` in
+ * `iap.js`: `subscriptionsv2.get`, asked seconds after checkout, can
+ * briefly report no state at all, `PENDING`, or a granting state with no
+ * `externalAccountIdentifiers` attached yet.
+ *
+ * **This never feeds back into [subscriptionGrants] and never changes what
+ * it decides.** It answers a different question — "is it worth asking
+ * Play again in a moment" — not "does this grant". A subscription Play
+ * has definitively reported `CANCELED`/`EXPIRED`/`ON_HOLD`/`PAUSED`, or an
+ * `ACTIVE` one bought by a different account, is not retryable: asking
+ * again cannot change either answer, and retrying an account mismatch
+ * would just give a replayed token more chances to be accepted.
+ */
+const RETRYABLE_SUBSCRIPTION_STATES = new Set([
+  undefined,
+  null,
+  "",
+  "SUBSCRIPTION_STATE_UNSPECIFIED",
+  "SUBSCRIPTION_STATE_PENDING",
+]);
+
+function isRetryablePlayState(response) {
+  if (!response || typeof response !== "object" || Array.isArray(response)) {
+    return false;
+  }
+  const state = response.subscriptionState;
+  if (RETRYABLE_SUBSCRIPTION_STATES.has(state)) return true;
+  if (GRANTING_SUBSCRIPTION_STATES.has(state)) {
+    // A state that would otherwise grant, but the account link hasn't
+    // landed yet — the purchase itself is real, Play just hasn't
+    // attached the buyer identity to this record yet.
+    const hasAccountId = Boolean(
+        response.externalAccountIdentifiers &&
+        response.externalAccountIdentifiers.obfuscatedExternalAccountId,
+    );
+    return !hasAccountId;
+  }
+  return false;
+}
+
 module.exports = {
   GRANTING_SUBSCRIPTION_STATES,
   PRODUCT_PURCHASED,
   subscriptionGrants,
   productGrants,
   expiryFromResponse,
+  isRetryablePlayState,
 };

@@ -74,6 +74,7 @@ class _ShopTabState extends ConsumerState<ShopTab> {
           IapOutcome.cancelled => s.purchaseCancelled,
           IapOutcome.unavailable => s.storeUnavailable,
           IapOutcome.failed => s.purchaseFailed,
+          IapOutcome.pendingVerification => s.purchasePendingVerification,
         }),
       ),
     );

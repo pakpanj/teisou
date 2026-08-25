@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/covers.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
+import '../../core/services/auth_service.dart' show GoogleAccountConflictException;
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/count_badge.dart';
@@ -160,32 +161,10 @@ class _HeaderCard extends ConsumerWidget {
       final result = await ref.read(authServiceProvider).linkWithGoogle();
       if (result == null) return; // user cancelled the account picker
       if (!context.mounted) return;
-      // leaderboard/{uid} was created back on the very first, still-
-      // anonymous launch (appStartupProvider's own ensurePublished call),
-      // permanently as "Pelajar Kana" since Auth had no displayName yet at
-      // that point — that write is create-only and never revisited on its
-      // own. Google linking is exactly the moment a real name/photo first
-      // becomes available, so it's re-synced here the same way EditName/
-      // AvatarPicker already do, rather than leaving the leaderboard row
-      // stuck on the anonymous fallback forever. Best-effort: a hiccup
-      // here must not undo the sign-in that already succeeded.
-      // This is the one moment a real name and photo first exist, replacing
-      // the anonymous "Pelajar Kana" every mirror was created with — so all
-      // three copies need it, not just the leaderboard. Syncing only the
-      // leaderboard here left clan rosters and friends' chat lists calling
-      // this learner "Pelajar Kana" for ever.
-      final profile = ref.read(userProfileProvider).valueOrNull;
-      await syncIdentityEverywhere(
-        ref,
-        uid: result.uid,
-        displayName:
-            profile?.resolveDisplayName(result) ??
-            (result.displayName ?? 'Pelajar Kana'),
-        photoUrl: result.photoURL,
-        avatarType: profile?.avatarType ?? AvatarType.google,
-        avatarValue: profile?.avatarValue,
-      );
-      ref.invalidate(appStartupProvider);
+      await _syncAfterGoogleSignIn(ref, result);
+    } on GoogleAccountConflictException catch (e) {
+      if (!context.mounted) return;
+      await _handleGoogleAccountConflict(context, ref, e);
     } catch (e) {
       if (!context.mounted) return;
       final s = ref.read(appStringsProvider);
@@ -193,6 +172,85 @@ class _HeaderCard extends ConsumerWidget {
         context,
       ).showSnackBar(SnackBar(content: Text(_friendlyGoogleSignInError(e, s))));
     }
+  }
+
+  /// Shows what [GoogleAccountConflictException] actually means — this
+  /// Google account already has an older Firebase account of its own, and
+  /// switching to it leaves the current one's progress/Premium/data
+  /// behind rather than merging it — and only switches if the person
+  /// explicitly agrees. See `AuthService.linkWithGoogle`'s own doc
+  /// comment for why this is no longer done automatically.
+  Future<void> _handleGoogleAccountConflict(
+    BuildContext context,
+    WidgetRef ref,
+    GoogleAccountConflictException conflict,
+  ) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.googleAccountConflictTitle),
+        content: Text(s.googleAccountConflictBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.googleAccountConflictConfirm),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    if (!context.mounted) return;
+    try {
+      final result = await ref
+          .read(authServiceProvider)
+          .confirmSwitchToExistingGoogleAccount(conflict.credential);
+      if (result == null || !context.mounted) return;
+      await _syncAfterGoogleSignIn(ref, result);
+    } catch (_) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.googleSignInFailed)));
+    }
+  }
+
+  /// The identity-sync steps every successful Google sign-in needs,
+  /// shared by both [_linkGoogle]'s normal path and the confirmed-switch
+  /// path in [_handleGoogleAccountConflict] — was inline in [_linkGoogle]
+  /// alone until the conflict path needed the exact same steps too.
+  ///
+  /// leaderboard/{uid} was created back on the very first, still-
+  /// anonymous launch (appStartupProvider's own ensurePublished call),
+  /// permanently as "Pelajar Kana" since Auth had no displayName yet at
+  /// that point — that write is create-only and never revisited on its
+  /// own. Google linking is exactly the moment a real name/photo first
+  /// becomes available, so it's re-synced here the same way EditName/
+  /// AvatarPicker already do, rather than leaving the leaderboard row
+  /// stuck on the anonymous fallback forever. Best-effort: a hiccup
+  /// here must not undo the sign-in that already succeeded.
+  /// This is the one moment a real name and photo first exist, replacing
+  /// the anonymous "Pelajar Kana" every mirror was created with — so all
+  /// three copies need it, not just the leaderboard. Syncing only the
+  /// leaderboard here left clan rosters and friends' chat lists calling
+  /// this learner "Pelajar Kana" for ever.
+  Future<void> _syncAfterGoogleSignIn(WidgetRef ref, User result) async {
+    final profile = ref.read(userProfileProvider).valueOrNull;
+    await syncIdentityEverywhere(
+      ref,
+      uid: result.uid,
+      displayName:
+          profile?.resolveDisplayName(result) ??
+          (result.displayName ?? 'Pelajar Kana'),
+      photoUrl: result.photoURL,
+      avatarType: profile?.avatarType ?? AvatarType.google,
+      avatarValue: profile?.avatarValue,
+    );
+    ref.invalidate(appStartupProvider);
   }
 
   /// Google Sign-In failures are usually device/OAuth-config issues (bad

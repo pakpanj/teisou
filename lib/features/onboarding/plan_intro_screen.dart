@@ -53,10 +53,17 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
         IapOutcome.cancelled => s.purchaseCancelled,
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
+        IapOutcome.pendingVerification => s.purchasePendingVerification,
       };
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(message)));
+      // pendingVerification deliberately does NOT finish/dismiss — the
+      // learner stays here, told the truth, until either a later retry
+      // resolves it (IapService.notePremiumConfirmed fires a real
+      // `delivered` on this same stream once Firestore confirms) or they
+      // choose Free themselves. Finishing now on an unconfirmed purchase
+      // would be the exact bug this state exists to close.
       if (outcome == IapOutcome.delivered) _finish(premiumOverride: true);
     });
   }

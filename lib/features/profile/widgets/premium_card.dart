@@ -49,6 +49,7 @@ class _PremiumCardState extends ConsumerState<PremiumCard> {
         IapOutcome.cancelled => s.purchaseCancelled,
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
+        IapOutcome.pendingVerification => s.purchasePendingVerification,
       };
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));

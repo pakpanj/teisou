@@ -23,6 +23,7 @@ import 'core/services/startup_preloader.dart';
 import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/first_visit_tutorial.dart';
 import 'features/onboarding/home_tour.dart';
+import 'features/onboarding/identity_gate_screen.dart';
 import 'features/onboarding/plan_intro_screen.dart';
 import 'data/repositories/onboarding_repository.dart';
 
@@ -164,12 +165,46 @@ class _AudienceGate extends ConsumerWidget {
         // Fire-and-forget: the configuration applies to requests made after
         // it lands, and every ad site is behind at least one more tap.
         unawaited(ref.read(adServiceProvider).applyAudience(value));
-        return const _PlanIntroGate();
+        return const _IdentityGate();
       },
       loading: () => const _StartupLoading(),
       // A failed read leaves the audience unknown, which AdAudience already
       // treats as a child — so ask rather than assume an adult.
       error: (_, _) => const AgeQuestionScreen(),
+    );
+  }
+}
+
+/// Google-or-Guest, shown once per device before the Plan Intro paywall —
+/// see `identityChoiceMadeProvider` for exactly what "once" means and how
+/// an existing install is migrated past this without ever seeing it.
+///
+/// **Sits here, not inside `_PlanIntroGate`**, for the same reason
+/// `_PlanIntroGate` itself sits after `_AudienceGate` rather than before
+/// it: each gate answers one question and hands off, and conflating "who
+/// is this" with "do they want Premium" would make either one harder to
+/// reason about alone. `appStartupProvider` (anonymous sign-in) has
+/// already resolved by the time this can render — same guarantee
+/// `_PlanIntroGate` already relied on before this gate existed — so
+/// `IdentityGateScreen` never creates a UID, only optionally upgrades the
+/// one that already exists.
+class _IdentityGate extends ConsumerWidget {
+  const _IdentityGate();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final made = ref.watch(identityChoiceMadeProvider);
+    return made.when(
+      data: (value) =>
+          value ? const _PlanIntroGate() : const IdentityGateScreen(),
+      loading: () => const _StartupLoading(),
+      // A failed read must not trap every launch behind a screen that can
+      // never resolve — same fail-open reasoning `_PlanIntroGate`'s own
+      // error branch already documents, just for this gate instead. Not
+      // showing the gate is the side that can never strand an existing
+      // user; showing it again to someone who already chose is a minor
+      // annoyance, not a lost account.
+      error: (_, _) => const _PlanIntroGate(),
     );
   }
 }

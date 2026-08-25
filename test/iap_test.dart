@@ -300,4 +300,119 @@ void main() {
       expect(paywall.contains('_watchAdForPreview'), isTrue);
     });
   });
+
+  /// The 25 Aug 2026 bug: Google/DANA charged real money, the purchase
+  /// really did complete, and the app still told the buyer "Kamu tidak
+  /// ditagih" (you have not been charged) because a temporary
+  /// verification failure was shown identically to a real rejection.
+  /// `IapOutcome.pendingVerification` exists specifically so a purchase
+  /// that succeeded on the buyer's side is never told otherwise — this
+  /// group pins that every screen that can show a purchase result
+  /// actually handles the new state, and that the client-side logging
+  /// added alongside it never puts the verification token where it could
+  /// be read back out and replayed.
+  group('a purchase that succeeded is never told it failed', () {
+    final iapService =
+        File('lib/core/services/iap_service.dart').readAsStringSync();
+
+    test('IapOutcome has a state between delivered and failed', () {
+      expect(iapService.contains('pendingVerification'), isTrue);
+    });
+
+    test('a retryable non-grant is read from the server, not decided by '
+        'guessing on the client', () {
+      expect(iapService.contains('e.details is Map'), isTrue);
+      expect(iapService.contains("['retryable'] == true"), isTrue);
+    });
+
+    /// Without this, the only way out of `pendingVerification` would be
+    /// closing the app and hoping — see `iapServiceProvider` in
+    /// `providers.dart` for the other half (the live Firestore watch
+    /// that actually calls this).
+    test('there is a real way out of pendingVerification once entitlement '
+        'lands, however it lands', () {
+      expect(iapService.contains('void notePremiumConfirmed()'), isTrue);
+      expect(
+        iapService.contains('_outcomes.add(IapOutcome.delivered)'),
+        isTrue,
+      );
+    });
+
+    test('a purchase is always completed, pendingVerification included — '
+        'never left to auto-refund or nag on every launch', () {
+      // `completePurchase` sits after the whole status switch, not
+      // inside any one branch — otherwise pendingVerification (or any
+      // other newly-added branch) could silently skip it.
+      final switchIndex = iapService.indexOf('switch (purchase.status)');
+      final completeIndex = iapService.indexOf(
+        'await _store.completePurchase(purchase)',
+      );
+      expect(switchIndex, greaterThan(-1));
+      expect(completeIndex, greaterThan(switchIndex));
+    });
+
+    test('nothing client-side ever logs the verification token', () {
+      final calls =
+          RegExp(r'debugPrint\([\s\S]*?\);').allMatches(iapService);
+      expect(calls.isNotEmpty, isTrue, reason: 'no debugPrint calls found — did logging get removed?');
+      for (final match in calls) {
+        final call = match.group(0)!;
+        expect(
+          call.contains('serverVerificationData') ||
+              call.contains('purchaseToken'),
+          isFalse,
+          reason: 'a debugPrint call mentions the token: $call',
+        );
+      }
+    });
+
+    /// The correlation id doubles as proof nothing invented a new
+    /// sensitive value just to log something — Play's own purchase id is
+    /// already there and already safe to log.
+    test('logs correlate by purchase id, not by inventing a new id', () {
+      expect(iapService.contains('purchase.purchaseID'), isTrue);
+    });
+
+    test('the live entitlement watch that recovers pendingVerification is '
+        'wired in providers.dart, not left to poll on its own', () {
+      final providers = File('lib/core/providers.dart').readAsStringSync();
+      expect(providers.contains('ref.listen(subscriptionProvider'), isTrue);
+      expect(providers.contains('service.notePremiumConfirmed()'), isTrue);
+    });
+
+    test('every screen offering a purchase result handles '
+        'pendingVerification, not just delivered/cancelled/failed', () {
+      for (final path in [
+        'lib/features/onboarding/plan_intro_screen.dart',
+        'lib/features/paywall/paywall_screen.dart',
+        'lib/features/profile/widgets/premium_card.dart',
+        'lib/features/battle/shop_tab.dart',
+        'lib/features/shop/widgets/coin_top_up_sheet.dart',
+      ]) {
+        final source = File(path).readAsStringSync();
+        expect(
+          source.contains('IapOutcome.pendingVerification'),
+          isTrue,
+          reason: '$path has an outcome switch that does not handle '
+              'pendingVerification — this is exactly the compile error '
+              'Dart\'s exhaustive switch is supposed to catch, so seeing '
+              'this fail means that guarantee itself broke somehow',
+        );
+      }
+    });
+
+    test('the retry that fixed this is scoped to Play propagation lag, '
+        'never a blind retry-everything', () {
+      final iap = File('functions/iap.js').readAsStringSync();
+      expect(iap.contains('isRetryablePlayState'), isTrue);
+      expect(
+        iap.contains('subscriptionGrants(response.data, uid)') ||
+            iap.contains('subscriptionGrants(last.data'),
+        isTrue,
+        reason: 'the grant decision itself must still come from '
+            'subscriptionGrants — retrying must never change what counts '
+            'as a grant',
+      );
+    });
+  });
 }

@@ -17,8 +17,34 @@ enum IapOutcome {
   /// not be shown as one.
   cancelled,
 
-  /// The store refused, or the network failed, or verification said no.
+  /// The store genuinely refused, or verification came back with a
+  /// definitive rejection (the purchase is cancelled/expired, or bought
+  /// by a different account). Distinct from [pendingVerification], which
+  /// is what a purchase that is real but not yet provably real gets
+  /// instead — see that value's own doc comment for why the two must
+  /// never be shown the same way.
   failed,
+
+  /// The store already took the money — `PurchaseStatus.purchased`
+  /// really happened — but the server could not yet confirm it grants,
+  /// and the failure looked like Play still catching up on a purchase
+  /// that just happened rather than a real rejection (see
+  /// `functions/iap_states.js`'s `isRetryablePlayState`). The server
+  /// already retried a few times on its own before reporting this; by
+  /// the time it reaches here, further retrying from the client would
+  /// just be guessing at the same race again.
+  ///
+  /// **Must never be shown as "gagal" / "failed"** — the transaction
+  /// already succeeded from the buyer's side, telling them otherwise
+  /// after money changed hands is the exact bug this value exists to
+  /// close. The one real recovery path: `IapService.notePremiumConfirmed`
+  /// watches `subscription.tier` live and emits a real [delivered] the
+  /// moment Firestore says premium — however that entitlement actually
+  /// lands (a later retry, an RTDN reconciliation, or a manual restore),
+  /// nothing here has to guess which — so a screen only ever needs to
+  /// already handle [delivered] correctly; this state is a waiting room,
+  /// not a dead end.
+  pendingVerification,
 
   /// The store is not available at all — an emulator without Play
   /// services, a device signed out of the store.
@@ -66,6 +92,16 @@ class IapService {
 
   StreamSubscription<List<PurchaseDetails>>? _sub;
   final _outcomes = StreamController<IapOutcome>.broadcast();
+
+  /// Whether a purchase is currently sitting in [IapOutcome.pendingVerification]
+  /// waiting for the truth to catch up — the one thing [notePremiumConfirmed]
+  /// checks before turning a Firestore update into a synthetic
+  /// [IapOutcome.delivered]. Without this guard, *any* live subscription
+  /// change (a renewal, an unrelated RTDN reconciliation, opening the app
+  /// on a device that was already premium) would fire a "purchase
+  /// delivered!" outcome at every screen currently listening, which is
+  /// wrong outside of an actual pending purchase recovering.
+  bool _awaitingPendingConfirmation = false;
 
   /// Reported per purchase, so a screen can show its own result without
   /// having to guess which of several in-flight buys finished.
@@ -195,20 +231,46 @@ class IapService {
           // failure that has not happened either.
           break;
         case PurchaseStatus.canceled:
+          _awaitingPendingConfirmation = false;
           _outcomes.add(IapOutcome.cancelled);
         case PurchaseStatus.error:
+          _awaitingPendingConfirmation = false;
           _outcomes.add(IapOutcome.failed);
         case PurchaseStatus.purchased:
         case PurchaseStatus.restored:
-          final granted = await _verify(purchase);
-          _outcomes.add(granted ? IapOutcome.delivered : IapOutcome.failed);
+          final result = await _verify(purchase);
+          if (result.granted) {
+            _awaitingPendingConfirmation = false;
+            _outcomes.add(IapOutcome.delivered);
+          } else if (result.retryable) {
+            // The store already took the money; the server already
+            // retried a few times on its own (see functions/iap.js's
+            // verifyWithPlay) and still could not confirm it grants.
+            // notePremiumConfirmed picks this up the moment Firestore
+            // says otherwise — see that method and IapOutcome
+            // .pendingVerification's own doc comments for the full
+            // recovery path.
+            _awaitingPendingConfirmation = true;
+            _outcomes.add(IapOutcome.pendingVerification);
+          } else {
+            _awaitingPendingConfirmation = false;
+            _outcomes.add(IapOutcome.failed);
+          }
       }
 
-      // **Always completed, even when verification failed.** An
-      // incomplete purchase is redelivered by the store on every launch
-      // forever, and on iOS blocks every later purchase. A token that
-      // failed verification is not lost by completing it — `restore()`
-      // brings it back, and the server can be asked again.
+      // **Always completed, even when verification failed or is still
+      // pending.** An incomplete purchase is redelivered by the store on
+      // every launch forever, and on iOS blocks every later purchase.
+      // Completing it does not lose the purchase either way: on Android
+      // this is `BillingClient.acknowledgePurchase`, which does not
+      // consume or remove ownership — `restorePurchases()`'s own
+      // `queryPurchases` call returns a purchase regardless of its
+      // acknowledged state, confirmed by reading the installed
+      // `in_app_purchase_android` package source directly rather than
+      // assumed. So a purchase that is still `pendingVerification` stays
+      // fully recoverable via restore/a later retry either way, while
+      // *not* completing it risks Play auto-refunding an unacknowledged
+      // purchase after 3 days for no benefit.
       if (purchase.pendingCompletePurchase) {
         await _store.completePurchase(purchase);
       }
@@ -216,7 +278,22 @@ class IapService {
   }
 
   /// Hands the token to the server and lets it decide.
-  Future<bool> _verify(PurchaseDetails purchase) async {
+  ///
+  /// [retryable] on a non-grant distinguishes a purchase the server is
+  /// still trying to confirm (Play propagation lag — see
+  /// `functions/iap_states.js`'s `isRetryablePlayState`) from one it has
+  /// definitively rejected. The server already retried internally before
+  /// answering; this is read off `FirebaseFunctionsException.details`,
+  /// not decided here.
+  Future<({bool granted, bool retryable})> _verify(
+    PurchaseDetails purchase,
+  ) async {
+    // Correlates this attempt's client and server log lines without ever
+    // sending or logging the verification token itself — Play's own
+    // purchase id is already a non-sensitive, already-available value,
+    // so nothing new (like a uuid package) is needed just for this.
+    final requestId = purchase.purchaseID ??
+        'local_${DateTime.now().microsecondsSinceEpoch}';
     try {
       final result = await _fx.httpsCallable('verifyPurchase').call({
         'productId': purchase.productID,
@@ -225,15 +302,58 @@ class IapService {
         'platform': defaultTargetPlatform == TargetPlatform.iOS
             ? 'ios'
             : 'android',
+        'requestId': requestId,
       });
       final data = result.data;
-      return data is Map && data['granted'] == true;
-    } catch (_) {
-      // A verification that cannot be reached is not a grant. The
-      // purchase is not lost — the store still has it, and restore asks
-      // again — but nothing opens until the server says so.
-      return false;
+      final granted = data is Map && data['granted'] == true;
+      debugPrint(
+        'IAP verify requestId=$requestId productId=${purchase.productID} '
+        'status=${purchase.status} granted=$granted',
+      );
+      return (granted: granted, retryable: false);
+    } on FirebaseFunctionsException catch (e) {
+      final retryable =
+          e.details is Map && (e.details as Map)['retryable'] == true;
+      debugPrint(
+        'IAP verify requestId=$requestId productId=${purchase.productID} '
+        'status=${purchase.status} granted=false code=${e.code} '
+        'retryable=$retryable message=${e.message}',
+      );
+      return (granted: false, retryable: retryable);
+    } catch (e) {
+      // A verification that cannot be reached at all (no network, an
+      // unexpected client-side error) is not a grant, and not something
+      // the server ever weighed in on — so it is not eligible for the
+      // pendingVerification recovery path either, only a plain retry via
+      // restore() once connectivity comes back.
+      debugPrint(
+        'IAP verify requestId=$requestId productId=${purchase.productID} '
+        'status=${purchase.status} granted=false unexpected '
+        'error=${e.runtimeType}',
+      );
+      return (granted: false, retryable: false);
     }
+  }
+
+  /// The recovery path for [IapOutcome.pendingVerification] — called from
+  /// `iapServiceProvider`'s own live watch of `subscriptionProvider`
+  /// (Firestore's `subscription.tier`, the actual source of truth) rather
+  /// than from anything this class does on its own, since entitlement can
+  /// land from any of several places: a later client retry, an RTDN
+  /// reconciliation (`functions/subscription_notifications.js`), or a
+  /// manual restore. None of those need their own bespoke "now unblock
+  /// the UI" code — they all eventually write `subscription.tier:
+  /// 'premium'`, and this is the one place that turns that into a real
+  /// [IapOutcome.delivered] on the same stream every purchase screen
+  /// already listens to.
+  ///
+  /// A no-op unless something is actually waiting — see
+  /// [_awaitingPendingConfirmation]'s own doc comment for why that guard
+  /// exists.
+  void notePremiumConfirmed() {
+    if (!_awaitingPendingConfirmation) return;
+    _awaitingPendingConfirmation = false;
+    _outcomes.add(IapOutcome.delivered);
   }
 
   void dispose() {

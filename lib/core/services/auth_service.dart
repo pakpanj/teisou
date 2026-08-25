@@ -1,6 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+/// Thrown by [AuthService.linkWithGoogle] when the chosen Google account
+/// is already linked to a **different** Firebase user than the one
+/// currently signed in.
+///
+/// **Carries [credential] rather than making the caller start Google
+/// Sign-In over again** — the picker already ran once; asking for it a
+/// second time just to retry the same credential would be a worse UX for
+/// no safety benefit, since the credential itself is a plain value object,
+/// not a single-use token.
+///
+/// Deliberately does **not** perform the switch itself (see
+/// [AuthService.linkWithGoogle]'s own doc comment for why doing so used
+/// to happen automatically, silently, and was the real bug): the caller
+/// must show the person what this means — the current account's progress/
+/// Premium/data will be left behind, not merged — and only call
+/// [AuthService.confirmSwitchToExistingGoogleAccount] once they have
+/// actually agreed.
+class GoogleAccountConflictException implements Exception {
+  final AuthCredential credential;
+  const GoogleAccountConflictException(this.credential);
+}
+
 /// Anonymous-first auth, matching the Cash Teisou pattern: every user gets
 /// signed in anonymously on first launch, and can later link a Google
 /// account without their UID changing (so progress carries over).
@@ -34,8 +56,17 @@ class AuthService {
   }
 
   /// Links the current anonymous account to Google so the UID (and all
-  /// progress keyed by it) is preserved. Falls back to a normal sign-in if
-  /// the Google account is already linked to a different Firebase user.
+  /// progress keyed by it) is preserved.
+  ///
+  /// **Throws [GoogleAccountConflictException], rather than switching
+  /// accounts on its own, when the Google account is already linked to a
+  /// different Firebase user.** This used to fall back to
+  /// `signInWithCredential` automatically and silently right here — found
+  /// to be a real bug, not a convenience: it abandons whatever the
+  /// current (Guest) account holds — including a Premium purchase just
+  /// made moments earlier — with no warning that anything happened, let
+  /// alone a chance to say no. See [GoogleAccountConflictException]'s own
+  /// doc comment for how a caller is meant to recover from this instead.
   Future<User?> linkWithGoogle() async {
     final googleUser = await _googleSignIn.signIn();
     if (googleUser == null) return null;
@@ -53,8 +84,7 @@ class AuthService {
         return _withGoogleName(result.user, googleUser.displayName);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'credential-already-in-use') {
-          final result = await _auth.signInWithCredential(credential);
-          return _withGoogleName(result.user, googleUser.displayName);
+          throw GoogleAccountConflictException(credential);
         }
         rethrow;
       }
@@ -62,6 +92,24 @@ class AuthService {
 
     final result = await _auth.signInWithCredential(credential);
     return _withGoogleName(result.user, googleUser.displayName);
+  }
+
+  /// Completes the switch [linkWithGoogle] refused to make silently —
+  /// called only after the caller has shown the person what it means and
+  /// they explicitly agreed. See [GoogleAccountConflictException].
+  ///
+  /// Does **not** call [_withGoogleName]: unlike [linkWithGoogle]'s other
+  /// paths, there is no fresh `GoogleSignInAccount.displayName` in scope
+  /// here (only the already-built [credential] survived the round trip
+  /// through the exception) — an acceptable gap, not a silent one, since
+  /// the account being switched to is by definition one that has signed
+  /// in with Google before and so almost always already has a display
+  /// name of its own.
+  Future<User?> confirmSwitchToExistingGoogleAccount(
+    AuthCredential credential,
+  ) async {
+    final result = await _auth.signInWithCredential(credential);
+    return result.user;
   }
 
   /// Copies the Google account's name onto the Firebase user when Firebase

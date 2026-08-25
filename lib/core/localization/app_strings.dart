@@ -209,6 +209,19 @@ class AppStrings {
   );
   String get signInWithGoogle =>
       _t('Masuk dengan Google', 'Sign in with Google');
+  // --- Identity Gate: first-run choice between Google and Guest ---
+  String get identityGateTitle =>
+      _t('Bagaimana Kamu Mau Mulai?', 'How Do You Want to Start?');
+  String get identityGateSubtitle => _t(
+    'Masuk dengan Google supaya progresmu aman, atau lanjut sebagai Tamu '
+        'dan hubungkan Google kapan saja lewat Profil.',
+    'Sign in with Google to keep your progress safe, or continue as a '
+        'Guest and link Google anytime from Profile.',
+  );
+  String get identityGateContinueWithGoogle =>
+      _t('Lanjut dengan Google', 'Continue with Google');
+  String get identityGateContinueAsGuest =>
+      _t('Lanjut sebagai Tamu', 'Continue as Guest');
   String get defaultLearnerName => _t('Pelajar Kana', 'Kana Learner');
   String userIdLabel(String id) => _t('ID: $id', 'ID: $id');
   String get userIdCopied => _t('ID disalin.', 'ID copied.');
@@ -221,6 +234,21 @@ class AppStrings {
     'Gagal masuk dengan Google. Periksa koneksi internet kamu dan coba lagi.',
     'Failed to sign in with Google. Check your internet connection and try again.',
   );
+  String get googleAccountConflictTitle => _t(
+    'Akun Google Sudah Dipakai',
+    'Google Account Already In Use',
+  );
+  String get googleAccountConflictBody => _t(
+    'Akun Google ini sudah pernah dipakai di akun lain. Melanjutkan akan '
+        'berpindah ke akun lama itu — progres, Premium, dan data lain di '
+        'akun Tamu saat ini akan ditinggalkan, bukan digabung. Lanjutkan?',
+    'This Google account was already used on a different account. '
+        'Continuing switches to that older account — progress, Premium, '
+        'and other data on this Guest account will be left behind, not '
+        'merged. Continue?',
+  );
+  String get googleAccountConflictConfirm =>
+      _t('Lanjutkan', 'Continue');
   String masteredCount(int mastered, int total) =>
       _t('$mastered/$total Dikuasai', '$mastered/$total Mastered');
   String get streak => _t('Streak', 'Streak');
@@ -1939,6 +1967,14 @@ class AppStrings {
   String get purchaseFailed => _t(
     'Pembelian gagal. Kamu tidak ditagih.',
     'Purchase failed. You have not been charged.',
+  );
+  // Shown for IapOutcome.pendingVerification — the store already took the
+  // money, verification just hasn't confirmed it yet. Deliberately does
+  // not say "gagal"/"failed" anywhere, and says so on purpose: this is
+  // exactly the wording gap the 25 Aug 2026 real-purchase report exposed.
+  String get purchasePendingVerification => _t(
+    'Pembayaran diterima, sedang memverifikasi...',
+    'Payment received, verifying...',
   );
   String get purchaseNotSetUp => _t(
     'Pembelian belum aktif di toko. Coba lagi nanti.',

@@ -1,10 +1,12 @@
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
+const logger = require("firebase-functions/logger");
 
 const {
   subscriptionGrants,
   productGrants,
   expiryFromResponse,
+  isRetryablePlayState,
 } = require("./iap_states");
 
 /**
@@ -48,6 +50,21 @@ const COIN_PACKS = {
 const ANDROID_PACKAGE = "com.teisou.kanamaster";
 
 /**
+ * Delay before each retry of a subscription check that looked like Play
+ * propagation lag rather than a real rejection — see [isRetryablePlayState]
+ * in `iap_states.js`. Two entries means up to 3 attempts total (the first
+ * try, plus one retry after each delay). Scoped to the subscription
+ * product only (see [verifyWithPlay]) — a one-time product (skin/coin
+ * pack) has no equivalent propagation-lag failure mode observed in
+ * practice, so retrying it would just be blind delay for no reason.
+ */
+const SUBSCRIPTION_RETRY_DELAYS_MS = [1500, 3000];
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
  * Whether Play verification can run at all.
  *
  * Needs a service account with the Android Publisher scope, granted
@@ -85,22 +102,15 @@ function publisher() {
 }
 
 /**
- * Asks Google whether this purchase token is real, still valid, and
- * bought by this account.
- *
- * Throws rather than returning false, so the caller cannot accidentally
- * treat a lookup failure as a refusal and a refusal as a grant — the two
- * need different answers to the app, and the difference is money.
- *
- * The decision itself lives in `iap_states.js`, away from the HTTP
- * plumbing, because it is the part worth testing.
- *
- * **Returns the raw Play response on success** (`response.data`) so the
- * caller can read metadata off it — today that's just [applyExpiry]
- * reading `lineItems[0].expiryTime` — without this function needing to
- * know anything about what that metadata is used for.
+ * One lookup at Google — a helper [verifyWithPlay] calls once per attempt,
+ * split out so the retry loop below reads as attempts around one call
+ * rather than a loop with the whole request/response/decision inlined.
+ * Throws for a genuinely unreachable/unrecognised token, exactly like
+ * [verifyWithPlay] itself used to; a *reachable* response that simply
+ * does not grant is returned, not thrown, so the caller can inspect it
+ * for retryability.
  */
-async function verifyWithPlay({productId, purchaseToken, packageName, uid}) {
+async function checkOnce({productId, purchaseToken, packageName, uid, requestId}) {
   const api = publisher();
   let response;
   try {
@@ -118,19 +128,85 @@ async function verifyWithPlay({productId, purchaseToken, packageName, uid}) {
     // must not be reported to the client as a refusal: the purchase is
     // real and will be granted when restore asks again.
     const status = error && error.code;
+    logger.warn("verifyPurchase: Play API call failed", {
+      requestId, uid, productId, status: status || "unknown",
+    });
     if (status === 404 || status === 400) {
       throw new HttpsError("permission-denied", "Purchase not recognised.");
     }
     throw new HttpsError("unavailable", "Could not reach the store.");
   }
 
+  logger.info("verifyPurchase: Play responded", {
+    requestId,
+    uid,
+    productId,
+    subscriptionState: response.data && response.data.subscriptionState,
+  });
+
   const grants = productId === PREMIUM_PRODUCT
     ? subscriptionGrants(response.data, uid)
     : productGrants(response.data, uid);
-  if (!grants) {
-    throw new HttpsError("permission-denied", "Purchase is not active.");
+  return {data: response.data, grants};
+}
+
+/**
+ * Asks Google whether this purchase token is real, still valid, and
+ * bought by this account.
+ *
+ * Throws rather than returning false, so the caller cannot accidentally
+ * treat a lookup failure as a refusal and a refusal as a grant — the two
+ * need different answers to the app, and the difference is money.
+ *
+ * The grant decision itself lives in `iap_states.js`, away from the HTTP
+ * plumbing, because it is the part worth testing — **unchanged by the
+ * retry loop added here**: this function still only ever asks
+ * `subscriptionGrants`/`productGrants` for the answer, the same call as
+ * before, just possibly more than once.
+ *
+ * **Retries only the subscription product**, and only when the specific
+ * non-grant looks like Play propagation lag (see [isRetryablePlayState])
+ * — a definitive rejection (cancelled, expired, wrong account) is thrown
+ * immediately on the first attempt, exactly as it always was. A one-time
+ * product (skin/coin pack) never retries: nothing about its failure mode
+ * has ever been observed to be a propagation race the way the
+ * subscription's `externalAccountIdentifiers` timing is.
+ *
+ * A final non-grant throws with `details: {retryable}` — `true` when
+ * every attempt still looked like lag, letting the client show "still
+ * verifying" instead of a flat failure; `false` for a definitive
+ * rejection, on the first attempt already.
+ *
+ * **Returns the raw Play response on success** (`response.data`) so the
+ * caller can read metadata off it — today that's just [applyExpiry]
+ * reading `lineItems[0].expiryTime` — without this function needing to
+ * know anything about what that metadata is used for.
+ */
+async function verifyWithPlay({
+  productId, purchaseToken, packageName, uid, requestId,
+}) {
+  const delays = productId === PREMIUM_PRODUCT ? SUBSCRIPTION_RETRY_DELAYS_MS : [];
+  let last = null;
+
+  for (let attempt = 0; attempt <= delays.length; attempt++) {
+    last = await checkOnce({productId, purchaseToken, packageName, uid, requestId});
+    if (last.grants) {
+      logger.info("verifyPurchase: granted", {requestId, uid, productId, attempt});
+      return last.data;
+    }
+    if (attempt === delays.length || !isRetryablePlayState(last.data)) break;
+    await sleep(delays[attempt]);
   }
-  return response.data;
+
+  const retryable = productId === PREMIUM_PRODUCT && isRetryablePlayState(last.data);
+  logger.warn("verifyPurchase: not granted", {
+    requestId,
+    uid,
+    productId,
+    subscriptionState: last.data && last.data.subscriptionState,
+    retryable,
+  });
+  throw new HttpsError("permission-denied", "Purchase is not active.", {retryable});
 }
 
 /**
@@ -201,10 +277,21 @@ exports.verifyPurchase = onCall(async (request) => {
     throw new HttpsError("unauthenticated", "Sign in first.");
   }
 
-  const {productId, purchaseToken, platform} = request.data || {};
+  const {productId, purchaseToken, platform, requestId: clientRequestId} =
+      request.data || {};
   if (typeof productId !== "string" || typeof purchaseToken !== "string") {
     throw new HttpsError("invalid-argument", "productId and purchaseToken.");
   }
+  // Correlates this invocation's log lines with the client's own —
+  // never the token itself, which must never appear in logs at all (see
+  // every log call in this file and `checkOnce` above). Falls back to a
+  // server-generated id for an older client that never sent one, so a
+  // mixed rollout still produces a usable, if self-only, log trail.
+  const requestId = typeof clientRequestId === "string" && clientRequestId
+    ? clientRequestId
+    : `srv_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+
+  logger.info("verifyPurchase: started", {requestId, uid, productId, platform});
 
   const patch = entitlementFor(productId);
   if (!patch) {
@@ -233,6 +320,7 @@ exports.verifyPurchase = onCall(async (request) => {
     purchaseToken,
     packageName: ANDROID_PACKAGE,
     uid,
+    requestId,
   });
   applyExpiry(patch, productId, playResponse);
 
