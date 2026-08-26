@@ -343,3 +343,12 @@ exports.onKanaExamHistoryCreated = globalPointsTriggerFor("kana");
 exports.onDokkaiExamHistoryCreated = globalPointsTriggerFor("dokkai");
 exports.onChoukaiExamHistoryCreated = globalPointsTriggerFor("choukai");
 exports.onKanjiComboExamHistoryCreated = globalPointsTriggerFor("kanjiCombo");
+
+// Card Game Mode — resolves a match nobody is left to advance (opponent
+// left, disconnected, or both players simply stopped answering). Reuses
+// the exact forfeit write the client's own per-round timeout already
+// performs; battle_scoring.js/battle_stars.js (both unmodified) do the
+// actual scoring/star-payout once it lands. See
+// functions/battle_abandonment_sweep.js.
+exports.sweepAbandonedBattleMatches =
+  require("./battle_abandonment_sweep").sweepAbandonedBattleMatches;

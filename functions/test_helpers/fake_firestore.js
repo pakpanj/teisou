@@ -134,6 +134,34 @@ class FakeCollectionRef {
     }
     return {docs};
   }
+
+  /** A single-field equality filter — added for
+   * `battle_abandonment_sweep.js`'s `.where("status", "==", "active")`.
+   * Deliberately supports only `"=="`: that is the only operator any
+   * caller of this fake actually uses, and a fake that silently ignored
+   * an unsupported operator would be worse than no fake at all — better
+   * to throw loudly the day a real `.where(..., "<", ...)` shows up
+   * needing support this doesn't have yet. */
+  where(field, op, value) {
+    if (op !== "==") {
+      throw new Error(`FakeFirestore.where: unsupported operator "${op}"`);
+    }
+    return new FakeQuery(this, (data) => data[field] === value);
+  }
+}
+
+/** The result of `.where(...)` — only `.get()` is needed by anything that
+ * uses this fake so far. */
+class FakeQuery {
+  constructor(collectionRef, predicate) {
+    this._collectionRef = collectionRef;
+    this._predicate = predicate;
+  }
+
+  async get() {
+    const {docs} = await this._collectionRef.get();
+    return {docs: docs.filter((doc) => this._predicate(doc.data()))};
+  }
 }
 
 /** Applies Firestore's own `FieldValue.increment`/`serverTimestamp`/
