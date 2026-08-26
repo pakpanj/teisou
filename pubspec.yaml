@@ -54,6 +54,14 @@ dependencies:
   # Local storage untuk Daftar Belajar (saved words) sebelum sync ke Firestore
   shared_preferences: ^2.5.5
 
+  # _MinVersionGate: reads the real installed build number off the OS
+  # (package_info_plus) so it can never drift from a hand-kept Dart
+  # constant, and opens the Play Store listing from the blocking update
+  # screen (url_launcher). Both are small, widely-used, read-only plugins
+  # — not in the same risk class as camera/mlkit above.
+  package_info_plus: ^8.1.2
+  url_launcher: ^6.3.1
+
   # Modul Kotoba: gambar ilustrasi on-demand dari Firebase Storage, cache
   # lokal permanen (flutter_cache_manager custom Config) supaya cuma
   # download sekali per kata

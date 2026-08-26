@@ -2,6 +2,27 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    // `appConfig/minVersion` — dibaca oleh `MinVersionGate` (Dart:
+    // `lib/features/onboarding/min_version_gate.dart`), gate PALING
+    // AWAL di startup chain, sebelum sign-in anonim sekalipun terjadi.
+    // Karena itu ini SATU-SATUNYA dokumen di seluruh ruleset ini yang
+    // boleh dibaca tanpa `request.auth != null` — setiap collection lain
+    // di bawah baris ini tetap mensyaratkan auth seperti biasa.
+    //
+    // Sengaja `match /appConfig/minVersion` (nama dokumen persis), BUKAN
+    // `match /appConfig/{doc}` — kalau `appConfig` kelak menampung
+    // dokumen lain yang tidak boleh publik, wildcard di sini akan diam-
+    // diam ikut membukanya. Path spesifik berarti dokumen baru di bawah
+    // `appConfig/` tetap default-deny sampai ada blok match-nya sendiri.
+    //
+    // Tidak ada jalur tulis dari client sama sekali — nilainya diisi
+    // manual lewat Firebase Console, bukan dari kode aplikasi atau Cloud
+    // Function mana pun.
+    match /appConfig/minVersion {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // Users — hanya bisa akses data sendiri. Dokumen users/{uid} sendiri
     // (bukan subcollection-nya) punya satu pengecekan tambahan: tidak boleh
     // MENGUBAH avatarType menjadi preset_premium/custom_upload kecuali

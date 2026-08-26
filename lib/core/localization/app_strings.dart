@@ -1984,6 +1984,21 @@ class AppStrings {
     'Pembelian belum aktif di toko. Coba lagi nanti.',
     'Purchases are not live in the store yet. Try again later.',
   );
+  // `_MinVersionGate`'s blocking screen — shown only when the server-side
+  // `appConfig/minVersion` doc names a `minBuildNumber` higher than this
+  // install's own build. Deliberately blunt and final: there is no
+  // "Nanti saja"/"Lewati" here, unlike every other gate in `main.dart`,
+  // because the whole point of this gate is that an old build must not
+  // be allowed to reach the Firestore Rules hardening it was never built
+  // to survive.
+  String get updateRequiredTitle => _t('Pembaruan Diperlukan', 'Update Required');
+  String get updateRequiredBody => _t(
+    'Versi aplikasi ini sudah usang dan tidak bisa dipakai lagi. '
+        'Perbarui ke versi terbaru untuk melanjutkan.',
+    'This version of the app is out of date and can no longer be used. '
+        'Update to the latest version to continue.',
+  );
+  String get updateNowButton => _t('Update Sekarang', 'Update Now');
   String get premiumBadge => _t('PREMIUM', 'PREMIUM');
   String premiumLevelLocked(String level) => _t(
     '$level terkunci — buka dengan Premium',

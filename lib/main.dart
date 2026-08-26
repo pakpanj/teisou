@@ -24,6 +24,7 @@ import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/first_visit_tutorial.dart';
 import 'features/onboarding/home_tour.dart';
 import 'features/onboarding/identity_gate_screen.dart';
+import 'features/onboarding/min_version_gate.dart';
 import 'features/onboarding/plan_intro_screen.dart';
 import 'data/repositories/onboarding_repository.dart';
 
@@ -138,7 +139,12 @@ class _KanaMasterAppState extends ConsumerState<KanaMasterApp>
       themeMode: themeMode.material,
       navigatorKey: rootNavigatorKey,
       navigatorObservers: _navigatorObservers,
-      home: const _AudienceGate(),
+      // The very first gate, ahead of everything else — see
+      // `MinVersionGate`'s own doc comment for why an old build has to
+      // be stopped here, before the age question, before sign-in, before
+      // anything a future Firestore Rules cutover could otherwise break
+      // it against.
+      home: const MinVersionGate(child: _AudienceGate()),
     );
   }
 }

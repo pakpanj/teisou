@@ -798,3 +798,55 @@ describe("recursive wildcard bypass — closed", () => {
     });
   });
 });
+
+// ---------------------------------------------------------------------
+// appConfig/minVersion — MinVersionGate (Phase 2), the one document in
+// this whole ruleset readable with no auth at all. See
+// `lib/features/onboarding/min_version_gate.dart` for why: this gate
+// runs before anonymous sign-in even happens, so it cannot rely on the
+// `request.auth != null` pattern every other collection in this file
+// uses.
+// ---------------------------------------------------------------------
+describe("appConfig/minVersion", () => {
+  test("an unauthenticated client can read it — this is the one document "
+      + "in the whole ruleset meant to work before sign-in", async () => {
+    await seed(async (db) => {
+      await setDoc(doc(db, "appConfig", "minVersion"), {minBuildNumber: 12});
+    });
+    const db = asAnon();
+    await assertSucceeds(getDoc(doc(db, "appConfig", "minVersion")));
+  });
+
+  test("a signed-in client can also read it", async () => {
+    await seed(async (db) => {
+      await setDoc(doc(db, "appConfig", "minVersion"), {minBuildNumber: 12});
+    });
+    const db = asUser("u1");
+    await assertSucceeds(getDoc(doc(db, "appConfig", "minVersion")));
+  });
+
+  test("an unauthenticated client cannot write it", async () => {
+    const db = asAnon();
+    await assertFails(
+        setDoc(doc(db, "appConfig", "minVersion"), {minBuildNumber: 999}),
+    );
+  });
+
+  test("a signed-in client cannot write it either — the value can only "
+      + "come from the Firebase Console/Admin SDK", async () => {
+    const db = asUser("u1");
+    await assertFails(
+        setDoc(doc(db, "appConfig", "minVersion"), {minBuildNumber: 999}),
+    );
+  });
+
+  test("a DIFFERENT document under appConfig/ is NOT publicly readable — "
+      + "the rule names the exact document, it does not open the whole "
+      + "collection", async () => {
+    await seed(async (db) => {
+      await setDoc(doc(db, "appConfig", "someOtherDoc"), {secret: true});
+    });
+    const db = asAnon();
+    await assertFails(getDoc(doc(db, "appConfig", "someOtherDoc")));
+  });
+});
