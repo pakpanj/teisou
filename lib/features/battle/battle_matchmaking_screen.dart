@@ -128,9 +128,27 @@ class _BattleMatchmakingBodyState extends ConsumerState<BattleMatchmakingBody> {
     _resultSubscription = ref
         .read(matchmakingRepositoryProvider)
         .watchMatchResult(myUid)
-        .listen((matchId) {
-          if (matchId != null) _joinMatch(matchId, tier, myUid);
-        });
+        .listen(
+          (matchId) {
+            if (matchId != null) _joinMatch(matchId, tier, myUid);
+          },
+          // Hardening (AUDIT_PHASE_C_BATTLE_RELIABILITY.md, C1) — this
+          // Realtime Database listener had no `onError` at all, so a
+          // stream error would reach the zone's uncaught-error handler
+          // instead of this widget. No retry logic needed here the way
+          // the match screen's answers listener has one: this screen
+          // already has its own bounded fallback (the 20s countdown
+          // ending in a bot match, per `_giveUpAndFallBackToBot`), so a
+          // dead listener simply means no human pairing arrives before
+          // that countdown's own deadline — exactly the same outcome as
+          // a listener that quietly never fires, which this screen was
+          // already built to handle.
+          onError: (Object error) {
+            debugPrint(
+              'BattleMatchmakingBody: result stream error: $error',
+            );
+          },
+        );
 
     _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) {

@@ -80,6 +80,12 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   StreamSubscription<Map<int, BattleAnswer>>? _answersSub;
   String? _localClientResult;
 
+  /// The face-down-card auto-reveal fires once, later, off a bare
+  /// [Timer] — tracked here so [dispose] can cancel it like every other
+  /// timer in this screen, rather than trusting its own internal
+  /// `mounted` guard alone to make an unwanted late call harmless.
+  Timer? _choiceDeadlineTimer;
+
   /// When the match actually ended, stamped once.
   ///
   /// The result screen used to work out its duration with
@@ -94,15 +100,45 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   @override
   void initState() {
     super.initState();
+    _subscribeToAnswers();
+  }
+
+  /// Split out of [initState] so a stream error can re-subscribe itself
+  /// without duplicating the `listen(...)` call — see [_onAnswersError].
+  void _subscribeToAnswers() {
     _answersSub = ref
         .read(battleRepositoryProvider)
         .watchAllAnswers(widget.matchId)
-        .listen(_onAnswersUpdate);
+        .listen(_onAnswersUpdate, onError: _onAnswersError);
+  }
+
+  /// Hardening, not a confirmed fix for any specific crash report — see
+  /// AUDIT_PHASE_C_BATTLE_RELIABILITY.md's C1 finding. This stream had no
+  /// `onError` at all: an error event (plausible after an iOS background
+  /// -> foreground cycle interrupts the underlying gRPC stream) would
+  /// otherwise reach the zone's uncaught-error handler instead of this
+  /// widget. Catching it here cannot regress anything that worked before,
+  /// since "uncaught" was never a working state to begin with.
+  ///
+  /// One bounded re-subscribe attempt, not a retry loop: the Firestore
+  /// SDK already retries the underlying connection on its own, so this
+  /// only needs to give this *widget* a fresh subscription to listen on
+  /// once that connection recovers, not re-implement backoff itself. If
+  /// re-subscribing itself immediately errors again, [_onAnswersError]
+  /// simply runs again and tries once more — never a tight synchronous
+  /// loop, since each attempt waits for a real stream event (data or
+  /// error) before firing again.
+  void _onAnswersError(Object error, StackTrace stackTrace) {
+    debugPrint('BattleScreen: answers stream error, re-subscribing: $error');
+    if (!mounted) return;
+    _answersSub?.cancel();
+    _subscribeToAnswers();
   }
 
   @override
   void dispose() {
     _timer?.cancel();
+    _choiceDeadlineTimer?.cancel();
     _answersSub?.cancel();
     super.dispose();
   }
@@ -558,7 +594,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     _choiceTimeoutHandledForRound = round;
     final left =
         cardChoiceWindow(ownerIsBot: ownerIsBot) - _sinceTurnStart(match);
-    Timer(left.isNegative ? Duration.zero : left, () {
+    _choiceDeadlineTimer?.cancel();
+    _choiceDeadlineTimer = Timer(left.isNegative ? Duration.zero : left, () {
       if (!mounted) return;
       final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
       if (current == null) return;
