@@ -1823,6 +1823,13 @@ class AppStrings {
       _t('Lawan: $score', 'Opponent: $score');
   String get battleSendAnswer => _t('Kirim', 'Send');
   String get battleRomajiHint => _t('Ketik romaji...', 'Type romaji...');
+
+  /// C4 — the per-round correct/wrong badge, shown for ~700ms right
+  /// after a round resolves, for whichever side (self or opponent)
+  /// actually answered it.
+  String get battleAnswerCorrect => _t('Benar!', 'Correct!');
+  String get battleAnswerWrong => _t('Salah!', 'Wrong!');
+
   String get battleResultWin => _t('Menang!', 'You win!');
   String get battleResultLose => _t('Kalah', 'You lose');
   String get battleResultDraw => _t('Seri!', 'Draw!');

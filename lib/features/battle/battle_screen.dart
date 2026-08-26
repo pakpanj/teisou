@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/battle_rules.dart';
@@ -80,6 +81,26 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   StreamSubscription<Map<int, BattleAnswer>>? _answersSub;
   String? _localClientResult;
 
+  /// C4 fix — how long the just-resolved round's card stays on screen
+  /// after `match.currentRound` has already moved past it. See
+  /// [_showRoundFeedback]'s doc comment for why this exists at all.
+  static const _feedbackHoldDuration = Duration(milliseconds: 700);
+
+  /// Which round's card the top of the screen is currently showing,
+  /// overriding `match.currentRound` — null once no hold is active, in
+  /// which case rendering falls back to the real current round exactly as
+  /// before this phase. Visual-only: everything below the card (keyboard,
+  /// choose button, waiting text) keeps reading `match.currentRound`
+  /// directly and is never affected by this.
+  int? _heldRound;
+
+  /// Clears [_heldRound] at the end of its hold window — a real [Timer]
+  /// rather than trusting some other incidental rebuild to notice
+  /// [_flashUntil] has passed, since nothing else in this screen is
+  /// guaranteed to rebuild promptly at exactly the 700ms mark otherwise
+  /// (the per-second round timer only ticks once a second).
+  Timer? _feedbackHoldTimer;
+
   /// The face-down-card auto-reveal fires once, later, off a bare
   /// [Timer] — tracked here so [dispose] can cancel it like every other
   /// timer in this screen, rather than trusting its own internal
@@ -139,6 +160,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   void dispose() {
     _timer?.cancel();
     _choiceDeadlineTimer?.cancel();
+    _feedbackHoldTimer?.cancel();
     _answersSub?.cancel();
     super.dispose();
   }
@@ -149,8 +171,23 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     final cardData = ref.read(battleCardDataProvider).valueOrNull;
     if (match == null || cardData == null) return;
     final romajiConverter = ref.read(romajiConverterProvider);
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
 
     var changed = false;
+    // C4: a single snapshot
+    // can carry more than one never-seen-before round — normally just the
+    // one that resolved a moment ago, but a rejoin/reconnect can deliver a
+    // whole backlog at once. Only the highest-numbered one newly resolved
+    // in *this* call gets the transient feedback (held card, badge,
+    // haptic); anything older in the same batch is already superseded by
+    // the time this runs, so showing feedback for it would describe a
+    // moment that has already passed. Every round still gets its
+    // correctness recorded either way, unconditionally — this only gates
+    // the transient extras.
+    int? latestNewRound;
+    var latestNewCorrect = false;
+    String? latestNewByUid;
+
     for (final e in answers.entries) {
       final round = e.key;
       if (_correctByRound.containsKey(round)) continue;
@@ -175,13 +212,86 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           romaji.isNotEmpty &&
           romaji == card.correctRomaji.trim().toLowerCase();
       _correctByRound[round] = correct;
-      _flashWasCorrect = correct;
-      _flashUntil = DateTime.now().add(const Duration(milliseconds: 900));
       changed = true;
+
+      if (latestNewRound == null || round > latestNewRound) {
+        latestNewRound = round;
+        latestNewCorrect = correct;
+        latestNewByUid = e.value.byUid;
+      }
     }
     if (!mounted) return;
+    if (latestNewRound != null) {
+      _showRoundFeedback(
+        round: latestNewRound,
+        correct: latestNewCorrect,
+        answeredByMe: myUid != null && latestNewByUid == myUid,
+      );
+    }
     if (changed) setState(() {});
     _maybeConclude(match);
+  }
+
+  /// Holds [round]'s card on screen (with its flash + badge) for
+  /// [_feedbackHoldDuration], and fires a haptic tap — but only on the
+  /// device of whoever actually answered it.
+  ///
+  /// **Why a hold exists at all**: `BattleRepository.submitAnswer` writes
+  /// the answer *and* advances `currentRound` in one Firestore
+  /// transaction (`battle_repository.dart`), so by the time this device's
+  /// listeners deliver either write, `match.currentRound` has almost
+  /// always already moved past [round]. Left alone, `build()` would
+  /// already be looking at the *next* round the instant this fires,
+  /// which is exactly the bug the C4 audit traced: the flash either never
+  /// renders (the next round is still being chosen) or renders on the
+  /// wrong card (the next round already has one). Rather than fight that
+  /// timing, this screen now deliberately keeps showing [round]'s own
+  /// card for a fixed window regardless of what `currentRound` has moved
+  /// on to — see `_buildCardArea`'s use of [_heldRound].
+  ///
+  /// **This is a purely local, visual hold** — nothing here touches
+  /// `currentRound`, `turnStartedAt`, or any server write; the next
+  /// round's own timer is already running underneath, untouched, and the
+  /// bottom control area (keyboard/choose button/waiting text) keeps
+  /// reading the real `match.currentRound` the whole time, so a player
+  /// who needs to act on the next round right away always can.
+  ///
+  /// **Haptic fires exactly once per round, on this device**, guarded by
+  /// the same invariant that already makes [_correctByRound] idempotent:
+  /// this is only ever called from inside `_onAnswersUpdate`'s
+  /// `if (_correctByRound.containsKey(round)) continue;` guard, so a
+  /// round that has already been processed — including a duplicate
+  /// Firestore snapshot for the same underlying write (e.g. the
+  /// optimistic local write followed by the server-confirmed one) — can
+  /// never reach here a second time for the same round.
+  void _showRoundFeedback({
+    required int round,
+    required bool correct,
+    required bool answeredByMe,
+  }) {
+    _feedbackHoldTimer?.cancel();
+    _heldRound = round;
+    _flashWasCorrect = correct;
+    _flashUntil = DateTime.now().add(_feedbackHoldDuration);
+    _feedbackHoldTimer = Timer(_feedbackHoldDuration, () {
+      if (!mounted) return;
+      setState(() => _heldRound = null);
+    });
+
+    // Self only — the opponent's device shows the identical visual badge
+    // and flash (built from the same [_correctByRound]/[_heldRound]
+    // state, see `_buildCardArea`) but never buzzes for an answer it did
+    // not give — the entitlement/anti-cheat constraint this phase was
+    // built against: never leak more than the derived correct/wrong
+    // signal, and never let one player's device react to a signal the
+    // other player caused.
+    if (answeredByMe) {
+      if (correct) {
+        HapticFeedback.lightImpact();
+      } else {
+        HapticFeedback.mediumImpact();
+      }
+    }
   }
 
   void _maybeConclude(BattleMatch match) {
@@ -469,63 +579,19 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
               // background between the scores and the card.
               child: Align(
                 alignment: const Alignment(0, -0.55),
-                child: choosing && iChoose
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Held down to roughly the height of the panel
-                          // beside it. At full size the card dwarfed the
-                          // sentence it is paired with, and the two read
-                          // as unrelated things that happened to share a
-                          // row rather than as one instruction.
-                          Flexible(
-                            child: SizedBox(
-                              height: 230,
-                              child: _faceDownCard(
-                                s,
-                                entry,
-                                identities,
-                                myUid,
-                                s.battleCardToSend,
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: BattleChoosePrompt(
-                                text: s.battleChooseInstruction,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    : choosing
-                    ? _faceDownCard(
-                        s,
-                        entry,
-                        identities,
-                        myUid,
-                        s.battleOpponentChoosing,
-                      )
-                    : BattleCardFace(
-                        prompt: card.prompt,
-                        caption: isAnswerer
-                            ? s.battleCardFromOpponent
-                            : s.battleCardFromYou,
-                        // Face up, the card still belongs to whoever dealt
-                        // it, so it keeps wearing their skin — the whole
-                        // point of a cosmetic your opponent sees is that
-                        // they see it while they are looking at the card,
-                        // not only for the second it stays face down.
-                        // Resolved through [_skinFor] for the same reason
-                        // the face-down branch above does — see its own
-                        // doc comment for why C3-1's fix is a real live
-                        // check for the viewing player's own skin and a
-                        // trusted-mirror read for the opponent's.
-                        skin: _skinFor(entry.deckOwnerUid, myUid, identities),
-                        flashColor: _flashColor(context),
-                      ),
+                child: _buildCardArea(
+                  context,
+                  s,
+                  match,
+                  cardData,
+                  myUid,
+                  entry,
+                  identities,
+                  choosing: choosing,
+                  iChoose: iChoose,
+                  isAnswerer: isAnswerer,
+                  card: card,
+                ),
               ),
             ),
             Padding(
@@ -571,6 +637,139 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  /// The card area at the top of the screen: [_heldRound]'s card, badge
+  /// and flash for [_feedbackHoldDuration] right after it resolves,
+  /// otherwise exactly the pre-C4 choosing/face-down/face-up branching,
+  /// unchanged, off the real [match.currentRound].
+  ///
+  /// **Only this — the card visual — is ever affected by a hold.** The
+  /// bottom control area (built separately, back in [_buildBody]) always
+  /// reads `choosing`/`iChoose`/`isAnswerer` off the live match state,
+  /// never off [_heldRound], so a player who needs to choose a card or
+  /// type an answer for the real current round can always do so
+  /// immediately — the round clock is server-anchored and keeps running
+  /// underneath a hold regardless, so the timer/input must never be the
+  /// thing held back.
+  Widget _buildCardArea(
+    BuildContext context,
+    AppStrings s,
+    BattleMatch match,
+    (List<KanaCharacter>, List<KanjiEntry>) cardData,
+    String myUid,
+    TurnOrderEntry entry,
+    Map<String, LeaderboardEntry>? identities, {
+    required bool choosing,
+    required bool iChoose,
+    required bool isAnswerer,
+    required BattleCard card,
+  }) {
+    final held = _buildHeldCard(context, s, match, cardData, myUid, identities);
+    if (held != null) return held;
+
+    return choosing && iChoose
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Held down to roughly the height of the panel beside it.
+              // At full size the card dwarfed the sentence it is paired
+              // with, and the two read as unrelated things that happened
+              // to share a row rather than as one instruction.
+              Flexible(
+                child: SizedBox(
+                  height: 230,
+                  child: _faceDownCard(
+                    s,
+                    entry,
+                    identities,
+                    myUid,
+                    s.battleCardToSend,
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: BattleChoosePrompt(text: s.battleChooseInstruction),
+                ),
+              ),
+            ],
+          )
+        : choosing
+        ? _faceDownCard(s, entry, identities, myUid, s.battleOpponentChoosing)
+        : BattleCardFace(
+            prompt: card.prompt,
+            caption: isAnswerer
+                ? s.battleCardFromOpponent
+                : s.battleCardFromYou,
+            // Face up, the card still belongs to whoever dealt it, so it
+            // keeps wearing their skin — the whole point of a cosmetic
+            // your opponent sees is that they see it while they are
+            // looking at the card, not only for the second it stays face
+            // down. Resolved through [_skinFor] for the same reason the
+            // face-down branch above does — see its own doc comment for
+            // why C3-1's fix is a real live check for the viewing
+            // player's own skin and a trusted-mirror read for the
+            // opponent's.
+            skin: _skinFor(entry.deckOwnerUid, myUid, identities),
+            // No flash here any more — a flash on the *real* current
+            // round's card would be exactly the C4 bug (a round that
+            // has not been answered yet showing a color that claims it
+            // has). Every flash now belongs to [_heldRound] alone, via
+            // [_buildHeldCard].
+            flashColor: null,
+          );
+  }
+
+  /// [_heldRound]'s own card, badge and flash — or null if no hold is
+  /// active (or the held round's card, unexpectedly, fails to resolve;
+  /// falls back to the normal current-round rendering rather than
+  /// showing nothing).
+  Widget? _buildHeldCard(
+    BuildContext context,
+    AppStrings s,
+    BattleMatch match,
+    (List<KanaCharacter>, List<KanjiEntry>) cardData,
+    String myUid,
+    Map<String, LeaderboardEntry>? identities,
+  ) {
+    final heldRound = _heldRound;
+    if (heldRound == null) return null;
+    if (heldRound < 0 || heldRound >= match.turnOrder.length) return null;
+    final heldCorrect = _correctByRound[heldRound];
+    if (heldCorrect == null) return null;
+
+    final heldEntry = match.turnOrder[heldRound];
+    final heldCard = resolveCard(
+      match.effectiveCardId(heldRound) ?? heldEntry.cardId,
+      cardData.$1,
+      cardData.$2,
+    );
+    if (heldCard == null) return null;
+
+    // Whoever did NOT own this round's deck is who answered it — mirrors
+    // BattleMatch.currentAnswererUid's own derivation, just for a round
+    // other than the live current one.
+    final heldIsAnswerer = heldEntry.deckOwnerUid != myUid;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _AnswerFeedbackBadge(correct: heldCorrect, strings: s),
+        const SizedBox(height: 6),
+        Flexible(
+          child: BattleCardFace(
+            prompt: heldCard.prompt,
+            caption: heldIsAnswerer
+                ? s.battleCardFromOpponent
+                : s.battleCardFromYou,
+            skin: _skinFor(heldEntry.deckOwnerUid, myUid, identities),
+            flashColor: _flashColor(context),
+          ),
+        ),
+      ],
     );
   }
 
@@ -711,10 +910,21 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     ];
   }
 
-  /// Tints the card for a moment after the round just gone resolved.
-  /// Deliberately driven by the *previous* round's result: by the time
-  /// this rebuild happens the turn has already moved on, so keying it to
-  /// the current round would never show anything.
+  /// The tint for whichever round [_heldRound] is currently holding.
+  ///
+  /// **Correction, C4**: this used to be applied to whatever card
+  /// `match.currentRound` happened to be showing, on the theory that "the
+  /// turn has already moved on by the time this rebuild happens, so keying
+  /// it to the current round would never show anything." That reasoning
+  /// was half right and half backwards — the turn genuinely has already
+  /// moved on (`submitAnswer` advances `currentRound` in the same
+  /// transaction as the answer write, `battle_repository.dart`), but the
+  /// old code still applied this colour to *whatever round was currently
+  /// being rendered*, which by then was almost always the *next* round,
+  /// not the one this colour describes — so the flash either never
+  /// rendered (next round still choosing) or tinted a card that had not
+  /// been answered yet. Only ever called from [_buildHeldCard] now, so it
+  /// always describes [_heldRound] specifically.
   Color? _flashColor(BuildContext context) {
     if (_flashUntil == null || DateTime.now().isAfter(_flashUntil!)) {
       return null;
@@ -1068,6 +1278,59 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       );
     }
     return cards;
+  }
+}
+
+/// C4 — the "Benar!"/"Salah!"
+/// pill shown above [_BattleScreenState._buildHeldCard]'s card for
+/// [_BattleScreenState._feedbackHoldDuration]. Deliberately a small,
+/// non-blocking pill above the card rather than an overlay on top of it —
+/// per the locked spec it must never cover the card, keyboard/input,
+/// score, or timer, and this sits entirely in the caption's own space
+/// above the card, changing nothing about the layout beneath it.
+///
+/// Colour matches this app's existing colourblind-safe correct/wrong
+/// language ([AppPalette.secondaryBlue]/[AppPalette.errorRed] — the same
+/// two tokens `_flashColor`/`BattleDeckStrip`'s slot coloring already use,
+/// see `theme_consistency`/quiz-colour conventions elsewhere in this
+/// codebase) rather than green, which this app avoids everywhere else for
+/// the same reason. The ✅/❌ glyphs are literal, per the approved spec.
+class _AnswerFeedbackBadge extends StatelessWidget {
+  const _AnswerFeedbackBadge({required this.correct, required this.strings});
+
+  final bool correct;
+  final AppStrings strings;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    final color = correct ? palette.secondaryBlue : palette.errorRed;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.15),
+        border: Border.all(color: color, width: 1.5),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            correct ? '✅' : '❌',
+            style: const TextStyle(fontSize: 15),
+          ),
+          const SizedBox(width: 6),
+          Text(
+            correct ? strings.battleAnswerCorrect : strings.battleAnswerWrong,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: color,
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
