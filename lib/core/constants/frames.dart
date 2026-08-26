@@ -57,7 +57,23 @@ class FrameOverlay extends StatelessWidget {
         width: size,
         height: size,
         fit: BoxFit.contain,
-        errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
+        // C3-3 (AUDIT_PHASE_C_BATTLE_RELIABILITY.md): frame rendering was
+        // already correct — this only adds a diagnostic for the genuine
+        // asset-load-failure case (a chosen [preset] whose PNG is missing
+        // or corrupt), never for the "no frame chosen" case above (which
+        // returns before ever reaching this widget). Still renders
+        // nothing either way, on purpose — see this widget's own doc
+        // comment on why a decorative border silently disappearing is
+        // correct, unlike an avatar/cover. This is a log line, not a
+        // behavior change: nothing here ever shows a default/fallback
+        // frame, which would be wrong for a player who genuinely has none
+        // equipped.
+        errorBuilder: (context, error, stackTrace) {
+          debugPrint(
+            'FrameOverlay: failed to load ${preset.assetPath}: $error',
+          );
+          return const SizedBox.shrink();
+        },
       ),
     );
   }

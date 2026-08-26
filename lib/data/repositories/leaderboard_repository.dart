@@ -337,6 +337,27 @@ class LeaderboardRepository {
         .set({'cardSkinId': cardSkinId}, SetOptions(merge: true));
   }
 
+  /// Narrow avatar-only mirror, added for C3-2
+  /// (AUDIT_PHASE_C_BATTLE_RELIABILITY.md) as the self-heal counterpart to
+  /// [updateCardSkinId] — every other avatar writer here
+  /// ([updateTotalMastered], [syncProfileInfo], etc.) bundles
+  /// `avatarType`/`avatarValue` together with `displayName`/`photoUrl`/
+  /// unrelated progress fields, which is wrong for a narrow "just repair
+  /// the mirror" call: passing along a stale cached `displayName` would
+  /// silently regress a since-changed name. This writes only the two
+  /// avatar fields, same `set(merge: true)` shape as [updateCoverId]/
+  /// [updateFrameId]/[updateCardSkinId].
+  Future<void> updateAvatar(
+    String uid,
+    AvatarType avatarType,
+    String? avatarValue,
+  ) {
+    return _collection.doc(uid).set({
+      'avatarType': avatarType.key,
+      'avatarValue': avatarValue,
+    }, SetOptions(merge: true));
+  }
+
   /// Updates `totalMastered` for [uid] if [totalMastered] is higher than
   /// what's currently stored (never regresses the leaderboard on a
   /// mastery -> learning demotion elsewhere).

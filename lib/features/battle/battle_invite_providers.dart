@@ -39,6 +39,7 @@ final battleOpponentsProvider =
   final byUid = {for (final e in entries) e.uid: e};
 
   await _republishMyCardSkin(ref, byUid);
+  await _republishMyAvatar(ref, byUid);
   return byUid;
 });
 
@@ -79,6 +80,44 @@ Future<void> _republishMyCardSkin(
     await ref
         .read(leaderboardRepositoryProvider)
         .updateCardSkinId(myUid, profile.cardSkinId);
+  } catch (_) {
+    // The next match tries again.
+  }
+}
+
+/// C3-2 (AUDIT_PHASE_C_BATTLE_RELIABILITY.md): avatar's counterpart to
+/// [_republishMyCardSkin], same self-heal shape and same reason it exists —
+/// `AvatarPickerSheet` already mirrors a chosen avatar to `leaderboard/{uid}`
+/// best-effort on selection, and that mirror write can fail silently the
+/// same way the skin one does. Unlike the skin (which only ever renders for
+/// an opponent, never for yourself, so a stale mirror was invisible to its
+/// owner), a stale avatar mirror is *also* visible to every other screen
+/// that reads `leaderboard/{uid}` for this uid (the global leaderboard, clan
+/// rankings, public profiles) — Battle just happens to be the one place
+/// this session was asked to hook the repair into, on the same "match
+/// entry" read path already proven for the skin.
+///
+/// Deliberately does **not** touch [LeaderboardEntry.photoUrl]/
+/// `displayName` — this is an avatar-only repair, matching
+/// [LeaderboardRepository.updateAvatar]'s own narrow scope, not a general
+/// identity resync (that's `identity_sync.dart`'s job, run at
+/// name/avatar-change time, not on every match entry).
+Future<void> _republishMyAvatar(
+  Ref ref,
+  Map<String, LeaderboardEntry> byUid,
+) async {
+  try {
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (myUid == null) return;
+    final profile = await ref.read(userProfileProvider.future);
+    final mirrored = byUid[myUid];
+    if (profile.avatarType == mirrored?.avatarType &&
+        profile.avatarValue == mirrored?.avatarValue) {
+      return;
+    }
+    await ref
+        .read(leaderboardRepositoryProvider)
+        .updateAvatar(myUid, profile.avatarType, profile.avatarValue);
   } catch (_) {
     // The next match tries again.
   }

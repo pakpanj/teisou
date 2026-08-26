@@ -485,6 +485,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                                 s,
                                 entry,
                                 identities,
+                                myUid,
                                 s.battleCardToSend,
                               ),
                             ),
@@ -504,6 +505,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                         s,
                         entry,
                         identities,
+                        myUid,
                         s.battleOpponentChoosing,
                       )
                     : BattleCardFace(
@@ -516,16 +518,12 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                         // point of a cosmetic your opponent sees is that
                         // they see it while they are looking at the card,
                         // not only for the second it stays face down.
-                        // Resolved through the unlock rule for the same
-                        // reason the face-down branch above does.
-                        skin: effectiveCardSkin(
-                          identities?[entry.deckOwnerUid]?.cardSkinId,
-                          starTotal:
-                              identities?[entry.deckOwnerUid]
-                                  ?.cardGameStarTotal ??
-                              0,
-                          allUnlocked: kCardSkinsAllUnlocked,
-                        ),
+                        // Resolved through [_skinFor] for the same reason
+                        // the face-down branch above does — see its own
+                        // doc comment for why C3-1's fix is a real live
+                        // check for the viewing player's own skin and a
+                        // trusted-mirror read for the opponent's.
+                        skin: _skinFor(entry.deckOwnerUid, myUid, identities),
                         flashColor: _flashColor(context),
                       ),
               ),
@@ -726,11 +724,76 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         : context.palette.errorRed;
   }
 
+  /// The skin to render for whoever owns [deckOwnerUid]'s card —
+  /// **the actual fix for C3-1**: the two call sites below used to pass
+  /// `effectiveCardSkin` neither `owned` nor `premium`, so it always fell
+  /// through to `false`/`false` and — with [kCardSkinsAllUnlocked] false
+  /// in every release build — every achievement/paid skin silently
+  /// downgraded to [CardSkinPresets.classic] for both players, always.
+  /// Invisible in debug because [kCardSkinsAllUnlocked] papered over it
+  /// there. See AUDIT_PHASE_C_BATTLE_RELIABILITY.md's C3 finding.
+  ///
+  /// **The two players are resolved differently, and that split is
+  /// deliberate, not an oversight** — audited before writing this:
+  /// - [myUid]'s own skin gets the *real* live check, the same one
+  ///   `card_skin_picker_screen.dart` already uses (`ownedSkinsProvider`
+  ///   for a bought skin, `subscriptionProvider.isPremium` for the
+  ///   Premium-bundled paid family) — this device genuinely has that
+  ///   data, so there is no reason to trust anything less than the full
+  ///   rule.
+  /// - The **opponent's** skin cannot be live-checked the same way: their
+  ///   `entitlements.skins`/`subscription.tier` live under their own
+  ///   private `users/{uid}` document, which `firestore.rules` only ever
+  ///   lets its owner read — there is no public mirror of either on
+  ///   `leaderboard/{uid}`. Building one would mean a new Cloud-Function-
+  ///   mirrored field (a real schema/rules addition, out of this fix's
+  ///   scope). Instead this trusts `LeaderboardEntry.cardSkinId` directly
+  ///   — the same level of trust this app *already* gives an opponent's
+  ///   avatar and frame everywhere (neither has ever had a live re-check
+  ///   for a non-owner viewer) — which is sound because
+  ///   `firestore.rules`' `isAllowedCardSkinWrite` already refuses to let
+  ///   that id become anything the opponent wasn't entitled to at the
+  ///   moment they equipped it.
+  ///
+  /// **Known, accepted gap, not silently swept under the rug**: an
+  /// opponent whose Premium lapses right after equipping a
+  /// premium-bundled paid skin, and who never reopens the picker
+  /// afterward, can still be seen wearing it here until they do — the
+  /// exact staleness the picker's own live check exists to close, just
+  /// unreachable for someone else's device. Achievement skins have the
+  /// same theoretical gap for the `premium` half specifically (their
+  /// `starTotal` half is already correctly live — see below — since
+  /// that field genuinely is public).
+  CardSkinPreset _skinFor(
+    String deckOwnerUid,
+    String myUid,
+    Map<String, LeaderboardEntry>? identities,
+  ) {
+    final entry = identities?[deckOwnerUid];
+    if (deckOwnerUid != myUid) {
+      // Opponent — trust the server-validated mirror, see doc comment.
+      return CardSkinPresets.byId(entry?.cardSkinId);
+    }
+    final owned = ref.watch(ownedSkinsProvider).valueOrNull ?? const <String>{};
+    final premium =
+        ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    return effectiveCardSkin(
+      entry?.cardSkinId,
+      // cardGameStarTotal is written by battle_stars.js onto the same
+      // public leaderboard/{uid} row — genuinely public, so this was
+      // already correct even before this fix; kept exactly as it was.
+      starTotal: entry?.cardGameStarTotal ?? 0,
+      owned: owned.contains(CardSkinPresets.byId(entry?.cardSkinId).id),
+      premium: premium,
+      allUnlocked: kCardSkinsAllUnlocked,
+    );
+  }
+
   /// The face-down card, shared by both choosing states.
   ///
   /// The skin belongs to whoever owns this card, so what you see while
   /// waiting is your opponent's, and what they see while you choose is
-  /// yours. Resolved through the unlock rule rather than read raw: an
+  /// yours. Resolved through [_skinFor] rather than read raw: an
   /// achievement skin whose owner has dropped below its threshold has to
   /// stop showing on *their* opponent's screen too, or the lock means
   /// nothing to anyone but themselves.
@@ -738,6 +801,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     AppStrings s,
     TurnOrderEntry entry,
     Map<String, LeaderboardEntry>? identities,
+    String myUid,
     String caption,
   ) {
     return BattleCardFace(
@@ -745,11 +809,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       // would show the answerer a card that may never be played.
       prompt: '',
       faceDown: true,
-      skin: effectiveCardSkin(
-        identities?[entry.deckOwnerUid]?.cardSkinId,
-        starTotal: identities?[entry.deckOwnerUid]?.cardGameStarTotal ?? 0,
-        allUnlocked: kCardSkinsAllUnlocked,
-      ),
+      skin: _skinFor(entry.deckOwnerUid, myUid, identities),
       caption: caption,
       flashColor: null,
     );
