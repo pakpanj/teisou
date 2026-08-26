@@ -168,12 +168,21 @@ function rollOverIfNewSeason(rank, season) {
  * loss of momentum would punish the format rather than the player.
  */
 function applyOutcome(rank, outcome) {
+  // A Perfect Draw is still a draw for streak purposes — same reasoning
+  // as an ordinary draw already documented above ("not a defeat," this
+  // format's draws are common by design): it leaves the streak alone
+  // rather than starting or breaking one, exactly like `"draw"` does.
   const streak = outcome === "win" ? rank.winStreak + 1 :
     outcome === "loss" ? 0 : rank.winStreak;
 
   let delta = 0;
   if (outcome === "win") {
     delta = streak >= STREAK_BONUS_AT ? 2 : 1;
+  } else if (outcome === "perfectDraw") {
+    // Flat +1, never the streak-bonus +2 a win can reach — a draw was
+    // never eligible for that bonus either way, and "perfect" earns its
+    // own flat reward rather than inheriting a win's escalating one.
+    delta = 1;
   } else if (outcome === "loss" && !LOSS_PROTECTED.has(rank.tier)) {
     delta = -1;
   }
@@ -209,9 +218,59 @@ function readRank(data) {
   };
 }
 
-function outcomeFor(uid, result) {
-  if (result === "draw") return "draw";
+function outcomeFor(uid, result, perfectDraw = false) {
+  if (result === "draw") return perfectDraw ? "perfectDraw" : "draw";
   return result === uid ? "win" : "loss";
+}
+
+/**
+ * Whether a concluded draw was a **Perfect Draw** — both players answered
+ * every one of their own rounds correctly, with no wrong answer of any
+ * kind (typed-wrong, timed out, or forfeited — `battle_scoring.js`
+ * scores all three identically as "not correct," see below).
+ *
+ * **Deliberately derived from data that already exists, not a new
+ * tracked field.** Audited before writing this: `officialScore[uid]` is
+ * `battle_scoring.js`'s own authoritative count of [uid]'s correct
+ * answers — incremented only by `if (correct) { officialScore[answerer]
+ * += 1; }`, and `correct` is `false` unconditionally whenever
+ * `typedRomaji.length === 0` (`scoreAnswer`'s own check) — which is
+ * exactly what a forfeited/timed-out/empty answer's `text: ''` produces
+ * (`battle_repository.dart`'s `forfeitRoundOnTimeout` and this project's
+ * new `battle_abandonment_sweep.js` both write `text: ''` for the same
+ * reason). So a wrong-because-mistyped answer and a wrong-because-
+ * nobody-answered round are indistinguishable in `officialScore` — but
+ * that distinction is irrelevant here: **both equally disqualify
+ * "perfect."** There is no gap this needs a new field to close.
+ *
+ * A draw is only ever declared once every round through
+ * `TOTAL_ROUNDS - 1` has been scored (`scoreAnswer`'s own
+ * `allPriorRoundsProcessed` check, unchanged) — so by the time `result
+ * === "draw"`, `match.turnOrder` (built once at creation, fixed
+ * afterward) fully describes how many rounds each player was ever asked
+ * to answer: every entry whose `deckOwnerUid` is the *other* player.
+ * `officialScore[uid]` equalling that count is both necessary and
+ * sufficient for "every one of [uid]'s answers was correct" — no
+ * wrong answer of any kind can hide inside a count that high.
+ */
+function isPerfectDraw(match) {
+  if (!match || match.result !== "draw") return false;
+  const players = match.players || [];
+  if (players.length !== 2) return false;
+  const turnOrder = match.turnOrder || [];
+  const officialScore = match.officialScore || {};
+
+  for (const uid of players) {
+    const roundsAnswered = turnOrder.filter(
+        (e) => e && e.deckOwnerUid !== uid,
+    ).length;
+    // A match with no real rounds at all is not a "perfect" anything —
+    // defensive, not expected to happen against a real match doc.
+    if (roundsAnswered === 0) return false;
+    const correct = officialScore[uid] || 0;
+    if (correct !== roundsAnswered) return false;
+  }
+  return true;
 }
 
 /**
@@ -220,14 +279,21 @@ function outcomeFor(uid, result) {
  * because the two touch entirely separate documents and a retry caused
  * by one player's contention should not re-run the other's already
  * committed update.
+ *
+ * [dbInstance] defaults to the real Firestore client; accepted
+ * explicitly so a test can pass a `FakeFirestore` instead — the same
+ * "real logic takes its dependencies as parameters" split already used
+ * by `battle_abandonment_sweep.js`/`ad_rewards.js` this same session.
  */
-async function applyToPlayer(uid, result, season) {
-  const userRef = db().collection("users").doc(uid);
+async function applyToPlayer(
+    uid, result, season, perfectDraw = false, dbInstance = db(),
+) {
+  const userRef = dbInstance.collection("users").doc(uid);
 
-  return db().runTransaction(async (transaction) => {
+  return dbInstance.runTransaction(async (transaction) => {
     const snap = await transaction.get(userRef);
     const current = rollOverIfNewSeason(readRank(snap.data()), season);
-    const outcome = outcomeFor(uid, result);
+    const outcome = outcomeFor(uid, result, perfectDraw);
     const applied = applyOutcome(current, outcome);
 
     transaction.set(userRef, {cardGameRank: applied.rank}, {merge: true});
@@ -412,11 +478,16 @@ exports.onBattleMatchConcluded = onDocumentWritten(
 
       const season = seasonForDate(new Date());
       const players = (match.players || []).filter((uid) => uid !== BOT_UID);
+      // Computed once per match, not per player — see [isPerfectDraw]'s
+      // own doc comment for why `officialScore`/`turnOrder` alone
+      // already prove it, with no new field needed.
+      const perfectDraw = isPerfectDraw(match);
 
       try {
         const starResult = {};
         for (const uid of players) {
-          const applied = await applyToPlayer(uid, match.result, season);
+          const applied =
+            await applyToPlayer(uid, match.result, season, perfectDraw);
           starResult[uid] = summarize(applied);
           await mirrorToLeaderboard(uid, applied.rank);
         }
@@ -451,4 +522,6 @@ exports._internal = {
   readRank,
   outcomeFor,
   summarize,
+  isPerfectDraw,
+  applyToPlayer,
 };
