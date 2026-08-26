@@ -4,7 +4,10 @@ const assert = require("node:assert");
 const {
   extractSubscriptionToken,
   buildSubscriptionPatch,
+  isStillActive,
 } = require("./subscription_notifications");
+
+const UID = "uid-abc";
 
 /**
  * `extractSubscriptionToken` and `buildSubscriptionPatch` are the parts
@@ -105,3 +108,86 @@ test("buildSubscriptionPatch never writes expiresAt: null when Play's "
     );
   }
 });
+
+/**
+ * `isStillActive` — the Subscription Recovery Architecture's fix for a
+ * real bug caught while wiring first-claimed (unbound) subscriptions
+ * into this RTDN handler: naively reusing `subscriptionGrants` for that
+ * case always reads `false` (Play's own record has no account id to
+ * match against for an unbound token, by definition), which would have
+ * silently downgraded a first-claimed subscriber to `tier: "free"` on
+ * their very first renewal notification. These tests exist specifically
+ * to keep that regression from coming back.
+ */
+test("isStillActive: firstClaimed + a granting state reads active, even "
+    + "though Play's own record has no account id at all", () => {
+  assert.strictEqual(
+      isStillActive({subscriptionState: "SUBSCRIPTION_STATE_ACTIVE"}, {
+        firstClaimed: true, uid: UID,
+      }),
+      true,
+  );
+  assert.strictEqual(
+      isStillActive(
+          {subscriptionState: "SUBSCRIPTION_STATE_IN_GRACE_PERIOD"},
+          {firstClaimed: true, uid: UID},
+      ),
+      true,
+  );
+});
+
+test("isStillActive: firstClaimed + a non-granting state reads inactive",
+    () => {
+      for (const subscriptionState of [
+        "SUBSCRIPTION_STATE_CANCELED",
+        "SUBSCRIPTION_STATE_EXPIRED",
+        "SUBSCRIPTION_STATE_ON_HOLD",
+        "SUBSCRIPTION_STATE_PAUSED",
+      ]) {
+        assert.strictEqual(
+            isStillActive({subscriptionState}, {firstClaimed: true, uid: UID}),
+            false,
+            subscriptionState,
+        );
+      }
+    });
+
+test("isStillActive: NOT firstClaimed delegates to subscriptionGrants "
+    + "unchanged — an account id that matches still grants, one that "
+    + "doesn't still refuses", () => {
+  assert.strictEqual(
+      isStillActive({
+        subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+        externalAccountIdentifiers: {obfuscatedExternalAccountId: UID},
+      }, {firstClaimed: false, uid: UID}),
+      true,
+  );
+  assert.strictEqual(
+      isStillActive({
+        subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+        externalAccountIdentifiers: {obfuscatedExternalAccountId: "someone-else"},
+      }, {firstClaimed: false, uid: UID}),
+      false,
+  );
+});
+
+test("isStillActive: the regression this exists to catch — firstClaimed "
+    + "must never be routed through subscriptionGrants, or an active "
+    + "first-claimed subscriber reads as inactive on every renewal",
+    () => {
+      // Same response, same uid, only `firstClaimed` differs — proves the
+      // branch itself is what matters, not some other input.
+      const response = {subscriptionState: "SUBSCRIPTION_STATE_ACTIVE"};
+      assert.strictEqual(
+          isStillActive(response, {firstClaimed: true, uid: UID}),
+          true,
+          "firstClaimed must read active from subscriptionState alone",
+      );
+      assert.strictEqual(
+          isStillActive(response, {firstClaimed: false, uid: UID}),
+          false,
+          "the non-firstClaimed path is correctly false here — no account " +
+          "id on this response at all — confirming the two paths really " +
+          "do disagree, and firstClaimed is what's picking the right one",
+      );
+    });

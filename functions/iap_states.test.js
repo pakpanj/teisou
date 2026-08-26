@@ -6,6 +6,8 @@ const {
   productGrants,
   expiryFromResponse,
   isRetryablePlayState,
+  AccountBinding,
+  classifyAccountBinding,
 } = require("./iap_states");
 
 const UID = "uid-abc";
@@ -249,5 +251,71 @@ test("a definitive rejection is never retryable", () => {
 test("a malformed response is not retryable rather than looping forever", () => {
   for (const response of [null, undefined, "", 0, []]) {
     assert.strictEqual(isRetryablePlayState(response), false);
+  }
+});
+
+/**
+ * Recovery-architecture ownership classification — see this file's own
+ * doc comment on [classifyAccountBinding] and `iap.js`'s `claimAndGrant`
+ * for the full three-way state machine these feed into. Deliberately
+ * covers every one of the nine scenarios named in the Subscription
+ * Recovery Architecture design, mapped onto whichever pure function
+ * actually decides each one.
+ */
+
+// Scenario 3: active + current UID.
+test("classifyAccountBinding: MATCHED when Play's account id equals the "
+    + "asking uid", () => {
+  assert.strictEqual(
+      classifyAccountBinding({
+        externalAccountIdentifiers: {obfuscatedExternalAccountId: UID},
+      }, UID),
+      AccountBinding.MATCHED,
+  );
+});
+
+// Scenario 1: active + no account binding at all.
+test("classifyAccountBinding: UNBOUND when there is no account id "
+    + "attached", () => {
+  assert.strictEqual(classifyAccountBinding({}, UID), AccountBinding.UNBOUND);
+  assert.strictEqual(
+      classifyAccountBinding({externalAccountIdentifiers: {}}, UID),
+      AccountBinding.UNBOUND,
+  );
+  assert.strictEqual(classifyAccountBinding(null, UID), AccountBinding.UNBOUND);
+});
+
+// Scenario 2: active + old (different) UID.
+test("classifyAccountBinding: MISMATCHED when Play's account id belongs "
+    + "to someone else — never UNBOUND, never MATCHED", () => {
+  assert.strictEqual(
+      classifyAccountBinding({
+        externalAccountIdentifiers: {obfuscatedExternalAccountId: other},
+      }, UID),
+      AccountBinding.MISMATCHED,
+  );
+});
+
+test("classifyAccountBinding never looks at subscriptionState — that is "
+    + "a deliberately separate question", () => {
+  // A MISMATCHED/UNBOUND/MATCHED verdict must come out the same whether
+  // the subscription is active or already expired — GRANTING_SUBSCRIPTION_
+  // STATES/subscriptionGrants own that decision, not this function.
+  for (const subscriptionState of [
+    "SUBSCRIPTION_STATE_ACTIVE",
+    "SUBSCRIPTION_STATE_EXPIRED",
+    undefined,
+  ]) {
+    assert.strictEqual(
+        classifyAccountBinding({subscriptionState}, UID),
+        AccountBinding.UNBOUND,
+    );
+    assert.strictEqual(
+        classifyAccountBinding({
+          subscriptionState,
+          externalAccountIdentifiers: {obfuscatedExternalAccountId: UID},
+        }, UID),
+        AccountBinding.MATCHED,
+    );
   }
 });

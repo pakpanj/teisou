@@ -8,6 +8,7 @@ import 'module_access.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
+import '../../core/services/auth_service.dart' show GoogleAccountConflictException;
 import '../../core/services/premium_purchase_flow.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
@@ -72,8 +73,18 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   /// the buy call — a purchase can be approved by a parent hours later,
   /// or restored on a different phone entirely.
   void _listenForOutcome() {
-    _outcomeSub ??= _purchase.outcomes.listen((outcome) {
+    _outcomeSub ??= _purchase.outcomes.listen((outcome) async {
       if (!mounted) return;
+
+      // accountMismatch gets its own dialog (the one real recovery this
+      // screen can offer) instead of the generic snackbar every other
+      // outcome shares below — see _handleAccountMismatch's own doc
+      // comment for why a snackbar alone would be a dead end here.
+      if (outcome == IapOutcome.accountMismatch) {
+        await _handleAccountMismatch();
+        return;
+      }
+
       final s = ref.read(appStringsProvider);
       final message = switch (outcome) {
         IapOutcome.delivered => s.purchaseDelivered,
@@ -81,7 +92,10 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
         IapOutcome.pendingVerification => s.purchasePendingVerification,
+        IapOutcome.accountMismatch =>
+          s.purchaseAccountMismatch, // unreachable — handled above
       };
+      if (!mounted) return;
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
       // Only a delivered purchase closes the paywall. A cancelled one
@@ -91,8 +105,137 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       // .notePremiumConfirmed fires a real `delivered` on this same
       // stream once Firestore confirms it, whichever path actually
       // resolves it.
-      if (outcome == IapOutcome.delivered) Navigator.of(context).maybePop();
+      if (outcome == IapOutcome.delivered) {
+        // Offered — never required — only while still anonymous, and
+        // only *after* the purchase already succeeded: this app has
+        // never gated buying on linking (PremiumPurchaseFlow.buy has no
+        // such check, and this stays true here), so the first moment
+        // it's honest to explain what an unlinked purchase risks losing
+        // is once there's actually something to lose.
+        if (ref.read(authServiceProvider).isAnonymous) {
+          await _offerLinkAfterPurchase();
+        }
+        if (!mounted) return;
+        Navigator.of(context).maybePop();
+      }
     });
+  }
+
+  /// A real, active subscription — just bound to a different account.
+  /// `functions/iap_states.js`'s `AccountBinding.MISMATCHED` is a
+  /// permanent, Play-side fact restore() can never change on its own
+  /// (see that file's own doc comment) — the only way forward is
+  /// identity: sign back in as the Google account Play already
+  /// recognises. Reuses `AuthService.linkWithGoogle`/
+  /// `GoogleAccountConflictException`/
+  /// `confirmSwitchToExistingGoogleAccount` exactly as `ProfileScreen`'s
+  /// own `_HeaderCard._linkGoogle`/`_handleGoogleAccountConflict`
+  /// already do for the same underlying mechanism — no new account-
+  /// switch system, per this feature's own design constraint.
+  Future<void> _handleAccountMismatch() async {
+    final s = ref.read(appStringsProvider);
+    final linkNow = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.purchaseAccountMismatchTitle),
+        content: Text(s.purchaseAccountMismatchBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.signInWithGoogle),
+          ),
+        ],
+      ),
+    );
+    if (linkNow != true || !mounted) return;
+    await _linkGoogle();
+  }
+
+  /// Shared by [_handleAccountMismatch] (recovering an existing
+  /// purchase) and [_offerLinkAfterPurchase] (protecting a fresh one) —
+  /// both just want "link Google, handle the one conflict case, done";
+  /// neither needs `ProfileScreen`'s own post-link leaderboard/clan name
+  /// sync, which is a display concern that screen owns, not a purchase-
+  /// recovery one.
+  Future<void> _linkGoogle() async {
+    final s = ref.read(appStringsProvider);
+    try {
+      final result = await ref.read(authServiceProvider).linkWithGoogle();
+      if (result == null || !mounted) return; // cancelled the picker
+      // A successful link means appStartupProvider's uid is now the
+      // Google-linked one — subscriptionProvider re-resolves for it on
+      // its own via Riverpod's dependency graph; nothing else to do.
+    } on GoogleAccountConflictException catch (e) {
+      if (!mounted) return;
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: Text(s.googleAccountConflictTitle),
+          content: Text(s.googleAccountConflictBody),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: Text(s.cancel),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: Text(s.googleAccountConflictConfirm),
+            ),
+          ],
+        ),
+      );
+      if (confirmed != true || !mounted) return;
+      try {
+        // This is the actual recovery step: it signs back in as the
+        // Google-linked Firebase user Play already vouches for, which —
+        // if that's the account that made the original purchase — is
+        // the exact uid `subscriptionGrants`/`claimAndGrant` will now
+        // accept. subscriptionProvider re-resolves for the new uid on
+        // its own once appStartupProvider does.
+        await ref
+            .read(authServiceProvider)
+            .confirmSwitchToExistingGoogleAccount(e.credential);
+      } catch (_) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(s.googleSignInFailed)));
+      }
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.googleSignInFailed)));
+    }
+  }
+
+  /// A soft, dismissible offer — never a requirement — shown once,
+  /// right after [IapOutcome.delivered], only while still anonymous.
+  Future<void> _offerLinkAfterPurchase() async {
+    final s = ref.read(appStringsProvider);
+    final linkNow = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.purchaseLinkPromptTitle),
+        content: Text(s.purchaseLinkPromptBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.tutorialSkip),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.signInWithGoogle),
+          ),
+        ],
+      ),
+    );
+    if (linkNow != true || !mounted) return;
+    await _linkGoogle();
   }
 
   Future<void> _restore() async {

@@ -1984,6 +1984,45 @@ class AppStrings {
     'Pembelian belum aktif di toko. Coba lagi nanti.',
     'Purchases are not live in the store yet. Try again later.',
   );
+  // IapOutcome.accountMismatch — a real, active purchase, just bound to a
+  // different account than the one signed in right now. Deliberately
+  // distinct wording from purchaseFailed: this is not "something went
+  // wrong with the purchase", it is "you're signed in as the wrong
+  // account for it" — a learner can actually act on the second, not the
+  // first. The short form is what the four purchase screens that only
+  // show a snackbar use; the title/body pair is PaywallScreen's own
+  // dialog, offering the one real recovery (link the same Google
+  // account) rather than a dead end.
+  String get purchaseAccountMismatch => _t(
+    'Pembelian ini terikat ke akun lain di perangkat ini.',
+    'This purchase is linked to a different account on this device.',
+  );
+  String get purchaseAccountMismatchTitle =>
+      _t('Akun Tidak Cocok', 'Account Mismatch');
+  String get purchaseAccountMismatchBody => _t(
+    'Langganan aktif ini terikat ke akun Google yang berbeda dari yang '
+        'sedang kamu pakai. Hubungkan akun Google yang sama untuk '
+        'memulihkan Premium — atau, kalau kamu yakin ini keliru dan tidak '
+        'punya akun Google yang sama, hubungi dukungan lewat halaman '
+        'aplikasi ini di Play Store.',
+    'This active subscription is linked to a different Google account '
+        'than the one you\'re using now. Link the same Google account to '
+        'restore Premium — or, if you believe this is wrong and don\'t '
+        'have that same Google account, contact support through this '
+        'app\'s Play Store listing.',
+  );
+  // Offered once, right after a successful purchase, only while still
+  // signed in anonymously — see PaywallScreen's own doc comment on why:
+  // this app never requires linking before buying, so this is the one
+  // moment to explain what an unlinked purchase risks losing.
+  String get purchaseLinkPromptTitle =>
+      _t('Simpan Pembelian Ini', 'Keep This Purchase Safe');
+  String get purchaseLinkPromptBody => _t(
+    'Hubungkan akun Google supaya Premium tidak hilang kalau kamu ganti '
+        'HP atau install ulang aplikasi.',
+    'Link a Google account so Premium isn\'t lost if you switch phones '
+        'or reinstall the app.',
+  );
   // `_MinVersionGate`'s blocking screen — shown only when the server-side
   // `appConfig/minVersion` doc names a `minBuildNumber` higher than this
   // install's own build. Deliberately blunt and final: there is no

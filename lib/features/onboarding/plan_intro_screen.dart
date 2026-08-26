@@ -54,6 +54,7 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
         IapOutcome.pendingVerification => s.purchasePendingVerification,
+        IapOutcome.accountMismatch => s.purchaseAccountMismatch,
       };
       ScaffoldMessenger.of(
         context,

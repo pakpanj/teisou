@@ -1,7 +1,11 @@
 const {onMessagePublished} = require("firebase-functions/v2/pubsub");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 
-const {subscriptionGrants, expiryFromResponse} = require("./iap_states");
+const {
+  subscriptionGrants,
+  expiryFromResponse,
+  GRANTING_SUBSCRIPTION_STATES,
+} = require("./iap_states");
 const {publisher, ANDROID_PACKAGE, playConfigured} = require("./iap");
 
 /**
@@ -80,6 +84,31 @@ function buildSubscriptionPatch(active, response) {
   return patch;
 }
 
+/**
+ * Whether a subscription Play just reported should still read as active,
+ * for the specific `externalId` this notification is about to write to.
+ * Split out as its own pure function — same reasoning as
+ * [extractSubscriptionToken]/[buildSubscriptionPatch] above.
+ *
+ * **`firstClaimed: true` is the one case that must NOT delegate to
+ * [subscriptionGrants].** That function re-checks Play's own account id
+ * against the uid it's given — correct when `externalId` came straight
+ * off Play's response (`firstClaimed: false`, it trivially matches
+ * itself), but for a token this app first-claimed via `iap.js`'s
+ * `claimAndGrant` (see that function's own doc comment), Play's record
+ * has **no** account id at all, so `subscriptionGrants` would always
+ * read `false` there and silently write `tier: "free"` on every renewal
+ * of a subscription this app itself already granted — a real bug caught
+ * while building this, not a hypothetical one. For that case, whether it
+ * still grants is answered by `subscriptionState` alone; ownership was
+ * already decided once, at claim time, and is not re-litigated here.
+ */
+function isStillActive(response, {firstClaimed, uid}) {
+  return firstClaimed
+    ? GRANTING_SUBSCRIPTION_STATES.has(response && response.subscriptionState)
+    : subscriptionGrants(response, uid);
+}
+
 exports.onPlayRtdn = onMessagePublished(RTDN_TOPIC, async (event) => {
   if (!playConfigured()) {
     // Same fail-closed posture as verifyPurchase, mirrored the other
@@ -113,20 +142,39 @@ exports.onPlayRtdn = onMessagePublished(RTDN_TOPIC, async (event) => {
     return;
   }
 
-  const externalId = response.data
+  const boundId = response.data
     && response.data.externalAccountIdentifiers
     && response.data.externalAccountIdentifiers.obfuscatedExternalAccountId;
-  // No uid attached means this purchase predates the app sending one
-  // (see `subscriptionGrants`'s own doc comment) — there is no account
-  // to safely act on, so this is left alone rather than guessed.
-  if (!externalId) return;
 
-  const active = subscriptionGrants(response.data, externalId);
+  let externalId = boundId;
+  let firstClaimed = false;
+
+  if (!externalId) {
+    // No uid attached on Play's own record means this purchase predates
+    // the app sending one (see `subscriptionGrants`'s own doc comment) —
+    // Play itself has no opinion on whose it is. This handler never
+    // *creates* a first-claim binding on its own (it has no notion of
+    // "who is asking right now" the way `verifyPurchase` does when a
+    // learner taps restore) — it only ever *consults* one that a prior
+    // `verifyPurchase` call already recorded in `processedPurchaseTokens`
+    // (see `iap.js`'s `claimAndGrant`), so a token nobody has ever
+    // claimed yet is still correctly left alone rather than guessed.
+    const claim = await getFirestore()
+        .collection("processedPurchaseTokens")
+        .doc(purchaseToken)
+        .get();
+    if (!claim.exists) return;
+    externalId = claim.data().uid;
+    firstClaimed = true;
+  }
+
+  const active = isStillActive(response.data, {firstClaimed, uid: externalId});
   await getFirestore().collection("users").doc(externalId).set({
     subscription: buildSubscriptionPatch(active, response.data),
   }, {merge: true});
 });
 
 module.exports.extractSubscriptionToken = extractSubscriptionToken;
+module.exports.isStillActive = isStillActive;
 module.exports.buildSubscriptionPatch = buildSubscriptionPatch;
 module.exports.RTDN_TOPIC = RTDN_TOPIC;

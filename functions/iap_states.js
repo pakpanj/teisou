@@ -144,11 +144,66 @@ function isRetryablePlayState(response) {
   return false;
 }
 
+/**
+ * The three ways a subscription's Play-side account binding can relate
+ * to the account asking to verify it — see [classifyAccountBinding].
+ * Kept as a plain string enum (matching this file's existing style
+ * elsewhere, e.g. the subscription-state set above) rather than a class,
+ * since the only thing a caller ever does with one is compare it.
+ */
+const AccountBinding = Object.freeze({
+  /** Play's own `obfuscatedExternalAccountId` equals the asking uid —
+   * exactly [subscriptionGrants]'s existing check. Always safe to grant;
+   * Play itself is the authority here. */
+  MATCHED: "matched",
+  /** Play has no account id on this token at all — a purchase made
+   * before this app started sending one (or a Play Console test
+   * purchase that never went through this app's own buy flow), OR a
+   * brand-new purchase Play hasn't propagated the id to yet. The two
+   * cannot be told apart from a single response; see `iap.js`'s
+   * `verifyWithPlay` for how the short retry window (genuine propagation
+   * lag) is separated from the permanent case (first-claim resolution,
+   * `iap.js`'s `claimAndGrant`). */
+  UNBOUND: "unbound",
+  /** Play's own account id is present and belongs to someone else. This
+   * is Play's own record, set once at the original purchase and never
+   * rewritable by this app afterwards — a **permanent, definitive**
+   * answer, never eligible for a retry or a first-claim. Restoring a
+   * purchase can never re-bind it to a new uid; only Firebase Auth
+   * identity (linking the same Google account back) can get the asking
+   * party back to the uid Play already vouches for. */
+  MISMATCHED: "mismatched",
+});
+
+/**
+ * Classifies a `purchases.subscriptionsv2.get` response's account
+ * binding against [uid] — the decision [subscriptionGrants] already
+ * makes internally, exposed as its own three-way verdict so callers
+ * that need to react differently to "never bound" vs. "bound to someone
+ * else" (rather than collapsing both into a plain `false`) can.
+ *
+ * Deliberately does **not** look at `subscriptionState` at all — that is
+ * an orthogonal question ([GRANTING_SUBSCRIPTION_STATES]/
+ * [subscriptionGrants] already answer it) and mixing the two here would
+ * make this impossible to reason about independently. A caller that
+ * needs "does this grant, accounting for both facts" should keep using
+ * [subscriptionGrants]; this function answers "whose token is this",
+ * nothing else.
+ */
+function classifyAccountBinding(response, uid) {
+  const accountId = response && response.externalAccountIdentifiers &&
+      response.externalAccountIdentifiers.obfuscatedExternalAccountId;
+  if (!accountId) return AccountBinding.UNBOUND;
+  return accountId === uid ? AccountBinding.MATCHED : AccountBinding.MISMATCHED;
+}
+
 module.exports = {
   GRANTING_SUBSCRIPTION_STATES,
   PRODUCT_PURCHASED,
+  AccountBinding,
   subscriptionGrants,
   productGrants,
   expiryFromResponse,
   isRetryablePlayState,
+  classifyAccountBinding,
 };

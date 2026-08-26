@@ -18,11 +18,13 @@ enum IapOutcome {
   cancelled,
 
   /// The store genuinely refused, or verification came back with a
-  /// definitive rejection (the purchase is cancelled/expired, or bought
-  /// by a different account). Distinct from [pendingVerification], which
-  /// is what a purchase that is real but not yet provably real gets
-  /// instead — see that value's own doc comment for why the two must
-  /// never be shown the same way.
+  /// definitive rejection (the purchase is cancelled/expired). Distinct
+  /// from [pendingVerification], which is what a purchase that is real
+  /// but not yet provably real gets instead — see that value's own doc
+  /// comment for why the two must never be shown the same way. Also
+  /// distinct from [accountMismatch] — a rejection specifically because
+  /// the purchase belongs to a different account gets its own value,
+  /// since a learner can actually do something about that one.
   failed,
 
   /// The store already took the money — `PurchaseStatus.purchased`
@@ -49,6 +51,20 @@ enum IapOutcome {
   /// The store is not available at all — an emulator without Play
   /// services, a device signed out of the store.
   unavailable,
+
+  /// A real, active purchase — Play confirms it — but bound to a
+  /// **different** account than the one currently signed in
+  /// (`functions/iap_states.js`'s `AccountBinding.MISMATCHED`, thrown by
+  /// `verifyPurchase` as `reason: "account_mismatch"`). Never retryable,
+  /// and never granted no matter how many times restore runs — the fix
+  /// is identity, not persistence. Distinct from a plain [failed] on
+  /// purpose: a screen that knows this happened can offer the one real
+  /// recovery path (`AuthService.linkWithGoogle`, reusing the existing
+  /// account-conflict-switch mechanism the profile screen's own
+  /// Google-linking flow already has — see
+  /// `GoogleAccountConflictException`/`confirmSwitchToExistingGoogleAccount`)
+  /// instead of a dead-end "pembelian gagal" that looks like a bug.
+  accountMismatch,
 }
 
 /// Buying things, and the one rule that makes it worth doing.
@@ -252,6 +268,12 @@ class IapService {
             // recovery path.
             _awaitingPendingConfirmation = true;
             _outcomes.add(IapOutcome.pendingVerification);
+          } else if (result.reason == 'account_mismatch') {
+            // A real, active purchase — just not this account's. See
+            // IapOutcome.accountMismatch's own doc comment for why this
+            // gets its own outcome instead of collapsing into `failed`.
+            _awaitingPendingConfirmation = false;
+            _outcomes.add(IapOutcome.accountMismatch);
           } else {
             _awaitingPendingConfirmation = false;
             _outcomes.add(IapOutcome.failed);
@@ -282,10 +304,15 @@ class IapService {
   /// [retryable] on a non-grant distinguishes a purchase the server is
   /// still trying to confirm (Play propagation lag — see
   /// `functions/iap_states.js`'s `isRetryablePlayState`) from one it has
-  /// definitively rejected. The server already retried internally before
-  /// answering; this is read off `FirebaseFunctionsException.details`,
-  /// not decided here.
-  Future<({bool granted, bool retryable})> _verify(
+  /// definitively rejected. [reason] carries the server's own machine-
+  /// readable explanation for a definitive non-grant — today only ever
+  /// `'account_mismatch'` (`functions/iap.js`'s `verifyPurchase`, thrown
+  /// whenever `AccountBinding.MISMATCHED` or `claimAndGrant` denies a
+  /// second uid's claim on an already-owned token) — `null` for every
+  /// other outcome, including a plain "not active" rejection that has no
+  /// more specific story to tell. Both are read off
+  /// `FirebaseFunctionsException.details`, not decided here.
+  Future<({bool granted, bool retryable, String? reason})> _verify(
     PurchaseDetails purchase,
   ) async {
     // Correlates this attempt's client and server log lines without ever
@@ -310,16 +337,17 @@ class IapService {
         'IAP verify requestId=$requestId productId=${purchase.productID} '
         'status=${purchase.status} granted=$granted',
       );
-      return (granted: granted, retryable: false);
+      return (granted: granted, retryable: false, reason: null);
     } on FirebaseFunctionsException catch (e) {
-      final retryable =
-          e.details is Map && (e.details as Map)['retryable'] == true;
+      final details = e.details is Map ? e.details as Map : const {};
+      final retryable = details['retryable'] == true;
+      final reason = details['reason'] as String?;
       debugPrint(
         'IAP verify requestId=$requestId productId=${purchase.productID} '
         'status=${purchase.status} granted=false code=${e.code} '
-        'retryable=$retryable message=${e.message}',
+        'retryable=$retryable reason=$reason message=${e.message}',
       );
-      return (granted: false, retryable: retryable);
+      return (granted: false, retryable: retryable, reason: reason);
     } catch (e) {
       // A verification that cannot be reached at all (no network, an
       // unexpected client-side error) is not a grant, and not something
@@ -331,7 +359,7 @@ class IapService {
         'status=${purchase.status} granted=false unexpected '
         'error=${e.runtimeType}',
       );
-      return (granted: false, retryable: false);
+      return (granted: false, retryable: false, reason: null);
     }
   }
 

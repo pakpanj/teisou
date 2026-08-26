@@ -7,6 +7,9 @@ const {
   productGrants,
   expiryFromResponse,
   isRetryablePlayState,
+  AccountBinding,
+  classifyAccountBinding,
+  GRANTING_SUBSCRIPTION_STATES,
 } = require("./iap_states");
 
 /**
@@ -177,10 +180,20 @@ async function checkOnce({productId, purchaseToken, packageName, uid, requestId}
  * verifying" instead of a flat failure; `false` for a definitive
  * rejection, on the first attempt already.
  *
- * **Returns the raw Play response on success** (`response.data`) so the
- * caller can read metadata off it — today that's just [applyExpiry]
- * reading `lineItems[0].expiryTime` — without this function needing to
- * know anything about what that metadata is used for.
+ * **Returns `{status, data}`, not just the raw Play response.**
+ * `status: "granted"` means Play itself vouches for [uid] — the exact
+ * meaning this function always had. `status: "unbound"` is new and
+ * premium-only: the subscription is genuinely active but Play has no
+ * account id on it at all, even after the propagation-lag retry window
+ * above ran its course — a permanently unbound (legacy) token, not one
+ * Play just hasn't caught up on yet. This function has no Firestore
+ * access on purpose (see the class doc comment above on why Play-
+ * talking and Firestore-writing stay separate), so it does not decide
+ * whether an unbound token should be granted — it only reports the fact
+ * and lets the caller resolve it against `processedPurchaseTokens`, see
+ * [claimAndGrant]. A response that is present, but for a **different**
+ * account, is thrown immediately as a definitive `account_mismatch` —
+ * Play's own record is permanent and never retried.
  */
 async function verifyWithPlay({
   productId, purchaseToken, packageName, uid, requestId,
@@ -192,10 +205,36 @@ async function verifyWithPlay({
     last = await checkOnce({productId, purchaseToken, packageName, uid, requestId});
     if (last.grants) {
       logger.info("verifyPurchase: granted", {requestId, uid, productId, attempt});
-      return last.data;
+      return {status: "granted", data: last.data};
     }
     if (attempt === delays.length || !isRetryablePlayState(last.data)) break;
     await sleep(delays[attempt]);
+  }
+
+  if (productId === PREMIUM_PRODUCT &&
+      GRANTING_SUBSCRIPTION_STATES.has(last.data && last.data.subscriptionState)) {
+    const binding = classifyAccountBinding(last.data, uid);
+    if (binding === AccountBinding.MISMATCHED) {
+      // Never grant here, and never mark it retryable: Play has already
+      // vouched for a different account on this exact token, and that
+      // fact cannot change by asking again. Restoring cannot re-bind a
+      // purchase to a new uid — only signing back in as the account Play
+      // already recognises (AuthService.linkWithGoogle's existing
+      // conflict-switch flow) gets a learner back to a uid this will
+      // grant for.
+      logger.warn("verifyPurchase: account mismatch", {requestId, uid, productId});
+      throw new HttpsError(
+          "permission-denied",
+          "This purchase is bound to a different account.",
+          {retryable: false, reason: "account_mismatch"},
+      );
+    }
+    if (binding === AccountBinding.UNBOUND) {
+      logger.info("verifyPurchase: unbound, eligible for first-claim", {
+        requestId, uid, productId,
+      });
+      return {status: "unbound", data: last.data};
+    }
   }
 
   const retryable = productId === PREMIUM_PRODUCT && isRetryablePlayState(last.data);
@@ -271,6 +310,87 @@ function applyExpiry(patch, productId, playResponse) {
   return patch;
 }
 
+/**
+ * Resolves ownership of [purchaseToken] and, if owned by [uid], writes
+ * [patch] to `users/{uid}` — the one place a grant actually lands on
+ * Firestore, for every product this app sells, through a single atomic
+ * transaction.
+ *
+ * [bindingStatus] is `"granted"` for a Play-vouched purchase (`verifyWithPlay`
+ * already confirmed [uid] is the right account, or the product is not a
+ * subscription at all and never goes through account binding in the
+ * first place) or `"unbound"` for a subscription Play has no account
+ * opinion on. The two are handled by the exact same transaction, but
+ * with different ownership rules:
+ *
+ * - **`"granted"`**: [uid] may always (re-)claim. Play itself is the
+ *   authority; this ledger's job here is only the pre-existing
+ *   coin-pack-replay-safety concern (an `increment` patch is not
+ *   idempotent the way a subscription/skin patch is), unchanged from
+ *   before this function existed.
+ * - **`"unbound"`**: **first-claim-wins**. Whichever uid's verification
+ *   reaches this transaction first for a given token becomes its
+ *   permanent Firestore-side owner — recorded here, since Play's own
+ *   record has nothing to update. Every later attempt at the same token
+ *   from a **different** uid is refused, `deniedReason: "account_mismatch"`,
+ *   with no exception: this is the one rule that keeps a single
+ *   unbound legacy purchase from being claimed by an unbounded number of
+ *   reinstalls, each getting a fresh anonymous uid. **Never widen this
+ *   to also refuse-then-reassign** — the moment a different uid is
+ *   allowed to take over an already-claimed token, first-claim-wins
+ *   stops meaning anything.
+ *
+ * Atomic and safe against two concurrent restores of the *same* token:
+ * both run inside `firestore.runTransaction`, which serializes on
+ * conflicting reads (Firestore's own optimistic-concurrency contract —
+ * see `test_helpers/fake_firestore.js`'s own doc comment for why that
+ * contract, not just the decision logic, is what a concurrency test
+ * needs to exercise) — exactly one of the two ever observes
+ * `tokenSnap.exists === false` and becomes the first claimant; the
+ * other observes the just-written record and is refused.
+ *
+ * @param {object} options
+ * @param {import("firebase-admin/firestore").Firestore} [options.firestore]
+ *   Injected so this is testable against `test_helpers/fake_firestore.js`
+ *   without a live Firestore — defaults to the real one, mirroring
+ *   `global_points.js`'s `awardPointsForHistoryDoc` (`options.firestore
+ *   || db()`), the established pattern for this exact seam elsewhere in
+ *   this codebase.
+ * @return {Promise<{granted: boolean, firstGrant: boolean, deniedReason: (string|null)}>}
+ */
+async function claimAndGrant({
+  uid, productId, purchaseToken, patch, bindingStatus,
+}, options = {}) {
+  const firestore = options.firestore || getFirestore();
+  const userRef = firestore.collection("users").doc(uid);
+  const tokenRef = firestore.collection("processedPurchaseTokens").doc(purchaseToken);
+
+  let firstGrant = false;
+  let deniedReason = null;
+
+  await firestore.runTransaction(async (tx) => {
+    const tokenSnap = await tx.get(tokenRef);
+    if (tokenSnap.exists) {
+      const owner = tokenSnap.data().uid;
+      if (owner !== uid) {
+        deniedReason = "account_mismatch";
+        return;
+      }
+      return; // idempotent re-verify by the same, already-recorded owner
+    }
+    firstGrant = true;
+    tx.set(tokenRef, {
+      uid,
+      productId,
+      grantedAt: FieldValue.serverTimestamp(),
+      claimedVia: bindingStatus === "unbound" ? "first-claim" : "account-match",
+    });
+    tx.set(userRef, patch, {merge: true});
+  });
+
+  return {granted: deniedReason === null, firstGrant, deniedReason};
+}
+
 exports.verifyPurchase = onCall(async (request) => {
   const uid = request.auth && request.auth.uid;
   if (!uid) {
@@ -315,40 +435,42 @@ exports.verifyPurchase = onCall(async (request) => {
     );
   }
 
-  const playResponse = await verifyWithPlay({
+  const playResult = await verifyWithPlay({
     productId,
     purchaseToken,
     packageName: ANDROID_PACKAGE,
     uid,
     requestId,
   });
-  applyExpiry(patch, productId, playResponse);
-
-  const db = getFirestore();
-  const userRef = db.collection("users").doc(uid);
+  applyExpiry(patch, productId, playResult.data);
 
   // Subscription/skin patches are idempotent by construction (set-merge
   // of the same values / arrayUnion), so verifying one token twice —
   // which `restore()` does routinely — has always safely granted the
   // same thing once. A coin pack's `increment` patch is **not**
   // idempotent that way, so every purchase now goes through this
-  // processed-token ledger regardless of product: the transaction reads
-  // `processedPurchaseTokens/{token}` and only applies the patch if this
-  // exact token has never been recorded before, so a retried or replayed
-  // verification of the same token can never double-grant.
-  const tokenRef = db.collection("processedPurchaseTokens").doc(purchaseToken);
-  let firstGrant = false;
-  await db.runTransaction(async (tx) => {
-    const tokenSnap = await tx.get(tokenRef);
-    if (tokenSnap.exists) return;
-    firstGrant = true;
-    tx.set(tokenRef, {
-      uid,
-      productId,
-      grantedAt: FieldValue.serverTimestamp(),
-    });
-    tx.set(userRef, patch, {merge: true});
+  // processed-token ledger regardless of product. See [claimAndGrant]'s
+  // own doc comment for the full ownership rules — for `playResult
+  // .status === "unbound"` (a legacy subscription Play has no account
+  // opinion on) this transaction is the *only* place ownership is ever
+  // decided, not just a replay guard.
+  const {granted, firstGrant, deniedReason} = await claimAndGrant({
+    uid, productId, purchaseToken, patch, bindingStatus: playResult.status,
   });
+
+  if (!granted) {
+    // "token" deliberately never appears in this message — iap_logging
+    // .test.js checks every logger.* call in this file for that exact
+    // substring, on purpose, so the actual purchase token can never end
+    // up in Cloud Logging even by accident.
+    logger.warn("verifyPurchase: denied — already claimed by a "
+        + "different account", {requestId, uid, productId, deniedReason});
+    throw new HttpsError(
+        "permission-denied",
+        "This purchase is already linked to a different account.",
+        {retryable: false, reason: deniedReason},
+    );
+  }
 
   // A coin pack is consumable: Play refuses to sell the same product id
   // again while a purchase of it sits unconsumed. This is called after
@@ -376,6 +498,8 @@ exports.verifyPurchase = onCall(async (request) => {
 module.exports.entitlementFor = entitlementFor;
 module.exports.applyExpiry = applyExpiry;
 module.exports.playConfigured = playConfigured;
+module.exports.claimAndGrant = claimAndGrant;
+module.exports.verifyWithPlay = verifyWithPlay;
 // Reused by subscription_notifications.js so the RTDN handler talks to
 // the same lazily-built Android Publisher client and the same package
 // name constant, instead of a second copy that could drift.

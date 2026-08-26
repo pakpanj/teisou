@@ -47,6 +47,10 @@ class _CoinTopUpSheetState extends ConsumerState<CoinTopUpSheet> {
         // — but IapOutcome is shared across every purchase type, so the
         // switch stays exhaustive here too.
         IapOutcome.pendingVerification => s.purchasePendingVerification,
+        // Also in practice subscription-only — a coin pack never goes
+        // through account-binding classification — kept for the same
+        // exhaustiveness reason as pendingVerification above.
+        IapOutcome.accountMismatch => s.purchaseAccountMismatch,
       };
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));

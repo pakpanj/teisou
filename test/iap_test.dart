@@ -156,9 +156,13 @@ void main() {
       // The safeguard `increment` specifically needs, unlike the
       // set-merge/arrayUnion patches subscriptions and skins already used
       // — see this file's own comment for why a coin pack can't rely on
-      // that same idempotency.
+      // that same idempotency. `tokenSnap.exists` now branches further
+      // (same-uid idempotent re-verify vs. a different uid's first-claim
+      // conflict, see claimAndGrant's own doc comment / functions
+      // /iap.test.js's behavioral coverage of that split) rather than a
+      // bare early return, but the ledger and the check both still exist.
       expect(iap.contains('processedPurchaseTokens'), isTrue);
-      expect(iap.contains('if (tokenSnap.exists) return;'), isTrue);
+      expect(iap.contains('if (tokenSnap.exists)'), isTrue);
     });
 
     test('a coin pack is consumed after granting, not before or never', () {
@@ -412,6 +416,191 @@ void main() {
         reason: 'the grant decision itself must still come from '
             'subscriptionGrants — retrying must never change what counts '
             'as a grant',
+      );
+    });
+  });
+
+  /// Subscription Recovery Architecture — the fix for "Google Play shows
+  /// an active subscription, Firebase still says free", see
+  /// AUDIT_SUBSCRIPTION_RECOVERY.md / AUDIT_SUBSCRIPTION_RECOVERY_DESIGN.md.
+  /// The transaction-shaped guarantees (first-claim-wins, exactly one
+  /// winner under concurrency) are proven behaviorally in
+  /// `functions/iap.test.js` against a real `FakeFirestore` — what's
+  /// checked here is the client-side wiring: that the new outcome
+  /// reaches every screen, and that recovering an old account reuses
+  /// `AuthService` rather than a second, parallel switch mechanism.
+  group('subscription recovery — account mismatch', () {
+    final iapService =
+        File('lib/core/services/iap_service.dart').readAsStringSync();
+    final paywall =
+        File('lib/features/paywall/paywall_screen.dart').readAsStringSync();
+
+    test('IapOutcome has a value distinct from failed for a real, active '
+        'purchase bound to a different account', () {
+      expect(iapService.contains('accountMismatch'), isTrue);
+    });
+
+    // Scenario 2/6/7: a mismatch is read from the server's own
+    // machine-readable reason, not guessed client-side from a plain
+    // rejection — mirrors the existing retryable-flag test above.
+    test('accountMismatch is decided from the server\'s own reason, not '
+        'inferred from a plain non-retryable failure', () {
+      expect(iapService.contains("result.reason == 'account_mismatch'"), isTrue);
+      expect(iapService.contains("details['reason']"), isTrue);
+    });
+
+    // Same shape as the existing "every screen ... handles
+    // pendingVerification" test above — accountMismatch is exhaustively
+    // required by the compiler in every one of these switches, but a
+    // missing case would silently fall back to whatever Dart's own
+    // exhaustiveness-diagnostic default is rather than a real message,
+    // so it's still worth pinning explicitly.
+    test('every screen offering a purchase result handles '
+        'accountMismatch, not just the four older outcomes', () {
+      for (final path in [
+        'lib/features/onboarding/plan_intro_screen.dart',
+        'lib/features/paywall/paywall_screen.dart',
+        'lib/features/profile/widgets/premium_card.dart',
+        'lib/features/battle/shop_tab.dart',
+        'lib/features/shop/widgets/coin_top_up_sheet.dart',
+      ]) {
+        final source = File(path).readAsStringSync();
+        expect(
+          source.contains('IapOutcome.accountMismatch'),
+          isTrue,
+          reason: '$path has an outcome switch that does not handle '
+              'accountMismatch',
+        );
+      }
+    });
+
+    // Scenario 8/9: reinstall + same Google account recovers the old UID
+    // — via the mechanism the audit found already exists, reused as-is.
+    test('recovering a mismatched account reuses AuthService.linkWithGoogle '
+        '/ GoogleAccountConflictException / '
+        'confirmSwitchToExistingGoogleAccount — no new switch mechanism',
+        () {
+      expect(paywall.contains('.linkWithGoogle()'), isTrue);
+      expect(paywall.contains('GoogleAccountConflictException'), isTrue);
+      expect(
+        paywall.contains('.confirmSwitchToExistingGoogleAccount('),
+        isTrue,
+      );
+      // The design's explicit constraint: reuse, don't reinvent. A
+      // second class implementing its own account-switch flow would
+      // defeat the entire point of the audit finding this mechanism
+      // already existed.
+      expect(paywall.contains('class GoogleAccountConflictException'), isFalse,
+          reason: 'paywall_screen.dart must not redefine this — it belongs '
+              'to auth_service.dart alone');
+    });
+
+    // Design constraint: buying stays possible while anonymous; linking
+    // is offered, never required, and only after money has already
+    // changed hands — checked by position: the isAnonymous check must
+    // sit inside the `outcome == IapOutcome.delivered` block, i.e.
+    // strictly after money has already changed hands, not anywhere
+    // earlier in the buy sequence.
+    test('linking Google is never required before a purchase — only '
+        'offered, and only after delivered', () {
+      expect(paywall.contains('_offerLinkAfterPurchase'), isTrue);
+      final deliveredIndex =
+          paywall.indexOf('if (outcome == IapOutcome.delivered) {');
+      final isAnonymousIndex = paywall.indexOf('.isAnonymous');
+      expect(deliveredIndex, greaterThan(-1));
+      expect(isAnonymousIndex, greaterThan(-1));
+      expect(
+        isAnonymousIndex > deliveredIndex,
+        isTrue,
+        reason: 'isAnonymous is checked before delivery is confirmed — '
+            'that would suggest linking is gating the buy attempt itself, '
+            'not just offered afterward',
+      );
+    });
+
+    final premiumFlow =
+        File('lib/core/services/premium_purchase_flow.dart').readAsStringSync();
+    test('PremiumPurchaseFlow.buy still has no linking/anonymity check of '
+        'its own — confirms the paywall\'s prompt is additive, not a '
+        'gate moved one layer down', () {
+      expect(premiumFlow.contains('isAnonymous'), isFalse);
+    });
+  });
+
+  /// Scenario 9: an existing purchase, detected after the app restarts
+  /// (not just a fresh one mid-session), must go through the exact same
+  /// verify pipeline — there is no separate "cold start" code path to
+  /// forget.
+  group('restore path — existing purchases, not just fresh ones', () {
+    final iapService =
+        File('lib/core/services/iap_service.dart').readAsStringSync();
+
+    test('PurchaseStatus.restored is verified through the identical path '
+        'as PurchaseStatus.purchased — no special-cased branch for '
+        'either', () {
+      final switchStart = iapService.indexOf('switch (purchase.status)');
+      final restoredCase = iapService.indexOf(
+        'case PurchaseStatus.restored:',
+        switchStart,
+      );
+      final purchasedCase = iapService.indexOf(
+        'case PurchaseStatus.purchased:',
+        switchStart,
+      );
+      expect(switchStart, greaterThan(-1));
+      expect(purchasedCase, greaterThan(-1));
+      expect(restoredCase, greaterThan(-1));
+      // Dart's fallthrough-case syntax (`case A: case B: body`) means
+      // both must sit immediately adjacent with nothing but the case
+      // labels between them, sharing the one body that calls `_verify`.
+      final between = iapService.substring(
+        purchasedCase + 'case PurchaseStatus.purchased:'.length,
+        restoredCase,
+      ).trim();
+      expect(
+        between,
+        isEmpty,
+        reason: 'purchased and restored must fall through to the exact '
+            'same body, not be handled by two separately-maintained cases',
+      );
+    });
+
+    /// Scenario 10: the purchase stream is only ever listened to once a
+    /// purchase-capable screen (ShopTab / CoinPurchaseFlow /
+    /// PremiumPurchaseFlow) actually opens — `iapServiceProvider` is a
+    /// plain lazy Riverpod `Provider`, never read from `main.dart` or
+    /// any startup gate. This is a **known, current limitation**,
+    /// documented rather than silently left to drift further: adding
+    /// app-startup purchase-stream listening was explicitly out of
+    /// scope for this pass (it would touch the startup chain
+    /// `MinVersionGate` sits in, which this change was scoped to leave
+    /// alone) — restore stays reachable only by opening one of those
+    /// screens. If a future session adds startup-level restoration,
+    /// this test's own premise flips and it should be rewritten to
+    /// assert the opposite.
+    test('restore is currently reachable only by opening a purchase '
+        'screen — iapServiceProvider is never read from main.dart or any '
+        'startup gate', () {
+      final main = File('lib/main.dart').readAsStringSync();
+      expect(
+        main.contains('iapServiceProvider'),
+        isFalse,
+        reason: 'if this now fails, startup-level purchase recovery was '
+            'added — update this test to assert the new behavior instead '
+            'of treating it as a regression',
+      );
+      final providers = File('lib/core/providers.dart').readAsStringSync();
+      // iapServiceProvider IS defined in providers.dart (that's fine —
+      // it has to be defined somewhere) — the point is that nothing
+      // there reads it eagerly on its own; every provider that reads it
+      // is a screen-triggered one.
+      final defIndex = providers.indexOf('final iapServiceProvider =');
+      expect(defIndex, greaterThan(-1));
+      final beforeDef = providers.substring(0, defIndex);
+      expect(
+        beforeDef.contains('ref.watch(iapServiceProvider)') ||
+            beforeDef.contains('ref.read(iapServiceProvider)'),
+        isFalse,
       );
     });
   });

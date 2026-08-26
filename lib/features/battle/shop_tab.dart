@@ -75,6 +75,10 @@ class _ShopTabState extends ConsumerState<ShopTab> {
           IapOutcome.unavailable => s.storeUnavailable,
           IapOutcome.failed => s.purchaseFailed,
           IapOutcome.pendingVerification => s.purchasePendingVerification,
+          // In practice subscription-only (skins never go through
+          // account-binding classification) — kept for exhaustiveness,
+          // since IapOutcome is shared across every purchase type.
+          IapOutcome.accountMismatch => s.purchaseAccountMismatch,
         }),
       ),
     );
