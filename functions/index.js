@@ -344,6 +344,14 @@ exports.onDokkaiExamHistoryCreated = globalPointsTriggerFor("dokkai");
 exports.onChoukaiExamHistoryCreated = globalPointsTriggerFor("choukai");
 exports.onKanjiComboExamHistoryCreated = globalPointsTriggerFor("kanjiCombo");
 
+// Grants `adRewards` only after AdMob's own signed server-side-
+// verification (SSV) callback, and the server-authoritative half of
+// consuming one — the only two legitimate writers of `adRewards`,
+// which firestore.rules freezes against every client write. See
+// functions/ad_rewards.js.
+exports.adRewards = require("./ad_rewards").adRewards;
+exports.consumeAdReward = require("./ad_rewards").consumeAdReward;
+
 // Card Game Mode — resolves a match nobody is left to advance (opponent
 // left, disconnected, or both players simply stopped answering). Reuses
 // the exact forfeit write the client's own per-round timeout already

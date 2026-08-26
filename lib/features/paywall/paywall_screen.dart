@@ -47,6 +47,11 @@ class PaywallScreen extends ConsumerStatefulWidget {
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   bool _watchingAd = false;
+  // True once the ad has closed with a reward locally signalled and we're
+  // waiting for AdMob's server-side-verification callback to actually
+  // grant `adRewards` — see `AdService.loadAndShowRewarded`'s doc comment
+  // for why `onRewardEarned` alone is never treated as the grant itself.
+  bool _verifyingReward = false;
   StreamSubscription<IapOutcome>? _outcomeSub;
   late final PremiumPurchaseFlow _purchase;
 
@@ -250,46 +255,32 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Future<void> _watchAdForPreview() async {
-    setState(() => _watchingAd = true);
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     final s = ref.read(appStringsProvider);
+    if (uid == null) return; // defensive — this screen is only ever
+    // reachable once appStartupProvider has already resolved.
+    setState(() => _watchingAd = true);
     ref.read(adServiceProvider).loadAndShowRewarded(
-      onRewardEarned: () async {
-        try {
-          final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-          if (uid != null) {
-            await ref
-                .read(progressRepositoryProvider)
-                .unlockAdReward(uid, widget.moduleId);
-            // **Without this the ad buys nothing.** `moduleAccessProvider`
-            // is a `FutureProvider.family` that reads the reward once and
-            // caches it, and its consumer sits in a Home tab held alive by
-            // `AutomaticKeepAliveClientMixin` — so it is never disposed and
-            // never refetches. The reward lands in Firestore, the card stays
-            // locked, and tapping it reopens this same paywall: a learner
-            // can watch the ad every time and never get in. Twice before in
-            // this app a write had no matching read; this is the same shape.
-            ref.invalidate(moduleAccessProvider);
-          }
-        } catch (_) {
-          if (!mounted) return;
-          setState(() => _watchingAd = false);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(s.previewUnlockFailed)),
-          );
-          return;
-        }
+      uid: uid,
+      rewardKey: widget.moduleId,
+      onRewardEarned: () {
+        // Only a local SDK signal that the ad played — never the grant
+        // itself. The real entitlement lands, asynchronously and
+        // independently of this callback, once AdMob's own signed SSV
+        // callback reaches `functions/ad_rewards.js`. Switch the UI into
+        // "confirming" and start watching for the actual grant instead
+        // of assuming it already happened.
         if (!mounted) return;
-        setState(() => _watchingAd = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              widget.singleUse
-                  ? s.previewUnlockedSingleUse(widget.moduleTitle)
-                  : s.previewUnlockedFor(widget.moduleTitle),
-            ),
-          ),
-        );
-        Navigator.of(context).pop();
+        setState(() {
+          _watchingAd = false;
+          _verifyingReward = true;
+        });
+        try {
+          // Fire-and-forget by design — _pollForGrant already catches
+          // every failure internally and always resolves cleanly, so
+          // this try/catch is belt-and-suspenders, not load-bearing.
+          unawaited(_pollForGrant(uid, widget.moduleId, s));
+        } catch (_) {}
       },
       onFailedToLoad: () {
         if (!mounted) return;
@@ -305,6 +296,60 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           SnackBar(content: Text(s.adClosedEarly)),
         );
       },
+    );
+  }
+
+  /// Polls `adRewards` in Firestore for [rewardKey] to actually appear,
+  /// since the SSV grant arrives asynchronously relative to the ad
+  /// closing — never synchronously, and not guaranteed within any fixed
+  /// time. Deliberately bounded (not an indefinite wait): if the grant
+  /// hasn't landed after [_maxVerifyAttempts] tries, this stops polling
+  /// and says so rather than leaving the button spinning forever — but
+  /// the grant itself is entirely server-side and keeps working whether
+  /// or not anything is still listening for it here, including after the
+  /// learner has closed this screen or the app entirely (`!mounted` below
+  /// only stops *this screen's* polling, it changes nothing about
+  /// whether the reward eventually lands).
+  static const _verifyPollInterval = Duration(seconds: 3);
+  static const _maxVerifyAttempts = 20; // ~60s total
+
+  Future<void> _pollForGrant(String uid, String rewardKey, AppStrings s) async {
+    for (var attempt = 0; attempt < _maxVerifyAttempts; attempt++) {
+      await Future.delayed(_verifyPollInterval);
+      if (!mounted) return;
+      try {
+        final rewards =
+            await ref.read(progressRepositoryProvider).getAdRewards(uid);
+        final reward = rewards[rewardKey];
+        if (reward != null && reward.isActive) {
+          // Same reasoning as the removed write used to carry: without
+          // this, moduleAccessProvider's cached FutureProvider.family
+          // result never refetches on its own.
+          ref.invalidate(moduleAccessProvider);
+          if (!mounted) return;
+          setState(() => _verifyingReward = false);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                widget.singleUse
+                    ? s.previewUnlockedSingleUse(widget.moduleTitle)
+                    : s.previewUnlockedFor(widget.moduleTitle),
+              ),
+            ),
+          );
+          Navigator.of(context).maybePop();
+          return;
+        }
+      } catch (_) {
+        // A transient read failure here just means "try again next tick"
+        // — it says nothing about whether the server-side grant itself
+        // succeeded or failed.
+      }
+    }
+    if (!mounted) return;
+    setState(() => _verifyingReward = false);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(s.adRewardStillVerifying)),
     );
   }
 
@@ -447,12 +492,28 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: _watchingAd ? null : _watchAdForPreview,
-                    child: _watchingAd
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2),
+                    onPressed: (_watchingAd || _verifyingReward)
+                        ? null
+                        : _watchAdForPreview,
+                    child: (_watchingAd || _verifyingReward)
+                        ? Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(strokeWidth: 2),
+                              ),
+                              if (_verifyingReward) ...[
+                                const SizedBox(width: 10),
+                                Flexible(
+                                  child: Text(
+                                    s.verifyingRewardButton,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ],
                           )
                         : Text(
                             widget.singleUse

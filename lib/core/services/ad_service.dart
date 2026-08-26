@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io' show Platform;
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -190,13 +192,39 @@ class AdService {
     ad.show();
   }
 
-  /// Loads and immediately shows a rewarded ad. Calls [onRewardEarned] only
-  /// if the user watched it through; calls [onFailedToLoad] if the ad
-  /// couldn't be fetched (no retry); calls [onDismissedWithoutReward] if the
-  /// ad loaded and showed but the user closed it before earning the reward
-  /// — without this, a caller waiting on [onRewardEarned] alone would hang
-  /// forever on that exact path, since neither callback used to fire.
+  /// Loads and immediately shows a rewarded ad.
+  ///
+  /// When [uid] and [rewardKey] are both given, this first attaches
+  /// AdMob's server-side-verification (SSV) options so the callback that
+  /// later reaches `functions/ad_rewards.js` carries them — that Cloud
+  /// Function, not this method, is what actually grants
+  /// `users/{uid}.adRewards`. [onRewardEarned] fires from the SDK's own
+  /// local, on-device signal that the ad played through — a real event,
+  /// but **not proof of entitlement** (spoofable on a modified client, and
+  /// arrives before, not after, AdMob's own signed callback). A caller
+  /// that passes [rewardKey] must only use [onRewardEarned] to switch the
+  /// UI into a "confirming your reward" state and then watch/poll
+  /// `adRewards` in Firestore for the actual grant — never write anything
+  /// to Firestore from it directly.
+  ///
+  /// [uid]/[rewardKey] are optional (not every rewarded-ad call site in
+  /// this app grants `adRewards` — `EditNameDialog`'s free-tier rename
+  /// ad, for one, performs its action directly from [onRewardEarned] with
+  /// no entitlement/access-control state involved at all, predating and
+  /// unrelated to the `adRewards` system audited in
+  /// AUDIT_PHASE_B1/B2/B3_*.md). Omitting them just means no SSV options
+  /// are attached — `ad_rewards.js` would reject a callback carrying no
+  /// `custom_data` as malformed, which is correct: an ad watched through
+  /// this path was never meant to grant `adRewards` in the first place.
+  ///
+  /// [onFailedToLoad] fires if the ad couldn't be fetched (no retry);
+  /// [onDismissedWithoutReward] fires if the ad loaded and showed but the
+  /// user closed it before earning the reward — without this, a caller
+  /// waiting on [onRewardEarned] alone would hang forever on that exact
+  /// path, since neither callback used to fire.
   void loadAndShowRewarded({
+    String? uid,
+    String? rewardKey,
     required VoidCallback onRewardEarned,
     VoidCallback? onFailedToLoad,
     VoidCallback? onDismissedWithoutReward,
@@ -205,8 +233,35 @@ class AdService {
       adUnitId: rewardedAdUnitId,
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
-        onAdLoaded: (ad) {
+        onAdLoaded: (ad) async {
           var earned = false;
+          try {
+            if (uid != null && rewardKey != null) {
+              // Only two fields exist on this plugin's SSV options
+              // (verified against the installed google_mobile_ads source —
+              // there is no separate nonce/request-id slot), so the nonce
+              // rides inside customData's JSON alongside rewardKey. The
+              // nonce itself is defense-in-depth only, not the real replay
+              // guard — AdMob's own `transaction_id` (independent of
+              // anything sent here) is what `ad_rewards.js` actually keys
+              // idempotency on.
+              await ad.setServerSideOptions(
+                ServerSideVerificationOptions(
+                  userId: uid,
+                  customData: jsonEncode({
+                    'rewardKey': rewardKey,
+                    'nonce': _randomNonce(),
+                  }),
+                ),
+              );
+            }
+          } catch (error) {
+            // Not fatal to the ad flow: showing without SSV options
+            // attached just means AdMob's callback arrives with no
+            // user_id/custom_data, which ad_rewards.js already rejects as
+            // unrecognised — better than blocking the ad over this.
+            debugPrint('setServerSideOptions failed: $error');
+          }
           ad.fullScreenContentCallback = FullScreenContentCallback(
             onAdDismissedFullScreenContent: (ad) {
               ad.dispose();
@@ -231,4 +286,10 @@ class AdService {
       ),
     );
   }
+
+  static final _nonceRandom = Random.secure();
+
+  static String _randomNonce() =>
+      List.generate(16, (_) => _nonceRandom.nextInt(16).toRadixString(16))
+          .join();
 }

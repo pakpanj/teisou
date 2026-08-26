@@ -359,23 +359,30 @@ class ProgressRepository {
     );
   }
 
-  /// Grants a 24h preview unlock for [moduleId] after a rewarded ad finishes.
-  /// The 24h window is a backstop expiry, not the intended usage model for
-  /// every caller — some callers (e.g. the avatar picker) revoke this via
-  /// [consumeAdReward] the moment it's spent once, well before it would
-  /// naturally expire.
-  Future<void> unlockAdReward(String uid, String moduleId) {
-    final reward = AdReward.unlockNow(moduleId);
-    return _userDoc(uid).set({
-      'adRewards': {moduleId: reward.toMap()},
-    }, SetOptions(merge: true));
-  }
+  /// **There is no client-side grant method here anymore.** `adRewards` is
+  /// access-control state — see `firestore.rules`' `isAllowedPurchaseWrite`
+  /// — and a rewarded ad's `onUserEarnedReward` callback is only a local
+  /// SDK signal, not proof an ad was genuinely watched (spoofable on a
+  /// modified client). The only legitimate writer is `functions/
+  /// ad_rewards.js`'s `adRewards` Cloud Function, triggered by AdMob's own
+  /// signed server-side-verification (SSV) callback — see
+  /// `AdService.loadAndShowRewarded`'s doc comment for the client half of
+  /// this flow. Callers watch [getAdRewards] (or `moduleAccessProvider`)
+  /// after showing the ad to learn whether the grant has actually landed.
 
   /// Revokes an ad-reward unlock immediately after it's been spent on one
-  /// action, instead of leaving it active until its 24h expiry. Used where
-  /// "watch an ad" is meant to grant a single use, not a time window.
-  Future<void> consumeAdReward(String uid, String moduleId) {
-    return _userDoc(uid).update({'adRewards.$moduleId': FieldValue.delete()});
+  /// action, instead of leaving it active until its 24h expiry — used where
+  /// "watch an ad" is meant to grant a single use, not a time window. Routed
+  /// through the `consumeAdReward` Cloud Function rather than a direct
+  /// Firestore write for the same reason [unlockAdReward] used to be one
+  /// and no longer is: `adRewards` is frozen against every client write, so
+  /// there is no direct-write version of this to fall back to. Only ever
+  /// removes a key [uid] (the calling user, enforced server-side via
+  /// `request.auth.uid`) already holds — it can't grant anything.
+  Future<void> consumeAdReward(String uid, String moduleId) async {
+    await _functions.httpsCallable('consumeAdReward').call({
+      'rewardKey': moduleId,
+    });
   }
 
   /// Records "Ingatkan Saya" interest for a coming-soon module.

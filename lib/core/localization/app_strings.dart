@@ -1389,6 +1389,12 @@ class AppStrings {
     '$moduleTitle terbuka — berlaku untuk 1x ganti foto.',
     '$moduleTitle unlocked — good for one photo change.',
   );
+  String get verifyingRewardButton =>
+      _t('Memverifikasi Reward...', 'Verifying Reward...');
+  String get adRewardStillVerifying => _t(
+    'Reward belum masuk. Verifikasi bisa butuh waktu — coba buka lagi sebentar lagi.',
+    'Reward hasn\'t landed yet. Verification can take a moment — try opening this again shortly.',
+  );
   // Emoji prefixes lived on these four until 2026-08-24, when real icon
   // badge art (`assets/premium_icons/`) replaced them on `PaywallScreen`
   // — stripped here too since `plan_intro_screen.dart`'s own bullet list
