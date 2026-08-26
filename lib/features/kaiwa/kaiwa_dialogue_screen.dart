@@ -12,6 +12,7 @@ import '../../data/models/jlpt_level.dart';
 import '../../data/models/kaiwa_answer_option.dart';
 import '../../data/models/kaiwa_entry.dart';
 import '../../data/models/kaiwa_line.dart';
+import '../../data/models/xp_progress.dart';
 import 'kaiwa_providers.dart';
 import 'widgets/kaiwa_image.dart';
 import '../../core/services/japanese_voices.dart';
@@ -146,7 +147,9 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
         await repo.markLearned(uid, _entry.id, _entry.category);
         // Only on the way to learned, never on unmark — toggling back and
         // forth must not farm XP.
-        await ref.read(progressRepositoryProvider).addXp(uid, 2);
+        await ref
+            .read(progressRepositoryProvider)
+            .addXp(uid, XpAction.wordLearned);
         ref.invalidate(xpProgressProvider);
       }
       ref.invalidate(kaiwaLearnedIdsProvider);

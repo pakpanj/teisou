@@ -8,6 +8,7 @@ import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kotoba_entry.dart';
 import '../../data/models/sentence_example.dart';
+import '../../data/models/xp_progress.dart';
 import 'kotoba_providers.dart';
 import 'widgets/kotoba_image.dart';
 
@@ -80,7 +81,9 @@ class _KotobaWordDetailScreenState
         await repo.markLearned(uid, _entry.id, _entry.category);
         // Only on the way to learned, never on unmark — toggling back and
         // forth must not farm XP.
-        await ref.read(progressRepositoryProvider).addXp(uid, 2);
+        await ref
+            .read(progressRepositoryProvider)
+            .addXp(uid, XpAction.wordLearned);
         ref.invalidate(xpProgressProvider);
       }
       ref.invalidate(kotobaLearnedIdsProvider);

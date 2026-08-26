@@ -90,6 +90,27 @@ class FakeDocRef {
     const doc = this._store.docs.get(this.path);
     return new FakeSnapshot(this.path, doc);
   }
+
+  /** A plain, non-transactional `.set(data, {merge})` — added for
+   * `award_xp.js`'s `awardXp`, which (unlike every prior caller of this
+   * fake) writes directly rather than always going through
+   * `runTransaction`. Uses the same `applyWrite` merge logic and the
+   * same version-bump the transaction commit path uses, so a concurrent
+   * transaction that already `.get()`'d this document still correctly
+   * detects the conflict — a plain write is not exempt from the
+   * optimistic-concurrency model this fake exists to model faithfully. */
+  async set(data, opts) {
+    const existing = this._store.docs.get(this.path);
+    const merged = applyWrite(
+        existing ? existing.data : undefined,
+        data,
+        Boolean(opts && opts.merge),
+    );
+    this._store.docs.set(this.path, {
+      data: merged,
+      version: existing ? existing.version + 1 : 1,
+    });
+  }
 }
 
 class FakeCollectionRef {
@@ -115,15 +136,21 @@ class FakeCollectionRef {
   }
 }
 
-/** Applies Firestore's own `FieldValue.increment`/`serverTimestamp`
- * sentinels the same way a real `.set(data, {merge})` would, against an
- * `existing` plain-object document (or `undefined` if none). Detected by
- * constructor name rather than `instanceof` — these are internal
- * `@google-cloud/firestore` classes with no exported type to import and
- * check against directly; confirmed the exact shape via
- * `node -e "console.log(FieldValue.increment(5))"` against the real
- * installed package: `NumericIncrementTransform { operand: 5 }` and
- * `ServerTimestampTransform {}`. */
+/** Applies Firestore's own `FieldValue.increment`/`serverTimestamp`/
+ * `arrayUnion` sentinels the same way a real `.set(data, {merge})`
+ * would, against an `existing` plain-object document (or `undefined` if
+ * none). Detected by constructor name rather than `instanceof` — these
+ * are internal `@google-cloud/firestore` classes with no exported type
+ * to import and check against directly; confirmed the exact shape via
+ * `node -e "console.log(FieldValue.increment(5))"` (and the `arrayUnion`
+ * equivalent, added when `award_xp.js` needed it) against the real
+ * installed package: `NumericIncrementTransform { operand: 5 }`,
+ * `ServerTimestampTransform {}`, and `ArrayUnionTransform { elements:
+ * [...] }`. `arrayUnion` recurses one level so it works for a *nested*
+ * merge target too (`xp: {unlockedFrameIds: FieldValue.arrayUnion(id)}}`
+ * — the exact shape `award_xp.js`/`spend_coins.js` both write) — plain
+ * top-level recursion is enough since neither caller nests it any
+ * deeper. */
 function applyWrite(existing, incomingData, merge) {
   const base = merge && existing ? {...existing} : {};
   for (const [key, value] of Object.entries(incomingData)) {
@@ -131,6 +158,19 @@ function applyWrite(existing, incomingData, merge) {
       base[key] = (typeof base[key] === "number" ? base[key] : 0) + value.operand;
     } else if (value && value.constructor && value.constructor.name === "ServerTimestampTransform") {
       base[key] = new Date();
+    } else if (value && value.constructor && value.constructor.name === "ArrayUnionTransform") {
+      const current = Array.isArray(base[key]) ? base[key] : [];
+      const merged = [...current];
+      for (const el of value.elements) {
+        if (!merged.includes(el)) merged.push(el);
+      }
+      base[key] = merged;
+    } else if (value && typeof value === "object" && value.constructor === Object) {
+      // A nested plain map (e.g. `xp: {claimedLevel: 1, unlockedFrameIds:
+      // FieldValue.arrayUnion(id)}}`) — recurse so the transforms inside
+      // it get the same treatment, merged against whatever's already at
+      // that nested key.
+      base[key] = applyWrite(base[key], value, true);
     } else {
       base[key] = value;
     }

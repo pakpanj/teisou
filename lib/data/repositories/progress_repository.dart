@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 import '../../core/constants/avatars.dart';
 import '../../core/constants/covers.dart';
@@ -23,10 +24,15 @@ import '../models/xp_progress.dart';
 class ProgressRepository {
   final FirebaseFirestore _firestore;
   final Random _random;
+  final FirebaseFunctions _functions;
 
-  ProgressRepository({FirebaseFirestore? firestore, Random? random})
-    : _firestore = firestore ?? FirebaseFirestore.instance,
-      _random = random ?? Random();
+  ProgressRepository({
+    FirebaseFirestore? firestore,
+    Random? random,
+    FirebaseFunctions? functions,
+  }) : _firestore = firestore ?? FirebaseFirestore.instance,
+       _random = random ?? Random(),
+       _functions = functions ?? FirebaseFunctions.instance;
 
   DocumentReference<Map<String, dynamic>> _userDoc(String uid) =>
       _firestore.collection(FirestorePaths.users).doc(uid);
@@ -172,7 +178,7 @@ class ProgressRepository {
     // whether the streak specifically continued vs. reset, since "opened
     // the app and did something today" is the thing being rewarded, not
     // the streak counter itself.
-    await addXp(uid, 5);
+    await addXp(uid, XpAction.dailyActive);
   }
 
   String _dateKey(DateTime date) =>
@@ -475,71 +481,64 @@ class ProgressRepository {
     );
   }
 
-  /// Adds [amount] XP for one completed learning action. Best-effort and
-  /// silent on failure, same reasoning as every other Firestore mirror in
-  /// this repository: by the time this is called the real action (marking
-  /// something learned, submitting an exam) has already succeeded, so a
-  /// network hiccup awarding XP must never surface as an error on top of
-  /// it.
-  Future<void> addXp(String uid, int amount) async {
+  /// Awards the fixed XP amount for [action], via the `awardXp` Cloud
+  /// Function — **not** a direct Firestore write. `xp.totalXp` is frozen
+  /// against every client write (`firestore.rules`'
+  /// `isAllowedPurchaseWrite`); the amount for each [XpAction] is decided
+  /// server-side, in `functions/award_xp.js`'s `XP_AMOUNTS` table, not by
+  /// this caller — see [XpAction]'s own doc comment for why. Best-effort
+  /// and silent on failure, same reasoning as every other Firestore
+  /// mirror in this repository: by the time this is called the real
+  /// action (marking something learned, submitting an exam) has already
+  /// succeeded, so a network hiccup awarding XP must never surface as an
+  /// error on top of it.
+  Future<void> addXp(String uid, XpAction action) async {
     try {
-      await _userDoc(uid).set({
-        'xp': {'totalXp': FieldValue.increment(amount)},
-      }, SetOptions(merge: true));
+      await _functions.httpsCallable('awardXp').call({
+        'action': action.name,
+      });
     } catch (_) {}
   }
 
-  /// Claims the reward for the next unclaimed level: one random still-
-  /// locked avatar/frame/cover preset, permanently unlocked (recorded
-  /// separately from [Subscription] — earned, not rented, so it survives
-  /// a lapsed premium subscription rather than being tied to it).
+  /// Claims the reward for the next unclaimed level, via the
+  /// `claimXpReward` Cloud Function — **not** a direct Firestore
+  /// read-then-write. `xp.claimedLevel` and
+  /// `xp.unlocked{Avatar,Frame,Cover}Ids` are frozen against every client
+  /// write, same as `xp.totalXp`; the pool-building, the random pick, and
+  /// consuming the pending-reward counter all happen server-side now,
+  /// inside one Firestore transaction (so two concurrent claims can never
+  /// double-grant — see `award_xp.js`'s own doc comment).
   ///
-  /// Returns null when there is nothing to claim ([XpProgress.pendingRewards]
-  /// is 0) or the reward pool is exhausted (every premium preset already
-  /// unlocked) — the second case still spends the pending reward, so a
-  /// claim that can't be filled doesn't stay stuck offering one forever.
+  /// **Option A — Premium Exclusive (locked product decision).** The
+  /// server-side pool is built from each catalog's ad-tier and coin-tier
+  /// ids only — a subscription-exclusive avatar/frame/cover
+  /// (`isPremiumOnly`) is never in it, regardless of level. This method
+  /// does not enforce that itself; it is enforced entirely by what
+  /// `award_xp.js`'s `REWARD_POOL` contains.
+  ///
+  /// Returns null when there is nothing to claim, or the reward pool is
+  /// exhausted (every ad/coin-tier preset already owned) — the second
+  /// case still spends the pending reward server-side, so a claim that
+  /// can't be filled doesn't stay stuck offering one forever. Throws on
+  /// a genuine failure (signed out, network) — unlike [addXp], a claim is
+  /// a direct user action with its own "you got X" UI, so silently
+  /// swallowing a failure here would show nothing where the learner
+  /// expects a reward.
   Future<XpReward?> claimLevelReward(String uid) async {
-    final snapshot = await _userDoc(uid).get();
-    final xpMap = snapshot.data()?['xp'] as Map<String, dynamic>?;
-    final progress = XpProgress.fromMap(xpMap);
-    if (progress.pendingRewards <= 0) return null;
+    final result = await _functions.httpsCallable('claimXpReward').call();
+    final data = result.data;
+    if (data is! Map || data['reward'] == null) return null;
 
-    final unlockedAvatars = _stringList(xpMap?['unlockedAvatarIds']);
-    final unlockedFrames = _stringList(xpMap?['unlockedFrameIds']);
-    final unlockedCovers = _stringList(xpMap?['unlockedCoverIds']);
-
-    final pool = <XpReward>[
-      for (final p in AvatarPresets.premium)
-        if (!unlockedAvatars.contains(p.id))
-          XpReward(kind: XpRewardKind.avatar, id: p.id, label: p.emoji),
-      for (final f in FramePresets.all)
-        if (FramePresets.isLocked(f.id) && !unlockedFrames.contains(f.id))
-          XpReward(kind: XpRewardKind.frame, id: f.id, label: f.label),
-      for (final c in CoverPresets.all)
-        if (CoverPresets.isLocked(c.id) && !unlockedCovers.contains(c.id))
-          XpReward(kind: XpRewardKind.cover, id: c.id, label: c.label),
-    ];
-
-    if (pool.isEmpty) {
-      await _userDoc(uid).set({
-        'xp': {'claimedLevel': progress.claimedLevel + 1},
-      }, SetOptions(merge: true));
-      return null;
-    }
-
-    final reward = pool[_random.nextInt(pool.length)];
-    const fieldByKind = {
-      XpRewardKind.avatar: 'unlockedAvatarIds',
-      XpRewardKind.frame: 'unlockedFrameIds',
-      XpRewardKind.cover: 'unlockedCoverIds',
+    final reward = data['reward'] as Map;
+    final kindName = reward['kind'] as String;
+    final id = reward['id'] as String;
+    final kind = XpRewardKind.values.byName(kindName);
+    final label = switch (kind) {
+      XpRewardKind.avatar => AvatarPresets.byId(id)?.emoji ?? '',
+      XpRewardKind.frame => FramePresets.byId(id)?.label ?? '',
+      XpRewardKind.cover => CoverPresets.byId(id)?.label ?? '',
     };
-    await _userDoc(uid).set({
-      'xp': {
-        'claimedLevel': progress.claimedLevel + 1,
-        fieldByKind[reward.kind]!: FieldValue.arrayUnion([reward.id]),
-      },
-    }, SetOptions(merge: true));
-    return reward;
+    return XpReward(kind: kind, id: id, label: label);
   }
 
   Future<Set<String>> getUnlockedAvatarIds(String uid) =>

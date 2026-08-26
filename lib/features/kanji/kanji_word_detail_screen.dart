@@ -10,6 +10,7 @@ import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_entry.dart';
 import '../../data/models/sentence_example.dart';
+import '../../data/models/xp_progress.dart';
 import '../search/widgets/jlpt_badge.dart';
 import 'kanji_providers.dart';
 
@@ -81,7 +82,9 @@ class _KanjiWordDetailScreenState extends ConsumerState<KanjiWordDetailScreen> {
         await repo.markLearned(uid, _entry.id, _entry.jlptLevel.key);
         // Only on the way to learned, never on unmark — toggling back and
         // forth must not farm XP.
-        await ref.read(progressRepositoryProvider).addXp(uid, 2);
+        await ref
+            .read(progressRepositoryProvider)
+            .addXp(uid, XpAction.wordLearned);
         ref.invalidate(xpProgressProvider);
       }
       ref.invalidate(kanjiLearnedIdsProvider);

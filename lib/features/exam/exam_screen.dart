@@ -10,6 +10,7 @@ import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_question.dart';
 import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
+import '../../data/models/xp_progress.dart';
 import '../exam_result/exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
 import 'exam_providers.dart';
@@ -178,7 +179,9 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       // mini-list or the full history screen until this invalidation was
       // added. See CLAUDE.md's exam-history-screen fix update for detail.
       ref.invalidate(fullExamHistoryProvider);
-      await ref.read(progressRepositoryProvider).addXp(user.uid, 10);
+      await ref
+          .read(progressRepositoryProvider)
+          .addXp(user.uid, XpAction.examCompleted);
       ref.invalidate(xpProgressProvider);
 
       if (!mounted) return;

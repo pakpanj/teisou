@@ -35,9 +35,13 @@ service cloud.firestore {
           && request.resource.data.get('subscription', {})
               .get('tier', 'free') == 'free'
           && !('entitlements' in request.resource.data)
-          && request.resource.data.get('coins', 0) == 0;
+          && request.resource.data.get('coins', 0) == 0
+          && !('adRewards' in request.resource.data)
+          && !('xp' in request.resource.data);
       allow update: if request.auth != null && request.auth.uid == uid
           && isAllowedAvatarWrite()
+          && isAllowedProfileWrite()
+          && isAllowedCardSkinWrite()
           && isAllowedPurchaseWrite()
           && request.resource.data.get('cardGameRank', null)
               == resource.data.get('cardGameRank', null);
@@ -49,8 +53,47 @@ service cloud.firestore {
       // bernilai null pada delete sehingga selalu gagal). Menulis ulang
       // sebagai create/update/tanpa-delete di sini menjaga perilaku itu
       // secara sengaja, bukan lagi kebetulan.
-
-      match /{document=**} {
+      //
+      // **Security & Monetization Remediation, Phase 3 — Recursive
+      // Wildcard Bypass (celah kritis, ditemukan lewat
+      // firestore_rules_tests/, real Firestore Rules Emulator).**
+      // Versi lama di sini adalah `match /{document=**} { allow read,
+      // write: if owner; } }` LANGSUNG di bawah `match /users/{uid}`.
+      // Firestore's recursive wildcard (`{name=**}`) mencocokkan NOL
+      // ATAU LEBIH segmen path — jadi blok itu bukan cuma mencocokkan
+      // subcollection `users/{uid}/apa saja`, tapi JUGA dokumen
+      // `users/{uid}` itu sendiri (dengan nol segmen tersisa). Firestore
+      // rules meng-UNION semua blok yang cocok pada satu path — jadi
+      // grant longgar "boleh tulis apa saja" dari blok wildcard ini
+      // otomatis berlaku juga untuk `users/{uid}` sendiri, membuat
+      // SELURUH pembatasan di `allow create`/`allow update` di atas
+      // (adRewards, xp, avatar/frame/cover/card-skin ownership,
+      // cardGameRank, subscription/entitlements/coins) bisa dilewati
+      // begitu saja lewat satu `updateDoc` langsung ke dokumen
+      // `users/{uid}` — dibuktikan lewat
+      // firestore_rules_tests/wildcard_probe.test.js sebelum diperbaiki
+      // di sini.
+      //
+      // **Perbaikan**: sisipkan satu segmen path bernama WAJIB
+      // (`{subcollection}`) sebelum wildcard rekursif. Firestore Rules
+      // tidak punya sintaks "satu atau lebih segmen" langsung, tapi
+      // menamai satu segmen tetap lalu baru wildcard rekursif di
+      // bawahnya adalah idiom resmi untuk maksud yang sama:
+      // `{subcollection}` WAJIB cocok dengan tepat satu segmen (nama
+      // subcollection, mis. `friends`, `clanInvites`, `kanjiProgress`),
+      // dan dokumen `users/{uid}` sendiri (nol segmen tersisa setelah
+      // `/users/{uid}`) tidak pernah punya segmen itu untuk dicocokkan
+      // — jadi blok ini sekarang HANYA mencocokkan sesuatu yang
+      // benar-benar berada DI DALAM sebuah subcollection, tidak pernah
+      // dokumen induknya sendiri. `{document=**}` di bawah
+      // `{subcollection}` tetap boleh nol atau lebih segmen — itu
+      // sengaja, supaya dokumen langsung di dalam satu subcollection
+      // (`users/{uid}/friends/{friendUid}`) MAUPUN yang lebih dalam
+      // lagi (kalau suatu saat ada) tetap tercakup sama seperti
+      // sebelumnya. Cakupan izin (siapa boleh baca/tulis) sama sekali
+      // tidak berubah — hanya PATH yang dicocokkan yang dipersempit
+      // supaya tidak lagi menyentuh `users/{uid}` itu sendiri.
+      match /{subcollection}/{document=**} {
         allow read, write: if request.auth != null && request.auth.uid == uid;
       }
     }
@@ -602,6 +645,52 @@ service cloud.firestore {
     // atau bisa didapat gratis, client yang bisa menulis nilainya sendiri
     // membuat seluruh verifikasi jadi sandiwara — sama seperti alasan
     // `cardGameRank` di atas tidak boleh ditulis client.
+    //
+    // `adRewards` ikut dibekukan di sini juga (Security & Monetization
+    // Remediation Plan, Blocker #1/Phase 0), meski bukan "uang" secara
+    // harfiah: field ini adalah bukti unlock 24 jam yang dipercaya penuh
+    // oleh `moduleAccessProvider` (lib/features/paywall/module_access.dart)
+    // untuk lima modul premium (particle/kaiwa/choukai/kanji/bunpou) dan
+    // oleh `canCreateClan` untuk slot clan tambahan — client yang bisa
+    // menulis field ini sendiri berarti bisa memberi dirinya sendiri akses
+    // premium permanen tanpa nonton iklan sama sekali, persis sandiwara
+    // yang sama seperti `coins`/`subscription` di atas. Penulis sah
+    // satu-satunya, setelah Phase 0 diikuti dengan Cloud Function AdMob
+    // SSV (belum ada di repo ini per rencana), adalah Cloud Function itu
+    // sendiri lewat Admin SDK. Sampai Cloud Function itu ada, field ini
+    // sengaja dibekukan total — grant iklan yang sudah aktif tetap bisa
+    // DIBACA (lihat rule read di atas), hanya tidak bisa ditulis ulang
+    // atau diperpanjang oleh client. Konsekuensi yang diterima secara
+    // sadar: `unlockAdReward`/`consumeAdReward`
+    // (lib/data/repositories/progress_repository.dart) akan mulai gagal
+    // dengan `permission-denied` sampai Cloud Function penggantinya ada —
+    // ini bukan bug, ini persis skenario "at the cost of temporarily
+    // breaking the legitimate ad-reward flow" yang sudah disetujui di
+    // rencana implementasi.
+    //
+    // `xp` ikut dibekukan total di sini juga (Security & Monetization
+    // Remediation Plan, Blocker #2/Phase 1). Dulu `xp.totalXp` ditambah
+    // langsung oleh client (`ProgressRepository.addXp`) dan
+    // `xp.unlockedAvatarIds`/`unlockedFrameIds`/`unlockedCoverIds`
+    // (bukti hadiah naik level, `claimLevelReward`) juga ditulis client
+    // — field yang terakhir ini secara sengaja TIDAK dibekukan waktu
+    // `spend_coins.js` pertama kali menulis ke sana, karena "cosmetic
+    // yang didapat gratis dari main tidak pernah dianggap perlu
+    // dilindungi". Alasan itu berhenti berlaku begitu Keputusan Produk
+    // "Option A — Premium Exclusive" dikunci: hadiah naik level TIDAK
+    // BOLEH pernah memberi item yang subscription-exclusive
+    // (`AvatarPresets`/`FramePresets`/`CoverPresets.isPremiumOnly`), dan
+    // menjaga aturan itu hanya berarti sesuatu kalau field yang mencatat
+    // "item apa yang sudah didapat lewat XP" tidak bisa dipalsukan
+    // client — persis sandiwara yang sama dengan `coins`/`adRewards` di
+    // atas. Sekarang, setelah `claimLevelReward` pindah sepenuhnya ke
+    // Cloud Function (`functions/award_xp.js`), tidak ada lagi penulis
+    // client yang sah untuk field mana pun di bawah `xp` — makanya
+    // seluruh map dibekukan sekaligus, bukan per-field seperti
+    // `subscription`/`entitlements`, karena tidak ada pengecualian yang
+    // perlu dijaga lagi. `globalPoints` (leaderboard/{uid}, sistem
+    // ranking terpisah) TIDAK disentuh oleh rule ini sama sekali — lihat
+    // catatan di leaderboard/{uid} bagian bawah file ini.
     function isAllowedPurchaseWrite() {
       let oldSub = resource == null
           ? {}
@@ -612,29 +701,229 @@ service cloud.firestore {
       let oldCoins = resource == null
           ? 0
           : resource.data.get('coins', 0);
+      let oldRewards = resource == null
+          ? {}
+          : resource.data.get('adRewards', {});
+      let oldXp = resource == null
+          ? {}
+          : resource.data.get('xp', {});
       return request.resource.data.get('subscription', {}) == oldSub
           && request.resource.data.get('entitlements', {}) == oldEnt
-          && request.resource.data.get('coins', 0) == oldCoins;
+          && request.resource.data.get('coins', 0) == oldCoins
+          && request.resource.data.get('adRewards', {}) == oldRewards
+          && request.resource.data.get('xp', {}) == oldXp;
+    }
+
+    // Kepemilikan Avatar/Bingkai/Sampul (subscription-exclusive, ad-tier,
+    // coin-tier) dan Card Skin — Security & Monetization Final
+    // Implementation Plan, Blocker #3 / Phase 2.
+    //
+    // **Yang lama, `isAllowedAvatarWrite`, punya celah nyata, bukan cuma
+    // teoretis.** Pengecekannya hanya aktif saat `avatarType` BERUBAH ke
+    // nilai gated (`preset_premium`) — jadi menulis `avatarType:
+    // 'preset_free'` bersamaan dengan `avatarValue: 'neko_astronaut'`
+    // (id subscription-exclusive) tidak pernah menyentuh pengecekan itu
+    // sama sekali, karena `newType` yang dikirim bukan `'preset_premium'`.
+    // `profile.frameId`/`profile.coverId`/`profile.cardSkinId` bahkan
+    // tidak punya pengecekan apa pun. Desain baru di bawah ini
+    // memvalidasi berdasarkan NILAI id itu sendiri, bukan tipe yang
+    // diklaim client — jadi kombinasi type/value yang tidak konsisten
+    // tidak bisa lagi jadi jalan pintas.
+    //
+    // **Keputusan Produk final (Option A — Premium Exclusive, dikunci di
+    // TEISOU_Premium_Cosmetic_Ownership_Product_Decision.md).** Item
+    // subscription-exclusive HANYA bisa dimiliki lewat langganan Premium
+    // yang aktif. `xp.unlocked*Ids` (ditulis oleh `claimXpReward`
+    // ataupun `spend_coins.js`, server-authoritative sejak Phase 1) TIDAK
+    // PERNAH menjadi bukti kepemilikan untuk id di kelompok ini —
+    // [isAllowedCosmeticEquip] di bawah sengaja mengecualikan id
+    // premium-only dari cabang `ownedPermanently`, bahkan sebagai
+    // pertahanan berlapis kalau field itu suatu saat ternyata berisi id
+    // yang seharusnya tidak mungkin ada di sana.
+    function isPremiumSubscriberNow() {
+      return resource != null
+          && resource.data.get('subscription', {}).get('tier', 'free') == 'premium';
+    }
+
+    // [moduleId] adalah string yang sama persis dengan yang dipakai
+    // `ProgressRepository.unlockAdReward`/`getAdRewards`
+    // ('avatar_premium'/'frame_premium'/'cover_premium'). `adRewards`
+    // sendiri sudah dibekukan total terhadap tulisan client (Phase 0),
+    // jadi field ini aman dipercaya di sini — satu-satunya penulis yang
+    // sah adalah Cloud Function verifikasi AdMob SSV yang direncanakan
+    // di Phase 3, belum ada di repo ini.
+    function isAdRewardActive(moduleId) {
+      return resource != null
+          && resource.data.get('adRewards', {}).get(moduleId, {})
+              .get('expiresAt', request.time) > request.time;
+    }
+
+    // Pengecekan bersama untuk Avatar/Bingkai/Sampul — ketiganya punya
+    // bentuk yang identik: satu id, empat kemungkinan tingkat (free/ad/
+    // coin/subscription-exclusive).
+    //
+    // **Riwayat dua bug compiler/evaluator nyata di fungsi ini, keduanya
+    // ditemukan lewat firestore_rules_tests/ (real Firestore Rules
+    // Emulator), bukan source-inspection — dicatat di sini supaya tidak
+    // terulang:**
+    // 1. Versi 8-argumen pertama (oldValue, newValue, freeIds, adIds,
+    //    coinIds, premiumOnlyIds, ownedIds, adModuleId) GAGAL di-compile
+    //    sama sekali oleh compiler asli Firestore ("Maximum allowed
+    //    function arguments of 7").
+    // 2. Perbaikan pertama membungkus empat list id ('free'/'ad'/'coin'/
+    //    'premiumOnly') jadi SATU MAP parameter ([tiers]) supaya turun ke
+    //    5 argumen. Itu memang compile — tapi engine evaluasi Firestore
+    //    Rules yang sesungguhnya melempar "Null value error" begitu
+    //    field map itu (`tiers.free`, dst.) diakses di dalam fungsi,
+    //    WALAUPUN map-nya jelas tidak null dan terisi benar. Dibuktikan
+    //    lewat 15+ probe terisolasi (lihat riwayat commit): argumen
+    //    bertipe LIST bekerja normal lintas batas pemanggilan fungsi,
+    //    argumen bertipe MAP tidak. Ini murni batasan/bug engine
+    //    evaluasi Firestore Rules, bukan kesalahan logika.
+    //
+    // **Desain final (di bawah)**: [freeIds]/[adIds]/[premiumOnlyIds]
+    // dikirim sebagai TIGA parameter list terpisah (bukan satu map),
+    // ditambah [ownedIds] — total 7 argumen, pas di batas maksimal
+    // Firestore Rules. [coinIds] SENGAJA tidak lagi jadi parameter
+    // sendiri — satu-satunya kegunaannya adalah ikut menentukan
+    // `recognized` (id ini dikenal katalog manapun), dan itu tetap
+    // benar walau dihilangkan: id coin-tier yang BELUM dimiliki tetap
+    // ditolak lewat cabang manapun (bukan free/ad/premiumOnly, dan
+    // `newValue in ownedIds` juga false), sedangkan id coin-tier yang
+    // SUDAH dimiliki otomatis ikut `recognized` lewat keanggotaan di
+    // [ownedIds] itu sendiri — hasil akhirnya identik dengan versi yang
+    // masih membawa [coinIds] eksplisit, tanpa perlu argumen ke-8.
+    // [ownedIds] adalah `xp.unlocked{Avatar,Frame,Cover}Ids` milik
+    // pemanggil; katalog coin-tier lengkap (`neko_matcha` dst.) tetap
+    // didokumentasikan di masing-masing fungsi pemanggil di bawah untuk
+    // keterbacaan, walau tidak lagi dikirim sebagai argumen.
+    //
+    // `unchanged` membiarkan tulisan lain yang tidak berkaitan (ganti
+    // nama, dst.) tetap lewat lewat `set(merge:true)` walau id yang
+    // sudah tersimpan kebetulan tidak lagi memenuhi syarat (mis.
+    // langganan baru saja berakhir) — persis alasan yang sama seperti
+    // `changingToGated` di desain lama, hanya sekarang berbasis nilai.
+    function isAllowedCosmeticEquip(
+        oldValue, newValue, freeIds, adIds, premiumOnlyIds, ownedIds, adModuleId) {
+      let unchanged = newValue == oldValue;
+      let recognized = newValue in freeIds || newValue in adIds
+          || newValue in premiumOnlyIds || newValue in ownedIds;
+      let ownedPermanently = newValue in ownedIds && !(newValue in premiumOnlyIds);
+      let adEligibleNow = newValue in adIds && isAdRewardActive(adModuleId);
+      let premiumOk = newValue in premiumOnlyIds && isPremiumSubscriberNow();
+      return newValue == null || unchanged || (recognized && (
+          newValue in freeIds || ownedPermanently || adEligibleNow || premiumOk
+      ));
     }
 
     function isAllowedAvatarWrite() {
-      let oldType = resource == null
-          ? 'google'
-          : resource.data.get('profile', {}).get('avatarType', 'google');
-      let newType = request.resource.data.get('profile', {}).get('avatarType', 'google');
-      let changingToGated = newType != oldType
-          && (newType == 'preset_premium' || newType == 'custom_upload');
-      let currentTier = resource == null
-          ? 'free'
-          : resource.data.get('subscription', {}).get('tier', 'free');
-      // A preset earned as a level-up reward (ProgressRepository.claimLevelReward,
-      // recorded under xp.unlockedAvatarIds) is allowed through the same gate
-      // as a real premium subscription — earned permanently, not rented, so
-      // this must check the *value* being set, not just the tier.
-      let newValue = request.resource.data.get('profile', {}).get('avatarValue', '');
-      let unlockedByXp = resource != null
-          && newValue in resource.data.get('xp', {}).get('unlockedAvatarIds', []);
-      return !changingToGated || currentTier == 'premium' || unlockedByXp;
+      let oldValue = resource == null
+          ? null
+          : resource.data.get('profile', {}).get('avatarValue', null);
+      let newValue = request.resource.data.get('profile', {}).get('avatarValue', null);
+      let ownedIds = resource == null
+          ? []
+          : resource.data.get('xp', {}).get('unlockedAvatarIds', []);
+      // Katalog coin-tier lengkap, untuk keterbacaan saja (lihat catatan
+      // [coinIds] di atas isAllowedCosmeticEquip — tidak lagi dikirim
+      // sebagai argumen): 'neko_artist', 'neko_graduate', 'neko_ninja',
+      // 'neko_samurai', 'neko_kimono', 'neko_matcha', 'neko_sailor',
+      // 'neko_detective', 'neko_musician', 'neko_winter', 'neko_forest'.
+      return isAllowedCosmeticEquip(
+          oldValue, newValue,
+          ['neko_sensei', 'neko_cheerleader', 'neko_bookworm'],
+          ['neko_chef', 'neko_sleepy', 'neko_traveler'],
+          ['neko_astronaut', 'neko_gamer', 'neko_lion'],
+          ownedIds, 'avatar_premium');
+    }
+
+    // `profile.frameId` dan `profile.coverId` — bentuknya identik dengan
+    // avatar di atas, hanya field dan id catalog-nya beda. Digabung satu
+    // fungsi (bukan dua terpisah) karena nama ini yang diminta secara
+    // eksplisit di rencana implementasi.
+    function isAllowedProfileWrite() {
+      let oldFrame = resource == null
+          ? null
+          : resource.data.get('profile', {}).get('frameId', null);
+      let newFrame = request.resource.data.get('profile', {}).get('frameId', null);
+      let ownedFrames = resource == null
+          ? []
+          : resource.data.get('xp', {}).get('unlockedFrameIds', []);
+      // Katalog coin-tier lengkap (lihat catatan [coinIds] di atas
+      // isAllowedCosmeticEquip): 'frame_halloween', 'frame_night_sky',
+      // 'frame_mushroom_fairy', 'frame_fairytale', 'frame_witch',
+      // 'frame_music', 'frame_retro_pc', 'frame_calligraphy'.
+      let frameOk = isAllowedCosmeticEquip(
+          oldFrame, newFrame,
+          ['frame_sakura_fuji', 'frame_sakura', 'frame_autumn', 'frame_winter'],
+          ['frame_spring_garden', 'frame_ocean', 'frame_jungle', 'frame_cat'],
+          ['frame_steampunk', 'frame_space', 'frame_gaming', 'frame_moon_crystal'],
+          ownedFrames, 'frame_premium');
+
+      let oldCover = resource == null
+          ? null
+          : resource.data.get('profile', {}).get('coverId', null);
+      let newCover = request.resource.data.get('profile', {}).get('coverId', null);
+      let ownedCovers = resource == null
+          ? []
+          : resource.data.get('xp', {}).get('unlockedCoverIds', []);
+      // Katalog coin-tier lengkap (lihat catatan [coinIds] di atas
+      // isAllowedCosmeticEquip): 'jungle_canopy', 'enchanted_forest',
+      // 'art_studio', 'sumi_ink', 'pixel_game', 'steampunk_brass',
+      // 'zodiac_night', 'magic_castle'.
+      let coverOk = isAllowedCosmeticEquip(
+          oldCover, newCover,
+          ['sakura_dawn', 'autumn_leaves', 'spring_meadow', 'starry_night'],
+          ['coral_reef', 'sunflower_field', 'library_books', 'cat_lover'],
+          ['sacred_geometry', 'cyber_neon', 'outer_space'],
+          ownedCovers, 'cover_premium');
+
+      return frameOk && coverOk;
+    }
+
+    // Card Skin (`profile.cardSkinId`) — mekanisme kepemilikan yang SUDAH
+    // ADA (`card_skins.dart`'s `isCardSkinUnlocked`, tidak diubah di sini,
+    // hanya ditegakkan ulang di server): free selalu boleh; achievement
+    // (Emas Kencana/Ungu Malam/Naga Hitam) butuh total bintang mencapai
+    // ambangnya DAN Premium aktif, keduanya; paid (Awan Putih/Kota Neon/
+    // Sakura Emas) butuh `entitlements.skins` (dibeli, uang atau koin)
+    // ATAU Premium (dibundel gratis). Card Skin sengaja TIDAK pernah
+    // masuk `claimLevelReward`'s reward pool (lihat award_xp.js — tidak
+    // ada `XpRewardKind.skin`), dan baris ini tidak mengubah itu.
+    // [starTotal] dibaca dari `leaderboard/{uid}.cardGameStarTotal`
+    // (dokumen terpisah, sudah dibekukan terhadap tulisan client di atas)
+    // — bukan dari `users/{uid}.cardGameRank` secara langsung, mencerminkan
+    // `isCardSkinUnlocked`'s sendiri doc comment yang bilang begitu.
+    function cardSkinStarsRequired(skinId) {
+      return skinId == 'emas_kencana' ? 35
+          : (skinId == 'night_purple' ? 60
+          : (skinId == 'dragon_black' ? 90 : 999999));
+    }
+
+    function isAllowedCardSkinWrite() {
+      let oldSkin = resource == null
+          ? null
+          : resource.data.get('profile', {}).get('cardSkinId', null);
+      let newSkin = request.resource.data.get('profile', {}).get('cardSkinId', null);
+      let unchanged = newSkin == oldSkin;
+      let freeIds = ['classic', 'sakura', 'indigo'];
+      let achievementIds = ['emas_kencana', 'night_purple', 'dragon_black'];
+      let paidIds = ['cloud_white', 'neon_city', 'sakura_gold'];
+      let recognized = newSkin in freeIds || newSkin in achievementIds || newSkin in paidIds;
+      // `get()` hanya benar-benar dievaluasi saat `newSkin` memang salah
+      // satu id achievement — `&&` di Firestore Rules short-circuit,
+      // jadi tulisan lain yang tidak berkaitan tidak membayar biaya baca
+      // dokumen tambahan ini.
+      let achievementOk = newSkin in achievementIds
+          && get(/databases/$(database)/documents/leaderboard/$(resource.id))
+              .data.get('cardGameStarTotal', 0) >= cardSkinStarsRequired(newSkin)
+          && isPremiumSubscriberNow();
+      let owned = resource != null
+          && newSkin in resource.data.get('entitlements', {}).get('skins', []);
+      let paidOk = newSkin in paidIds && (owned || isPremiumSubscriberNow());
+      return newSkin == null || unchanged || (recognized && (
+          newSkin in freeIds || achievementOk || paidOk
+      ));
     }
   }
 }

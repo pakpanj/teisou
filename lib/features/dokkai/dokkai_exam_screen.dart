@@ -10,6 +10,7 @@ import '../../data/models/jlpt_level.dart';
 import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
+import '../../data/models/xp_progress.dart';
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
@@ -80,7 +81,9 @@ class DokkaiExamScreen extends ConsumerWidget {
         // See ExamScreen._handleNext's comment for why this invalidation
         // is required, not just autoDispose's default behaviour.
         ref.invalidate(fullExamHistoryProvider);
-        await ref.read(progressRepositoryProvider).addXp(user.uid, 10);
+        await ref
+            .read(progressRepositoryProvider)
+            .addXp(user.uid, XpAction.examCompleted);
         ref.invalidate(xpProgressProvider);
       } catch (_) {
         // Best-effort mirror only — the score is shown either way, same

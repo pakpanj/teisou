@@ -11,6 +11,7 @@ import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
+import '../../data/models/xp_progress.dart';
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import 'bab_gate_quiz_generator.dart';
@@ -122,7 +123,9 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
         ref.invalidate(babCompletedIdsProvider);
         ref.invalidate(babNextUpProvider);
         await _publishBabProgress(uid);
-        await ref.read(progressRepositoryProvider).addXp(uid, 15);
+        await ref
+            .read(progressRepositoryProvider)
+            .addXp(uid, XpAction.babGatePassed);
         ref.invalidate(xpProgressProvider);
       }
     }

@@ -46,6 +46,26 @@ class XpProgress {
 /// Which preset gallery a claimed reward came from — the claim dialog
 /// renders each kind with that gallery's own art, so it needs to know
 /// more than just "you got something".
+/// Which learning action just happened, for [ProgressRepository.addXp] to
+/// pass to the `awardXp` Cloud Function.
+///
+/// **Not an amount — the amount is not this app's to decide anymore.**
+/// Before the Security & Monetization Remediation Plan's Blocker #2 fix,
+/// `addXp` took a raw `int` the caller supplied, and `xp.totalXp` was
+/// incremented by whatever that was — a forged, arbitrarily large amount
+/// worked exactly as well as a legitimate one, since nothing checked it.
+/// `functions/award_xp.js`'s `XP_AMOUNTS` table is the only place an
+/// amount is decided now; the client just names which action happened,
+/// and the value here has to match that table's keys exactly (`.name`).
+///
+/// One value per amount already in use before this change (confirmed by
+/// reading every `addXp` call site rather than guessing): a word/kanji/
+/// pattern/particle/dialogue marked learned (2 XP), an exam of any kind
+/// completed (10 XP), a Bab gate quiz passed (15 XP), and the once-a-day
+/// "opened the app and did something" streak tick
+/// ([ProgressRepository.recordDailyActivity], 5 XP).
+enum XpAction { wordLearned, examCompleted, babGatePassed, dailyActive }
+
 enum XpRewardKind { avatar, frame, cover }
 
 /// One level-up reward: a specific, now-permanently-unlocked preset from

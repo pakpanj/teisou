@@ -306,14 +306,26 @@ exports.awardTopGlobalCoins =
   require("./award_top_coins").awardTopGlobalCoins;
 
 // Spending coins on an avatar/frame/cover — the only writer of `coins`
-// besides verifyPurchase and awardTopGlobalCoins, and the only writer of
-// xp.unlockedAvatarIds/unlockedFrameIds/unlockedCoverIds that actually
-// charges for it (a level-up reward writes the same fields straight from
-// the client, since that path was never worth protecting — see
-// functions/spend_coins.js's own doc comment for why a coin purchase is
-// different). No firestore.rules change was needed for this: it runs
-// with Admin SDK privileges, same as every other function here.
+// besides verifyPurchase and awardTopGlobalCoins. Also one of two
+// writers of xp.unlockedAvatarIds/unlockedFrameIds/unlockedCoverIds —
+// the other is awardXp.js's claimXpReward below, for the free,
+// earned-by-leveling half of the same fields. `spend_coins.js`'s own
+// doc comment still describes the pre-Phase-1 state where a level-up
+// reward wrote there straight from the client; that's no longer true —
+// see award_xp.js for the current mechanism. No firestore.rules change
+// was needed for this file specifically: it runs with Admin SDK
+// privileges, same as every other function here.
 exports.spendCoins = require("./spend_coins").spendCoins;
+
+// XP — per-account learning progress and its level-up cosmetic reward
+// loop. `awardXp` is the only writer of `xp.totalXp`; `claimXpReward` is
+// the only writer of `xp.claimedLevel` and (jointly with spendCoins
+// above) `xp.unlockedAvatarIds`/`unlockedFrameIds`/`unlockedCoverIds`.
+// firestore.rules freezes the whole `xp` map against every other client
+// write. Deliberately unrelated to Global Points — see award_xp.js's own
+// doc comment for why the two are kept apart.
+exports.awardXp = require("./award_xp").awardXp;
+exports.claimXpReward = require("./award_xp").claimXpReward;
 
 // The rank-skip exam: two callables, one to draw the cards and one to
 // grade them. Grading is server-side by necessity — see rank_skip.js.

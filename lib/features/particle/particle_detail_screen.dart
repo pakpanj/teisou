@@ -9,6 +9,7 @@ import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/particle_entry.dart';
 import '../../data/models/particle_function.dart';
 import '../../data/models/sentence_example.dart';
+import '../../data/models/xp_progress.dart';
 import 'particle_providers.dart';
 
 /// Full detail view for one particle, with next/prev navigation BETWEEN
@@ -82,7 +83,9 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
         await repo.markLearned(uid, _entry.id, _entry.category);
         // Only on the way to learned, never on unmark — toggling back and
         // forth must not farm XP.
-        await ref.read(progressRepositoryProvider).addXp(uid, 2);
+        await ref
+            .read(progressRepositoryProvider)
+            .addXp(uid, XpAction.wordLearned);
         ref.invalidate(xpProgressProvider);
       }
       ref.invalidate(particleLearnedIdsProvider);
