@@ -145,11 +145,19 @@ function resolveCorrectRomaji(cardId) {
  * that. `scoredRounds` doubles as the idempotency guard against
  * duplicate delivery of the same trigger (Cloud Functions v2 is
  * at-least-once, not exactly-once).
+ *
+ * [dbInstance] is accepted explicitly (defaulting to the real Firestore
+ * client) so a test can pass a `FakeFirestore` instead and exercise this
+ * exact function — the same "real logic takes its dependencies as
+ * parameters" split `battle_abandonment_sweep.js`'s
+ * `forfeitOneStaleRound` and `battle_stars.js`'s `applyToPlayer` already
+ * use. Added specifically so out-of-order-trigger tests can call the
+ * real conclusion logic directly instead of a hand-written mirror of it.
  */
-async function scoreAnswer(matchId, round, answerText) {
-  const matchRef = db().collection("battleMatches").doc(matchId);
+async function scoreAnswer(matchId, round, answerText, dbInstance = db()) {
+  const matchRef = dbInstance.collection("battleMatches").doc(matchId);
 
-  await db().runTransaction(async (transaction) => {
+  await dbInstance.runTransaction(async (transaction) => {
     const matchSnap = await transaction.get(matchRef);
     const match = matchSnap.data();
     if (!match) return;
@@ -210,9 +218,51 @@ async function scoreAnswer(matchId, round, answerText) {
       if (scores.length === 2 && scores[0] !== scores[1]) {
         updates.result = scores[0] > scores[1] ? players[0] : players[1];
         updates.status = "finished";
-      } else if (round === TOTAL_ROUNDS - 1) {
-        updates.result = "draw";
-        updates.status = "finished";
+      }
+    }
+
+    // Self-heal for out-of-order trigger completion — see
+    // AUDIT_C2_STAGE2_TRIGGER_ORDERING_REVIEW.md. The block above only
+    // ever looks at rounds `0..round`, so a tied match could previously
+    // only ever be forced to `"draw"` by round `TOTAL_ROUNDS - 1`'s own
+    // invocation (the one place `round === TOTAL_ROUNDS - 1` could be
+    // true) — and nothing re-checks that once `onDocumentCreated` has
+    // already fired for that document. If that specific round's trigger
+    // happened to complete *before* every earlier round had (Stage 2's
+    // sequential-but-bursty writes make this far likelier than ordinary
+    // gameplay ever did), the match could sit fully scored — every round
+    // genuinely marked in `scoredRounds`, `officialScore` entirely
+    // correct — with `result`/`status` never written, forever.
+    //
+    // This checks contiguity across the *whole* deck (`0..TOTAL_ROUNDS -
+    // 1`), independently of `round`, so whichever invocation happens to
+    // be the one that completes that full set — not necessarily round
+    // `TOTAL_ROUNDS - 1`'s own, and not necessarily the numerically last
+    // one either (the same gap exists in principle for a round below
+    // `MAIN_PHASE_ROUNDS` arriving last after a retry) — is the one that
+    // notices and concludes. It reuses the identical winner/draw rule
+    // the block above already applies, verbatim, against the same
+    // `officialScore` this transaction already computed: no new scoring
+    // rule, no new field, and `if (!updates.result)` means this can
+    // never run after the block above has already decided — never a
+    // second, conflicting write.
+    if (!updates.result) {
+      let allRoundsScored = true;
+      for (let r = 0; r < TOTAL_ROUNDS; r++) {
+        if (!newScoredRounds[String(r)]) {
+          allRoundsScored = false;
+          break;
+        }
+      }
+      if (allRoundsScored) {
+        const scores = players.map((p) => officialScore[p] || 0);
+        if (scores.length === 2 && scores[0] !== scores[1]) {
+          updates.result = scores[0] > scores[1] ? players[0] : players[1];
+          updates.status = "finished";
+        } else if (scores.length === 2) {
+          updates.result = "draw";
+          updates.status = "finished";
+        }
       }
     }
 
@@ -232,4 +282,4 @@ exports.onBattleAnswerCreated = onDocumentCreated(
 );
 
 // Exported for tests only.
-exports._internal = {toRomaji, resolveCorrectRomaji};
+exports._internal = {toRomaji, resolveCorrectRomaji, scoreAnswer};

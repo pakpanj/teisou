@@ -225,6 +225,23 @@ class FakeTransaction {
     this._writes.set(ref.path, {data, merge: Boolean(opts && opts.merge)});
     return this;
   }
+
+  /** Added for `battle_scoring.js`'s `scoreAnswer`, the first caller of
+   * this fake to use `.update()` inside a transaction rather than
+   * `.set(..., {merge: true})` — every earlier Cloud Function in this
+   * codebase deliberately avoided `.update()` specifically so it stayed
+   * compatible with this fake (see `battle_abandonment_sweep.js`'s own
+   * comment on that), but `scoreAnswer` predates this fake's existence
+   * and asserts the document already exists (`if (!match) return;`)
+   * before ever reaching a write, so real Firestore's "`.update()`
+   * throws on a missing document" behavior is never actually exercised
+   * either way here. Modeled as a merge write — real `.update()`'s only
+   * behavioral difference from `.set(..., {merge: true})` is that
+   * existence check, which is irrelevant for every current caller. */
+  update(ref, data) {
+    this._writes.set(ref.path, {data, merge: true});
+    return this;
+  }
 }
 
 class FakeFirestore {
