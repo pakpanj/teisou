@@ -597,7 +597,17 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
 
     void handleTap(String frameId) {
       if (uid == null) return;
-      if (frameIdUnlocked(frameId)) {
+      // A free frame (`!FramePresets.isLocked(frameId)`) must always be
+      // equippable — `frameIdUnlocked` alone can't tell that: it only ever
+      // tracks *extra* unlocks (ad reward, coin purchase, level reward,
+      // Premium), never the base-free tier, since a free id is never added
+      // to `_unlockedFrameIds`. Calling `frameIdUnlocked` by itself here
+      // (as this used to) meant every free frame reported "not unlocked"
+      // and fell straight through to the paywall — the bug this guards
+      // against. Mirrors `AvatarPickerBody.handleTap`'s own `!isLocked(preset)`
+      // check, which never had this gap because it already routes through
+      // the local `isLocked` wrapper instead of the raw premium-tier check.
+      if (!FramePresets.isLocked(frameId) || frameIdUnlocked(frameId)) {
         final consumeReward =
             !isPremium &&
             FramePresets.isAdUnlockable(frameId) &&
