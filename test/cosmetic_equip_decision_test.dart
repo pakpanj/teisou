@@ -882,6 +882,377 @@ void main() {
       },
     );
   });
+
+  // RISK-1: rapid/double tap on Avatar/Frame/Cover's own equip write —
+  // AUDIT_COSMETIC_PROFILE_SHOP.md. Proven for real before any production
+  // code changed here, not assumed from reading `handleTap`: a widget test
+  // driving the *unguarded* pickers with a realistic double-tap (tap, one
+  // frame, tap again — and separately, with literally zero frames between
+  // the two taps) fired `updateAvatar`/`updateFrame`/`updateCover` twice
+  // every time, on every one of the three pickers, since nothing stood
+  // between one tap's `InkWell.onTap` and the next.
+  //
+  // Fixed the same way `CardSkinPickerBody._saving` already fixes the
+  // identical shape of bug there: a `bool _saving` set for the duration of
+  // the write, plus one `AbsorbPointer` wrapping the whole grid, so a
+  // second tap anywhere in the grid is silently dropped at the pointer
+  // level (never even reaches `handleTap`) until the first write's
+  // `finally` clears the flag.
+  //
+  // **Why the tests below use `repo.gate`, not a plain double-`tap()`**:
+  // the fake `updateAvatar`/`updateFrame`/`updateCover` resolve within a
+  // single microtask by default, with no real delay at all. Against that,
+  // `_select`'s entire body — write, best-effort mirrors, and the
+  // `finally` that resets `_saving` back to `false` — can finish inside
+  // one `tester.pump()`, before a second `tester.tap()` even runs. That
+  // made the very first version of these tests pass or fail by luck: a
+  // plain double-tap kept showing 2 calls **even after the guard was
+  // implemented correctly**, because the guard's true-for-real-milliseconds
+  // window (measured against the actual Firestore/Cloud-Function round
+  // trips `updateAvatar`/`consumeAdReward` are in production) had already
+  // closed by the time this fake's synchronous write resolved. `repo.gate`
+  // holds the write open on a `Completer` the test controls directly,
+  // reproducing that real timing instead of guessing at a `Duration` —
+  // see `_FakeProgressRepository.gate`'s own doc comment for the full
+  // reasoning. Every other test in this file leaves `gate` unset and is
+  // completely unaffected by its existence.
+  group('RISK-1 — reentrancy guard against double/rapid tap', () {
+    testWidgets(
+      'Avatar: double-tap on a free tile while the first write is still '
+      'in flight does not start a second write',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final gate = Completer<void>();
+          repo.gate = () => gate.future;
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.text('Guru')); // neko_sensei, free
+          await tester.pump(); // lets `_saving` flip true and rebuild
+          expect(
+            repo.calls,
+            hasLength(1),
+            reason: 'the first tap must start exactly one write',
+          );
+
+          // The write above is still gated (not resolved) — exactly the
+          // window a real Firestore round trip leaves open. A second tap
+          // on the same tile right now is the bug this guards against.
+          await tester.tap(find.text('Guru'), warnIfMissed: false);
+          await tester.pump();
+          expect(
+            repo.calls,
+            hasLength(1),
+            reason:
+                'RISK-1: a second tap while the first write is still in '
+                'flight must not reach `_select` again',
+          );
+
+          gate.complete();
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(repo.calls, hasLength(1));
+          expect(hub.profile.avatarType, AvatarType.presetFree);
+          expect(hub.profile.avatarValue, 'neko_sensei');
+          _expectTileSelected(tester, 'Guru');
+        });
+      },
+    );
+
+    testWidgets(
+      'Avatar: an ad-tier tile double-tapped mid-write equips once and '
+      'consumes the reward exactly once, not twice',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final gate = Completer<void>();
+          repo.gate = () => gate.future;
+          final cosmetics = _UnlockedCosmeticsHub(
+            adRewards: {'avatar_premium': AdReward.unlockNow('avatar_premium')},
+          );
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              cosmetics: cosmetics,
+              child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.text('Koki')); // neko_chef, ad-tier
+          await tester.pump();
+          await tester.tap(find.text('Koki'), warnIfMissed: false);
+          await tester.pump();
+          expect(
+            repo.calls,
+            hasLength(1),
+            reason: 'RISK-1: the second tap must not start a second write',
+          );
+
+          gate.complete();
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(repo.calls, hasLength(1));
+          expect(
+            repo.consumedRewards,
+            equals(['avatar_premium']),
+            reason:
+                'the single-use ad reward must be consumed exactly once, '
+                'never twice, regardless of how many taps landed',
+          );
+        });
+      },
+    );
+
+    testWidgets(
+      'Frame: double-tap on a free tile while the first write is still '
+      'in flight does not start a second write',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final gate = Completer<void>();
+          repo.gate = () => gate.future;
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              child: const FramePickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(
+            find.text('Sakura & Fuji'),
+          ); // frame_sakura_fuji, free
+          await tester.pump();
+          expect(repo.calls, hasLength(1));
+
+          await tester.tap(find.text('Sakura & Fuji'), warnIfMissed: false);
+          await tester.pump();
+          expect(
+            repo.calls,
+            hasLength(1),
+            reason:
+                'RISK-1: same guard, applied to the Frame picker — the '
+                'be6a6d8 equip-decision fix stays untouched, this only adds '
+                'a reentrancy guard around its already-correct decision',
+          );
+
+          gate.complete();
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(repo.calls, hasLength(1));
+          expect(hub.profile.frameId, 'frame_sakura_fuji');
+          _expectTileSelected(tester, 'Sakura & Fuji');
+        });
+      },
+    );
+
+    testWidgets(
+      'Frame: an ad-tier tile double-tapped mid-write equips once and '
+      'consumes the reward exactly once, not twice',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final gate = Completer<void>();
+          repo.gate = () => gate.future;
+          final cosmetics = _UnlockedCosmeticsHub(
+            adRewards: {'frame_premium': AdReward.unlockNow('frame_premium')},
+          );
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              cosmetics: cosmetics,
+              child: const FramePickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.text('Bawah Laut')); // frame_ocean, ad-tier
+          await tester.pump();
+          await tester.tap(find.text('Bawah Laut'), warnIfMissed: false);
+          await tester.pump();
+          expect(repo.calls, hasLength(1));
+
+          gate.complete();
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(repo.calls, hasLength(1));
+          expect(repo.consumedRewards, equals(['frame_premium']));
+        });
+      },
+    );
+
+    testWidgets(
+      'Cover: double-tap on a free tile while the first write is still '
+      'in flight does not start a second write',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final gate = Completer<void>();
+          repo.gate = () => gate.future;
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              child: const CoverPickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.text('Padang Bunga')); // spring_meadow, free
+          await tester.pump();
+          expect(repo.calls, hasLength(1));
+
+          await tester.tap(find.text('Padang Bunga'), warnIfMissed: false);
+          await tester.pump();
+          expect(repo.calls, hasLength(1));
+
+          gate.complete();
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(repo.calls, hasLength(1));
+          expect(hub.profile.coverId, 'spring_meadow');
+          _expectTileSelected(tester, 'Padang Bunga');
+        });
+      },
+    );
+
+    testWidgets(
+      'Cover: an ad-tier tile double-tapped mid-write equips once and '
+      'consumes the reward exactly once, not twice',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final gate = Completer<void>();
+          repo.gate = () => gate.future;
+          final cosmetics = _UnlockedCosmeticsHub(
+            adRewards: {'cover_premium': AdReward.unlockNow('cover_premium')},
+          );
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              cosmetics: cosmetics,
+              child: const CoverPickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.text('Terumbu Karang')); // coral_reef, ad-tier
+          await tester.pump();
+          await tester.tap(find.text('Terumbu Karang'), warnIfMissed: false);
+          await tester.pump();
+          expect(repo.calls, hasLength(1));
+
+          gate.complete();
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(repo.calls, hasLength(1));
+          expect(repo.consumedRewards, equals(['cover_premium']));
+        });
+      },
+    );
+
+    // Documented, not just claimed: `_saving` deliberately does not also
+    // wrap `_buyWithCoins`/`_openPaywall` — see `_AvatarPickerBodyState
+    // ._saving`'s own doc comment. These two tests are the proof that
+    // decision was safe *before* writing a single line of the guard, by
+    // double-tapping the exact tiles that reach those two functions and
+    // confirming only one dialog/route ever appears — the confirm
+    // dialog's own modal barrier, and the paywall's own full-screen route
+    // push, already make the grid beneath them un-tappable the instant
+    // either appears. No `repo.gate` needed here: this isn't timing
+    // against a write, it's confirming a *second tap physically cannot
+    // reach the grid tile again* once either overlay exists — true (or
+    // not) regardless of how long anything underneath takes.
+    testWidgets('Avatar: double-tap on a locked coin-tier tile never stacks a '
+        'second confirm dialog (already single-flight, no guard added here)', (
+      tester,
+    ) async {
+      await withTallSurface(tester, () async {
+        final hub = _ProfileHub(_profile());
+        final repo = _FakeProgressRepository(hub);
+        await tester.pumpWidget(
+          await _harness(
+            hub: hub,
+            repo: repo,
+            child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        // No pump between the two taps — the tightest window there is,
+        // before the dialog's own barrier has had a single frame to
+        // render and intercept a second tap at the same position.
+        await tester.tap(find.text('Seniman')); // neko_artist, coin-tier
+        await tester.tap(find.text('Seniman'), warnIfMissed: false);
+        await tester.pump();
+
+        expect(find.byType(AlertDialog), findsOneWidget);
+        expect(repo.calls, isEmpty);
+      });
+    });
+
+    testWidgets(
+      'Avatar: double-tap on a locked premium-only tile never stacks a '
+      'second Paywall push (already single-flight, no guard added here)',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          expect(AvatarPresets.isPremiumOnly('neko_astronaut'), isTrue);
+          await tester.tap(find.text('Astronot'));
+          await tester.tap(find.text('Astronot'), warnIfMissed: false);
+          // Not pumpAndSettle: PaywallScreen may run a periodic poll that
+          // reschedules frames forever — see the F1 "premium-only avatar"
+          // test above for the same note.
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+
+          expect(find.byType(PaywallScreen), findsOneWidget);
+          expect(repo.calls, isEmpty);
+        });
+      },
+    );
+  });
 }
 
 // ---------------------------------------------------------------------
@@ -1102,9 +1473,31 @@ class _FakeProgressRepository implements ProgressRepository {
   final List<String> calls = [];
   final List<String> consumedRewards = [];
 
+  /// RISK-1 double-tap tests only: when set, every write method below
+  /// awaits this before touching [_hub] — the real `updateAvatar`/
+  /// `updateFrame`/`updateCover` are genuine Firestore round trips (tens
+  /// to hundreds of milliseconds at least), but this fake's default
+  /// behavior resolves within a single microtask with no real delay at
+  /// all. That gap matters here specifically: a `_saving` reentrancy
+  /// guard's whole job is to stay `true` for the *duration* of an
+  /// in-flight write, and against a same-microtask fake, `_select`'s
+  /// entire body (write, best-effort mirrors, and the `finally` that
+  /// resets `_saving` back to `false`) can complete inside one
+  /// `tester.pump()` — before a second `tester.tap()` even runs — making
+  /// the guard's window invisible to the test even though it is genuinely
+  /// open for real, measurable time in production. Setting this to a
+  /// `Completer`-backed gate the test controls directly reproduces that
+  /// real-world timing instead of guessing at a `Duration`. `calls.add`
+  /// still happens *before* the gate (see each method below) so a guard
+  /// failure — a second write actually starting while the first is still
+  /// gated — is recorded the instant it happens, not only once the gate
+  /// later opens.
+  Future<void> Function()? gate;
+
   @override
   Future<void> updateAvatar(String uid, AvatarType type, String? value) async {
     calls.add('updateAvatar:${type.key}:$value');
+    if (gate != null) await gate!();
     _hub.set(
       (p) => UserProfile(
         displayName: p.displayName,
@@ -1126,6 +1519,7 @@ class _FakeProgressRepository implements ProgressRepository {
   @override
   Future<void> updateFrame(String uid, String? frameId) async {
     calls.add('updateFrame:$frameId');
+    if (gate != null) await gate!();
     _hub.set(
       (p) => UserProfile(
         displayName: p.displayName,
@@ -1147,6 +1541,7 @@ class _FakeProgressRepository implements ProgressRepository {
   @override
   Future<void> updateCover(String uid, String? coverId) async {
     calls.add('updateCover:$coverId');
+    if (gate != null) await gate!();
     _hub.set(
       (p) => UserProfile(
         displayName: p.displayName,

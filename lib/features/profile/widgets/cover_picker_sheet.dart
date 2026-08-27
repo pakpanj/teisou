@@ -92,38 +92,54 @@ class CoverPickerBody extends ConsumerStatefulWidget {
 }
 
 class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
+  /// Reentrancy guard for [_select] — see `_AvatarPickerBodyState._saving`'s
+  /// doc comment for the full reasoning (RISK-1,
+  /// AUDIT_COSMETIC_PROFILE_SHOP.md): same double-tap risk, same fix, and
+  /// the same deliberate choice not to also guard [_buyWithCoins]/
+  /// [_openPaywall].
+  bool _saving = false;
+
   Future<void> _select(
     String uid,
     String? coverId, {
     bool consumeReward = false,
   }) async {
+    setState(() => _saving = true);
     try {
-      await ref.read(progressRepositoryProvider).updateCover(uid, coverId);
-    } catch (_) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(ref.read(appStringsProvider).coverSaveFailed)),
-      );
-      return;
-    }
-    // Best-effort — the cover itself already saved successfully above, so
-    // a hiccup publishing it to the leaderboard must not surface as a
-    // failure. Lets other learners' PublicProfileScreen show the same
-    // cover this account's own Profile header now does.
-    try {
-      await ref.read(leaderboardRepositoryProvider).updateCoverId(uid, coverId);
-    } catch (_) {}
-    if (consumeReward) {
-      // Best-effort only — the cover itself already saved successfully
-      // above, so a hiccup here must not surface as a failure.
+      try {
+        await ref.read(progressRepositoryProvider).updateCover(uid, coverId);
+      } catch (_) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(ref.read(appStringsProvider).coverSaveFailed),
+          ),
+        );
+        return;
+      }
+      // Best-effort — the cover itself already saved successfully above, so
+      // a hiccup publishing it to the leaderboard must not surface as a
+      // failure. Lets other learners' PublicProfileScreen show the same
+      // cover this account's own Profile header now does.
       try {
         await ref
-            .read(progressRepositoryProvider)
-            .consumeAdReward(uid, _coverPremiumModuleId);
+            .read(leaderboardRepositoryProvider)
+            .updateCoverId(uid, coverId);
       } catch (_) {}
+      if (consumeReward) {
+        // Best-effort only — the cover itself already saved successfully
+        // above, so a hiccup here must not surface as a failure.
+        try {
+          await ref
+              .read(progressRepositoryProvider)
+              .consumeAdReward(uid, _coverPremiumModuleId);
+        } catch (_) {}
+      }
+      if (!mounted) return;
+      if (widget.popOnSelect) Navigator.of(context).pop();
+    } finally {
+      if (mounted) setState(() => _saving = false);
     }
-    if (!mounted) return;
-    if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
   Future<void> _openPaywall(
@@ -245,33 +261,37 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PickerSectionTitle(s.ownedSectionTitle),
-        _CoverGrid(
-          covers: owned,
-          language: s.language,
-          // A user who has never picked a cover has no stored coverId, and
-          // now sees the fallback preset highlighted instead of a separate
-          // "Default" tile — see CoverPresets.fallback.
-          selectedId: selectedId ?? CoverPresets.fallback.id,
-          locked: false,
-          onTap: uid == null ? null : handleTap,
-        ),
-        // Locked covers only ever show up in Toko — see [shopMode]'s own
-        // doc comment.
-        if (widget.shopMode && notOwned.isNotEmpty) ...[
-          PickerSectionTitle(s.notOwnedSectionTitle),
+    // RISK-1: see `_saving`'s own doc comment above.
+    return AbsorbPointer(
+      absorbing: _saving,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PickerSectionTitle(s.ownedSectionTitle),
           _CoverGrid(
-            covers: notOwned,
+            covers: owned,
             language: s.language,
+            // A user who has never picked a cover has no stored coverId,
+            // and now sees the fallback preset highlighted instead of a
+            // separate "Default" tile — see CoverPresets.fallback.
             selectedId: selectedId ?? CoverPresets.fallback.id,
-            locked: true,
+            locked: false,
             onTap: uid == null ? null : handleTap,
           ),
+          // Locked covers only ever show up in Toko — see [shopMode]'s own
+          // doc comment.
+          if (widget.shopMode && notOwned.isNotEmpty) ...[
+            PickerSectionTitle(s.notOwnedSectionTitle),
+            _CoverGrid(
+              covers: notOwned,
+              language: s.language,
+              selectedId: selectedId ?? CoverPresets.fallback.id,
+              locked: true,
+              onTap: uid == null ? null : handleTap,
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }

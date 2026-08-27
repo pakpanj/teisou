@@ -159,6 +159,28 @@ class AvatarPickerBody extends ConsumerStatefulWidget {
 }
 
 class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
+  /// Reentrancy guard for [_select] — RISK-1 (AUDIT_COSMETIC_PROFILE_SHOP.md).
+  /// A free/already-unlocked tile equips with no intervening dialog or
+  /// route push, so nothing else stops a second tap from reaching the same
+  /// `InkWell` again before the first `_select` call's Firestore write
+  /// resolves: proven in `test/cosmetic_equip_decision_test.dart`'s
+  /// "RISK-1" group (`updateAvatar` fired twice from one realistic
+  /// double-tap, even with zero frames between the two taps). Same shape
+  /// as `CardSkinPickerBody._saving` — the entire grid absorbs pointer
+  /// events while an equip write is in flight, so a second tap on any
+  /// tile is simply ignored until the first one finishes.
+  ///
+  /// **Deliberately does not also guard [_buyWithCoins]/[_openPaywall]** —
+  /// same file's own RISK-1 tests double-tapped a locked coin-tier tile
+  /// and a locked premium-only tile the same way and found neither stacks
+  /// a second dialog/route: the confirm dialog's own modal barrier and the
+  /// paywall's own full-screen route push already make the grid tile
+  /// beneath them un-tappable the instant either appears, with no gap for
+  /// a second tap to land in. Adding this flag there too would guard
+  /// against something that was already proven not to happen, not close a
+  /// real gap.
+  bool _saving = false;
+
   Future<void> _select(
     String uid,
     AvatarType type,
@@ -167,41 +189,50 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
     String? photoUrl,
     bool consumeReward = false,
   }) async {
+    setState(() => _saving = true);
     try {
-      // The source of truth, and the only write whose failure means the
-      // avatar did not change. The mirrors below used to sit inside this
-      // try, so a leaderboard hiccup reported "avatar save failed" for an
-      // avatar that had in fact saved — and returned early, skipping the
-      // clan sync too.
-      await ref.read(progressRepositoryProvider).updateAvatar(uid, type, value);
-    } catch (_) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(ref.read(appStringsProvider).avatarSaveFailed)),
-      );
-      return;
-    }
-    // Every denormalized copy — leaderboard, clan rosters, friends — each
-    // best-effort and independent of the others.
-    await syncIdentityEverywhere(
-      ref,
-      uid: uid,
-      displayName: displayName,
-      photoUrl: photoUrl,
-      avatarType: type,
-      avatarValue: value,
-    );
-    if (consumeReward) {
-      // Best-effort only — the avatar itself already saved successfully
-      // above, so a hiccup here must not surface as a failure.
       try {
+        // The source of truth, and the only write whose failure means the
+        // avatar did not change. The mirrors below used to sit inside this
+        // try, so a leaderboard hiccup reported "avatar save failed" for an
+        // avatar that had in fact saved — and returned early, skipping the
+        // clan sync too.
         await ref
             .read(progressRepositoryProvider)
-            .consumeAdReward(uid, _avatarPremiumModuleId);
-      } catch (_) {}
+            .updateAvatar(uid, type, value);
+      } catch (_) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(ref.read(appStringsProvider).avatarSaveFailed),
+          ),
+        );
+        return;
+      }
+      // Every denormalized copy — leaderboard, clan rosters, friends — each
+      // best-effort and independent of the others.
+      await syncIdentityEverywhere(
+        ref,
+        uid: uid,
+        displayName: displayName,
+        photoUrl: photoUrl,
+        avatarType: type,
+        avatarValue: value,
+      );
+      if (consumeReward) {
+        // Best-effort only — the avatar itself already saved successfully
+        // above, so a hiccup here must not surface as a failure.
+        try {
+          await ref
+              .read(progressRepositoryProvider)
+              .consumeAdReward(uid, _avatarPremiumModuleId);
+        } catch (_) {}
+      }
+      if (!mounted) return;
+      if (widget.popOnSelect) Navigator.of(context).pop();
+    } finally {
+      if (mounted) setState(() => _saving = false);
     }
-    if (!mounted) return;
-    if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
   Future<void> _openPaywall(
@@ -369,51 +400,58 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
       _openPaywall(context, showAdOption: AvatarPresets.isAdUnlockable(id));
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (user != null && !user.isAnonymous && user.photoURL != null) ...[
-          PickerSectionTitle(s.accountPhotoSection),
-          _GoogleAvatarTile(
-            photoUrl: user.photoURL!,
-            label: s.googleAccountPhotoLabel,
-            selected:
-                profile != null && profile.avatarType == AvatarType.google,
-            onTap: uid == null
-                ? null
-                : () => _select(
-                    uid,
-                    AvatarType.google,
-                    null,
-                    displayName: displayName,
-                    photoUrl: user.photoURL,
-                  ),
-          ),
-        ],
-        PickerSectionTitle(s.ownedSectionTitle),
-        _PresetGrid(
-          presets: owned,
-          language: s.language,
-          isSelected: isSelected,
-          locked: (_) => false,
-          onTap: handleTap,
-        ),
-        // Locked presets only ever show up in Toko — see [shopMode]'s own
-        // doc comment. The Profile sheet stops here, at the owned grid.
-        if (widget.shopMode && notOwned.isNotEmpty) ...[
-          PickerSectionTitle(s.notOwnedSectionTitle),
+    // RISK-1: absorbs every tap on this grid while `_select`'s write is in
+    // flight — see `_saving`'s own doc comment above for what this guards
+    // against and what it deliberately doesn't.
+    return AbsorbPointer(
+      absorbing: _saving,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (user != null && !user.isAnonymous && user.photoURL != null) ...[
+            PickerSectionTitle(s.accountPhotoSection),
+            _GoogleAvatarTile(
+              photoUrl: user.photoURL!,
+              label: s.googleAccountPhotoLabel,
+              selected:
+                  profile != null && profile.avatarType == AvatarType.google,
+              onTap: uid == null
+                  ? null
+                  : () => _select(
+                      uid,
+                      AvatarType.google,
+                      null,
+                      displayName: displayName,
+                      photoUrl: user.photoURL,
+                    ),
+            ),
+          ],
+          PickerSectionTitle(s.ownedSectionTitle),
           _PresetGrid(
-            presets: notOwned,
+            presets: owned,
             language: s.language,
             isSelected: isSelected,
-            locked: (_) => true,
-            coinPriceFor: (preset) => AvatarPresets.isCoinUnlockable(preset.id)
-                ? AvatarPresets.coinPrice
-                : null,
+            locked: (_) => false,
             onTap: handleTap,
           ),
+          // Locked presets only ever show up in Toko — see [shopMode]'s own
+          // doc comment. The Profile sheet stops here, at the owned grid.
+          if (widget.shopMode && notOwned.isNotEmpty) ...[
+            PickerSectionTitle(s.notOwnedSectionTitle),
+            _PresetGrid(
+              presets: notOwned,
+              language: s.language,
+              isSelected: isSelected,
+              locked: (_) => true,
+              coinPriceFor: (preset) =>
+                  AvatarPresets.isCoinUnlockable(preset.id)
+                  ? AvatarPresets.coinPrice
+                  : null,
+              onTap: handleTap,
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
@@ -438,39 +476,55 @@ class FramePickerBody extends ConsumerStatefulWidget {
 }
 
 class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
+  /// Reentrancy guard for [_selectFrame] — see `_AvatarPickerBodyState
+  /// ._saving`'s doc comment for the full reasoning (RISK-1,
+  /// AUDIT_COSMETIC_PROFILE_SHOP.md): same double-tap risk, same fix, and
+  /// the same deliberate choice not to also guard [_buyWithCoins]/
+  /// [_openFramePaywall].
+  bool _saving = false;
+
   Future<void> _selectFrame(
     String uid,
     String? frameId, {
     bool consumeReward = false,
   }) async {
+    setState(() => _saving = true);
     try {
-      await ref.read(progressRepositoryProvider).updateFrame(uid, frameId);
-    } catch (_) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(ref.read(appStringsProvider).frameSaveFailed)),
-      );
-      return;
-    }
-    // Best-effort — the frame itself already saved successfully above, so
-    // a hiccup publishing it to the leaderboard must not surface as a
-    // failure. Lets other learners see the same frame everywhere
-    // LeaderboardAvatar renders this account (leaderboard rows, clan
-    // roster, public profile), not just on this account's own device.
-    try {
-      await ref.read(leaderboardRepositoryProvider).updateFrameId(uid, frameId);
-    } catch (_) {}
-    if (consumeReward) {
-      // Best-effort only — the frame itself already saved successfully
-      // above, so a hiccup here must not surface as a failure.
+      try {
+        await ref.read(progressRepositoryProvider).updateFrame(uid, frameId);
+      } catch (_) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(ref.read(appStringsProvider).frameSaveFailed),
+          ),
+        );
+        return;
+      }
+      // Best-effort — the frame itself already saved successfully above, so
+      // a hiccup publishing it to the leaderboard must not surface as a
+      // failure. Lets other learners see the same frame everywhere
+      // LeaderboardAvatar renders this account (leaderboard rows, clan
+      // roster, public profile), not just on this account's own device.
       try {
         await ref
-            .read(progressRepositoryProvider)
-            .consumeAdReward(uid, _framePremiumModuleId);
+            .read(leaderboardRepositoryProvider)
+            .updateFrameId(uid, frameId);
       } catch (_) {}
+      if (consumeReward) {
+        // Best-effort only — the frame itself already saved successfully
+        // above, so a hiccup here must not surface as a failure.
+        try {
+          await ref
+              .read(progressRepositoryProvider)
+              .consumeAdReward(uid, _framePremiumModuleId);
+        } catch (_) {}
+      }
+      if (!mounted) return;
+      if (widget.popOnSelect) Navigator.of(context).pop();
+    } finally {
+      if (mounted) setState(() => _saving = false);
     }
-    if (!mounted) return;
-    if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
   Future<void> _openFramePaywall(
@@ -602,33 +656,37 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PickerSectionTitle(s.ownedSectionTitle),
-        _FrameGrid(
-          frames: owned,
-          language: s.language,
-          selectedId: profile?.frameId,
-          coinPriceFor: (_) => null,
-          onTap: handleTap,
-        ),
-        // Locked frames only ever show up in Toko — see [shopMode]'s own
-        // doc comment.
-        if (widget.shopMode && notOwned.isNotEmpty) ...[
-          PickerSectionTitle(s.notOwnedSectionTitle),
+    // RISK-1: see `_saving`'s own doc comment above.
+    return AbsorbPointer(
+      absorbing: _saving,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PickerSectionTitle(s.ownedSectionTitle),
           _FrameGrid(
-            frames: notOwned,
+            frames: owned,
             language: s.language,
             selectedId: profile?.frameId,
-            locked: true,
-            coinPriceFor: (id) => FramePresets.isCoinUnlockable(id)
-                ? FramePresets.coinPrice
-                : null,
+            coinPriceFor: (_) => null,
             onTap: handleTap,
           ),
+          // Locked frames only ever show up in Toko — see [shopMode]'s own
+          // doc comment.
+          if (widget.shopMode && notOwned.isNotEmpty) ...[
+            PickerSectionTitle(s.notOwnedSectionTitle),
+            _FrameGrid(
+              frames: notOwned,
+              language: s.language,
+              selectedId: profile?.frameId,
+              locked: true,
+              coinPriceFor: (id) => FramePresets.isCoinUnlockable(id)
+                  ? FramePresets.coinPrice
+                  : null,
+              onTap: handleTap,
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
