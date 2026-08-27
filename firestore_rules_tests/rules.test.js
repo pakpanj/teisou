@@ -33,6 +33,7 @@ const {
   setDoc,
   getDoc,
   updateDoc,
+  deleteDoc,
   Timestamp,
 } = require("firebase/firestore");
 
@@ -716,6 +717,271 @@ describe("existing behavior — no regression", () => {
     });
     const db = asUser("someone_else");
     await assertSucceeds(getDoc(doc(db, "leaderboard", uid)));
+  });
+
+  // RISK-2 (AUDIT_COSMETIC_PROFILE_SHOP.md): leaderboard/{uid},
+  // clans/{code}/members/{uid} and users/{otherUid}/friends/{friendUid}
+  // are pure mirrors of users/{uid}.profile's cosmetic fields, read by
+  // this app's own render sites for OTHER people's avatars/frames/
+  // covers/card skins with no live re-check (see battle_screen.dart's
+  // own _skinFor doc comment). Before mirrorsOwnCosmetics existed, a
+  // client could write ANY value to any of the three directly, no
+  // ownership required at all — proven here, and closed by
+  // firestore.rules' mirrorsOwnCosmetics.
+  describe("cosmetic identity mirrors must match users/{uid}.profile", () => {
+    test("DENIED: fake an achievement card skin via " +
+        "leaderboard/{uid}.cardSkinId — no stars/Premium, and no " +
+        "matching users/{uid} value either", async () => {
+      const uid = "mirror1";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", uid), {
+          profile: {cardSkinId: "classic"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "leaderboard", uid), {
+          cardGameStarTotal: 0,
+          cardSkinId: "classic",
+        });
+      });
+      const db = asUser(uid);
+      await assertFails(
+          updateDoc(doc(db, "leaderboard", uid), {cardSkinId: "dragon_black"}),
+      );
+    });
+
+    test("ALLOWED: leaderboard.cardSkinId can be synced to whatever " +
+        "users/{uid}.profile.cardSkinId genuinely says right now — the " +
+        "legitimate mirror path this fix must not break", async () => {
+      const uid = "mirror2";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", uid), {
+          profile: {cardSkinId: "sakura"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "leaderboard", uid), {
+          cardGameStarTotal: 0,
+          cardSkinId: "classic",
+        });
+      });
+      const db = asUser(uid);
+      await assertSucceeds(
+          updateDoc(doc(db, "leaderboard", uid), {cardSkinId: "sakura"}),
+      );
+    });
+
+    test("DENIED: fake a premium-only avatar via " +
+        "leaderboard/{uid}.avatarType/avatarValue", async () => {
+      const uid = "mirror3";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", uid), {
+          profile: {avatarType: "preset_free", avatarValue: "neko_sensei"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "leaderboard", uid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+        });
+      });
+      const db = asUser(uid);
+      await assertFails(
+          updateDoc(doc(db, "leaderboard", uid), {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          }),
+      );
+    });
+
+    test("ALLOWED: the leaderboard avatar mirror can be synced to " +
+        "whatever the client genuinely just equipped on " +
+        "users/{uid}.profile", async () => {
+      const uid = "mirror4";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", uid), {
+          profile: {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          },
+          subscription: {tier: "premium"},
+        });
+        await setDoc(doc(db, "leaderboard", uid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+        });
+      });
+      const db = asUser(uid);
+      await assertSucceeds(
+          updateDoc(doc(db, "leaderboard", uid), {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          }),
+      );
+    });
+
+    test("ALLOWED: an unrelated leaderboard field (displayName) can " +
+        "still be updated without touching any cosmetic field, as long " +
+        "as the already-stored cosmetic fields still match the profile",
+    async () => {
+      const uid = "mirror5";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", uid), {
+          profile: {avatarType: "preset_free", avatarValue: "neko_sensei"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "leaderboard", uid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+          displayName: "Old Name",
+        });
+      });
+      const db = asUser(uid);
+      await assertSucceeds(
+          updateDoc(doc(db, "leaderboard", uid), {displayName: "New Name"}),
+      );
+    });
+
+    test("DENIED: fake a premium-only avatar in your OWN clan roster " +
+        "row, visible to clanmates", async () => {
+      const memberUid = "mirror6";
+      const code = "MIRRORCLAN1";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", memberUid), {
+          profile: {avatarType: "preset_free", avatarValue: "neko_sensei"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "clans", code), {hostUid: "someone_else"});
+        await setDoc(doc(db, "clans", code, "members", memberUid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+          role: "member",
+        });
+      });
+      const db = asUser(memberUid);
+      await assertFails(
+          updateDoc(doc(db, "clans", code, "members", memberUid), {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          }),
+      );
+    });
+
+    test("ALLOWED: a clan roster row can still be synced to whatever " +
+        "the member's own users/{uid}.profile genuinely says", async () => {
+      const memberUid = "mirror7";
+      const code = "MIRRORCLAN2";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", memberUid), {
+          profile: {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          },
+          subscription: {tier: "premium"},
+        });
+        await setDoc(doc(db, "clans", code), {hostUid: "someone_else"});
+        await setDoc(doc(db, "clans", code, "members", memberUid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+          role: "member",
+        });
+      });
+      const db = asUser(memberUid);
+      await assertSucceeds(
+          updateDoc(doc(db, "clans", code, "members", memberUid), {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          }),
+      );
+    });
+
+    test("ALLOWED: leaving a clan (deleting your own roster row) is " +
+        "unaffected by this check", async () => {
+      const memberUid = "mirror8";
+      const code = "MIRRORCLAN3";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", memberUid), {
+          profile: {avatarType: "preset_free", avatarValue: "neko_sensei"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "clans", code), {hostUid: "someone_else"});
+        await setDoc(doc(db, "clans", code, "members", memberUid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+          role: "member",
+        });
+      });
+      const db = asUser(memberUid);
+      await assertSucceeds(
+          deleteDoc(doc(db, "clans", code, "members", memberUid)),
+      );
+    });
+
+    test("DENIED: fake a premium-only avatar in your OWN row inside " +
+        "someone else's friends list", async () => {
+      const otherUid = "mirror9_owner";
+      const friendUid = "mirror9_friend";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", friendUid), {
+          profile: {avatarType: "preset_free", avatarValue: "neko_sensei"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "users", otherUid, "friends", friendUid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+        });
+      });
+      const db = asUser(friendUid);
+      await assertFails(
+          updateDoc(doc(db, "users", otherUid, "friends", friendUid), {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          }),
+      );
+    });
+
+    test("ALLOWED: a friend row can still be synced to whatever that " +
+        "friend's own users/{uid}.profile genuinely says", async () => {
+      const otherUid = "mirror10_owner";
+      const friendUid = "mirror10_friend";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", friendUid), {
+          profile: {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          },
+          subscription: {tier: "premium"},
+        });
+        await setDoc(doc(db, "users", otherUid, "friends", friendUid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+        });
+      });
+      const db = asUser(friendUid);
+      await assertSucceeds(
+          updateDoc(doc(db, "users", otherUid, "friends", friendUid), {
+            avatarType: "preset_premium",
+            avatarValue: "neko_astronaut",
+          }),
+      );
+    });
+
+    test("ALLOWED: unfriending (deleting your own row in someone " +
+        "else's friends list) is unaffected by this check", async () => {
+      const otherUid = "mirror11_owner";
+      const friendUid = "mirror11_friend";
+      await seed(async (db) => {
+        await setDoc(doc(db, "users", friendUid), {
+          profile: {avatarType: "preset_free", avatarValue: "neko_sensei"},
+          subscription: {tier: "free"},
+        });
+        await setDoc(doc(db, "users", otherUid, "friends", friendUid), {
+          avatarType: "preset_free",
+          avatarValue: "neko_sensei",
+        });
+      });
+      const db = asUser(friendUid);
+      await assertSucceeds(
+          deleteDoc(doc(db, "users", otherUid, "friends", friendUid)),
+      );
+    });
   });
 
   test("rankSkipExams is sealed — read and write both denied for everyone", async () => {

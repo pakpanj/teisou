@@ -960,11 +960,25 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   ///   scope). Instead this trusts `LeaderboardEntry.cardSkinId` directly
   ///   — the same level of trust this app *already* gives an opponent's
   ///   avatar and frame everywhere (neither has ever had a live re-check
-  ///   for a non-owner viewer) — which is sound because
-  ///   `firestore.rules`' `isAllowedCardSkinWrite` already refuses to let
-  ///   that id become anything the opponent wasn't entitled to at the
-  ///   moment they equipped it.
+  ///   for a non-owner viewer).
   ///
+  ///   **Correction (RISK-2, AUDIT_COSMETIC_PROFILE_SHOP.md)**: this used
+  ///   to claim that trust was sound because `isAllowedCardSkinWrite`
+  ///   "already refuses to let that id become anything the opponent
+  ///   wasn't entitled to" — that was never actually true.
+  ///   `isAllowedCardSkinWrite` (and the avatar/frame/cover equivalents)
+  ///   were only ever wired into `allow update` on `users/{uid}` itself,
+  ///   never into `leaderboard/{uid}` — proven via the real Firestore
+  ///   Rules Emulator that a client could write ANY cardSkinId/
+  ///   avatarType/avatarValue/frameId/coverId directly onto their own
+  ///   `leaderboard/{uid}` row, no entitlement required at all. Fixed by
+  ///   `firestore.rules`' `mirrorsOwnCosmetics`, which now requires every
+  ///   `leaderboard/{uid}` write's resulting cosmetic fields to equal
+  ///   exactly what the writer's own `users/{uid}.profile` currently
+  ///   says — so trusting `LeaderboardEntry.cardSkinId` here really is
+  ///   sound now, just not for the reason this comment used to give.
+  ///
+
   /// **Known, accepted gap, not silently swept under the rug**: an
   /// opponent whose Premium lapses right after equipping a
   /// premium-bundled paid skin, and who never reopens the picker

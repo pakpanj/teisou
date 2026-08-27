@@ -193,7 +193,10 @@ service cloud.firestore {
           && !('cardGameSeason' in request.resource.data)
           && !('cardGameStarTotal' in request.resource.data)
           && !('globalPoints' in request.resource.data)
-          && !('globalPointsUpdatedAt' in request.resource.data);
+          && !('globalPointsUpdatedAt' in request.resource.data)
+          // RISK-2 — see mirrorsOwnCosmetics's own doc comment: this mirror
+          // must never show a cosmetic the writer doesn't actually own.
+          && mirrorsOwnCosmetics(uid);
       allow update: if request.auth != null && request.auth.uid == uid
           && request.resource.data.get('cardGameTier', null)
               == resource.data.get('cardGameTier', null)
@@ -208,7 +211,9 @@ service cloud.firestore {
           && request.resource.data.get('globalPoints', null)
               == resource.data.get('globalPoints', null)
           && request.resource.data.get('globalPointsUpdatedAt', null)
-              == resource.data.get('globalPointsUpdatedAt', null);
+              == resource.data.get('globalPointsUpdatedAt', null)
+          // RISK-2 — see mirrorsOwnCosmetics's own doc comment.
+          && mirrorsOwnCosmetics(uid);
       // Sengaja tidak ada `allow delete` juga — beda dari `users/{uid}`
       // di atas, rule lama di sini (satu `allow write` polos) memang
       // sudah membolehkan hapus-sendiri sejak awal, jadi ini bukan
@@ -288,7 +293,13 @@ service cloud.firestore {
       // co-leader (hanya anggota biasa, bukan leader/co-leader lain).
       match /members/{memberUid} {
         allow read: if request.auth != null;
-        allow write: if request.auth != null && request.auth.uid == memberUid;
+        // RISK-2 — own-row create/update must mirror avatarType/
+        // avatarValue exactly as they stand on the writer's own
+        // users/{uid}.profile right now; see mirrorsOwnCosmetics's own
+        // doc comment. `request.resource == null` is a delete (leaving
+        // the clan) — unaffected by this check, same as before.
+        allow write: if request.auth != null && request.auth.uid == memberUid
+            && (request.resource == null || mirrorsOwnCosmetics(memberUid));
         allow update: if request.auth != null
             && request.auth.uid != memberUid
             && actorRole(code, request.auth.uid) == 'leader'
@@ -453,7 +464,22 @@ service cloud.firestore {
     // untuk menyentuh koleksi `friends` milik ORANG LAIN, dan hanya baris
     // yang mewakili diri sendiri, tidak pernah baris pihak ketiga.
     match /users/{otherUid}/friends/{friendUid} {
-      allow write: if request.auth != null && request.auth.uid == friendUid;
+      // RISK-2 — this row represents [friendUid]'s own identity as seen
+      // by [otherUid], a real other person; see mirrorsOwnCosmetics's
+      // own doc comment. `request.resource == null` is a delete
+      // (unfriending), unaffected by this check, same as before.
+      //
+      // Deliberately NOT extended to the mirrored write into one's OWN
+      // friends list (`users/{myUid}/friends/{otherUid}`, covered by the
+      // generic `{subcollection}/{document=**}` wildcard above, not this
+      // block) — that row is only ever readable by its owner (`myUid`),
+      // so a fake avatarType/avatarValue there could only mislead the
+      // writer about their own friend, never another real person. No
+      // externally-observable impact, so left out of this fix's scope
+      // rather than restructuring a wildcard dozens of unrelated
+      // subcollections also rely on.
+      allow write: if request.auth != null && request.auth.uid == friendUid
+          && (request.resource == null || mirrorsOwnCosmetics(friendUid));
     }
 
     // Chat pribadi 1:1 antar teman — beda dari chat clan (yang cukup
@@ -945,6 +971,54 @@ service cloud.firestore {
       return newSkin == null || unchanged || (recognized && (
           newSkin in freeIds || achievementOk || paidOk
       ));
+    }
+
+    // RISK-2 (AUDIT_COSMETIC_PROFILE_SHOP.md). `leaderboard/{uid}`,
+    // `clans/{code}/members/{uid}`, and
+    // `users/{otherUid}/friends/{friendUid}` are pure denormalized
+    // MIRRORS of `users/{uid}.profile`'s already-server-validated
+    // cosmetic fields — every render site that shows someone ELSE's
+    // avatar/frame/cover/card skin (`LeaderboardAvatar`, an opponent's
+    // card back during a live match, `PublicProfileScreen`, clan/friends
+    // rows) trusts whatever sits on the mirror directly, with no live
+    // re-check against the writer's real entitlement.
+    // `battle_screen.dart`'s own `_skinFor` doc comment says this is
+    // "sound because `isAllowedCardSkinWrite` already refuses to let
+    // that id become anything the opponent wasn't entitled to" — that
+    // was never actually true, since `isAllowedCardSkinWrite` (and the
+    // avatar/frame/cover equivalents) were only ever wired into `allow
+    // update` on `users/{uid}` itself, never into any of these three
+    // mirror collections. Proven via the real Firestore Rules Emulator
+    // (`firestore_rules_tests/rules.test.js`'s "leaderboard/clan/friends
+    // mirrors" group) before this function existed: a client could
+    // write ANY avatarType/avatarValue/frameId/coverId/cardSkinId
+    // directly onto their own row in any of the three, no ownership
+    // required at all.
+    //
+    // Rather than re-implementing `isAllowedCosmeticEquip`'s whole
+    // four-tier check three more times against a second document (and
+    // risking it drifting out of sync with the real one as tiers
+    // change), this ties every mirror write to the one place ownership
+    // is already correctly and exclusively enforced: the resulting
+    // avatarType/avatarValue/frameId/coverId/cardSkinId must equal
+    // EXACTLY what [uid]'s own `users/{uid}` document says right now —
+    // never a value the mirror write itself asserts. A field a given
+    // mirror never carries (e.g. `frameId` on a `friends/` row) passes
+    // trivially, since its "current value" and its own missing-field
+    // default are the same `null` either way.
+    function mirrorsOwnCosmetics(uid) {
+      let p = get(/databases/$(database)/documents/users/$(uid)).data
+          .get('profile', {});
+      return request.resource.data.get('avatarType', p.get('avatarType', null))
+              == p.get('avatarType', null)
+          && request.resource.data.get('avatarValue', p.get('avatarValue', null))
+              == p.get('avatarValue', null)
+          && request.resource.data.get('frameId', p.get('frameId', null))
+              == p.get('frameId', null)
+          && request.resource.data.get('coverId', p.get('coverId', null))
+              == p.get('coverId', null)
+          && request.resource.data.get('cardSkinId', p.get('cardSkinId', null))
+              == p.get('cardSkinId', null);
     }
   }
 }
