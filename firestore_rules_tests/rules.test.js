@@ -375,6 +375,203 @@ describe("Avatar/Frame/Cover ownership + equip", () => {
 });
 
 // ---------------------------------------------------------------------
+// 3b. Combined-write enforcement — profile equip + xp.unlocked*Ids in
+//     ONE request (TEST GAP #3, AUDIT_COSMETIC_PROFILE_SHOP.md).
+//
+// Every test above only ever changes ONE of `profile.frameId` or
+// `xp.unlockedFrameIds` per request. That leaves a real question
+// unanswered: `isAllowedProfileWrite()` reads `ownedFrames` from
+// `resource.data` (the document as it stood BEFORE this write), so if a
+// single `set(..., merge:true)`/`update()` call could smuggle a NEW id
+// into `xp.unlockedFrameIds` in the same request that equips it, would
+// `isAllowedCosmeticEquip` be fooled into reading the request's own
+// freshly-claimed ownership as if it were already-established fact?
+//
+// Source-inspection answer: no — `isAllowedPurchaseWrite()` freezes the
+// ENTIRE `xp` map (`request.resource.data.get('xp', {}) == oldXp`) as
+// one of the `&&`-chained conditions on `allow update`, so ANY change
+// to ANY key under `xp` (unlockedFrameIds included) fails that condition
+// outright, and Firestore rules require every `&&` term to hold — one
+// false denies the WHOLE document write, not just the field that
+// violated it. But that is exactly the kind of "reads correct, might
+// not evaluate correct" claim this harness exists to stop trusting on
+// sight (see README.md's own three real discrepancies, none of which
+// were visible from reading the rule text alone) — so this group proves
+// it against the real CEL engine instead of re-asserting the same
+// reasoning in prose.
+describe("combined-write enforcement — profile equip + xp.unlocked*Ids " +
+    "in one request", () => {
+  test("baseline: profile.frameId ALONE, to an owned/free id, is " +
+      "ALLOWED — establishes what the combined-write tests below " +
+      "contrast against", async () => {
+    const uid = "cw1";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {frameId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedFrameIds: []},
+      });
+    });
+    const db = asUser(uid);
+    await assertSucceeds(
+        updateDoc(doc(db, "users", uid), {"profile.frameId": "frame_sakura"}),
+    );
+  });
+
+  test("baseline: xp.unlockedFrameIds ALONE, changed by the client, is " +
+      "DENIED", async () => {
+    const uid = "cw2";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {frameId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedFrameIds: []},
+      });
+    });
+    const db = asUser(uid);
+    await assertFails(
+        updateDoc(doc(db, "users", uid), {
+          "xp.unlockedFrameIds": ["frame_ocean"],
+        }),
+    );
+  });
+
+  test("CORE: profile.frameId (a legitimately free id) + " +
+      "xp.unlockedFrameIds in the SAME update() request is DENIED — " +
+      "even though the frameId half alone would succeed on its own " +
+      "(see the baseline above)", async () => {
+    const uid = "cw3";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {frameId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedFrameIds: []},
+      });
+    });
+    const db = asUser(uid);
+    await assertFails(
+        updateDoc(doc(db, "users", uid), {
+          "profile.frameId": "frame_sakura",
+          "xp.unlockedFrameIds": ["frame_sakura"],
+        }),
+    );
+    // And prove the deny is atomic — the doc must show NEITHER half
+    // landed, not "the frameId part quietly went through anyway".
+    const snap = await getDoc(doc(db, "users", uid));
+    assert.equal(snap.data().profile.frameId, null);
+    assert.deepEqual(snap.data().xp.unlockedFrameIds, []);
+  });
+
+  test("ESCALATION ATTEMPT: a combined write trying to self-grant a " +
+      "premium-only frame via xp.unlockedFrameIds AND equip it in the " +
+      "same request is DENIED — the exact self-service-ownership " +
+      "shortcut isAllowedCosmeticEquip's design note warns about", async () => {
+    const uid = "cw4";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {frameId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedFrameIds: []},
+      });
+    });
+    const db = asUser(uid);
+    await assertFails(
+        updateDoc(doc(db, "users", uid), {
+          "profile.frameId": "frame_space",
+          "xp.unlockedFrameIds": ["frame_space"],
+        }),
+    );
+    const snap = await getDoc(doc(db, "users", uid));
+    assert.equal(snap.data().profile.frameId, null);
+  });
+
+  test("the same combined denial holds via setDoc(..., {merge:true}) " +
+      "with nested objects too, not just updateDoc's dot-path form — " +
+      "both are real request shapes ProgressRepository/spend_coins.js " +
+      "could in principle produce", async () => {
+    const uid = "cw5";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {frameId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedFrameIds: []},
+      });
+    });
+    const db = asUser(uid);
+    await assertFails(
+        setDoc(doc(db, "users", uid), {
+          profile: {frameId: "frame_sakura"},
+          xp: {unlockedFrameIds: ["frame_sakura"]},
+        }, {merge: true}),
+    );
+    const snap = await getDoc(doc(db, "users", uid));
+    assert.equal(snap.data().profile.frameId, null);
+  });
+
+  test("a legitimate server-side grant is NOT blocked by this freeze — " +
+      "simulated the same way the existing 'xp authority' describe " +
+      "block already does (rules-disabled seed context standing in for " +
+      "an Admin SDK write, since this harness has no functions emulator " +
+      "wired in — see README.md — and Admin SDK writes bypass these " +
+      "rules regardless of which server code performs them, so faking " +
+      "a Cloud Function object here would prove nothing this doesn't)",
+  async () => {
+    const uid = "cw6";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {frameId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedFrameIds: []},
+      });
+    });
+    // What claimLevelReward/spend_coins.js actually do server-side:
+    // grant the id into xp.unlockedFrameIds via the Admin SDK, out of
+    // band from anything the client itself requested. Deliberately a
+    // COIN-tier id (frame_ocean), not a premium-only one (frame_space) —
+    // Option A's defense-in-depth (see isAllowedCosmeticEquip's own doc
+    // comment, and the "premium-only ... even if it's (incorrectly)
+    // present in xp.unlocked*Ids" tests elsewhere in this file) means a
+    // premium-only id is NEVER equippable via xp.unlocked*Ids alone, no
+    // matter how it got there — using one here would test the wrong
+    // thing and this test's own first run correctly caught that.
+    await seed(async (db) => {
+      await updateDoc(doc(db, "users", uid), {
+        "xp.unlockedFrameIds": ["frame_ocean"],
+      });
+    });
+    // The id is now genuinely owned. The client equipping it — writing
+    // profile.frameId ONLY, no xp write of its own — must succeed.
+    const db = asUser(uid);
+    await assertSucceeds(
+        updateDoc(doc(db, "users", uid), {"profile.frameId": "frame_ocean"}),
+    );
+  });
+
+  test("COVER: the identical combined-write denial holds for " +
+      "profile.coverId + xp.unlockedCoverIds too — proves this is the " +
+      "shared isAllowedPurchaseWrite/isAllowedProfileWrite mechanism, " +
+      "not a frame-only assumption", async () => {
+    const uid = "cw7";
+    await seed(async (db) => {
+      await setDoc(doc(db, "users", uid), {
+        profile: {coverId: null},
+        subscription: {tier: "free"},
+        xp: {unlockedCoverIds: []},
+      });
+    });
+    const db = asUser(uid);
+    await assertFails(
+        updateDoc(doc(db, "users", uid), {
+          "profile.coverId": "sakura_dawn",
+          "xp.unlockedCoverIds": ["sakura_dawn"],
+        }),
+    );
+    const snap = await getDoc(doc(db, "users", uid));
+    assert.equal(snap.data().profile.coverId, null);
+  });
+});
+
+// ---------------------------------------------------------------------
 // 4. Card Skin
 // ---------------------------------------------------------------------
 describe("Card Skin ownership + equip", () => {
