@@ -505,3 +505,7 @@ module.exports.verifyWithPlay = verifyWithPlay;
 // name constant, instead of a second copy that could drift.
 module.exports.publisher = publisher;
 module.exports.ANDROID_PACKAGE = ANDROID_PACKAGE;
+// Reused by subscription_backstop.js (RISK-3) to resolve which
+// processedPurchaseTokens row governs a candidate's subscription,
+// without a second hand-kept copy of this id.
+module.exports.PREMIUM_PRODUCT = PREMIUM_PRODUCT;

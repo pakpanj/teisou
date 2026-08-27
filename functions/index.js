@@ -299,6 +299,20 @@ exports.verifyPurchase = require("./iap").verifyPurchase;
 exports.onPlayRtdn =
   require("./subscription_notifications").onPlayRtdn;
 
+// RISK-3 defense-in-depth: onPlayRtdn above is the only thing that can
+// ever downgrade a lapsed subscription, and it depends entirely on RTDN
+// actually being configured and delivering. These two scheduled sweeps
+// self-heal a stale `tier: "premium"` even if RTDN never fires — a
+// daily pass over accounts near/past expiry, and a weekly pass over
+// every premium account (catches a legacy account with no `expiresAt`
+// at all). Both default to dry-run (log only) until
+// SUBSCRIPTION_BACKSTOP_ENABLED="true". See
+// functions/subscription_backstop.js.
+exports.sweepNearExpirySubscriptions =
+  require("./subscription_backstop").sweepNearExpirySubscriptions;
+exports.sweepAllPremiumSubscriptions =
+  require("./subscription_backstop").sweepAllPremiumSubscriptions;
+
 // The other way to earn coins besides buying them: 1st-3rd on Skor
 // Global, recalculated and paid out every Monday. See
 // functions/award_top_coins.js.

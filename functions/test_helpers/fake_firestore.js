@@ -135,32 +135,78 @@ class FakeCollectionRef {
     return {docs};
   }
 
-  /** A single-field equality filter — added for
-   * `battle_abandonment_sweep.js`'s `.where("status", "==", "active")`.
-   * Deliberately supports only `"=="`: that is the only operator any
-   * caller of this fake actually uses, and a fake that silently ignored
-   * an unsupported operator would be worse than no fake at all — better
-   * to throw loudly the day a real `.where(..., "<", ...)` shows up
-   * needing support this doesn't have yet. */
+  /** A field-equality/-range filter — originally added for
+   * `battle_abandonment_sweep.js`'s `.where("status", "==", "active")`
+   * (`"=="` only), broadened for `subscription_backstop.js`'s
+   * `subscription.tier == "premium" && subscription.expiresAt <= X`
+   * candidate query: dot-path (nested) field addressing, plus `"<="`/
+   * `"<"`/`">="`/`">"`. Every pre-existing caller only ever used `"=="`
+   * on a flat field name, which behaves identically here — a flat name
+   * is just a zero-dot path, so nothing already passing changes. Still
+   * throws loudly for anything outside these five operators, the same
+   * "no silent unsupported-operator fallback" discipline the original
+   * comment here established. */
   where(field, op, value) {
-    if (op !== "==") {
-      throw new Error(`FakeFirestore.where: unsupported operator "${op}"`);
-    }
-    return new FakeQuery(this, (data) => data[field] === value);
+    return new FakeQuery(
+        this, (data) => matchesOp(op, getPath(data, field), value));
   }
 }
 
-/** The result of `.where(...)` — only `.get()` is needed by anything that
- * uses this fake so far. */
+/** The result of `.where(...)`. Supports chaining a second `.where(...)`
+ * (AND semantics, matching real Firestore) — added alongside the
+ * dot-path/range support above, for the same two-field candidate query. */
 class FakeQuery {
   constructor(collectionRef, predicate) {
     this._collectionRef = collectionRef;
     this._predicate = predicate;
   }
 
+  where(field, op, value) {
+    const previous = this._predicate;
+    return new FakeQuery(
+        this._collectionRef,
+        (data) => previous(data) && matchesOp(op, getPath(data, field), value),
+    );
+  }
+
   async get() {
     const {docs} = await this._collectionRef.get();
     return {docs: docs.filter((doc) => this._predicate(doc.data()))};
+  }
+}
+
+/** Resolves a possibly dot-separated [path] against [obj] — Firestore's
+ * own `.where('a.b.c', ...)` addresses a NESTED field this way, not a
+ * literal key containing dots. Returns `undefined` for any missing
+ * segment, matching how a real Firestore query field-filter behaves
+ * against a document that simply lacks the field (never throws, never
+ * matches an inequality). */
+function getPath(obj, path) {
+  let cur = obj;
+  for (const segment of path.split(".")) {
+    if (cur === null || typeof cur !== "object") return undefined;
+    cur = cur[segment];
+  }
+  return cur;
+}
+
+/** One comparison operator, real-Firestore-shaped: a document missing
+ * the field never matches (equality OR range), `==` is reference/value
+ * equality (every caller of this fake only ever compares primitives,
+ * where that agrees with Firestore's own field-value equality), and the
+ * four relational operators lean on JS's built-in numeric coercion for
+ * `Date` objects — comparing two `Date`s with `<=`/`<`/`>=`/`>` already
+ * compares their millisecond values with no special-casing needed. */
+function matchesOp(op, actual, expected) {
+  if (actual === undefined) return false;
+  switch (op) {
+    case "==": return actual === expected;
+    case "<=": return actual <= expected;
+    case "<": return actual < expected;
+    case ">=": return actual >= expected;
+    case ">": return actual > expected;
+    default:
+      throw new Error(`FakeFirestore.where: unsupported operator "${op}"`);
   }
 }
 

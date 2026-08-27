@@ -27,6 +27,25 @@
         { "fieldPath": "players", "arrayConfig": "CONTAINS" },
         { "fieldPath": "createdAt", "order": "DESCENDING" }
       ]
+    },
+    {
+      "_comment": [
+        "RISK-3 subscription backstop's daily near-expiry sweep",
+        "(functions/subscription_backstop.js, findNearExpiryCandidates):",
+        "  where('subscription.tier', '==', 'premium')",
+        "      .where('subscription.expiresAt', '<=', now + 3 days)",
+        "An equality filter plus a range filter on a DIFFERENT field needs",
+        "a composite index even though each field alone is auto-indexed.",
+        "The weekly long-tail sweep (findAllPremiumCandidates) uses only",
+        "the single equality filter and needs no index of its own — this",
+        "one entry covers both."
+      ],
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "subscription.tier", "order": "ASCENDING" },
+        { "fieldPath": "subscription.expiresAt", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []
