@@ -170,16 +170,33 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
   /// events while an equip write is in flight, so a second tap on any
   /// tile is simply ignored until the first one finishes.
   ///
-  /// **Deliberately does not also guard [_buyWithCoins]/[_openPaywall]** —
-  /// same file's own RISK-1 tests double-tapped a locked coin-tier tile
-  /// and a locked premium-only tile the same way and found neither stacks
-  /// a second dialog/route: the confirm dialog's own modal barrier and the
-  /// paywall's own full-screen route push already make the grid tile
-  /// beneath them un-tappable the instant either appears, with no gap for
-  /// a second tap to land in. Adding this flag there too would guard
-  /// against something that was already proven not to happen, not close a
-  /// real gap.
+  /// **Still deliberately does not guard [_openPaywall]** — same file's
+  /// own RISK-1 tests double-tapped a locked premium-only tile the same
+  /// way and found it never stacks a second route: the paywall's own
+  /// full-screen route push already makes the grid tile beneath it
+  /// un-tappable the instant it appears, with no gap for a second tap to
+  /// land in. [_buyWithCoins] no longer shares that exemption — see
+  /// [_buyingWithCoins]'s own doc comment for why (RISK-5).
   bool _saving = false;
+
+  /// RISK-5: reentrancy guard for [_buyWithCoins], same shape as
+  /// `ShopTab._buyingWithCoins`. The confirm dialog's own modal barrier
+  /// only closes the *first* gap (a second tap can't reach the tile while
+  /// the dialog is showing) — it says nothing about the window right
+  /// after the dialog closes, while `CoinSpendService.buy()` is still
+  /// in-flight and the tile is still un-owned as far as Firestore's
+  /// snapshot has reported. Proven exploitable in
+  /// `test/coin_buy_reentrancy_test.dart`: tap -> confirm -> tap the same
+  /// tile again before `buy()` resolves opened a SECOND confirm dialog
+  /// and, once confirmed, fired a second concurrent `buy()` call.
+  /// `spend_coins.js`'s own transaction is idempotent against this (RISK-5
+  /// audit, PROVEN BY TEST server-side), so this was never a double-charge
+  /// risk — but two wasted Cloud Function calls and two stacked dialogs
+  /// is still worth closing at the source. Set **before** `showDialog`
+  /// opens, not just around the `CoinSpendService.buy()` call, so the
+  /// entire range (tap -> dialog -> confirm -> buy() settling) is closed,
+  /// not just the async tail of it.
+  bool _buyingWithCoins = false;
 
   Future<void> _select(
     String uid,
@@ -263,51 +280,57 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
   /// since spending real money's worth of coins on the wrong tile by a
   /// stray tap is a worse failure than one extra dialog.
   Future<void> _buyWithCoins(BuildContext context, AvatarPreset preset) async {
-    final s = ref.read(appStringsProvider);
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: Text(s.coinBuyConfirmTitle),
-        content: Text(s.coinBuyConfirmBody(AvatarPresets.coinPrice)),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: Text(s.cancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: Text(s.coinBuyConfirmButton),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !context.mounted) return;
+    if (_buyingWithCoins) return;
+    setState(() => _buyingWithCoins = true);
     try {
-      await ref
-          .read(coinSpendServiceProvider)
-          .buy(CoinSpendKind.avatar, preset.id);
-      if (!mounted) return;
-      // No local optimistic set update needed: `unlockedCosmeticsProvider`
-      // watches the exact `xp.unlockedAvatarIds` field this purchase just
-      // wrote, so the grid unlocks the tile on its own once Firestore's
-      // snapshot listener reports it — normally within the same frame or
-      // two, since the callable above only resolves after its own
-      // Firestore transaction has already committed. Keeping ownership in
-      // exactly one place (the provider) avoids a second, hand-maintained
-      // copy that could drift from it.
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
-    } on CoinSpendException catch (e) {
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
-          ),
+      final s = ref.read(appStringsProvider);
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: Text(s.coinBuyConfirmTitle),
+          content: Text(s.coinBuyConfirmBody(AvatarPresets.coinPrice)),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: Text(s.cancel),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: Text(s.coinBuyConfirmButton),
+            ),
+          ],
         ),
       );
+      if (confirmed != true || !context.mounted) return;
+      try {
+        await ref
+            .read(coinSpendServiceProvider)
+            .buy(CoinSpendKind.avatar, preset.id);
+        if (!mounted) return;
+        // No local optimistic set update needed: `unlockedCosmeticsProvider`
+        // watches the exact `xp.unlockedAvatarIds` field this purchase just
+        // wrote, so the grid unlocks the tile on its own once Firestore's
+        // snapshot listener reports it — normally within the same frame or
+        // two, since the callable above only resolves after its own
+        // Firestore transaction has already committed. Keeping ownership in
+        // exactly one place (the provider) avoids a second, hand-maintained
+        // copy that could drift from it.
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      } on CoinSpendException catch (e) {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
+            ),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _buyingWithCoins = false);
     }
   }
 
@@ -400,11 +423,12 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
       _openPaywall(context, showAdOption: AvatarPresets.isAdUnlockable(id));
     }
 
-    // RISK-1: absorbs every tap on this grid while `_select`'s write is in
-    // flight — see `_saving`'s own doc comment above for what this guards
-    // against and what it deliberately doesn't.
+    // RISK-1/RISK-5: absorbs every tap on this grid while `_select`'s
+    // write OR a coin purchase (`_buyWithCoins`) is in flight — see
+    // `_saving`'s/`_buyingWithCoins`'s own doc comments above for what
+    // each guards against.
     return AbsorbPointer(
-      absorbing: _saving,
+      absorbing: _saving || _buyingWithCoins,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -478,10 +502,15 @@ class FramePickerBody extends ConsumerStatefulWidget {
 class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
   /// Reentrancy guard for [_selectFrame] — see `_AvatarPickerBodyState
   /// ._saving`'s doc comment for the full reasoning (RISK-1,
-  /// AUDIT_COSMETIC_PROFILE_SHOP.md): same double-tap risk, same fix, and
-  /// the same deliberate choice not to also guard [_buyWithCoins]/
-  /// [_openFramePaywall].
+  /// AUDIT_COSMETIC_PROFILE_SHOP.md): same double-tap risk, same fix. Still
+  /// deliberately does not guard [_openFramePaywall] — see
+  /// `_AvatarPickerBodyState._saving`'s doc comment for why. [_buyWithCoins]
+  /// no longer shares that exemption — see [_buyingWithCoins].
   bool _saving = false;
+
+  /// RISK-5: see `_AvatarPickerBodyState._buyingWithCoins`'s doc comment
+  /// for the full reasoning — same gap, same fix, applied to frames.
+  bool _buyingWithCoins = false;
 
   Future<void> _selectFrame(
     String uid,
@@ -551,46 +580,52 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
   /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
   /// this mirrors exactly for frames.
   Future<void> _buyWithCoins(BuildContext context, String frameId) async {
-    final s = ref.read(appStringsProvider);
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: Text(s.coinBuyConfirmTitle),
-        content: Text(s.coinBuyConfirmBody(FramePresets.coinPrice)),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: Text(s.cancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: Text(s.coinBuyConfirmButton),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !context.mounted) return;
+    if (_buyingWithCoins) return;
+    setState(() => _buyingWithCoins = true);
     try {
-      await ref
-          .read(coinSpendServiceProvider)
-          .buy(CoinSpendKind.frame, frameId);
-      if (!mounted) return;
-      // No local optimistic set update needed — see `AvatarPickerBody
-      // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
-      // watches the exact `xp.unlockedFrameIds` field this write lands in.
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
-    } on CoinSpendException catch (e) {
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
-          ),
+      final s = ref.read(appStringsProvider);
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: Text(s.coinBuyConfirmTitle),
+          content: Text(s.coinBuyConfirmBody(FramePresets.coinPrice)),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: Text(s.cancel),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: Text(s.coinBuyConfirmButton),
+            ),
+          ],
         ),
       );
+      if (confirmed != true || !context.mounted) return;
+      try {
+        await ref
+            .read(coinSpendServiceProvider)
+            .buy(CoinSpendKind.frame, frameId);
+        if (!mounted) return;
+        // No local optimistic set update needed — see `AvatarPickerBody
+        // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
+        // watches the exact `xp.unlockedFrameIds` field this write lands in.
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      } on CoinSpendException catch (e) {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
+            ),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _buyingWithCoins = false);
     }
   }
 
@@ -656,9 +691,10 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
       );
     }
 
-    // RISK-1: see `_saving`'s own doc comment above.
+    // RISK-1/RISK-5: see `_saving`'s/`_buyingWithCoins`'s own doc comments
+    // above.
     return AbsorbPointer(
-      absorbing: _saving,
+      absorbing: _saving || _buyingWithCoins,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

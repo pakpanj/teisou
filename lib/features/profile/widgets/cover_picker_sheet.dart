@@ -94,10 +94,15 @@ class CoverPickerBody extends ConsumerStatefulWidget {
 class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
   /// Reentrancy guard for [_select] — see `_AvatarPickerBodyState._saving`'s
   /// doc comment for the full reasoning (RISK-1,
-  /// AUDIT_COSMETIC_PROFILE_SHOP.md): same double-tap risk, same fix, and
-  /// the same deliberate choice not to also guard [_buyWithCoins]/
-  /// [_openPaywall].
+  /// AUDIT_COSMETIC_PROFILE_SHOP.md): same double-tap risk, same fix. Still
+  /// deliberately does not guard [_openPaywall] — see
+  /// `_AvatarPickerBodyState._saving`'s doc comment for why. [_buyWithCoins]
+  /// no longer shares that exemption — see [_buyingWithCoins].
   bool _saving = false;
+
+  /// RISK-5: see `_AvatarPickerBodyState._buyingWithCoins`'s doc comment
+  /// for the full reasoning — same gap, same fix, applied to covers.
+  bool _buyingWithCoins = false;
 
   Future<void> _select(
     String uid,
@@ -166,46 +171,52 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
   /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
   /// this mirrors exactly for covers.
   Future<void> _buyWithCoins(BuildContext context, String coverId) async {
-    final s = ref.read(appStringsProvider);
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: Text(s.coinBuyConfirmTitle),
-        content: Text(s.coinBuyConfirmBody(CoverPresets.coinPrice)),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: Text(s.cancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: Text(s.coinBuyConfirmButton),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !context.mounted) return;
+    if (_buyingWithCoins) return;
+    setState(() => _buyingWithCoins = true);
     try {
-      await ref
-          .read(coinSpendServiceProvider)
-          .buy(CoinSpendKind.cover, coverId);
-      if (!mounted) return;
-      // No local optimistic set update needed — see `AvatarPickerBody
-      // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
-      // watches the exact `xp.unlockedCoverIds` field this write lands in.
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
-    } on CoinSpendException catch (e) {
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
-          ),
+      final s = ref.read(appStringsProvider);
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: Text(s.coinBuyConfirmTitle),
+          content: Text(s.coinBuyConfirmBody(CoverPresets.coinPrice)),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: Text(s.cancel),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: Text(s.coinBuyConfirmButton),
+            ),
+          ],
         ),
       );
+      if (confirmed != true || !context.mounted) return;
+      try {
+        await ref
+            .read(coinSpendServiceProvider)
+            .buy(CoinSpendKind.cover, coverId);
+        if (!mounted) return;
+        // No local optimistic set update needed — see `AvatarPickerBody
+        // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
+        // watches the exact `xp.unlockedCoverIds` field this write lands in.
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      } on CoinSpendException catch (e) {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
+            ),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _buyingWithCoins = false);
     }
   }
 
@@ -261,9 +272,10 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
       );
     }
 
-    // RISK-1: see `_saving`'s own doc comment above.
+    // RISK-1/RISK-5: see `_saving`'s/`_buyingWithCoins`'s own doc comments
+    // above.
     return AbsorbPointer(
-      absorbing: _saving,
+      absorbing: _saving || _buyingWithCoins,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

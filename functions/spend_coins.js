@@ -113,13 +113,29 @@ const COIN_IDS = {
   ]),
 };
 
-exports.spendCoins = onCall(async (request) => {
-  const uid = request.auth && request.auth.uid;
-  if (!uid) {
-    throw new HttpsError("unauthenticated", "Sign in first.");
-  }
+function db() {
+  return getFirestore();
+}
 
-  const {kind, id} = request.data || {};
+/**
+ * Core logic behind the `spendCoins` callable, pulled out so tests can
+ * pass a `FakeFirestore` in `options.firestore` — the same injection
+ * shape `award_xp.js`'s `awardXpFor`/`claimXpRewardFor` and
+ * `subscription_backstop.js` already established in this codebase —
+ * instead of exercising the real Admin SDK (RISK-5: this file had no such
+ * seam before, unlike every sibling Cloud Function in this scope, which
+ * is why its own regression test previously had to substitute
+ * `require.cache` for `firebase-admin/firestore` to exercise this code at
+ * all). No business logic changed by this extraction — every line below
+ * is identical to what used to live directly inside the `onCall` closure.
+ *
+ * @param {string} uid
+ * @param {string} kind one of [KIND_PATH]'s keys
+ * @param {string} id
+ * @param {{firestore?: object}} [options]
+ * @return {Promise<{granted: boolean, alreadyOwned: boolean, price: number}>}
+ */
+async function spendCoinsFor(uid, kind, id, options = {}) {
   const path = KIND_PATH[kind];
   if (!path || typeof id !== "string") {
     throw new HttpsError("invalid-argument", "kind and id.");
@@ -133,9 +149,10 @@ exports.spendCoins = onCall(async (request) => {
 
   const [group, field] = path;
   const price = KIND_PRICE[kind];
-  const userRef = getFirestore().collection("users").doc(uid);
+  const firestore = options.firestore || db();
+  const userRef = firestore.collection("users").doc(uid);
 
-  const alreadyOwned = await getFirestore().runTransaction(async (tx) => {
+  const alreadyOwned = await firestore.runTransaction(async (tx) => {
     const snap = await tx.get(userRef);
     const data = snap.data() || {};
     const balance = typeof data.coins === "number" ? data.coins : 0;
@@ -160,8 +177,19 @@ exports.spendCoins = onCall(async (request) => {
   });
 
   return {granted: true, alreadyOwned, price};
+}
+
+exports.spendCoins = onCall(async (request) => {
+  const uid = request.auth && request.auth.uid;
+  if (!uid) {
+    throw new HttpsError("unauthenticated", "Sign in first.");
+  }
+
+  const {kind, id} = request.data || {};
+  return spendCoinsFor(uid, kind, id);
 });
 
 module.exports.COIN_PRICE = COIN_PRICE;
 module.exports.SKIN_COIN_PRICE = SKIN_COIN_PRICE;
 module.exports.COIN_IDS = COIN_IDS;
+module.exports.spendCoinsFor = spendCoinsFor;
