@@ -15,6 +15,7 @@ import '../data/models/kana_character.dart';
 import '../data/models/kana_type.dart';
 import '../data/models/kana_type_progress.dart';
 import '../data/models/subscription.dart';
+import '../data/models/unlocked_cosmetics.dart';
 import '../data/models/xp_progress.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/language_repository.dart';
@@ -662,4 +663,19 @@ final battleMatchProvider = StreamProvider.family<BattleMatch, String>((
 final xpProgressProvider = StreamProvider<XpProgress>((ref) async* {
   final user = await ref.watch(appStartupProvider.future);
   yield* ref.watch(progressRepositoryProvider).watchXpProgress(user.uid);
+});
+
+/// Live avatar/frame/cover unlock status — see [UnlockedCosmetics]'s own
+/// doc comment for why this is a stream (BUG-1,
+/// AUDIT_COSMETIC_PROFILE_SHOP.md) an Avatar/Frame/Cover picker watches
+/// instead of a one-shot fetch cached in local `State`. Same shape as
+/// [xpProgressProvider] immediately above — both read the same
+/// `users/{uid}` document, just project different fields out of it.
+final unlockedCosmeticsProvider = StreamProvider<UnlockedCosmetics>((
+  ref,
+) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref
+      .watch(progressRepositoryProvider)
+      .watchUnlockedCosmetics(user.uid);
 });

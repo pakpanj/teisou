@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/covers.dart';
 import '../../../data/models/app_language.dart';
+import '../../../data/models/unlocked_cosmetics.dart';
 import '../../../core/providers.dart';
 import '../../../core/services/coin_spend_service.dart';
 import '../../../core/theme/app_palette.dart';
@@ -16,7 +17,7 @@ const _coverPremiumModuleId = 'cover_premium';
 /// Bottom sheet for picking the Profile header's cover illustration: one of
 /// [CoverPresets.all]. Mirrors [AvatarPickerSheet]'s grid-of-tiles shape,
 /// including its ad-reward-unlock pattern for [CoverPresets.lockedIds] — see
-/// that sheet's `_adRewardActive` doc comment for the full mechanism this
+/// `unlockedCosmeticsProvider`'s doc comment for the full mechanism this
 /// one reuses (one ad grants exactly one locked-cover change, consumed via
 /// `ProgressRepository.consumeAdReward` right after it's spent, not left
 /// active for its full 24h backstop).
@@ -91,35 +92,6 @@ class CoverPickerBody extends ConsumerStatefulWidget {
 }
 
 class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
-  bool _adRewardActive = false;
-
-  /// Cover ids earned permanently via a level-up reward — see
-  /// `AvatarPickerBody`'s `_unlockedAvatarIds` doc comment for why this
-  /// is a per-id set rather than folded into the blanket [_adRewardActive]
-  /// flag.
-  Set<String> _unlockedCoverIds = {};
-
-  @override
-  void initState() {
-    super.initState();
-    _refreshAdRewardStatus();
-  }
-
-  Future<void> _refreshAdRewardStatus() async {
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    final repo = ref.read(progressRepositoryProvider);
-    final rewards = await repo.getAdRewards(uid);
-    final active = rewards[_coverPremiumModuleId]?.isActive ?? false;
-    final unlockedCovers = await repo.getUnlockedCoverIds(uid);
-    if (mounted) {
-      setState(() {
-        _adRewardActive = active;
-        _unlockedCoverIds = unlockedCovers;
-      });
-    }
-  }
-
   Future<void> _select(
     String uid,
     String? coverId, {
@@ -169,11 +141,10 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
         ),
       ),
     );
-    // PaywallScreen pops itself the moment the reward is earned, so by the
-    // time this await resolves the write (if any) has already landed —
-    // safe to read it back immediately, no extra delay needed.
-    if (!mounted) return;
-    await _refreshAdRewardStatus();
+    // No manual refresh needed on return — see `AvatarPickerBody
+    // ._openPaywall`'s identical note; `unlockedCosmeticsProvider`
+    // (watched in `build()` below) live-streams `adRewards` off the same
+    // document the SSV-verified grant writes to.
   }
 
   /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
@@ -203,7 +174,9 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
           .read(coinSpendServiceProvider)
           .buy(CoinSpendKind.cover, coverId);
       if (!mounted) return;
-      setState(() => _unlockedCoverIds = {..._unlockedCoverIds, coverId});
+      // No local optimistic set update needed — see `AvatarPickerBody
+      // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
+      // watches the exact `xp.unlockedCoverIds` field this write lands in.
       if (!context.mounted) return;
       ScaffoldMessenger.of(
         context,
@@ -226,12 +199,18 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium =
         ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    // Live, not a one-shot fetch — see `unlockedCosmeticsProvider`'s own
+    // doc comment (BUG-1, AUDIT_COSMETIC_PROFILE_SHOP.md).
+    final unlocked =
+        ref.watch(unlockedCosmeticsProvider).valueOrNull ??
+        UnlockedCosmetics.empty;
     // Same three-tier reasoning as `_AvatarPickerBodyState
     // .avatarIdUnlocked` — see its doc comment.
     bool coverIdUnlocked(String id) {
       if (isPremium) return true;
-      if (_unlockedCoverIds.contains(id)) return true;
-      return CoverPresets.isAdUnlockable(id) && _adRewardActive;
+      if (unlocked.coverIds.contains(id)) return true;
+      return CoverPresets.isAdUnlockable(id) &&
+          unlocked.isAdRewardActive(_coverPremiumModuleId);
     }
 
     final uid = user?.uid;
@@ -251,8 +230,8 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
         final consumeReward =
             !isPremium &&
             CoverPresets.isAdUnlockable(preset.id) &&
-            _adRewardActive &&
-            !_unlockedCoverIds.contains(preset.id);
+            unlocked.isAdRewardActive(_coverPremiumModuleId) &&
+            !unlocked.coverIds.contains(preset.id);
         _select(uid, preset.id, consumeReward: consumeReward);
         return;
       }

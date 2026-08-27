@@ -16,6 +16,7 @@ import '../models/kana_type_progress.dart';
 import '../models/plan_intro_state.dart';
 import '../models/saved_item_pointer.dart';
 import '../models/subscription.dart';
+import '../models/unlocked_cosmetics.dart';
 import '../models/user_profile.dart';
 import '../models/xp_progress.dart';
 
@@ -486,6 +487,21 @@ class ProgressRepository {
       (snapshot) =>
           XpProgress.fromMap(snapshot.data()?['xp'] as Map<String, dynamic>?),
     );
+  }
+
+  /// Live view of every avatar/frame/cover unlock signal — see
+  /// [UnlockedCosmetics]'s own doc comment for why this exists as a
+  /// stream (BUG-1, AUDIT_COSMETIC_PROFILE_SHOP.md) rather than the
+  /// one-shot [getAdRewards]/[getUnlockedAvatarIds]/[getUnlockedFrameIds]/
+  /// [getUnlockedCoverIds] a picker used to call once in `initState`.
+  /// Those four one-shot methods stay as they are — [claimLevelReward]'s
+  /// own `XpReward` resolution and a couple of source-inspection tests
+  /// still use them directly — this is purely an additional read path
+  /// over the same document.
+  Stream<UnlockedCosmetics> watchUnlockedCosmetics(String uid) {
+    return _userDoc(
+      uid,
+    ).snapshots().map((snapshot) => UnlockedCosmetics.fromMap(snapshot.data()));
   }
 
   /// Awards the fixed XP amount for [action], via the `awardXp` Cloud

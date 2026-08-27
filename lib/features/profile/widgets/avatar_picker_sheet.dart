@@ -8,6 +8,7 @@ import '../../../core/services/coin_spend_service.dart';
 import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/app_language.dart';
+import '../../../data/models/unlocked_cosmetics.dart';
 import '../../../data/models/user_profile.dart';
 import '../../paywall/paywall_screen.dart';
 
@@ -107,20 +108,27 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
 }
 
 /// Whether an unspent ad-reward unlock for [_avatarPremiumModuleId]
-/// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
-/// existed but were a write with no matching read anywhere in the app —
-/// this used to gate its premium entries on [isPremium] alone, so
-/// watching the rewarded ad on [PaywallScreen] recorded the unlock but
-/// nothing ever consulted it: the tile just reopened the paywall again,
-/// which read as "watched the ad but it still won't open" (the exact bug
-/// report this fixed). Refreshed in [initState] (in case an earlier
-/// session's still-unspent unlock exists) and again after the paywall
-/// returns, since a push-based paywall never rebuilds this widget on its
-/// own — its own state must be refreshed explicitly on return rather than
-/// assumed to recompute automatically. One ad grants exactly one avatar
-/// change: picking a premium preset calls `ProgressRepository
-/// .consumeAdReward` right after succeeding, rather than leaving it active
-/// for its full 24h backstop window.
+/// exists is read live from `unlockedCosmeticsProvider` (see that
+/// provider's own doc comment) inside `build()` below — originally this
+/// was a one-shot fetch (`ProgressRepository.getAdRewards`) cached in a
+/// `State` field, refreshed only in `initState` and again right after
+/// `PaywallScreen` returned. That version fixed a real earlier bug
+/// (`getAdRewards` existed with no reader anywhere, so watching the
+/// rewarded ad recorded the unlock but nothing ever consulted it — the
+/// tile just reopened the paywall again) but introduced a different one:
+/// an already-mounted instance of this widget (Toko's own copy is kept
+/// alive for the app's whole session, see `HomeScreen`'s
+/// `_KeepAlivePage`) never refreshed again once mounted, so a level-up
+/// reward granted through Home's "Klaim hadiah" button — a different
+/// screen entirely — left Toko showing that same item as locked for the
+/// rest of the session (BUG-1, AUDIT_COSMETIC_PROFILE_SHOP.md). Watching
+/// the provider instead closes both gaps at once: no picker-specific
+/// refresh call is needed anywhere, on mount or on return from anything,
+/// because every consumer just sees Firestore's current state directly.
+/// One ad still grants exactly one avatar change: picking a premium
+/// preset calls `ProgressRepository.consumeAdReward` right after
+/// succeeding, rather than leaving it active for its full 24h backstop
+/// window.
 ///
 /// The grid of Google photo / free presets / premium presets, shared by
 /// [AvatarPickerSheet] (as its "Avatar" tab) and the Toko screen's own
@@ -151,36 +159,6 @@ class AvatarPickerBody extends ConsumerStatefulWidget {
 }
 
 class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
-  bool _adRewardActive = false;
-
-  /// Specific presets earned permanently via `ProgressRepository
-  /// .claimLevelReward` — unlike [_adRewardActive] (which unlocks the
-  /// *whole* premium grid for one pick, then re-locks), each id here stays
-  /// unlocked forever, so this is a per-preset test rather than a blanket
-  /// flag.
-  Set<String> _unlockedAvatarIds = {};
-
-  @override
-  void initState() {
-    super.initState();
-    _refreshAdRewardStatus();
-  }
-
-  Future<void> _refreshAdRewardStatus() async {
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    final repo = ref.read(progressRepositoryProvider);
-    final rewards = await repo.getAdRewards(uid);
-    final active = rewards[_avatarPremiumModuleId]?.isActive ?? false;
-    final unlocked = await repo.getUnlockedAvatarIds(uid);
-    if (mounted) {
-      setState(() {
-        _adRewardActive = active;
-        _unlockedAvatarIds = unlocked;
-      });
-    }
-  }
-
   Future<void> _select(
     String uid,
     AvatarType type,
@@ -240,11 +218,13 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
         ),
       ),
     );
-    // PaywallScreen pops itself the moment the reward is earned, so by the
-    // time this await resolves the write (if any) has already landed —
-    // safe to read it back immediately, no extra delay needed.
-    if (!mounted) return;
-    await _refreshAdRewardStatus();
+    // No manual refresh needed on return: `unlockedCosmeticsProvider`
+    // (watched in `build()` below) live-streams `adRewards` off the same
+    // document the SSV-verified ad-reward grant writes to, so the grid
+    // updates on its own the moment Firestore does — before this even had
+    // a one-shot re-fetch to do it, that re-fetch was also the only thing
+    // keeping this picker's ad-reward status from going stale the moment
+    // it stayed mounted (see BUG-1, AUDIT_COSMETIC_PROFILE_SHOP.md).
   }
 
   /// The coin-tier path — see `AvatarPresets.coinIds`'s own doc comment
@@ -276,10 +256,14 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
           .read(coinSpendServiceProvider)
           .buy(CoinSpendKind.avatar, preset.id);
       if (!mounted) return;
-      // Locally, immediately — the same id also arrives from Firestore a
-      // moment later via `_refreshAdRewardStatus`'s sibling read, but the
-      // tile shouldn't stay locked-looking until that round trip lands.
-      setState(() => _unlockedAvatarIds = {..._unlockedAvatarIds, preset.id});
+      // No local optimistic set update needed: `unlockedCosmeticsProvider`
+      // watches the exact `xp.unlockedAvatarIds` field this purchase just
+      // wrote, so the grid unlocks the tile on its own once Firestore's
+      // snapshot listener reports it — normally within the same frame or
+      // two, since the callable above only resolves after its own
+      // Firestore transaction has already committed. Keeping ownership in
+      // exactly one place (the provider) avoids a second, hand-maintained
+      // copy that could drift from it.
       if (!context.mounted) return;
       ScaffoldMessenger.of(
         context,
@@ -302,17 +286,26 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium =
         ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    // Live, not a one-shot fetch cached in State — see
+    // `unlockedCosmeticsProvider`'s own doc comment (BUG-1,
+    // AUDIT_COSMETIC_PROFILE_SHOP.md) for why this matters specifically
+    // for this picker's Toko copy, which stays mounted for the whole app
+    // session.
+    final unlocked =
+        ref.watch(unlockedCosmeticsProvider).valueOrNull ??
+        UnlockedCosmetics.empty;
     // Three tiers, three different answers to "is this unlocked":
     // subscribing unlocks everything regardless of tier; a permanent
     // unlock (level-reward or coin-bought — both land in the same
-    // `_unlockedAvatarIds` set) unlocks that one id forever; the ad
+    // `xp.unlockedAvatarIds` set) unlocks that one id forever; the ad
     // reward only ever counts for an ad-tier id, never a coin- or
     // premium-only one — see `AvatarPresets.isAdUnlockable`'s doc
     // comment for why an ad must not silently unlock either of those.
     bool avatarIdUnlocked(String id) {
       if (isPremium) return true;
-      if (_unlockedAvatarIds.contains(id)) return true;
-      return AvatarPresets.isAdUnlockable(id) && _adRewardActive;
+      if (unlocked.avatarIds.contains(id)) return true;
+      return AvatarPresets.isAdUnlockable(id) &&
+          unlocked.isAdRewardActive(_avatarPremiumModuleId);
     }
 
     final uid = user?.uid;
@@ -357,8 +350,8 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
             preset.premium &&
             !isPremium &&
             AvatarPresets.isAdUnlockable(id) &&
-            _adRewardActive &&
-            !_unlockedAvatarIds.contains(id);
+            unlocked.isAdRewardActive(_avatarPremiumModuleId) &&
+            !unlocked.avatarIds.contains(id);
         _select(
           uid,
           preset.premium ? AvatarType.presetPremium : AvatarType.presetFree,
@@ -445,34 +438,6 @@ class FramePickerBody extends ConsumerStatefulWidget {
 }
 
 class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
-  /// Same mechanism as [_AvatarPickerBodyState._adRewardActive], scoped to
-  /// [_framePremiumModuleId] — kept as its own flag rather than shared,
-  /// since watching an ad for a premium avatar must not also unlock a
-  /// locked frame and vice versa.
-  bool _frameAdRewardActive = false;
-  Set<String> _unlockedFrameIds = {};
-
-  @override
-  void initState() {
-    super.initState();
-    _refreshAdRewardStatus();
-  }
-
-  Future<void> _refreshAdRewardStatus() async {
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    final repo = ref.read(progressRepositoryProvider);
-    final rewards = await repo.getAdRewards(uid);
-    final active = rewards[_framePremiumModuleId]?.isActive ?? false;
-    final unlocked = await repo.getUnlockedFrameIds(uid);
-    if (mounted) {
-      setState(() {
-        _frameAdRewardActive = active;
-        _unlockedFrameIds = unlocked;
-      });
-    }
-  }
-
   Future<void> _selectFrame(
     String uid,
     String? frameId, {
@@ -523,8 +488,10 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
         ),
       ),
     );
-    if (!mounted) return;
-    await _refreshAdRewardStatus();
+    // No manual refresh needed on return — see `AvatarPickerBody
+    // ._openPaywall`'s identical note; `unlockedCosmeticsProvider`
+    // (watched in `build()` below) live-streams `adRewards` off the same
+    // document the SSV-verified grant writes to.
   }
 
   /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
@@ -554,7 +521,9 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
           .read(coinSpendServiceProvider)
           .buy(CoinSpendKind.frame, frameId);
       if (!mounted) return;
-      setState(() => _unlockedFrameIds = {..._unlockedFrameIds, frameId});
+      // No local optimistic set update needed — see `AvatarPickerBody
+      // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
+      // watches the exact `xp.unlockedFrameIds` field this write lands in.
       if (!context.mounted) return;
       ScaffoldMessenger.of(
         context,
@@ -580,12 +549,19 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
 
+    // Live, not a one-shot fetch — see `unlockedCosmeticsProvider`'s own
+    // doc comment (BUG-1, AUDIT_COSMETIC_PROFILE_SHOP.md).
+    final unlocked =
+        ref.watch(unlockedCosmeticsProvider).valueOrNull ??
+        UnlockedCosmetics.empty;
+
     // Same three-tier reasoning as `_AvatarPickerBodyState
     // .avatarIdUnlocked` — see its doc comment.
     bool frameIdUnlocked(String id) {
       if (isPremium) return true;
-      if (_unlockedFrameIds.contains(id)) return true;
-      return FramePresets.isAdUnlockable(id) && _frameAdRewardActive;
+      if (unlocked.frameIds.contains(id)) return true;
+      return FramePresets.isAdUnlockable(id) &&
+          unlocked.isAdRewardActive(_framePremiumModuleId);
     }
 
     // Same owned-vs-not split as `AvatarPickerBody`'s — see its doc
@@ -601,7 +577,7 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
       // equippable — `frameIdUnlocked` alone can't tell that: it only ever
       // tracks *extra* unlocks (ad reward, coin purchase, level reward,
       // Premium), never the base-free tier, since a free id is never added
-      // to `_unlockedFrameIds`. Calling `frameIdUnlocked` by itself here
+      // to `unlocked.frameIds`. Calling `frameIdUnlocked` by itself here
       // (as this used to) meant every free frame reported "not unlocked"
       // and fell straight through to the paywall — the bug this guards
       // against. Mirrors `AvatarPickerBody.handleTap`'s own `!isLocked(preset)`
@@ -611,8 +587,8 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
         final consumeReward =
             !isPremium &&
             FramePresets.isAdUnlockable(frameId) &&
-            _frameAdRewardActive &&
-            !_unlockedFrameIds.contains(frameId);
+            unlocked.isAdRewardActive(_framePremiumModuleId) &&
+            !unlocked.frameIds.contains(frameId);
         _selectFrame(uid, frameId, consumeReward: consumeReward);
         return;
       }

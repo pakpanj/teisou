@@ -12,6 +12,7 @@ import 'package:kana_master/core/constants/frames.dart';
 import 'package:kana_master/core/providers.dart';
 import 'package:kana_master/data/models/ad_reward.dart';
 import 'package:kana_master/data/models/subscription.dart';
+import 'package:kana_master/data/models/unlocked_cosmetics.dart';
 import 'package:kana_master/data/models/user_profile.dart';
 import 'package:kana_master/data/repositories/progress_repository.dart';
 import 'package:kana_master/features/battle/card_skin_picker_screen.dart';
@@ -20,11 +21,21 @@ import 'package:kana_master/features/paywall/paywall_screen.dart';
 import 'package:kana_master/features/profile/widgets/avatar_picker_sheet.dart';
 import 'package:kana_master/features/profile/widgets/cover_picker_sheet.dart';
 
-/// Regression coverage for F1 (AUDIT_COSMETIC_PROFILE_SHOP.md): the exact
-/// tap-to-equip *decision path* in all four cosmetic pickers — Avatar,
-/// Frame, Cover, Card Skin — the thing that broke for Frame ("owned/free
-/// tapped -> Paywall opened instead of equipping") and had **no** test
-/// anywhere to catch it.
+/// Regression coverage for two things found auditing the cosmetic
+/// ownership/equip flow (AUDIT_COSMETIC_PROFILE_SHOP.md):
+///
+/// - **F1**: the tap-to-equip *decision path* in all four cosmetic
+///   pickers — Avatar, Frame, Cover, Card Skin — the thing that broke for
+///   Frame ("owned/free tapped -> Paywall opened instead of equipping")
+///   and had no test anywhere to catch it.
+/// - **BUG-1**: Toko's copies of the Avatar/Frame/Cover pickers are kept
+///   alive for the app's whole session (`HomeScreen`'s `_KeepAlivePage`),
+///   and used to load ownership once via a one-shot `Future` fetch in
+///   `initState` — so a level-up reward granted through a different
+///   screen (Home's "Klaim hadiah") never reached an already-mounted
+///   Toko picker until the app restarted. See the `BUG-1 regression`
+///   group below, and `unlockedCosmeticsProvider`'s own doc comment for
+///   the production-side fix.
 ///
 /// **What this file does NOT do, on purpose**: it never calls
 /// `isLocked`/`frameIdUnlocked`/`isCardSkinUnlocked` etc. directly — those
@@ -40,7 +51,10 @@ import 'package:kana_master/features/profile/widgets/cover_picker_sheet.dart';
 /// [PaywallScreen] appear. A live [_ProfileHub] additionally feeds the
 /// exact same write back into an overridden `userProfileProvider`, so a
 /// successful equip is also visible as the tile's own check-mark moving —
-/// not just an isolated repository-call assertion.
+/// not just an isolated repository-call assertion. The BUG-1 group
+/// similarly drives a live [_UnlockedCosmeticsHub] to simulate a
+/// server-side grant landing mid-session, on the exact same widget
+/// instance, with no `tester.pumpWidget` re-mount in between.
 void main() {
   // GridViews here are `shrinkWrap: true` inside a plain
   // `SingleChildScrollView` (no Sliver-clipped viewport), so a tap on a
@@ -146,19 +160,19 @@ void main() {
       (tester) async {
         await withTallSurface(tester, () async {
           final hub = _ProfileHub(_profile());
-          final repo = _FakeProgressRepository(hub)
-            ..adRewards = {
-              'avatar_premium': AdReward.unlockNow('avatar_premium'),
-            };
+          final repo = _FakeProgressRepository(hub);
+          final cosmetics = _UnlockedCosmeticsHub(
+            adRewards: {'avatar_premium': AdReward.unlockNow('avatar_premium')},
+          );
           await tester.pumpWidget(
             await _harness(
               hub: hub,
               repo: repo,
+              cosmetics: cosmetics,
               child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
             ),
           );
-          await tester
-              .pumpAndSettle(); // let _refreshAdRewardStatus's Futures settle
+          await tester.pumpAndSettle();
 
           expect(AvatarPresets.isAdUnlockable('neko_chef'), isTrue);
           await tester.tap(find.text('Koki')); // neko_chef, ad-tier
@@ -177,41 +191,54 @@ void main() {
       },
     );
 
-    testWidgets('coin/level-reward-unlocked avatar (xp.unlockedAvatarIds already '
-        'has it): equips directly, no Paywall', (tester) async {
-      // Deliberately the SAME assertion shape for both grants — `getUnlockedAvatarIds`
-      // can't tell a coin purchase from a level-up reward apart (both land in
-      // the identical `xp.unlockedAvatarIds` field, confirmed against
-      // `spend_coins.js`/`award_xp.js`), so one test covers both mechanisms.
-      await withTallSurface(tester, () async {
-        final hub = _ProfileHub(_profile());
-        final repo = _FakeProgressRepository(hub)
-          ..unlockedAvatarIds = {'neko_artist'};
-        await tester.pumpWidget(
-          await _harness(
-            hub: hub,
-            repo: repo,
-            child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
-          ),
-        );
-        await tester.pumpAndSettle();
+    testWidgets(
+      'coin/level-reward-unlocked avatar (xp.unlockedAvatarIds already '
+      'has it): equips directly, no Paywall',
+      (tester) async {
+        // Deliberately the SAME assertion shape for both grants — the
+        // provider can't tell a coin purchase from a level-up reward apart
+        // (both land in the identical `xp.unlockedAvatarIds` field,
+        // confirmed against `spend_coins.js`/`award_xp.js`), so one test
+        // covers both mechanisms. This also stands as the "after a restart"
+        // contrast case for BUG-1: ownership already present *at mount
+        // time* (as it would be after a fresh app launch that re-reads
+        // Firestore from scratch) always worked correctly — see the
+        // `BUG-1 regression` group below for the case that was actually
+        // broken (ownership changing *while already mounted*).
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final cosmetics = _UnlockedCosmeticsHub(avatarIds: {'neko_artist'});
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              cosmetics: cosmetics,
+              child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
 
-        expect(AvatarPresets.isCoinUnlockable('neko_artist'), isTrue);
-        await tester.tap(find.text('Seniman')); // neko_artist
-        await tester.pump();
-        await tester.pump();
-        await tester.pump(const Duration(milliseconds: 300));
+          expect(AvatarPresets.isCoinUnlockable('neko_artist'), isTrue);
+          await tester.tap(find.text('Seniman')); // neko_artist
+          await tester.pump();
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
 
-        expect(repo.calls, contains('updateAvatar:preset_premium:neko_artist'));
-        expect(find.byType(PaywallScreen), findsNothing);
-      });
-    });
+          expect(
+            repo.calls,
+            contains('updateAvatar:preset_premium:neko_artist'),
+          );
+          expect(find.byType(PaywallScreen), findsNothing);
+        });
+      },
+    );
   });
 
   group('Frame picker', () {
     // This is the exact scenario that was broken: `frameIdUnlocked` alone
     // (without `!FramePresets.isLocked` first) always says "no" for a free
-    // frame, since a free id is never added to `_unlockedFrameIds`.
+    // frame, since a free id is never added to `unlocked.frameIds`.
     testWidgets('free frame: tap equips, no Paywall, tile becomes selected', (
       tester,
     ) async {
@@ -277,12 +304,15 @@ void main() {
         'consumed', (tester) async {
       await withTallSurface(tester, () async {
         final hub = _ProfileHub(_profile());
-        final repo = _FakeProgressRepository(hub)
-          ..adRewards = {'frame_premium': AdReward.unlockNow('frame_premium')};
+        final repo = _FakeProgressRepository(hub);
+        final cosmetics = _UnlockedCosmeticsHub(
+          adRewards: {'frame_premium': AdReward.unlockNow('frame_premium')},
+        );
         await tester.pumpWidget(
           await _harness(
             hub: hub,
             repo: repo,
+            cosmetics: cosmetics,
             child: const FramePickerBody(popOnSelect: false, shopMode: true),
           ),
         );
@@ -306,12 +336,15 @@ void main() {
       (tester) async {
         await withTallSurface(tester, () async {
           final hub = _ProfileHub(_profile());
-          final repo = _FakeProgressRepository(hub)
-            ..unlockedFrameIds = {'frame_halloween'};
+          final repo = _FakeProgressRepository(hub);
+          final cosmetics = _UnlockedCosmeticsHub(
+            frameIds: {'frame_halloween'},
+          );
           await tester.pumpWidget(
             await _harness(
               hub: hub,
               repo: repo,
+              cosmetics: cosmetics,
               child: const FramePickerBody(popOnSelect: false, shopMode: true),
             ),
           );
@@ -390,12 +423,15 @@ void main() {
         'consumed', (tester) async {
       await withTallSurface(tester, () async {
         final hub = _ProfileHub(_profile());
-        final repo = _FakeProgressRepository(hub)
-          ..adRewards = {'cover_premium': AdReward.unlockNow('cover_premium')};
+        final repo = _FakeProgressRepository(hub);
+        final cosmetics = _UnlockedCosmeticsHub(
+          adRewards: {'cover_premium': AdReward.unlockNow('cover_premium')},
+        );
         await tester.pumpWidget(
           await _harness(
             hub: hub,
             repo: repo,
+            cosmetics: cosmetics,
             child: const CoverPickerBody(popOnSelect: false, shopMode: true),
           ),
         );
@@ -419,12 +455,13 @@ void main() {
       (tester) async {
         await withTallSurface(tester, () async {
           final hub = _ProfileHub(_profile());
-          final repo = _FakeProgressRepository(hub)
-            ..unlockedCoverIds = {'jungle_canopy'};
+          final repo = _FakeProgressRepository(hub);
+          final cosmetics = _UnlockedCosmeticsHub(coverIds: {'jungle_canopy'});
           await tester.pumpWidget(
             await _harness(
               hub: hub,
               repo: repo,
+              cosmetics: cosmetics,
               child: const CoverPickerBody(popOnSelect: false, shopMode: true),
             ),
           );
@@ -622,6 +659,229 @@ void main() {
       skip: true,
     );
   });
+
+  // -------------------------------------------------------------------
+  // BUG-1 regression: Toko's kept-alive Avatar/Frame/Cover pickers must
+  // refresh ownership after a level-up reward, without ever remounting.
+  // -------------------------------------------------------------------
+  group('BUG-1 regression — kept-alive picker refresh without remount', () {
+    testWidgets('Avatar: a level-reward granted while the picker stays mounted '
+        'unlocks the tile live — no remount, no Paywall, equip works after', (
+      tester,
+    ) async {
+      await withTallSurface(tester, () async {
+        final hub = _ProfileHub(_profile());
+        final repo = _FakeProgressRepository(hub);
+        final cosmetics = _UnlockedCosmeticsHub(); // nothing granted yet
+        await tester.pumpWidget(
+          await _harness(
+            hub: hub,
+            repo: repo,
+            cosmetics: cosmetics,
+            // shopMode: true — this is exactly Toko's own copy of the
+            // widget, the one that is kept alive for the app's whole
+            // session (`HomeScreen`'s `_KeepAlivePage`) and is the
+            // instance BUG-1 was actually about.
+            child: const AvatarPickerBody(popOnSelect: false, shopMode: true),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        // 1-2. Mounted, and ownership as it stood at mount time: still
+        // locked, coin-tier padlock, exactly the state before any
+        // reward was ever claimed.
+        expect(AvatarPresets.isCoinUnlockable('neko_artist'), isTrue);
+        expect(find.text('Seniman'), findsOneWidget); // renders locked too
+        await tester.tap(find.text('Seniman'));
+        await tester.pumpAndSettle();
+        expect(
+          find.byType(AlertDialog),
+          findsOneWidget,
+          reason:
+              'tapping a genuinely-locked coin-tier tile must show the '
+              'buy confirmation, not equip it — confirms the picker '
+              'really did start out treating this id as locked',
+        );
+        Navigator.of(
+          tester.element(find.byType(AlertDialog)),
+        ).pop(false); // dismiss without buying
+        await tester.pumpAndSettle();
+        expect(repo.calls, isEmpty);
+
+        // 3-4. Simulate the server granting `neko_artist` via
+        // `claimLevelReward` (called from Home, a completely different
+        // screen) — this is exactly what a real `xp.unlockedAvatarIds`
+        // `arrayUnion` write would cause the real Firestore listener
+        // behind `watchUnlockedCosmetics` to emit. The SAME widget
+        // instance from above is still mounted; nothing is re-pumped
+        // with a new tree.
+        cosmetics.grantAvatar('neko_artist');
+        await tester.pumpAndSettle();
+
+        // 5. Without dispose/restart/remount: the tile is unlocked now.
+        // Tapping it must equip directly, not show the buy dialog again.
+        await tester.tap(find.text('Seniman'));
+        await tester.pumpAndSettle();
+
+        expect(
+          find.byType(AlertDialog),
+          findsNothing,
+          reason:
+              'BUG-1: before the fix, this already-mounted picker never '
+              'learned about the grant, so the tile stayed locked and '
+              'this tap would have reopened the buy dialog again',
+        );
+        // 6-7. Equip actually went through, and no Paywall was ever
+        // involved for what is now a genuinely-owned id.
+        expect(repo.calls, contains('updateAvatar:preset_premium:neko_artist'));
+        expect(find.byType(PaywallScreen), findsNothing);
+        expect(hub.profile.avatarValue, 'neko_artist');
+        _expectTileSelected(tester, 'Seniman');
+      });
+    });
+
+    testWidgets('Frame: a level-reward granted while the picker stays mounted '
+        'unlocks the tile live — no remount, no Paywall, equip works after', (
+      tester,
+    ) async {
+      await withTallSurface(tester, () async {
+        final hub = _ProfileHub(_profile());
+        final repo = _FakeProgressRepository(hub);
+        final cosmetics = _UnlockedCosmeticsHub();
+        await tester.pumpWidget(
+          await _harness(
+            hub: hub,
+            repo: repo,
+            cosmetics: cosmetics,
+            child: const FramePickerBody(popOnSelect: false, shopMode: true),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        expect(FramePresets.isCoinUnlockable('frame_halloween'), isTrue);
+        await tester.tap(find.text('Halloween'));
+        await tester.pumpAndSettle();
+        expect(
+          find.byType(AlertDialog),
+          findsOneWidget,
+          reason: 'starts genuinely locked, same as the Avatar case above',
+        );
+        Navigator.of(tester.element(find.byType(AlertDialog))).pop(false);
+        await tester.pumpAndSettle();
+        expect(repo.calls, isEmpty);
+
+        // Simulated server grant, same widget instance, no remount.
+        cosmetics.grantFrame('frame_halloween');
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.text('Halloween'));
+        await tester.pumpAndSettle();
+
+        expect(
+          find.byType(AlertDialog),
+          findsNothing,
+          reason:
+              'BUG-1: this is the exact frame-picker shape of the same '
+              'staleness bug — an already-mounted Toko Frame tab kept '
+              'showing a just-granted frame as locked',
+        );
+        expect(repo.calls, contains('updateFrame:frame_halloween'));
+        expect(find.byType(PaywallScreen), findsNothing);
+        expect(hub.profile.frameId, 'frame_halloween');
+        _expectTileSelected(tester, 'Halloween');
+      });
+    });
+
+    testWidgets('Cover: a level-reward granted while the picker stays mounted '
+        'unlocks the tile live — no remount, no Paywall, equip works after', (
+      tester,
+    ) async {
+      await withTallSurface(tester, () async {
+        final hub = _ProfileHub(_profile());
+        final repo = _FakeProgressRepository(hub);
+        final cosmetics = _UnlockedCosmeticsHub();
+        await tester.pumpWidget(
+          await _harness(
+            hub: hub,
+            repo: repo,
+            cosmetics: cosmetics,
+            child: const CoverPickerBody(popOnSelect: false, shopMode: true),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        expect(CoverPresets.isCoinUnlockable('jungle_canopy'), isTrue);
+        await tester.tap(find.text('Rimba Tropis'));
+        await tester.pumpAndSettle();
+        expect(
+          find.byType(AlertDialog),
+          findsOneWidget,
+          reason: 'starts genuinely locked, same as the Avatar case above',
+        );
+        Navigator.of(tester.element(find.byType(AlertDialog))).pop(false);
+        await tester.pumpAndSettle();
+        expect(repo.calls, isEmpty);
+
+        cosmetics.grantCover('jungle_canopy');
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.text('Rimba Tropis'));
+        await tester.pumpAndSettle();
+
+        expect(
+          find.byType(AlertDialog),
+          findsNothing,
+          reason: 'BUG-1: the cover-picker shape of the same staleness bug',
+        );
+        expect(repo.calls, contains('updateCover:jungle_canopy'));
+        expect(find.byType(PaywallScreen), findsNothing);
+        expect(hub.profile.coverId, 'jungle_canopy');
+        _expectTileSelected(tester, 'Rimba Tropis');
+      });
+    });
+
+    // The explicit "after a restart" contrast LANGKAH 6 asked for: a
+    // *fresh* mount where the grant already happened before this widget
+    // ever existed (exactly what a real app relaunch looks like — the
+    // provider's very first Firestore read already reflects the grant).
+    // This was never actually broken — it's the already-mounted case
+    // above that BUG-1 was about — but it's worth pinning explicitly so
+    // the distinction is a test, not just a claim in a report. This is
+    // the same shape as the pre-existing "coin/level-reward-unlocked"
+    // tests in the three groups above; kept here too as one dedicated,
+    // explicitly-named contrast case right next to the bug it's
+    // contrasted with.
+    testWidgets(
+      'contrast: a fresh mount with the grant already present (simulating '
+      'app restart) shows it unlocked immediately — this path was never '
+      'broken',
+      (tester) async {
+        await withTallSurface(tester, () async {
+          final hub = _ProfileHub(_profile());
+          final repo = _FakeProgressRepository(hub);
+          final cosmetics = _UnlockedCosmeticsHub(
+            frameIds: {'frame_halloween'},
+          );
+          await tester.pumpWidget(
+            await _harness(
+              hub: hub,
+              repo: repo,
+              cosmetics: cosmetics,
+              child: const FramePickerBody(popOnSelect: false, shopMode: true),
+            ),
+          );
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.text('Halloween'));
+          await tester.pumpAndSettle();
+
+          expect(find.byType(AlertDialog), findsNothing);
+          expect(repo.calls, contains('updateFrame:frame_halloween'));
+          expect(find.byType(PaywallScreen), findsNothing);
+        });
+      },
+    );
+  });
 }
 
 // ---------------------------------------------------------------------
@@ -636,35 +896,31 @@ void main() {
 /// test failures, not decided up front.** `CardSkinPickerBody` never
 /// `ref.watch`es `appStartupProvider` in its own `build()` (only
 /// `AvatarPickerBody`/`FramePickerBody`/`CoverPickerBody` do); it only
-/// `ref.read`s it lazily inside `_select`, at tap time. Likewise, every
-/// picker's `initState` (`_refreshAdRewardStatus`) fires *before* its own
-/// first `build()`. A plain `ProviderScope` only starts resolving a
-/// `FutureProvider` the moment something first reads it — so without this,
-/// `appStartupProvider` is still `AsyncLoading` (`uid == null`) at the
-/// exact synchronous instant either of those methods runs, and both bail
-/// out silently (`if (uid == null) return;`) with no exception, no
-/// SnackBar, and no repository call — which read, in an early version of
-/// this file, exactly like a broken equip path, for entirely different
-/// reasons than the Frame bug this file exists to catch. In the real app
-/// this never happens (`appStartupProvider` is already resolved, cached,
-/// long before any picker can be reached — every screen gates on it
-/// first), so this is purely a widget-test artifact, not a production
-/// bug — but it has to be worked around for these tests to mean anything.
-/// A "pump a placeholder child first, then swap in the real widget"
-/// two-step was tried and does **not** fix it: each `pumpWidget` call
-/// building the overrides list fresh makes Riverpod treat it as a changed
-/// override and reset the provider back to `AsyncLoading` anyway. Owning
-/// the [ProviderContainer] directly and `await`ing
-/// `container.read(appStartupProvider.future)` *before* the first
-/// `pumpWidget` is the one approach that actually keeps the resolved
-/// state — confirmed against both `AvatarPickerBody` and
-/// `CardSkinPickerBody` before this went in.
+/// `ref.read`s it lazily inside `_select`, at tap time. A plain
+/// `ProviderScope` only starts resolving a `FutureProvider` the moment
+/// something first reads it — so without this, `appStartupProvider` is
+/// still `AsyncLoading` (`uid == null`) at the exact synchronous instant
+/// `_select` runs, and it bails out silently (`if (uid == null) return;`)
+/// with no exception, no SnackBar, and no repository call. In the real
+/// app this never happens (`appStartupProvider` is already resolved,
+/// cached, long before any picker can be reached), so this is purely a
+/// widget-test artifact, not a production bug — but it has to be worked
+/// around for these tests to mean anything. A "pump a placeholder child
+/// first, then swap in the real widget" two-step was tried and does
+/// **not** fix it: each `pumpWidget` call building the overrides list
+/// fresh makes Riverpod treat it as a changed override and reset the
+/// provider back to `AsyncLoading` anyway. Owning the [ProviderContainer]
+/// directly and `await`ing `container.read(appStartupProvider.future)`
+/// *before* the first `pumpWidget` is the one approach that actually
+/// keeps the resolved state.
 Future<Widget> _harness({
   required _ProfileHub hub,
   required _FakeProgressRepository repo,
   required Widget child,
+  _UnlockedCosmeticsHub? cosmetics,
   Set<String> ownedSkins = const {},
 }) async {
+  final cosmeticsHub = cosmetics ?? _UnlockedCosmeticsHub();
   final container = ProviderContainer(
     overrides: [
       appStartupProvider.overrideWith((ref) async => _FakeUser()),
@@ -675,6 +931,15 @@ Future<Widget> _harness({
       progressRepositoryProvider.overrideWithValue(repo),
       ownedSkinsProvider.overrideWith((ref) => Stream.value(ownedSkins)),
       selfLeaderboardEntryProvider.overrideWith((ref) async => null),
+      // The BUG-1 fix's own live provider — see its doc comment in
+      // `lib/core/providers.dart` for why Avatar/Frame/Cover watch this
+      // instead of a one-shot fetch. Overridden with a controllable
+      // stream (not `repo.getAdRewards`/`getUnlockedXIds`, which remain
+      // implemented on the fake only because `PaywallScreen`'s own
+      // `_pollForGrant` still calls `getAdRewards` after a real ad
+      // watch — a path these tests never exercise) so a test can push a
+      // fresh value into the *same, already-mounted* widget tree.
+      unlockedCosmeticsProvider.overrideWith((ref) => cosmeticsHub.stream),
     ],
   );
   addTearDown(container.dispose);
@@ -727,14 +992,26 @@ void _expectTileSelected(WidgetTester tester, String label) {
 }
 
 class _ProfileHub {
-  _ProfileHub(this.profile) {
-    _controller.add(profile);
-  }
+  _ProfileHub(this.profile);
 
   UserProfile profile;
   final _controller = StreamController<UserProfile>.broadcast();
 
-  Stream<UserProfile> get stream => _controller.stream;
+  // A plain broadcast `StreamController` drops anything `add()`-ed before
+  // a listener subscribes — there is no replay/buffering. Riverpod only
+  // subscribes to this the first time `userProfileProvider` is watched,
+  // which happens inside the picker's own `build()`, well *after* this
+  // hub is constructed by the test — so seeding the controller in the
+  // constructor (as an earlier version of this file did) silently lost
+  // the seed value for every test that never called `set(...)` again, and
+  // the picker saw `valueOrNull == null` for its entire run. Yielding
+  // [profile] first, on every subscription, fixes it the same way a real
+  // Firestore `.snapshots()` listener always delivers the current cached
+  // state immediately on subscribe.
+  Stream<UserProfile> get stream async* {
+    yield profile;
+    yield* _controller.stream;
+  }
 
   void set(UserProfile Function(UserProfile) update) {
     profile = update(profile);
@@ -742,24 +1019,88 @@ class _ProfileHub {
   }
 }
 
+/// Live [UnlockedCosmetics] test double — the thing that actually
+/// reproduces BUG-1's lifecycle. A real `ProviderContainer`/widget test
+/// can't fire a genuine Firestore snapshot event, so this stands in for
+/// "the server just wrote `xp.unlockedFrameIds`/`adRewards` and the
+/// client's `.snapshots()` listener just delivered it" — [grantAvatar]/
+/// [grantFrame]/[grantCover] push a new value into the exact same stream
+/// [_harness] wires `unlockedCosmeticsProvider` to, on the already-built
+/// widget tree, with no `tester.pumpWidget` call (no remount) in between.
+class _UnlockedCosmeticsHub {
+  _UnlockedCosmeticsHub({
+    Set<String> avatarIds = const {},
+    Set<String> frameIds = const {},
+    Set<String> coverIds = const {},
+    Map<String, AdReward> adRewards = const {},
+  }) : value = UnlockedCosmetics(
+         avatarIds: avatarIds,
+         frameIds: frameIds,
+         coverIds: coverIds,
+         adRewards: adRewards,
+       );
+
+  UnlockedCosmetics value;
+  final _controller = StreamController<UnlockedCosmetics>.broadcast();
+
+  // Same "yield the current value on every subscription" fix as
+  // `_ProfileHub.stream` — see its doc comment. This one matters even
+  // more here: every "already-unlocked via ad-reward/coin" test seeds
+  // [value] once at construction and never calls a mutator again, so
+  // without this, `unlockedCosmeticsProvider` would never see anything
+  // but its own empty default for the whole test.
+  Stream<UnlockedCosmetics> get stream async* {
+    yield value;
+    yield* _controller.stream;
+  }
+
+  void _set(UnlockedCosmetics next) {
+    value = next;
+    _controller.add(value);
+  }
+
+  void grantAvatar(String id) => _set(
+    UnlockedCosmetics(
+      avatarIds: {...value.avatarIds, id},
+      frameIds: value.frameIds,
+      coverIds: value.coverIds,
+      adRewards: value.adRewards,
+    ),
+  );
+
+  void grantFrame(String id) => _set(
+    UnlockedCosmetics(
+      avatarIds: value.avatarIds,
+      frameIds: {...value.frameIds, id},
+      coverIds: value.coverIds,
+      adRewards: value.adRewards,
+    ),
+  );
+
+  void grantCover(String id) => _set(
+    UnlockedCosmetics(
+      avatarIds: value.avatarIds,
+      frameIds: value.frameIds,
+      coverIds: {...value.coverIds, id},
+      adRewards: value.adRewards,
+    ),
+  );
+}
+
 /// Real [ProgressRepository] surface, faked just for the handful of
-/// methods each picker's `initState`/equip path actually calls — every
-/// other member falls through to [noSuchMethod], which is never invoked
-/// because these four widgets never call anything else on it. This is
-/// deliberately an `implements`, not an `extends`: the real class's
-/// constructor eagerly touches `FirebaseFirestore.instance`/
-/// `FirebaseFunctions.instance` (there is no Firebase app in a widget
-/// test), so subclassing it would throw before this object even exists.
+/// methods each picker's equip path actually calls — every other member
+/// falls through to [noSuchMethod], which is never invoked because these
+/// four widgets never call anything else on it. This is deliberately an
+/// `implements`, not an `extends`: the real class's constructor eagerly
+/// touches `FirebaseFirestore.instance`/`FirebaseFunctions.instance`
+/// (there is no Firebase app in a widget test), so subclassing it would
+/// throw before this object even exists.
 class _FakeProgressRepository implements ProgressRepository {
   _FakeProgressRepository(this._hub);
 
   final _ProfileHub _hub;
   final List<String> calls = [];
   final List<String> consumedRewards = [];
-  Map<String, AdReward> adRewards = {};
-  Set<String> unlockedAvatarIds = {};
-  Set<String> unlockedFrameIds = {};
-  Set<String> unlockedCoverIds = {};
 
   @override
   Future<void> updateAvatar(String uid, AvatarType type, String? value) async {
@@ -845,18 +1186,14 @@ class _FakeProgressRepository implements ProgressRepository {
     );
   }
 
+  // Still implemented (returning empty/default) purely because
+  // `PaywallScreen._pollForGrant` calls `getAdRewards` after a real ad
+  // watch — a path no test in this file exercises, since none of them
+  // actually trigger `AdService.loadAndShowRewarded`. Ownership itself no
+  // longer flows through these for Avatar/Frame/Cover — see
+  // `_UnlockedCosmeticsHub`/`unlockedCosmeticsProvider` above.
   @override
-  Future<Map<String, AdReward>> getAdRewards(String uid) async => adRewards;
-
-  @override
-  Future<Set<String>> getUnlockedAvatarIds(String uid) async =>
-      unlockedAvatarIds;
-
-  @override
-  Future<Set<String>> getUnlockedFrameIds(String uid) async => unlockedFrameIds;
-
-  @override
-  Future<Set<String>> getUnlockedCoverIds(String uid) async => unlockedCoverIds;
+  Future<Map<String, AdReward>> getAdRewards(String uid) async => const {};
 
   @override
   Future<void> consumeAdReward(String uid, String moduleId) async {
