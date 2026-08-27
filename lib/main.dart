@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -28,8 +29,60 @@ import 'features/onboarding/min_version_gate.dart';
 import 'features/onboarding/plan_intro_screen.dart';
 import 'data/repositories/onboarding_repository.dart';
 
+/// Installs the app's one global error boundary — RISK-7
+/// (AUDIT_PHASE_C_BATTLE_RELIABILITY.md's C1, the half that was left
+/// open). `FlutterError.onError` covers framework (build/layout/paint)
+/// errors; `PlatformDispatcher.instance.onError` is Flutter's current
+/// official mechanism for everything else an uncaught async error can
+/// come from — an unguarded stream listener, an unawaited `Future` that
+/// throws — anywhere in the app, not just where someone remembered to
+/// add a local `onError`.
+///
+/// **Why this exists despite a prior, deliberate decision not to add
+/// one.** `test/battle_reliability_wiring_test.dart` used to pin the
+/// opposite — "harden per-listener, don't add a global zone... each
+/// stream now handles its own errors" — correct for the two Battle
+/// listeners that prompted it, but this session's broader audit found
+/// the premise doesn't hold app-wide: `fcm_service.dart`'s three
+/// `FirebaseMessaging` listeners (`onTokenRefresh`/`onMessage`/
+/// `onMessageOpenedApp`) have neither an `onError` nor any internal
+/// try/catch. Rather than add a fourth (and, inevitably later, fifth)
+/// per-listener patch, this closes the gap at the root — new call sites
+/// get the safety net automatically instead of needing to remember it.
+///
+/// Uses this project's existing `debugPrint`-based logging convention
+/// (see e.g. `ad_service.dart`'s `catch (error) { debugPrint('... failed:
+/// $error'); }` sites) rather than adding a new error-reporting service.
+///
+/// **Cannot be proven to intercept a genuinely uncaught error via
+/// `flutter_test`** — confirmed empirically while building this:
+/// `TestWidgetsFlutterBinding` installs its own zone that claims
+/// uncaught errors before they ever reach `PlatformDispatcher.instance
+/// .onError`, the same mechanism that powers `tester.takeException()`.
+/// `test/global_error_handling_test.dart` verifies the wiring exists and
+/// that both handlers behave correctly when invoked directly; it cannot
+/// simulate a live interception the way a real device run could.
+void installGlobalErrorHandlers() {
+  FlutterError.onError = (FlutterErrorDetails details) {
+    // Keeps Flutter's own default behavior (console dump, and the
+    // debug-mode red error screen) — this is additive logging, not a
+    // replacement, so a build/layout/paint error is exactly as visible
+    // as it always was.
+    FlutterError.presentError(details);
+    debugPrint('FlutterError: ${details.exceptionAsString()}');
+  };
+  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+    debugPrint('Uncaught error: $error\n$stack');
+    // Handled: without this, an app running with no other zone in place
+    // (this app's own case — see the doc comment above) can otherwise
+    // still surface as an unhandled platform-level error.
+    return true;
+  };
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  installGlobalErrorHandlers();
   // Also locked via `android:screenOrientation="portrait"` in
   // AndroidManifest.xml (enforced before the Flutter engine even starts,
   // so there's no landscape flash on launch) — this call covers platforms

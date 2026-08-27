@@ -82,15 +82,32 @@ void main() {
     });
   });
 
-  group('no new global error handler', () {
-    // C1's own instruction: harden per-listener, do not add a new
-    // app-wide zone guard unless the architecture genuinely needs one —
-    // it doesn't here, since each stream now handles its own errors.
-    test('main.dart still has no runZonedGuarded/PlatformDispatcher.onError',
-        () {
+  group('global error handler (RISK-7, supersedes the old "no new global '
+      'error handler" decision below)', () {
+    // Correction, RISK-7: this group used to assert the OPPOSITE — that
+    // main.dart deliberately had no global error handler, reasoning "each
+    // stream now handles its own errors" was true for Battle specifically.
+    // A broader audit found that premise doesn't hold app-wide
+    // (fcm_service.dart's three FirebaseMessaging listeners have neither
+    // onError nor internal try/catch) — see installGlobalErrorHandlers'
+    // own doc comment in main.dart for the full reasoning. Full behavioral
+    // coverage lives in test/global_error_handling_test.dart; this is just
+    // the source-check confirming main.dart actually wires it in, matching
+    // this file's own established pattern for the two Battle listeners
+    // above.
+    test('main.dart installs the global error boundary before runApp', () {
       final source = File('lib/main.dart').readAsStringSync();
-      expect(source, isNot(contains('runZonedGuarded')));
-      expect(source, isNot(contains('PlatformDispatcher.instance.onError')));
+      expect(source, contains('installGlobalErrorHandlers();'));
+      final installIndex = source.indexOf('installGlobalErrorHandlers();');
+      final runAppIndex = source.indexOf('runApp(');
+      expect(installIndex, greaterThan(-1));
+      expect(runAppIndex, greaterThan(-1));
+      expect(
+        installIndex,
+        lessThan(runAppIndex),
+        reason: 'the boundary must be installed before runApp, or an error '
+            'during startup itself would go uncaught',
+      );
     });
   });
 }
