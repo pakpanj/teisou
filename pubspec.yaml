@@ -80,6 +80,12 @@ dev_dependencies:
 
   flutter_lints: ^6.0.0
 
+  # Used directly (not just transitively through `in_app_purchase`) by
+  # test/premium_purchase_reentrancy_test.dart — RISK-4's reentrancy
+  # regression coverage swaps `InAppPurchasePlatform.instance` for a fake
+  # to prove the Premium buy-button guard without touching a real store.
+  in_app_purchase_platform_interface: ^1.4.1
+
 # path_provider_android pulls in package:jni transitively. jni 1.0.1's
 # android/build.gradle unconditionally calls `kotlin { compilerOptions {...} }`
 # but only applies the kotlin-android plugin when AGP major version < 9

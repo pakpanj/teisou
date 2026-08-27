@@ -548,6 +548,22 @@ class _ComparePageState extends ConsumerState<_ComparePage> {
   // on the plan the page is trying to show off, not a neutral default.
   _Plan _selected = _Plan.premium;
 
+  // RISK-4: reentrancy guard, same shape as PaywallScreen's own `_buying`
+  // (see that file's doc comment) — `widget.purchase.buy` had nothing of
+  // its own preventing a second in-flight call, so a rapid double-tap
+  // here reached `IapService.buy` twice too. Proven via
+  // `test/premium_purchase_reentrancy_test.dart`.
+  bool _buying = false;
+
+  Future<void> _buy(BuildContext context, AppStrings s) async {
+    setState(() => _buying = true);
+    try {
+      await widget.purchase.buy(context, s);
+    } finally {
+      if (mounted) setState(() => _buying = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = widget.strings;
@@ -606,10 +622,17 @@ class _ComparePageState extends ConsumerState<_ComparePage> {
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    onPressed: () async {
-                      await widget.purchase.buy(context, s);
-                    },
-                    icon: const Icon(Icons.workspace_premium),
+                    onPressed: _buying ? null : () => _buy(context, s),
+                    icon: _buying
+                        ? const SizedBox(
+                            height: 16,
+                            width: 16,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : const Icon(Icons.workspace_premium),
                     label: Text(s.planIntroStartPremiumButton),
                   )
                 : OutlinedButton(

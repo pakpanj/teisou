@@ -55,6 +55,27 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   StreamSubscription<IapOutcome>? _outcomeSub;
   late final PremiumPurchaseFlow _purchase;
 
+  // RISK-4: reentrancy guard, mirroring the one `ProfilePremiumCard`
+  // (premium_card.dart's `_busy`) already had — `PremiumPurchaseFlow.buy`
+  // itself has no in-flight tracking of its own (by design, see its own
+  // doc comment), so without this a rapid double-tap here reached
+  // `IapService.buy` twice, each independently opening a real store
+  // purchase sheet. Proven via `test/premium_purchase_reentrancy_test.dart`.
+  bool _buying = false;
+
+  Future<void> _buy(BuildContext context, AppStrings s) async {
+    setState(() => _buying = true);
+    try {
+      await _purchase.buy(context, s);
+    } finally {
+      // Guards against a stuck spinner if buy() ever throws — the same
+      // "reset in finally, not just at the end of the happy path"
+      // discipline already used elsewhere in this codebase (see e.g.
+      // `PremiumCard._buy`/`_restore`).
+      if (mounted) setState(() => _buying = false);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -443,8 +464,17 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                     ),
-                    onPressed: () => _purchase.buy(context, s),
-                    child: Text(s.upgradePremiumButton(_purchase.price)),
+                    onPressed: _buying ? null : () => _buy(context, s),
+                    child: _buying
+                        ? const SizedBox(
+                            height: 16,
+                            width: 16,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(s.upgradePremiumButton(_purchase.price)),
                   ),
                 ),
                 const SizedBox(height: 8),
