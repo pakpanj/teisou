@@ -27,7 +27,7 @@ in place rather than leaving two contradictory rows.
 | RISK-9 | Fix RISK-8's 3 confirmed bugs (clan kick/leave/invite/friend-request reentrancy) | ✅ DONE |
 | Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
 | **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) + RISK-3 index + RISK-3 Functions all deployed 2026-08-28; RISK-3 dry-run invocation still pending; AdMob/verifyPurchase found already live (pre-existing); Play purchase still pending** (see §B for the fully current state — this row lagged one update, corrected here) |
-| **Core Clan Mechanics Audit** | 13 mutation paths, authorization/atomicity/idempotency/capacity/role-transitions, against real code + real Rules emulator | 🔴 **AUDIT COMPLETE 2026-08-28 — 2 new P1 bugs PROVEN** (joinClan memberCount race; clan role escalation via unvalidated `role` value) — not fixed yet, no new RISK number assigned, awaiting a scheduled fix phase |
+| **Core Clan Mechanics Audit** | 13 mutation paths, authorization/atomicity/idempotency/capacity/role-transitions, against real code + real Rules emulator | ✅ **BOTH P1 bugs FIXED (commit `b5fbb10`) — role-escalation `firestore.rules` fix DEPLOYED 2026-08-28; `joinClan` transaction fix CODE COMPLETE but NOT yet in a released app build** (production `memberCount` corruption audit: UNABLE TO AUDIT, see Production Readiness §E — no read-only Firestore query mechanism available in this environment) |
 
 ## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
@@ -1937,6 +1937,175 @@ previously-flagged PRODUCT (not deployment) design question — whether
 still-in-progress* session (not just a `lockedUntil` cooldown) —
 remains unaddressed, recorded in the audit section above as a
 related-but-separate design gap, not silently closed by any of this.
+
+## Production Readiness §E — Clan `memberCount` audit (UNABLE) + `joinClan` release readiness (2026-08-29)
+
+Two parallel, read-only/inspection-only tasks, explicitly authorized
+separately from any fix/deploy work. No production data was modified
+by either. No app release/upload occurred.
+
+### Task A — Production `memberCount` corruption audit: UNABLE TO AUDIT
+
+**Goal**: determine whether any existing production `clans/{code}`
+document has a `memberCount` inconsistent with its actual
+`members/{memberUid}` subcollection size — the exact corruption shape
+the OLD, pre-`b5fbb10` `joinClan` could have caused.
+
+**Schema confirmed from code** (read-only, matches prior sessions'
+documentation exactly): `clans/{code}` holds `memberCount` as a plain
+integer field, denormalized; actual membership is
+`clans/{code}/members/{memberUid}`, one document per member.
+
+**Result: UNABLE TO AUDIT — no read-only Firestore query mechanism is
+available in this environment**, checked exhaustively before
+concluding this, not assumed:
+- `firebase firestore --help` lists only
+  `delete`/`bulkdelete`/`indexes`/`locations`/`operations`/
+  `databases`/`backups` — **no `get`/`query`/read subcommand exists in
+  the Firebase CLI at all** for arbitrary document or collection reads.
+- No `gcloud` CLI is installed (`which gcloud` — not found), which
+  would otherwise offer `gcloud firestore` export/read paths.
+- The one mechanism that WOULD technically work — reading firebase-
+  tools' own stored OAuth refresh token
+  (`~/.config/configstore/firebase-tools.json`) to mint a fresh access
+  token and call the Firestore REST API directly — was **not
+  attempted**, per this task's own explicit instruction ("Do not work
+  around it using stored credentials or unsafe methods") and because
+  the *identical* technique, aimed at the Cloud Build API instead, was
+  already correctly refused by this environment's own safety
+  classifier in the immediately preceding Rank-Skip diagnosis task —
+  reusing it here for a different API would be exactly the same class
+  of action for exactly the same reason.
+- Firebase's own MCP server (`firebase mcp`) can in principle expose
+  Firestore read tools, but reaching it would require hand-building a
+  JSON-RPC client from scratch to speak to a freshly-spawned
+  subprocess — standing up new infrastructure specifically to reach
+  production user data, not using an already-available tool, and it
+  would still ultimately run on the same underlying CLI session/
+  credential as the blocked path above. Judged out of scope for a
+  "safe read-only audit" rather than improvised.
+
+**No corruption was assumed either way.** The task's own explicit
+instruction — "do NOT conclude corruption merely because a temporary
+read fails" — is honored: this is reported as **UNABLE TO AUDIT**, not
+as either VERIFIED CONSISTENT or VERIFIED MISMATCH. Zero mismatches
+recorded (none were found, because none could be looked for). Zero
+production reads were performed. Zero production data was touched,
+read, or exposed.
+
+**If this audit is genuinely needed**, the honest path forward is one
+of: (a) a Cloud Function (Admin SDK, no client-side rules restriction)
+written to compare `memberCount` against `members` subcollection size
+across all clans and log/report the result — itself a code change
+requiring its own review and a deploy, out of this task's scope; (b) a
+human with Console/`gcloud` access running the check directly; or (c)
+explicitly authorizing the OAuth-token-based REST approach with full
+awareness of what it does, which this task's own instructions
+preemptively declined.
+
+### Task B — `joinClan` release readiness: CODE READY, release blocked
+on the pre-existing keystore gap only
+
+**Commit verification**: `b5fbb10` exists on `master`
+(`fix(clan): close two P1 Core Clan Mechanics bugs...`); `git log
+b5fbb10..HEAD -- lib/data/repositories/clan_repository.dart` returns
+**empty** — no later commit has touched this file at all, confirming
+the fix has not been reverted, altered, or drifted since.
+
+**`ClanRepository.joinClan` re-read at HEAD, confirmed against all
+four required properties**:
+1. Reads member state (`transaction.get(memberDoc)`) **inside** the
+   transaction — confirmed, line 198.
+2. Does not double-increment `memberCount` — confirmed: the increment
+   (`FieldValue.increment(1)`) is a single blind write inside the same
+   transaction, gated by an early `return;` if the member snapshot
+   already exists (line 199) — the exact shape proven race-safe by
+   `clan_reentrancy_test.dart`'s Join group.
+3. Preserves existing behavior for already-member users — confirmed:
+   the early-return no-op is unchanged from the original design intent
+   ("re-entering a code you've already joined shouldn't double-count
+   memberCount", the function's own doc comment, untouched).
+4. Preserves existing auth/error semantics — confirmed: the
+   clan-not-found path still throws the identical `StateError` with
+   the identical Indonesian message as before the fix; no new error
+   type or code path was introduced.
+
+**Re-run as validation** (not because source changed — it hasn't —
+but per the task's own "run safe validation" instruction):
+`test/clan_reentrancy_test.dart` + `test/clan_cross_user_write_test.dart`
+— **15/15 pass**, including tests (c) and (d) specifically, which
+directly exercise properties 3 and 4 above. `flutter analyze` re-run
+clean (0 issues, unchanged from the last full run — no source has
+changed since). The full 881-test Dart suite was not re-run in full
+for this task: nothing has changed since its last confirmed 881/881
+pass (during the Rank-Skip fix-phase task), so a full re-run would only
+reconfirm an already-fresh, unchanged result — judged disproportionate
+for a pure inspection task with zero code changes.
+
+**Current app version/build**: `pubspec.yaml` → `version: 1.0.0+14`
+(versionName `1.0.0`, versionCode `14`); `android/local.properties`
+mirrors the same (`flutter.versionName=1.0.0`,
+`flutter.versionCode=14`) via `android/app/build.gradle.kts`'s
+`flutter.versionCode`/`flutter.versionName`. `applicationId =
+"com.teisou.kanamaster"`, unchanged. No release flavor/target
+configured beyond the standard debug/release build types.
+
+**Release signing state, re-confirmed**: `android/key.properties`
+**does not exist** in this environment (only the checked-in
+`android/key.properties.example` template does) — `hasReleaseKeystore`
+evaluates `false`, so `android/app/build.gradle.kts`'s own conditional
+signing config would fall back to **debug signing** for any local
+`--release` build attempted here. This is the same long-documented,
+user-owned-credential blocker recorded throughout this file's earlier
+release-readiness sections — re-verified current, not assumed. **No
+release APK/AAB was built in this task**, per instruction, since doing
+so here would either silently debug-sign (misleading) or require a
+credential this environment doesn't have.
+
+**Version/build-number increment**: **not changed**, per instruction
+("Do NOT change version/build number yet unless explicitly necessary
+and clearly scoped"). Whether an increment is technically *required*
+depends on Play's own rule (each uploaded AAB needs a strictly higher
+versionCode than any *previously uploaded* one) — since this app has
+never had a build uploaded to Play at all (per this file's own
+long-standing release-logistics notes), versionCode `14` would be
+valid for a first-ever upload as-is. Whether the user *wants* a
+cleaner version scheme for the actual first release (e.g. resetting to
+build 1) is a product/process preference, not a technical requirement
+— left for the user to decide, not presumed here.
+
+**Release readiness verdict**: the **Dart-side `joinClan` fix itself
+is release-ready** — correct, tested, unreverted, and would ship
+correctly in any future build. The **release process itself remains
+blocked on the exact same pre-existing item this file has documented
+since the original Batch-12 release-logistics entry**: a real Play
+upload keystore (`android/key.properties`), which is a credential the
+user must generate and own — nothing about the `joinClan` fix
+specifically introduces any new release blocker.
+
+### Roadmap status corrections (per this task's explicit instruction)
+
+- **Core Clan Mechanics Audit** status-table row (near the top of this
+  file) updated: was showing "2 new P1 bugs PROVEN... not fixed yet",
+  now correctly shows both bugs fixed (`b5fbb10`), the role-escalation
+  Rules fix deployed, and the `joinClan` fix code-complete-but-
+  unreleased — corrected in place, not rewritten as if it had always
+  said this.
+- **RISK-3** row already correctly read "DEPLOYED / PRODUCTION
+  EXECUTION NOT YET OBSERVED, enforcement correctly still disabled" —
+  confirmed still accurate, no change needed.
+- No historical narrative section (the original audit write-up, the
+  fix-phase write-up, the two deployment write-ups) was altered —
+  only the live-status summary table row, which is this file's own
+  designated place for current-state corrections.
+
+### Scope discipline
+
+RISK-3 not touched (no enforcement enabled, no new invocation forced).
+No AdMod/Play Console action. No Firestore write, read, or query of
+any kind was performed (Task A concluded unable-to-audit before
+reaching any data access). No Functions/Rules deploy. No destructive
+git command. No new RISK opened. No additional bug fixed in this task.
 
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
