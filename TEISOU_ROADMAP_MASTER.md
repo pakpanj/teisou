@@ -4582,3 +4582,523 @@ lands.
 against tracked files is empty — confirmed before writing this
 section). No code, Rules, or deployed system was altered. No coins
 awarded to any real account. No production data touched.
+
+## Exam-History Authority — Server-Side Grading DESIGN (not implemented)
+
+Follow-up to the P0 audit immediately above — **that section preserved
+verbatim**. This section is design work only, requested explicitly
+before any implementation is authorized. No exam code, `global_points
+.js`, `award_top_coins.js`, or `firestore.rules` was edited. Nothing
+deployed. `git diff --stat` on tracked files is empty (confirmed
+below).
+
+### 1. Each exam engine traced
+
+**Kana** (`lib/features/exam/exam_screen.dart` +
+`lib/data/repositories/exam_repository.dart`):
+- Questions selected: `ExamRepository.generateExam` — client-side, on
+  device, from the bundled `kana_data.json` asset (via
+  `KanaRepository`), weighted 70/30 toward not-yet-mastered kana using
+  the learner's own `kanaProgress` (read from Firestore client-side).
+  A fresh `Random()` shuffle every session — non-deterministic, never
+  transmitted to any server before or during the attempt.
+- Correct answers: embedded in each generated `ExamQuestion.correctAnswer`
+  — derived from the same bundled dataset, entirely client-held.
+- User answers captured: `_selectedAnswer` per question, client state
+  only, compared to `correctAnswer` client-side (`AnsweredQuestion
+  .isCorrect`).
+- Score computed: `ExamRepository.submitExam`, `if (answered.isCorrect)
+  score++;` — a plain client-side loop.
+- Total: `questionsPerExam` = 10, a fixed constant, always.
+- What the client writes today: the whole `ExamResult` (score, mode,
+  kana-by-kana wrong-answer list, `completedAt`) via a direct Firestore
+  batch write, no Cloud Function in the path at all for the write
+  itself.
+- Firestore Rules: no dedicated rule, covered by the generic owner
+  wildcard (see the P0 audit above) — unconstrained.
+- Does a Cloud Function already see the full answer set? **No.**
+  `globalPointsTriggerFor` only sees the already-written `ExamResult`
+  document *after* the client has already computed and committed
+  `score`.
+- Is the answer key available server-side? **Not currently, but
+  trivially portable** — `kana_data.json` is a small, static, bundled
+  JSON asset; nothing about it is generated per-device or per-install.
+- Can the server independently recompute score? **Yes, if it has its
+  own copy of the dataset and knows which kana ids + submitted answers
+  made up the attempt** (which it does not receive today — see below).
+- **Result: SAFE** (technically feasible), **blocked only by a missing
+  data-model field** (per-question answers aren't currently
+  transmitted anywhere), not by any client-only or per-device state.
+
+**Dokkai** (`lib/features/dokkai/dokkai_exam_screen.dart` +
+`lib/features/exam/mc_quiz_flow.dart`):
+- Questions selected: client-side, `DokkaiHomeScreen` shuffles the
+  full level pool (from bundled `dokkai_data.json`) and hands it to
+  `DokkaiExamScreen`, which flattens passages into (passage, question)
+  pairs and takes the first `sessionQuestionTarget` (50).
+- Correct answers: each `DokkaiQuestion` carries a fixed, pre-authored
+  `correctIndex` into its own `options` list — a static dataset field,
+  never generated per-session.
+- User answers: `McQuizFlow`'s `_selected`/`_score`, comparing the
+  tapped option index to `correctIndexOf(index)` — a callback reading
+  the same static `correctIndex`.
+- Score/total: `McQuizFlow`'s `_score`/`totalQuestions`, both plain
+  client-side counters.
+- What the client writes: `SimpleExamResult(itemId:
+  'dokkai_session_<timestamp>', jlptLevel, score, total, completedAt)`
+  — **note `itemId` here is a session timestamp string, not tied to any
+  real passage/question id** — no record of *which* passages/questions
+  were actually shown is persisted anywhere today, only the final
+  tally.
+- Firestore Rules: same unconstrained generic wildcard.
+- Cloud Function visibility: none, same as Kana.
+- Answer key server-side: **Yes, trivially** — `dokkai_data.json`'s
+  `correctIndex` per question is a static authored field, an O(1)
+  lookup once the server has its own copy.
+- Server-side recompute: **Yes, if given which passage/question ids
+  and which option index were submitted per question** — not received
+  today.
+- **Result: SAFE**, same shape and same blocker as Kana — a missing
+  per-question data field, not a missing server-side capability.
+
+**Choukai** (`lib/features/choukai/choukai_exam_screen.dart`): same
+shape as Dokkai exactly — bundled `choukai_data.json`, fixed
+pre-authored `correctIndex` per question, `itemId` used as the
+repeat-cycle key in `global_points.js` (`itemId` **is** `clip.id` here,
+already a real, stable content reference — unlike Dokkai's
+session-timestamp `itemId`). **Result: SAFE**, and closer to
+"ready" than Dokkai since its `itemId` already references real content
+— only the per-question answer array is still missing from what's
+persisted.
+
+**Kanji-Kombinasi** (`lib/features/kanji_combo/
+kanji_combo_exam_screen.dart` + `lib/data/repositories/
+kanji_combo_repository.dart`): the one genuinely different engine —
+questions are **generated at runtime**, client-side
+(`KanjiComboRepository.generateQuestions`), picking a real kanji/word
+item, computing its true `correctAnswer` (reading or meaning, from the
+bundled `kanji_data.json`/`kotoba_data.json`), then generating
+distractors via edit-distance/mutation logic (`generateMutationDistractors`,
+`_pickCloseDistractors`) and shuffling into `options` with a
+freshly-computed `correctIndex`. **Critical feasibility insight**: the
+distractor-generation randomness is irrelevant to *grading* — the
+server does not need to reconstruct which wrong options were shown to
+verify correctness, it only needs to know **which real kanji/word id
+was tested, which prompt type (reading vs. meaning), and what the
+client submitted** — then look up the true value from its own copy of
+the same bundled dataset. `itemId` here already encodes `{mode}_{level}`
+per `global_points.js`'s own existing doc comment (e.g. `"single_n5"`),
+confirming this module's content-identity discipline is already
+better than Dokkai's. **Result: SAFE** — feasible without
+re-implementing the distractor generator server-side at all, only
+needs the real item id + prompt type + submitted answer per question.
+
+**No module is BLOCKED.** All four share the same underlying shape:
+static, bundled, non-secret content datasets already shipped in the
+APK; the "answer key" is a lookup problem, not a live-computation
+problem, for all four. The one true blocker shared by all four is
+**identical and structural, not per-module**: none of the four
+currently transmits or persists which specific content items were
+shown and what was submitted per question — only the client's own
+already-computed final tally. This is a data-model gap, not a
+technical-feasibility gap.
+
+### 2. Server-side grading architecture — compared, one recommended
+
+**Option A — Cloud Function receives submitted answers, grades
+server-side, in one call.** The client sends `{items: [{contentId,
+promptType, submittedAnswer}, ...]}` to a callable Function; the
+Function loads its own copy of the relevant dataset, grades every item,
+and writes the trusted result itself (Admin SDK) in the same call. This
+is the exact shape `functions/rank_skip.js`'s `submitRankSkipExamFor`
+already implements today for Rank Skip — not a new architecture for
+this project.
+- Security: strongest — the client never computes or asserts a score
+  at all, only raw answers.
+- Replay resistance: a callable's own request has no inherent replay
+  protection; needs an idempotency key (see Section 4) same as any
+  other option.
+- Concurrency: a single call, single transaction — simplest of the
+  three to reason about.
+- Latency: one round-trip, grading is cheap (dataset lookups), no
+  meaningfully different latency from today's plain Firestore write.
+- UX impact: the result screen currently renders instantly from
+  client-computed state (`McQuizFlow.onComplete` fires synchronously
+  the moment the last question is answered) — under Option A, the
+  result screen must instead *wait* for the Function's response before
+  showing a score, a real (if small) added latency and a new
+  loading/error state to design for every one of the four result
+  screens.
+- Implementation size: **largest** — every one of the four exam flows'
+  submit path needs reworking to accumulate raw answers instead of a
+  running score, and one new callable per module (or one generic
+  callable parameterized by module, mirroring `award_top_coins.js`'s
+  own `MODULES` table pattern) needs the same dataset each client
+  already bundles, mirrored into `functions/`.
+- Compatibility with current exam screens: requires touching all four
+  UI flows' submit logic, though **not** their question-selection/
+  distractor-generation/UI rendering — those stay client-side and
+  unchanged; only "how is the final score obtained" changes.
+- Compatibility with existing history: the *shape* of `examHistory`/
+  `dokkaiExamHistory`/etc. documents doesn't need to change (still
+  `score`/`total`/`completedAt`), only *who writes them* — a Cloud
+  Function instead of the client. Old history rows are unaffected,
+  read paths (`watchRecentHistory` etc.) need no change.
+- Global Points impact: **positive and immediate** — `global_points
+  .js`'s trigger already fires on document creation regardless of who
+  creates it; once the document is server-written, `docData.score` is
+  finally trustworthy and needs no change to `awardPointsForHistoryDoc`
+  itself.
+
+**Option B — client writes answer events; a trigger grades from
+immutable answer records.** The client writes each answer (or the
+whole answer array) as its own immutable Firestore document (or an
+array field on an "attempt" doc) as the exam progresses or on
+submission; a separate `onDocumentCreated` trigger reads that record
+and computes the trusted score itself, writing the real history
+document.
+- Security: equal to A once the trigger is the sole writer of the
+  *graded result* — but the *raw answer record itself* is still a
+  plain client write, so it needs the same Rules-level immutability
+  treatment described in Section 4 to prevent a client from editing an
+  answer after submission but before the trigger fires (a real race:
+  `onDocumentCreated` is not instantaneous).
+- Replay resistance: same idempotency-key needs as A, plus a genuine
+  new race the callable approach doesn't have — a client could
+  theoretically create the answer record, wait for grading, then
+  *delete and recreate* it before a second trigger fires, unless
+  deletes are also blocked (see Section 4).
+- Concurrency: **weaker** than A — a trigger-based design introduces
+  the classic "was this event already processed" problem
+  `global_points.js` already solves once (its own marker-in-transaction
+  pattern) but would now need solving *twice*, once for grading and
+  once for point-awarding, or the two need merging into one trigger.
+- Latency: the exam UI can render its own (unverified, purely
+  cosmetic) result screen immediately without waiting for the trigger,
+  which is nicer UX than A — but the *trusted* score only exists a
+  short, variable time later (Eventarc trigger latency, typically
+  sub-second but not zero and not guaranteed), meaning the visible
+  result and the eventually-true result could theoretically be shown
+  as different numbers if the UI ever tried to display anything
+  server-derived.
+- UX impact: smaller than A day-to-day (no waiting for a callable
+  response before showing *a* result), but introduces a genuine
+  "eventually consistent" result the current synchronous flow doesn't
+  have to reason about.
+- Implementation size: comparable to A, plus the extra idempotency
+  design above.
+- Compatibility: same as A for the four exam UIs; different, and
+  arguably messier, for `global_points.js` (would need to consume a
+  *graded* document instead of the raw client-submitted one it
+  consumes today, meaning either a second collection or a two-phase
+  document lifecycle).
+- Global Points impact: same end state as A, reached one hop later
+  and with more moving parts.
+
+**Option C — hybrid: client writes attempt + answers, server finalizes
+a trusted result.** The client writes one document containing the
+whole attempt (which content ids were shown, what was submitted, plus
+its own optimistic score/total for instant UI feedback); a trigger (or
+a callable, called right after the write) independently recomputes the
+score from the submitted answers against the server's own dataset copy
+and writes the *authoritative* fields (`serverScore`/`serverTotal`/
+`gradedAt`) onto a genuinely separate, server-only-writable trusted
+result — `global_points.js` is repointed to read only the trusted
+result, never the client's own optimistic fields.
+- Security: **equal to A for the fields that matter** (`global_points
+  .js` never trusts anything client-written), while keeping the
+  client's own optimistic score around purely for instant-UI-feedback
+  purposes, explicitly untrusted.
+- Replay resistance: same idempotency-key shape as A/B, applied to the
+  trusted-result write specifically.
+- Concurrency: cleaner than B — one write (the attempt), one trigger
+  (grading + trust), no two-phase document lifecycle to reconcile,
+  since the client's own copy and the server's own copy live in
+  clearly separate fields/documents from the start rather than one
+  document being mutated from "ungraded" to "graded".
+- Latency: **best UX of the three** — the result screen shows the
+  client's own optimistic score instantly (unchanged from today's
+  behaviour), while the trusted result is computed a moment later,
+  entirely invisibly to the learner (nothing in the UI needs to wait
+  on it, since nothing in the UI needs to *display* a "server score"
+  distinct from what it already shows — the only consumer of the
+  trusted value is `global_points.js`, not any screen).
+- UX impact: **smallest of the three** — genuinely no visible change
+  to any of the four exam flows' feel; the result screen keeps working
+  exactly as it does today.
+- Implementation size: **medium** — each of the four flows needs to
+  additionally write the per-question answer array alongside what they
+  already write (a real but bounded change per module), plus one
+  shared trigger/lookup function (mirroring `global_points.js`'s own
+  `MODULES` table shape) that grades from each module's own bundled
+  dataset, mirrored into `functions/`.
+- Compatibility with current exam screens: **least invasive of the
+  three** — no UI flow needs to wait on a network round-trip before
+  showing a result; only the *data written* grows, not the *user-facing
+  behaviour*.
+- Compatibility with existing history: needs one new field/document
+  (the trusted result) but the existing `score`/`total` fields can stay
+  exactly where they are, now explicitly understood as
+  "client-reported, UI-display-only, never trusted by anything
+  server-side" rather than removed — avoiding a disruptive rename/
+  migration of every existing read path.
+- Global Points impact: **cleanest of the three** — `global_points.js`
+  changes its trigger to fire on the trusted-result document instead of
+  (or in addition to, during a transition) the raw history document,
+  and reads only server-written fields, closing the P0 exactly as
+  designed without touching the score-display path learners already
+  see.
+
+**Recommendation: Option C.** It closes the exact same trust gap as A
+and B — `global_points.js` ends up trusting only server-computed
+fields either way — while requiring the smallest change to the four
+exam screens' actual user-facing behavior (no new loading state, no
+waiting on a network call to show a result, no two-phase "ungraded
+then graded" document lifecycle to reconcile) and the smallest
+disruption to already-existing history rows and read paths. A's
+robustness is real but its UX cost (every exam flow now waits on a
+network round-trip to show *any* result, including a fully offline-
+tolerant flow today) is disproportionate to what's actually needed
+here, since the thing that must be trustworthy is a handful of fields
+consumed by one Cloud Function, not the entire score-display
+experience a learner sees immediately after finishing.
+
+### 3. Trusted result data model
+
+**New fields, only where actually needed — nothing invented beyond
+what Section 1's tracing showed is missing:**
+
+| Field | Written by | Purpose |
+|---|---|---|
+| `answers` | Client (at attempt-write time) | `[{contentId, promptType?, submittedAnswer}]` — the raw, per-question submission. `promptType` only needed for Kanji-Kombinasi (reading vs. meaning); the other three modules' content id alone determines the correct answer. |
+| `questionIds` | Client (at attempt-write time) | Folded into `answers[].contentId` above rather than a separate array — no need to invent a second field carrying the same information. |
+| `submittedAt` | Client (at attempt-write time) | Already exists as `completedAt` on every module's history document today — reused, not duplicated. |
+| `serverScore` | **Server only** | The trusted correct-count, computed by the grading function/trigger from `answers` against its own dataset copy. |
+| `serverTotal` | **Server only** | `answers.length` as counted server-side — closes the "score without a matching total" forgery class (test B2 in the P0 audit) by construction, since it's derived, not submitted. |
+| `gradedAt` | **Server only** | `FieldValue.serverTimestamp()` — when grading actually happened, distinct from `submittedAt`/`completedAt` (client-chosen, still only used for display, never trusted for period/points logic — unchanged from today's design, which already gets this right per the P0 audit's Section 5). |
+| `gradingVersion` | **Server only** | A small integer, bumped only if the grading algorithm/dataset-version ever changes incompatibly — lets a future re-grade or audit distinguish "graded under the old rules" from "graded under the new ones," the same spirit as this project's own `firebase-functions-hash` deployment labels, applied to grading logic specifically. |
+| `attemptId` | Client (chosen once, at attempt-write time) | The idempotency key — see Section 4. For modules whose existing `historyDocId` is already a fresh id per attempt (all four, today), this can simply **be** the history document's own id, avoiding a new field entirely. |
+
+**Which fields the client may write**: `answers`, `submittedAt`
+(reusing `completedAt`), and its own existing optimistic `score`/
+`total` (kept, explicitly documented as untrusted/display-only).
+**Which fields only the server may write**: `serverScore`,
+`serverTotal`, `gradedAt`, `gradingVersion` — enforced the same way
+`xp`/`adRewards`/`coins` already are today (`isAllowedPurchaseWrite`'s
+whole-map-equality freeze pattern, applied to whichever document these
+fields end up living on).
+
+**Reuse existing history documents, or a new trusted-result document?
+New document, one per module, mirroring `globalScorePeriodAwards`'s
+own "separate collection, not a field bolted onto an existing one"
+precedent** — e.g. `examHistoryGraded/{historyDocId}` (or one such
+collection per module, matching `global_points.js`'s existing
+`MODULES` table shape exactly). Reasoning: the existing history
+documents are read today by several UI surfaces
+(`watchRecentHistory`, `fullExamHistoryProvider`, `PublicProfileScreen`)
+that all expect the current shape; growing that same document with
+server-only fields is possible but means every one of those read paths
+must now distinguish "not yet graded" from "no server fields at all
+because this row predates the fix" — a genuinely fuzzier state than a
+document's mere *existence* in a separate collection cleanly
+signaling "this attempt has been graded." A separate collection also
+lets Rules freeze it with the same simple `allow write: if false`
+shape already used for `globalScorePeriods`/`globalScorePeriodAwards`,
+rather than a more complex per-field freeze layered onto a
+document real learners are also actively writing other, legitimately
+client-owned fields to.
+
+### 4. Immutability
+
+- **Edit after grading**: prevented by the trusted-result document
+  living in its own server-only-writable collection (`allow write: if
+  false`, matching `globalScorePeriods`'s existing pattern) — there is
+  no client write path to it at all, so "edit after grading" isn't a
+  case to defend against, it's structurally absent.
+- **Delete after points granted**: same — a client cannot delete a
+  document it was never allowed to write to. The *raw* attempt
+  document (client-written `answers`/`submittedAt`) can still be
+  deleted by its owner exactly as today's history documents can — this
+  is acceptable because points/ranking are computed from the
+  server-only trusted result, not from the raw attempt, so deleting
+  the raw attempt after the fact cannot claw back or alter an award
+  already computed from the trusted copy.
+- **Replay**: `attemptId` (== the history document's own id, per
+  Section 3) is the transaction-guarded idempotency key for the
+  grading step, the exact same shape `global_points.js`'s own
+  `pointsAwarded` marker already uses for point-awarding — a second
+  grading attempt for the same `attemptId` is a safe no-op, mirroring
+  the already-proven pattern rather than inventing a new one.
+- **Duplicate grading**: same marker, same transaction — grading and
+  marking-as-graded happen atomically, so two concurrent trigger
+  invocations for the same `attemptId` (Eventarc redelivery, or a
+  hypothetical double-write) converge to exactly one graded result,
+  the same guarantee `global_points.js`'s existing
+  `awardPointsForHistoryDoc` already proves for point-awarding via its
+  own transaction.
+- **Duplicate Global Points / duplicate weekly points**: unchanged
+  from today's already-correct design — `global_points.js`'s existing
+  `pointsAwarded`/`historyDocId` marker continues to be the gate, now
+  simply reading `serverScore`/`serverTotal` from the trusted result
+  instead of the raw document's client-supplied `score`/`total`. **No
+  new idempotency mechanism is needed at the points-awarding layer at
+  all** — only the grading layer (new) needs one, and it can reuse the
+  exact transaction shape the points layer already has proven.
+- **What a client CANNOT still do under this design, that it can
+  today**: forge `serverScore`/`serverTotal` directly (no write path);
+  make `answers` reference a `contentId` that doesn't exist in the
+  real dataset (the grading function/trigger would either skip/reject
+  an unrecognized id or grade it as automatically wrong — a small,
+  explicit decision to make during implementation, not decided here);
+  submit more `answers` than the module's real session size allows
+  (the grading logic can cap `serverTotal` at each module's own known
+  session-size constant, e.g. Kana's fixed 10, Dokkai's
+  `sessionQuestionTarget` of 50, closing the "500 correct out of a
+  stated total of 1" class of forgery from the P0 audit's test B2 by
+  construction, not by a bounds-check that could be forgotten).
+
+### 5. Exam-specific feasibility — summary table
+
+| Module | Answer key available server-side? | Blocked by client-only state? | Feasibility |
+|---|---|---|---|
+| Kana | Yes (bundle `kana_data.json` into `functions/`) | No | **SAFE** |
+| Dokkai | Yes (bundle `dokkai_data.json`) | No | **SAFE** |
+| Choukai | Yes (bundle `choukai_data.json`) | No | **SAFE**, and already closer to ready (`itemId` already references real content) |
+| Kanji-Kombinasi | Yes (bundle `kanji_data.json` + `kotoba_data.json`; distractor generation itself never needs replicating server-side) | No | **SAFE** |
+
+No exam engine is BLOCKED. The shared, structural blocker across all
+four is identical: none currently persists which content items were
+shown/answered per question — a data-model gap (Section 3 closes it),
+not a technical-feasibility gap.
+
+### 6. Immediate mitigation — Rules stop-gap, evaluated, NOT applied
+
+A temporary `firestore.rules` change disallowing client writes to
+`score`/`total`, requiring server-created trusted fields, and
+preventing edit/delete after grading was evaluated **and not applied**
+in this design pass, per instruction.
+
+**Would this break the current exam flow? Yes, immediately and
+completely, for all four modules, with no server-side grading yet in
+place to replace it** — today's `submitExam`/`SimpleExamResult
+Repository.submit`-style calls are the *only* writer of `score`/
+`total`, and they are plain client writes. A Rules change alone,
+without Option C's (or A/B's) server-side grading landing first, would
+make every exam submission fail outright — no learner could complete
+any exam and see a result, since the write that shows them their score
+today would be rejected. **A Rules-only stop-gap is not viable in
+isolation** — it must land together with, or strictly after, whichever
+server-side grading option is actually implemented, never before.
+
+A *narrower* stop-gap that doesn't break the exam flow was also
+considered but not applied: bounding `total` to each module's known
+fixed/maximum session size (Kana: exactly 10; Dokkai/Kanji-
+Kombinasi: at most 50; Choukai: at most its own session size) and
+requiring `score <= total`, without yet requiring server-only fields.
+This would kill the P0 audit's most extreme case (test B, `score:
+999999, total: 1`) without touching the legitimate write path at all
+— genuinely deployable independently, before the fuller fix. This is
+offered as a real, smaller, faster option worth the user's separate
+consideration; **not implemented here**, since this task is design
+only.
+
+### 7. Weekly payout safety
+
+**`WEEKLY PAYOUT ACTIVATION BLOCKED`** — recorded explicitly, per
+instruction. `awardTopGlobalCoins` is already deployed and scheduled
+(Monday 00:10 WIB) and this design pass was not authorized to pause,
+alter, or trigger it, so its deployment state is unchanged by this
+task. This is a **recommendation for the user's own separate,
+explicit decision**, not an action taken here: future payout should be
+considered blocked (i.e., the schedule should be paused, or coin
+crediting specifically disabled, by deliberate user action outside
+this design task) **until all three of**:
+1. All four exam paths produce a server-trusted result (Option C, or
+   equivalent).
+2. `global_points.js` consumes only the trusted result, never a
+   client-supplied `score`/`total`.
+3. The reproduction tests from the P0 audit (`_audit_exam_history_
+   authority.test.js`'s tests B/B2/C/D/G specifically — the forgery
+   and farming cases) fail safely against the fixed system, i.e. a
+   forged document either cannot be created with a plausible score at
+   all, or produces zero/negligible points rather than millions.
+
+### 8. Permanent test plan (design only, not implemented)
+
+Mapped to the eight required properties, describing what each future
+test would assert without writing it yet:
+
+- **A. Forged score rejected** — a client-written attempt document
+  with mismatched/absent `answers` produces `serverScore: 0`, not
+  whatever optimistic client `score` was also present; a full
+  reproduction of the P0 audit's own test B, re-run against the fixed
+  system and asserting it now fails to produce meaningful points.
+- **B. Forged total rejected** — `serverTotal` is always
+  `answers.length` as counted server-side, capped at the module's own
+  known session-size constant; a submission claiming more answers than
+  physically possible for that module is either rejected outright or
+  capped, never trusted as submitted.
+- **C. Forged `completedAt` cannot alter period** — already proven
+  today (P0 audit test E) and unaffected by this design; re-assert
+  unchanged as a regression guard once the surrounding system changes,
+  so a future edit can't accidentally reintroduce the exact class of
+  bug this design is otherwise closing.
+- **D. Modified answer cannot alter trusted score after grading** — an
+  attempt to update the raw attempt document's `answers` field after
+  `gradedAt` has been set must have zero effect on the already-written
+  trusted result (which lives in a separate, server-only-writable
+  document/collection by construction — see Section 3 — so this is
+  actually a structural guarantee, and the test proves the guarantee
+  holds rather than defending an editable field).
+- **E. Duplicate attempt cannot duplicate points** — two attempt
+  documents with the same `attemptId` (simulating a client retry) grade
+  and award exactly once, mirroring the P0 audit's own test F1
+  (replay) re-proven against the new grading layer specifically, not
+  just the existing points layer.
+- **F. Duplicate trigger cannot duplicate points** — a forced
+  concurrent double-invocation of the grading function/trigger for the
+  same `attemptId` (the same `beforeCommit`-hook forced-interleaving
+  technique this project's own `global_points_reliability.test.js`/
+  `award_top_coins_period.test.js` scenarios B/D already use) converges
+  to exactly one graded result and exactly one point award.
+- **G. Legitimate exam produces correct trusted score** — the
+  baseline/control case (mirroring the P0 audit's own test A): a real,
+  correctly-answered set of `answers` produces the exact expected
+  `serverScore`, proving the fix doesn't just block forgery but still
+  correctly rewards genuine attempts.
+- **H. Weekly Ranking only consumes trusted points** — an end-to-end
+  test (mirroring the P0 audit's own test G) seeding both a legitimate
+  trusted result and an attempted-forgery attempt document with no
+  matching trusted result, then running `awardTopGlobalCoinsOnce`
+  against `globalScorePeriods` and asserting the forger is absent from
+  the ranking entirely (rather than merely "ranked lower") — the
+  strongest form of this guarantee, since it proves absence, not just
+  reduced advantage.
+
+None of these tests were written in this design pass, per instruction.
+
+### 9. Production history audit — read access
+
+**UNKNOWN.** Same standing access limitation already documented
+several times across this engagement: no `gcloud`/Application Default
+Credentials, no service-account key file anywhere in this repository
+or filesystem, no local Firestore export. The only credential present
+is the Firebase CLI's own OAuth login, and reusing it to authenticate
+a separate read against user-owned production data (`globalScorePeriods`,
+`globalPointsState`, or any real user's `examHistory`) is exactly the
+credential workaround this project's own standing discipline already
+declined twice before (recorded in this same file's earlier sections).
+**Whether any forged weekly points or a real payout have already
+occurred cannot be established from this environment.** If this needs
+answering, it requires either the user's own service-account
+credentials, or a Firebase Console session the user drives themselves
+(entering their own credentials, not this session's).
+
+### Git status/diff, before and after this design pass
+
+Confirmed clean before writing (only the pre-existing
+`windows/flutter/*` churn and untracked `AUDIT_*.md` files, plus the
+two still-untracked, not-committed temporary audit test files from the
+P0 audit immediately above) and confirmed unchanged after — this
+section only edited `TEISOU_ROADMAP_MASTER.md`. **Production code
+changes made by this design task: 0.**
