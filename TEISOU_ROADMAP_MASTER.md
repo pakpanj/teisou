@@ -735,6 +735,88 @@ same as before.** Nothing else checked or changed. **Still: DEPLOYED —
 WAITING FOR SCHEDULED INVOCATION.** No PASS claimed. Next real
 checkpoint remains any time after 2026-08-29 03:00 WIB.
 
+**Checkpoint 2026-08-29 03:00 WIB — first real invocation observed.**
+Read-only: `firebase functions:log --only sweepNearExpirySubscriptions`
+(and separately `--only sweepAllPremiumSubscriptions`), no code touched,
+no manual trigger, no env-var change, no Firestore read outside the
+Cloud Functions log stream itself.
+
+`sweepNearExpirySubscriptions` — **DEPLOYED. INVOCATION OBSERVED:
+YES.** Two genuine application-level log lines, distinguished from the
+surrounding cold-start/TCP-probe/`CreateFunction`-audit noise that also
+appears in the same stream (present but explicitly not counted as
+invocation evidence, matching this task's own instruction):
+
+```
+2026-08-28T20:00:05.679048Z I sweepnearexpirysubscriptions:
+  {"candidates":0,"dryRun":true,"message":"subscription_backstop: daily sweep starting"}
+2026-08-28T20:00:05.679707Z I sweepnearexpirysubscriptions:
+  {"candidates":0,"dryRun":true,"message":"subscription_backstop: daily sweep complete"}
+```
+
+`2026-08-28T20:00:05Z` UTC = `2026-08-29T03:00:05` WIB — the exact
+scheduled instant (`"every day 03:00"` Asia/Jakarta, confirmed
+unchanged above). Findings:
+
+- **DRY-RUN VERIFIED: YES** — `dryRun: true` is the function's own
+  live-reported value, not inferred. Traced to source
+  (`subscription_backstop.js:319-320`,
+  `const dryRun = !backstopWritesEnabled();` where
+  `backstopWritesEnabled()` reads
+  `process.env.SUBSCRIPTION_BACKSTOP_ENABLED === "true"`) — the
+  observed `true` is only reachable if that env var is anything other
+  than the literal string `"true"` in the live deployment, confirming
+  **ENFORCEMENT ENABLED: NO** from the function's own real execution,
+  not merely from `functions/.env`'s absence as before.
+- **Candidate count: 0.** `findNearExpiryCandidates` found nobody
+  near-expiry at this run.
+- **Decisions: none logged** (`would_remain_premium`/`would_downgrade`)
+  — expected and correct, not a gap: `processAll(candidates, ...)`
+  (`subscription_backstop.js:284-291`) is a `for` loop over
+  `candidates`; with `candidates.length === 0` that loop body —
+  the *only* place in the file a write is even attempted
+  (`if (!dryRun) { ... }` at line 220) — never executed at all. This is
+  a **structural** guarantee from reading the source, not just an
+  absence of write-log evidence: there was no code path capable of
+  writing anything, regardless of `dryRun`'s value this run.
+- **No Firestore subscription writes occurred** — follows directly from
+  the point above.
+- **No downgrade happened** — same.
+- **No purchase token / credential / sensitive value in either log
+  line** — both are exactly `{candidates, dryRun, message}`, nothing
+  else.
+- **Function completed normally** — `"daily sweep starting"` is
+  immediately followed by `"daily sweep complete"`, no gap, no error
+  line between them, no crash/timeout log.
+- **Errors: none.** No `ERROR`-severity line anywhere in this
+  function's log stream for this invocation (or any other, across the
+  500-entry window checked).
+
+**PRODUCTION BEHAVIOR VERIFIED: YES, for the "empty candidate set, dry
+run, no writes, no errors" case specifically.** This is a real but
+narrow proof — it confirms the function runs cleanly and stays in dry
+run under production conditions, but says nothing yet about the
+`would_downgrade`/`would_remain_premium`/actual-write code paths, since
+zero candidates means none of that logic was exercised this run. That
+remains unverified until a real invocation finds at least one
+near-expiry subscriber.
+
+`sweepAllPremiumSubscriptions` — **DEPLOYED. INVOCATION OBSERVED: NO.**
+Log stream for this function contains only the same `CreateFunction`
+audit entry and cold-start/TCP-probe lines already seen at deploy time
+— zero `subscription_backstop:` application lines, matching this
+task's own instruction not to count those as invocation evidence.
+Schedule is `"every monday 03:30"` Asia/Jakarta (confirmed unchanged);
+today (2026-08-29) is Saturday WIB. **Status: WAITING FOR MONDAY
+SCHEDULE.** Not manually triggered, per instruction.
+
+**Enforcement state, restated explicitly: `SUBSCRIPTION_BACKSTOP_ENABLED`
+remains DISABLED** — confirmed twice now, once by its absence from
+`functions/.env` (prior checkpoint) and now independently by the live
+function's own `dryRun: true` output. **Not changed by this
+checkpoint.** No code touched, no deploy run, no manual invocation, no
+production subscription document read or modified.
+
 ### C. AdMob SSV / `adRewards`
 
 Verified directly from `functions/ad_rewards.js` (full read) +
@@ -820,7 +902,7 @@ plus `AUDIT_SUBSCRIPTION_RECOVERY.md`/`AUDIT_SUBSCRIPTION_RECOVERY_DESIGN.md`/
 | Component | Code | Tests | Committed | Deployed | Production Verified | Evidence | Remaining Action |
 |---|---|---|---|---|---|---|---|
 | `firestore.rules` (RISK-2 mirror-write fix) | ✅ | ✅ 74/74 emulator (2026-08-28) | ✅ `cb3fcf1` | ✅ **CONFIRMED 2026-08-28** | ❓ UNKNOWN (deployed, live behavior not separately probed) | Firebase deploy output + emulator re-run, this session | optional: a live Rules Playground probe to close the "behavior verified" gap |
-| Subscription backstop Functions (RISK-3) | ✅ | ✅ 16 new / 314 total | ✅ `9260517` | ✅ **CONFIRMED 2026-08-28** (retried after confirming network access, `functions:list` re-verified) | ❌ **NOT YET** — deployed but no scheduled invocation observed yet | deploy output + `functions:list`, this session | wait for/trigger a scheduled run, read Cloud Functions logs, then decide on enabling enforcement |
+| Subscription backstop Functions (RISK-3) | ✅ | ✅ 16 new / 314 total | ✅ `9260517` | ✅ **CONFIRMED 2026-08-28** (retried after confirming network access, `functions:list` re-verified) | 🟡 **PARTIAL — 2026-08-29 03:00 WIB**: `sweepNearExpirySubscriptions` INVOCATION OBSERVED (candidates:0, dryRun:true, no errors) — PRODUCTION BEHAVIOR VERIFIED for the empty-candidate/dry-run/no-write path only, `would_downgrade`/`would_remain_premium`/actual-write paths still unexercised; `sweepAllPremiumSubscriptions` still WAITING FOR MONDAY SCHEDULE (not due until 2026-08-31 03:30 WIB). ENFORCEMENT ENABLED: NO, confirmed live from `dryRun:true`. | deploy output + `functions:list` + `functions:log` (read-only), this session | wait for a real near-expiry candidate to appear in a future daily run, and for Monday's weekly run, before deciding on enabling enforcement |
 | Firestore indexes (RISK-3's composite index) | ✅ | N/A | ✅ `9260517` | ✅ **CONFIRMED 2026-08-28** | N/A (an index has no "behavior" to verify beyond existing) | Firebase deploy output + live `firestore:indexes` re-read, this session | none |
 | AdMob SSV (`adRewards`/`consumeAdReward`) | ✅ | ✅ 22/22 | ✅ `796bf19` | ✅ **CONFIRMED live** (`firebase functions:list`, this session — found incidentally while auditing RISK-3, not independently pursued) | 🚫 **BLOCKED** (no live-test per instruction) | `functions:list` output, this session | register/confirm SSV URL in AdMob console, confirm reward amount, one deliberate on-device test |
 | `verifyPurchase` / `onPlayRtdn` | ✅ | ✅ (part of 314) | ✅ (pre-RISK-N) | ✅ **CONFIRMED live** (`firebase functions:list`, this session) | ❌ (last known real attempt failed at Play's own dialog, root cause Play-Console-only) | `functions:list` output; `AUDIT_SUBSCRIPTION_RECOVERY.md`, `AUDIT_PLAY_ITEM_UNAVAILABLE.md` | Play Console config + Play-signed build + device + real purchase |
