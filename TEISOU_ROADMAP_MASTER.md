@@ -3981,3 +3981,121 @@ pass — everything above was established from `git diff`/`git show`
 already-passing assertions, cross-referenced against what actually
 invokes the code in production (the `onSchedule` config). No Firestore
 document was read, no function invoked, no deploy run.
+
+## Weekly Global Ranking — cutover blocker FIXED (schedule corrected to
+## Monday 00:10 WIB)
+
+Follow-up to the audit section immediately above — **that section's
+finding is preserved verbatim above, unedited**, per explicit
+instruction to keep the historical blocker record rather than erase it
+once fixed. This section records the fix itself.
+
+**The fix**: `functions/award_top_coins.js`'s `onSchedule({schedule:
+...})` cron string changed from `"every monday 00:00"` to a new named,
+exported constant `PAYOUT_SCHEDULE_CRON = "10 0 * * 1"` (Monday 00:10,
+`Asia/Jakarta`) — a one-line functional change, exactly as the audit
+proposed. Nothing else in the file changed: `closedPeriodId`,
+`GRACE_BUFFER_MS`, `wibWeekId`/`wibWeekStart`, the ranking query, the
+tie-break, the reward amounts, and the idempotency transaction are all
+byte-identical to `38a4395`. No other file's production logic changed
+— `global_points.js`, `firestore.rules`, `firestore.indexes.json`, the
+RISK-3 subscription functions, and AdMob-adjacent code are all
+untouched (confirmed via `git diff --stat`, zero lines on every one of
+them).
+
+### New permanent regression coverage
+
+Added to `functions/award_top_coins_period.test.js` (the same file the
+original grace-buffer/boundary tests already live in, not a new file —
+this is directly about the trigger that calls those same functions),
+7 new tests:
+
+1. **`PAYOUT_SCHEDULE_CRON` fires strictly after `GRACE_BUFFER_MS`** —
+   parses the real exported constant's own minute field (no hardcoded
+   duplicate offset) and asserts it's `>= GRACE_BUFFER_MS` past the WIB
+   week boundary. This is the exact integration-shaped check the audit
+   section above said was missing — the one that would have caught the
+   original mismatch before it ever reached a commit.
+2. **Old offset (Monday 00:00, 0 minutes) reproduced directly** — feeds
+   the literal old-schedule instant into `runWeeklyPayoutIfDue` and
+   asserts it still defers (`skipped: true, reason: 'grace-buffer'`),
+   with zero coins credited. Proves the diagnosis, not just the fix.
+3. **New offset (`PAYOUT_SCHEDULE_CRON`'s real value) reaches the
+   payout path** — same instant math, but at the actual configured
+   offset; asserts `skipped: false` and the winner is paid.
+4. **Payout at the new offset selects the correct PREVIOUS period**,
+   not some other week.
+5. **The CURRENT (just-started) period is NOT accidentally paid** —
+   seeds a participant only under the still-open current period and
+   confirms they're not paid when the previous (empty) period is
+   correctly the one evaluated.
+6. **Idempotency holds at the new offset** — two invocations at the
+   identical corrected instant credit the reward exactly once (same
+   guarantee the pre-existing scenario (C) proves at a different
+   instant, re-proven specifically at the offset that matters now).
+7. (Folded into #1 above rather than a separate test — reading it back,
+   items 2 and 3 together already are the minimal old-vs-new pair; #1
+   is the structural guard that makes their relationship non-accidental.)
+
+**FAIL -> PASS proof, actually run, not just asserted in prose**: the
+fix was temporarily reverted (`PAYOUT_SCHEDULE_CRON` set back to the
+old-equivalent `"0 0 * * 1"`) and `node --test
+award_top_coins_period.test.js` was re-run — tests 1, 3, 4, 5, and 6
+above (5 of the 6 new tests; #2, which specifically asserts the OLD
+offset's own defer behavior, was unaffected either way since it exists
+to test the old value on purpose) **failed for real**, with genuine
+assertion errors (`true !== false`, `undefined` where a periodId was
+expected, a `TypeError` on an undefined `winners` array, `0 !== 500`
+coins) — not a synthetic demonstration. The fix was then restored from
+a backup, diffed against git to confirm it matched the intended change
+exactly (33 lines, no stray edits), and the same command re-run: **all
+7 new tests plus the pre-existing 22 in that file pass, 28/28.**
+
+### Full verification suite (re-run after the fix, all green)
+
+- `functions/award_top_coins_period.test.js` alone: **28/28** (22
+  pre-existing + 6 new schedule tests, counting distinct `test(...)`
+  calls — see the FAIL -> PASS note above for why 7 items map to 6
+  test functions).
+- Full Functions suite (`node --test` in `functions/`): **370/370**
+  (364 + 6 net-new).
+- Firestore Rules Emulator, all 4 files together with
+  `--test-concurrency=1` (the documented-required flag — a bare
+  parallel run across files hits shared-emulator contention, already
+  recorded above in this same file's own "Rules: 91/91" note): **91/91,
+  unaffected** — expected, since `firestore.rules` has zero diff from
+  this change.
+- `flutter analyze`: clean, no issues.
+- `flutter test --concurrency=1`: **901/901** (1 pre-existing unrelated
+  skip, same as before this fix — Dart code is entirely untouched by
+  this change, a Functions-only fix).
+
+### Deployment status: **NOT DEPLOYED.**
+
+No `firebase deploy` of any kind was run — not for Functions, not for
+Rules, not for indexes. The fix exists only in this commit's source;
+the live `awardTopGlobalCoins` Cloud Function in production is still
+running whatever code was last actually deployed there (predating even
+`38a4395`, per that commit's own "NOT DEPLOYED" status), unaffected by
+anything in this session.
+
+### Remaining deployment prerequisite
+
+The corrected deploy sequence from the audit section above still
+applies, unchanged by this fix (the fix doesn't add or remove a step,
+it just means step 3's function code is now actually correct once
+reached):
+
+1. `firebase deploy --only firestore:indexes` (the `globalScorePeriods`
+   composite index — still not deployed, still required before the
+   function that queries it goes live).
+2. Confirm the index has finished building, not just been submitted.
+3. `firebase deploy --only functions:awardTopGlobalCoins`.
+4. Observe the next real Monday 00:10+ WIB scheduled invocation in
+   `firebase functions:log` and confirm it reaches the non-skipped
+   branch and actually pays a period — not just that it ran without
+   error.
+
+None of these four steps has been performed. This fix makes step 3
+safe to reach step 4 successfully; it does not perform steps 1-4
+itself.

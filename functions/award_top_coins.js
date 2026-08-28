@@ -268,8 +268,38 @@ async function runWeeklyPayoutIfDue(db, nowMs) {
   return {skipped: false, periodId, winners};
 }
 
+/**
+ * Cron string for the scheduled trigger below — kept as its own named,
+ * exported constant (not inlined into the `onSchedule({schedule: ...})`
+ * call) specifically so a test can assert on it directly, rather than
+ * only on [closedPeriodId]'s pure math in isolation.
+ *
+ * **Fixes a real cutover blocker found during the pre-deployment audit
+ * (see `TEISOU_ROADMAP_MASTER.md`'s "Weekly Global Ranking —
+ * pre-deployment cutover safety audit" section for the full writeup):
+ * the schedule used to be `"every monday 00:00"` — the EXACT SAME
+ * instant [GRACE_BUFFER_MS] is designed to treat as "too early, the
+ * previous period isn't safe to pay yet."** Cloud Scheduler's real
+ * dispatch latency (seconds, occasionally low minutes) stays reliably
+ * under the 5-minute grace threshold, so every weekly invocation would
+ * have landed inside the grace window and deferred — permanently, not
+ * intermittently, since the very next scheduled fire faces the
+ * identical situation relative to the *following* week's boundary.
+ *
+ * Moved to 10 minutes past the WIB week boundary — comfortably past
+ * [GRACE_BUFFER_MS] (5 minutes) with margin for Cloud Scheduler's own
+ * jitter, so a slightly-late real-world fire doesn't reintroduce the
+ * same failure by landing back inside the grace window. This is the
+ * ONLY change this fix makes — [closedPeriodId], [GRACE_BUFFER_MS], and
+ * `wibWeekId`/`wibWeekStart` (see `./wib_week.js`) are untouched; their
+ * own boundary/grace-buffer math was already correct and already
+ * correctly tested (`award_top_coins_period.test.js`'s "exactly at a
+ * period boundary" case) — the bug was purely in what invoked them.
+ */
+const PAYOUT_SCHEDULE_CRON = "10 0 * * 1"; // Monday 00:10, Asia/Jakarta
+
 exports.awardTopGlobalCoins = onSchedule(
-    {schedule: "every monday 00:00", timeZone: "Asia/Jakarta"},
+    {schedule: PAYOUT_SCHEDULE_CRON, timeZone: "Asia/Jakarta"},
     async () => {
       const db = getFirestore();
       await runWeeklyPayoutIfDue(db, Date.now());
@@ -282,3 +312,4 @@ module.exports.awardTopGlobalCoinsOnce = awardTopGlobalCoinsOnce;
 module.exports.runWeeklyPayoutIfDue = runWeeklyPayoutIfDue;
 module.exports.REWARDS = REWARDS;
 module.exports.GRACE_BUFFER_MS = GRACE_BUFFER_MS;
+module.exports.PAYOUT_SCHEDULE_CRON = PAYOUT_SCHEDULE_CRON;

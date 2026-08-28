@@ -22,6 +22,7 @@ const {
   runWeeklyPayoutIfDue,
   REWARDS,
   GRACE_BUFFER_MS,
+  PAYOUT_SCHEDULE_CRON,
 } = require("./award_top_coins");
 const {wibWeekId, wibWeekStart} = require("./wib_week");
 
@@ -230,6 +231,151 @@ test("runWeeklyPayoutIfDue pays out once grace has elapsed", async () => {
   assert.strictEqual(result.skipped, false);
   assert.strictEqual(result.periodId, periodId);
   assert.strictEqual(result.winners[0].uid, "gold");
+});
+
+// ---------------------------------------------------------------------
+// Schedule cutover fix — proves the actual DEPLOYED trigger (not just
+// closedPeriodId's own pure math) can reach the payout path.
+//
+// See award_top_coins.js's own doc comment on [PAYOUT_SCHEDULE_CRON]
+// for the full root-cause writeup and TEISOU_ROADMAP_MASTER.md's
+// "Weekly Global Ranking — pre-deployment cutover safety audit" section
+// for the original finding. Short version: the schedule used to be
+// "every monday 00:00" — the exact same instant [closedPeriodId]'s
+// grace-buffer check is designed to reject — so the scheduled trigger
+// could NEVER reach a non-skipped payout under the old config, forever.
+// The tests above already prove [closedPeriodId]'s own math is correct
+// in isolation; these prove the fix at the level that actually matters:
+// what happens when the REAL configured schedule fires.
+//
+// [scheduledFireOffsetMs] deliberately reads the offset straight out of
+// the real exported [PAYOUT_SCHEDULE_CRON] constant (parsing only the
+// cron minute field — no full cron parser, that's not needed here)
+// rather than hardcoding "10 minutes" as a second, independent literal.
+// This is what makes the FAIL -> PASS proof below a genuine regression
+// guard tied to the actual fix, not a duplicate assertion that could
+// drift from it: reverting PAYOUT_SCHEDULE_CRON back to the old
+// "every monday 00:00" value (equivalent offset 0) makes these same
+// tests fail again, with no test-file edit required.
+// ---------------------------------------------------------------------
+
+function scheduledFireOffsetMs() {
+  const minuteField = PAYOUT_SCHEDULE_CRON.split(" ")[0];
+  const minutes = Number(minuteField);
+  assert.ok(
+      Number.isFinite(minutes),
+      `PAYOUT_SCHEDULE_CRON's minute field must be a plain number, got ` +
+      `${JSON.stringify(minuteField)} from ${JSON.stringify(PAYOUT_SCHEDULE_CRON)}`,
+  );
+  return minutes * 60 * 1000;
+}
+
+test("PAYOUT_SCHEDULE_CRON fires strictly after GRACE_BUFFER_MS has " +
+    "elapsed since the WIB week boundary — the property this whole fix " +
+    "exists to guarantee, checked directly against the real exported " +
+    "constant rather than assumed", () => {
+  assert.ok(
+      scheduledFireOffsetMs() >= GRACE_BUFFER_MS,
+      `PAYOUT_SCHEDULE_CRON (${PAYOUT_SCHEDULE_CRON}) fires ` +
+      `${scheduledFireOffsetMs()}ms past the boundary, which is not ` +
+      `>= GRACE_BUFFER_MS (${GRACE_BUFFER_MS}ms) — the scheduled ` +
+      `trigger would defer on every invocation, forever, exactly like ` +
+      `the original cutover blocker`,
+  );
+});
+
+test("1. scheduler at the OLD offset (Monday 00:00, i.e. 0 minutes " +
+    "past the boundary) is insufficient — the previous schedule value " +
+    "reproduced directly, proving it really would have deferred", async () => {
+  const boundary = Date.parse("2026-08-30T17:00:00.000Z"); // Mon 2026-08-31 00:00 WIB
+  const oldScheduleFireInstant = boundary + 0; // "every monday 00:00" == 0 offset
+  const fake = new FakeFirestore();
+  const periodId = wibWeekId(new Date(boundary - 1));
+  seedPeriodUser(fake, periodId, "gold", {points: 900, attempts: 5});
+  seedCoins(fake, "gold");
+
+  const result = await runWeeklyPayoutIfDue(fake, oldScheduleFireInstant);
+  assert.deepStrictEqual(result, {skipped: true, reason: "grace-buffer"});
+  const goldCoins = (await fake.collection("users").doc("gold").get()).data().coins;
+  assert.strictEqual(goldCoins, 0, "no payout must have happened at all");
+});
+
+test("2. scheduler at the NEW offset (PAYOUT_SCHEDULE_CRON's real " +
+    "value) successfully processes the previous closed period — this " +
+    "is the FAIL side of the fix turning into the PASS side: run the " +
+    "identical instant math against the OLD offset above (fails to " +
+    "pay) versus the real deployed offset here (pays)", async () => {
+  const boundary = Date.parse("2026-08-30T17:00:00.000Z");
+  const newScheduleFireInstant = boundary + scheduledFireOffsetMs();
+  const fake = new FakeFirestore();
+  const previousPeriodId = wibWeekId(new Date(boundary - 1));
+  seedPeriodUser(fake, previousPeriodId, "gold", {points: 900, attempts: 5});
+  seedCoins(fake, "gold");
+
+  const result = await runWeeklyPayoutIfDue(fake, newScheduleFireInstant);
+  assert.strictEqual(result.skipped, false,
+      "the real configured schedule offset must reach the payout path, " +
+      "not defer — this is the exact property that was broken before " +
+      "this fix");
+  const goldCoins = (await fake.collection("users").doc("gold").get()).data().coins;
+  assert.strictEqual(goldCoins, REWARDS[0]);
+});
+
+test("3. payout at the new schedule offset still selects the correct " +
+    "PREVIOUS WIB period, not some other week", async () => {
+  const boundary = Date.parse("2026-08-30T17:00:00.000Z");
+  const newScheduleFireInstant = boundary + scheduledFireOffsetMs();
+  const fake = new FakeFirestore();
+  const expectedPreviousPeriodId = wibWeekId(new Date(boundary - 1));
+  seedPeriodUser(fake, expectedPreviousPeriodId, "gold", {points: 900, attempts: 5});
+  seedCoins(fake, "gold");
+
+  const result = await runWeeklyPayoutIfDue(fake, newScheduleFireInstant);
+  assert.strictEqual(result.periodId, expectedPreviousPeriodId);
+});
+
+test("4. the CURRENT (just-started) Monday period is NOT accidentally " +
+    "paid at the new schedule offset — only the period that already " +
+    "closed is ever eligible", async () => {
+  const boundary = Date.parse("2026-08-30T17:00:00.000Z");
+  const newScheduleFireInstant = boundary + scheduledFireOffsetMs();
+  const currentPeriodId = wibWeekId(new Date(boundary)); // the week that JUST started
+  const fake = new FakeFirestore();
+  // Seed data under the CURRENT (still-open) period only — if the fix
+  // were wrong and paid the current period instead of the previous
+  // one, this uid would incorrectly win.
+  seedPeriodUser(fake, currentPeriodId, "too-early", {points: 900, attempts: 5});
+  seedCoins(fake, "too-early");
+
+  const result = await runWeeklyPayoutIfDue(fake, newScheduleFireInstant);
+  assert.notStrictEqual(result.periodId, currentPeriodId,
+      "the paid period must never be the one that only just started");
+  assert.strictEqual(result.winners.length, 0,
+      "the previous (actually closed) period has no seeded participants " +
+      "in this test, so it must pay nobody — specifically NOT the " +
+      "current period's 'too-early' entrant");
+  const tooEarlyCoins =
+      (await fake.collection("users").doc("too-early").get()).data().coins;
+  assert.strictEqual(tooEarlyCoins, 0,
+      "the current-period entrant must not have been paid");
+});
+
+test("5. payout at the new schedule offset remains idempotent across " +
+    "a repeated invocation (retry/re-trigger), same guarantee the " +
+    "existing scenario (C) already proves at a different instant", async () => {
+  const boundary = Date.parse("2026-08-30T17:00:00.000Z");
+  const newScheduleFireInstant = boundary + scheduledFireOffsetMs();
+  const fake = new FakeFirestore();
+  const periodId = wibWeekId(new Date(boundary - 1));
+  seedPeriodUser(fake, periodId, "gold", {points: 900, attempts: 5});
+  seedCoins(fake, "gold");
+
+  await runWeeklyPayoutIfDue(fake, newScheduleFireInstant);
+  await runWeeklyPayoutIfDue(fake, newScheduleFireInstant); // simulated retry
+
+  const goldCoins = (await fake.collection("users").doc("gold").get()).data().coins;
+  assert.strictEqual(goldCoins, REWARDS[0],
+      "a second invocation at the same schedule offset must not pay twice");
 });
 
 // ---------------------------------------------------------------------
