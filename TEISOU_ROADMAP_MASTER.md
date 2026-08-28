@@ -16,27 +16,45 @@ in place rather than leaving two contradictory rows.
 
 | Phase | Scope | Status |
 |---|---|---|
-| RISK-1 | Cosmetic equip reentrancy (avatar/frame/card-skin double-tap) | ✅ DONE |
-| RISK-2 | (see git history — completed before this file existed) | ✅ DONE |
-| RISK-3 | (see git history — completed before this file existed) | ✅ DONE |
-| RISK-4 | Premium purchase (IAP) reentrancy | ✅ DONE |
+| RISK-1 | Cosmetic equip reentrancy (avatar/frame/card-skin double-tap) | ✅ DONE (code+tests committed; live-app rollout status — see Production Readiness) |
+| RISK-2 | Cosmetic identity spoofing via leaderboard/clan/friend mirrors (`firestore.rules`) | ✅ CODE DONE / COMMITTED — **explicitly NOT deployed** (see Production Readiness §A) |
+| RISK-3 | Self-healing subscription backstop (`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`) | ✅ CODE DONE / COMMITTED — **deployment status UNKNOWN** (see Production Readiness §B) |
+| RISK-4 | Premium purchase (IAP) reentrancy | ✅ DONE (client-side fix — ships with next app build/release, see Production Readiness §D) |
 | RISK-5 | Coin-purchase reentrancy (Avatar/Frame/Cover pickers) + `spend_coins.js` DI seam | ✅ DONE |
 | RISK-6 | Cross-function race audit (spendCoins vs claimXpReward vs verifyPurchase) | ✅ DONE (audit-only, no bug found) |
 | RISK-7 | Global error handling (`main.dart` boundary + `fcm_service.dart` listeners) | ✅ DONE |
 | RISK-8 | Global async-action/reentrancy audit (app-wide inventory) | ✅ DONE |
 | RISK-9 | Fix RISK-8's 3 confirmed bugs (clan kick/leave/invite/friend-request reentrancy) | ✅ DONE |
 | Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
+| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — audit complete, deployment/verification still needed (all user-owned actions)** |
 
-## RISK-1 through RISK-3 (pre-dates this file)
+## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
-Completed in earlier sessions. RISK-1 (cosmetic equip double-tap guard)
-is directly referenced by this file's own RISK-8/RISK-9 entries as an
-already-proven-safe baseline pattern (`f9e1078`). RISK-2 and RISK-3's
-exact scope is not re-derived here — see `git log` around the same
-period (commits `f9e1078` through `cb3fcf1`, cosmetic-equip/leaderboard-
-sync fixes) for the actual diffs. Not re-audited as part of RISK-8/9
-per explicit instruction not to re-touch an already-verified baseline
-without new regression evidence.
+An earlier version of this file said "see git history — completed before
+this file existed" for both, without pinning the actual commit or scope.
+The Production Readiness audit (below) traced both precisely:
+
+- **RISK-2** = commit `cb3fcf1` ("fix: close cosmetic identity spoofing
+  via leaderboard/clan/friend mirrors", per `AUDIT_COSMETIC_PROFILE_SHOP.md`
+  — a `firestore.rules` fix, 11 new emulator tests, confirmed via the
+  real Firestore Rules Emulator). **The commit message itself states:
+  "Not deployed — per this project's standing convention, a
+  firestore.rules change in git takes effect only once deployed via the
+  Firebase CLI or Console, which remains the user's own action."**
+- **RISK-3** = commit `9260517` ("feat: add self-healing subscription
+  backstop", per `AUDIT_SUBSCRIPTION_RECOVERY*.md`) — two new scheduled
+  Cloud Functions + one new Firestore composite index, 12 new test
+  scenarios. No explicit deployment claim either way in the commit
+  message; treated as **not deployed** per this project's own
+  established convention (same as RISK-2) until proven otherwise.
+
+## RISK-1 (pre-dates this file)
+
+Completed in earlier sessions — commit `f9e1078` (cosmetic equip
+double-tap guard). Directly referenced by this file's own RISK-8/RISK-9
+entries as an already-proven-safe baseline pattern. Not re-audited as
+part of RISK-8/9/Production-Readiness per explicit instruction not to
+re-touch an already-verified baseline without new regression evidence.
 
 ## RISK-4 — Premium Purchase Reentrancy
 
@@ -379,3 +397,201 @@ isValidKotobaStart". Exactly 2 files changed
 (`kanji_combo_repository.dart`, `kanji_combo_distractor_test.dart`).
 `git status` after commit: only pre-existing `windows/flutter/*` and
 `AUDIT_*.md`/`AUDIT_SUBSCRIPTION_*.md` remain — none touched.
+
+## Production Readiness / Deployment Verification Audit
+
+**Status: ACTIVE.** Read-only audit — no source changed, no commit, no
+deploy, no Firestore Rules/Functions/AdMob/Play Console change, no
+production data touched. Purpose: separate "fixed in code" from
+"committed" from "deployed" from "production-verified", since this
+project's own history has already shown these are NOT the same thing —
+see the `firestore.indexes.json` file's own comment: *"the clan feature
+already shipped once with rules that were right here and absent from
+the live project, and every write silently permission-denied."* This
+environment cannot run `firebase deploy` (no reliable Firebase CLI
+here, and deploying is explicitly the user's own action per this
+project's standing convention — see RISK-2's commit message) — every
+"Deployed"/"Production Verified" answer below is evidence-based, not
+assumed from "the commit exists."
+
+### A. Firestore Rules (RISK-2)
+
+- **Commit**: `cb3fcf1` exists in `HEAD`'s ancestry (confirmed via
+  `git merge-base --is-ancestor`). `git diff -- firestore.rules` against
+  the working tree is empty — **no uncommitted local changes**, the
+  working copy matches the committed version exactly.
+- **Deployed**: **NO — explicit, first-person confirmation in the
+  commit message itself**: *"Not deployed — per this project's standing
+  convention, a firestore.rules change in git takes effect only once
+  deployed via the Firebase CLI or Console, which remains the user's
+  own action."*
+- **Production Verified**: **NO** (can't verify something not deployed).
+- **Verdict**: **CODE READY / COMMITTED — NOT DEPLOYED.**
+- **Remaining action (user-owned)**: `firebase deploy --only
+  firestore:rules` (or paste into the Firebase Console's Rules tab and
+  publish), then re-confirm via the Rules Playground or a live write
+  attempt that the mirror-write protection (`mirrorsOwnCosmetics`) is
+  actually enforced in the live project — the emulator tests (73/73)
+  only prove the rules file itself is correct, not that the live
+  project is running it.
+
+### B. RISK-3 Subscription Backstop
+
+Verified directly from `functions/subscription_backstop.js`,
+`functions/index.js`, `functions/.env`, `firestore.indexes.json`:
+
+| Item | Finding |
+|---|---|
+| `sweepNearExpirySubscriptions` | Exists, `onSchedule` (daily), exported from `functions/index.js:311-312` |
+| `sweepAllPremiumSubscriptions` | Exists, `onSchedule` (weekly), exported from `functions/index.js:313-314` |
+| `firestore.indexes.json` | Composite index present (`users`, `subscription.tier` ASC + `subscription.expiresAt` ASC), explicitly commented "RISK-3 subscription backstop's daily near-expiry sweep" |
+| `SUBSCRIPTION_BACKSTOP_ENABLED` | **Absent from `functions/.env`** → `backstopWritesEnabled()` returns `false` → `dryRun = true` by default. **Safe default confirmed.** |
+| `PLAY_VERIFICATION_ENABLED` | Present, `=true`, in `functions/.env` — gates the backstop too (fails closed if unset) |
+| Purchase token logging | **Not logged** — confirmed by reading every `logger.*` call in the file (only candidate uid/productId/decision/counts) |
+| Tests | `functions/subscription_backstop.test.js` — 12 new scenarios per the commit message, all passing (part of the 314/314 full Functions suite, re-run fresh during this audit) |
+
+- **Deployed**: **UNKNOWN** — no explicit statement in the commit
+  message either way (unlike RISK-2's rules commit). Treated as **not
+  deployed** by default, matching this project's own established
+  convention that nothing here auto-deploys.
+- **Production Verified**: **NO / UNKNOWN.**
+- **Verdict**: **CODE READY / COMMITTED — DEPLOYED UNKNOWN.**
+- **Remaining action (user-owned)**: `firebase deploy --only
+  functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions,firestore:indexes`.
+  Leave `SUBSCRIPTION_BACKSTOP_ENABLED` unset (dry run) for at least one
+  full daily+weekly cycle after deploying, read the Cloud Functions logs
+  to confirm the candidate counts and decisions look sane against real
+  data, **then** set it to `"true"` and redeploy before it can actually
+  downgrade anyone.
+
+### C. AdMob SSV / `adRewards`
+
+Verified directly from `functions/ad_rewards.js` (full read) +
+`AUDIT_PHASE_B1/B2/B3` (pre-existing, read for historical context):
+
+| Item | Finding |
+|---|---|
+| `adRewards` exported | Yes — `onRequest` (plain HTTP, unauthenticated GET, correct for an AdMob→server callback), `functions/index.js:366` |
+| `consumeAdReward` exported | Yes — `onCall`, scoped to `request.auth.uid` only, `functions/index.js:367` |
+| Signature verification | ECDSA/SHA-256/DER against Google's own published verifier keys (`gstatic.com/admob/reward/verifier-keys.json`), fetched and cached in-memory (24h), matched by `key_id` — implemented exactly per Google's documented algorithm per the file's own header comment |
+| Anti-duplicate grant | `processedAdRewardTransactions/{transaction_id}` ledger inside a Firestore transaction — same shape as `iap.js`'s `processedPurchaseTokens` ledger |
+| Server-side `expiresAt` | Yes — `Timestamp.fromMillis(now + REWARD_DURATION_MS)`, 24h, written server-side only |
+| Reward keys | Allowlisted (`KNOWN_REWARD_KEYS`, 9 keys) — an unlisted key is rejected |
+| Ad units | Allowlisted (`KNOWN_AD_UNITS`, the 2 real Android/iOS unit ids) |
+| HTTP status policy | 400 only for a genuinely malformed/unverifiable callback; 200 for every well-formed rejection (per AdMob's own documented retry contract); 500 only for this function's own unexpected failure |
+| Tests | `functions/ad_rewards.test.js` — **22/22 PASS** (re-run fresh during this audit) |
+| Token/signature logging | **Not logged in plaintext** — `log()` calls carry `transactionId`/`rewardKey`/`uid`/`reason`, never the raw signature or query string |
+
+- **Deployed**: **UNKNOWN.** `AUDIT_PHASE_B3_SSV_IMPLEMENTATION_READINESS.md`'s
+  own §8 "Deployment" section lists deploying `functions:ad_rewards` and
+  registering the SSV URL in the AdMob console as **future**, numbered
+  action items (steps 11-12) — written *before* the implementation
+  commit (`796bf19`, the next day), and nothing found since confirms
+  those steps were ever actually carried out.
+- **SSV URL registered/active in AdMob console**: **NOT CONFIRMED —
+  per the user's own instruction, this is marked BLOCKED rather than
+  attempting any live verification.**
+- **Production Verified**: **BLOCKED.** No test that consumes a real
+  reward or touches a production user was run, per instruction.
+- **Verdict**: **CODE READY / COMMITTED — DEPLOYMENT + SSV CONSOLE
+  REGISTRATION UNKNOWN — PRODUCTION VERIFICATION BLOCKED.**
+- **Remaining action (user-owned)**: deploy `functions:ad_rewards`
+  alone (not a full functions redeploy); confirm/set the AdMob console's
+  SSV URL to point at the deployed function's URL; confirm the reward
+  amount configured on the live `.../3809909145` (Android) and
+  `.../3939122841` (iOS) ad units is exactly `"1"` (B2's own audit
+  flagged this specific value as **unverifiable from code** — it's an
+  AdMob console setting); only then run one real, deliberate on-device
+  end-to-end test (watch a real ad on the `particle` reward key, per the
+  user's own scoping) — genuinely consuming that one reward is
+  unavoidable to prove the endpoint works, but must be a single
+  intentional test, not repeated/automated.
+
+### D. Real Play Purchase Readiness
+
+Verified from `lib/core/constants/iap_products.dart`, `functions/iap.js`,
+`functions/subscription_notifications.js`, `functions/iap_states.js`,
+plus `AUDIT_SUBSCRIPTION_RECOVERY.md`/`AUDIT_SUBSCRIPTION_RECOVERY_DESIGN.md`/
+`AUDIT_PLAY_ITEM_UNAVAILABLE.md` (pre-existing):
+
+| Item | Code-provable? | Finding |
+|---|---|---|
+| Premium product id | ✅ yes | `teisou_premium_monthly` — identical client (`iap_products.dart:47`) and server (`iap.js:33`) |
+| Package name | ✅ yes | `com.teisou.kanamaster` — consistent across `build.gradle.kts`, `google-services.json`, `iap.js` |
+| `verifyPurchase` | ✅ yes | Exists, gated on `PLAY_VERIFICATION_ENABLED` (fails closed if unset), decision logic in `iap_states.js` |
+| `onPlayRtdn` | ✅ yes | Exists, Pub/Sub-triggered on topic `play-store-rtdn` — **the topic name must match Play Console exactly, and Play's publisher service account must be granted permission on it, both external/unverifiable from this repo** (the function's own doc comment says so) |
+| Subscription backstop | ✅ yes | See §B — code ready, deployment unknown |
+| Purchase reentrancy fix (RISK-4) | ✅ yes | Client-side `_buying` guard, 7/7 tests passing |
+| Base plan / offer id | ✅ yes (confirmed absent) | App never names one, trusts Play's default resolution — ruled out as a mismatch cause by `AUDIT_PLAY_ITEM_UNAVAILABLE.md` |
+| Base plan exists & active in Play Console | ❌ no | Play Console only |
+| Tester/track eligibility | ❌ no | Play Console only (License testing, track rollout) |
+| Installed build genuinely Play-signed | ❌ no | Device/Codemagic build log only — this app's own code comment (`iap_products.dart:32-37`) warns a sideloaded/debug build always reports every product unavailable |
+| `PLAY_VERIFICATION_ENABLED` actually live on deployed Functions | ❌ no | `AUDIT_SUBSCRIPTION_RECOVERY.md`'s own conclusion: cannot be established from code alone |
+
+- **Known real-world history**: `AUDIT_PLAY_ITEM_UNAVAILABLE.md`
+  documents an actual production report of Play's native
+  `ITEM_UNAVAILABLE` (billing code 4) — traced to a boundary Play itself
+  rejects the purchase at, before this app's code ever runs, and every
+  code-provable factor (product id, package name, base-plan-id absence)
+  came back clean. Root cause narrowed to Play-Console-only facts this
+  repo cannot see.
+- **Verdict**: **CODE READY for a well-configured Play Console — real
+  purchase verification is entirely blocked on**: (1) Play Console
+  configuration (base plan active, correct track, tester list), (2) a
+  genuinely Play-signed release build (not sideloaded/debug), (3) a
+  physical device with that build installed from Play, (4) a real
+  purchase attempt. None of these four are things this environment can
+  do or verify.
+- **No real purchase was made or attempted as part of this audit.**
+
+### E. Production Deployment Matrix
+
+| Component | Code | Tests | Committed | Deployed | Production Verified | Evidence | Remaining Action |
+|---|---|---|---|---|---|---|---|
+| `firestore.rules` (RISK-2 mirror-write fix) | ✅ | ✅ 73/73 emulator | ✅ `cb3fcf1` | ❌ **explicitly NOT** | ❌ | commit message | `firebase deploy --only firestore:rules`, then re-verify |
+| Subscription backstop Functions (RISK-3) | ✅ | ✅ 12 new / 314 total | ✅ `9260517` | ❓ UNKNOWN | ❌ | no deploy claim found | deploy functions, dry-run one cycle, then enable |
+| Firestore indexes (RISK-3's composite index) | ✅ | N/A | ✅ `9260517` | ❓ UNKNOWN | ❌ | same as above | `firebase deploy --only firestore:indexes` |
+| AdMob SSV (`adRewards`/`consumeAdReward`) | ✅ | ✅ 22/22 | ✅ `796bf19` | ❓ UNKNOWN | 🚫 **BLOCKED** (no live-test per instruction) | B3's own "future steps" list | deploy function, register SSV URL in console, confirm reward amount, one deliberate on-device test |
+| `verifyPurchase` / `onPlayRtdn` | ✅ | ✅ (part of 314) | ✅ (pre-RISK-N) | ❓ UNKNOWN | ❌ (last known real attempt failed at Play's own dialog, root cause Play-Console-only) | `AUDIT_SUBSCRIPTION_RECOVERY.md`, `AUDIT_PLAY_ITEM_UNAVAILABLE.md` | Play Console config + Play-signed build + device + real purchase |
+| Premium purchase flow (client, incl. RISK-4 reentrancy fix) | ✅ | ✅ 7/7 | ✅ `913347e` | N/A (ships with next app build) | ❌ | this session's own verification | needs a released app build to reach any real user |
+
+**Reading this matrix**: every row is "commit exists" ✅ and "tests
+pass" ✅. **Zero rows are confirmed "Production Verified."** This is not
+a code-quality problem — every fix audited across RISK-1 through Q3
+this session is well-tested and defensible on its own terms. It is
+entirely a **deployment/operational gap**: nothing in this environment
+can run `firebase deploy`, install a Play-signed build, or touch Play
+Console, and this project's own history (the Clan-rules incident) shows
+that assuming "committed" means "live" has already caused a real
+production bug once.
+
+### F. New findings from this audit (not previously tracked)
+
+- **No new code bug found.** This phase was read-only by design and
+  found none.
+- **New test gap, worth tracking**: none of the 6 matrix rows above have
+  ANY automated "is this actually live in production" check — by
+  nature, since that requires live infrastructure access this
+  environment doesn't have. If Firebase deploy access is ever available
+  to a future session, a smoke-test script (e.g. attempt a rules-
+  protected write and confirm it's denied against the LIVE project, not
+  the emulator) would close this gap.
+- **New deployment blocker, explicit**: RISK-2's `firestore.rules` fix
+  (cosmetic identity spoofing via leaderboard/clan/friend mirrors) has
+  been sitting committed-but-undeployed since Aug 27. Until deployed,
+  the vulnerability it fixes is still live in production.
+- **Requirement carried forward from RISK-2's own commit, restated
+  here for visibility**: deploying `firestore.rules` is the single
+  highest-value pending action in this whole matrix — it's the only
+  row where the code fix is 100% code-complete/tested AND the
+  deployment step is a single, well-understood command, not blocked on
+  external Play/AdMob console configuration the way B/C/D are.
+
+## G. Safety confirmation
+
+No destructive git operations used. `git status`/`git diff`/`git log`/
+`git show`/`git merge-base` only. No `firestore.rules`/`functions/`/Dart
+production file was modified. No Play Console, AdMob console, or
+Firestore data was touched. `windows/flutter/*` and every `AUDIT_*.md`/
+`AUDIT_SUBSCRIPTION_*.md` file remain exactly as they were — read for
+evidence, never edited or staged. No `firebase deploy` command was run.
