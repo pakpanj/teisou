@@ -3817,3 +3817,167 @@ production-safe until deployment occurs and is separately verified.
   implementation task did not make unilaterally.
 - No actual production deployment or real-world dry run of the payout
   against live data.
+
+## Weekly Global Ranking — pre-deployment cutover safety audit (read-only)
+
+Requested explicitly before any `firebase deploy` of `38a4395`: verify
+whether the old and new `awardTopGlobalCoins` payout logic can safely
+transition in production without a window where both run, a window
+where neither runs, or a double-payout of the same period. **A real
+cutover blocker was found. Not fixed — reported per instruction.**
+
+### 1-2. Is `awardTopGlobalCoins` still exported? Does a separate "old
+payout path" still exist?
+
+Yes, and no separately, respectively — and those two facts turn out to
+be the same fact. `functions/index.js` line 319-320
+(`exports.awardTopGlobalCoins = require("./award_top_coins")
+.awardTopGlobalCoins;`) has **zero diff** across the entire P0 commit
+(`git diff d3c47dd..38a4395 -- functions/index.js` is empty). There has
+only ever been one exported Cloud Function here — `38a4395` rewrote
+its *body*, not its *identity*. The old ranking logic
+(`leaderboard.globalScore`, `weeklyCoinAwards/{isoWeekId}`) no longer
+exists anywhere in the live code path; `isoWeekId` survives only as an
+unused, still-exported, doc-commented-as-retired pure function, kept
+around purely because it's the id scheme every pre-existing
+`weeklyCoinAwards` document already in Firestore uses — nothing calls
+it anymore.
+
+### 3. Current production schedule of the (old, currently-deployed)
+payout
+
+`onSchedule({schedule: "every monday 00:00", timeZone: "Asia/Jakarta"},
+...)` — and this exact cron string is **also unchanged** across the P0
+commit. Whatever fires the currently-live function today will fire the
+new code, unmodified, the moment it's deployed.
+
+### 4-5. Can old and new coexist? Can both pay the same period?
+
+**Structurally impossible either way** — not because of any
+idempotency guard, but because there is only ever one Cloud Function
+with this name. Cloud Functions has no concept of two live code
+versions of the same trigger running concurrently; a deploy atomically
+replaces what's there. Before deploy: 100% old code, every week. After
+deploy: 100% new code, every week. There is no overlap window, and
+therefore no scenario where both rank/pay the same period — this part
+of the original concern is a non-issue by construction.
+
+### 6. Old `weeklyCoinAwards/{isoWeekId}` vs new
+`globalScorePeriodAwards/{periodId}` interaction
+
+None. Grepped the whole `functions/` and `lib/` trees:
+`weeklyCoinAwards` appears only inside `award_top_coins.js`'s own
+doc-comment and its own migration test (`award_top_coins_migration
+.test.js`, which exists specifically to prove an old-scheme marker has
+zero effect on the new payout) — no live read path anywhere, no client
+reference anywhere. Old documents remain inert historical records. The
+two id schemes share the `YYYY-Www` string format but live under
+genuinely different collection names, so no string-level collision
+between them is possible even in principle, exactly as the file's own
+doc comment (lines 85-98) already argues.
+
+### 7. Exact Monday WIB cutover behavior — **this is the blocker**
+
+`closedPeriodId(nowMs)` treats any instant less than `GRACE_BUFFER_MS`
+(5 minutes) after the current period's own start as "too early, the
+previous period isn't safe to pay yet," returning `null`. This is
+correct, deliberate, and directly unit-tested —
+`award_top_coins_period.test.js` has an explicit case, `"closedPeriodId:
+exactly at a period boundary (Monday 00:00:00.000 WIB)..."`, asserting
+`closedPeriodId(boundary) === null`.
+
+The problem is what invokes it. The scheduled trigger fires at
+`"every monday 00:00"` `Asia/Jakarta` — the **exact same instant** the
+grace-buffer logic is designed to treat as "too early." Cloud
+Scheduler's real dispatch latency is normally seconds to at most a
+couple of minutes, reliably well under the 5-minute threshold. So on
+every single weekly invocation, `Date.now()` read inside the handler
+will land inside the grace window, `closedPeriodId` will return `null`,
+and `runWeeklyPayoutIfDue` will log `"within grace buffer, deferring"`
+and do nothing. The **following** Monday's invocation faces the exact
+same situation relative to *that* week's boundary. **Under the current
+schedule configuration, the payout would never fire, ever — not
+intermittently, structurally, every week, forever**, with no exception,
+no crash, and no error logged beyond an unremarkable "deferring" info
+line — this would very likely go unnoticed for a long time in
+production.
+
+This is not a flaw in the grace-buffer math itself (which is correct
+and correctly tested in isolation) — it's a mismatch between that pure
+function's precondition (it needs to be called *after* the grace
+window has elapsed since the period boundary) and the one thing that
+actually calls it in production (a schedule that fires *at* the
+boundary). The old, pre-P0 code had no grace-buffer concept at all — it
+ranked immediately on every fire — so this incompatibility did not
+exist before `38a4395` and was introduced by it, specifically by adding
+grace-buffer logic without also moving the schedule string that
+triggers it.
+
+### 8. Must the old Function be disabled/removed/redirected?
+
+No — there is no separate old Function to act on (see 1-2/4-5 above).
+The only action of consequence here is fixing Finding 7 before
+deploying at all, since deploying as-is does not "coexist badly with
+the old system" — it simply stops paying anyone, silently, forever.
+
+### 9. Exact narrow deployment sequence
+
+**Not currently safe to give as a go-ahead** — see Finding 7. The
+sequence below is the corrected one, conditional on the minimal fix in
+Finding 10 being applied and its own test suite re-run green first:
+
+1. `firebase deploy --only firestore:indexes` — the new composite
+   index (`globalScorePeriods/{periodId}/users`, points DESC/attempts
+   DESC/`__name__` ASC) must exist *before* the function that queries
+   it is live, or the very first post-fix invocation throws
+   `FAILED_PRECONDITION` instead of paying out. Indexes typically take
+   a few minutes to build; safe to deploy well ahead of the function.
+2. Confirm (via `firebase firestore:indexes` or the console) the new
+   index has finished building, not just been submitted.
+3. `firebase deploy --only functions:awardTopGlobalCoins` — the single
+   function this whole audit concerns. `firestore.rules` is untouched
+   by this change (the `globalScorePeriods`/`globalScorePeriodAwards`
+   blocks were already deployed earlier per the RISK-series work) and
+   does not need redeploying here.
+4. Observe the **next real Monday 00:0X WIB (or later, post-fix)**
+   scheduled invocation in `firebase functions:log` — confirm it
+   reaches `runWeeklyPayoutIfDue`'s non-skipped branch and actually
+   ranks/pays a period, not just that it ran without error.
+
+### 10. Migration/cutover blocker — minimal fix proposed, not applied
+
+**Root cause**: `onSchedule`'s cron (`"every monday 00:00"`) fires at
+the exact instant `closedPeriodId`'s grace-buffer check is designed to
+reject.
+
+**Minimal fix**: move the schedule's fire time to safely past the
+5-minute grace window — e.g. `{schedule: "10 0 * * 1", timeZone:
+"Asia/Jakarta"}` (00:10 WIB Monday) or the equivalent `"every monday
+00:10"` App-Engine-cron-style string this codebase already uses
+elsewhere. A 10-minute offset (rather than exactly 5) leaves margin for
+Cloud Scheduler's own dispatch jitter, so a slightly-late real-world
+fire doesn't reintroduce the same failure by landing back inside the
+grace window. This is a one-line config change to the `schedule`
+string in `functions/award_top_coins.js`'s `exports.awardTopGlobalCoins
+= onSchedule({schedule: ..., ...` call — it does not touch
+`closedPeriodId`, `GRACE_BUFFER_MS`, `wibWeekStart`, or any of the
+already-tested boundary math. **Not applied in this audit** — this was
+a read-only pass per instruction; the fix is proposed for a future,
+explicitly-scoped change.
+
+**Verification once fixed**: re-run `award_top_coins_period.test.js`
+unchanged (its boundary-math assertions don't depend on the schedule
+string at all, so they should stay green) plus one new integration-
+shaped check worth adding at that time: a test asserting the configured
+cron fire time, added to the schedule offset, is `>= GRACE_BUFFER_MS`
+past the WIB week boundary — the kind of check that would have caught
+this mismatch before it ever reached a commit, since the existing test
+suite only ever tested the pure function against hand-picked instants,
+never against the actual value the schedule would produce.
+
+**Audit method note**: no production read access was needed for this
+pass — everything above was established from `git diff`/`git show`
+(commit contents, unchanged lines) and the existing test suite's own
+already-passing assertions, cross-referenced against what actually
+invokes the code in production (the `onSchedule` config). No Firestore
+document was read, no function invoked, no deploy run.
