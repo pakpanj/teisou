@@ -18,7 +18,7 @@ in place rather than leaving two contradictory rows.
 |---|---|---|
 | RISK-1 | Cosmetic equip reentrancy (avatar/frame/card-skin double-tap) | ✅ DONE (code+tests committed; live-app rollout status — see Production Readiness) |
 | RISK-2 | Cosmetic identity spoofing via leaderboard/clan/friend mirrors (`firestore.rules`) | ✅ **CODE COMPLETE / DEPLOYED / PRODUCTION DEPLOYMENT CONFIRMED** — 2026-08-28 (see Production Readiness §A) |
-| RISK-3 | Self-healing subscription backstop (`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`) | ✅ CODE DONE / COMMITTED — **deployment status UNKNOWN** (see Production Readiness §B) |
+| RISK-3 | Self-healing subscription backstop (`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`) | 🔶 **INDEX DEPLOYED 2026-08-28 / FUNCTIONS DEPLOY FAILED (network egress, not code)** — enforcement correctly still disabled (see Production Readiness §B) |
 | RISK-4 | Premium purchase (IAP) reentrancy | ✅ DONE (client-side fix — ships with next app build/release, see Production Readiness §D) |
 | RISK-5 | Coin-purchase reentrancy (Avatar/Frame/Cover pickers) + `spend_coins.js` DI seam | ✅ DONE |
 | RISK-6 | Cross-function race audit (spendCoins vs claimXpReward vs verifyPurchase) | ✅ DONE (audit-only, no bug found) |
@@ -26,7 +26,7 @@ in place rather than leaving two contradictory rows.
 | RISK-8 | Global async-action/reentrancy audit (app-wide inventory) | ✅ DONE |
 | RISK-9 | Fix RISK-8's 3 confirmed bugs (clan kick/leave/invite/friend-request reentrancy) | ✅ DONE |
 | Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
-| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) deployed 2026-08-28; Functions/AdMob/Play deployment still pending** |
+| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) + RISK-3 index deployed 2026-08-28; RISK-3 Functions deploy blocked on this environment's network egress; AdMob/verifyPurchase found already live (pre-existing); Play purchase still pending** |
 
 ## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
@@ -43,9 +43,10 @@ The Production Readiness audit (below) traced both precisely:
 - **RISK-3** = commit `9260517` ("feat: add self-healing subscription
   backstop", per `AUDIT_SUBSCRIPTION_RECOVERY*.md`) — two new scheduled
   Cloud Functions + one new Firestore composite index, 12 new test
-  scenarios. No explicit deployment claim either way in the commit
-  message; treated as **not deployed** per this project's own
-  established convention (same as RISK-2) until proven otherwise.
+  scenarios. **Update 2026-08-28**: the composite index is now deployed
+  to production; the two scheduled Functions are not — a real deploy
+  attempt hit a network-egress failure in this environment, not a code
+  or config problem. See §B below for the full record.
 
 ## RISK-1 (pre-dates this file)
 
@@ -524,19 +525,96 @@ Verified directly from `functions/subscription_backstop.js`,
 | Purchase token logging | **Not logged** — confirmed by reading every `logger.*` call in the file (only candidate uid/productId/decision/counts) |
 | Tests | `functions/subscription_backstop.test.js` — 12 new scenarios per the commit message, all passing (part of the 314/314 full Functions suite, re-run fresh during this audit) |
 
-- **Deployed**: **UNKNOWN** — no explicit statement in the commit
-  message either way (unlike RISK-2's rules commit). Treated as **not
-  deployed** by default, matching this project's own established
-  convention that nothing here auto-deploys.
-- **Production Verified**: **NO / UNKNOWN.**
-- **Verdict**: **CODE READY / COMMITTED — DEPLOYED UNKNOWN.**
-- **Remaining action (user-owned)**: `firebase deploy --only
-  functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions,firestore:indexes`.
-  Leave `SUBSCRIPTION_BACKSTOP_ENABLED` unset (dry run) for at least one
-  full daily+weekly cycle after deploying, read the Cloud Functions logs
-  to confirm the candidate counts and decisions look sane against real
-  data, **then** set it to `"true"` and redeploy before it can actually
-  downgrade anyone.
+**Update 2026-08-28**: attempted, per an explicit, scoped user request
+to bring RISK-3 from code-complete toward deployed/verified. Result is
+**partial** — index deployed, Functions deployment failed on a genuine
+environment limitation. Full record:
+
+- **Pre-flight**: `9260517` confirmed still in `HEAD`'s ancestry; all 6
+  RISK-3 files (`subscription_backstop.js`, `.test.js`, `iap.js`,
+  `index.js`, `test_helpers/fake_firestore.js`, `firestore.indexes.json`)
+  confirmed byte-identical to the working tree (`git diff` empty on all
+  six). Both functions confirmed exported (`index.js:311-314`). Safe
+  defaults reconfirmed: `SUBSCRIPTION_BACKSTOP_ENABLED` absent from
+  `.env` → dry-run by default; `PLAY_VERIFICATION_ENABLED=true` present
+  (gates the sweep, fails closed if unset); every Play-API-error path
+  returns `outcome: "skipped_play_error"`, never a downgrade; no
+  `logger.*` call anywhere in the file passes a purchase token (only
+  `tokenDoc.id` reaches the Play API client directly, never a log line).
+- **Tests before deployment**: `subscription_backstop.test.js`
+  **16/16 PASS**; full Functions suite **314/314 PASS**; IAP-specific
+  suites (`iap.test.js`/`iap_logging.test.js`/`iap_states.test.js`)
+  **43/43 PASS** — `verifyPurchase`'s own logic confirmed untouched and
+  intact. All re-run fresh this session, not assumed from an earlier
+  pass.
+- **Firebase project preflight**: `.firebaserc` confirms
+  `teisou-kana-master`. `firebase functions:list` against the LIVE
+  project (read-only) confirmed the Functions runtime is genuinely
+  deployable — 20 functions already live (`adRewards`, `verifyPurchase`,
+  `onPlayRtdn`, `sweepAbandonedBattleMatches` among them — this is also
+  the first hard confirmation that **AdMob's `adRewards`/
+  `consumeAdReward` are already deployed to production**, a fact the
+  earlier Production-Readiness audit had marked "deployment UNKNOWN" —
+  noted here for the record only, not acted on; out of this task's
+  scope). **`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`
+  were confirmed ABSENT from that live list** before deploying — this
+  was genuinely a new addition, not a redeploy.
+- **Index deployment: ✅ SUCCESS.** Read the live indexes first
+  (`firebase firestore:indexes`) — only the pre-existing `battleMatches`
+  index was live, confirming the RISK-3 `users` composite index
+  (`subscription.tier` ASC + `subscription.expiresAt` ASC) was genuinely
+  missing and the diff was exactly the one expected addition, nothing
+  unrelated. Ran `npx --yes firebase-tools@latest deploy --only
+  firestore:indexes` — output: `firestore: deployed indexes in
+  firestore.indexes.json successfully for (default) database` /
+  `Deploy complete!`. Re-read the live indexes immediately after: the
+  `users` composite index is now present, byte-for-byte matching the
+  repo file. **Timestamp: 2026-08-28 03:48:52 UTC.** No Rules, Hosting,
+  Storage, or unrelated Functions were touched (the deploy output only
+  ever names `firestore`/indexes; rules were syntax-checked as a
+  standard prep step, never re-released).
+- **Functions deployment: ❌ FAILED — genuine environment limitation, not
+  a code/config/permission problem.** `npx --yes firebase-tools@latest
+  deploy --only
+  functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions`
+  failed twice, identically, with `Error: An unexpected error has
+  occurred.` (exit code 2). `firebase-debug.log` traced the real cause
+  both times: a `ConnectTimeoutError` (TCP connect timeout, 10s) to
+  `iam.googleapis.com` and `firebase.googleapis.com`'s `adminSdkConfig`
+  endpoint — both genuine Google IPs, not a DNS/auth failure.
+  `cloudresourcemanager.googleapis.com` and `firestore.googleapis.com`
+  (used successfully for the Rules/Indexes deploys) both worked fine in
+  the same run. **This is a network-egress restriction specific to this
+  sandboxed environment** for the wider Google API surface Functions
+  deployment needs (IAM permission checks, Cloud Build, Artifact
+  Registry, Admin SDK config) that Firestore Rules/Indexes deploys don't
+  touch — not something a retry fixes (confirmed: identical failure on
+  a second attempt), and not something this environment can resolve.
+  **No functions were created, updated, or deleted** — the deploy never
+  got past its own pre-flight API checks.
+- **Enforcement**: **NOT enabled** — trivially true, since nothing was
+  deployed at all; `SUBSCRIPTION_BACKSTOP_ENABLED` was never touched,
+  still absent from `functions/.env`.
+- **Production execution observed**: **NO — cannot be, the functions
+  are not deployed.** Not "not yet observed" (which would imply a
+  deployed-but-idle scheduler) — there is no live scheduler to observe.
+- **Production behavior verified**: **NO / N/A** for the same reason.
+- **Verdict**: **CODE COMPLETE ✅ / TEST COMPLETE ✅ / INDEX DEPLOYED ✅ /
+  FUNCTIONS DEPLOYED ❌ / ENFORCEMENT ENABLED ❌ (correctly, per
+  instruction) / PRODUCTION EXECUTION OBSERVED ❌ (not possible yet) /
+  PRODUCTION BEHAVIOR VERIFIED ❌.**
+- **Remaining action (user-owned)**: deploy
+  `functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions`
+  from an environment with full network egress to
+  `iam.googleapis.com`/`firebase.googleapis.com` (a normal developer
+  machine, Cloud Shell, or Codemagic — anywhere outside this specific
+  sandbox). Once deployed: leave `SUBSCRIPTION_BACKSTOP_ENABLED` unset
+  (dry run) for at least one full daily+weekly cycle, read Cloud
+  Functions logs to confirm candidate counts/decisions look sane against
+  real data and no purchase token appears in any log line, **then** set
+  `SUBSCRIPTION_BACKSTOP_ENABLED="true"` and redeploy before it can
+  actually downgrade anyone. The Firestore index is already live and
+  needs no further action.
 
 ### C. AdMob SSV / `adRewards`
 
@@ -623,24 +701,33 @@ plus `AUDIT_SUBSCRIPTION_RECOVERY.md`/`AUDIT_SUBSCRIPTION_RECOVERY_DESIGN.md`/
 | Component | Code | Tests | Committed | Deployed | Production Verified | Evidence | Remaining Action |
 |---|---|---|---|---|---|---|---|
 | `firestore.rules` (RISK-2 mirror-write fix) | ✅ | ✅ 74/74 emulator (2026-08-28) | ✅ `cb3fcf1` | ✅ **CONFIRMED 2026-08-28** | ❓ UNKNOWN (deployed, live behavior not separately probed) | Firebase deploy output + emulator re-run, this session | optional: a live Rules Playground probe to close the "behavior verified" gap |
-| Subscription backstop Functions (RISK-3) | ✅ | ✅ 12 new / 314 total | ✅ `9260517` | ❓ UNKNOWN | ❌ | no deploy claim found | deploy functions, dry-run one cycle, then enable |
-| Firestore indexes (RISK-3's composite index) | ✅ | N/A | ✅ `9260517` | ❓ UNKNOWN | ❌ | same as above | `firebase deploy --only firestore:indexes` |
-| AdMob SSV (`adRewards`/`consumeAdReward`) | ✅ | ✅ 22/22 | ✅ `796bf19` | ❓ UNKNOWN | 🚫 **BLOCKED** (no live-test per instruction) | B3's own "future steps" list | deploy function, register SSV URL in console, confirm reward amount, one deliberate on-device test |
-| `verifyPurchase` / `onPlayRtdn` | ✅ | ✅ (part of 314) | ✅ (pre-RISK-N) | ❓ UNKNOWN | ❌ (last known real attempt failed at Play's own dialog, root cause Play-Console-only) | `AUDIT_SUBSCRIPTION_RECOVERY.md`, `AUDIT_PLAY_ITEM_UNAVAILABLE.md` | Play Console config + Play-signed build + device + real purchase |
+| Subscription backstop Functions (RISK-3) | ✅ | ✅ 16 new / 314 total | ✅ `9260517` | ❌ **FAILED 2026-08-28** (network egress to iam/firebase.googleapis.com, not code) | ❌ N/A — not deployed | deploy attempt + `firebase-debug.log`, this session | redeploy from an environment with full Google API egress |
+| Firestore indexes (RISK-3's composite index) | ✅ | N/A | ✅ `9260517` | ✅ **CONFIRMED 2026-08-28** | N/A (an index has no "behavior" to verify beyond existing) | Firebase deploy output + live `firestore:indexes` re-read, this session | none |
+| AdMob SSV (`adRewards`/`consumeAdReward`) | ✅ | ✅ 22/22 | ✅ `796bf19` | ✅ **CONFIRMED live** (`firebase functions:list`, this session — found incidentally while auditing RISK-3, not independently pursued) | 🚫 **BLOCKED** (no live-test per instruction) | `functions:list` output, this session | register/confirm SSV URL in AdMob console, confirm reward amount, one deliberate on-device test |
+| `verifyPurchase` / `onPlayRtdn` | ✅ | ✅ (part of 314) | ✅ (pre-RISK-N) | ✅ **CONFIRMED live** (`firebase functions:list`, this session) | ❌ (last known real attempt failed at Play's own dialog, root cause Play-Console-only) | `functions:list` output; `AUDIT_SUBSCRIPTION_RECOVERY.md`, `AUDIT_PLAY_ITEM_UNAVAILABLE.md` | Play Console config + Play-signed build + device + real purchase |
 | Premium purchase flow (client, incl. RISK-4 reentrancy fix) | ✅ | ✅ 7/7 | ✅ `913347e` | N/A (ships with next app build) | ❌ | this session's own verification | needs a released app build to reach any real user |
 
-**Reading this matrix (updated 2026-08-28)**: every row is "commit
-exists" ✅ and "tests pass" ✅. **One row (`firestore.rules`) is now
-confirmed Deployed** — see §A. **Zero rows are confirmed "Production
-Verified"** in the stricter sense (a live, real-traffic behavior probe)
-— deploying is not the same claim, and this file is deliberately keeping
-the two separate. This is not a code-quality problem — every fix
-audited across RISK-1 through Q3 this session is well-tested and
-defensible on its own terms. The remaining gap is **deployment/
-operational**, not "impossible from this environment" as originally
-assumed — `npx --yes firebase-tools@latest` (see §A) works for Firestore
-Rules/Functions/indexes; a Play-signed build and Play Console access
-remain genuinely outside this environment either way. This project's
+**Reading this matrix (updated 2026-08-28, second pass)**: every row is
+"commit exists" ✅ and "tests pass" ✅. **`firestore.rules` and the
+RISK-3 composite index are now confirmed Deployed by this session's own
+actions; `adRewards`/`consumeAdReward`/`verifyPurchase`/`onPlayRtdn`
+were found already deployed** (pre-existing, discovered incidentally via
+`functions:list`, not deployed by this session). **The RISK-3 scheduled
+Functions deploy attempt FAILED** — see §B — on a genuine network-egress
+limit in this environment, not a code problem. **Zero rows are confirmed
+"Production Verified"** in the stricter sense (a live, real-traffic
+behavior probe) — deploying is not the same claim, and this file is
+deliberately keeping the two separate. This is not a code-quality
+problem — every fix audited across RISK-1 through Q3 this session is
+well-tested and defensible on its own terms. **`npx --yes
+firebase-tools@latest` works for Firestore Rules and Firestore Indexes
+from this environment (proven twice) but NOT for Functions** (proven:
+two identical, reproducible `ConnectTimeoutError`s to
+`iam.googleapis.com`/`firebase.googleapis.com` — a narrower API surface
+than Rules/Indexes deploys touch) — a real, specific, now-documented
+limit of this sandbox, not a blanket "nothing can deploy" claim as
+earlier phrased. A Play-signed build and Play Console access remain
+genuinely outside this environment either way. This project's
 own history (the Clan-rules incident) is exactly why this file keeps
 insisting on evidence over assumption for every row above.
 
