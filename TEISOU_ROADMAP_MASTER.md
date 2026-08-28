@@ -658,6 +658,68 @@ once (not retry blindly) before attempting again:
   `us-east1` cleanup-policy warning via `firebase
   functions:artifacts:setpolicy` (cosmetic, not blocking).
 
+**Update 2026-08-28, later same day — dry-run observation pass.** An
+explicit, read-only observation task: confirm both functions still
+exist, check whether either has actually executed, inspect real Cloud
+Functions logs for the backstop specifically. No source changed, no
+manual sweep invoked (the implementation exposes no safe manual-trigger
+path — `subscription_backstop.js` only exports the two `onSchedule`
+functions plus an `_internal` object explicitly commented "Exported for
+tests only," so none was invented per instruction).
+
+- **Both functions confirmed still live**: `firebase functions:list`
+  re-run — `sweepAllPremiumSubscriptions` and
+  `sweepNearExpirySubscriptions`, both `v2`/`scheduled`/`us-central1`/
+  `nodejs22`, unchanged since deploy.
+- **Schedule, read directly from the deployed source**:
+  `sweepNearExpirySubscriptions` = `"every day 03:00"` Asia/Jakarta;
+  `sweepAllPremiumSubscriptions` = `"every monday 03:30"` Asia/Jakarta.
+  Deploy landed 2026-08-28 ≈04:19 UTC (≈11:19 WIB) — **after** that
+  day's 03:00 WIB daily slot, and 2026-08-28 is a Friday — so the
+  earliest possible next runs are **2026-08-29 03:00 WIB** (daily) and
+  **2026-08-31 (Monday) 03:30 WIB** (weekly). Neither had arrived yet at
+  observation time.
+- **Log inspection**: `firebase functions:log --only
+  sweepNearExpirySubscriptions,sweepAllPremiumSubscriptions -n 500`.
+  Every entry present is **deployment/infrastructure noise only** —
+  Cloud Audit Log `CreateFunction` entries, container cold-start
+  (`Starting new instance. Reason: DEPLOYMENT_ROLLOUT`), and the
+  `STARTUP TCP probe succeeded` health check that Cloud Run performs on
+  every new revision. **Zero occurrences** of this file's own
+  application-level log lines
+  (`"subscription_backstop: daily/weekly sweep starting/complete/
+  skipped"` — grepped for directly, explicitly including `dry-run`/
+  `downgrad`/`reconfirm`, nothing matched). This is conclusive,
+  independent confirmation (not just schedule arithmetic) that
+  `runDailySweep`/`runWeeklySweep`'s actual business logic has not run
+  even once since deployment — no candidate query, no Play verification
+  call, no dry-run decision, nothing to read yet.
+- **No sensitive data found** — trivially true, since there is no
+  application log output at all yet to check. (The code-level guarantee
+  — no `logger.*` call anywhere in the file ever passes a purchase
+  token — was already confirmed by direct source reading in the
+  previous deployment task, not re-derived here since the source is
+  unchanged.)
+- **Cross-check against `subscription_backstop.test.js`**: unchanged
+  since the previous task's pre-deploy run (16/16 PASS, source
+  untouched) — the dry-run-safety/Play-verification-gating/fail-closed/
+  no-token-logging guarantees this file tests are exactly the
+  properties this observation pass was looking for live evidence of;
+  none of that live evidence exists yet, so the test suite remains the
+  only current evidence for those properties, not a live confirmation.
+- **INVOCATION OBSERVED: NO** (both functions). **DRY-RUN BEHAVIOR
+  VERIFIED: NOT APPLICABLE YET** (nothing to verify without an
+  invocation — this is a state, not an "unknown due to insufficient
+  access"). **ENFORCEMENT ENABLED: NO** — unchanged,
+  `SUBSCRIPTION_BACKSTOP_ENABLED` still absent from `functions/.env`.
+- **Verdict, unchanged from the deploy task**: **DEPLOYED — WAITING FOR
+  SCHEDULED INVOCATION.** Next honest checkpoint: any time after
+  2026-08-29 03:00 WIB, re-run the same log inspection and look for the
+  `"daily sweep starting"`/`"daily sweep complete"` pair (or
+  `"skipped — Play verification is not configured"` if
+  `PLAY_VERIFICATION_ENABLED` somehow isn't live, which would itself be
+  worth flagging) before drawing any conclusion about live behavior.
+
 ### C. AdMob SSV / `adRewards`
 
 Verified directly from `functions/ad_rewards.js` (full read) +
