@@ -1473,6 +1473,247 @@ already have, so the fix's own regression tests don't need a
 touched by this audit and its scheduled-invocation checkpoint remains
 a separate, unrelated pending item.
 
+## Rank-Skip Fix Phase (2026-08-29, same day) — BOTH P2 bugs FIXED, NOT DEPLOYED
+
+Both bugs from the audit above are now fixed in code, with permanent
+regression coverage, per explicit user authorization for a scoped
+code+test-only fix phase. **Neither `firestore.rules` (unchanged —
+confirmed by `git status`/`git diff`, zero lines touched) nor any Cloud
+Function was deployed — `firebase deploy` was never run.** Production
+is running the OLD, still-vulnerable `rank_skip.js` until a human
+explicitly ships a new Functions deploy.
+
+### BUG #1 fix — `startRankSkipExam`/`submitRankSkipExam` made
+transactional on `rankSkipExams/{uid}`
+
+**File**: `functions/rank_skip.js`. Both handlers' logic was extracted
+into testable functions (`startRankSkipExamFor`/`submitRankSkipExamFor`,
+taking `options.firestore` — the same DI shape `spend_coins.js`'s
+`spendCoinsFor`/`award_xp.js`'s `awardXpFor` already established in
+this codebase), and the read-then-write on `rankSkipExams/{uid}` in
+each is now wrapped in a single `firestore.runTransaction(...)` instead
+of a plain, non-transactional `.get()`+`.set()` pair. Both handlers'
+transactions operate on the SAME document, so Firestore's optimistic
+concurrency control now genuinely serializes them: whichever commits
+first wins outright, and the other is forced to retry against the
+fresh post-commit state rather than blindly overwriting it. A second,
+independent piece of the fix: `startRankSkipExamFor`'s write no longer
+mentions `lockedUntil` at all (previously it explicitly re-asserted
+`existing.lockedUntil || null` on every write, which was the literal
+mechanism that clobbered a freshly-set cooldown) — a merge write that
+never names a field leaves it exactly as it stood, removing the
+clobbering vector at its source, independent of the transaction
+wrapping it.
+
+DI seam justification (per the task's explicit "do not add DI merely
+for style" instruction): genuinely required — the regression test for
+this fix needs to force two calls into a specific, deterministic
+interleaving around a real `runTransaction` retry, which is only
+possible if the test can hand both calls a shared Firestore double.
+`rank_skip.js` previously had no way to receive one at all (`db()`
+called `getFirestore()` unconditionally). Scoped narrowly: only
+`options.firestore` (both functions) and `options.promoteToTierFloor`
+(submit only, for BUG #2's own test needs below) were added — no other
+refactor.
+
+### BUG #2 fix — session no longer deleted before promotion
+
+**File**: `functions/rank_skip.js`, `submitRankSkipExamFor`. The
+grading transaction now only writes something when the attempt FAILS
+(cooldown + session-delete, as before — still one atomic write, still
+what BUG #1's fix needs, since it's the same transaction
+`startRankSkipExamFor` conflicts against). **On a PASS, the session is
+deliberately left untouched** — it is the durable record that this
+exact attempt passed. `promoteToTierFloor` (the real one, unmodified —
+called via the injected `promote` reference, defaulting to
+`battleStars.promoteToTierFloor`) is then attempted; only once it has
+actually committed does a **second**, separate transaction finally
+clear the session, guarded by re-checking the session's own `sessionId`
+still matches (so a finalize racing a brand-new exam the player already
+started cannot delete the wrong one).
+
+**Why this is safe under retry** (per the task's explicit "demonstrate
+why the resulting state machine is safe, don't just move the delete"
+instruction): grading is a pure function of `session.cardIds` +
+the submitted `answers`, so re-submitting the same `sessionId` after a
+transient promotion failure re-derives the identical `passed: true`
+result deterministically and simply retries `promoteToTierFloor` —
+which is where the real idempotency guarantee already lives (proven
+in `battle_stars.js`: it only ever writes when the player's current
+standing is still below the target tier's floor, so a second successful
+call after a failed first one, or two overlapping successful calls,
+both converge to exactly one promotion). **No second, independent
+source of truth for rank was created** — `promoteToTierFloor` itself
+was not touched, reimplemented, or duplicated; `rank_skip.js` only
+calls it and reacts to its outcome.
+
+**Deliberately not a single cross-document transaction** spanning both
+`rankSkipExams/{uid}` and `users/{uid}` — that would require either
+reimplementing `promoteToTierFloor`'s own transaction inline (ruled out
+by the point above) or threading an external transaction handle into
+`battle_stars.js` (a broader change to a file no bug was found in). Two
+transactions plus `promoteToTierFloor`'s own pre-existing idempotency is
+the smaller, already-proven-safe shape.
+
+### Permanent regression coverage
+
+`functions/rank_skip.test.js` — 8 new integration-level tests against
+`startRankSkipExamFor`/`submitRankSkipExamFor` (using the shared
+`functions/test_helpers/fake_firestore.js`, extended — see below — plus
+a small local `fakePromote()` helper that stands in for
+`battleStars.promoteToTierFloor` without touching real Firestore or
+`battle_stars.js`'s own transaction machinery at all):
+1. Ordinary successful exam — passes, promotes, session cleared.
+2. Ordinary failed exam — fails, sets the 24h cooldown, a sequential
+   retry is correctly rejected (`resource-exhausted`).
+3. **BUG #1's proof** — a start racing a failing submit on the same uid
+   never leaves a fresh exam coexisting with a freshly-established
+   cooldown (forces the race via `FakeFirestore`'s `beforeCommit` hook,
+   targeting the transaction whose write shape matches `startRankSkip
+   ExamFor`'s specifically, so the proof doesn't depend on incidental
+   scheduling order between two structurally different async chains).
+   Plus (3b) a control: two genuinely different users racing their own
+   exams never interfere with each other.
+4. **BUG #2's proof** — a promotion failure after a genuine pass keeps
+   the session retryable (does not delete it).
+5. Retrying after a transient promotion failure succeeds and does not
+   double-promote (both calls target the same `(uid, tier)`).
+6. Concurrent submissions of the SAME passing session converge safely
+   — no crash, no half-finalized state.
+7. The target tier at promotion time always comes from the
+   server-stored session — `submitRankSkipExamFor`'s own signature has
+   no tier parameter at all for a client to abuse.
+8. Authorization/eligibility invariants (unknown tier, non-skippable
+   tier, tier not above current rank, unknown/forged sessionId) still
+   hold through the new DI seam.
+
+`functions/test_helpers/fake_firestore.js` — two small, additive
+extensions, needed to make the above deterministic and NOT because of
+any style preference:
+- `FieldValue.delete()` handling in `applyWrite` (previously left the
+  raw sentinel object sitting as the field's literal value instead of
+  actually removing the key — `rank_skip.js`'s own `session:
+  FieldValue.delete()` writes need this to be modeled correctly for a
+  test to tell "deleted" from "present").
+- `FakeCollectionRef.doc()` (no argument) and a new `FakeDocRef.id`
+  getter — real Firestore auto-generates a random id for this call
+  shape (`rank_skip.js`'s own `ref.collection("_").doc().id`, and
+  `index.js`'s notification docs use the identical pattern); previously
+  this silently produced the literal path segment `"undefined"` with no
+  `.id` getter to read back at all.
+- **Explicitly tried and reverted**: auto-coercing a written `Date`
+  into a `Timestamp`-shim (`{toDate: () => date}`) on read-back, to
+  match the real Admin SDK's own behavior — `rank_skip.js`'s
+  `lockedUntil` field needed this at first. Reverted after it broke
+  `subscription_backstop.test.js` (2 failures — that suite reads a
+  stored date field back as a raw `Date` via `.toISOString()` directly,
+  a real, pre-existing, legitimate dependency on the fake's current
+  unwrapped behavior). **RISK-3 was not touched and must not
+  regress** — instead, `rank_skip.js` itself gained a small, local
+  `toJsDate()` helper that accepts either shape (a real Timestamp via
+  `.toDate()`, or an already-plain `Date`), solving the same problem
+  without touching shared test infrastructure any other suite depends
+  on.
+
+### Old reproduction → new reproduction (fail-then-pass, verified by
+actually reverting each fix in place)
+
+- **BUG #1**: temporarily reverted `startRankSkipExamFor` to its old
+  plain-`.get()`/`.set()` shape (keeping the DI seam so the test could
+  still run against it) and re-ran test (3). **It failed** — not at the
+  exact assertion originally anticipated (the old code has no
+  transaction at all, so the racing start's plain write simply executes
+  unblocked and immediately overwrites the session, before the gate
+  logic can even apply), but deterministically and for the same root
+  cause: `submitRankSkipExamFor` itself threw `failed-precondition "No
+  exam in progress."`, because by the time it ran, the racing start had
+  already silently clobbered its session with no coordination
+  whatsoever. This is arguably a MORE direct demonstration of the
+  underlying flaw (zero coordination between the two calls, not merely
+  a narrow timing window) than the originally-audited manifestation.
+  Restored the fix; test (3) passed cleanly (24.2ms).
+- **BUG #2**: temporarily reverted the grading transaction to delete
+  the session unconditionally (pass or fail, matching the old
+  behavior) before calling `promote`. Re-ran test (4) — **failed**,
+  with the exact anticipated assertion: `finalDoc.session` was
+  `undefined` after a simulated promotion failure, i.e. the session
+  really was destroyed despite the attempt having genuinely passed.
+  Also re-ran test (5) (retry) against the same revert — **failed**,
+  with `submitRankSkipExamFor` throwing `failed-precondition "No exam
+  in progress."` on the retry attempt, since the session it needed to
+  re-grade against was already gone. Restored the fix; both tests
+  passed cleanly.
+
+### Test results
+
+- `functions/rank_skip.test.js`: **15/15 pass** (7 pre-existing pure
+  tests, unmodified + 8 new).
+- `functions/battle_stars.test.js`: 16/16 pass, unaffected (re-run to
+  confirm `promoteToTierFloor`'s own coverage untouched).
+- Full `functions/` suite (`node --test *.test.js`): **323/323 pass**,
+  zero regressions anywhere — includes the shared-fake extensions
+  above, confirmed not to break any other file (this count is with the
+  temporary audit file already removed, see below).
+- `flutter analyze` (whole repo): **0 issues** (no Dart file touched by
+  this phase).
+- `flutter test --concurrency=1` (whole repo): **all pass**, zero
+  regressions. Explicitly re-confirmed the suites named in the task
+  instruction as their own targeted run before the full-repo run:
+  `clan_reentrancy_test.dart` + `premium_purchase_reentrancy_test.dart`
+  + `coin_buy_reentrancy_test.dart` + `cosmetic_equip_decision_test.dart`
+  + `iap_test.dart` = **88/88 pass**.
+
+### Temporary audit file — removed
+
+`functions/_audit_rank_skip_toctou.test.js` (never committed) is
+**deleted**. Its own fake infrastructure was built for the OLD
+plain-`.get()`/`.set()` shape and is structurally incompatible with the
+new `runTransaction`-based code (it has no `runTransaction` support at
+all) — its coverage is fully superseded by `rank_skip.test.js`'s new
+tests (3) and (4) above, which cover the same two findings plus six
+more scenarios the audit-only phase never had permanent coverage for.
+
+### Files changed
+
+- `functions/rank_skip.js` — both bugs' fixes, DI seam.
+- `functions/rank_skip.test.js` — 8 new permanent tests.
+- `functions/test_helpers/fake_firestore.js` — `FieldValue.delete()`
+  handling, auto-id `.doc()`/`.id` support (both additive, confirmed
+  via the full suite that nothing else regressed).
+- Deleted (never committed): `functions/_audit_rank_skip_toctou.test.js`.
+- No `firestore.rules`, no other Cloud Function, no Dart source.
+
+### Deployment status — explicit, do not skim past this
+
+- **`functions/rank_skip.js`**: **NOT DEPLOYED.** The live project is
+  still running the vulnerable version from before this fix phase.
+  Both P2 bugs (the cooldown-wipe race and the promotion-failure
+  session loss) **remain live in production** until a human runs
+  `firebase deploy --only functions:startRankSkipExam,functions:
+  submitRankSkipExam` (or a broader Functions deploy) with explicit
+  authorization.
+- **Production verification = NOT DONE**, and cannot be, until that
+  deploy actually ships — this phase was code + test only, no
+  `firebase deploy`, no Play Console action, no production Firestore
+  write, per the explicit task constraint.
+- **`firestore.rules` is unchanged** — confirmed via `git diff
+  firestore.rules` showing zero lines touched throughout this phase, as
+  required.
+
+### Remaining UNKNOWN
+
+None identified specific to these two bugs' fixes — both are proven
+fail-then-pass against a deterministic reproduction, and the resulting
+state machine's safety under every traced interleaving (same-uid race,
+cross-user race, promotion failure + retry, concurrent same-session
+submission) was reasoned through explicitly, not assumed. The one
+genuinely open, previously-flagged design question — whether
+`startRankSkipExamFor` should also reject starting over an *unexpired,
+still-in-progress* session (not just a `lockedUntil` cooldown) — was
+**not** addressed in this phase, matching its scope (only the two
+proven bugs); it remains recorded in the audit section above as a
+related-but-separate design gap, not silently closed by this fix.
+
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
 Read-only, end-to-end audit of all 13 core Clan mutation paths (create/

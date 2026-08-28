@@ -82,6 +82,10 @@ class FakeDocRef {
     this.path = path;
   }
 
+  get id() {
+    return this.path.slice(this.path.lastIndexOf("/") + 1);
+  }
+
   collection(name) {
     return new FakeCollectionRef(this._store, `${this.path}/${name}`);
   }
@@ -120,7 +124,16 @@ class FakeCollectionRef {
   }
 
   doc(id) {
-    return new FakeDocRef(this._store, `${this.path}/${id}`);
+    // Real Firestore auto-generates a random id when `.doc()` is called
+    // with no argument (`index.js`'s notification docs and
+    // `rank_skip.js`'s own session ids both rely on exactly this) — a
+    // plain `${this.path}/${undefined}` would otherwise silently use
+    // the literal string "undefined" as the path segment, and every
+    // caller of the same collection's `.doc()` with no id would collide
+    // on that one path.
+    const segment = id !== undefined && id !== null ?
+      id : `auto-${Math.random().toString(36).slice(2)}`;
+    return new FakeDocRef(this._store, `${this.path}/${segment}`);
   }
 
   async get() {
@@ -239,6 +252,16 @@ function applyWrite(existing, incomingData, merge) {
         if (!merged.includes(el)) merged.push(el);
       }
       base[key] = merged;
+    } else if (value && value.constructor && value.constructor.name === "DeleteTransform") {
+      // `FieldValue.delete()` — added for rank_skip.js's own
+      // `session: FieldValue.delete()` writes. A merge write that never
+      // handled this sentinel would leave it sitting as the field's
+      // literal value instead of actually removing the key, which is
+      // not what real Firestore does and would make a fake-backed test
+      // unable to tell "deleted" from "present." Confirmed the exact
+      // constructor name via `node -e "console.log(FieldValue.delete()
+      // .constructor.name)"` against the real installed package.
+      delete base[key];
     } else if (value && typeof value === "object" && value.constructor === Object) {
       // A nested plain map (e.g. `xp: {claimedLevel: 1, unlockedFrameIds:
       // FieldValue.arrayUnion(id)}}`) — recurse so the transforms inside
