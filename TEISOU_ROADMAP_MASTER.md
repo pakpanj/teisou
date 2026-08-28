@@ -4181,3 +4181,131 @@ reached):
 None of these four steps has been performed. This fix makes step 3
 safe to reach step 4 successfully; it does not perform steps 1-4
 itself.
+
+## Weekly Global Ranking — PRODUCTION DEPLOYMENT (index + function)
+
+Follow-up to both sections immediately above — **both preserved
+verbatim, unedited**, per explicit instruction to keep the historical
+blocker record rather than erase it. This section records the actual
+deployment that closes out the remaining prerequisite from the fix
+section.
+
+**Pre-flight** (all re-run immediately before deploying, not assumed
+from an earlier session): HEAD confirmed to contain both `38a4395`
+(implementation) and `3979236` (schedule fix) as ancestors.
+`functions/award_top_coins.js` confirmed to still read
+`PAYOUT_SCHEDULE_CRON = "10 0 * * 1"`. `functions/index.js` confirmed
+to still export `awardTopGlobalCoins` from `./award_top_coins`, unique
+name. `firestore.indexes.json` confirmed to contain the
+`globalScorePeriods/{periodId}/users` index exactly as specified
+(points DESC, attempts DESC, `__name__` ASC). `firestore.rules`
+confirmed: both `globalScorePeriods/{periodId}/users/{uid}` and
+`globalScorePeriodAwards/{periodId}` are `allow read: if request.auth
+!= null; allow write: if false;` — client cannot write either
+collection, reads stay open. `git status` confirmed zero drift on any
+file relevant to this deploy (only the pre-existing, unrelated
+`windows/flutter/*` churn, as always). Tests re-run fresh: `node --test
+award_top_coins_period.test.js global_points_period_write.test.js`
+**35/35**; full Functions suite **370/370**; Rules Emulator (4 files,
+`--test-concurrency=1`) **91/91**.
+
+### Step 2 — index deployed
+
+`firebase deploy --only firestore:indexes` — succeeded cleanly ("Deploy
+complete!"). Independently re-verified via `firebase firestore:indexes`
+(a separate read, not trusting the deploy command's own success
+message alone): the live index set now has exactly 3 entries —
+`battleMatches` (pre-existing, players CONTAINS/createdAt DESC/`__name__`
+DESC, unmodified), the **new** `users` collectionGroup index (points
+DESC, attempts DESC, `__name__` ASC — exactly the spec required), and
+the RISK-3 `users` collectionGroup index (`subscription.tier`/
+`subscription.expiresAt` ASC, unmodified). Confirms both that the new
+index landed correctly and that neither pre-existing index was touched.
+
+Index build-completion state (READY vs. still building) was not
+separately confirmed via a state field — the CLI's plain
+`firestore:indexes` listing doesn't surface it, and this environment
+has no Admin SDK credentials to query the state field directly (same
+standing access limitation documented elsewhere in this file). Given
+`globalScorePeriods` is a brand-new, currently-empty collection group
+(no payout has ever run against it), a composite index over zero
+existing documents typically finishes building in seconds — the deploy
+command's own output showed no "this may take a while" warning, which
+Firebase's CLI does print for indexes over non-trivial existing data.
+Treated as **practically live**, not independently proven READY via
+the state field specifically.
+
+### Step 3 — function deployed
+
+`firebase deploy --only functions:awardTopGlobalCoins` — output showed
+`"updating Node.js 22 (2nd Gen) function awardTopGlobalCoins(us-central1)..."`
+then `"Successful update operation."` The run's own exit code was 1,
+but only because of the same benign, already-documented-elsewhere-in-
+this-file Artifact Registry cleanup-policy warning (`"No cleanup policy
+detected for repositories in us-east1"`) that has appeared on prior
+deploys in this engagement — diagnosed once against that known pattern,
+not retried.
+
+### Step 4 — function verified
+
+`firebase functions:list`: `awardTopGlobalCoins`, `v2`, `scheduled`,
+`us-central1`, `nodejs22` — present, correct trigger type. Cross-checked
+via `firebase functions:log --only awardTopGlobalCoins`: the live
+`UpdateFunction` audit entry shows `"state":"ACTIVE"`,
+`"revision":"awardtopglobalcoins-00002-xed"` (incremented from the
+`-00001-...` revision at original creation — direct proof this was a
+real code update, not a no-op redeploy), `"updateTime":
+"2026-08-28T21:12:20.139144893Z"` — matches the deploy's own wall-clock
+time. The exact schedule string itself isn't visible on the Cloud
+Function resource's own log entry (GCFv2 `onSchedule` provisions a
+separate Cloud Scheduler job for the cron/timezone, which isn't
+mirrored onto the Function resource's audit payload) — confirmed
+instead structurally: the source packaged and uploaded in this exact
+deploy operation is the same `functions/award_top_coins.js` already
+pre-flight-verified above to read `PAYOUT_SCHEDULE_CRON = "10 0 * * 1"`,
+and the Firebase CLI's `onSchedule` deploy path always synchronizes the
+associated Scheduler job to match the source's `schedule`/`timeZone` at
+deploy time as part of the same operation — there is no path for these
+to diverge. **Not manually invoked. No production score data created.
+No coins awarded** — nothing in steps 2-4 does either.
+
+### Step 5 — production behavior
+
+**Status: DEPLOYED — WAITING FOR SCHEDULED INVOCATION.** No claim of
+payout-verified, winner-calculation-verified, or real-weekly-payout-
+verified is made here — none of that has happened yet. First real
+observation point: the next Monday 00:10 WIB scheduled invocation
+(2026-08-31 00:10 WIB), read the same way the RISK-3 03:00 WIB
+checkpoint above was — via `firebase functions:log --only
+awardTopGlobalCoins`, looking for genuine application-level log lines
+distinguished from deployment/cold-start/audit noise, exactly as that
+checkpoint's own instruction defined "genuine invocation evidence."
+
+### Step 6 — cutover safety, confirmed
+
+- Old `leaderboard.globalScore` is not read anywhere in
+  `award_top_coins.js` — confirmed by source (the file's own P0-fix doc
+  comment plus a direct grep: the only `globalScore` reference in the
+  file is inside a doc comment explaining why it's no longer used).
+- Old `weeklyCoinAwards/{isoWeekId}` is not written or read by the live
+  payout path — `isoWeekId` remains exported but unused, per the file's
+  own "Retired" doc comment (unchanged by this deploy).
+- New marker collection confirmed: `globalScorePeriodAwards/{periodId}`.
+- `firebase functions:list`'s full output (23 functions total) shows
+  **exactly one** `awardTopGlobalCoins` entry — no duplicate scheduled
+  function exists anywhere in the project that could also award this
+  same weekly reward. Every other `scheduled`-trigger function in the
+  list (`sweepAbandonedBattleMatches`, `sweepAllPremiumSubscriptions`,
+  `sweepNearExpirySubscriptions`) is a distinct, unrelated concern.
+
+### Untouched by this deployment (confirmed, not assumed)
+
+RISK-3 subscription backstop functions and `SUBSCRIPTION_BACKSTOP_ENABLED`
+— not deployed, not modified, not invoked. AdMob and Play Console — not
+touched (no code path in this deploy reaches either). Clan and Rank
+Skip functions — not deployed (`functions:list` shows their revisions
+untouched by this session's two deploys, both scoped to exactly
+`firestore:indexes` and `functions:awardTopGlobalCoins`). The
+historical `globalScore` metric — not written, not reset, not read by
+the deployed code. No production user document was read, written, or
+migrated by this deployment.
