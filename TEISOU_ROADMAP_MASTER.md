@@ -3491,3 +3491,329 @@ whenever the user schedules one:
 Both are small, well-understood, minimal fixes with reproduction tests
 already written and proven to fail on current code — a fix phase for
 either would not need to re-derive root cause from scratch.
+
+## Implementation — Weekly Global Ranking + P0 Security Fix (2026-08-29,
+## later session)
+
+Implements, exactly, the design finalized in the two sections above
+("Design Decision" and "Design Finalization — 5 open questions
+resolved") — no redesign, no architecture changes. **Committed. NOT
+DEPLOYED.**
+
+### What was actually broken (P0, recap)
+
+`leaderboard/{uid}.globalScore` has no write restriction in
+`firestore.rules` at all — any signed-in user could set it to any
+value — and `functions/award_top_coins.js`'s weekly coin payout used to
+rank real money (500/300/100 coins) directly off that field with
+`orderBy("globalScore", "desc").limit(3)`, with no server-side sanity
+check. Proven exploitable against the real Rules Emulator in the prior
+audit session (see the P0 audit section earlier in this file).
+
+### Files changed
+
+**New:**
+- `functions/wib_week.js` — `wibWeekId`/`wibWeekStart`, the WIB
+  (Asia/Jakarta, UTC+7, no DST) week-boundary math. Deliberately
+  separate from `award_top_coins.js`'s own `isoWeekId` (raw-UTC-anchored,
+  would misplace the boundary by up to 7 hours if reused for WIB).
+- `functions/wib_week.test.js` — 10 tests, boundary/rollover/year-edge
+  cases.
+- `lib/core/utils/wib_week.dart` — client-side mirror of the same math,
+  used only to know which already-written, read-only period document to
+  fetch (never influences scoring).
+- `test/wib_week_test.dart` — 10 tests, same boundary cases mirrored
+  from the JS version.
+- `lib/data/models/weekly_period_standing.dart` — `WeeklyPeriodStanding`
+  model for `globalScorePeriods/{periodId}/users/{uid}`.
+- `lib/data/repositories/weekly_global_ranking_repository.dart` — a NEW,
+  dedicated, **read-only** repository (`getTopForPeriod`,
+  `watchTopForPeriod`, `getCurrentPeriodTop`, `getSelfStanding`,
+  `rankOf`, `getPayoutRecord`) — no `set`/`update`/`delete` method
+  anywhere in the class, verified by a source-inspection test, because
+  there is no legitimate client write path to either new collection at
+  all.
+- `test/weekly_global_ranking_test.dart` — model-parsing tests + a
+  source-inspection pass confirming the repository's query methods use
+  the exact same three-level tie-break the server payout pays out by
+  (points desc, attempts desc, document id asc) — so a displayed rank
+  can never quietly disagree with what the payout actually pays.
+- `functions/global_points_period_write.test.js` — 7 tests for the new
+  weekly-period write (anti-forgery, accumulation, idempotency,
+  independence from `leaderboard.globalPoints`).
+- `functions/award_top_coins_period.test.js` — 22 tests: grace-buffer/
+  boundary math, ranking/tie-break, payout record shape, orchestration,
+  and the 7 named concurrency scenarios A-G the task specified.
+- `functions/award_top_coins_migration.test.js` — 2 tests: a structural
+  scan proving the OLD ranking source (`leaderboard`/`globalScore`) and
+  OLD marker collection (`weeklyCoinAwards`) no longer appear anywhere
+  in executable code, plus a functional proof that a pre-existing
+  OLD-scheme marker has zero effect on the NEW payout.
+- `firestore_rules_tests/global_score_periods.test.js` — 12 Rules
+  Emulator tests (real CEL-engine evaluation): both new collections deny
+  every client write unconditionally, allow signed-in reads, an
+  unauthenticated client cannot even read, and — the contrast proof —
+  `globalScore` remains freely writable (deliberate) while that forged
+  value has no Rules-level path into either new collection.
+
+**Modified:**
+- `functions/global_points.js` — `awardPointsForHistoryDoc` gained
+  `options.eventTimeMs` (the triggering CloudEvent's own `event.time`,
+  passed only by the live trigger, never by `backfill_global_points.js`)
+  and, when present, writes `globalScorePeriods/{wibWeekId(eventTimeMs)}
+  /users/{uid}` — `points`/`attempts` incremented, `uid`/`periodId`
+  set, `updatedAt` a server timestamp — inside the SAME transaction,
+  gated by the SAME `historyDocId` marker check the leaderboard-points
+  write already uses. Added a documented, deliberately out-of-scope
+  pointer to the still-open exam-history content-honesty gap (Step 11 —
+  not touched, not redesigned).
+- `functions/award_top_coins.js` — full rewrite of
+  `awardTopGlobalCoinsOnce` (ranks `globalScorePeriods/{periodId}/users`
+  instead of `leaderboard.globalScore`; writes
+  `globalScorePeriodAwards/{periodId}` instead of
+  `weeklyCoinAwards/{isoWeekId}`); added `closedPeriodId(nowMs)` (pure
+  grace-buffer/boundary function, zero real waiting, fully unit-
+  testable) and `runWeeklyPayoutIfDue` (orchestration); the exported
+  scheduled function (`awardTopGlobalCoins`, unchanged cron: "every
+  monday 00:00", `Asia/Jakarta`) now calls `runWeeklyPayoutIfDue`.
+  `isoWeekId`/`REWARDS` kept exactly as they were (still tested by the
+  pre-existing `award_top_coins.test.js`, unmodified) — `isoWeekId` is
+  now dead code from the live payout's perspective, kept only because
+  pre-existing `weeklyCoinAwards/{id}` documents use its id scheme.
+- `functions/test_helpers/fake_firestore.js` — `FakeQuery`'s `orderBy`
+  changed from a single `{field, direction}` spec to an array
+  (`_orderSpecs`), so chained `.orderBy().orderBy().orderBy()` calls
+  compose into a real multi-key sort instead of the last call silently
+  discarding the earlier ones; added `isDocumentIdFieldPath` duck-typing
+  (`FieldPath.documentId()`'s real shape: `{segments: ['__name__']}`,
+  confirmed via a live `node -e` against the installed SDK) so a sort
+  spec can order by document id, not just a data field. Verified against
+  the full existing suite (award_top_coins.test.js and everything else)
+  before and after — no regression from the single-spec-to-array change.
+- `firestore.rules` — new `globalScorePeriods/{periodId}/users/{uid}`
+  and `globalScorePeriodAwards/{periodId}` match blocks: `allow read: if
+  request.auth != null; allow write: if false;` for both, unconditional.
+  A documented, deliberate decision NOT to freeze `leaderboard.
+  globalScore`'s existing writability (see "Security resolution" below).
+- `firestore.indexes.json` — one new composite index entry for
+  `globalScorePeriods/{periodId}/users` (`points` desc, `attempts` desc,
+  `__name__` asc) — **added to the file, NOT deployed** (no `firebase
+  deploy --only firestore:indexes` was run).
+- `lib/core/firebase/firestore_paths.dart` — added
+  `globalScorePeriods`/`globalScorePeriodUsers`/`globalScorePeriodAwards`
+  constants and their path-building helpers.
+
+**Removed (superseded temp audit files, per instruction):**
+- `functions/_audit_award_top_coins.test.js` — superseded by
+  `award_top_coins_period.test.js` (its 4 scenarios (a)-(d) are all
+  re-proven there against the new ranking source).
+- `firestore_rules_tests/_audit_award_top_coins_globalScore.test.js` —
+  superseded by `firestore_rules_tests/global_score_periods.test.js`.
+
+### Data model — exact shapes
+
+`globalScorePeriods/{periodId}/users/{uid}`:
+```
+{ points: number, attempts: number, uid: string, periodId: string,
+  updatedAt: Timestamp }
+```
+Written only inside `awardPointsForHistoryDoc`'s transaction, using
+`FieldValue.increment` for `points`/`attempts` — no read-before-write
+needed, since the write only ever executes inside the same
+already-idempotent branch the leaderboard-points increment uses (once
+per `historyDocId`, ever).
+
+`globalScorePeriodAwards/{periodId}` (the payout marker/historical
+record):
+```
+{ periodId: string, finalizedAt: Timestamp,
+  winners: [{ uid, rank, points, attempts, reward }, ...] }
+```
+Exactly the 5 fields the task specified for each winner — nothing
+invented beyond that.
+
+### Period identity and payout flow
+
+- Period = `[Monday 00:00:00.000 WIB, next Monday 00:00:00.000 WIB)`,
+  half-open, computed via `wibWeekId`/`wibWeekStart` (`functions/
+  wib_week.js`).
+- The period id an attempt's points land in is derived **solely** from
+  the triggering CloudEvent's own `event.time` (server-authoritative
+  Firestore commit timestamp) — never from the exam-history document's
+  own client-supplied `completedAt`. Proven directly by an anti-forgery
+  test: an attempt whose `completedAt` claims a totally different week
+  than the real `event.time` still lands in the period matching
+  `event.time`, and the "forged" period receives nothing at all.
+- Grace buffer: 5 minutes, expressed as a pure function of "now"
+  (`closedPeriodId`), not a real in-process sleep — an invocation
+  within 5 minutes of the most recent boundary returns `null` (defer);
+  past that, it returns the id of the period that just closed. Safe to
+  call at any time, not just near a boundary (mid-week calls always
+  resolve to "the most recently closed period").
+- Payout: `runWeeklyPayoutIfDue(db, nowMs)` → `closedPeriodId` → if
+  non-null, `awardTopGlobalCoinsOnce(db, periodId)` → ranks
+  `globalScorePeriods/{periodId}/users` by points desc, attempts desc,
+  uid asc, top 3 → one transaction: check `globalScorePeriodAwards/
+  {periodId}` marker, no-op if it exists, else write the marker +
+  `FieldValue.increment` each winner's `coins`.
+- Tie-break: exactly the 3 levels specified (points DESC → attempts
+  DESC → uid ASC), proven deterministic under all three levels tied at
+  once (scenario G).
+
+### Idempotency strategy
+
+Two layers, both already-proven patterns in this codebase reused
+exactly, not reinvented:
+1. **Write side** (`global_points.js`): the SAME `historyDocId` marker
+   gate (`globalPointsState/{uid}/pointsAwarded/{historyDocId}`) that
+   already guarded the leaderboard-points increment now also guards the
+   period write, inside the same transaction — a replayed/redelivered
+   trigger event cannot double-count into a period, proven directly.
+2. **Payout side** (`award_top_coins.js`): the SAME
+   check-marker-then-write-everything transaction shape
+   `weeklyCoinAwards` already used, now against
+   `globalScorePeriodAwards/{periodId}` — a retried/re-triggered/
+   concurrent payout run cannot double-pay, proven under genuine forced
+   mid-transaction interleaving (scenarios B and D), not just sequential
+   retries (scenario C).
+
+### P0 security fix — what actually changed
+
+Not a rules patch on `globalScore` — a ranking-**source** change. The
+payout no longer reads `leaderboard.globalScore` at all; it reads
+`globalScorePeriods`, which has no client write path whatsoever
+(`firestore.rules`: `allow write: if false;`, unconditional, for both
+new collections). Proven three independent ways:
+1. Functions-level: a test seeds a huge forged `globalScore` on the same
+   uid and confirms it has zero influence on the payout's ranking.
+2. Rules-level (real emulator): a client can still freely write
+   `globalScore` (deliberate, unchanged), but the exact same client
+   cannot write into `globalScorePeriods` or `globalScorePeriodAwards`
+   at all — the two systems are provably disconnected.
+3. Migration-level: a structural source scan proves the deployed
+   `award_top_coins.js` contains no executable reference to
+   `leaderboard`/`globalScore`/`weeklyCoinAwards` anywhere anymore —
+   only in doc-comment prose explaining the history.
+
+### Security resolution — `globalScore` deliberately NOT frozen
+
+Evaluated and explicitly rejected, documented in both `firestore.rules`
+itself and here: (1) the approved design keeps `globalScore`'s existing
+semantics unchanged, with no instruction to restrict writes; (2) the new
+payout reads exclusively from `globalScorePeriods` — freezing
+`globalScore` would close no gap this P0 is about, proven by the
+zero-influence test above; (3) the residual risk (a user could inflate
+their own displayed "Skor Global" tab rank) is a pre-existing,
+unworsened display/social-integrity concern, not this task's scope.
+Tightening it later is a legitimate, separately-scoped future task.
+
+### Migration/cutover
+
+No historical data migration performed — the new namespace starts
+empty. `globalScorePeriodAwards` is a brand-new collection name,
+deliberately distinct from the old `weeklyCoinAwards` (both id schemes
+share the same `YYYY-Www` string format, so reusing the old collection
+name would have risked a same-string collision between an old-scheme
+and new-scheme id for two *different* real weeks — a new collection
+name removes that risk by construction rather than relying on date-math
+reasoning about the two schemes' relative offset). Explicitly tested
+(`award_top_coins_migration.test.js`): a pre-existing OLD-scheme
+`weeklyCoinAwards` marker for what would be "the same real week" has
+zero effect on the new payout — no accidental skip, no accidental
+double-write, no collision. The OLD scheduled function's code path no
+longer exists at all (it was rewritten in place, not left running
+alongside a new one) — there is exactly one payout function, one
+schedule, one marker collection now.
+
+### Test coverage summary
+
+- Functions: **364/364** (full suite: `node --test` in `functions/`),
+  including the new `wib_week.test.js` (10), `global_points_period_
+  write.test.js` (7), `award_top_coins_period.test.js` (22),
+  `award_top_coins_migration.test.js` (2), plus the pre-existing
+  `award_top_coins.test.js` (4, unmodified, still passing) and
+  `global_points_reliability.test.js` (8, unmodified, still passing).
+- Rules: **91/91** across all 4 emulator test files together
+  (`rules.test.js` + `wildcard_probe.test.js` +
+  `clan_role_authority.test.js` + the new `global_score_periods.test.js`,
+  12 of the 91), run with `--test-concurrency=1` against the real
+  Firestore Rules Emulator (a bare parallel `node --test` run of all 4
+  files at once produces spurious "Transaction lock timeout"/emulator-
+  contention failures — an artifact of Node's own file-level test
+  parallelism hitting one shared emulator instance, NOT a rules
+  regression; confirmed by re-running the identical suite sequentially
+  and getting 91/91 clean).
+- Flutter: `flutter analyze` clean (0 issues, full project), full
+  `flutter test --concurrency=1` **901 tests, 0 failures** (1
+  pre-existing, unrelated skip), including the new `wib_week_test.dart`
+  (10) and `weekly_global_ranking_test.dart` (10).
+
+### Old-vs-new reproduction evidence
+
+- OLD (before this fix): `firestore_rules_tests/
+  _audit_award_top_coins_globalScore.test.js` (now deleted, superseded)
+  proved, against the real emulator, that a client could write an
+  arbitrary `globalScore` and the old `awardTopGlobalCoinsOnce` ranked
+  directly off it with `orderBy("globalScore", "desc")`.
+- NEW (after this fix): `global_score_periods.test.js`'s own contrast
+  test reproduces the SAME forged-`globalScore` write (still succeeds,
+  by design) and then proves it has NO path into either new collection
+  — `assertFails` on both. `award_top_coins_period.test.js`'s own
+  "stale/unprotected leaderboard.globalScore... has ZERO influence on
+  ranking" test proves the same thing at the ranking-logic level, not
+  just the rules level.
+- Idempotency defect-injection: not literally reverted-and-reproven in
+  this session (the existing `global_points_reliability.test.js` and
+  the new period/payout tests were written test-first against the real
+  transactional code, and pass); the established pattern from earlier
+  in this engagement (inject a bug, watch a test fail, revert, watch it
+  pass) was applied during test *authoring* — e.g. the `wib_week_test.
+  dart` boundary test initially had an inverted assertion, caught by
+  running it and seeing the real failure, fixed, re-run green — but no
+  separate "un-fix the real payout code and confirm the suite catches
+  it" pass was performed as a distinct step, since the concurrency
+  tests (B, D) already exercise the actual transactional mechanism
+  directly (forced interleaving, not simulated).
+
+### Indexes required (NOT deployed)
+
+One composite index on `globalScorePeriods/{periodId}/users`
+(`queryScope: COLLECTION`, fields: `points` DESC, `attempts` DESC,
+`__name__` ASC) — added to `firestore.indexes.json` with a full
+rationale comment. `firebase deploy --only firestore:indexes` was
+**not** run.
+
+### Deployment status: **NOT DEPLOYED**. Production verification: **NOT
+### DONE.**
+
+Everything above was verified against local test infrastructure (Node's
+built-in test runner with a fake Firestore double, the real Firestore
+Rules Emulator, and `flutter test`) — none of it has touched the live
+Firebase project. No Cloud Function has been redeployed; the currently-
+live `awardTopGlobalCoins` function, if it still exists in its
+pre-this-implementation form, is unaffected by anything in this commit
+until an actual `firebase deploy` happens. Do not treat this as
+production-safe until deployment occurs and is separately verified.
+
+### Remaining UNKNOWN / explicitly out of scope
+
+- Exam-history content honesty (client self-reported `score`/`total`)
+  — documented, not fixed, per explicit instruction (Step 11).
+- `globalScore`'s own unrestricted writability — documented, not frozen,
+  a deliberate decision (see "Security resolution" above), not an
+  oversight.
+- No UI surfaces the weekly period ranking yet. The data-layer
+  (`WeeklyGlobalRankingRepository`) is built and tested; no new Flutter
+  screen/widget was added. This app's existing "Top Global" leaderboard
+  tab is already wired to `globalPoints` (Formula C, cumulative,
+  all-time — a *different*, already-independently-secured metric from
+  an earlier phase of this same engagement, confirmed by reading
+  `LeaderboardRepository`'s own doc comments before assuming otherwise)
+  — it was deliberately left untouched rather than conflated with this
+  week-scoped system. Surfacing "this week's standing"/"past winners" in
+  the UI is real, valuable, well-defined future work, but is a genuine
+  product/UX decision (where does it go — a new tab, a card on an
+  existing screen, a dedicated screen?) that this security-focused
+  implementation task did not make unilaterally.
+- No actual production deployment or real-world dry run of the payout
+  against live data.

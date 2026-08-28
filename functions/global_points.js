@@ -23,11 +23,32 @@
  * replay in `backfill_global_points.js`) always needs all three answered
  * together for one attempt: was this already awarded, what's `n` now,
  * and does the points at that `n` clear a 30-day-old cycle first.
+ *
+ * **Known, documented, deliberately out-of-scope gap: exam-history
+ * CONTENT honesty is not fully closed.** This file's `correct =
+ * Number(docData.score) || 0` (in [awardPointsForHistoryDoc] below)
+ * trusts the exam-history document's own `score`/`total` fields, which
+ * are still self-reported by the client at submit time — this file (and
+ * the Weekly Global Ranking payout built on top of it, see
+ * `award_top_coins.js`) only closes the *write-authority* gap for the
+ * `globalPoints`/`globalScorePeriods` fields THEMSELVES (nothing but
+ * this Cloud Function can ever set them), not the *grading honesty* of
+ * the underlying exam submission those fields are computed from. This
+ * was an explicit, acknowledged trade-off when Formula C was first
+ * designed (see `GLOBAL_POINTS_FINAL_DECISION_MEMO.md`'s own admission
+ * of this exact gap) and remains explicitly out of scope for the Weekly
+ * Global Ranking implementation too, per that task's own instruction not
+ * to redesign exam grading or exam-history security as part of this P0
+ * fix. Recorded here as a pointer for whoever picks this up next — not a
+ * new finding, not something this file's own security fix claims to
+ * have closed, and not something to fix silently as a side effect of an
+ * unrelated change.
  */
 
 const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 const logger = require("firebase-functions/logger");
+const {wibWeekId} = require("./wib_week");
 
 /** Points per correct answer at the lowest difficulty tier. */
 const K = 10;
@@ -273,10 +294,37 @@ function isRetryableError(error) {
  * @param {"live"|"backfill"} [options.source] tagged onto the marker
  *   purely for observability (which path awarded a given attempt) —
  *   never affects the decision itself.
- * @return {Promise<{awarded: boolean, points: number}>} `awarded: false`
- *   means [decideAward] found this `historyDocId` already paid; callers
- *   that need a running total (the backfill runner) add `points` only
- *   when `awarded` is true.
+ * @param {number} [options.eventTimeMs] the triggering Cloud Functions
+ *   v2 CloudEvent's own `event.time` (Firestore's authoritative server
+ *   commit timestamp for the history document's creation), as epoch
+ *   ms — **only ever supplied by the live trigger**
+ *   ([globalPointsTriggerFor]'s handler below). This is the sole input
+ *   used to decide which weekly competition period (see
+ *   `functions/wib_week.js`) this attempt's points count toward —
+ *   deliberately never `docData.completedAt` (the exam-history
+ *   document's own `completedAt` field), because that value is chosen
+ *   by the client at submit time and a malicious client could set it
+ *   to any past or future instant to land a farmed score in whichever
+ *   week is most favorable. When `eventTimeMs` is omitted (every
+ *   `backfill_global_points.js` call, by construction — see that
+ *   file's own call site, which never passes this option), **no
+ *   weekly-period write happens at all**: a backfill replay is
+ *   awarding points for a *historical* attempt after the fact, and
+ *   retroactively injecting it into a *current* live weekly
+ *   competition it was never actually part of would be exactly the
+ *   kind of forgeable, non-authoritative period assignment this
+ *   parameter exists to prevent. The historical `globalPoints` total on
+ *   `leaderboard/{uid}` — and everything else this function already
+ *   did — is completely unaffected either way; this is a strictly
+ *   additive write gated on an extra condition, not a replacement of
+ *   any existing behavior.
+ * @return {Promise<{awarded: boolean, points: number, periodId:
+ *   (string|null)}>} `awarded: false` means [decideAward] found this
+ *   `historyDocId` already paid; callers that need a running total (the
+ *   backfill runner) add `points` only when `awarded` is true.
+ *   `periodId` is the WIB week id the weekly-period write landed in, or
+ *   `null` when no period write happened (already-awarded, or no
+ *   `eventTimeMs` supplied).
  */
 async function awardPointsForHistoryDoc(
   uid, moduleType, historyDocId, docData, options = {},
@@ -292,6 +340,13 @@ async function awardPointsForHistoryDoc(
   const repeatKey = repeatKeyFor(moduleType, docData);
   const completedAtMs = toEpochMs(docData.completedAt);
 
+  // Server-authoritative only — see this function's own doc comment on
+  // [options.eventTimeMs] above for why `docData.completedAt` must
+  // never be used here.
+  const periodId = Number.isFinite(options.eventTimeMs) ?
+    wibWeekId(new Date(options.eventTimeMs)) :
+    null;
+
   const markerRef = firestore
     .collection("globalPointsState")
     .doc(uid)
@@ -303,6 +358,13 @@ async function awardPointsForHistoryDoc(
     .collection("repeatCycles")
     .doc(repeatKey);
   const leaderboardRef = firestore.collection("leaderboard").doc(uid);
+  const periodRef = periodId ?
+    firestore
+      .collection("globalScorePeriods")
+      .doc(periodId)
+      .collection("users")
+      .doc(uid) :
+    null;
 
   return firestore.runTransaction(async (transaction) => {
     const [markerSnap, cycleSnap] = await Promise.all([
@@ -323,7 +385,7 @@ async function awardPointsForHistoryDoc(
       logger.info("globalPoints: skipped, already awarded", {
         uid, moduleType, historyDocId, source,
       });
-      return {awarded: false, points: 0};
+      return {awarded: false, points: 0, periodId: null};
     }
 
     transaction.set(markerRef, {
@@ -343,11 +405,39 @@ async function awardPointsForHistoryDoc(
       {merge: true},
     );
 
+    // Weekly-competition write — same transaction, same already-proven
+    // once-per-historyDocId idempotency gate as the two writes above
+    // (this whole block is unreachable once `markerSnap.exists` is
+    // true on a later replay, exactly like the leaderboard increment
+    // above it), so this can never double-count a single attempt into
+    // a period twice. Deliberately no extra read of the period
+    // document first — `FieldValue.increment` composes safely with an
+    // as-yet-nonexistent document (Firestore creates it with the
+    // increment's own value), and the only guard this write actually
+    // needs is "has this historyDocId already been processed", which
+    // is exactly what the marker/decideAward gate above already
+    // provides. No client-controlled value is stored: `points` and
+    // `attempts` are both server-computed deltas, `uid`/`periodId` are
+    // server-derived identifiers, `updatedAt` is a server timestamp.
+    if (periodRef) {
+      transaction.set(
+        periodRef,
+        {
+          points: FieldValue.increment(result.points),
+          attempts: FieldValue.increment(1),
+          uid,
+          periodId,
+          updatedAt: FieldValue.serverTimestamp(),
+        },
+        {merge: true},
+      );
+    }
+
     logger.info("globalPoints: awarded", {
       uid, moduleType, historyDocId, points: result.points,
-      repeatKey, n: result.newCycle.attemptCountInCycle, source,
+      repeatKey, n: result.newCycle.attemptCountInCycle, source, periodId,
     });
-    return {awarded: true, points: result.points};
+    return {awarded: true, points: result.points, periodId};
   });
 }
 
@@ -491,8 +581,18 @@ function globalPointsTriggerFor(moduleType) {
       const snapshot = event.data;
       if (!snapshot) return;
       const {uid, historyDocId} = event.params;
+      // `event.time` is the CloudEvent's own server-assigned commit
+      // timestamp (an RFC-3339/ISO-8601 string) — passed through as
+      // [awardPointsForHistoryDoc]'s `eventTimeMs` option so the weekly
+      // competition period this attempt counts toward is decided from
+      // a value the client never controls, never from the exam-history
+      // document's own client-supplied `completedAt` field. Reusing
+      // [toEpochMs] here (already proven against real ISO strings from
+      // the other three modules' `completedAt` fields) rather than a
+      // fresh `Date.parse` call.
       await handleHistoryDocCreated(
         moduleType, uid, historyDocId, snapshot.data(), event.id,
+        {eventTimeMs: toEpochMs(event.time)},
       );
     },
   );

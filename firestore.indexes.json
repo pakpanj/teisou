@@ -46,6 +46,45 @@
         { "fieldPath": "subscription.tier", "order": "ASCENDING" },
         { "fieldPath": "subscription.expiresAt", "order": "ASCENDING" }
       ]
+    },
+    {
+      "_comment": [
+        "Weekly Global Ranking payout query (functions/award_top_coins.js,",
+        "awardTopGlobalCoinsOnce): ranks a closed period's participants by",
+        "points desc, then attempts desc, then uid (document id) asc — the",
+        "approved deterministic tie-break.",
+        "",
+        "collectionGroup is 'users' because this targets the SUBCOLLECTION",
+        "globalScorePeriods/{periodId}/users — NOT the unrelated root-level",
+        "users/{uid} collection, which has its own separate index entry",
+        "above for a completely different query shape. Firestore indexes a",
+        "collection by its ID regardless of nesting depth, so the same",
+        "name here is coincidental, not a conflict — composite indexes are",
+        "additive per exact field-set, not exclusive per collection ID.",
+        "queryScope is COLLECTION (one specific period's own subcollection",
+        "under one known parent document), not COLLECTION_GROUP — the",
+        "payout only ever ranks one already-identified period at a time,",
+        "never queries across every period's users at once.",
+        "",
+        "The trailing __name__ field must be listed explicitly, not left",
+        "to Firestore's automatic implicit tiebreak: the query orders",
+        "__name__ ASCENDING while the immediately preceding field",
+        "(attempts) orders DESCENDING — a different direction than the",
+        "last explicit field, which Firestore does not infer on its own.",
+        "",
+        "NOT YET DEPLOYED as of this implementation (see",
+        "TEISOU_ROADMAP_MASTER.md's Weekly Global Ranking section) —",
+        "deploying requires `firebase deploy --only firestore:indexes`,",
+        "a separate, explicit action this implementation deliberately",
+        "does not take."
+      ],
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "points", "order": "DESCENDING" },
+        { "fieldPath": "attempts", "order": "DESCENDING" },
+        { "fieldPath": "__name__", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []

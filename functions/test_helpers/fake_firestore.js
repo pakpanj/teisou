@@ -163,15 +163,69 @@ class FakeCollectionRef {
     return new FakeQuery(
         this, (data) => matchesOp(op, getPath(data, field), value));
   }
+
+  /** Added for `award_top_coins.js`'s `.orderBy("globalScore", "desc")
+   * .limit(3)` — the first caller of this fake to need a sorted, ranked
+   * query rather than a plain equality/range filter. A bare `.orderBy()`
+   * with no preceding `.where()` starts a query directly off the
+   * collection, matching real Firestore's own chaining. Supports
+   * chaining further `.orderBy()` calls for a multi-field sort — see
+   * `FakeQuery.orderBy`'s own doc comment for why that's an array, not
+   * a single spec overwritten by each call. */
+  orderBy(field, direction = "asc") {
+    return new FakeQuery(this, () => true).orderBy(field, direction);
+  }
+
+  /** Symmetric with `orderBy` above — a bare `.limit()` with no
+   * preceding `.where()`/`.orderBy()`. */
+  limit(n) {
+    return new FakeQuery(this, () => true).limit(n);
+  }
 }
 
-/** The result of `.where(...)`. Supports chaining a second `.where(...)`
- * (AND semantics, matching real Firestore) — added alongside the
- * dot-path/range support above, for the same two-field candidate query. */
+/** True for real Firestore's `FieldPath.documentId()` sentinel — used
+ * to `.orderBy(FieldPath.documentId(), "asc")` by a document's own id
+ * rather than a data field (`award_top_coins.js`'s weekly-payout query
+ * needs this as its third tiebreak level: uid ascending). Confirmed via
+ * a live `node -e` against the real installed `firebase-admin`:
+ * `FieldPath.documentId()` is a cached singleton with `.segments ===
+ * ['__name__']` and `.toString() === '__name__'` — detected by duck-
+ * typing that shape rather than an `instanceof` check, matching this
+ * file's own established style of avoiding a hard dependency on
+ * `firebase-admin`'s internal classes (see `applyWrite`'s own comment
+ * on why FieldValue sentinels are matched by constructor name instead
+ * of imported and checked against directly). */
+function isDocumentIdFieldPath(field) {
+  return Boolean(
+      field && typeof field === "object" &&
+      Array.isArray(field.segments) && field.segments.length === 1 &&
+      field.segments[0] === "__name__",
+  );
+}
+
+/** The result of `.where(...)`/`.orderBy(...)`/`.limit(...)`. Supports
+ * chaining further calls of any of the three (AND semantics for
+ * `.where()`, matching real Firestore) — `.where()` support added for
+ * the two-field candidate query `subscription_backstop.js` needs;
+ * `.orderBy()`/`.limit()` added for `award_top_coins.js`'s ranked
+ * top-N query, the first caller of this fake needing anything beyond a
+ * plain filter.
+ *
+ * `_orderSpecs` is an **array**, not a single `{field, direction}` —
+ * real Firestore supports chaining multiple `.orderBy()` calls for a
+ * multi-key sort (primary key, then tiebreakers, in call order); an
+ * earlier version of this fake overwrote a single `_orderSpec` on each
+ * call, which silently discarded every `.orderBy()` but the last one.
+ * Extended for the weekly Top Global payout query's three-level
+ * tiebreak (`points desc, attempts desc, uid asc` via
+ * `FieldPath.documentId()`, see [isDocumentIdFieldPath] above) — the
+ * first caller of this fake needing more than one sort key. */
 class FakeQuery {
-  constructor(collectionRef, predicate) {
+  constructor(collectionRef, predicate, orderSpecs = [], limitN = null) {
     this._collectionRef = collectionRef;
     this._predicate = predicate;
+    this._orderSpecs = orderSpecs;
+    this._limitN = limitN;
   }
 
   where(field, op, value) {
@@ -179,12 +233,42 @@ class FakeQuery {
     return new FakeQuery(
         this._collectionRef,
         (data) => previous(data) && matchesOp(op, getPath(data, field), value),
+        this._orderSpecs,
+        this._limitN,
+    );
+  }
+
+  orderBy(field, direction = "asc") {
+    return new FakeQuery(
+        this._collectionRef, this._predicate,
+        [...this._orderSpecs, {field, direction}],
+        this._limitN,
+    );
+  }
+
+  limit(n) {
+    return new FakeQuery(
+        this._collectionRef, this._predicate, this._orderSpecs, n,
     );
   }
 
   async get() {
     const {docs} = await this._collectionRef.get();
-    return {docs: docs.filter((doc) => this._predicate(doc.data()))};
+    let result = docs.filter((doc) => this._predicate(doc.data()));
+    if (this._orderSpecs.length > 0) {
+      result = [...result].sort((a, b) => {
+        for (const {field, direction} of this._orderSpecs) {
+          const sign = direction === "desc" ? -1 : 1;
+          const av = isDocumentIdFieldPath(field) ? a.id : getPath(a.data(), field);
+          const bv = isDocumentIdFieldPath(field) ? b.id : getPath(b.data(), field);
+          if (av === bv) continue;
+          return av < bv ? -sign : sign;
+        }
+        return 0;
+      });
+    }
+    if (this._limitN != null) result = result.slice(0, this._limitN);
+    return {docs: result};
   }
 }
 

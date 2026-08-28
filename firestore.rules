@@ -223,6 +223,69 @@ service cloud.firestore {
       // menghapusnya berarti hilang dari papan peringkat tanpa jejak.
     }
 
+    // Weekly Global Ranking — P0 fix (see functions/award_top_coins.js's
+    // own top-of-file doc comment for the full incident writeup).
+    //
+    // `leaderboard/{uid}.globalScore` (right above) has no write
+    // restriction at all — any signed-in user can set it to anything —
+    // and `functions/award_top_coins.js` used to rank a real weekly coin
+    // payout directly off that field with no server-side check. The fix
+    // is a new ranking SOURCE, not a rules patch on `globalScore` itself:
+    // `globalScorePeriods/{periodId}/users/{uid}` is written **only**
+    // inside `global_points.js`'s `awardPointsForHistoryDoc` transaction
+    // (Admin SDK, server-derived period id from the triggering
+    // CloudEvent's own `event.time` — never a client-supplied value), so
+    // there is no client write path to sanitize here: every write is
+    // denied outright, full stop, for every field, always. Reads stay
+    // open to any signed-in user, matching `leaderboard/{uid}`'s own
+    // read rule — this is public ranking data, same trust level as the
+    // rest of the leaderboard.
+    match /globalScorePeriods/{periodId}/users/{uid} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // The historical payout record for one closed weekly period —
+    // written **only** by `award_top_coins.js`'s `awardTopGlobalCoinsOnce`
+    // (Admin SDK, inside its own idempotency-guarding transaction).
+    // Same reasoning as `globalScorePeriods` above: no legitimate client
+    // write path exists at all, so every write is denied unconditionally.
+    // Reads stay open — a `winners` list naming who placed 1st-3rd for a
+    // past week is exactly the kind of thing this app's own public
+    // leaderboard/profile surfaces already show freely (see
+    // `PublicProfileScreen`).
+    match /globalScorePeriodAwards/{periodId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // `leaderboard/{uid}.globalScore` itself is DELIBERATELY left
+    // unrestricted by this implementation — evaluated and explicitly
+    // rejected, not an oversight:
+    //   1. The approved Weekly Global Ranking design explicitly keeps
+    //      `globalScore`'s existing semantics unchanged ("remains
+    //      historical, does NOT reset") with no instruction to restrict
+    //      its writes — only to stop USING it for the payout.
+    //   2. The new payout reads exclusively from `globalScorePeriods`
+    //      above; a forged `globalScore` has zero influence on it
+    //      (proven directly by
+    //      `functions/award_top_coins_period.test.js`'s "a stale/
+    //      unprotected leaderboard.globalScore value... has ZERO
+    //      influence on ranking" test). Freezing it would not close any
+    //      gap this P0 is about — the gap it used to enable (a forged
+    //      ranking number driving a real money payout) is already fully
+    //      closed by the ranking-source change above, independent of
+    //      whether this field is ever locked down.
+    //   3. The residual risk `globalScore`'s writability still carries —
+    //      a user could inflate their own displayed "Skor Global" tab
+    //      rank with a fabricated number — is a pre-existing display/
+    //      social-integrity concern, unrelated to and no worse than it
+    //      was before this change. Tightening it is a legitimate future
+    //      hardening task, but a separate, deliberately-scoped one — not
+    //      bundled into this P0 fix per this task's own explicit
+    //      instruction not to revisit approved architecture without a
+    //      concrete blocker.
+
     // Reservasi ID unik per user (ProgressRepository._reserveUserId) — id
     // dokumen itu sendiri ADALAH kode uniknya, sama seperti kode gabung
     // clan memakai id dokumen clan. Dibaca (exists) saat generate untuk

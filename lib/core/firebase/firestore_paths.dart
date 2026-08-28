@@ -38,6 +38,18 @@ class FirestorePaths {
   static const battleAnswers = 'answers';
   static const battleInvites = 'battleInvites';
 
+  /// Weekly Global Ranking (see `functions/award_top_coins.js`'s own
+  /// top-of-file doc comment for the full P0-fix design). Both are
+  /// **read-only from the client** — `firestore.rules` denies every
+  /// client write to either, unconditionally; the only writer for
+  /// [globalScorePeriods] is `functions/global_points.js`'s
+  /// `awardPointsForHistoryDoc` transaction, and the only writer for
+  /// [globalScorePeriodAwards] is `functions/award_top_coins.js`'s
+  /// `awardTopGlobalCoinsOnce` transaction.
+  static const globalScorePeriods = 'globalScorePeriods';
+  static const globalScorePeriodUsers = 'users';
+  static const globalScorePeriodAwards = 'globalScorePeriodAwards';
+
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
   static const fieldSubscription = 'subscription';
@@ -95,4 +107,8 @@ class FirestorePaths {
   static String battleMatchDoc(String matchId) => '$battleMatches/$matchId';
   static String battleAnswersCollection(String matchId) =>
       '$battleMatches/$matchId/$battleAnswers';
+  static String globalScorePeriodUsersCollection(String periodId) =>
+      '$globalScorePeriods/$periodId/$globalScorePeriodUsers';
+  static String globalScorePeriodAwardDoc(String periodId) =>
+      '$globalScorePeriodAwards/$periodId';
 }
