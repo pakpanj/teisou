@@ -36,6 +36,15 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
   List<LeaderboardEntry>? _results;
   bool _searching = false;
   final Set<String> _invitedUids = {};
+  // RISK-9 (closes RISK-8 BUG #3): `_invitedUids` only ever gained an
+  // entry AFTER `sendInvite` succeeded, so the invite button stayed
+  // enabled for the whole in-flight window — a fast double-tap reached
+  // `ClanRepository.sendInvite` twice and created two duplicate invite
+  // documents (sendInvite only dedupes against "already a member", not
+  // "already invited"). Marked BEFORE the async call starts instead, so
+  // the button is disabled the instant a tap is registered, not once the
+  // request happens to land.
+  final Set<String> _invitingUids = {};
 
   @override
   void dispose() {
@@ -75,11 +84,16 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
   }
 
   Future<void> _invite(LeaderboardEntry target) async {
+    if (_invitingUids.contains(target.uid) ||
+        _invitedUids.contains(target.uid)) {
+      return;
+    }
     final s = ref.read(appStringsProvider);
     final user = ref.read(appStartupProvider).valueOrNull;
     final profile = ref.read(userProfileProvider).valueOrNull;
     if (user == null) return;
 
+    setState(() => _invitingUids.add(target.uid));
     try {
       await ref.read(clanRepositoryProvider).sendInvite(
             code: widget.code,
@@ -101,6 +115,8 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(s.inviteSendFailed)));
+    } finally {
+      if (mounted) setState(() => _invitingUids.remove(target.uid));
     }
   }
 
@@ -162,6 +178,7 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                         itemBuilder: (context, index) {
                           final entry = results[index];
                           final invited = _invitedUids.contains(entry.uid);
+                          final inviting = _invitingUids.contains(entry.uid);
                           return Material(
                             color: context.palette.cardWhite,
                             borderRadius: BorderRadius.circular(16),
@@ -196,19 +213,28 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                                   invited
                                       ? Icon(Icons.check_circle,
                                           color: context.palette.successGreen)
-                                      : OutlinedButton(
-                                          style: OutlinedButton.styleFrom(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 12,
-                                              vertical: 4,
+                                      : inviting
+                                          ? const SizedBox(
+                                              width: 16,
+                                              height: 16,
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 2,
+                                              ),
+                                            )
+                                          : OutlinedButton(
+                                              style: OutlinedButton.styleFrom(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                  horizontal: 12,
+                                                  vertical: 4,
+                                                ),
+                                                minimumSize: Size.zero,
+                                                tapTargetSize: MaterialTapTargetSize
+                                                    .shrinkWrap,
+                                              ),
+                                              onPressed: () => _invite(entry),
+                                              child: Text(s.inviteButton),
                                             ),
-                                            minimumSize: Size.zero,
-                                            tapTargetSize:
-                                                MaterialTapTargetSize.shrinkWrap,
-                                          ),
-                                          onPressed: () => _invite(entry),
-                                          child: Text(s.inviteButton),
-                                        ),
                                 ],
                               ),
                             ),

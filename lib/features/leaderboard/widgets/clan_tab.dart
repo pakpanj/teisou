@@ -48,6 +48,18 @@ class ClanTab extends ConsumerStatefulWidget {
 class _ClanTabState extends ConsumerState<ClanTab> {
   String? _selectedCode;
 
+  // RISK-9 (closes RISK-8 BUG #2): the confirm dialog only ever blocked a
+  // SECOND tap while it was still showing — the instant it closed on
+  // confirm, the "Keluar" action button was still enabled while
+  // `leaveClan` was still in flight, so a realistic tap-confirm,
+  // tap-confirm-again sequence during that window reached
+  // `ClanRepository.leaveClan` twice for one leave. Set only AFTER the
+  // user actually confirms (the window that was exploitable — before the
+  // dialog opens is already covered by the dialog's own modal barrier),
+  // reset in `finally` regardless of success/failure so a genuine retry
+  // after a real failure stays possible.
+  bool _leaving = false;
+
   Future<void> _leaveClan(String code, String name) async {
     final s = ref.read(appStringsProvider);
     final confirmed = await showDialog<bool>(
@@ -68,9 +80,11 @@ class _ClanTabState extends ConsumerState<ClanTab> {
       ),
     );
     if (confirmed != true) return;
+    if (_leaving) return;
 
     final user = ref.read(appStartupProvider).valueOrNull;
     if (user == null) return;
+    setState(() => _leaving = true);
     try {
       await ref
           .read(clanRepositoryProvider)
@@ -88,6 +102,8 @@ class _ClanTabState extends ConsumerState<ClanTab> {
         );
       }
       return;
+    } finally {
+      if (mounted) setState(() => _leaving = false);
     }
     if (mounted && _selectedCode == code) {
       setState(() => _selectedCode = null);
@@ -191,6 +207,7 @@ class _ClanTabState extends ConsumerState<ClanTab> {
               child: _ClanRanking(
                 code: activeCode,
                 strings: s,
+                leaving: _leaving,
                 onLeave: (name) => _leaveClan(activeCode, name),
               ),
             ),
@@ -381,11 +398,13 @@ class _NoClanState extends StatelessWidget {
 class _ClanRanking extends ConsumerWidget {
   final String code;
   final AppStrings strings;
+  final bool leaving;
   final void Function(String clanName) onLeave;
 
   const _ClanRanking({
     required this.code,
     required this.strings,
+    required this.leaving,
     required this.onLeave,
   });
 
@@ -406,6 +425,7 @@ class _ClanRanking extends ConsumerWidget {
               strings: strings,
               isLeader: myRole == ClanRole.leader,
               announcementUnread: announcementUnread,
+              leaving: leaving,
               onLeave: () => onLeave(clan.name),
             );
           },
@@ -502,6 +522,7 @@ class _ClanHeaderCard extends StatelessWidget {
   final AppStrings strings;
   final bool isLeader;
   final bool announcementUnread;
+  final bool leaving;
   final VoidCallback onLeave;
 
   const _ClanHeaderCard({
@@ -509,6 +530,7 @@ class _ClanHeaderCard extends StatelessWidget {
     required this.strings,
     required this.isLeader,
     required this.announcementUnread,
+    required this.leaving,
     required this.onLeave,
   });
 
@@ -660,7 +682,10 @@ class _ClanHeaderCard extends StatelessWidget {
               _HeaderActionButton(
                 icon: Icons.logout,
                 label: strings.leave,
-                onTap: onLeave,
+                // RISK-9: disabled (not just relying on the confirm
+                // dialog's own barrier) while a leave is already in
+                // flight — see `_ClanTabState._leaving`'s doc comment.
+                onTap: leaving ? null : onLeave,
               ),
             ],
           ),
@@ -678,7 +703,7 @@ class _ClanHeaderCard extends StatelessWidget {
 class _HeaderActionButton extends StatelessWidget {
   final IconData icon;
   final String label;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool showDot;
 
   const _HeaderActionButton({

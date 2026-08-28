@@ -33,6 +33,12 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
   List<LeaderboardEntry>? _results;
   bool _searching = false;
   final Set<String> _sentUids = {};
+  // RISK-9 (closes RISK-8 BUG #3, same shape as
+  // search_invite_screen.dart's `_invitingUids`): `_sentUids` only ever
+  // gained an entry AFTER `sendFriendRequest` succeeded, so a fast
+  // double-tap reached the repository twice and created two duplicate
+  // pending-request documents. Marked BEFORE the async call starts.
+  final Set<String> _sendingUids = {};
 
   @override
   void dispose() {
@@ -72,11 +78,16 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
   }
 
   Future<void> _sendRequest(LeaderboardEntry target) async {
+    if (_sendingUids.contains(target.uid) ||
+        _sentUids.contains(target.uid)) {
+      return;
+    }
     final s = ref.read(appStringsProvider);
     final user = ref.read(appStartupProvider).valueOrNull;
     final profile = ref.read(userProfileProvider).valueOrNull;
     if (user == null) return;
 
+    setState(() => _sendingUids.add(target.uid));
     try {
       await ref.read(friendRepositoryProvider).sendFriendRequest(
             fromUid: user.uid,
@@ -102,6 +113,8 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
       if (!mounted) return;
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(s.friendRequestSendFailed)));
+    } finally {
+      if (mounted) setState(() => _sendingUids.remove(target.uid));
     }
   }
 
@@ -170,6 +183,7 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
                       itemBuilder: (context, index) {
                         final entry = results[index];
                         final sent = _sentUids.contains(entry.uid);
+                        final sending = _sendingUids.contains(entry.uid);
                         return Container(
                           decoration: BoxDecoration(
                             color: context.palette.cardWhite,
@@ -216,19 +230,31 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
                                 sent
                                     ? Icon(Icons.check_circle,
                                         color: context.palette.successGreen)
-                                    : OutlinedButton(
-                                        style: OutlinedButton.styleFrom(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 12,
-                                            vertical: 4,
+                                    : sending
+                                        ? const SizedBox(
+                                            width: 16,
+                                            height: 16,
+                                            child: CircularProgressIndicator(
+                                              strokeWidth: 2,
+                                            ),
+                                          )
+                                        : OutlinedButton(
+                                            style: OutlinedButton.styleFrom(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 12,
+                                                vertical: 4,
+                                              ),
+                                              minimumSize: Size.zero,
+                                              tapTargetSize: MaterialTapTargetSize
+                                                  .shrinkWrap,
+                                            ),
+                                            onPressed: () =>
+                                                _sendRequest(entry),
+                                            child: Text(
+                                              s.sendFriendRequestButton,
+                                            ),
                                           ),
-                                          minimumSize: Size.zero,
-                                          tapTargetSize:
-                                              MaterialTapTargetSize.shrinkWrap,
-                                        ),
-                                        onPressed: () => _sendRequest(entry),
-                                        child: Text(s.sendFriendRequestButton),
-                                      ),
                               ],
                             ),
                           ),

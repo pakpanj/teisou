@@ -190,19 +190,35 @@ class ClanRepository {
     await batch.commit();
   }
 
+  /// RISK-9 (closes RISK-8 BUG #2): used to be a plain batch — a
+  /// non-transactional existence pre-check via `.get()` followed by an
+  /// unconditional `FieldValue.increment(-1)` — so two concurrent calls for
+  /// the same [uid] (a double-tap-then-double-confirm on the client, or any
+  /// future caller that isn't as carefully guarded) each independently
+  /// decremented `memberCount`, corrupting it to 2-too-low for a single
+  /// leave. Now a transaction: it reads the member document as part of the
+  /// transaction's own read set, and only deletes + decrements if that
+  /// member still actually exists. A concurrent second transaction that
+  /// raced past its own read before the first committed gets retried by
+  /// Firestore's optimistic concurrency control, re-reads, finds the
+  /// member already gone, and becomes a safe no-op — matching
+  /// `BattleRepository.submitAnswer`'s own self-guarding-transaction shape
+  /// elsewhere in this codebase.
   Future<void> leaveClan({required String code, required String uid}) async {
     final normalizedCode = code.trim().toUpperCase();
     final memberDoc = _membersOf(normalizedCode).doc(uid);
-    final existingMember = await memberDoc.get();
-    if (!existingMember.exists) return;
+    final membershipDoc = _membershipsOf(uid).doc(normalizedCode);
+    final clanDoc = _clans.doc(normalizedCode);
 
-    final batch = _firestore.batch();
-    batch.delete(memberDoc);
-    batch.delete(_membershipsOf(uid).doc(normalizedCode));
-    batch.update(_clans.doc(normalizedCode), {
-      'memberCount': FieldValue.increment(-1),
+    await _firestore.runTransaction((transaction) async {
+      final memberSnapshot = await transaction.get(memberDoc);
+      if (!memberSnapshot.exists) return;
+      transaction.delete(memberDoc);
+      transaction.delete(membershipDoc);
+      transaction.update(clanDoc, {
+        'memberCount': FieldValue.increment(-1),
+      });
     });
-    await batch.commit();
   }
 
   /// Disbands [code] entirely: every member removed, then the clan
@@ -405,6 +421,19 @@ class ClanRepository {
   /// `clanMemberships/{code}` row would otherwise survive the kick and
   /// keep showing this clan in their own "pilih clan" picker forever, with
   /// no membership left to back it.
+  /// RISK-9 (closes RISK-8 BUG #1, PROVEN BY TEST): used to be a plain
+  /// batch with no existence check at all and an unconditional
+  /// `FieldValue.increment(-1)`, so two concurrent kicks of the same
+  /// [targetUid] — a double-tap-then-double-confirm on
+  /// `clan_members_screen.dart`'s confirm dialog, since fixed with a
+  /// client-side `_kicking` guard, or any other caller — each
+  /// independently decremented `memberCount`, corrupting it to 2-too-low
+  /// for a single kick. Now a transaction, mirroring [leaveClan]'s own
+  /// RISK-9 fix exactly: read the member document first, only delete +
+  /// decrement if it still exists. A second concurrent transaction that
+  /// raced in gets retried by Firestore once the first commits, re-reads,
+  /// finds the member already gone, and becomes a safe no-op — so even a
+  /// future client guard failure can't reintroduce the double-decrement.
   Future<void> kickMember({
     required String code,
     required String targetUid,
@@ -419,12 +448,17 @@ class ClanRepository {
     // membership is cleaned up by [reconcileMemberships] the next time
     // their own app looks, which is the only place with the rights to do
     // it.
-    final batch = _firestore.batch();
-    batch.delete(_membersOf(normalizedCode).doc(targetUid));
-    batch.update(_clans.doc(normalizedCode), {
-      'memberCount': FieldValue.increment(-1),
+    final memberDoc = _membersOf(normalizedCode).doc(targetUid);
+    final clanDoc = _clans.doc(normalizedCode);
+
+    await _firestore.runTransaction((transaction) async {
+      final memberSnapshot = await transaction.get(memberDoc);
+      if (!memberSnapshot.exists) return;
+      transaction.delete(memberDoc);
+      transaction.update(clanDoc, {
+        'memberCount': FieldValue.increment(-1),
+      });
     });
-    await batch.commit();
   }
 
   /// Sends a clan invite to [targetUid], found via

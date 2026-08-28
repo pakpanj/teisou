@@ -70,7 +70,7 @@ class ClanMembersScreen extends ConsumerWidget {
   }
 }
 
-class _MemberRow extends ConsumerWidget {
+class _MemberRow extends ConsumerStatefulWidget {
   final String code;
   final ClanMember member;
   final ClanRole? myRole;
@@ -83,46 +83,67 @@ class _MemberRow extends ConsumerWidget {
     required this.myUid,
   });
 
-  bool get _isSelf => member.uid == myUid;
+  @override
+  ConsumerState<_MemberRow> createState() => _MemberRowState();
+}
+
+class _MemberRowState extends ConsumerState<_MemberRow> {
+  // RISK-9 (closes RISK-8 BUG #1, PROVEN BY TEST in
+  // test/clan_reentrancy_test.dart): the confirm dialog only ever blocked
+  // a SECOND tap while it was still showing — the instant "Keluarkan"
+  // was confirmed, the kick icon was still enabled while
+  // `ClanRepository.kickMember` was still in flight, so a realistic
+  // tap-confirm, tap-confirm-again sequence during that window reached
+  // `kickMember` twice for one removed member. Set only AFTER the user
+  // actually confirms — the window before the dialog opens is already
+  // covered by the dialog's own modal barrier — reset in `finally`
+  // regardless of success/failure so a genuine retry stays possible.
+  // Defense-in-depth: `ClanRepository.kickMember` is now also a
+  // transaction that re-checks the member still exists before
+  // decrementing `memberCount`, so even a client guard failure can't
+  // double-decrement.
+  bool _kicking = false;
+
+  bool get _isSelf => widget.member.uid == widget.myUid;
 
   /// Mirrors `firestore.rules`' `canKick` exactly — the UI hides an action
   /// the server would refuse anyway, rather than showing a button that
   /// fails silently.
   bool get _canKick {
     if (_isSelf) return false;
-    if (myRole == ClanRole.leader) return true;
-    if (myRole == ClanRole.coLeader) return member.role == ClanRole.member;
+    if (widget.myRole == ClanRole.leader) return true;
+    if (widget.myRole == ClanRole.coLeader) {
+      return widget.member.role == ClanRole.member;
+    }
     return false;
   }
 
   bool get _canChangeRole =>
-      myRole == ClanRole.leader && !_isSelf && member.role != ClanRole.leader;
+      widget.myRole == ClanRole.leader &&
+      !_isSelf &&
+      widget.member.role != ClanRole.leader;
 
-  Future<void> _setRole(
-    BuildContext context,
-    WidgetRef ref,
-    ClanRole role,
-  ) async {
+  Future<void> _setRole(ClanRole role) async {
     final s = ref.read(appStringsProvider);
     try {
       await ref
           .read(clanRepositoryProvider)
-          .setMemberRole(code: code, targetUid: member.uid, role: role);
-      ref.invalidate(clanMembersProvider(code));
+          .setMemberRole(code: widget.code, targetUid: widget.member.uid, role: role);
+      ref.invalidate(clanMembersProvider(widget.code));
     } catch (_) {
-      if (!context.mounted) return;
+      if (!mounted) return;
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(s.roleChangeFailed)));
     }
   }
 
-  Future<void> _kick(BuildContext context, WidgetRef ref) async {
+  Future<void> _kick() async {
     final s = ref.read(appStringsProvider);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(s.kickConfirmTitle(member.displayName)),
+        title: Text(s.kickConfirmTitle(widget.member.displayName)),
         content: Text(s.kickConfirmBody),
         actions: [
           TextButton(
@@ -137,24 +158,28 @@ class _MemberRow extends ConsumerWidget {
       ),
     );
     if (confirmed != true) return;
+    if (_kicking) return;
 
+    setState(() => _kicking = true);
     try {
       await ref
           .read(clanRepositoryProvider)
-          .kickMember(code: code, targetUid: member.uid);
-      ref.invalidate(clanMembersProvider(code));
-      ref.invalidate(clanRankingProvider(code));
+          .kickMember(code: widget.code, targetUid: widget.member.uid);
+      ref.invalidate(clanMembersProvider(widget.code));
+      ref.invalidate(clanRankingProvider(widget.code));
     } catch (_) {
-      if (!context.mounted) return;
+      if (!mounted) return;
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(s.kickFailed)));
+    } finally {
+      if (mounted) setState(() => _kicking = false);
     }
   }
 
-  String _roleLabel(BuildContext context, WidgetRef ref) {
+  String get _roleLabel {
     final s = ref.read(appStringsProvider);
-    switch (member.role) {
+    switch (widget.member.role) {
       case ClanRole.leader:
         return '👑 ${s.roleLeader}';
       case ClanRole.coLeader:
@@ -165,9 +190,10 @@ class _MemberRow extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
-    final roleLabel = _roleLabel(context, ref);
+    final roleLabel = _roleLabel;
+    final member = widget.member;
 
     return Material(
       color: context.palette.cardWhite,
@@ -230,22 +256,29 @@ class _MemberRow extends ConsumerWidget {
                   color: context.palette.primaryCoral,
                 ),
                 onPressed: () => _setRole(
-                  context,
-                  ref,
                   member.role == ClanRole.coLeader
                       ? ClanRole.member
                       : ClanRole.coLeader,
                 ),
               ),
             if (_canKick)
-              IconButton(
-                tooltip: s.kickMember,
-                icon: Icon(
-                  Icons.person_remove,
-                  color: context.palette.errorRed,
-                ),
-                onPressed: () => _kick(context, ref),
-              ),
+              _kicking
+                  ? const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    )
+                  : IconButton(
+                      tooltip: s.kickMember,
+                      icon: Icon(
+                        Icons.person_remove,
+                        color: context.palette.errorRed,
+                      ),
+                      onPressed: _kick,
+                    ),
           ],
         ),
       ),
