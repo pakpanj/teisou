@@ -4309,3 +4309,276 @@ untouched by this session's two deploys, both scoped to exactly
 historical `globalScore` metric — not written, not reset, not read by
 the deployed code. No production user document was read, written, or
 migrated by this deployment.
+
+## Exam-History Authority Audit — P0 BUG PROVEN, NOT FIXED
+
+Requested explicitly once Weekly Global Ranking went live and started
+paying real coins: the exam-history `score`/`total`/`completedAt`-
+forgeability gap was already known and documented (`global_points.js`'s
+own doc comment, `GLOBAL_POINTS_FINAL_DECISION_MEMO.md`) as an
+explicit, deliberate, out-of-scope trade-off from when Formula C was
+first built — but it was accepted back when nothing paid real money.
+Now that `awardTopGlobalCoins` is deployed and scheduled, this audit
+re-examines whether that trade-off is still acceptable. **It is not —
+this is a real, currently-exploitable, unbounded exploit of the actual
+production coin payout, proven against both the live Rules and the
+real server-trigger logic, not merely re-asserted from the old doc
+comment.**
+
+### 1-2. Collections and write paths audited
+
+All four exam-history collections traced end to end (UI → repository →
+Firestore write → `global_points.js` trigger → weekly points):
+`examHistory` (kana), `dokkaiExamHistory`, `choukaiExamHistory`,
+`kanjiComboExamHistory` — all four are subcollections under
+`users/{uid}/{collection}/{historyDocId}`
+(`lib/core/firebase/firestore_paths.dart`'s
+`examHistoryCollection`/`dokkaiExamHistoryCollection`/
+`choukaiExamHistoryCollection`/`kanjiComboExamHistoryCollection`, all
+`'$users/$uid/$X'`).
+
+**Firestore Rules**: `firestore.rules` contains **zero** dedicated
+`match` block for any of the four collection names (confirmed by a
+direct grep for each name — no matches at all) and **zero** mention of
+`score`/`total`/`completedAt`/`jlptLevel` anywhere in the entire file.
+All four fall under the generic `match /users/{uid} { match
+/{subcollection}/{document=**} { allow read, write: if owner } } }`
+wildcard — the same block the recursive-wildcard cutover fix (earlier
+in this file) narrowed to require a named subcollection segment, but
+did **not** add any field-level constraint to. The owner (any signed-in
+client matching their own uid) can create, update, or delete any
+document in any of these four collections with **completely arbitrary
+field values**.
+
+**Create/update/delete/writer**: client-writable for all three
+operations, for all four collections, confirmed live against the real
+Firestore Rules Emulator (not just read from source) — see Section 7
+below. There is no server-only writer for the history documents
+themselves anywhere in this codebase (only the *derived* fields —
+`globalPoints`, `globalScorePeriods`, `xp` — have a genuine
+server-only writer; the raw exam-history document that feeds all of
+them does not).
+
+**Client-written fields vs. server-written fields**: `score`, `total`,
+`type`/`jlptLevel`, `itemId`, and `completedAt` are all written by the
+client at submit time, with the client's own self-computed grading
+result — confirmed by reading each exam screen's submit path
+(`exam_screen.dart`, `dokkai_exam_screen.dart`,
+`choukai_exam_screen.dart`, `kanji_combo_exam_screen.dart`, all of
+which construct their own result object client-side and write it
+directly). **Nothing server-side ever re-derives or checks any of
+these fields against the real question set the exam actually
+presented.**
+
+### 3-4. Score authority — PROVEN forgeable, with reproduction
+
+**Can a malicious client directly create a fake history event with
+100% score, arbitrary total, fabricated completion time, fabricated
+mode/level, fabricated attempt metadata? YES, all of it, proven twice:**
+
+1. **Real Firestore Rules Emulator** (`firestore_rules_tests/
+   _audit_exam_history_rules.test.js`, temporary, not committed):
+   `assertSucceeds` on (a) creating a forged `examHistory` document with
+   `score: 999999, total: 1, completedAt: "1999-01-01..."`, (b) updating
+   an existing document's `score` after creation, (c) deleting a
+   document after points would already have been awarded, (d) the same
+   creation for all three of the other collections by name. **4/4
+   pass — every one of these succeeds today, live, against the real
+   engine.**
+2. **The real server-trigger logic** (`functions/
+   _audit_exam_history_authority.test.js`, temporary, not committed) —
+   calls `global_points.js`'s own `awardPointsForHistoryDoc`, the exact
+   function `globalPointsTriggerFor`'s `onDocumentCreated` handler
+   invokes in production, via a `FakeFirestore` double (this is the
+   full server-trigger path, not a Rules-permission check alone, per
+   this task's own instruction). **9/9 pass**, proving:
+   - **B**: a single forged document (`score: 999999, total: 1, type:
+     "mixed"`) is awarded **9,999,990 points** in one call — versus a
+     real legitimate 9/10 attempt's 90 points (test A). A ~111,000x
+     multiplier from one fabricated write.
+   - **B2/D**: points scale **exactly linearly** with an arbitrary
+     client-chosen `score` value (`points = score × K`, confirmed at
+     10/100/1000/100000), with **no ceiling anywhere in the award
+     path** and no check that `score <= total`.
+   - **C**: 10 separate fabricated documents (10 distinct
+     `historyDocId`s, same uid) each independently award points — the
+     per-attempt repeat-decay reduces but does not remotely neutralize
+     farming; 10 fabricated documents at `score: 1000` produced **over
+     24,000 weekly points** versus a real learner's tens-of-points
+     range.
+   - **G, end-to-end**: seeded three "honest" learners at real scores
+     (10/9/8 correct) plus one forged document
+     (`score: 999999`) into the exact `globalScorePeriods` ranking
+     `award_top_coins.js`'s real `awardTopGlobalCoinsOnce` reads from —
+     **the forged document wins 1st place**, and the test asserts the
+     real 500-coin `REWARDS[0]` would be credited to the attacker by
+     the actual deployed production function on its next scheduled run.
+
+**Can the client edit an existing event after creation? YES** (Rules
+probe test 2). **Can the client delete an event after points have
+already been awarded? YES** (Rules probe test 3) — this doesn't undo an
+already-fired trigger's award, but confirms there's no retention/
+audit-trail protection either; a client could delete evidence of a
+forged submission after collecting its payout.
+
+**Can the client replay/create many fake events to farm weekly points?
+YES** — see Section 6.
+
+### 5. Timestamp authority — HOLDS, confirmed under adversarial input
+
+**`event.time` is authoritative; `completedAt` is client-controlled but
+has zero effect on period assignment; no client can choose which WIB
+period receives the points.** This part of the design is genuinely
+sound and was re-verified specifically under an adversarial scenario
+(reproduction test E): a document with `score: 500` (forged) **and**
+`completedAt: "1999-01-01..."` (also forged, chosen to look like it
+should land somewhere else entirely) still had its points land in the
+real current period, derived solely from `options.eventTimeMs` (the
+CloudEvent's own server commit time, passed by `globalPointsTriggerFor`
+— never `docData.completedAt`). **Score forgery, not timestamp
+forgery, is the exploitable half of this gap.**
+
+### 6. Duplicate/replay — idempotency holds for replay, not for farming
+
+Two genuinely different scenarios, kept distinct per this task's own
+instruction:
+
+- **"Same document replay"** (test F1): a second call with the
+  *identical* `historyDocId` — Eventarc redelivering the same event, or
+  a client re-writing the same document — is correctly a no-op.
+  `historyDocId` is sufficient idempotency **for this narrow case**.
+- **"New fake document"** (test F2): a second call with a *different*
+  `historyDocId` and identical content is **awarded again in full**.
+  There is **no server-side notion of "this exam was already
+  completed"** independent of the document id a client itself chooses
+  at write time — a client can simply mint a new id (any string it
+  likes) for each fabricated document and be paid every time. This is
+  the actual mechanism the farming proof in Section 4 (test C) exploits.
+
+### 7. Firestore Rules — do NOT prohibit any of this, proven live
+
+Confirmed via the real Rules Emulator (not read from source alone —
+see Section 3-4 above): Rules do not restrict fake score, fake total,
+fake completion timestamp, or fake history creation in any way, for
+any of the four collections. **Rules were not changed during this
+audit** — the probe only reads/writes against the currently-deployed
+rules text, unmodified.
+
+### 8. Weekly Global Ranking monetary impact
+
+Traced exactly: `fake history document` → `onDocumentCreated` trigger
+fires (no gate on content) → `awardPointsForHistoryDoc` computes
+`correct = Number(docData.score) || 0` and `difficulty =
+difficultyMultiplierFor(docData[difficultyField])`, both entirely
+client-supplied → `leaderboard/{uid}.globalPoints` incremented by the
+forged amount **and**, in the same transaction,
+`globalScorePeriods/{periodId}/users/{uid}.points` incremented by the
+same amount, `periodId` correctly server-derived → the next Monday
+00:10 WIB `awardTopGlobalCoins` run ranks that exact collection and
+credits real `coins` to the top 3. **The exploit chain is complete,
+proven end-to-end (test G), and requires nothing beyond a normal
+authenticated Firestore write any signed-in client can already make —
+no jailbreak, no credential compromise, no rules bypass technique,
+just writing a document with fields the app's own UI would never send
+but Firestore Rules never checks.**
+
+**Classification: BUG — PROVEN, not SAFE, not UNKNOWN, not merely a
+TEST GAP** (real reproduction exists against both layers, matching the
+originally-documented concern exactly, now confirmed to reach real
+money rather than only a historical vanity number).
+
+**Severity: P0.** Weekly Global Ranking is deployed and scheduled;
+`awardTopGlobalCoins` will run automatically at the next Monday 00:10
+WIB with no gate on this issue. This is not a theoretical or
+low-likelihood exploit — it requires only a normal Firestore write
+call any authenticated client can already issue, no special tooling,
+no rate limit encountered in testing, and a single write is enough to
+guarantee a payout (test G).
+
+### 9. Product/security decision — smallest safe architecture, NOT implemented
+
+Compared, per instruction, without implementing any of them:
+
+**A. Server-side exam grading.** The client submits raw answers; a
+Cloud Function grades them and writes the history document itself
+(Admin SDK), the same shape `awardXp`/`claimXpReward` already use for
+XP and — **critically, already proven working in this exact
+codebase** — the same shape `functions/rank_skip.js`'s
+`submitRankSkipExamFor` already implements for Rank Skip (`let correct
+= 0; ... if (isCorrect(cardIds[i], answers[i])) correct++;`, entirely
+server-side). This is not a new architecture for this project; it's
+applying an existing, shipped pattern to the four modules that don't
+yet have it. **Most robust — structurally eliminates the trust gap
+entirely** — but the largest scope: four separate exam UIs (kana,
+Dokkai, Choukai, Kanji-Kombinasi) would each need their submit flow
+reworked to send raw answers rather than a computed score.
+
+**B. Stronger Rules validation.** Add field-level constraints to the
+`allow create`/`allow update` for these collections — e.g. `total`
+bounded to a real per-exam-type range, `score <= total`, `completedAt`
+required to be within a small window of `request.time`. Much smaller
+in scope than A. Meaningfully raises the bar (kills the "999999/1"
+case outright) but is inherently a plausibility filter, not a
+correctness proof — a "plausible" forged score (say, a legitimate-
+looking 10/10 submitted many times) still farms real points, just at a
+much lower ceiling per document. Rules also can't easily express
+per-exam-type structure (different valid `total` ranges/`jlptLevel`
+enums per module) without real complexity growth.
+
+**C. Trusted submission record.** A Cloud Function issues a one-time
+server-side "attempt started" record (the real question set, a
+server-chosen total) before the exam begins; the history write must
+reference and be consistent with that record (checked either by a
+second Function call or by Rules cross-referencing it). Lighter than A
+(no server-side answer grading needed) but still anchors `total` to a
+real number and prevents a *from-nothing* fabricated document — a
+client can still lie about which of the real questions it "got right"
+within that bounded total, so it caps the blast radius without fully
+closing correctness forgery. Medium complexity — needs a new
+pre-attempt Function call in every exam flow.
+
+**D. Existing precedent in this codebase.** Already covered under A —
+Rank Skip's `submitRankSkipExamFor` is the concrete existing example;
+no other architecture in this codebase addresses this class of problem
+differently.
+
+**Recommendation (not implemented): Option A, scoped as a follow-up
+project, using Rank Skip's already-shipped pattern as the template —
+not invented from scratch.** Option B is worth doing regardless, and
+quickly, as a stop-gap: it's small, deployable independently of a full
+grading rework, and would immediately kill the most egregious case
+(test B's ~111,000x multiplier) even though it doesn't close the gap
+entirely.
+
+**Does this bug block payout activation? Weekly coin payout is
+ALREADY ACTIVE** (deployed and scheduled, per the section immediately
+above this one) — this audit was explicitly not authorized to alter
+`awardTopGlobalCoins`, Rules, or trigger/disable anything (per this
+task's own scope), so **nothing was pausable from inside this audit**.
+Stated plainly for the record: **this bug should have blocked payout
+activation had it been surfaced before deployment, and now that
+payout is live, it represents an active, unmitigated monetary risk
+until either Option A/B/C lands or the payout schedule is deliberately
+paused by an explicit, separate decision** — that decision is outside
+this audit's authorized scope and is flagged here for the user to make
+directly, not made unilaterally by this session.
+
+### Temporary audit tests (NOT committed, per instruction)
+
+- `functions/_audit_exam_history_authority.test.js` — 9/9 pass,
+  reproduces the full server-trigger exploit chain against
+  `global_points.js`'s real `awardPointsForHistoryDoc` and
+  `award_top_coins.js`'s real `awardTopGlobalCoinsOnce`.
+- `firestore_rules_tests/_audit_exam_history_rules.test.js` — 4/4
+  pass, reproduces the Rules-layer bypass against the real Firestore
+  Rules Emulator for all four collections.
+
+Both left in place on disk (untracked, `git status` confirms), not
+staged, not committed — available as evidence for whoever picks up the
+fix, per instruction not to delete useful evidence before the report
+lands.
+
+**Production files changed by this audit: 0** (`git diff --stat`
+against tracked files is empty — confirmed before writing this
+section). No code, Rules, or deployed system was altered. No coins
+awarded to any real account. No production data touched.
