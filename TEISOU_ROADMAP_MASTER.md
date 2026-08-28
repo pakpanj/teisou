@@ -25,6 +25,7 @@ in place rather than leaving two contradictory rows.
 | RISK-7 | Global error handling (`main.dart` boundary + `fcm_service.dart` listeners) | ✅ DONE |
 | RISK-8 | Global async-action/reentrancy audit (app-wide inventory) | ✅ DONE |
 | RISK-9 | Fix RISK-8's 3 confirmed bugs (clan kick/leave/invite/friend-request reentrancy) | ✅ DONE |
+| Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
 
 ## RISK-1 through RISK-3 (pre-dates this file)
 
@@ -237,3 +238,144 @@ to permanently regress-guard.
 
 **Commit**: see `git log` for the exact hash (recorded in the same
 commit that made this file's RISK-9 row `DONE`).
+
+## Q3 — Kanji Defense-in-Depth around `_invalidStartMora`
+
+**Status: VERIFIED / CLOSED.** This is a **defense-in-depth gap, not a
+live production bug** — the real bundled dataset has zero readings that
+currently violate it. See below for why it still warranted a fix.
+
+### Root cause
+
+`KanjiComboRepository`'s reading-distractor pipeline
+(`lib/data/repositories/kanji_combo_repository.dart`) has two
+independent sources for a reading question's wrong-answer options:
+
+1. `generateMutationDistractors` — mutates the correct reading itself
+   (dakuten toggle / vowel shift / adjacent swap). Every candidate it
+   produces is filtered through `isValidKotobaStart` before being
+   returned — already fully guarded, confirmed by pre-existing tests.
+2. `_pickCloseDistractors` — a pool-search fallback `_pickReadingDistractors`
+   tops up with whenever (1) can't reach the target count on its own
+   (e.g. single-mora わ has no dakuten pair and isn't in any vowel-row
+   group, so it has zero valid mutations and needs 3/3 distractors from
+   this fallback). **This path never called `isValidKotobaStart` at
+   all** — it ranked/shuffled whatever was in the pool with no
+   filtering. `isValidKotobaStart`'s own doc comment explicitly claims
+   "a distractor starting with a lone small-y would be an immediately
+   obvious fake to a learner... so it stays rejected here too", but
+   that claim only held for path (1).
+
+**Why this never surfaced as a real bug**: a reading can only reach
+this pipeline via the bundled `kanji_data.json`/`kotoba/*.json`
+datasets — there is no runtime/user-controlled input anywhere near
+`_splitMora`/`isValidKotobaStart`/`generateMutationDistractors`. An
+exhaustive scan of the real data (all 2425 kanji onyomi/kunyomi + all
+1351 compound-eligible Kotoba readings) found **zero** entries that
+start with an invalid mora — so path (2)'s missing filter had nothing
+to leak, today. A future content-authoring typo (a genuine risk in this
+codebase — see the many multi-thousand-word batch-authoring passes
+documented elsewhere in `CLAUDE.md`) could introduce one with zero
+runtime defense catching it before it reached a learner as a distractor
+option.
+
+### Reproduction (before any fix)
+
+A temporary test built a controlled 3-kanji pool via a fake
+`KanjiRepository`: one kanji with reading わ (structurally forces the
+pool-search fallback), one deliberately "bad" kanji with onyomi んき (a
+reading real Japanese never has — simulating a future authoring
+mistake), one normal filler. Ran `generateQuestions` across 200 random
+seeds and checked every DISTRACTOR option (excluding the correct
+answer) for starting with ん.
+
+- **Against the unfixed code: test FAILED** — a distractor starting
+  with ん was observed.
+- **After the one-line fix: test PASSED.**
+- **Fix reverted again as a sanity check: test FAILED again**, exactly
+  reproducing the original failure — confirms the test is genuinely
+  load-bearing, not tautological.
+
+### Exact fix
+
+One line in `_pickReadingDistractors`
+(`lib/data/repositories/kanji_combo_repository.dart`):
+
+```dart
+// before
+final remainingPool = poolCandidates.where((c) => c != correctAnswer && !mutated.contains(c));
+// after
+final remainingPool = poolCandidates.where(
+  (c) => c != correctAnswer && !mutated.contains(c) && isValidKotobaStart(c),
+);
+```
+
+No architecture change, no data format change, no behavior change for
+any currently-valid reading (since the real dataset has nothing this
+filter would ever remove today).
+
+### Defense-in-depth verdict
+
+Two boundaries now both reject an invalid-start reading before it can
+become a distractor (mutation path + pool-search path), matching the
+module's own stated design intent. The CORRECT answer itself is
+intentionally **not** given a runtime check — if a future kanji/kotoba
+entry's own reading were ever bad, there is no sane runtime fallback
+(skip the kanji? show it anyway?) without a larger design decision, and
+that's explicitly out of scope for a minimal fix. Instead, the content
+side of this boundary is enforced by two new **permanent
+content-integrity tests** (below) that assert the real dataset itself
+never contains such a reading — the correct layer for a data-quality
+invariant, matching this project's own established pattern for content
+integrity elsewhere (Dokkai/Choukai/Kaiwa/Bab content-integrity tests).
+
+### Files changed
+
+- `lib/data/repositories/kanji_combo_repository.dart` (1 line +
+  doc comment).
+- `test/kanji_combo_distractor_test.dart` (2 new groups).
+
+### Tests added
+
+- `Q3 defense-in-depth: pool-search fallback must also reject an
+  invalid start mora` — the reproduction above, ported to a permanent
+  regression test.
+- `Q3 content integrity: the real bundled dataset never has an
+  onyomi/kunyomi/compound reading that fails isValidKotobaStart` — two
+  cases, scanning the real `KanjiRepository.getAll()` (2425 entries) and
+  every compound-eligible Kotoba word across every available category
+  (1351+ entries, cross-checked against an independent one-off Python
+  scan of the same raw JSON files before any test was written — both
+  agreed: 0 violations).
+
+### Test results
+
+- `test/kanji_combo_distractor_test.dart`: **22/22 PASS** (19
+  pre-existing + 3 new).
+- `test/kanjivg_parser_test.dart` (unrelated Kanji-area file, run for
+  completeness): **10/10 PASS**, unaffected.
+- Full Dart suite (`flutter test --concurrency=1`): **876/876 PASS**, 0
+  failures.
+
+### flutter analyze
+
+**Clean** — "No issues found!" project-wide.
+
+### On-device
+
+**UNKNOWN** — no physical device connected this session. Not claimed as
+verified on-device.
+
+### Remaining UNKNOWN / follow-up
+
+- None new. The correct-answer-side gap named above is a deliberate,
+  documented scope decision (covered by content-integrity tests
+  instead of a runtime code change), not an open unknown.
+
+### Commit
+
+`4c7ad1b` — "fix(kanji): close pool-fallback distractor leak past
+isValidKotobaStart". Exactly 2 files changed
+(`kanji_combo_repository.dart`, `kanji_combo_distractor_test.dart`).
+`git status` after commit: only pre-existing `windows/flutter/*` and
+`AUDIT_*.md`/`AUDIT_SUBSCRIPTION_*.md` remain — none touched.
