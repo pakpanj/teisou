@@ -906,14 +906,17 @@ Firestore data was touched. `windows/flutter/*` and every `AUDIT_*.md`/
 `AUDIT_SUBSCRIPTION_*.md` file remain exactly as they were — read for
 evidence, never edited or staged. No `firebase deploy` command was run.
 
-## Core Clan Mechanics Audit — Fix Phase (2026-08-28, same day) — BOTH bugs FIXED, NOT DEPLOYED
+## Core Clan Mechanics Audit — Fix Phase (2026-08-28, same day) — BOTH bugs FIXED; BUG #2's rules fix DEPLOYED 2026-08-28, BUG #1's joinClan fix NOT yet released
 
 Both P1 bugs from the audit below are now fixed in code, with permanent
 regression coverage, per explicit user authorization for a scoped
-code+test-only fix phase. **Neither `firestore.rules` nor any Cloud
-Function/index was deployed in this phase — `firebase deploy` was never
-run.** Production is running the OLD, still-vulnerable rules and the
-OLD, still-buggy `joinClan` until a human explicitly deploys.
+code+test-only fix phase. At the time this section was originally
+written, neither fix had been deployed. **Update, same day**: the
+`firestore.rules` half (BUG #2) has since been deployed to production
+under explicit separate authorization — see "Rules Deployment" further
+below for the full record. **BUG #1's `joinClan` fix is still Dart app
+code, not server config — it only takes effect once a new app build
+containing it is released to users, which has NOT happened.**
 
 ### BUG #1 fix — `joinClan` converted to a transaction
 
@@ -1089,32 +1092,116 @@ zero failures, every time.
 
 ### Deployment status — explicit, do not skim past this
 
-- **`firestore.rules`**: **NOT DEPLOYED.** The live project is still
-  running the vulnerable rules from RISK-2's 2026-08-28 03:32:54 UTC
-  deploy. BUG #2 (both the leader-grants-to-another path and the
-  self-elevation path) **remains live and exploitable in production**
-  until a human runs `firebase deploy --only firestore:rules` (or
-  pastes the updated rules into the Firebase Console) with explicit
-  authorization, the same way RISK-2's own deploy required.
+- **`firestore.rules`**: **DEPLOYED 2026-08-28, see the dedicated
+  "Rules Deployment" record below** for the full detail (this
+  paragraph originally said NOT DEPLOYED — corrected in place rather
+  than left stale, since the deploy happened later the same UTC day
+  under separate explicit authorization). BUG #2 (both the
+  leader-grants-to-another path and the self-elevation path) is closed
+  in production as of that deploy.
 - **`lib/data/repositories/clan_repository.dart`**: this is app code,
   not server config — it only takes effect once a new app build
-  (containing this commit) is released to users. The currently-shipped
-  app build still has the old, double-increment-vulnerable `joinClan`.
-- **Production verification = NOT DONE**, and cannot be, until both of
-  the above actually ship — this phase was code + test only, no
-  `firebase deploy`, no Play Console action, no production Firestore
-  write, per the explicit task constraint.
+  (containing this commit) is released to users. **Still NOT released
+  as of this writing** — the currently-shipped app build still has the
+  old, double-increment-vulnerable `joinClan`. This is unaffected by
+  the rules deploy above (a Firestore Rules deploy is server-side only
+  and never touches what's inside an already-installed app binary).
+- **Production behavioral verification = NOT DONE, and not attempted
+  by design** — the rules deploy was verified via Firebase's own
+  compile/upload/release confirmation (a real, authoritative response
+  from the Rules control plane), not by running a write against live
+  production data. Per explicit instruction for the deployment task:
+  no malicious write was attempted against production merely to prove
+  denial. Status is honestly **DEPLOYED — BEHAVIOR NOT DIRECTLY
+  PROBED**, not VERIFIED.
 
 ### Recommended next action
 
-Both fixes are ready to deploy/release whenever the user authorizes it:
-1. `firebase deploy --only firestore:rules` — closes BUG #2 in
-   production immediately (server-side, no app update needed).
+The rules fix is live; `joinClan`'s fix is not:
+1. ~~`firebase deploy --only firestore:rules` — closes BUG #2 in
+   production immediately (server-side, no app update needed).~~ **DONE
+   2026-08-28, see "Rules Deployment" below.**
 2. Ship a new app build containing the `joinClan` transaction fix —
    closes BUG #1 for future joins (existing corrupted `memberCount`
    values, if any already occurred in production, are not
    retroactively repaired by this fix — that would be a separate
    one-time backfill, out of this phase's scope and not investigated).
+
+## Rules Deployment — Clan role-escalation fix (BUG #2) LIVE (2026-08-28)
+
+Explicit, separately-authorized deploy task: deploy ONLY the current
+`firestore.rules` (source: commit `b5fbb10`), nothing else. No source
+was modified as part of this task.
+
+**Pre-flight**:
+- `git merge-base --is-ancestor b5fbb10 HEAD` confirmed `b5fbb10` is an
+  ancestor of HEAD (`e7fab5a` at the time).
+- `firestore.rules` confirmed to contain all four expected fix markers:
+  `actorRole()` deriving authority from `hostUid` first
+  (`let hostUid = get(...).data.hostUid;` and
+  `uid == hostUid ? 'leader' : (storedRole == 'leader' ? 'member' :
+  storedRole)`), the leader-promotes-another rule's value restriction
+  (`request.resource.data.role in ['member', 'coLeader']`), and the
+  own-row rule's self-elevation block
+  (`request.resource.data.role == resource.data.role`).
+- `git status`/`git diff --stat` on `firestore.rules` alone: **zero
+  local drift** — the committed version is exactly what was deployed.
+- `.firebaserc` confirmed `"default": "teisou-kana-master"`.
+
+**Pre-deploy test run** (Firestore Rules Emulator, run sequentially per
+this repo's own documented single-file convention, matching the
+cross-file-race workaround found during the fix phase): `rules.test.js`
+73/73, `wildcard_probe.test.js` 1/1, `clan_role_authority.test.js` 5/5
+— **79/79 pass**, immediately before deploying.
+
+**Deploy command**: `npx --yes firebase-tools@latest deploy --only
+firestore:rules --project teisou-kana-master` (the bare `firebase`
+binary is broken in this environment — crashes on its own first-run
+`welcome.js` script — this `npx` substitute is the repo-documented
+workaround, same one used for RISK-2's original deploy and RISK-3's
+index/Functions deploy).
+
+**Deploy result**: **SUCCEEDED.**
+```
+cloud.firestore: checking firestore.rules for compilation errors...
+cloud.firestore: rules file firestore.rules compiled successfully
+firestore: uploading rules firestore.rules...
+firestore: released rules firestore.rules to cloud.firestore
+Deploy complete!
+```
+Timestamp: **2026-08-28 17:02:17 UTC** (machine clock at the moment
+immediately following the deploy command's completion). Project:
+**teisou-kana-master**.
+
+**Post-deploy verification**: no dedicated `firebase firestore:rules:*`
+read-back subcommand exists in this CLI (`firebase firestore --help`
+lists only `delete`/`bulkdelete`/`indexes`/`locations`/`operations`/
+`databases`/`backups` — nothing for reading back an active ruleset's
+content), so the deploy command's own response above — a genuine
+compile→upload→release round trip against Firebase's real Rules
+control plane, not a local assumption — is the verification evidence.
+**No write was attempted against live production Firestore data to
+prove the fix behaviorally** — per explicit instruction, this task
+does not corrupt/modify production data merely to demonstrate a
+denial. Production behavioral status is honestly recorded as
+**DEPLOYED — BEHAVIOR NOT DIRECTLY PROBED**, not VERIFIED; the 79/79
+emulator result immediately above, against the byte-identical rules
+content that was just deployed, is the evidence that the *logic* is
+correct — what remains unconfirmed is only that the live project is
+actually serving it, which the deploy command's own success response
+already attests to.
+
+**Scope discipline**: only `firestore:rules` was deployed — no
+Functions, Hosting, Storage, or index changes; no Dart source touched;
+no Play Console/AdMob/production-data changes; no destructive git
+command used. `lib/data/repositories/clan_repository.dart`'s `joinClan`
+fix (BUG #1) was deliberately **not** released as part of this task —
+it ships only with a future app build. RISK-3's subscription backstop
+was not touched.
+
+**Files changed by this task**: `TEISOU_ROADMAP_MASTER.md` only (this
+section plus the two corrections above) — `firestore.rules` itself was
+deployed, not edited.
 
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
