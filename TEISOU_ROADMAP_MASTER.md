@@ -26,7 +26,8 @@ in place rather than leaving two contradictory rows.
 | RISK-8 | Global async-action/reentrancy audit (app-wide inventory) | ✅ DONE |
 | RISK-9 | Fix RISK-8's 3 confirmed bugs (clan kick/leave/invite/friend-request reentrancy) | ✅ DONE |
 | Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
-| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) + RISK-3 index deployed 2026-08-28; RISK-3 Functions deploy blocked on this environment's network egress; AdMob/verifyPurchase found already live (pre-existing); Play purchase still pending** |
+| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) + RISK-3 index + RISK-3 Functions all deployed 2026-08-28; RISK-3 dry-run invocation still pending; AdMob/verifyPurchase found already live (pre-existing); Play purchase still pending** (see §B for the fully current state — this row lagged one update, corrected here) |
+| **Core Clan Mechanics Audit** | 13 mutation paths, authorization/atomicity/idempotency/capacity/role-transitions, against real code + real Rules emulator | 🔴 **AUDIT COMPLETE 2026-08-28 — 2 new P1 bugs PROVEN** (joinClan memberCount race; clan role escalation via unvalidated `role` value) — not fixed yet, no new RISK number assigned, awaiting a scheduled fix phase |
 
 ## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
@@ -904,3 +905,217 @@ production file was modified. No Play Console, AdMob console, or
 Firestore data was touched. `windows/flutter/*` and every `AUDIT_*.md`/
 `AUDIT_SUBSCRIPTION_*.md` file remain exactly as they were — read for
 evidence, never edited or staged. No `firebase deploy` command was run.
+
+## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
+
+Read-only, end-to-end audit of all 13 core Clan mutation paths (create/
+join/leave/kick/promote/demote/invite/accept/decline/disband/icon-
+description/capacity/creation-quota), tracing UI → repository →
+Firestore writes → `firestore.rules` enforcement for each. No source or
+rules changed — both findings below are reported, not fixed, per
+explicit instruction. **No new numbered RISK assigned by this session**
+— left for the user to decide when a fix phase is scheduled.
+
+### Confirmed SAFE / PROVEN SAFE (7 of 13)
+
+- **Leave Clan** / **Kick Member** (the mechanism itself) — RISK-9's
+  transactional fix re-confirmed still holding: `test/
+  clan_reentrancy_test.dart` re-run fresh, **8/8 PASS**, unchanged.
+- **Decline Invite** — plain idempotent `.set(merge:true)` on the
+  learner's own invite doc.
+- **Disband Clan** — leader-only via `clans/{code}`'s `hostUid ==
+  auth.uid` check on `allow delete`; the bulk member-row deletes go
+  through the same `canKick` path kick already uses, correctly, and
+  disband is **not** reachable via the role-escalation bug below (that
+  only ever grants kick/announcement powers, never `hostUid`).
+- **Clan icon/description changes** — plain idempotent merge-set,
+  covered by the pre-existing host-only `clans/{code}` update rule, no
+  capacity/atomicity concern.
+- **Clan creation quota (`clanFreeSlotUsed`)** — reasoned through (not
+  independently proof-tested, given the scope already covered): two
+  concurrent `createClan` calls by the same host can't both consume the
+  free slot, because `clanFreeSlotUsed/{uid}` only ever permits `create`
+  (never `update`) in `firestore.rules` — the second concurrent batch's
+  write to that doc is evaluated as an `update` once the first has
+  committed, gets denied, and the WHOLE second batch fails atomically
+  (Firestore batches are all-or-nothing) rather than silently granting
+  a second free clan. **Noted P3 UX gap, not a security bug**: a
+  legitimate double-tap during a slow network could surface as a
+  confusing permission-denied error instead of either succeeding
+  cleanly or being absorbed as a no-op.
+- **Ad-reward/coin/level gating for clan creation** (`canCreateClan`) —
+  traced against `hasActiveClanAdReward`/`isPremiumUser`, matches the
+  Dart-side `CreateClanDialog` gating design intent; server-side is the
+  real gate, client is a UX head-start only, same established pattern
+  as every other premium-gated feature in this app.
+
+### BUG #1 — `joinClan` memberCount double-increment (P1, PROVEN BY TEST)
+
+**File/function**: `lib/data/repositories/clan_repository.dart`,
+`ClanRepository.joinClan` (lines ~153-191).
+
+**Root cause**: unlike `kickMember`/`leaveClan` (fixed in RISK-9),
+`joinClan` was never converted to a transaction — it's still a plain
+`.get()` existence-check followed by an unconditional `batch.update({
+'memberCount': FieldValue.increment(1)})`. Two concurrent calls for the
+SAME `(code, uid)` pair (a realistic double-tap, or a client retry after
+a network timeout) each independently read "not yet a member" before
+either commits, and each add `+1` — corrupting `memberCount` by `+1` for
+what is really a single join. This is the exact bug class RISK-8
+originally flagged as a *latent* concern and RISK-9 explicitly left
+unfixed (out of that phase's 3-bug scope) — **this audit proves it is
+real, not just latent.**
+
+**Proof**: temporary test `test/_audit_clan_mechanics_test.dart` (NOT
+committed — kept `_audit_`-prefixed pending a fix phase), a Completer-
+gated fake `FirebaseFirestore`/`WriteBatch` forcing the SAME real
+interleaving pattern already proven for the RISK-9 fixes. Result:
+**memberCount ends up 3 instead of the correct 2** (seed 1 + one real
+join) after two concurrent same-uid joins — deterministic, reproduced,
+not inferred.
+
+**Affected paths**: both known callers inherit this —
+`JoinClanDialog._join` (has its own `_joining` client guard, so not
+currently exploitable through the *official* app UI alone) and
+`respondToInvite`'s accept branch (reuses `joinClan` internally,
+guarded client-side by `_InviteRow`'s `_responding` flag) — same
+"client guard is the only protection, no server-side defense-in-depth"
+shape RISK-8/9 already closed for kick/leave. A future caller, a
+modified client, or a client-guard regression would reopen this
+immediately.
+
+**Recommended minimal fix (not applied)**: convert `joinClan` to
+`runTransaction`, mirroring `kickMember`'s/`leaveClan`'s exact RISK-9
+shape — read the member doc inside the transaction, only set + increment
+if it doesn't already exist.
+
+**Required regression tests**: a permanent version of the temporary
+proof above (two concurrent same-uid `joinClan` calls → `memberCount`
+increments exactly once), plus a defect-injection check (revert the fix,
+confirm the test fails again) matching this project's own established
+discipline for every other RISK-9 fix.
+
+### BUG #2 — Clan role escalation via unvalidated `role` value (P1, PROVEN AGAINST THE REAL RULES ENGINE)
+
+**File/function**: `firestore.rules`, the `clans/{code}/members/
+{memberUid}` `allow update` rule (~line 303-306) and `actorRole()`
+(~line 555-562).
+
+**Root cause**: the rule that lets a leader change another member's
+`role` (`request.auth.uid != memberUid && actorRole(code, request.auth
+.uid) == 'leader' && request.resource.data.diff(resource.data)
+.affectedKeys().hasOnly(['role'])`) validates *which key* changed, but
+**never validates what value `role` is being set to.** Meanwhile
+`actorRole()` — the function every leader-gated rule in this file
+depends on (`canKick`, `announcements.create`, this same update rule) —
+reads the roster row's *stored* `role` field first, falling back to a
+`hostUid` comparison only when `role` is absent. Combined: a genuine
+leader can write `role: 'leader'` onto ANY other member's own roster
+row, and from that point on `actorRole()` treats that member as a
+second, fully-privileged leader — even though `Clan.hostUid` (the only
+value the app's own Dart-side documentation claims determines
+leadership — `ClanRepository`'s class doc comment: *"The leader role
+itself is never granted or removed this way; it's fixed to
+Clan.hostUid... no host-transfer feature"*) never changed. This directly
+contradicts that documented invariant — the client (Dart `assert(role !=
+ClanRole.leader, ...)` in `setMemberRole`) is a **debug-only** guard,
+stripped entirely from release builds, and was never backed by an
+equivalent server-side check.
+
+**Proof**: temporary test `firestore_rules_tests/_audit_clan_escalation
+.test.js` (NOT committed), run against the **real Firestore Rules CEL
+engine** via the emulator (not source-inspection) — 2/2 `assertSucceeds`
+confirmed:
+1. A genuine leader can `updateDoc` another member's roster row with
+   `{role: 'leader'}` — succeeds, no rule rejects it.
+2. That now-fraudulent "leader" can then `deleteDoc` the REAL leader's
+   own roster row (`canKick`'s `actor == 'leader' && actorUid !=
+   targetUid` branch) — **succeeds**, kicking the actual clan owner out
+   of their own clan's member list.
+
+**Blast radius, precisely bounded**: this requires an already-genuine
+leader to initiate (not "any authenticated user can become leader") —
+and even a fully "escalated" fraudulent leader still **cannot** disband
+the clan, rename it, or pass the `clans/{code}` update rule's `hostUid`
+branch (those check `resource.data.hostUid` directly, not `actorRole`).
+The real damage: kicking the genuine owner out of the roster (after
+which the real owner's own `actorRole()` lookup fails — their roster row
+is gone — locking them out of every leader-gated action except disband,
+since disband alone checks `hostUid` independently), granting further
+fraudulent 'leader' roles to others, and posting announcements as a
+fake leader.
+
+**Recommended minimal fix (not applied)**: add a value check to the
+`members/{memberUid}` update rule — e.g. `&& request.resource.data.role
+in ['member', 'coLeader']` — so a leader can only ever set the two
+non-leader role values through this path, matching the "leadership is
+not reassignable" invariant the Dart code already assumes but never
+enforced.
+
+**Required regression tests**: a permanent version of both temporary
+rules-emulator tests above (leader cannot write `role: 'leader'` onto
+another member's row; a legitimate promote-to-coLeader/demote-to-member
+still succeeds unaffected).
+
+### TEST GAP (2 of 13, both already known/unfixed, not newly discovered)
+
+- **Invite Member (`sendInvite`)** — server never dedupes "already
+  invited" (only "already a member"); a fast double-tap can still create
+  two invite documents server-side even though the client-side guard
+  added in RISK-9 (`_invitingUids`) closes the *practical* exploit
+  through the official UI. Unchanged since RISK-8/9 — not re-proven this
+  session, carried forward as still-open.
+- **Accept Invite (`respondToInvite`, accept branch)** — inherits BUG
+  #1 above (it calls `joinClan` internally). Separately: if `joinClan`
+  succeeds but the follow-up invite-status `.set(merge:true)` fails, the
+  invite stays `pending` while the learner is already a member — not
+  independently proof-tested this session (time-boxed out of this
+  audit's scope), recorded as a genuine open question rather than
+  asserted safe or unsafe.
+
+### INFO — Clan capacity does not exist as a feature
+
+Grepped the entire `lib/` tree and every rule in `firestore.rules` for
+`maxMember`/`capacity`/member-count-limit language — **none found,
+anywhere, client or server.** There is no maximum clan size in this
+app today. Not a bug (this audit does not invent a policy the product
+never specified) — recorded here so a future "why did a clan reach N
+members" question isn't mistaken for a missed enforcement bug.
+
+### Re-checked per explicit instruction (Section J)
+
+- **`ClanRepository.joinClan`**, previously a RISK-8 *latent* concern —
+  **no longer latent, proven exploitable this session (BUG #1 above).**
+- **`kickMember`/`leaveClan`** (RISK-9 fixes) — **re-confirmed still
+  correct**, `clan_reentrancy_test.dart` re-run fresh, 8/8 PASS, no
+  regression.
+- **Invite/friend-request reentrancy** (RISK-9 fixes) — not independently
+  re-tested this session (unchanged source, no reason to suspect
+  regression); the client-side guards are the same ones RISK-9 proved
+  and this audit did not touch.
+
+### Temporary audit files (kept, not committed, per instruction)
+
+- `test/_audit_clan_mechanics_test.dart` — joinClan double-increment
+  proof.
+- `firestore_rules_tests/_audit_clan_escalation.test.js` — role-
+  escalation proof, against the real emulator.
+
+Both remain `_audit_`-prefixed and unstaged. Recommended: keep them
+until a fix phase is scheduled, since they're the exact reproduction a
+fix would need to flip from FAIL to PASS (matching this project's own
+"prove don't assume" discipline for every fix in this engagement so
+far).
+
+### Recommended next phase
+
+Two real, proven bugs are now sitting ready for a scoped fix phase,
+whenever the user schedules one:
+1. `joinClan` → transaction (mirrors the exact RISK-9 shape already
+   proven for kick/leave).
+2. `firestore.rules`' `members/{memberUid}` update rule → restrict
+   `role`'s value, matching the "leadership is not reassignable"
+   invariant the Dart code already assumes.
+Both are small, well-understood, minimal fixes with reproduction tests
+already written and proven to fail on current code — a fix phase for
+either would not need to re-derive root cause from scratch.
