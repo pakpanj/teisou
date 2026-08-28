@@ -906,6 +906,216 @@ Firestore data was touched. `windows/flutter/*` and every `AUDIT_*.md`/
 `AUDIT_SUBSCRIPTION_*.md` file remain exactly as they were — read for
 evidence, never edited or staged. No `firebase deploy` command was run.
 
+## Core Clan Mechanics Audit — Fix Phase (2026-08-28, same day) — BOTH bugs FIXED, NOT DEPLOYED
+
+Both P1 bugs from the audit below are now fixed in code, with permanent
+regression coverage, per explicit user authorization for a scoped
+code+test-only fix phase. **Neither `firestore.rules` nor any Cloud
+Function/index was deployed in this phase — `firebase deploy` was never
+run.** Production is running the OLD, still-vulnerable rules and the
+OLD, still-buggy `joinClan` until a human explicitly deploys.
+
+### BUG #1 fix — `joinClan` converted to a transaction
+
+**File**: `lib/data/repositories/clan_repository.dart`,
+`ClanRepository.joinClan`. Converted the plain `.get()` existence-check +
+unconditional `batch.update({'memberCount': FieldValue.increment(1)})`
+into `_firestore.runTransaction(...)`, reading `memberDoc` inside the
+transaction and only writing (member doc, membership doc, `memberCount`
+increment) if it doesn't already exist — the exact same shape RISK-9
+already proved for `kickMember`/`leaveClan`. The clan doc's own
+existence/name lookup (`clanRef.get()`) deliberately stays a plain,
+non-transactional read *outside* the transaction — including it inside
+would make two genuinely different users joining the same clan
+concurrently retry against each other for no reason, since they'd share
+a read-set on the same clan doc. The `memberCount` increment stays a
+blind, un-read write inside the transaction (safe because
+`FieldValue.increment` is a pure additive transform — same reasoning
+`kickMember` already relies on).
+
+**Tests added** (`test/clan_reentrancy_test.dart`, new "Join — backend
+transaction" group, 5 tests, all against a Completer-gated fake
+`FirebaseFirestore`/`Transaction` extended in this pass to support
+`Transaction.set()` and a real increment-sign read via `FieldValue`
+value-equality, not a hardcoded sign):
+- (a) two concurrent `joinClan()` calls for the SAME `(code, uid)` →
+  `memberCount` increments exactly once, not twice.
+- (b) two concurrent `joinClan()` calls for TWO DIFFERENT uids on the
+  same clan → both succeed independently, `memberCount` +2, no
+  cross-user retry/interference.
+- (c) `joinClan()` when the uid is already a member → safe no-op,
+  `memberCount` unchanged.
+- (d) `joinClan()` against a nonexistent clan code → throws
+  `StateError`, no member doc created, no `memberCount` written
+  anywhere.
+- (e) a realistic mixed batch (3 concurrent new joins + 1 already-member
+  retry, no forced interleaving) → lands on exactly base + 3.
+
+**Old reproduction → new reproduction (fail-then-pass, verified by
+actually reverting the fix in place)**: temporarily reverted `joinClan`
+to its old plain-batch shape (kept the new test file's `Transaction.set`
+support, added a temporary `WriteBatch` fake so the old code could run
+against the same store) and re-ran the "Join" test group. **Test (a)
+correctly failed**: `Expected: <2>, Actual: <3>` — the exact
+double-increment this bug describes, reproduced against the specific
+new permanent test, not just the old throwaway one. Tests (b)/(c)/(d)/
+(e) don't exercise the same-uid race and correctly still passed against
+old code (expected — they were never proof of this specific bug, just
+adjacent correctness properties). Restored the real fix; full group
+re-ran 5/5 PASS.
+
+The original audit-only throwaway proof, `test/_audit_clan_mechanics_test.dart`,
+is **deleted** (never committed, its fake infra no longer matches the
+transactional shape and is fully superseded by the permanent coverage
+above).
+
+### BUG #2 fix — `firestore.rules`: leadership authority derived from `hostUid`, never from a mutable `role` value
+
+**File**: `firestore.rules` — `actorRole()` (~line 583) and the
+`clans/{code}/members/{memberUid}` `allow write`/`allow update` rules
+(~line 294-333).
+
+Two layers, both needed (found a second, more severe self-elevation
+path mid-fix that the original audit hadn't named — see below):
+
+1. **`actorRole()` hardened** — now reads `hostUid` first and treats it
+   as the sole source of truth for `'leader'` status. A stored `role`
+   of `'leader'` is only honored when it genuinely came from the host;
+   every other uid's stored role is still trusted for
+   `'coLeader'`/`'member'` (so legitimate promote/demote between those
+   two is completely unaffected), but a non-host's row can never read
+   back as `'leader'` no matter what value is written to it — this
+   alone makes a forged `'leader'` value harmless for every
+   leader-gated check in the file (`canKick`, announcements, promote/
+   demote), even before the write-time restrictions below.
+2. **Write-time value restrictions**, defense-in-depth on top of (1):
+   - `allow update` (leader promotes/demotes ANOTHER member): now also
+     requires `request.resource.data.role in ['member', 'coLeader']` —
+     a leader can no longer write `'leader'` onto someone else's row at
+     all, closing the exact path the original audit proof exercised.
+   - `allow write` (own-row create/update/delete): **a second,
+     previously-undocumented escalation path was found while designing
+     this fix** — the existing rule had *no* restriction on `role`'s
+     value at all, meaning *any* existing member could self-elevate by
+     directly editing their own roster row (`updateDoc(ownRef, {role:
+     'leader'})`), a simpler and more direct exploit than the
+     leader-grants-to-another path the audit named. Fixed by requiring
+     that an existing row's own self-write can never change `role` at
+     all (whatever it currently is, it must stay exactly the same) — a
+     brand-new row (fresh join, or the host's own row at clan creation)
+     is left unrestricted at create time, since `createClan`'s own
+     separate rule on the `clans/{code}` doc already guarantees
+     `hostUid == request.auth.uid` for that one legitimate case, and
+     `joinClan` always constructs a fresh member with `role: 'member'`.
+
+**Tests added** (`firestore_rules_tests/clan_role_authority.test.js`,
+new **permanent** file, run against the real Rules Emulator, 5 tests —
+covers every scenario named in the task instruction):
+- (a) the real leader can still legitimately promote a member to
+  coLeader.
+- (b) an ordinary member cannot promote themself by editing their own
+  roster row (the self-elevation path found mid-fix).
+- (c) a forged stored `role: 'leader'` on a non-host row (seeded
+  directly, bypassing rules, to simulate a legacy/corrupted document)
+  grants no real leader privileges — cannot promote anyone else.
+- (d) the same forged non-host `'leader'` row cannot kick the real clan
+  owner — the exact end-to-end chain the original audit proof
+  demonstrated.
+- (e) legitimate kick policy for the real leader and a real coLeader
+  still works exactly as before (leader kicks member: succeeds;
+  coLeader kicks member: succeeds; coLeader kicks leader: still
+  denied).
+
+**Old reproduction → new reproduction (fail-then-pass, verified against
+the real rules engine, not source-inspection)**: re-ran the original
+audit's throwaway `firestore_rules_tests/_audit_clan_escalation.test.js`
+(2 tests, both `assertSucceeds` on the malicious writes) against the
+**new, fixed** rules — **both now correctly `PERMISSION_DENIED`,
+causing the `assertSucceeds` assertions to fail** — i.e. the exploit
+this file was built to prove is now blocked. That confirms the fix
+closes exactly what the audit found. The throwaway file is then
+**deleted** (never committed), superseded by the 5 permanent scenarios
+above, which cover strictly more ground (including the second
+self-elevation path).
+
+**Emulator harness gotcha found and worked around**: running multiple
+`*.test.js` files in one `node --test file1 file2 file3` invocation
+against the shared `demo-teisou-rules-test` emulator project caused
+spurious cross-file failures (`Transaction lock timeout`, docs
+unexpectedly missing) — Node's test runner parallelizes across files by
+default, and every file's own `beforeEach: clearFirestore()` raced
+against the others. Not a rules bug — confirmed by re-running the exact
+same three files **sequentially** (`node --test a && node --test b &&
+node --test c`, matching this project's own documented single-file
+`package.json` convention) inside one `emulators:exec` session: clean,
+zero failures, every time.
+
+### Verification — full cross-check suite, all green
+
+- **`flutter analyze`** (whole repo): **0 issues.**
+- **`flutter test --concurrency=1`** (whole repo): **881/881 pass**,
+  zero regressions anywhere.
+- **Firestore Rules Emulator**, sequential per-file (`rules.test.js` +
+  `wildcard_probe.test.js` + `clan_role_authority.test.js`): **73 + 1 +
+  5 = 79/79 pass.** No `firestore.rules` regression on any pre-existing
+  behavior (RISK-2's full 74-test suite unchanged and still green).
+- **Cloud Functions suite** (`node --test` in `functions/`): **314/314
+  pass**, unaffected (this phase never touched `functions/`).
+- **`test/clan_reentrancy_test.dart`** specifically (all RISK-9 clan/
+  friend coverage + the new Join group): **13/13 pass** — all 4 kick/
+  leave/invite/friend-request client-layer tests, both kick/leave
+  backend-transaction tests, and all 5 new join tests.
+- **`test/clan_cross_user_write_test.dart`**: 2/2 pass, unaffected.
+- **`test/coin_buy_reentrancy_test.dart`** (RISK-5) / **`test/premium_purchase_reentrancy_test.dart`**
+  (RISK-4): 9/9 + 7/7 pass, unaffected — confirmed untouched by this
+  phase, run anyway per the cross-check requirement.
+
+### Files changed
+
+- `firestore.rules` — `actorRole()` + `members/{memberUid}` `allow
+  write`/`allow update` rules (BUG #2 fix).
+- `lib/data/repositories/clan_repository.dart` — `joinClan` (BUG #1
+  fix).
+- `test/clan_reentrancy_test.dart` — extended fake Firestore
+  infrastructure (`Transaction.set`, a plain gate-aware
+  `DocumentReference.get()`, correct `FieldValue.increment` sign
+  reading via value-equality, `seedClan` gained `name`/`hostUid`
+  params) + 5 new permanent Join tests.
+- `firestore_rules_tests/clan_role_authority.test.js` — new permanent
+  file, 5 tests.
+- Deleted (never committed, so no `git rm` trace):
+  `test/_audit_clan_mechanics_test.dart`,
+  `firestore_rules_tests/_audit_clan_escalation.test.js`.
+
+### Deployment status — explicit, do not skim past this
+
+- **`firestore.rules`**: **NOT DEPLOYED.** The live project is still
+  running the vulnerable rules from RISK-2's 2026-08-28 03:32:54 UTC
+  deploy. BUG #2 (both the leader-grants-to-another path and the
+  self-elevation path) **remains live and exploitable in production**
+  until a human runs `firebase deploy --only firestore:rules` (or
+  pastes the updated rules into the Firebase Console) with explicit
+  authorization, the same way RISK-2's own deploy required.
+- **`lib/data/repositories/clan_repository.dart`**: this is app code,
+  not server config — it only takes effect once a new app build
+  (containing this commit) is released to users. The currently-shipped
+  app build still has the old, double-increment-vulnerable `joinClan`.
+- **Production verification = NOT DONE**, and cannot be, until both of
+  the above actually ship — this phase was code + test only, no
+  `firebase deploy`, no Play Console action, no production Firestore
+  write, per the explicit task constraint.
+
+### Recommended next action
+
+Both fixes are ready to deploy/release whenever the user authorizes it:
+1. `firebase deploy --only firestore:rules` — closes BUG #2 in
+   production immediately (server-side, no app update needed).
+2. Ship a new app build containing the `joinClan` transaction fix —
+   closes BUG #1 for future joins (existing corrupted `memberCount`
+   values, if any already occurred in production, are not
+   retroactively repaired by this fix — that would be a separate
+   one-time backfill, out of this phase's scope and not investigated).
+
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
 Read-only, end-to-end audit of all 13 core Clan mutation paths (create/
