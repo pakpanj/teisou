@@ -29,6 +29,7 @@ in place rather than leaving two contradictory rows.
 | **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) + RISK-3 index + RISK-3 Functions all deployed 2026-08-28; RISK-3 dry-run invocation still pending; AdMob/verifyPurchase found already live (pre-existing); Play purchase still pending** (see §B for the fully current state — this row lagged one update, corrected here) |
 | **Core Clan Mechanics Audit** | 13 mutation paths, authorization/atomicity/idempotency/capacity/role-transitions, against real code + real Rules emulator | ✅ **BOTH P1 bugs FIXED (commit `b5fbb10`) — role-escalation `firestore.rules` fix DEPLOYED 2026-08-28; `joinClan` transaction fix CODE COMPLETE but NOT yet in a released app build** (production `memberCount` corruption audit: UNABLE TO AUDIT, see Production Readiness §E — no read-only Firestore query mechanism available in this environment) |
 | **`awardTopGlobalCoins` Audit** | Weekly Top-Global coin payout — authorization/ranking-trust/idempotency/concurrency/economic-safety, against real code + real Rules emulator | 🔴 **AUDIT COMPLETE 2026-08-29 — 1 new P0 bug PROVEN**: `leaderboard/{uid}.globalScore` (the payout's sole ranking input) has NO `firestore.rules` protection — any client can forge their own rank and be automatically paid real coins — not fixed yet, no new RISK number assigned, awaiting a scheduled fix phase |
+| **Weekly Global Ranking Design** | Data-model design for periodic (weekly) Top-Global competition + coin payout + P0 `globalScore` resolution | 📐 **DESIGN COMPLETE 2026-08-29 — DESIGN ONLY, nothing implemented**: recommends a new `globalScorePeriods/{periodId}/users/{uid}` collection (logical reset, no scheduled zero-out), a WIB-anchored `wibWeekId()` distinct from the existing UTC `isoWeekId()`, and extending `global_points.js`'s already-proven trigger/transaction pattern to write period-scoped points alongside the existing all-time `globalPoints` — resolves the P0 by construction (server-derived score, never client-asserted); awaiting a scheduled fix phase, no new RISK number assigned |
 
 ## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
@@ -2435,6 +2436,490 @@ in this file already established that no read-only Firestore query
 mechanism is available in this environment; the identical limitation
 applies to checking `weeklyCoinAwards/*`'s history for suspicious
 entries.
+
+## Design Decision — Weekly Global Ranking / Coin Payout (2026-08-29)
+
+**DESIGN ONLY. Nothing here is implemented.** No source, rules,
+production data, or coins were touched by this pass — it exists to
+settle the data-model questions *before* a future fix phase writes any
+code, and to resolve the P0 `globalScore` authority gap from the
+`awardTopGlobalCoins` audit above as part of the same redesign rather
+than as a separate patch.
+
+### 1. Current system, re-read fresh (not assumed from the prior audit)
+
+Three *different* leaderboard numbers exist on `leaderboard/{uid}`
+today, and this pass found a materially important one the prior audit
+only mentioned in passing:
+
+- **`globalScore`** — `kanaRecordAvg + dokkaiRecordAvg +
+  choukaiRecordAvg + kanjiComboRecordAvg` (0-400), a running average of
+  score-*percentage* per category, capped per category at 100. Written
+  by the **client**, directly (`LeaderboardEntry.toMap()`'s
+  `'globalScore': globalScore ?? computedGlobalScore`, called from
+  `LeaderboardRepository`). Confirmed, re-checked: `firestore.rules`
+  still does not protect this field — the P0 from the prior audit
+  stands, unchanged. **Never resets, by explicit product decision
+  reaffirmed in this task's own brief** — it stays exactly what it is.
+- **`globalPoints` (Formula C)** — `functions/global_points.js`.
+  `points = correct × difficultyMultiplier × 10 × 0.6^(n-1)`,
+  uncapped, accumulates forever, written **only** by four
+  `onDocumentCreated` triggers (one per exam-history collection:
+  `examHistory`/`dokkaiExamHistory`/`choukaiExamHistory`/
+  `kanjiComboExamHistory`), inside a transaction keyed by the exam
+  history document's own id (`historyDocId`) for idempotency, with a
+  30-day rolling repeat-cycle decay as its anti-farming control.
+  **Already fully protected** by `firestore.rules` (the same
+  before-vs-after comparison pattern as the `cardGame*` fields).
+  **This is the field `LeaderboardEntry`'s own doc comment already
+  calls "the Top Global leaderboard's ranking number as of the Final
+  Decision Memo"** — i.e., a prior decision in this codebase already
+  designated `globalPoints`, not `globalScore`, as the intended Top
+  Global metric. `award_top_coins.js` was simply never updated to
+  actually rank by it. This is the single most important fact this
+  design pass surfaced: **the codebase already has a
+  server-authoritative, anti-farming, trigger-based scoring pipeline
+  that answers most of sections 7/8 below out of the box** — the task
+  is adapting it to be period-scoped, not inventing one from scratch.
+- **`weeklyCoinAwards/{isoWeek}`** — the existing payout's own
+  idempotency marker, `isoWeek` from `award_top_coins.js`'s own
+  `isoWeekId()` (UTC-anchored ISO-8601 week). No client rule exists for
+  this collection at all (default-deny, confirmed absent from
+  `firestore.rules`) — correctly server-only already.
+
+Current Top Global query: `leaderboard.orderBy("globalScore",
+"desc").limit(3)`, no composite index (Firestore's automatic
+single-field index covers it — confirmed via `firestore.indexes.json`,
+which has no entry for `leaderboard` at all).
+
+### 2. Two separate concepts — confirmed, fits the architecture
+
+Yes. The split the task asks to evaluate already exists in embryonic
+form: `globalScore` (historical, capped, never resets) is
+architecturally distinct from `globalPoints` (uncapped, accumulates
+forever, server-authoritative) today. The **new** concept needed is a
+**third**, genuinely period-scoped number — call it **weekly
+competition points** — which must reset (logically, see §5) every
+period. None of the three should be merged; each answers a different
+question ("how good is this account historically," "how much has this
+account ever earned," "how well did this account do *this week*").
+
+### 3. Period definition — recommended: WIB-anchored week, NOT a reuse of the existing UTC `isoWeekId`
+
+**Candidate confirmed**: Monday 00:00 WIB → Sunday 23:59:59 WIB.
+
+**Critical, specific finding**: the existing `isoWeekId()` (used by
+`award_top_coins.js` today) computes ISO-8601 weeks from **UTC**
+calendar dates (`Date.UTC(...)`/`getUTCFullYear()` etc.). Asia/Jakarta
+(WIB) is UTC+7 with **no daylight saving** (confirmed — Indonesia does
+not observe DST, so a fixed +7h offset is exact and permanent, no
+seasonal edge case to design around). "Monday 00:00 WIB" is "Sunday
+17:00 UTC the day before" — a full 7-hour shift from where
+`isoWeekId()`'s own Monday-anchored math would place a UTC week
+boundary. **Reusing `isoWeekId()` unmodified for the new period would
+silently produce WIB-week boundaries that are wrong by up to 7 hours**
+(this is also, incidentally, the same ambiguity the prior audit already
+flagged as an unresolved INFERRED question about the *existing*
+schedule's own firing time — this design pass resolves it going
+forward for the *new* system, without touching the old one).
+
+**Recommendation**: a **new**, deliberately and clearly separately-
+named function (e.g. `wibWeekId(date)`, never reusing or aliasing
+`isoWeekId`) that:
+1. Shifts the input instant by the fixed WIB offset (`+7 * 3600 *
+   1000` ms) before extracting calendar fields — the standard
+   fixed-offset-timezone trick (safe here specifically *because* WIB
+   has no DST; this trick is unsafe for a DST-observing zone, and
+   should not be copied elsewhere in this codebase without re-checking
+   that assumption).
+2. Applies the *same* proven ISO-8601 Monday-Thursday-anchor algorithm
+   `isoWeekId` already uses (ISO week numbering itself is a sound,
+   already-tested piece of math — only the timezone the calendar
+   fields are read in needs to change).
+3. Keeps the same `YYYY-Www` string format for consistency/
+   sortability/familiarity with the existing `weeklyCoinAwards/{isoWeek}`
+   convention.
+
+**Period identity must be, and under this design is, purely
+server-derived**: computed from the Cloud Function's own execution
+context (see §6/§8), never from any client-supplied field. Timezone
+source is a hardcoded constant (`+7` hours), not read from device/OS
+settings anywhere.
+
+### 4. Score storage design — recommended: Option B, period-namespaced documents
+
+| Criterion | A: `leaderboard/{uid}.weeklyGlobalScore` | B: `globalScorePeriods/{periodId}/users/{uid}` | C |
+|---|---|---|---|
+| Concurrency | shared field also carrying `globalScore`/`globalPoints`/etc. — more surface to reason about per write | isolated per-period, per-user document — nothing else ever touches it | — |
+| Reset safety | needs an active reset step (see §5) — the step itself is a new failure mode | **needs no reset at all** — a new period is just a new, empty namespace | — |
+| Queryability | `orderBy(weeklyGlobalScore, desc).limit(3)` — fine | `orderBy(points, desc).limit(3)` **within** one period's subcollection — equally fine, same query shape | — |
+| Leaderboard performance | comparable | comparable | — |
+| Historical leaderboard preservation | requires a **separate** archival write before reset (itself another point of failure/race) | **free** — old periods' documents simply remain, forever, already queryable by whoever won | — |
+| Migration complexity | needs the field backfilled or accepted as absent-until-first-write on every existing leaderboard doc | **zero** — brand-new collection, nothing to migrate, first period starts naturally empty | — |
+| Cheating resistance | orthogonal to storage location, but sits on the *same* multi-purpose document currently exploited for `globalScore` — one more field on an already-mistake-prone document | a wholly separate, single-purpose collection that can be sealed with one simple, obviously-correct rule (`allow write: if false`, same pattern as `rankSkipExams`/`globalPointsState`) | — |
+| Firestore index requirements | none (single-field orderBy) | **none** (single-field orderBy within a subcollection — confirmed against the current index file, which has no `leaderboard` entry at all) | — |
+| Cross-period contamination risk | entirely dependent on the reset job's correctness | **structurally impossible** — different documents, different paths, nothing to contaminate | — |
+
+**Option C (another existing pattern)** was considered and folded into
+this comparison rather than kept separate: the closest existing analog
+is exactly `globalPointsState/{uid}/pointsAwarded/{historyDocId}` +
+`repeatCycles/{repeatKey}` — a nested, purpose-built collection under a
+sealed top-level document, the *same shape* Option B proposes, just
+without the period dimension. Option B is really "the `globalPoints`
+architecture's own storage pattern, extended with one more path
+segment for the period."
+
+**Recommendation: Option B.** Not chosen for simplicity — chosen
+because it wins on reset-safety, historical preservation, migration
+cost, and contamination-risk *specifically*, and ties or is no worse
+than Option A on every other axis. Its one real cost is an extra
+document read per ranking query compared to a single flat field, which
+is immaterial at `limit(3)` scale.
+
+### 5. Reset mechanism — recommended: logical reset (Option B above), not physical
+
+**Physical reset (zero every user's field) was evaluated and
+rejected**: it requires a scheduled write touching every user who has
+ever competed, is the one thing that could race a final-moment score
+submission (a write landing between "read the pre-reset value" and
+"zero it" either loses a legitimately-earned point or corrupts the
+next period's starting value), and needs an explicit, separate
+history-archival step to answer "who won last week" at all — itself
+another failure point.
+
+**Logical reset (Option B) needs no scheduled reset function at
+all.** A new period simply *is* a new, previously-nonexistent
+`periodId` — the very first score-increment trigger of a new week
+creates that week's first `globalScorePeriods/{periodId}/users/{uid}`
+document, starting from an implicit zero (a nonexistent document reads
+as absent, and `FieldValue.increment` on an absent field/document
+correctly initializes it to the increment amount — the exact same
+"blind additive write" pattern already proven safe throughout this
+codebase). Old periods' documents are simply never touched again after
+their payout runs — they remain permanently queryable
+(`globalScorePeriods/2026-W35/users`, ordered by `points`, answers "who
+won Week 2026-W35" directly, forever).
+
+### 6. Payout timing / sequence
+
+Recommended sequence, reusing the *already-proven-safe* transaction
+shape from `award_top_coins.js`'s current `awardTopGlobalCoinsOnce`
+almost verbatim, just pointed at the new ranking source:
+
+```
+(scheduled, some minutes AFTER the period's nominal WIB boundary —
+ see grace-buffer note below)
+  → compute the JUST-CLOSED periodId (the period, not the new one)
+  → query globalScorePeriods/{closedPeriodId}/users, orderBy(points,
+    desc), limit(3)                                    [outside any tx]
+  → ONE transaction:
+      read weeklyCoinAwards/{closedPeriodId}
+      if it exists: return (already paid, no-op)
+      else: set the marker (winners + amounts + finalizedAt)
+            increment each winner's users/{uid}.coins by REWARDS[i]
+```
+
+This is structurally identical to the CURRENT function's own already-
+tested shape (idempotency-marker read-check-then-all-writes, one
+transaction, fixed server-side reward table) — the redesign changes
+*where the ranking comes from* and *what closes a period*, not the
+payout mechanism itself, which the prior audit already proved safe
+(4/4, `functions/_audit_award_top_coins.test.js`) and does not need to
+be re-invented.
+
+**Race analysis, per the task's own six scenarios**:
+- *User submits exam exactly at the boundary*: **handled by design,
+  not by luck** — under the logical-reset model, the trigger computes
+  `wibWeekId` from a **server-side** timestamp at the moment it
+  actually runs (see §7/§8, not the client-supplied `completedAt`),
+  so every attempt lands unambiguously in exactly one period's
+  subcollection. There is no shared mutable state for two near-
+  boundary submissions to race over.
+- *Payout job runs twice*: **safe** — the `weeklyCoinAwards/{periodId}`
+  transaction marker, reusing the exact mechanism already proven safe.
+- *Payout job overlaps with a final score write*: this is the one
+  **genuine remaining edge case**, and it is a timing/completeness
+  question, not a security one. A trigger for an attempt that
+  genuinely happened just before the boundary could, in principle,
+  still be *in flight* (Eventarc redelivery, a transient retry) when
+  the payout job reads the "final" ranking. **Recommended mitigation**:
+  schedule the payout job with an explicit grace buffer after the
+  period's nominal end (e.g. 5-10 minutes, not exactly at :00) —
+  practical, not mathematically airtight (Eventarc's own redelivery
+  ceiling is ~24h in the worst case, which no fixed buffer fully
+  closes). **Recommended accepted tradeoff**: once a period's payout
+  marker exists, no retroactive adjustment ever happens, even if a
+  late trigger's point technically should have counted — matching this
+  codebase's own established "whichever write lands last / good-enough
+  documented tradeoff" discipline already used elsewhere (RTDN vs.
+  subscription-backstop racing, for one). This should be stated
+  explicitly to the user as a genuine, accepted (not hidden) limit of
+  the design, not silently assumed away.
+- *Function retries after partial failure*: **safe** — same
+  all-or-nothing transaction guarantee already proven for both
+  `awardTopGlobalCoinsOnce` and `awardPointsForHistoryDoc`.
+  Firestore's own atomicity contract means a failed transaction writes
+  nothing, so a retry from scratch is safe by construction.
+  - *Ranking changes while payout is running*: **safe** — `winners` is
+  computed once, outside the transaction, and reused unchanged across
+  any transaction retry (the existing code's own proven pattern,
+  confirmed again by this pass's re-read).
+
+### 7. P0 `globalScore` security — resolution
+
+**Do not simply freeze `globalScore` and stop there (Option A alone is
+insufficient)** — freezing prevents further *writes* but does nothing
+to make the *existing* payout trustworthy, and the task's own product
+decision is that `globalScore` isn't the payout metric going forward
+anyway.
+
+**Recommended: Option C + D together, following the exact
+`global_points.js` architecture** — the weekly competition score must
+be a **Cloud-Function-trigger-derived** value computed from
+already-trusted exam-history fields (`score`/`total`/`jlptLevel`/
+`type`), **never accepted as a value the client asserts about itself**.
+Concretely, the cleanest implementation shape (a note for the future
+fix phase, not committed to here): the **same** four
+`onDocumentCreated` triggers `global_points.js` already registers
+could, inside the **same** transaction that already computes Formula
+C's `result.points` for the all-time `globalPoints` total, **also**
+write that identical `result.points` value into
+`globalScorePeriods/{currentPeriodId}/users/{uid}` via
+`FieldValue.increment`. Same idempotency key (`historyDocId`), same
+anti-farming repeat-cycle decay, same transaction, same proof — zero
+new attack surface, because it is the *same already-proven-safe write
+path* with one more document added to it. This is a materially
+different (and stronger) recommendation than "pick one of A-D" — it's
+"reuse the *mechanism* that already exists for exactly this problem,
+extended by one path segment."
+
+`globalScore` itself: **freeze it too** (add it to the existing
+`firestore.rules` before/after comparison alongside `cardGame*`/
+`globalPoints`, the same one-line pattern each time), simply because
+an unprotected field on a real user document is a latent liability
+regardless of whether anything still ranks by it — but this is a
+*separate*, smaller fix from the weekly-score redesign, and could ship
+independently and sooner if desired.
+
+### 8. Score source — do not use client-side `updateCategoryRecord` for this
+
+Confirmed, re-read: `LeaderboardRepository.updateCategoryRecord`
+(the current writer of `globalScore`/`{category}RecordSum`/`Avg`) is a
+**direct client Firestore write** — exactly the mechanism §7 rules out
+for a monetary ranking. The weekly score must instead derive from the
+**same exam-history documents** `global_points.js` already consumes
+(`examHistory`/`dokkaiExamHistory`/`choukaiExamHistory`/
+`kanjiComboExamHistory`), via the trigger extension described in §7.
+This inherits, for free, everything `global_points.js` already solved:
+- Duplicate submissions / retries: idempotent per `historyDocId`
+  (unique per exam-history document, created once by the client at
+  submit time and never reused).
+- Replay attempts: the same idempotency marker prevents re-scoring an
+  already-scored attempt.
+- Edited history: exam-history documents are write-once from the
+  client's own repository methods (no update path exists in the
+  reviewed repositories) — not independently re-verified for every
+  module in this pass, flagged as worth a quick confirmation in the
+  fix phase, not assumed with full certainty here.
+- Multiple devices: irrelevant to server-side scoring — the trigger
+  fires once per history *document*, regardless of which device wrote
+  it.
+- Fake score writes: impossible without going through the real exam
+  flow, since `score`/`total` are the exam-history document's own
+  fields, which the trigger reads as given — this pass did **not**
+  independently re-verify that every one of the four exam-history
+  write paths is itself free of client-forgeable `score`/`total`
+  values (that's a `firestore.rules`/exam-repository question outside
+  this design task's scope) — flagged as an **open question** for the
+  fix phase, not assumed safe by inheritance from `global_points.js`'s
+  own existing production status.
+
+**One genuine open question surfaced by this pass**: `completedAt`
+(used by `global_points.js`'s own repeat-cycle-decay math) is
+**client-supplied** (`ExamRepository`'s `completedAt: now` where `now
+= DateTime.now()`, the device clock, not `FieldValue.serverTimestamp()`
+— confirmed by reading the source). This is an **existing,
+pre-dating-this-task** characteristic of `global_points.js`, not
+something this design introduces. **Recommendation for the new weekly
+period specifically**: derive `periodId` from the **Cloud Function
+trigger's own execution time** (effectively "now" inside the trigger
+handler), **not** from the exam-history document's client-supplied
+`completedAt` — satisfying "the period identity MUST be server-derived,
+never client-supplied" precisely. This is a deliberate, narrow
+divergence from reusing `completedAt` for period assignment (Formula
+C's *own* repeat-cycle math can keep using `completedAt` as it already
+does — unaffected, out of scope here) — the tradeoff is a very rare
+edge case (a heavily-delayed Eventarc retry could misattribute a point
+to a later week than when the exam was actually taken) versus a
+client being able to choose which week a point counts toward by
+forging `completedAt`. The former is judged clearly the safer
+direction and is the explicit recommendation.
+
+### 9. Historical leaderboard — answered by design, not a separate feature
+
+"Who won Week 2026-W35?" is answered directly by
+`globalScorePeriods/2026-W35/users` (still queryable forever under
+Option B) plus `weeklyCoinAwards/2026-W35` (the finalized winners list
++ payout amounts + `finalizedAt`, mirroring the CURRENT
+`weeklyCoinAwards/{isoWeek}` document shape exactly — `winners:
+[{uid, reward}]`, `awardedAt`). No new collection is needed purely for
+history — the payout marker IS the historical record, already, by the
+existing design's own shape. The only recommended addition to that
+existing shape: a `rank` field per winner entry (currently implicit
+from array position — making it explicit costs nothing and removes any
+ambiguity for a future reader of the raw document).
+
+### 10. Top-3 tie-breaking — recommended: score, then UID ascending
+
+**Recommended**: primary sort `points` descending, secondary sort
+`uid` ascending. Deterministic (Firebase Auth's own opaque uid is
+immutable and assigned once), fully server-derived, stable across
+repeated execution (a re-run of the same query with the same
+underlying data always produces the same order), and needs **zero**
+additional tracking fields.
+
+**Alternative considered and set aside, not because it's wrong but
+because it's disproportionate**: "score, then earlier attainment" (the
+first account to *reach* a given score wins the tie) reads as more
+intuitively "fair" from a competitive-skill framing, but requires a
+new server-captured "reached this score at" timestamp per user per
+period — real added complexity for an edge case (an *exact* floating-
+point tie in Formula C's continuous, decay-weighted output) that will
+be rare in practice. Left as a documented alternative for the fix
+phase to reconsider if the product ever wants strictly skill-order
+tie-resolution; not the recommendation.
+
+**"Shared rank with more than 3 winners" (an exact 3-way-or-more tie
+for 3rd place)**: not separately solved — the uid-tiebreak above
+already makes the *query result* deterministic (exactly 3 rows,
+always the same 3, on any re-run), so this scenario reduces to "one
+specific account gets 3rd by uid-ordering, not by having 'really' tied"
+— an accepted, documented consequence of a deterministic tiebreak, the
+same tradeoff any uid-based tiebreak makes anywhere.
+
+### 11. Reward amount — confirmed unchanged
+
+Top 1 = 500, Top 2 = 300, Top 3 = 100 — the existing `REWARDS` constant
+in `award_top_coins.js`, already fixed server-side, already proven
+(prior audit) to have no client-input path. No change recommended;
+carries forward unmodified into the redesigned payout.
+
+### 12. Double-payout protection — reuse the existing, already-proven marker pattern
+
+`weeklyCoinAwards/{periodId}` (renamed conceptually from `{isoWeek}` to
+`{periodId}` to reflect the new WIB-anchored id, same collection/
+document shape otherwise) — read inside a transaction, checked for
+existence, only written (marker + every winner's coin increment)
+together in the SAME transaction if absent. This is the **exact**
+mechanism the prior audit already proved safe (4/4,
+`functions/_audit_award_top_coins.test.js`, covering: two concurrent
+runs of the same period converge to one award; a retry after the
+marker exists is a no-op; a different period correctly pays out again;
+fewer-than-3 entries doesn't crash). Nothing about the storage
+redesign (§4/§5) changes this proof's validity — it only changes what
+`winners` is queried FROM (`globalScorePeriods/{closedPeriodId}/users`
+instead of `leaderboard`), not how the payout itself commits.
+
+### 13. Period-boundary test design (not implemented — design only)
+
+For the future fix phase's permanent regression suite:
+1. One second before the WIB boundary → attributed to the closing
+   period.
+2. Exactly at the boundary → deterministic, single period (server-
+   time-derived, no ambiguity by design).
+3. One second after → attributed to the new period.
+4. Payout retry (same periodId twice) → exactly one award (mirrors
+   the EXISTING proof exactly, just against the new ranking source).
+5. Concurrent payout (two overlapping invocations, same periodId) →
+   exactly one award (same proof, `beforeCommit`-forced interleaving,
+   established pattern).
+6. Concurrent final score write racing the payout read → documented
+   as the one accepted, non-airtight edge case (§6) — a test here
+   would prove "the payout doesn't crash / doesn't double-pay," not
+   "the late score was included," since inclusion is explicitly not
+   guaranteed past the grace buffer.
+7. Same user scoring across two different periods → each period's
+   document is independent; the SAME uid appearing in
+   `globalScorePeriods/2026-W35/users` and
+   `globalScorePeriods/2026-W36/users` must show unrelated point
+   totals (structurally guaranteed by Option B's document isolation,
+   still worth a test that actually reads both back).
+
+### 14. Migration / launch strategy — clean new season start, no migration needed
+
+Under Option B, there is **nothing to migrate**: `globalScorePeriods`
+is a brand-new collection, empty until the redesign ships, and the
+first period simply begins accumulating from zero the moment the
+extended trigger goes live. No backfill is needed or appropriate
+(unlike `globalPoints`, which genuinely needed
+`backfill_global_points.js` because it was introduced after years of
+pre-existing exam history existed to retroactively score — a weekly
+period has no equivalent backlog, since weekly scoring never existed
+before). `globalScore` is explicitly **not** touched, reset, or
+migrated, per the task's own explicit instruction — it keeps meaning
+exactly what it has always meant. **Recommended launch sequence**
+(design-level, not scheduled here): ship the trigger extension (§7)
+and the freeze on `globalScore`/new field together, let the first
+period accumulate for its full duration, then let the existing payout
+job — repointed at the new source — close it. No user-facing "reset"
+event needs announcing, since nothing pre-existing is being reset.
+
+### 15. Economic / security review
+
+| Question | Verdict |
+|---|---|
+| Can a modified client fake its weekly score? | **SAFE**, once §7's trigger-derived design ships — the score is computed server-side from already-trusted exam fields, never accepted as a client assertion. **BUG today** (current `globalScore`, unchanged until fixed — this is the same P0 the prior audit already proved). |
+| Can a modified client choose its own rank? | **SAFE** post-fix — rank is a pure function of the server-computed score, `orderBy` + deterministic uid-tiebreak, no client input anywhere in the ranking path. |
+| Can a modified client choose its own reward? | **SAFE** — `REWARDS` is a fixed server constant, unaffected by this redesign, already proven. |
+| Can a modified client trigger payout? | **SAFE** — payout stays a Cloud Scheduler trigger, no callable/`onCall` path exists or is proposed. |
+| Can a modified client replay a payout? | **SAFE, PROVEN BY TEST** — the `weeklyCoinAwards/{periodId}` marker pattern, already proven safe, is reused unchanged. |
+| Can a modified client write another user's score? | **SAFE** post-fix — the score write lives entirely inside a Cloud Function transaction keyed by `event.params.uid` (the trigger's own path parameter, not client-suppliable), the same guarantee `global_points.js` already has today for `globalPoints`. |
+| Can a modified client alter `periodId`? | **SAFE** post-fix — `periodId` is computed server-side inside the trigger from server execution time (§8's recommendation), never read from any client-supplied field. |
+
+### 16. Existing tests / what a future fix phase will need (not implemented here)
+
+Read, not modified: `award_top_coins.test.js` (pure date/reward-shape
+math only — unaffected by this redesign, `isoWeekId` stays exactly as
+it is for whatever still needs UTC ISO weeks, if anything), the two
+temporary audit files from the prior task (still uncommitted, cover
+the current system's mechanism + the `globalScore` rules gap — both
+would need to evolve into permanent coverage once a fix phase starts,
+not reused as-is since the ranking source changes), `global_points.js`
+'s own existing suite (`global_points.test.js`,
+`global_points_reliability.test.js`) — the closest precedent for what
+the extended-trigger's own future tests should look like, confirmed to
+already establish the exact `beforeCommit` forced-interleaving pattern
+this whole codebase's concurrency proofs use. A future fix phase will
+need: a new `wibWeekId` unit-test file (mirroring `award_top_coins
+.test.js`'s own boundary/rollover/year-boundary structure, but for the
+WIB offset specifically); an extension to `global_points_reliability
+.test.js`'s style of proof covering the new
+`globalScorePeriods/{periodId}/users/{uid}` write; a new Rules
+Emulator suite for `globalScorePeriods`/updated `weeklyCoinAwards`
+sealing; and an updated version of the prior audit's
+`_audit_award_top_coins.test.js`-shaped proof pointed at the new
+ranking source. None of this is written yet.
+
+### Open questions (unresolved, explicitly not decided in this pass)
+
+1. Should `globalScore`'s freeze (§7) ship as its own small, immediate
+   fix ahead of the full weekly redesign, or bundled together? Both
+   are reasonable; not decided here.
+2. Whether every one of the four exam-history write paths is
+   genuinely free of client-forgeable `score`/`total` fields was not
+   independently re-verified in this pass (§8) — worth a quick
+   confirmation before the fix phase treats "inherits global_points.js
+   's trust" as fully established.
+3. The payout-job grace-buffer duration (§6) is a product/ops
+   judgment call, not a technical requirement — a specific number
+   (5 minutes? 10? 30?) was not chosen here.
+4. Tie-break alternative (§10, "earlier attainment") was set aside as
+   disproportionate but not ruled impossible — worth revisiting only
+   if the product explicitly wants strictly skill-order resolution.
+5. Whether `award_top_coins.js`'s *other* current caller shape (its
+   own `isoWeekId`) should be deprecated/removed once `wibWeekId`
+   exists, or kept alongside it for any other consumer — not traced
+   exhaustively in this pass.
 
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
