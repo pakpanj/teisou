@@ -409,6 +409,188 @@ void main() {
       },
     );
   });
+
+  group('Join — backend transaction (closes Core Clan Mechanics BUG #1, '
+      '2026-08-28)', () {
+    test(
+      '(a) two concurrent joinClan() calls for the SAME (code, uid): '
+      'memberCount increments exactly once, not twice',
+      () async {
+        final firestore = _FakeTransactionFirestore();
+        final repo = ClanRepository(firestore: firestore);
+        const code = 'ABC123';
+        const uid = 'joiner-uid';
+
+        firestore.seedClan(code: code, memberCount: 1);
+        // member doc intentionally NOT seeded — this is a fresh join.
+
+        // Force real interleaving exactly like kickMember/leaveClan's own
+        // proof above: the FIRST transaction's own member-doc .get()
+        // pauses right after capturing "does not exist yet" but before
+        // returning — the SECOND call's own transaction runs to
+        // completion and commits entirely inside that window, then the
+        // first is released and must detect its read went stale, retry,
+        // re-read "already a member", and become a safe no-op.
+        final gate = Completer<void>();
+        firestore.gateFirstGet(() => gate.future);
+
+        final first = repo.joinClan(code: code, uid: uid, displayName: 'J');
+        await Future<void>.delayed(Duration.zero);
+
+        final second = repo.joinClan(code: code, uid: uid, displayName: 'J');
+        await second;
+
+        expect(
+          firestore.memberCountOf(code),
+          2,
+          reason: 'the second (unpaused) call should have committed its '
+              'single increment while the first was still paused',
+        );
+        expect(firestore.memberExists(code: code, uid: uid), isTrue);
+
+        gate.complete();
+        await first;
+
+        expect(
+          firestore.memberCountOf(code),
+          2,
+          reason: 'BUG (would fail without the fix): the first call must '
+              'detect its read of the member doc went stale, retry, '
+              're-read "already a member", and become a safe no-op '
+              'instead of incrementing memberCount a second time',
+        );
+      },
+    );
+
+    test(
+      '(b) two concurrent joinClan() calls for TWO DIFFERENT uids on the '
+      'SAME clan: both succeed, memberCount increments by exactly 2, '
+      'neither interferes with the other',
+      () async {
+        final firestore = _FakeTransactionFirestore();
+        final repo = ClanRepository(firestore: firestore);
+        const code = 'ABC123';
+        const uidA = 'joiner-a';
+        const uidB = 'joiner-b';
+
+        firestore.seedClan(code: code, memberCount: 1);
+
+        // Only the chronologically-first Transaction.get() across the
+        // whole store is gated — uidA's own read. uidB's join reads and
+        // writes an entirely different document, so it must complete
+        // without ever needing to wait on uidA's paused transaction —
+        // two different users joining the same clan are independent
+        // writes, not a conflict.
+        final gate = Completer<void>();
+        firestore.gateFirstGet(() => gate.future);
+
+        final first = repo.joinClan(code: code, uid: uidA, displayName: 'A');
+        await Future<void>.delayed(Duration.zero);
+
+        final second =
+            repo.joinClan(code: code, uid: uidB, displayName: 'B');
+        await second;
+
+        expect(
+          firestore.memberCountOf(code),
+          2,
+          reason: 'uidB\'s join must commit on its own, independent of '
+              'uidA\'s still-paused transaction',
+        );
+        expect(firestore.memberExists(code: code, uid: uidB), isTrue);
+
+        gate.complete();
+        await first;
+
+        expect(
+          firestore.memberCountOf(code),
+          3,
+          reason: 'uidA\'s join must also land its own single increment '
+              'once unpaused — two different users joining concurrently '
+              'must both be counted, exactly once each',
+        );
+        expect(firestore.memberExists(code: code, uid: uidA), isTrue);
+      },
+    );
+
+    test(
+      '(c) joinClan() when the uid is ALREADY a member is a safe no-op — '
+      'no double-count on a retry after the member doc already exists',
+      () async {
+        final firestore = _FakeTransactionFirestore();
+        final repo = ClanRepository(firestore: firestore);
+        const code = 'ABC123';
+        const uid = 'already-in-uid';
+
+        firestore.seedClan(code: code, memberCount: 5);
+        firestore.seedMember(code: code, uid: uid, exists: true);
+
+        await repo.joinClan(code: code, uid: uid, displayName: 'Already');
+
+        expect(
+          firestore.memberCountOf(code),
+          5,
+          reason: 're-entering a code you have already joined must never '
+              'increment memberCount again',
+        );
+      },
+    );
+
+    test(
+      '(d) joinClan() against a clan code that does not exist throws and '
+      'leaves state unchanged — no member doc created, no memberCount '
+      'written anywhere',
+      () async {
+        final firestore = _FakeTransactionFirestore();
+        final repo = ClanRepository(firestore: firestore);
+        const code = 'DOES-NOT-EXIST';
+        const uid = 'hopeful-uid';
+
+        await expectLater(
+          repo.joinClan(code: code, uid: uid, displayName: 'Hopeful'),
+          throwsA(isA<StateError>()),
+        );
+
+        expect(firestore.memberExists(code: code, uid: uid), isFalse);
+        expect(firestore.memberCountOf(code), 0);
+      },
+    );
+
+    test(
+      '(e) memberCount stays consistent across a realistic sequence of '
+      'concurrent and sequential joins — 3 concurrent new joins plus 1 '
+      'already-member retry lands on exactly base + 3',
+      () async {
+        final firestore = _FakeTransactionFirestore();
+        final repo = ClanRepository(firestore: firestore);
+        const code = 'ABC123';
+
+        firestore.seedClan(code: code, memberCount: 10);
+        firestore.seedMember(code: code, uid: 'existing', exists: true);
+
+        // No gate this time — proves the steady-state (no forced
+        // interleaving) path is just as correct as the forced-race paths
+        // above, for a realistic mixed batch: 3 genuinely new joins plus
+        // 1 retry of someone already in the clan.
+        await Future.wait([
+          repo.joinClan(code: code, uid: 'new-1', displayName: 'N1'),
+          repo.joinClan(code: code, uid: 'new-2', displayName: 'N2'),
+          repo.joinClan(code: code, uid: 'new-3', displayName: 'N3'),
+          repo.joinClan(code: code, uid: 'existing', displayName: 'E'),
+        ]);
+
+        expect(
+          firestore.memberCountOf(code),
+          13,
+          reason: 'exactly the 3 genuinely new members must be counted — '
+              'the already-existing member\'s retry must not add a 4th',
+        );
+        expect(firestore.memberExists(code: code, uid: 'new-1'), isTrue);
+        expect(firestore.memberExists(code: code, uid: 'new-2'), isTrue);
+        expect(firestore.memberExists(code: code, uid: 'new-3'), isTrue);
+      },
+    );
+  });
 }
 
 // ---------------------------------------------------------------------
@@ -663,6 +845,14 @@ class _FakeDocCell {
   bool exists;
   int version = 0;
   int memberCount = 0;
+  // Populated by `seedClan` (for a clan doc's `name`/`hostUid`, read by
+  // joinClan's plain, non-transactional `clanRef.get()`) and by a
+  // transaction's `set()` (for a member/membership doc's full payload) —
+  // added for the Core Clan Mechanics BUG #1 joinClan coverage below;
+  // kickMember/leaveClan never read either field, so this is additive.
+  String? name;
+  String? hostUid;
+  Map<String, dynamic>? data;
   _FakeDocCell({required this.exists});
 }
 
@@ -698,8 +888,21 @@ class _FakeTransactionFirestore implements FirebaseFirestore {
     _store.cellFor('clans/$code/members/$uid').exists = exists;
   }
 
-  void seedClan({required String code, required int memberCount}) {
-    _store.cellFor('clans/$code').memberCount = memberCount;
+  void seedClan({
+    required String code,
+    required int memberCount,
+    String? name,
+    String? hostUid,
+  }) {
+    final cell = _store.cellFor('clans/$code');
+    // kickMember/leaveClan never read `.exists`/`name`/`hostUid` on the
+    // clan doc itself (only the member doc), so setting these here is
+    // additive and doesn't change their behavior — it's what joinClan's
+    // own plain `clanRef.get()` existence-and-name check below needs.
+    cell.exists = true;
+    cell.memberCount = memberCount;
+    cell.name = name ?? 'Test Clan';
+    cell.hostUid = hostUid ?? 'someone-else';
   }
 
   void seedMembership({required String uid, required String code}) {
@@ -775,6 +978,27 @@ class _FakeDocumentReference implements DocumentReference<Map<String, dynamic>> 
   CollectionReference<Map<String, dynamic>> collection(String collectionPath) =>
       _FakeCollectionReference(store, '$path/$collectionPath');
 
+  // Plain, non-transactional read — added for joinClan's own
+  // `clanRef.get()` call (Core Clan Mechanics BUG #1 coverage below).
+  // kickMember/leaveClan never call this on a DocumentReference directly
+  // (only through `Transaction.get()`), so this is purely additive.
+  @override
+  Future<DocumentSnapshot<Map<String, dynamic>>> get([GetOptions? options]) async {
+    // Only a member-doc path consumes the shared interleaving gate (same
+    // scoping the original audit's throwaway fake used) — joinClan's own
+    // plain, non-transactional `clanRef.get()` must never accidentally
+    // eat the gate meant for a member-doc read, transactional or not.
+    final isMemberDoc = path.contains('/members/');
+    final gate = isMemberDoc ? store.consumeGetGate() : null;
+    final cell = store.cellFor(path);
+    final exists = cell.exists;
+    final data = cell.exists
+        ? (cell.data ?? {'name': cell.name, 'hostUid': cell.hostUid})
+        : null;
+    if (gate != null) await gate();
+    return _FakeDocumentSnapshot(exists: exists, data: data);
+  }
+
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
@@ -782,10 +1006,12 @@ class _FakeDocumentReference implements DocumentReference<Map<String, dynamic>> 
 class _FakeDocumentSnapshot implements DocumentSnapshot<Map<String, dynamic>> {
   @override
   final bool exists;
-  _FakeDocumentSnapshot({required this.exists});
+  final Map<String, dynamic>? _data;
+  // ignore: prefer_initializing_formals
+  _FakeDocumentSnapshot({required this.exists, Map<String, dynamic>? data}) : _data = data;
 
   @override
-  Map<String, dynamic>? data() => exists ? const <String, dynamic>{} : null;
+  Map<String, dynamic>? data() => _data ?? (exists ? const <String, dynamic>{} : null);
 
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -798,8 +1024,19 @@ class _FakeTransaction implements Transaction {
   // actually used by kickMember/leaveClan, kept for completeness).
   final Map<String, bool?> _pendingExistsWrites = {};
   final Map<String, int> _pendingMemberCountDelta = {};
+  // joinClan's own `transaction.set(memberDoc, ...)` /
+  // `transaction.set(membershipDoc, ...)` calls — kickMember/leaveClan
+  // never call `.set()` at all, so this is purely additive.
+  final Map<String, Map<String, dynamic>> _pendingSetWrites = {};
 
   _FakeTransaction(this.store);
+
+  // Precomputed once so `FieldValue.increment(n)`'s actual delta can be
+  // recovered via value equality (`FieldValue` has no public getter for
+  // it) — verified this equality holds by construction against real
+  // `FieldValue` instances before relying on it here.
+  static final _incrementByOne = FieldValue.increment(1);
+  static final _decrementByOne = FieldValue.increment(-1);
 
   @override
   Future<DocumentSnapshot<T>> get<T extends Object?>(
@@ -835,14 +1072,31 @@ class _FakeTransaction implements Transaction {
     Map<String, dynamic> data,
   ) {
     final ref = documentReference as _FakeDocumentReference;
-    // Scoped deliberately: `ClanRepository.kickMember`/`leaveClan` only
-    // ever call `.update()` with `{'memberCount': FieldValue.increment(-1)}`
-    // — verified by reading both methods before writing this fake — so
-    // this doesn't need to interpret `FieldValue` generically.
-    if (data['memberCount'] is FieldValue) {
+    // Scoped deliberately: `ClanRepository` only ever calls `.update()`
+    // with `{'memberCount': FieldValue.increment(n)}` where n is +1
+    // (joinClan) or -1 (kickMember/leaveClan) — verified by reading all
+    // three methods before writing this fake — so recovering the actual
+    // sign via value-equality against the two possible instances is
+    // sufficient without interpreting `FieldValue` generically.
+    final value = data['memberCount'];
+    if (value is FieldValue) {
+      final delta = value == _incrementByOne
+          ? 1
+          : (value == _decrementByOne ? -1 : 0);
       _pendingMemberCountDelta[ref.path] =
-          (_pendingMemberCountDelta[ref.path] ?? 0) - 1;
+          (_pendingMemberCountDelta[ref.path] ?? 0) + delta;
     }
+    return this;
+  }
+
+  @override
+  Transaction set<T>(
+    DocumentReference<T> documentReference,
+    T data, [
+    SetOptions? options,
+  ]) {
+    final ref = documentReference as _FakeDocumentReference;
+    _pendingSetWrites[ref.path] = Map<String, dynamic>.from(data as Map);
     return this;
   }
 
@@ -858,6 +1112,12 @@ class _FakeTransaction implements Transaction {
     for (final entry in _pendingExistsWrites.entries) {
       final cell = store.cellFor(entry.key);
       cell.exists = entry.value ?? false;
+      cell.version++;
+    }
+    for (final entry in _pendingSetWrites.entries) {
+      final cell = store.cellFor(entry.key);
+      cell.exists = true;
+      cell.data = entry.value;
       cell.version++;
     }
     for (final entry in _pendingMemberCountDelta.entries) {

@@ -298,12 +298,40 @@ service cloud.firestore {
         // users/{uid}.profile right now; see mirrorsOwnCosmetics's own
         // doc comment. `request.resource == null` is a delete (leaving
         // the clan) — unaffected by this check, same as before.
+        // Core Clan Mechanics audit (2026-08-28), BUG #2: neither rule
+        // below used to check the VALUE written to `role` at all — only
+        // that the write's cosmetics matched (own-row) or that `role`
+        // was the sole changed key (leader-updates-another-row). A
+        // member could self-elevate by editing their own existing
+        // roster row, or a real leader's promote action could be
+        // trusted to write any value including a fabricated 'leader'
+        // onto someone else. `actorRole()` above now makes a forged
+        // stored 'leader' harmless for AUTHORIZATION on a non-host uid,
+        // but that's a second line of defense, not a reason to leave the
+        // data itself writable to a lie — these two checks stop the
+        // fabricated value from ever being written in the first place.
         allow write: if request.auth != null && request.auth.uid == memberUid
-            && (request.resource == null || mirrorsOwnCosmetics(memberUid));
+            && (request.resource == null
+                || (mirrorsOwnCosmetics(memberUid)
+                    // A brand-new row (join, or the host's own row at
+                    // clan creation) may carry whatever role the Dart
+                    // model constructed it with — `createClan`'s own
+                    // separate rule on the clans/{code} doc already
+                    // guarantees hostUid == request.auth.uid for the
+                    // create-clan case, and joinClan always constructs
+                    // a fresh member with role 'member'. What matters
+                    // here is the EXISTING-row case: nothing about a
+                    // self-write may ever change `role` — an existing
+                    // member's own row can never rewrite its own role,
+                    // whatever it currently is, closing the direct
+                    // self-elevation path.
+                    && (resource == null
+                        || request.resource.data.role == resource.data.role)));
         allow update: if request.auth != null
             && request.auth.uid != memberUid
             && actorRole(code, request.auth.uid) == 'leader'
-            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role']);
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role'])
+            && request.resource.data.role in ['member', 'coLeader'];
         allow delete: if request.auth != null
             && request.auth.uid != memberUid
             && canKick(code, request.auth.uid, memberUid);
@@ -552,13 +580,33 @@ service cloud.firestore {
       return exists(/databases/$(database)/documents/clans/$(code)/members/$(uid));
     }
 
+    // Core Clan Mechanics audit (2026-08-28), BUG #2: this used to trust
+    // the STORED `role` field first and only fall back to `hostUid` when
+    // `role` was absent — so any member could be handed (or write onto
+    // their own row, see the `members/{memberUid}` `allow write` rule
+    // below) a forged `role: 'leader'` value and be treated as a genuine
+    // leader for every authorization check in this file (promote/demote,
+    // kick, disband, invite-management, ...). Proven two ways against the
+    // old function: a real leader legitimately updating ANOTHER member's
+    // `role` (the `allow update` rule below never checked the VALUE being
+    // written, only that `role` was the sole changed key) and a member
+    // writing a forged `role` onto their OWN row via `allow write` (no
+    // restriction on `role`'s value at all). Either path let the
+    // recipient then kick the real leader out of their own clan.
+    //
+    // Fixed by making `hostUid` — the one field nothing here lets a
+    // non-host ever set on themselves — the sole source of truth for
+    // 'leader' status: a stored `role` of 'leader' is now only honored
+    // when it came from the actual host; every other uid's stored role
+    // is trusted for 'coLeader'/'member' (legitimate demotion/promotion
+    // between those two still works exactly as before) but can never
+    // read back as 'leader' no matter what value is written to it.
     function actorRole(code, uid) {
+      let hostUid = get(/databases/$(database)/documents/clans/$(code)).data.hostUid;
       let memberPath = /databases/$(database)/documents/clans/$(code)/members/$(uid);
       let memberData = get(memberPath).data;
-      return ('role' in memberData)
-          ? memberData.role
-          : (uid == get(/databases/$(database)/documents/clans/$(code)).data.hostUid
-              ? 'leader' : 'member');
+      let storedRole = ('role' in memberData) ? memberData.role : 'member';
+      return uid == hostUid ? 'leader' : (storedRole == 'leader' ? 'member' : storedRole);
     }
 
     // Leader boleh menendang siapa saja kecuali dirinya sendiri (menendang

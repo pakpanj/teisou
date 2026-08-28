@@ -150,6 +150,31 @@ class ClanRepository {
 
   /// No-op if [uid] is already a member — re-entering a code you've
   /// already joined shouldn't double-count `memberCount`.
+  ///
+  /// Core Clan Mechanics audit (2026-08-28), BUG #1: used to be a plain
+  /// batch — a non-transactional `memberDoc.get()` existence pre-check
+  /// followed by an unconditional `FieldValue.increment(1)` — so two
+  /// concurrent calls for the same [uid] (a double-tap, or a client retry
+  /// after a network timeout) each independently saw "not yet a member"
+  /// and each incremented `memberCount`, corrupting it by +1 for what is
+  /// really a single join. Proven with a deterministic Completer-gated
+  /// fake Firestore (`test/clan_reentrancy_test.dart`'s "Join" group).
+  ///
+  /// Fixed the same way RISK-9 already fixed [kickMember]/[leaveClan]:
+  /// only the existence check that actually decides whether to write at
+  /// all ([memberDoc]) is read inside the transaction — [clanDoc] is
+  /// still read once, non-transactionally, purely for [clanName] and the
+  /// "does this code exist" check, exactly as before, since including it
+  /// in the transaction's own read set would make every concurrent join
+  /// by two genuinely DIFFERENT users retry against each other for no
+  /// reason (both would transactionally read the same clan doc). The
+  /// `memberCount` write stays a blind, un-read `FieldValue.increment`
+  /// inside the transaction, the same "blind write is safe here because
+  /// it's a pure additive transform" pattern [kickMember] already uses.
+  /// A concurrent second transaction that raced past its own read before
+  /// the first committed gets retried by Firestore's optimistic
+  /// concurrency control, re-reads, finds the member already present,
+  /// and becomes a safe no-op.
   Future<void> joinClan({
     required String code,
     required String uid,
@@ -160,34 +185,37 @@ class ClanRepository {
   }) async {
     final normalizedCode = code.trim().toUpperCase();
     final memberDoc = _membersOf(normalizedCode).doc(uid);
-    final existingMember = await memberDoc.get();
-    if (existingMember.exists) return;
+    final membershipDoc = _membershipsOf(uid).doc(normalizedCode);
+    final clanRef = _clans.doc(normalizedCode);
 
-    final clanDoc = await _clans.doc(normalizedCode).get();
-    if (!clanDoc.exists) {
+    final clanSnapshot = await clanRef.get();
+    if (!clanSnapshot.exists) {
       throw StateError('Clan dengan kode tersebut tidak ditemukan.');
     }
+    final clanName = clanSnapshot.data()?['name'] as String? ?? 'Clan';
 
-    final now = DateTime.now();
-    final clanName = clanDoc.data()?['name'] as String? ?? 'Clan';
-    final member = ClanMember(
-      uid: uid,
-      displayName: displayName,
-      photoUrl: photoUrl,
-      avatarType: avatarType,
-      avatarValue: avatarValue,
-      joinedAt: now,
-    );
-    final membership =
-        ClanMembership(code: normalizedCode, name: clanName, joinedAt: now);
+    await _firestore.runTransaction((transaction) async {
+      final memberSnapshot = await transaction.get(memberDoc);
+      if (memberSnapshot.exists) return;
 
-    final batch = _firestore.batch();
-    batch.set(memberDoc, member.toMap());
-    batch.set(_membershipsOf(uid).doc(normalizedCode), membership.toMap());
-    batch.update(_clans.doc(normalizedCode), {
-      'memberCount': FieldValue.increment(1),
+      final now = DateTime.now();
+      final member = ClanMember(
+        uid: uid,
+        displayName: displayName,
+        photoUrl: photoUrl,
+        avatarType: avatarType,
+        avatarValue: avatarValue,
+        joinedAt: now,
+      );
+      final membership =
+          ClanMembership(code: normalizedCode, name: clanName, joinedAt: now);
+
+      transaction.set(memberDoc, member.toMap());
+      transaction.set(membershipDoc, membership.toMap());
+      transaction.update(clanRef, {
+        'memberCount': FieldValue.increment(1),
+      });
     });
-    await batch.commit();
   }
 
   /// RISK-9 (closes RISK-8 BUG #2): used to be a plain batch — a
