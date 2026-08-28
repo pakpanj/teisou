@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
+import 'package:kana_master/data/models/kanji_entry.dart';
 import 'package:kana_master/data/repositories/kanji_combo_repository.dart';
 import 'package:kana_master/data/repositories/kanji_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_category_repository.dart';
@@ -373,6 +374,169 @@ void main() {
       expect(readingQuestionsChecked, greaterThan(100));
     });
   });
+
+  group('Q3 defense-in-depth: pool-search fallback must also reject an '
+      'invalid start mora, not just generateMutationDistractors', () {
+    test('a pool reading that starts with an invalid mora (ん) cannot leak '
+        'into a reading question\'s distractor options via '
+        '_pickReadingDistractors\'s pool-search top-up — even though '
+        'generateMutationDistractors\'s own output was already fully '
+        'guarded (see the groups above)', () async {
+      // The mutation path (generateMutationDistractors) already filters
+      // every candidate it produces through isValidKotobaStart. But
+      // _pickReadingDistractors also tops up any shortfall from the raw
+      // pool via _pickCloseDistractors, which used to hand back whatever
+      // was in the pool with no such filter — a second, independent path
+      // to the final options list that the module's own design intent
+      // (see isValidKotobaStart's doc comment) says should be guarded the
+      // same way. 和's reading わ is single-mora and structurally limited
+      // (no dakuten pair, not in any vowel-row group) so it always needs
+      // the pool-search top-up; 運's onyomi is deliberately set to んき — a
+      // reading real Japanese would never have (confirmed: the actual
+      // bundled dataset has zero such entries — see the content-integrity
+      // group below) — to prove the CODE has a real defense against it
+      // independent of today's clean data.
+      final pool = [
+        KanjiEntry(
+          id: 'q3-k1',
+          character: '和',
+          jlptLevel: JlptLevel.n5,
+          onyomi: const ['わ'],
+          kunyomi: const [],
+          meanings: const ['peace'],
+          strokeCount: 8,
+          relatedBunpou: const [],
+        ),
+        KanjiEntry(
+          id: 'q3-k2',
+          character: '運',
+          jlptLevel: JlptLevel.n5,
+          onyomi: const ['んき'],
+          kunyomi: const [],
+          meanings: const ['luck'],
+          strokeCount: 12,
+          relatedBunpou: const [],
+        ),
+        KanjiEntry(
+          id: 'q3-k3',
+          character: '間',
+          jlptLevel: JlptLevel.n5,
+          onyomi: const ['かん'],
+          kunyomi: const [],
+          meanings: const ['interval'],
+          strokeCount: 12,
+          relatedBunpou: const [],
+        ),
+      ];
+      const labels = KanjiComboLabels();
+
+      var sawInvalidStartDistractor = false;
+      for (var seed = 0; seed < 200; seed++) {
+        final repo = KanjiComboRepository(
+          kanjiRepository: _FixedPoolKanjiRepository(pool),
+          kotobaRepository: KotobaRepository(),
+          kotobaCategoryRepository: KotobaCategoryRepository(),
+          random: Random(seed),
+        );
+        final questions = await repo.generateQuestions(
+          JlptLevel.n5,
+          combination: false,
+          labels: labels,
+          count: 3,
+        );
+        for (final q in questions) {
+          if (q.promptLabel != labels.reading) continue;
+          for (var i = 0; i < q.options.length; i++) {
+            if (i == q.correctIndex) continue; // only distractors — the
+            // correct answer legitimately being 'んき' when 運 itself is
+            // the kanji asked is a data-integrity question, covered
+            // separately by the group below, not a distractor-generation
+            // bug.
+            final option = q.options[i];
+            if (option.isNotEmpty && option[0] == 'ん') {
+              sawInvalidStartDistractor = true;
+            }
+          }
+        }
+      }
+
+      expect(
+        sawInvalidStartDistractor,
+        isFalse,
+        reason: 'a distractor option started with the invalid mora ん — '
+            '_pickReadingDistractors\'s pool-search fallback must filter '
+            'through isValidKotobaStart the same way the mutation path '
+            'does',
+      );
+    });
+  });
+
+  group('Q3 content integrity: the real bundled dataset never has an '
+      'onyomi/kunyomi/compound reading that fails isValidKotobaStart', () {
+    test('every real kanji onyomi/kunyomi is a plausible word start', () async {
+      final kanji = await KanjiRepository().getAll();
+      final bad = <String>[];
+      for (final k in kanji) {
+        if (k.placeholder) continue;
+        for (final r in [...k.onyomi, ...k.kunyomi]) {
+          if (r.isNotEmpty && !isValidKotobaStart(r)) {
+            bad.add('${k.id} (${k.character}): "$r"');
+          }
+        }
+      }
+      expect(
+        bad,
+        isEmpty,
+        reason: 'these kanji readings start with an invalid mora — a '
+            'future content-authoring pass introduced exactly the kind '
+            'of bad reading Q3\'s audit found this module has no runtime '
+            'defense against when it\'s the CORRECT answer (only '
+            'distractors are guarded): ${bad.join(', ')}',
+      );
+    });
+
+    test('every real compound-eligible Kotoba reading is a plausible word '
+        'start', () async {
+      final categoryRepo = KotobaCategoryRepository();
+      final kotobaRepo = KotobaRepository();
+      final compoundPattern = RegExp(r'^[一-鿿]{2,3}$');
+
+      final categories = await categoryRepo.getAll();
+      final bad = <String>[];
+      var checked = 0;
+      for (final category in categories) {
+        if (!category.available) continue;
+        final words = await kotobaRepo.getVocabCategory(category.id);
+        for (final w in words) {
+          if (w.placeholder) continue;
+          if (!compoundPattern.hasMatch(w.kanji ?? '')) continue;
+          checked++;
+          if (w.reading.isNotEmpty && !isValidKotobaStart(w.reading)) {
+            bad.add('${w.id} (${w.kanji}): "${w.reading}"');
+          }
+        }
+      }
+      expect(checked, greaterThan(500), reason: 'sanity check — this must '
+          'actually walk the real compound-eligible pool, not an empty one');
+      expect(
+        bad,
+        isEmpty,
+        reason: 'these Kotoba compound readings start with an invalid '
+            'mora: ${bad.join(', ')}',
+      );
+    });
+  });
+}
+
+class _FixedPoolKanjiRepository implements KanjiRepository {
+  final List<KanjiEntry> pool;
+  _FixedPoolKanjiRepository(this.pool);
+
+  @override
+  Future<List<KanjiEntry>> getByLevel(JlptLevel level) async => pool;
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 int _moraCount(String reading) {

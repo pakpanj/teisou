@@ -338,10 +338,23 @@ class KanjiComboRepository {
   /// [isValidKotobaStart]), the shortfall is topped up from [poolCandidates]
   /// via the old edit-distance closeness ranking - the pool always has
   /// hundreds of other readings per level, so this always reaches [n].
+  ///
+  /// Q3 defense-in-depth: [poolCandidates] comes straight from the bundled
+  /// Kanji/Kotoba datasets, not from [generateMutationDistractors]'s own
+  /// output, so it was never actually passed through [isValidKotobaStart] —
+  /// a pool entry whose own reading happened to start with an invalid mora
+  /// (today's real dataset has none, verified by a full scan, but nothing
+  /// enforced that) could reach this fallback and leak straight into a
+  /// displayed option, even though the mutation path above is fully
+  /// guarded. The filter below closes that second path the same way the
+  /// first already is — see `test/kanji_combo_distractor_test.dart`'s "Q3
+  /// pool fallback" group for the reproduction and regression coverage.
   Set<String> _pickReadingDistractors(String correctAnswer, Iterable<String> poolCandidates, int n) {
     final mutated = generateMutationDistractors(correctAnswer, n, _random);
     if (mutated.length >= n) return mutated;
-    final remainingPool = poolCandidates.where((c) => c != correctAnswer && !mutated.contains(c));
+    final remainingPool = poolCandidates.where(
+      (c) => c != correctAnswer && !mutated.contains(c) && isValidKotobaStart(c),
+    );
     final topUp = _pickCloseDistractors(correctAnswer, remainingPool, n - mutated.length);
     return {...mutated, ...topUp};
   }
