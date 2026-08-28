@@ -1203,6 +1203,276 @@ was not touched.
 section plus the two corrections above) — `firestore.rules` itself was
 deployed, not edited.
 
+## Rank-Skip Exam Audit (2026-08-29) — AUDIT ONLY, 2 new bugs found
+
+Read-only, end-to-end audit of the rank-skip exam flow (UI →
+`RankSkipService` → `startRankSkipExam`/`submitRankSkipExam` Cloud
+Functions → `battleStars.promoteToTierFloor` → Firestore →
+`firestore.rules`), per the same audit-only discipline as the Core
+Clan Mechanics audit above: findings are reported, not fixed, and no
+production/rules/source file was modified. Both findings below were
+proven against the current code with a deterministic, purpose-built
+in-process fake — **no new RISK number self-assigned**, per
+instruction.
+
+### All rank-skip mutation paths (item 1)
+
+Exactly two, both Cloud Functions (`functions/rank_skip.js`), both
+`onCall`:
+1. **`startRankSkipExam`** — writes `rankSkipExams/{uid}` (`session`
+   object: sessionId/tier/cardIds/startedAt; passes through whatever
+   `lockedUntil` it read).
+2. **`submitRankSkipExam`** — writes `rankSkipExams/{uid}` (deletes
+   `session`; sets `lockedUntil` only on failure) and, only on a pass,
+   calls `battleStars.promoteToTierFloor(uid, tier)`, which writes
+   `users/{uid}.cardGameRank` inside its own transaction and
+   best-effort mirrors to `leaderboard/{uid}`.
+
+The Dart client (`RankSkipService`, `rank_skip_screen.dart`) makes no
+Firestore write of its own anywhere in this flow — it only calls the
+two functions above and reads back their response. Confirmed by
+reading both files in full.
+
+### Authorization findings (item 2)
+
+- **SAFE** — both functions check `request.auth.uid`, throw
+  `unauthenticated` otherwise.
+- **SAFE — eligibility**: `startRankSkipExam` derives the caller's
+  *current* tier from `battleStars._internal.readRank(userSnap.data())`
+  (server-read, not client-supplied) and only allows `targetTier`
+  values in `tiersAbove(current.tier)` — a client cannot skip down or
+  re-target the tier already held.
+- **SAFE — ownership**: `examRef(uid)` is always keyed by
+  `request.auth.uid`, never a client-supplied id, so a user can never
+  read/submit against another user's exam session.
+- **SAFE — target-tier integrity**: `submitRankSkipExam` promotes using
+  `session.tier` (the value `startRankSkipExam` itself stored
+  server-side), never a tier re-supplied by the client at submit time
+  — a client cannot request `targetTier: 'gold'` at start and then
+  claim a promotion to `emerald` at submit.
+- **SAFE — cannot forge a result**: grading is 100% server-side
+  (`isCorrect()`, reusing `battle_scoring`'s own rule so an exam cannot
+  mark right what a battle would mark wrong); the client only ever
+  sends raw typed `answers`, never a score or a pass/fail boolean.
+  `rankSkipExams/{uid}` (which holds the answer key) is fully sealed in
+  `firestore.rules` (`allow read, write: if false;` — confirmed by
+  reading the rule directly, read-only per instruction) — a client
+  cannot read the key nor write a forged session/result.
+- **SAFE — `cardGameRank` cannot be client-written**: confirmed in
+  `firestore.rules`'s `users/{uid}` `allow create`/`allow update` rules
+  — `!('cardGameRank' in request.resource.data)` on create,
+  `request.resource.data.get('cardGameRank', null) ==
+  resource.data.get('cardGameRank', null)` on update (client writes
+  must leave it byte-identical). The only writer is
+  `battleStars.promoteToTierFloor`/`onBattleMatchConcluded`, both
+  Admin SDK, not subject to rules at all.
+
+### Race / atomicity findings (items 5-11, 15-16)
+
+- **BUG — TOCTOU, `startRankSkipExam` vs `submitRankSkipExam` racing on
+  `rankSkipExams/{uid}` (P2, PROVEN BY TEST)**. Neither handler uses a
+  Firestore transaction on this document — both read it with a plain
+  `ref.get()` and write with a plain `ref.set(..., {merge:true})`.
+  `startRankSkipExam` always re-asserts whatever `lockedUntil` value it
+  read (`lockedUntil: existing.lockedUntil || null`) as part of its own
+  write. If a `startRankSkipExam` call reads the still-unlocked state,
+  then a concurrent `submitRankSkipExam` call fails and writes a fresh
+  `lockedUntil`, then the paused `startRankSkipExam` call finally
+  writes — its write lands **last**, using its **stale** (pre-fail,
+  still-null) `lockedUntil`, silently wiping the cooldown the failing
+  submission had just set. Worse: this same write also installs a
+  **brand-new exam session** in the same commit — so the end state
+  isn't just "cooldown gone," it's "cooldown gone AND a fresh attempt
+  is already loaded and ready." A player (or a trivial script) firing a
+  `startRankSkipExam` call immediately alongside every failing
+  `submitRankSkipExam` call can defeat the 24-hour cooldown
+  indefinitely — the intended anti-grinding throttle is not just
+  weakened but fully bypassable on demand. This does **not** let
+  anyone forge a pass or an unearned promotion — every individual
+  attempt is still genuinely, correctly graded server-side — it only
+  removes the cost/friction the cooldown exists to impose. Severity is
+  P2 (gameplay-integrity, not a data-corruption or unauthorized-access
+  bug) rather than P1 for that reason.
+- **Related design gap (INFO, not separately proven — evident from
+  reading the code)**: `startRankSkipExam` has **no check at all** for
+  an already-in-progress, unexpired session — only the `lockedUntil`
+  cooldown is checked. This means a player can call
+  `startRankSkipExam` repeatedly and sequentially (no race needed) to
+  discard an exam they're unsure of and draw a fresh one, at zero cost,
+  as long as they never actually submit a losing attempt. Combined
+  with the TOCTOU bug above, this means the *entire* 24-hour cooldown
+  mechanic is effectively opt-in: a player who avoids submitting (or
+  who races a start against a losing submit) never pays it. This is
+  the same underlying "no per-session commitment on `startRankSkipExam`"
+  root cause as the TOCTOU bug, not a second independent bug — recorded
+  together so a future fix addresses both from the same root (e.g. a
+  transactional start that also rejects starting over an unexpired
+  session, and/or making the whole read-modify-write on
+  `rankSkipExams/{uid}` a single transaction for both handlers).
+- **BUG — atomicity gap: a promotion failure after a genuine pass
+  strands the player (P2, PROVEN BY TEST)**. `submitRankSkipExam`
+  deletes the exam `session` (`ref.set({session: FieldValue.delete(),
+  ...})`) **before** calling `battleStars.promoteToTierFloor`. If that
+  call throws (a transient Firestore error, for instance —
+  `promoteToTierFloor` itself is a solid, correctly-idempotent
+  transaction; the risk here is any ordinary failure *reaching* it, not
+  a flaw inside it), the whole `submitRankSkipExam` call rejects to the
+  client, but the session is already gone. The player genuinely passed,
+  was never promoted, is not locked out either (no cooldown on a pass
+  branch), and has no way to retry the *same* graded attempt — they
+  must retake the entire 20-question exam from scratch, and nothing
+  anywhere records that they once passed. Not an attacker-facing
+  exploit; a player-hostile reliability gap.
+- **SAFE / PROVEN SAFE — double-promotion from concurrent submits**:
+  `promoteToTierFloor` (`battle_stars.js`) is a genuine transaction that
+  reads current rank and only promotes if `totalStars(current) <
+  floor`, so two (or more) concurrent `submitRankSkipExam` calls for the
+  same passing session each independently calling
+  `promoteToTierFloor` converge to exactly one real promotion — every
+  call after the first correctly reads the already-promoted state and
+  no-ops. This is the same transaction-conflict-and-retry contract
+  already proven throughout this project's earlier fixes (RISK-9,
+  Core Clan Mechanics BUG #1) — verified here by direct code reading of
+  `promoteToTierFloor`'s transaction body (reads `current`, checks the
+  floor, conditionally writes), not re-proven with a fresh test, since
+  `battle_stars.test.js` already covers the ladder arithmetic and the
+  transaction shape is identical to what earlier phases already
+  deterministically proved race-safe elsewhere in this codebase.
+- **SAFE — session cannot be consumed twice**: `submitRankSkipExam`
+  unconditionally deletes `session` as part of its own write (pass or
+  fail), and a later call with the same `sessionId` finds
+  `session.sessionId !== sessionId` (session gone) and throws
+  `failed-precondition`. Even under N-way concurrent submission on the
+  *same* session (more than two racers), every promotion attempt still
+  converges safely per the point above — the safety property comes
+  from `promoteToTierFloor`'s own idempotency, not from any dedup on
+  the exam side, but the net effect is the same: no double reward.
+- **SAFE — expiry has no exploitable asymmetry found**: an expired
+  session (`SESSION_MINUTES` elapsed) is cleared with no cooldown, by
+  explicit design ("expiring is not failing" — read directly from the
+  code's own doc comment). No forced-race test was built for this
+  specific path; classified SAFE from direct reading, not PROVEN SAFE.
+
+### Idempotency findings (item 11) — folded into the atomicity section
+above; summary: `promoteToTierFloor` is genuinely idempotent (SAFE/
+PROVEN via code reading, not re-tested), the exam-session lifecycle
+itself is not (the two bugs above), and no XP/coin system is touched
+by this flow at all (confirmed: `rank_skip.js` has zero references to
+`award_xp`/`spend_coins`/any XP or coin field — item 19 is a clean
+**SAFE, no cross-system interaction exists**).
+
+### Rules findings (item 17)
+
+- **SAFE** — `rankSkipExams/{uid}` is sealed at the top level
+  (`match /rankSkipExams/{uid} { match /{document=**} { allow read,
+  write: if false; } }`), sitting entirely outside `users/{uid}`'s own
+  match tree — it was never exposed by (and is unaffected by) the
+  Core Clan Mechanics session's recursive-wildcard fix, since it isn't
+  under that wildcard's path at all. Confirmed by reading the rule
+  directly (read-only, per instruction — not modified).
+- **SAFE** — `cardGameRank` write-protection on `users/{uid}` (see
+  Authorization findings above) is the second, independent layer that
+  would still hold even if `rankSkipExams` were somehow compromised —
+  a client still could not write a promotion directly.
+
+### Test gaps (item 6/20)
+
+- **`functions/rank_skip.test.js` (the only existing test file) covers
+  ONLY the pure, exported `_internal` helpers** (`poolFor`, `sample`,
+  `isCorrect`, `tiersAbove`) — **zero coverage of either `onCall`
+  handler itself**, and zero coverage of any concurrency, atomicity, or
+  idempotency property. Every finding above required a purpose-built
+  temporary test to even exercise the real handlers.
+- **No dependency-injection seam** — unlike `spend_coins.js`/
+  `award_xp.js`/`subscription_backstop.js` (which all take an
+  injectable `firestore`/`dbInstance` option specifically so a test can
+  substitute a fake), `rank_skip.js`'s `db()` calls `getFirestore()`
+  directly with no override point. This audit's temporary test worked
+  around it via a `require.cache`-style substitution of
+  `firebase-admin/firestore`'s exported `getFirestore` (confirmed
+  isolated to its own file — Node's test runner runs each file in its
+  own worker, verified by running the full 317-test suite together and
+  seeing only this audit's own 2 deliberate failures, no leakage into
+  any other file) — the same technique `spend_coins.js`'s own doc
+  comment says this codebase already used before that file grew a
+  proper seam. A permanent fix phase would likely want the same seam
+  added to `rank_skip.js`.
+- **No client-side reentrancy guard on `_start`/`_submit`**
+  (`rank_skip_screen.dart`) — unlike every purchase/social-mutation
+  button already fixed elsewhere in this app (RISK-4/5/8/9), neither
+  method has an early-return guard checking "already in flight" before
+  its first `setState`; the only protection is that `_phase ==
+  working` swaps the whole tier-choice/answer UI out for a bare
+  spinner once the rebuild lands — the same shape that was previously
+  proven exploitable elsewhere in this app for a same-frame double-tap,
+  before each of those was fixed with an explicit guard. Not
+  independently proven exploitable here (not attempted — the SERVER-side
+  findings above already show a double-`submit()` is largely safe via
+  `promoteToTierFloor`'s idempotency, and a double-`start()`'s
+  consequence is covered by the TOCTOU/no-session-lock finding already
+  reported), but flagged since it's inconsistent with this app's own
+  established convention and unverified. **P3 / TEST GAP, not
+  separately classified as its own BUG.**
+
+### Temporary audit files (item 7)
+
+- `functions/_audit_rank_skip_toctou.test.js` — 3 tests: the TOCTOU
+  proof (fails against current code), the atomicity/promotion-failure
+  proof (fails against current code), and a sequential control
+  (correctly passes, confirming the cooldown mechanism itself works
+  and the bug is specifically about the race). Contains its own small,
+  purpose-built in-process Firestore fake (deliberately not the shared
+  `functions/test_helpers/fake_firestore.js`, since that fake's gating
+  hook only applies inside `runTransaction`'s retry loop and
+  `rank_skip.js`'s two handlers never use a transaction on
+  `rankSkipExams/{uid}` at all — itself one of this audit's findings).
+  **Not committed**, per instruction — kept `_audit_`-prefixed pending
+  a fix phase.
+
+### Test results (item 8)
+
+- `functions/rank_skip.test.js` (pre-existing, unmodified): 6/6 pass.
+- `functions/battle_stars.test.js` (pre-existing, unmodified): 16/16
+  pass — re-run to confirm `promoteToTierFloor`'s own ladder-arithmetic
+  coverage is unaffected.
+- `functions/_audit_rank_skip_toctou.test.js` (new, temporary): 3
+  tests — **2 fail as designed** (the TOCTOU proof and the atomicity
+  proof, both correctly reproducing their respective bug against
+  current, unmodified code), **1 passes** (the sequential control).
+- Full `functions/` suite (`node --test *.test.js`, includes the
+  temporary file above): **317 total, 315 pass, exactly the 2
+  deliberate audit failures fail** — confirms zero regression anywhere
+  else and confirms the `require.cache` substitution technique did not
+  leak into any other test file.
+- No Dart test run was needed — the client-side files read
+  (`rank_skip_service.dart`, `rank_skip_screen.dart`) make no Firestore
+  writes of their own, so there was nothing Dart-side to prove with a
+  new test; existing Dart suite left untouched by this audit.
+
+### Production code modified
+
+**None.** No `firestore.rules`, no `functions/rank_skip.js`, no
+`functions/battle_stars.js`, no Dart source. This was audit-only, per
+instruction.
+
+### Recommended next phase (not started)
+
+Two real bugs proven, both P2, both rooted in the same place —
+`rankSkipExams/{uid}`'s read-modify-write not being atomic:
+1. `startRankSkipExam`: convert to a transaction that reads
+   `lockedUntil` *and* checks for an unexpired in-progress session
+   inside the same transaction as its own write, closing both the
+   TOCTOU race and the free-retry design gap in one fix.
+2. `submitRankSkipExam`: keep the session (or its outcome) intact
+   until `promoteToTierFloor` actually commits, so a downstream
+   failure doesn't strand a genuinely-passed attempt.
+Both would benefit from `rank_skip.js` growing the same
+`options.firestore` injection seam `spend_coins.js`/`award_xp.js`
+already have, so the fix's own regression tests don't need a
+`require.cache` workaround. RISK-3's subscription backstop was not
+touched by this audit and its scheduled-invocation checkpoint remains
+a separate, unrelated pending item.
+
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
 Read-only, end-to-end audit of all 13 core Clan mutation paths (create/
