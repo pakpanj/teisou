@@ -28,6 +28,7 @@ in place rather than leaving two contradictory rows.
 | Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
 | **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) + RISK-3 index + RISK-3 Functions all deployed 2026-08-28; RISK-3 dry-run invocation still pending; AdMob/verifyPurchase found already live (pre-existing); Play purchase still pending** (see §B for the fully current state — this row lagged one update, corrected here) |
 | **Core Clan Mechanics Audit** | 13 mutation paths, authorization/atomicity/idempotency/capacity/role-transitions, against real code + real Rules emulator | ✅ **BOTH P1 bugs FIXED (commit `b5fbb10`) — role-escalation `firestore.rules` fix DEPLOYED 2026-08-28; `joinClan` transaction fix CODE COMPLETE but NOT yet in a released app build** (production `memberCount` corruption audit: UNABLE TO AUDIT, see Production Readiness §E — no read-only Firestore query mechanism available in this environment) |
+| **`awardTopGlobalCoins` Audit** | Weekly Top-Global coin payout — authorization/ranking-trust/idempotency/concurrency/economic-safety, against real code + real Rules emulator | 🔴 **AUDIT COMPLETE 2026-08-29 — 1 new P0 bug PROVEN**: `leaderboard/{uid}.globalScore` (the payout's sole ranking input) has NO `firestore.rules` protection — any client can forge their own rank and be automatically paid real coins — not fixed yet, no new RISK number assigned, awaiting a scheduled fix phase |
 
 ## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
@@ -2106,6 +2107,334 @@ No AdMod/Play Console action. No Firestore write, read, or query of
 any kind was performed (Task A concluded unable-to-audit before
 reaching any data access). No Functions/Rules deploy. No destructive
 git command. No new RISK opened. No additional bug fixed in this task.
+
+## `awardTopGlobalCoins` Audit (2026-08-29) — AUDIT ONLY, 1 new P0 bug PROVEN
+
+Read-only/inspection-only, end-to-end audit of the weekly Top-Global
+coin payout (`functions/award_top_coins.js`: leaderboard rank source →
+`awardTopGlobalCoinsOnce` → Firestore reads/writes → `coins` balance →
+`weeklyCoinAwards/{isoWeek}` idempotency marker → `firestore.rules`).
+No source or rules changed — the finding below is reported, not fixed,
+per explicit instruction. **No new RISK number self-assigned** — left
+for the user to decide when a fix phase is scheduled, matching the
+Core Clan Mechanics audit's own precedent.
+
+### Total mutation/award paths audited: 1
+
+`awardTopGlobalCoinsOnce(db, weekId)` is the only place this feature
+ever writes anything. There is no client entry point at all —
+`awardTopGlobalCoins` is `onSchedule({schedule: "every monday 00:00",
+timeZone: "Asia/Jakarta"}, ...)`, exported in `functions/index.js` as
+that exact scheduled function (`exports.awardTopGlobalCoins =
+require("./award_top_coins").awardTopGlobalCoins;`) — no `onCall`/
+`https` wrapper exists anywhere for it, confirmed by reading the whole
+file and its one export.
+
+### 1. Authorization — SAFE (the function itself)
+
+**CONFIRMED FROM CODE.** `awardTopGlobalCoins` cannot be invoked by any
+client, authenticated or not — it is a Cloud Scheduler trigger with no
+callable counterpart, no `request`/`request.auth` parameter of any
+kind (the handler takes zero arguments), and no ranking input is ever
+supplied by a caller — `weekId` is computed server-side from
+`new Date()`, and the winner list comes from a server-side Firestore
+query with no client-controllable filter. A normal user cannot choose
+their own uid/rank/score/reward amount **through this function**.
+
+### 2. Reward authority — BUG, the ranking INPUT is not trustworthy (P0, PROVEN BY TEST)
+
+**File/function**: `functions/award_top_coins.js`,
+`awardTopGlobalCoinsOnce` (line 48-52: `db.collection("leaderboard")
+.orderBy("globalScore", "desc").limit(REWARDS.length).get()`) and
+`firestore.rules`, the `leaderboard/{uid}` `allow create`/`allow
+update` rules (line 176-224).
+
+**Root cause**: `awardTopGlobalCoinsOnce` ranks purely by
+`leaderboard/{uid}.globalScore` — and `globalScore` has **no
+protection at all** in `firestore.rules`. The same rule block
+explicitly locks five `cardGame*` fields and `globalPoints`/
+`globalPointsUpdatedAt` (comparing before-vs-after value on `allow
+update`, forbidding the field's presence on `allow create`) — the
+exact pattern that WOULD also protect `globalScore` — but `globalScore`
+itself is never named in any rule condition anywhere in the file
+(confirmed: `grep -n "globalScore" firestore.rules` returns exactly
+one hit, and it's inside a **comment**, not a rule, at line
+265-266 — which itself explicitly states, in the developers' own
+words: *"kepercayaan yang sama seperti `leaderboard/{uid}.globalScore`,
+yang juga bisa ditulis apa saja oleh pemiliknya tanpa validasi
+server-side atas angka yang ditulis"* — "the same trust as
+`leaderboard/{uid}.globalScore`, which can also be written as anything
+by its owner with no server-side validation of the number written." So
+this codebase already knew and accepted this gap for `globalScore`'s
+use as a **cosmetic/display** ranking number (for the `clans/{code}`
+`memberCount`/`totalScore` trust decision this comment is actually
+explaining) — but `award_top_coins.js` silently repurposes that SAME
+untrusted field as the sole determinant of a **real, weekly, automatic
+coin payout** (500/300/100 coins), a consequence this codebase's own
+accepted-tradeoff reasoning never appears to have been re-evaluated
+against.
+
+**Any authenticated client can, with a single ordinary Firestore write
+to their own document, guarantee themselves 1st place** (and, with a
+second/third throwaway anonymous account — trivial in this app, which
+already supports anonymous sign-in — all of 1st through 3rd) on the
+Top Global leaderboard, and be automatically paid real coins the next
+time the scheduled function runs. No special tooling, no exploit of
+`award_top_coins.js` itself is needed — just a plain `setDoc`/
+`updateDoc` on `leaderboard/{own-uid}` with an inflated `globalScore`.
+
+**Proof — Firestore Rules Emulator** (`firestore_rules_tests/
+_audit_award_top_coins_globalScore.test.js`, temporary, not
+committed), against the **real Firestore Rules CEL engine**, **3/3
+`assertSucceeds`/`assertFails` as predicted**:
+1. An ordinary authenticated user can `setDoc` their own
+   `leaderboard/{uid}` with `globalScore: 999999999` — **succeeds**.
+2. The same user can later `updateDoc` it upward again
+   (`globalScore: 1000000000`) — **succeeds**.
+3. **Contrast, same document, same user**: writing `cardGameTier` or
+   `globalPoints` on the same doc **correctly fails** — proving the
+   gap is specific to `globalScore`, not a broken test or a
+   rules-loading problem.
+
+**A safer alternative metric already exists in the same document and
+is already protected**: `globalPoints` (Formula C, per
+`functions/global_points.js` and the rules file's own comment at line
+178-188) is written **only** by Cloud Functions
+(`onKanaExamHistoryCreated` and three siblings, Admin SDK) and is
+already locked down by the exact same rule block `award_top_coins.js`
+could have ranked by instead — it simply doesn't. This wasn't
+independently verified as "would also be exploit-free if substituted"
+(out of scope for an audit-only pass — substituting the ranking field
+would be a fix, not a finding), but it's worth recording as the most
+obvious remediation candidate for a future fix phase.
+
+**Severity: P0.** This is not a display bug or a cosmetic-leaderboard
+concern (which is the register the original `globalScore`-trust
+decision was accepted in) — it is a live path to minting real in-game
+currency with a single client-side Firestore write and no
+authentication bypass, no rate limit beyond "once per calendar week
+per exploited account," and repeatable indefinitely with throwaway
+anonymous accounts.
+
+### 3. Idempotency — SAFE, PROVEN BY TEST
+
+**File/function**: `awardTopGlobalCoinsOnce`'s own transaction (reads
+`weeklyCoinAwards/{weekId}` inside the transaction; if it already
+exists, returns with zero writes; otherwise queues the marker write
+AND every winner's `FieldValue.increment(reward)` in the SAME
+transaction).
+
+**Proof** (`functions/_audit_award_top_coins.test.js`, temporary, not
+committed, using the shared `functions/test_helpers/fake_firestore.js`
+with its `beforeCommit` forced-interleaving hook — the same technique
+already established for `spend_coins.js`/`iap.js`/
+`global_points_reliability.test.js`, not a bare `Promise.all()`),
+**4/4 pass**:
+- (a) Two genuinely concurrent runs of the SAME weekly job converge to
+  **exactly one** award — gold/silver/bronze each receive their reward
+  exactly once, not doubled, verified by reading the final `coins`
+  balance back, not just trusting the function's return value.
+- (b) A retry after the marker already exists is a safe no-op — no
+  coins re-credited.
+- (c) A genuinely different, later week correctly pays out again — the
+  guard is per-week, not a one-time-ever lock.
+- (d) Fewer than 3 real leaderboard entries: only the real entries get
+  paid, no crash, no phantom 3rd-place award.
+
+**This confirms the FUNCTION's OWN mechanics are sound** — the P0
+finding above is entirely about the untrusted INPUT to a correctly-
+built, correctly-atomic payout mechanism, not a flaw in the mechanism
+itself.
+
+### 4. Concurrency / race condition — SAFE, PROVEN BY TEST
+
+Covered by the same proof as idempotency above (scenarios A/B/D from
+the task's own checklist are the same underlying property for this
+single-transaction-covers-everyone design — there is no per-user
+sub-transaction to race independently, since all winners are decided
+and paid inside one transaction per invocation). Scenario C (retry
+after timeout) is CONFIRMED FROM CODE: if the function dies before the
+transaction ever commits, nothing was written at all (safe to retry
+fresh); if it dies after, the marker+coins already committed atomically
+and a fresh invocation correctly no-ops. Scenario E (ranking evaluation
+racing the reward write) is CONFIRMED FROM CODE: the `topSnap` query
+happens once, outside the transaction, and its result (`winners`) is
+closed over by the transaction callback and reused unchanged across
+any retry — a retry re-attempts the SAME decision, it never re-derives
+a different one mid-flight, which is the correct behavior for
+idempotency (not a bug).
+
+### 5. Economic safety — mixed: mechanism SAFE, ranking input BUG (see §2)
+
+- Reward amount cannot be client-controlled: **SAFE** — `REWARDS =
+  [500, 300, 100]` is a fixed server-side constant, never read from
+  any request.
+- Reward cannot become negative/incorrect: **SAFE** — always
+  `FieldValue.increment(REWARDS[i])`, `i` bounded by
+  `REWARDS.length` (3).
+- One eligible user cannot receive another user's reward: **SAFE** —
+  `winners[i].uid` comes directly from the query's own document ids,
+  never remapped.
+- Coins cannot be awarded twice for the same week: **SAFE, PROVEN BY
+  TEST** (§3).
+- A user cannot repeatedly claim the SAME period: **SAFE** — same
+  proof.
+- Failed operations do not partially award coins: **SAFE** — single
+  transaction, all-or-nothing (§8 below).
+- Retry cannot multiply the payout: **SAFE, PROVEN BY TEST** (§3).
+- **A user CAN repeatedly claim consecutive DIFFERENT periods by
+  forging their ranking input every week** — this is the P0 finding
+  from §2, classified here as **economic abuse**, distinct from (but
+  caused by) the security gap: even though each individual week's
+  payout mechanism is honest, the attacker can win every single week,
+  indefinitely, since nothing recomputes or challenges `globalScore`'s
+  legitimacy between weeks.
+
+### 6. Ranking source of truth
+
+- Source: `leaderboard/{uid}.globalScore`, `orderBy(desc).limit(3)`.
+  Confirmed this is the SAME field the app's own Skor Global tab sorts
+  by (`LeaderboardRepository.globalScoreField`, `leaderboard_screen.dart`),
+  so display and payout can never disagree with EACH OTHER — but both
+  are reading the same untrusted value.
+- Whether score is server-generated: **NO** — confirmed by grepping
+  every `functions/*.js` file for `globalScore`: only
+  `award_top_coins.js` itself reads it; `battle_stars.js`/
+  `global_points.js` only *mention* it in a doc comment, neither
+  writes it. The sole writer is client-side Dart
+  (`lib/data/repositories/leaderboard_repository.dart`, lines 184-210
+  and 477 — `updateSelfIfMissing`/`updateCategoryRecord`), a direct,
+  ordinary Firestore write from the app, governed entirely by
+  `firestore.rules`, which — per §2 — does not restrict this field.
+- Tie-breaking: not deterministic beyond whatever Firestore's own
+  `orderBy` does for equal values (undefined secondary sort) — not
+  independently proven either way, low priority given the primary
+  finding.
+- Stale data: not applicable in the usual sense (this reads current
+  state at query time, not a cached copy) — the real issue is that
+  "current" is itself forgeable, per §2.
+
+### 7. Period/duplicate window
+
+`isoWeekId` — pure, deterministic ISO-8601 week-number math, already
+covered by 3 existing unit tests (`award_top_coins.test.js`) checking
+same-week stability, week-rollover, and year-boundary non-collision.
+**One INFERRED, non-security observation**: the schedule fires "every
+Monday 00:00 Asia/Jakarta" = Sunday 17:00 UTC — and since ISO weeks
+run Monday-Sunday, `isoWeekId(new Date())` at that exact moment
+resolves to the id of the week that is **ending** (the preceding
+Monday-Sunday span), not the week about to start. This may well be the
+intended semantic ("award for the week that just concluded") rather
+than a bug — the boundary math is internally consistent either way and
+creates no duplicate-award risk regardless of which reading is
+"correct" — flagged as worth confirming with the user/product intent
+in a future pass, not classified as a bug.
+
+### 8. Failure/partial state — SAFE, CONFIRMED FROM CODE (+ same test proof as §3)
+
+The exact sequence the task asked to map: read winners (outside
+transaction, read-only, no side effect if interrupted) → **inside one
+transaction**: check reward marker → set marker → increment every
+winner's coins. All three transactional steps commit together or not
+at all — Firestore's own transaction guarantee, already exercised by
+§3's proof. "Coins credited but marker not written" and the reverse
+are both structurally impossible here, since both are queued in the
+SAME `tx`.
+
+### 9. Firestore Rules — the P0 finding IS the rules gap (see §2)
+
+No `firestore.rules` change was made — read only, per instruction. The
+gap is fully described in §2 above; the emulator proof is the
+temporary file named there. `coins` itself (`users/{uid}.coins`) is
+correctly protected (`isAllowedPurchaseWrite`, unrelated to this
+audit, already covered by RISK-2/prior sessions) — the exploit doesn't
+need to touch `coins` directly at all, since it works entirely by
+manipulating the RANKING INPUT and letting the trusted, Admin-SDK
+scheduled function do the (correctly-guarded) actual coin write.
+`weeklyCoinAwards/{weekId}` has no client-facing rule at all (default
+deny, never referenced anywhere in `firestore.rules`) — correctly
+inaccessible to any client, confirmed by its total absence from the
+rules file.
+
+### 10. Existing test coverage
+
+`functions/award_top_coins.test.js` (pre-existing, unmodified): 4
+tests, **all pure date/constant math** (`isoWeekId` boundary behavior,
+`REWARDS` shape) — the file's OWN doc comment explicitly says
+`awardTopGlobalCoinsOnce` "isn't unit-tested here... it needs a live
+Firestore instance," confirming **zero pre-existing coverage of the
+transaction, idempotency, concurrency, or ranking-trust behavior this
+audit was asked to examine** — a genuine, self-acknowledged test gap,
+now partially closed by this audit's own temporary proofs (§3/§4) for
+the mechanism, and newly exposing the §2 gap for the input.
+
+### 11. Proof standard summary
+
+| Finding | Classification |
+|---|---|
+| Function not client-callable | CONFIRMED FROM CODE |
+| Reward amount server-fixed | CONFIRMED FROM CODE |
+| `globalScore` forgeable via direct write | **PROVEN BY TEST** (Rules Emulator, 3/3) |
+| Idempotency (duplicate/concurrent run) | **PROVEN BY TEST** (FakeFirestore, 4/4) |
+| Failure/partial-state atomicity | CONFIRMED FROM CODE (same transaction §3 already exercises) |
+| Period/week-boundary semantics | INFERRED (non-security, product-intent question) |
+| Tie-breaking determinism | UNKNOWN (not proven either way, low priority) |
+
+### 12. Temporary audit tests (not committed)
+
+- `firestore_rules_tests/_audit_award_top_coins_globalScore.test.js` —
+  3 tests, real Rules Emulator, proves the `globalScore` write gap
+  plus a contrast case proving the surrounding protected fields still
+  correctly deny.
+- `functions/_audit_award_top_coins.test.js` — 4 tests, proves
+  `awardTopGlobalCoinsOnce`'s idempotency/concurrency/partial-entry
+  behavior via the shared `FakeFirestore`.
+
+### Shared test infrastructure extended (additive, verified)
+
+`functions/test_helpers/fake_firestore.js` gained `.orderBy()`/
+`.limit()` support on `FakeCollectionRef`/`FakeQuery` — needed because
+`award_top_coins.js` is the first caller of this fake requiring a
+sorted, ranked query rather than a plain equality/range `.where()`.
+Purely additive (new methods only, no existing method's behavior
+changed) — verified via the full `functions/` suite: **327/327 pass**
+(323 pre-existing + 4 new temporary tests), zero regression anywhere
+else.
+
+### Production files changed: 0
+
+No `firestore.rules`, no `functions/award_top_coins.js`, no other
+Cloud Function, no Dart source, no production data, no coins awarded,
+no leaderboard record altered, no migration/backfill run. The two
+temporary audit test files are new, uncommitted, isolated files; the
+one shared-test-infrastructure extension is additive test-only code,
+not production code.
+
+### Recommended next phase (not started)
+
+One P0 bug, fully proven, ready for a scoped fix phase:
+`firestore.rules`' `leaderboard/{uid}` `allow update`/`allow create`
+rules need `globalScore` added to the protected-field comparison list,
+matching the exact pattern already used for the five `cardGame*`
+fields and `globalPoints` right beside it. Two design questions for
+that future phase to resolve (not decided here, since fixing is out of
+this audit's scope): (a) should `globalScore` become fully
+server-computed (a Cloud Function trigger, mirroring
+`battle_stars.js`'s `mirrorToLeaderboard` pattern), or should the rule
+simply freeze it the same "client cannot write, only a trusted process
+can" way `globalPoints`/`cardGame*` already are, leaving the actual
+computation wherever it happens today; (b) whether
+`award_top_coins.js` should be switched to rank by the already-
+protected `globalPoints` (Formula C) instead of `globalScore`, given
+one already exists in the same document with the exact trust
+properties this feature needs. Whichever direction is chosen, the
+production impact of the CURRENT gap (whether any real coins have
+already been paid out to a forged rank) is a separate open question
+this audit could not answer — the Task A `memberCount` audit earlier
+in this file already established that no read-only Firestore query
+mechanism is available in this environment; the identical limitation
+applies to checking `weeklyCoinAwards/*`'s history for suspicious
+entries.
 
 ## Core Clan Mechanics Audit (2026-08-28) — AUDIT ONLY, 2 new bugs found
 
