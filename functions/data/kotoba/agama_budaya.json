@@ -1,0 +1,529 @@
+[
+  {
+    "id": "kotoba_agama_budaya_shuukyou",
+    "word": "しゅうきょう",
+    "kanji": "宗教",
+    "reading": "しゅうきょう",
+    "romaji": "shuukyou",
+    "meaning": "agama",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宗教 (shuukyou)",
+      "formal": "宗教 (shuukyou)",
+      "keigo": "宗教 (shuukyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "宗教について話します。",
+        "romaji": "Shuukyou ni tsuite hanashimasu.",
+        "translation": "Saya berbicara tentang agama.",
+        "translationEn": "I talk about religion."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukyou.png",
+    "meaningEn": "religion",
+    "registersEn": {
+      "casual": "宗教 (shuukyou)",
+      "formal": "宗教 (shuukyou)",
+      "keigo": "宗教 (shuukyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_bukkyou",
+    "word": "ぶっきょう",
+    "kanji": "仏教",
+    "reading": "ぶっきょう",
+    "romaji": "bukkyou",
+    "meaning": "agama Buddha",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "仏教 (bukkyou)",
+      "formal": "仏教 (bukkyou)",
+      "keigo": "仏教 (bukkyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私は仏教です。",
+        "romaji": "Watashi wa bukkyou desu.",
+        "translation": "Saya beragama Buddha.",
+        "translationEn": "I'm Buddhist."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_bukkyou.png",
+    "meaningEn": "Buddhism",
+    "registersEn": {
+      "casual": "仏教 (bukkyou)",
+      "formal": "仏教 (bukkyou)",
+      "keigo": "仏教 (bukkyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_shintou",
+    "word": "しんとう",
+    "kanji": "神道",
+    "reading": "しんとう",
+    "romaji": "shintou",
+    "meaning": "Shinto (agama asli Jepang)",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "神道 (shintou)",
+      "formal": "神道 (shintou)",
+      "keigo": "神道 (shintou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "神道は日本の伝統的な宗教です。",
+        "romaji": "Shintou wa Nihon no dentouteki na shuukyou desu.",
+        "translation": "Shinto adalah agama tradisional Jepang.",
+        "translationEn": "Shinto is Japan's traditional religion."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shintou.png",
+    "meaningEn": "Shinto (Japan's native religion)",
+    "registersEn": {
+      "casual": "神道 (shintou)",
+      "formal": "神道 (shintou)",
+      "keigo": "神道 (shintou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_isuramukyou",
+    "word": "いすらむきょう",
+    "kanji": "イスラム教",
+    "reading": "いすらむきょう",
+    "romaji": "isuramukyou",
+    "meaning": "agama Islam",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "イスラム教 (isuramukyou)",
+      "formal": "イスラム教 (isuramukyou)",
+      "keigo": "イスラム教 (isuramukyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私はイスラム教です。",
+        "romaji": "Watashi wa isuramukyou desu.",
+        "translation": "Saya beragama Islam.",
+        "translationEn": "I'm Muslim."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_isuramukyou.png",
+    "meaningEn": "Islam",
+    "registersEn": {
+      "casual": "イスラム教 (isuramukyou)",
+      "formal": "イスラム教 (isuramukyou)",
+      "keigo": "イスラム教 (isuramukyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_kirisutokyou",
+    "word": "きりすときょう",
+    "kanji": "キリスト教",
+    "reading": "きりすときょう",
+    "romaji": "kirisutokyou",
+    "meaning": "agama Kristen",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "キリスト教 (kirisutokyou)",
+      "formal": "キリスト教 (kirisutokyou)",
+      "keigo": "キリスト教 (kirisutokyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私はキリスト教です。",
+        "romaji": "Watashi wa kirisutokyou desu.",
+        "translation": "Saya beragama Kristen.",
+        "translationEn": "I'm Christian."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_kirisutokyou.png",
+    "meaningEn": "Christianity",
+    "registersEn": {
+      "casual": "キリスト教 (kirisutokyou)",
+      "formal": "キリスト教 (kirisutokyou)",
+      "keigo": "キリスト教 (kirisutokyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_hinduukyou",
+    "word": "ひんどぅーきょう",
+    "kanji": "ヒンドゥー教",
+    "reading": "ひんどぅーきょう",
+    "romaji": "hinduukyou",
+    "meaning": "agama Hindu",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ヒンドゥー教 (hinduukyou)",
+      "formal": "ヒンドゥー教 (hinduukyou)",
+      "keigo": "ヒンドゥー教 (hinduukyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バリではヒンドゥー教が多いです。",
+        "romaji": "Bari de wa hinduukyou ga ooi desu.",
+        "translation": "Di Bali, agama Hindu banyak dianut.",
+        "translationEn": "In Bali, Hinduism is widely practiced."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_hinduukyou.png",
+    "meaningEn": "Hinduism",
+    "registersEn": {
+      "casual": "ヒンドゥー教 (hinduukyou)",
+      "formal": "ヒンドゥー教 (hinduukyou)",
+      "keigo": "ヒンドゥー教 (hinduukyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_matsuri",
+    "word": "まつり",
+    "kanji": "祭り",
+    "reading": "まつり",
+    "romaji": "matsuri",
+    "meaning": "festival/perayaan tradisional",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祭り (matsuri)",
+      "formal": "祭り (matsuri)",
+      "keigo": "祭り (matsuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏に祭りがあります。",
+        "romaji": "Natsu ni matsuri ga arimasu.",
+        "translation": "Ada festival di musim panas.",
+        "translationEn": "There's a festival in summer."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_matsuri.png",
+    "meaningEn": "festival",
+    "registersEn": {
+      "casual": "祭り (matsuri)",
+      "formal": "祭り (matsuri)",
+      "keigo": "祭り (matsuri) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_dentou",
+    "word": "でんとう",
+    "kanji": "伝統",
+    "reading": "でんとう",
+    "romaji": "dentou",
+    "meaning": "tradisi",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "伝統 (dentou)",
+      "formal": "伝統 (dentou)",
+      "keigo": "伝統 (dentou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本の伝統を学びます。",
+        "romaji": "Nihon no dentou o manabimasu.",
+        "translation": "Saya belajar tradisi Jepang.",
+        "translationEn": "I learn about Japanese tradition."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_dentou.png",
+    "meaningEn": "tradition",
+    "registersEn": {
+      "casual": "伝統 (dentou)",
+      "formal": "伝統 (dentou)",
+      "keigo": "伝統 (dentou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_bunka",
+    "word": "ぶんか",
+    "kanji": "文化",
+    "reading": "ぶんか",
+    "romaji": "bunka",
+    "meaning": "budaya",
+    "jlptLevel": "N4",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文化 (bunka)",
+      "formal": "文化 (bunka)",
+      "keigo": "文化 (bunka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本の文化に興味があります。",
+        "romaji": "Nihon no bunka ni kyoumi ga arimasu.",
+        "translation": "Saya tertarik pada budaya Jepang.",
+        "translationEn": "I'm interested in Japanese culture."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_bunka.png",
+    "meaningEn": "culture",
+    "registersEn": {
+      "casual": "文化 (bunka)",
+      "formal": "文化 (bunka)",
+      "keigo": "文化 (bunka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_reihai",
+    "word": "れいはい",
+    "kanji": "礼拝",
+    "reading": "れいはい",
+    "romaji": "reihai",
+    "meaning": "ibadah/sembahyang",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "礼拝 (reihai)",
+      "formal": "礼拝 (reihai)",
+      "keigo": "礼拝 (reihai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "礼拝に行きます。",
+        "romaji": "Reihai ni ikimasu.",
+        "translation": "Saya pergi beribadah.",
+        "translationEn": "I go to worship."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_reihai.png",
+    "meaningEn": "worship/religious service",
+    "registersEn": {
+      "casual": "礼拝 (reihai)",
+      "formal": "礼拝 (reihai)",
+      "keigo": "礼拝 (reihai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_keishou",
+    "word": "けいしょう",
+    "kanji": "継承",
+    "reading": "けいしょう",
+    "romaji": "keishou",
+    "meaning": "pewarisan (tradisi/budaya)",
+    "jlptLevel": "N1",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "継承 (keishou)",
+      "formal": "継承 (keishou)",
+      "keigo": "継承 (keishou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "伝統文化を継承します。",
+        "romaji": "Dentou bunka o keishou shimasu.",
+        "translation": "Kami mewariskan budaya tradisional.",
+        "translationEn": "We pass down traditional culture."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_keishou.png",
+    "meaningEn": "passing down (tradition/culture)",
+    "registersEn": {
+      "casual": "継承 (keishou)",
+      "formal": "継承 (keishou)",
+      "keigo": "継承 (keishou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_gishiki",
+    "word": "ぎしき",
+    "kanji": "儀式",
+    "reading": "ぎしき",
+    "romaji": "gishiki",
+    "meaning": "upacara/ritual",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "儀式 (gishiki)",
+      "formal": "儀式 (gishiki)",
+      "keigo": "儀式 (gishiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "結婚の儀式を行います。",
+        "romaji": "Kekkon no gishiki o okonaimasu.",
+        "translation": "Kami melaksanakan upacara pernikahan.",
+        "translationEn": "We hold a wedding ceremony."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_gishiki.png",
+    "meaningEn": "ceremony/ritual",
+    "registersEn": {
+      "casual": "儀式 (gishiki)",
+      "formal": "儀式 (gishiki)",
+      "keigo": "儀式 (gishiki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_shinkou",
+    "word": "しんこう",
+    "kanji": "信仰",
+    "reading": "しんこう",
+    "romaji": "shinkou",
+    "meaning": "keyakinan/keimanan",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "信仰 (shinkou)",
+      "formal": "信仰 (shinkou)",
+      "keigo": "信仰 (shinkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "信仰は人それぞれです。",
+        "romaji": "Shinkou wa hito sorezore desu.",
+        "translation": "Keyakinan itu berbeda-beda pada setiap orang.",
+        "translationEn": "Beliefs differ from person to person."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shinkou.png",
+    "meaningEn": "faith/belief",
+    "registersEn": {
+      "casual": "信仰 (shinkou)",
+      "formal": "信仰 (shinkou)",
+      "keigo": "信仰 (shinkou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_shuukan",
+    "word": "しゅうかん",
+    "kanji": "習慣",
+    "reading": "しゅうかん",
+    "romaji": "shuukan",
+    "meaning": "kebiasaan/adat",
+    "jlptLevel": "N4",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "習慣 (shuukan)",
+      "formal": "習慣 (shuukan)",
+      "keigo": "習慣 (shuukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎朝運動する習慣があります。",
+        "romaji": "Maiasa undou suru shuukan ga arimasu.",
+        "translation": "Saya punya kebiasaan berolahraga setiap pagi.",
+        "translationEn": "I have a habit of exercising every morning."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukan.png",
+    "meaningEn": "custom/habit",
+    "registersEn": {
+      "casual": "習慣 (shuukan)",
+      "formal": "習慣 (shuukan)",
+      "keigo": "習慣 (shuukan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_jigoku",
+    "word": "じごく",
+    "kanji": "地獄",
+    "reading": "じごく",
+    "romaji": "jigoku",
+    "meaning": "neraka",
+    "jlptLevel": "N1",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地獄 (jigoku)",
+      "formal": "地獄 (jigoku)",
+      "keigo": "地獄 (jigoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地獄という考え方があります。",
+        "romaji": "Jigoku to iu kangaekata ga arimasu.",
+        "translation": "Ada konsep tentang neraka.",
+        "translationEn": "There's a concept of hell."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jigoku.png",
+    "meaningEn": "hell",
+    "registersEn": {
+      "casual": "地獄 (jigoku)",
+      "formal": "地獄 (jigoku)",
+      "keigo": "地獄 (jigoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_jiin",
+    "word": "じいん",
+    "kanji": "寺院",
+    "reading": "じいん",
+    "romaji": "jiin",
+    "meaning": "kuil (Buddha)",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "寺院 (jiin)",
+      "formal": "寺院 (jiin)",
+      "keigo": "寺院 (jiin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "寺院を訪れます。",
+        "romaji": "Jiin o otozuremasu.",
+        "translation": "Mengunjungi kuil.",
+        "translationEn": "Visit a temple."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jiin.png",
+    "meaningEn": "Buddhist temple",
+    "registersEn": {
+      "casual": "寺院 (jiin)",
+      "formal": "寺院 (jiin)",
+      "keigo": "寺院 (jiin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_agama_budaya_kyoukai",
+    "word": "きょうかい",
+    "kanji": "教会",
+    "reading": "きょうかい",
+    "romaji": "kyoukai",
+    "meaning": "gereja",
+    "jlptLevel": "N4",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教会 (kyoukai)",
+      "formal": "教会 (kyoukai)",
+      "keigo": "教会 (kyoukai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "教会に行きます。",
+        "romaji": "Kyoukai ni ikimasu.",
+        "translation": "Pergi ke gereja.",
+        "translationEn": "Go to church."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_kyoukai.png",
+    "meaningEn": "church",
+    "registersEn": {
+      "casual": "教会 (kyoukai)",
+      "formal": "教会 (kyoukai)",
+      "keigo": "教会 (kyoukai) — no special keigo form for this noun"
+    }
+  }
+]

@@ -1,0 +1,436 @@
+[
+  {
+    "id": "kotoba_buah_ringo",
+    "word": "りんご",
+    "kanji": null,
+    "reading": "りんご",
+    "romaji": "ringo",
+    "meaning": "apel",
+    "jlptLevel": "N5",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "りんご (ringo)",
+      "formal": "りんご (ringo)",
+      "keigo": "りんご (ringo) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "りんごを食べます。",
+        "romaji": "Ringo o tabemasu.",
+        "translation": "Saya makan apel.",
+        "translationEn": "I eat an apple."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_ringo.png",
+    "meaningEn": "apple",
+    "registersEn": {
+      "casual": "りんご (ringo)",
+      "formal": "りんご (ringo)",
+      "keigo": "りんご (ringo) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_banana",
+    "word": "バナナ",
+    "kanji": null,
+    "reading": "バナナ",
+    "romaji": "banana",
+    "meaning": "pisang",
+    "jlptLevel": "N5",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バナナ (banana)",
+      "formal": "バナナ (banana)",
+      "keigo": "バナナ (banana) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バナナが好きです。",
+        "romaji": "Banana ga suki desu.",
+        "translation": "Saya suka pisang.",
+        "translationEn": "I like bananas."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_banana.png",
+    "meaningEn": "banana",
+    "registersEn": {
+      "casual": "バナナ (banana)",
+      "formal": "バナナ (banana)",
+      "keigo": "バナナ (banana) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_mikan",
+    "word": "みかん",
+    "kanji": null,
+    "reading": "みかん",
+    "romaji": "mikan",
+    "meaning": "jeruk mandarin",
+    "jlptLevel": "N4",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "みかん (mikan)",
+      "formal": "みかん (mikan)",
+      "keigo": "みかん (mikan) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "冬にみかんを食べます。",
+        "romaji": "Fuyu ni mikan o tabemasu.",
+        "translation": "Di musim dingin, saya makan jeruk mandarin.",
+        "translationEn": "In winter, I eat mandarin oranges."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_mikan.png",
+    "meaningEn": "mandarin orange",
+    "registersEn": {
+      "casual": "みかん (mikan)",
+      "formal": "みかん (mikan)",
+      "keigo": "みかん (mikan) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_budou",
+    "word": "ぶどう",
+    "kanji": null,
+    "reading": "ぶどう",
+    "romaji": "budou",
+    "meaning": "anggur",
+    "jlptLevel": "N4",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ぶどう (budou)",
+      "formal": "ぶどう (budou)",
+      "keigo": "ぶどう (budou) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ぶどうは甘いです。",
+        "romaji": "Budou wa amai desu.",
+        "translation": "Anggur itu manis.",
+        "translationEn": "Those grapes are sweet."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_budou.png",
+    "meaningEn": "grape",
+    "registersEn": {
+      "casual": "ぶどう (budou)",
+      "formal": "ぶどう (budou)",
+      "keigo": "ぶどう (budou) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_momo",
+    "word": "もも",
+    "kanji": "桃",
+    "reading": "もも",
+    "romaji": "momo",
+    "meaning": "buah persik",
+    "jlptLevel": "N3",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "もも (momo)",
+      "formal": "もも (momo)",
+      "keigo": "もも (momo) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "桃はジューシーです。",
+        "romaji": "Momo wa juushii desu.",
+        "translation": "Buah persik itu berair (juicy).",
+        "translationEn": "That peach is juicy."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_momo.png",
+    "meaningEn": "peach",
+    "registersEn": {
+      "casual": "もも (momo)",
+      "formal": "もも (momo)",
+      "keigo": "もも (momo) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_suika",
+    "word": "すいか",
+    "kanji": null,
+    "reading": "すいか",
+    "romaji": "suika",
+    "meaning": "semangka",
+    "jlptLevel": "N3",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "すいか (suika)",
+      "formal": "すいか (suika)",
+      "keigo": "すいか (suika) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏にすいかを食べます。",
+        "romaji": "Natsu ni suika o tabemasu.",
+        "translation": "Di musim panas, saya makan semangka.",
+        "translationEn": "In summer, I eat watermelon."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_suika.png",
+    "meaningEn": "watermelon",
+    "registersEn": {
+      "casual": "すいか (suika)",
+      "formal": "すいか (suika)",
+      "keigo": "すいか (suika) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_ichigo",
+    "word": "いちご",
+    "kanji": null,
+    "reading": "いちご",
+    "romaji": "ichigo",
+    "meaning": "stroberi",
+    "jlptLevel": "N4",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いちご (ichigo)",
+      "formal": "いちご (ichigo)",
+      "keigo": "いちご (ichigo) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "いちごが好きです。",
+        "romaji": "Ichigo ga suki desu.",
+        "translation": "Saya suka stroberi.",
+        "translationEn": "I like strawberries."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_ichigo.png",
+    "meaningEn": "strawberry",
+    "registersEn": {
+      "casual": "いちご (ichigo)",
+      "formal": "いちご (ichigo)",
+      "keigo": "いちご (ichigo) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_nashi",
+    "word": "なし",
+    "kanji": "梨",
+    "reading": "なし",
+    "romaji": "nashi",
+    "meaning": "buah pir (pir Asia)",
+    "jlptLevel": "N3",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "なし (nashi)",
+      "formal": "なし (nashi)",
+      "keigo": "なし (nashi) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "梨は水分が多いです。",
+        "romaji": "Nashi wa suibun ga ooi desu.",
+        "translation": "Buah pir banyak mengandung air.",
+        "translationEn": "Pears contain a lot of water."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_nashi.png",
+    "meaningEn": "Asian pear",
+    "registersEn": {
+      "casual": "なし (nashi)",
+      "formal": "なし (nashi)",
+      "keigo": "なし (nashi) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_kaki",
+    "word": "かき",
+    "kanji": "柿",
+    "reading": "かき",
+    "romaji": "kaki",
+    "meaning": "buah kesemek (persimmon)",
+    "jlptLevel": "N2",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かき (kaki)",
+      "formal": "かき (kaki)",
+      "keigo": "かき (kaki) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "秋に柿を食べます。",
+        "romaji": "Aki ni kaki o tabemasu.",
+        "translation": "Di musim gugur, saya makan buah kesemek.",
+        "translationEn": "In autumn, I eat persimmons."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_kaki.png",
+    "meaningEn": "persimmon",
+    "registersEn": {
+      "casual": "かき (kaki)",
+      "formal": "かき (kaki)",
+      "keigo": "かき (kaki) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_remon",
+    "word": "レモン",
+    "kanji": null,
+    "reading": "レモン",
+    "romaji": "remon",
+    "meaning": "lemon",
+    "jlptLevel": "N4",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "レモン (remon)",
+      "formal": "レモン (remon)",
+      "keigo": "レモン (remon) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "レモンは酸っぱいです。",
+        "romaji": "Remon wa suppai desu.",
+        "translation": "Lemon itu asam.",
+        "translationEn": "Lemons are sour."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_remon.png",
+    "meaningEn": "lemon",
+    "registersEn": {
+      "casual": "レモン (remon)",
+      "formal": "レモン (remon)",
+      "keigo": "レモン (remon) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_meron",
+    "word": "メロン",
+    "kanji": null,
+    "reading": "メロン",
+    "romaji": "meron",
+    "meaning": "melon",
+    "jlptLevel": "N4",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "メロン (meron)",
+      "formal": "メロン (meron)",
+      "keigo": "メロン (meron) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "メロンは高いです。",
+        "romaji": "Meron wa takai desu.",
+        "translation": "Melon itu mahal.",
+        "translationEn": "Melons are expensive."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_meron.png",
+    "meaningEn": "melon",
+    "registersEn": {
+      "casual": "メロン (meron)",
+      "formal": "メロン (meron)",
+      "keigo": "メロン (meron) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_papaiya",
+    "word": "パパイヤ",
+    "kanji": null,
+    "reading": "パパイヤ",
+    "romaji": "papaiya",
+    "meaning": "pepaya",
+    "jlptLevel": "N3",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "パパイヤ (papaiya)",
+      "formal": "パパイヤ (papaiya)",
+      "keigo": "パパイヤ (papaiya) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パパイヤは甘いです。",
+        "romaji": "Papaiya wa amai desu.",
+        "translation": "Pepaya itu manis.",
+        "translationEn": "Papaya is sweet."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_papaiya.png",
+    "meaningEn": "papaya",
+    "registersEn": {
+      "casual": "パパイヤ (papaiya)",
+      "formal": "パパイヤ (papaiya)",
+      "keigo": "パパイヤ (papaiya) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_anzu",
+    "word": "あんず",
+    "kanji": "杏",
+    "reading": "あんず",
+    "romaji": "anzu",
+    "meaning": "buah aprikot",
+    "jlptLevel": "N2",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あんず (anzu)",
+      "formal": "あんず (anzu)",
+      "keigo": "あんず (anzu) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "あんずジャムを作ります。",
+        "romaji": "Anzu jamu o tsukurimasu.",
+        "translation": "Saya membuat selai aprikot.",
+        "translationEn": "I make apricot jam."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_anzu.png",
+    "meaningEn": "apricot",
+    "registersEn": {
+      "casual": "あんず (anzu)",
+      "formal": "あんず (anzu)",
+      "keigo": "あんず (anzu) — no special keigo form for fruit names"
+    }
+  },
+  {
+    "id": "kotoba_buah_sakuranbo",
+    "word": "さくらんぼ",
+    "kanji": null,
+    "reading": "さくらんぼ",
+    "romaji": "sakuranbo",
+    "meaning": "buah ceri",
+    "jlptLevel": "N3",
+    "category": "buah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さくらんぼ (sakuranbo)",
+      "formal": "さくらんぼ (sakuranbo)",
+      "keigo": "さくらんぼ (sakuranbo) — tidak ada bentuk keigo khusus untuk nama buah"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "さくらんぼは小さいです。",
+        "romaji": "Sakuranbo wa chiisai desu.",
+        "translation": "Buah ceri itu kecil.",
+        "translationEn": "Cherries are small."
+      }
+    ],
+    "imagePath": "kotoba_images/buah/kotoba_buah_sakuranbo.png",
+    "meaningEn": "cherry",
+    "registersEn": {
+      "casual": "さくらんぼ (sakuranbo)",
+      "formal": "さくらんぼ (sakuranbo)",
+      "keigo": "さくらんぼ (sakuranbo) — no special keigo form for fruit names"
+    }
+  }
+]

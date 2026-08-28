@@ -20,7 +20,30 @@ const {backfillUser} = require("./backfill_global_points");
  */
 
 const uid = "uReliability";
-const kanaDoc = {type: "hiragana", score: 9, total: 10, completedAt: 0};
+
+// Real kana ids/romaji (mirrors `functions/data/kana_data.json`) — 9
+// correctly-answered + 1 wrong, so `gradeAttempt("kana", ...)` derives
+// `serverScore: 9, serverTotal: 10` independently of the (now purely
+// display-only) `score`/`total` fields alongside it. See
+// `exam_grading.js`/the Exam-History Authority fix in
+// `TEISOU_ROADMAP_MASTER.md` for why grading is now answers-derived,
+// not trusted from `score`/`total` directly.
+const kanaAnswers = [
+  {contentId: "hiragana_a", submittedText: "a"},
+  {contentId: "hiragana_i", submittedText: "i"},
+  {contentId: "hiragana_u", submittedText: "u"},
+  {contentId: "hiragana_e", submittedText: "e"},
+  {contentId: "hiragana_o", submittedText: "o"},
+  {contentId: "hiragana_ka", submittedText: "ka"},
+  {contentId: "hiragana_ki", submittedText: "ki"},
+  {contentId: "hiragana_ku", submittedText: "ku"},
+  {contentId: "hiragana_ke", submittedText: "ke"},
+  {contentId: "hiragana_ko", submittedText: "wrong"}, // 9 correct, 1 wrong
+];
+const kanaDoc = {
+  type: "hiragana", score: 9, total: 10, completedAt: 0,
+  answers: kanaAnswers,
+};
 
 async function leaderboardPoints(fake, forUid) {
   const snap = await fake.collection("leaderboard").doc(forUid).get();
@@ -167,6 +190,14 @@ test("6. calling backfillUser twice for the same user/window never "
   fake.seed(`users/${uid}/examHistory/h1`, kanaDoc);
   fake.seed(`users/${uid}/dokkaiExamHistory/d1`, {
     itemId: "sess1", jlptLevel: "N4", score: 45, total: 50, completedAt: 500,
+    // One genuinely-correct real answer is enough here — this test only
+    // asserts `attemptsAwarded`/`totalPoints > 0`, not an exact figure.
+    answers: [
+      {
+        contentId: "dokkai_surat_sahabat_pena|dokkai_surat_sahabat_pena_q0",
+        submittedText: "アメリカ",
+      },
+    ],
   });
 
   const first = await backfillUser(uid, 1000, {firestore: fake});

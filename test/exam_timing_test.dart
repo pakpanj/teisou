@@ -20,7 +20,7 @@ void main() {
 
   Widget host({
     Duration? limit,
-    required void Function(int score, int total, List<QuizReviewEntry> wrong)
+    required void Function(int score, int total, List<QuizReviewEntry> wrong, List<GradedAnswer> answers)
     onComplete,
   }) {
     return ProviderScope(
@@ -75,7 +75,7 @@ void main() {
   });
 
   testWidgets('tanpa timer, tidak ada jam yang berjalan', (tester) async {
-    await tester.pumpWidget(host(onComplete: (_, _, _) {}));
+    await tester.pumpWidget(host(onComplete: (_, _, _, _) {}));
     await tester.pump();
 
     expect(find.byType(ExamCountdown), findsNothing);
@@ -83,7 +83,7 @@ void main() {
 
   testWidgets('jam berjalan mundur pada soal berjalan', (tester) async {
     await tester.pumpWidget(
-      host(limit: const Duration(seconds: 20), onComplete: (_, _, _) {}),
+      host(limit: const Duration(seconds: 20), onComplete: (_, _, _, _) {}),
     );
     await tester.pump();
 
@@ -94,7 +94,7 @@ void main() {
 
   testWidgets('waktu soal habis: ditandai salah lalu lanjut', (tester) async {
     await tester.pumpWidget(
-      host(limit: const Duration(seconds: 3), onComplete: (_, _, _) {}),
+      host(limit: const Duration(seconds: 3), onComplete: (_, _, _, _) {}),
     );
     await tester.pump();
     expect(find.text('soal 0'), findsOneWidget);
@@ -110,7 +110,7 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      host(limit: const Duration(seconds: 3), onComplete: (_, _, _) {}),
+      host(limit: const Duration(seconds: 3), onComplete: (_, _, _, _) {}),
     );
     await tester.pump();
 
@@ -127,7 +127,7 @@ void main() {
     await tester.pumpWidget(
       host(
         limit: const Duration(seconds: 2),
-        onComplete: (s, t, w) {
+        onComplete: (s, t, w, a) {
           score = s;
           total = t;
           wrong = w;
@@ -161,7 +161,7 @@ void main() {
     // sudah dijaga terpisah oleh pemeriksaan _committed, jadi tes yang
     // hanya melihat itu tetap lulus walau jamnya terus jalan.
     await tester.pumpWidget(
-      host(limit: const Duration(seconds: 30), onComplete: (_, _, _) {}),
+      host(limit: const Duration(seconds: 30), onComplete: (_, _, _, _) {}),
     );
     await tester.pump();
 
@@ -188,7 +188,7 @@ void main() {
     await tester.pumpWidget(
       host(
         limit: const Duration(seconds: 2),
-        onComplete: (_, _, _) => completions++,
+        onComplete: (_, _, _, _) => completions++,
       ),
     );
     await tester.pump();

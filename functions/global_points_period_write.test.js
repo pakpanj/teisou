@@ -19,6 +19,27 @@ const {wibWeekId} = require("./wib_week");
 
 const uid = "uPeriod";
 
+// Real kana ids/romaji (mirrors `functions/data/kana_data.json`), 9
+// correct + 1 wrong — since the Exam-History Authority fix,
+// `awardPointsForHistoryDoc` derives its score by re-grading `answers`
+// independently, not by trusting the `score`/`total` fields alongside
+// it (kept here for realism/display-shape only). Giving every fixture
+// in this file a genuinely nonzero, real `serverScore` is what lets
+// tests like "accumulate points... not overwrite" actually prove
+// something about nonzero point accumulation, not just that 0+0=0.
+const kanaAnswers = [
+  {contentId: "hiragana_a", submittedText: "a"},
+  {contentId: "hiragana_i", submittedText: "i"},
+  {contentId: "hiragana_u", submittedText: "u"},
+  {contentId: "hiragana_e", submittedText: "e"},
+  {contentId: "hiragana_o", submittedText: "o"},
+  {contentId: "hiragana_ka", submittedText: "ka"},
+  {contentId: "hiragana_ki", submittedText: "ki"},
+  {contentId: "hiragana_ku", submittedText: "ku"},
+  {contentId: "hiragana_ke", submittedText: "ke"},
+  {contentId: "hiragana_ko", submittedText: "wrong"},
+];
+
 function kanaDoc(overrides = {}) {
   return {
     score: 9,
@@ -27,6 +48,7 @@ function kanaDoc(overrides = {}) {
     completedAt: "2020-01-01T00:00:00.000Z", // deliberately far from any
     // eventTimeMs used below — see the anti-forgery test, this value
     // must never influence which period a write lands in.
+    answers: kanaAnswers,
     ...overrides,
   };
 }

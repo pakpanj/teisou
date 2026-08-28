@@ -257,6 +257,12 @@ class ExamRepository {
       wrongAnswers: wrongAnswers,
       completedAt: now,
       newlyMasteredCount: newlyMasteredCount,
+      answers: answers
+          .map((a) => {
+                'contentId': a.question.kana.id,
+                'submittedAnswer': a.selectedAnswer,
+              })
+          .toList(),
     );
 
     final userDoc = _firestore.collection(FirestorePaths.users).doc(uid);

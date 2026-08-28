@@ -39,6 +39,17 @@ class ExamResult {
   /// decide whether to celebrate with confetti on ExamResultScreen.
   final int newlyMasteredCount;
 
+  /// Raw, per-question submissions — `[{contentId, selectedIndex: -1,
+  /// submittedAnswer}]` — every question's kana id and the exact romaji
+  /// string the learner picked, correct or not (unlike [wrongAnswers]
+  /// above, which only records mistakes). **Untrusted, exactly like
+  /// [score]/[total]**: lets a server-side grader independently recompute
+  /// the true score from its own copy of `kana_data.json`, rather than
+  /// trusting this class's own [score]/[total], which stay purely for
+  /// instant, optimistic UI display — see `TEISOU_ROADMAP_MASTER.md`'s
+  /// exam-history server-authority design.
+  final List<Map<String, dynamic>> answers;
+
   ExamResult({
     required this.mode,
     required this.score,
@@ -46,6 +57,7 @@ class ExamResult {
     required this.wrongAnswers,
     required this.completedAt,
     this.newlyMasteredCount = 0,
+    this.answers = const [],
   });
 
   int get correctCount => score;
@@ -61,6 +73,7 @@ class ExamResult {
         'wrongCount': wrongCount,
         'wrongAnswers': wrongAnswers.map((e) => e.toMap()).toList(),
         'completedAt': Timestamp.fromDate(completedAt),
+        'answers': answers,
       };
 
   factory ExamResult.fromMap(Map<String, dynamic> map) => ExamResult(
@@ -72,5 +85,9 @@ class ExamResult {
             .toList(),
         completedAt: (map['completedAt'] as Timestamp?)?.toDate() ??
             DateTime.now(),
+        answers: (map['answers'] as List?)
+                ?.map((e) => Map<String, dynamic>.from(e as Map))
+                .toList() ??
+            const [],
       );
 }

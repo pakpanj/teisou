@@ -1,0 +1,1676 @@
+[
+  {
+    "id": "kotoba_keluarga_hubungan_kazoku",
+    "word": "かぞく",
+    "kanji": "家族",
+    "reading": "かぞく",
+    "romaji": "kazoku",
+    "meaning": "keluarga",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家族 (kazoku)",
+      "formal": "家族 (kazoku)",
+      "keigo": "家族 (kazoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家族と住んでいます。",
+        "romaji": "Kazoku to sunde imasu.",
+        "translation": "Saya tinggal dengan keluarga.",
+        "translationEn": "I live with my family."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kazoku.png",
+    "meaningEn": "family",
+    "registersEn": {
+      "casual": "家族 (kazoku)",
+      "formal": "家族 (kazoku)",
+      "keigo": "家族 (kazoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chichi",
+    "word": "ちち",
+    "kanji": "父",
+    "reading": "ちち",
+    "romaji": "chichi",
+    "meaning": "ayah (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "父 (chichi)",
+      "formal": "父 (chichi)",
+      "keigo": "父 (chichi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父は医者です。",
+        "romaji": "Chichi wa isha desu.",
+        "translation": "Ayah saya seorang dokter.",
+        "translationEn": "My father is a doctor."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chichi.png",
+    "meaningEn": "(my) father",
+    "registersEn": {
+      "casual": "父 (chichi)",
+      "formal": "父 (chichi)",
+      "keigo": "父 (chichi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_haha",
+    "word": "はは",
+    "kanji": "母",
+    "reading": "はは",
+    "romaji": "haha",
+    "meaning": "ibu (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "母 (haha)",
+      "formal": "母 (haha)",
+      "keigo": "母 (haha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母は料理が上手です。",
+        "romaji": "Haha wa ryouri ga jouzu desu.",
+        "translation": "Ibu saya jago memasak.",
+        "translationEn": "My mother is good at cooking."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_haha.png",
+    "meaningEn": "(my) mother",
+    "registersEn": {
+      "casual": "母 (haha)",
+      "formal": "母 (haha)",
+      "keigo": "母 (haha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ani",
+    "word": "あに",
+    "kanji": "兄",
+    "reading": "あに",
+    "romaji": "ani",
+    "meaning": "kakak laki-laki (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兄 (ani)",
+      "formal": "兄 (ani)",
+      "keigo": "兄 (ani) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄は大学生です。",
+        "romaji": "Ani wa daigakusei desu.",
+        "translation": "Kakak laki-laki saya mahasiswa.",
+        "translationEn": "My older brother is a university student."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ani.png",
+    "meaningEn": "(my) older brother",
+    "registersEn": {
+      "casual": "兄 (ani)",
+      "formal": "兄 (ani)",
+      "keigo": "兄 (ani) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ane",
+    "word": "あね",
+    "kanji": "姉",
+    "reading": "あね",
+    "romaji": "ane",
+    "meaning": "kakak perempuan (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "姉 (ane)",
+      "formal": "姉 (ane)",
+      "keigo": "姉 (ane) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "姉は看護師です。",
+        "romaji": "Ane wa kangoshi desu.",
+        "translation": "Kakak perempuan saya perawat.",
+        "translationEn": "My older sister is a nurse."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ane.png",
+    "meaningEn": "(my) older sister",
+    "registersEn": {
+      "casual": "姉 (ane)",
+      "formal": "姉 (ane)",
+      "keigo": "姉 (ane) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_otouto",
+    "word": "おとうと",
+    "kanji": "弟",
+    "reading": "おとうと",
+    "romaji": "otouto",
+    "meaning": "adik laki-laki",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弟 (otouto)",
+      "formal": "弟 (otouto)",
+      "keigo": "弟 (otouto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "弟は高校生です。",
+        "romaji": "Otouto wa koukousei desu.",
+        "translation": "Adik laki-laki saya siswa SMA.",
+        "translationEn": "My younger brother is a high school student."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otouto.png",
+    "meaningEn": "younger brother",
+    "registersEn": {
+      "casual": "弟 (otouto)",
+      "formal": "弟 (otouto)",
+      "keigo": "弟 (otouto) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_imouto",
+    "word": "いもうと",
+    "kanji": "妹",
+    "reading": "いもうと",
+    "romaji": "imouto",
+    "meaning": "adik perempuan",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "妹 (imouto)",
+      "formal": "妹 (imouto)",
+      "keigo": "妹 (imouto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "妹は中学生です。",
+        "romaji": "Imouto wa chuugakusei desu.",
+        "translation": "Adik perempuan saya siswa SMP.",
+        "translationEn": "My younger sister is a middle school student."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_imouto.png",
+    "meaningEn": "younger sister",
+    "registersEn": {
+      "casual": "妹 (imouto)",
+      "formal": "妹 (imouto)",
+      "keigo": "妹 (imouto) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_sofu",
+    "word": "そふ",
+    "kanji": "祖父",
+    "reading": "そふ",
+    "romaji": "sofu",
+    "meaning": "kakek (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祖父 (sofu)",
+      "formal": "祖父 (sofu)",
+      "keigo": "祖父 (sofu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祖父は元気です。",
+        "romaji": "Sofu wa genki desu.",
+        "translation": "Kakek saya sehat.",
+        "translationEn": "My grandfather is healthy."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sofu.png",
+    "meaningEn": "(my) grandfather",
+    "registersEn": {
+      "casual": "祖父 (sofu)",
+      "formal": "祖父 (sofu)",
+      "keigo": "祖父 (sofu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_sobo",
+    "word": "そぼ",
+    "kanji": "祖母",
+    "reading": "そぼ",
+    "romaji": "sobo",
+    "meaning": "nenek (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祖母 (sobo)",
+      "formal": "祖母 (sobo)",
+      "keigo": "祖母 (sobo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祖母は優しいです。",
+        "romaji": "Sobo wa yasashii desu.",
+        "translation": "Nenek saya baik hati.",
+        "translationEn": "My grandmother is kind."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sobo.png",
+    "meaningEn": "(my) grandmother",
+    "registersEn": {
+      "casual": "祖母 (sobo)",
+      "formal": "祖母 (sobo)",
+      "keigo": "祖母 (sobo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_musuko",
+    "word": "むすこ",
+    "kanji": "息子",
+    "reading": "むすこ",
+    "romaji": "musuko",
+    "meaning": "anak laki-laki (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "息子 (musuko)",
+      "formal": "息子 (musuko)",
+      "keigo": "息子 (musuko) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "息子は五歳です。",
+        "romaji": "Musuko wa gosai desu.",
+        "translation": "Anak laki-laki saya berusia 5 tahun.",
+        "translationEn": "My son is 5 years old."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_musuko.png",
+    "meaningEn": "(my) son",
+    "registersEn": {
+      "casual": "息子 (musuko)",
+      "formal": "息子 (musuko)",
+      "keigo": "息子 (musuko) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_musume",
+    "word": "むすめ",
+    "kanji": "娘",
+    "reading": "むすめ",
+    "romaji": "musume",
+    "meaning": "anak perempuan (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "娘 (musume)",
+      "formal": "娘 (musume)",
+      "keigo": "娘 (musume) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "娘は学生です。",
+        "romaji": "Musume wa gakusei desu.",
+        "translation": "Anak perempuan saya seorang pelajar.",
+        "translationEn": "My daughter is a student."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_musume.png",
+    "meaningEn": "(my) daughter",
+    "registersEn": {
+      "casual": "娘 (musume)",
+      "formal": "娘 (musume)",
+      "keigo": "娘 (musume) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_tomodachi",
+    "word": "ともだち",
+    "kanji": "友達",
+    "reading": "ともだち",
+    "romaji": "tomodachi",
+    "meaning": "teman",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "友達 (tomodachi)",
+      "formal": "友達 (tomodachi)",
+      "keigo": "友達 (tomodachi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "友達と遊びます。",
+        "romaji": "Tomodachi to asobimasu.",
+        "translation": "Saya bermain dengan teman.",
+        "translationEn": "I play with my friend."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_tomodachi.png",
+    "meaningEn": "friend",
+    "registersEn": {
+      "casual": "友達 (tomodachi)",
+      "formal": "友達 (tomodachi)",
+      "keigo": "友達 (tomodachi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_koibito",
+    "word": "こいびと",
+    "kanji": "恋人",
+    "reading": "こいびと",
+    "romaji": "koibito",
+    "meaning": "kekasih/pacar",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "恋人 (koibito)",
+      "formal": "恋人 (koibito)",
+      "keigo": "恋人 (koibito) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "恋人にプレゼントをあげます。",
+        "romaji": "Koibito ni purezento o agemasu.",
+        "translation": "Saya memberi hadiah untuk kekasih.",
+        "translationEn": "I give a gift to my partner."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_koibito.png",
+    "meaningEn": "girlfriend/boyfriend",
+    "registersEn": {
+      "casual": "恋人 (koibito)",
+      "formal": "恋人 (koibito)",
+      "keigo": "恋人 (koibito) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_fuufu",
+    "word": "ふうふ",
+    "kanji": "夫婦",
+    "reading": "ふうふ",
+    "romaji": "fuufu",
+    "meaning": "pasangan suami istri",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "夫婦 (fuufu)",
+      "formal": "夫婦 (fuufu)",
+      "keigo": "夫婦 (fuufu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二人は夫婦です。",
+        "romaji": "Futari wa fuufu desu.",
+        "translation": "Mereka berdua adalah pasangan suami istri.",
+        "translationEn": "The two of them are a married couple."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fuufu.png",
+    "meaningEn": "married couple",
+    "registersEn": {
+      "casual": "夫婦 (fuufu)",
+      "formal": "夫婦 (fuufu)",
+      "keigo": "夫婦 (fuufu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_soen",
+    "word": "そえん",
+    "kanji": "疎遠",
+    "reading": "そえん",
+    "romaji": "soen",
+    "meaning": "keterasingan/jarang berhubungan",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "疎遠 (soen)",
+      "formal": "疎遠 (soen)",
+      "keigo": "疎遠 (soen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "最近、彼とは疎遠になりました。",
+        "romaji": "Saikin, kare to wa soen ni narimashita.",
+        "translation": "Belakangan ini, saya jadi jarang berhubungan dengannya.",
+        "translationEn": "Lately, I've grown distant from him/her."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_soen.png",
+    "meaningEn": "estrangement/losing touch",
+    "registersEn": {
+      "casual": "疎遠 (soen)",
+      "formal": "疎遠 (soen)",
+      "keigo": "疎遠 (soen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_wakai",
+    "word": "わかい",
+    "kanji": "和解",
+    "reading": "わかい",
+    "romaji": "wakai",
+    "meaning": "berdamai/rekonsiliasi",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "和解 (wakai)",
+      "formal": "和解 (wakai)",
+      "keigo": "和解 (wakai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄弟はようやく和解しました。",
+        "romaji": "Kyoudai wa youyaku wakai shimashita.",
+        "translation": "Kakak beradik itu akhirnya berdamai.",
+        "translationEn": "The siblings finally made up."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_wakai.png",
+    "meaningEn": "reconciliation",
+    "registersEn": {
+      "casual": "和解 (wakai)",
+      "formal": "和解 (wakai)",
+      "keigo": "和解 (wakai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_danzetsu",
+    "word": "だんぜつ",
+    "kanji": "断絶",
+    "reading": "だんぜつ",
+    "romaji": "danzetsu",
+    "meaning": "keterputusan (hubungan)",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "断絶 (danzetsu)",
+      "formal": "断絶 (danzetsu)",
+      "keigo": "断絶 (danzetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "親子関係が断絶しました。",
+        "romaji": "Oyako kankei ga danzetsu shimashita.",
+        "translation": "Hubungan orang tua-anak itu terputus.",
+        "translationEn": "The parent-child relationship is severed."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danzetsu.png",
+    "meaningEn": "severance (of a relationship)",
+    "registersEn": {
+      "casual": "断絶 (danzetsu)",
+      "formal": "断絶 (danzetsu)",
+      "keigo": "断絶 (danzetsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kyoudai",
+    "word": "きょうだい",
+    "kanji": "兄弟",
+    "reading": "きょうだい",
+    "romaji": "kyoudai",
+    "meaning": "saudara kandung (kakak-adik)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兄弟 (kyoudai)",
+      "formal": "兄弟 (kyoudai)",
+      "keigo": "兄弟 (kyoudai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄弟は何人いますか。",
+        "romaji": "Kyoudai wa nan-nin imasu ka.",
+        "translation": "Ada berapa saudara kandung?",
+        "translationEn": "How many siblings do you have?"
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kyoudai.png",
+    "meaningEn": "siblings (brothers)",
+    "registersEn": {
+      "casual": "兄弟 (kyoudai)",
+      "formal": "兄弟 (kyoudai)",
+      "keigo": "兄弟 (kyoudai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shimai",
+    "word": "しまい",
+    "kanji": "姉妹",
+    "reading": "しまい",
+    "romaji": "shimai",
+    "meaning": "saudari perempuan (kakak-adik)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "姉妹 (shimai)",
+      "formal": "姉妹 (shimai)",
+      "keigo": "姉妹 (shimai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "姉妹で買い物に行きます。",
+        "romaji": "Shimai de kaimono ni ikimasu.",
+        "translation": "Kami bersaudari pergi berbelanja.",
+        "translationEn": "We sisters go shopping."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shimai.png",
+    "meaningEn": "sisters",
+    "registersEn": {
+      "casual": "姉妹 (shimai)",
+      "formal": "姉妹 (shimai)",
+      "keigo": "姉妹 (shimai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ryoushin",
+    "word": "りょうしん",
+    "kanji": "両親",
+    "reading": "りょうしん",
+    "romaji": "ryoushin",
+    "meaning": "kedua orang tua",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "両親 (ryoushin)",
+      "formal": "両親 (ryoushin)",
+      "keigo": "両親 (ryoushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "両親と話します。",
+        "romaji": "Ryoushin to hanashimasu.",
+        "translation": "Saya berbicara dengan kedua orang tua saya.",
+        "translationEn": "I talk with both my parents."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ryoushin.png",
+    "meaningEn": "(both) parents",
+    "registersEn": {
+      "casual": "両親 (ryoushin)",
+      "formal": "両親 (ryoushin)",
+      "keigo": "両親 (ryoushin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kodomo",
+    "word": "こども",
+    "kanji": "子供",
+    "reading": "こども",
+    "romaji": "kodomo",
+    "meaning": "anak (secara umum)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "子供 (kodomo)",
+      "formal": "子供 (kodomo)",
+      "keigo": "子供 (kodomo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "子供が公園で遊びます。",
+        "romaji": "Kodomo ga kouen de asobimasu.",
+        "translation": "Anak-anak bermain di taman.",
+        "translationEn": "The children play at the park."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kodomo.png",
+    "meaningEn": "child (general)",
+    "registersEn": {
+      "casual": "子供 (kodomo)",
+      "formal": "子供 (kodomo)",
+      "keigo": "子供 (kodomo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_otona",
+    "word": "おとな",
+    "kanji": "大人",
+    "reading": "おとな",
+    "romaji": "otona",
+    "meaning": "orang dewasa",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大人 (otona)",
+      "formal": "大人 (otona)",
+      "keigo": "大人 (otona) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大人になりました。",
+        "romaji": "Otona ni narimashita.",
+        "translation": "Saya sudah menjadi dewasa.",
+        "translationEn": "I've become an adult."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otona.png",
+    "meaningEn": "adult",
+    "registersEn": {
+      "casual": "大人 (otona)",
+      "formal": "大人 (otona)",
+      "keigo": "大人 (otona) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shinseki",
+    "word": "しんせき",
+    "kanji": "親戚",
+    "reading": "しんせき",
+    "romaji": "shinseki",
+    "meaning": "kerabat/saudara jauh",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "親戚 (shinseki)",
+      "formal": "親戚 (shinseki)",
+      "keigo": "親戚 (shinseki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お正月に親戚が集まります。",
+        "romaji": "Oshougatsu ni shinseki ga atsumarimasu.",
+        "translation": "Kerabat berkumpul saat Tahun Baru.",
+        "translationEn": "Relatives gather at New Year's."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shinseki.png",
+    "meaningEn": "relative",
+    "registersEn": {
+      "casual": "親戚 (shinseki)",
+      "formal": "親戚 (shinseki)",
+      "keigo": "親戚 (shinseki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_haiguusha",
+    "word": "はいぐうしゃ",
+    "kanji": "配偶者",
+    "reading": "はいぐうしゃ",
+    "romaji": "haiguusha",
+    "meaning": "pasangan (suami/istri, istilah hukum)",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "配偶者 (haiguusha)",
+      "formal": "配偶者 (haiguusha)",
+      "keigo": "配偶者 (haiguusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "配偶者の名前を記入してください。",
+        "romaji": "Haiguusha no namae o kinyuu shite kudasai.",
+        "translation": "Tolong isi nama pasangan Anda.",
+        "translationEn": "Please fill in your spouse's name."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_haiguusha.png",
+    "meaningEn": "spouse (legal term)",
+    "registersEn": {
+      "casual": "配偶者 (haiguusha)",
+      "formal": "配偶者 (haiguusha)",
+      "keigo": "配偶者 (haiguusha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ketsuen",
+    "word": "けつえん",
+    "kanji": "血縁",
+    "reading": "けつえん",
+    "romaji": "ketsuen",
+    "meaning": "hubungan darah",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "血縁 (ketsuen)",
+      "formal": "血縁 (ketsuen)",
+      "keigo": "血縁 (ketsuen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二人には血縁関係があります。",
+        "romaji": "Futari ni wa ketsuen kankei ga arimasu.",
+        "translation": "Kedua orang itu memiliki hubungan darah.",
+        "translationEn": "Those two are blood-related."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ketsuen.png",
+    "meaningEn": "blood relation",
+    "registersEn": {
+      "casual": "血縁 (ketsuen)",
+      "formal": "血縁 (ketsuen)",
+      "keigo": "血縁 (ketsuen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_dokushin",
+    "word": "どくしん",
+    "kanji": "独身",
+    "reading": "どくしん",
+    "romaji": "dokushin",
+    "meaning": "belum menikah/single",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "独身 (dokushin)",
+      "formal": "独身 (dokushin)",
+      "keigo": "独身 (dokushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼はまだ独身です。",
+        "romaji": "Kare wa mada dokushin desu.",
+        "translation": "Dia masih belum menikah.",
+        "translationEn": "He/she is still unmarried."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_dokushin.png",
+    "meaningEn": "unmarried/single",
+    "registersEn": {
+      "casual": "独身 (dokushin)",
+      "formal": "独身 (dokushin)",
+      "keigo": "独身 (dokushin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_oyako",
+    "word": "おやこ",
+    "kanji": "親子",
+    "reading": "おやこ",
+    "romaji": "oyako",
+    "meaning": "orang tua dan anak",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "親子 (oyako)",
+      "formal": "親子 (oyako)",
+      "keigo": "親子 (oyako) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "親子で来ました。",
+        "romaji": "Oyako de kimashita.",
+        "translation": "Datang bersama orang tua dan anak.",
+        "translationEn": "Coming together as parent and child."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_oyako.png",
+    "meaningEn": "parent and child",
+    "registersEn": {
+      "casual": "親子 (oyako)",
+      "formal": "親子 (oyako)",
+      "keigo": "親子 (oyako) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_katei",
+    "word": "かてい",
+    "kanji": "家庭",
+    "reading": "かてい",
+    "romaji": "katei",
+    "meaning": "keluarga/rumah tangga",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家庭 (katei)",
+      "formal": "家庭 (katei)",
+      "keigo": "家庭 (katei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家庭を大切にします。",
+        "romaji": "Katei o taisetsu ni shimasu.",
+        "translation": "Saya menghargai keluarga.",
+        "translationEn": "I value my family."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_katei.png",
+    "meaningEn": "household/family",
+    "registersEn": {
+      "casual": "家庭 (katei)",
+      "formal": "家庭 (katei)",
+      "keigo": "家庭 (katei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kekkon",
+    "word": "けっこん",
+    "kanji": "結婚",
+    "reading": "けっこん",
+    "romaji": "kekkon",
+    "meaning": "pernikahan",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "結婚 (kekkon)",
+      "formal": "結婚 (kekkon)",
+      "keigo": "結婚 (kekkon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来年結婚します。",
+        "romaji": "Rainen kekkon shimasu.",
+        "translation": "Tahun depan menikah.",
+        "translationEn": "Getting married next year."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kekkon.png",
+    "meaningEn": "marriage",
+    "registersEn": {
+      "casual": "結婚 (kekkon)",
+      "formal": "結婚 (kekkon)",
+      "keigo": "結婚 (kekkon) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_jikka",
+    "word": "じっか",
+    "kanji": "実家",
+    "reading": "じっか",
+    "romaji": "jikka",
+    "meaning": "rumah orang tua",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "実家 (jikka)",
+      "formal": "実家 (jikka)",
+      "keigo": "実家 (jikka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "実家に帰ります。",
+        "romaji": "Jikka ni kaerimasu.",
+        "translation": "Pulang ke rumah orang tua.",
+        "translationEn": "Going home to my parents' house."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_jikka.png",
+    "meaningEn": "parents' home",
+    "registersEn": {
+      "casual": "実家 (jikka)",
+      "formal": "実家 (jikka)",
+      "keigo": "実家 (jikka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_tanjou",
+    "word": "たんじょう",
+    "kanji": "誕生",
+    "reading": "たんじょう",
+    "romaji": "tanjou",
+    "meaning": "kelahiran",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "誕生 (tanjou)",
+      "formal": "誕生 (tanjou)",
+      "keigo": "誕生 (tanjou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "子どもが誕生しました。",
+        "romaji": "Kodomo ga tanjou shimashita.",
+        "translation": "Bayi lahir. (Kelahiran resmi/peristiwa penting)",
+        "translationEn": "A baby was born."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_tanjou.png",
+    "meaningEn": "birth",
+    "registersEn": {
+      "casual": "誕生 (tanjou)",
+      "formal": "誕生 (tanjou)",
+      "keigo": "誕生 (tanjou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_nakama",
+    "word": "なかま",
+    "kanji": "仲間",
+    "reading": "なかま",
+    "romaji": "nakama",
+    "meaning": "teman/rekan satu kelompok",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "仲間 (nakama)",
+      "formal": "仲間 (nakama)",
+      "keigo": "仲間 (nakama) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "仲間と協力します。",
+        "romaji": "Nakama to kyouryoku shimasu.",
+        "translation": "Saya bekerja sama dengan teman satu tim.",
+        "translationEn": "I work together with my teammates."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_nakama.png",
+    "meaningEn": "companion/fellow member",
+    "registersEn": {
+      "casual": "仲間 (nakama)",
+      "formal": "仲間 (nakama)",
+      "keigo": "仲間 (nakama) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_yakuwari",
+    "word": "やくわり",
+    "kanji": "役割",
+    "reading": "やくわり",
+    "romaji": "yakuwari",
+    "meaning": "peran/tugas",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "役割 (yakuwari)",
+      "formal": "役割 (yakuwari)",
+      "keigo": "役割 (yakuwari) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "両親の役割はたいせつです。",
+        "romaji": "Ryoushin no yakuwari wa taisetsu desu.",
+        "translation": "Peran orang tua penting.",
+        "translationEn": "A parent's role matters."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_yakuwari.png",
+    "meaningEn": "role",
+    "registersEn": {
+      "casual": "役割 (yakuwari)",
+      "formal": "役割 (yakuwari)",
+      "keigo": "役割 (yakuwari) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_yuujou",
+    "word": "ゆうじょう",
+    "kanji": "友情",
+    "reading": "ゆうじょう",
+    "romaji": "yuujou",
+    "meaning": "persahabatan",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "友情 (yuujou)",
+      "formal": "友情 (yuujou)",
+      "keigo": "友情 (yuujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼との友情は大切です。",
+        "romaji": "Kare to no yuujou wa taisetsu desu.",
+        "translation": "Persahabatan dengannya penting. (hub persahabantan)",
+        "translationEn": "Friendship with him/her matters."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_yuujou.png",
+    "meaningEn": "friendship",
+    "registersEn": {
+      "casual": "友情 (yuujou)",
+      "formal": "友情 (yuujou)",
+      "keigo": "友情 (yuujou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_yuujin",
+    "word": "ゆうじん",
+    "kanji": "友人",
+    "reading": "ゆうじん",
+    "romaji": "yuujin",
+    "meaning": "teman (istilah formal)",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "友人 (yuujin)",
+      "formal": "友人 (yuujin)",
+      "keigo": "友人 (yuujin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "友人に会いました。",
+        "romaji": "Yuujin ni aimashita.",
+        "translation": "Saya bertemu teman. (saat pidato,tulisan dll)",
+        "translationEn": "I meet my friend."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_yuujin.png",
+    "meaningEn": "friend (formal term)",
+    "registersEn": {
+      "casual": "友人 (yuujin)",
+      "formal": "友人 (yuujin)",
+      "keigo": "友人 (yuujin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_wakamono",
+    "word": "わかもの",
+    "kanji": "若者",
+    "reading": "わかもの",
+    "romaji": "wakamono",
+    "meaning": "anak muda",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "若者 (wakamono)",
+      "formal": "若者 (wakamono)",
+      "keigo": "若者 (wakamono) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "若者が増えています。",
+        "romaji": "Wakamono ga fuete imasu.",
+        "translation": "Anak muda bertambah.",
+        "translationEn": "Young people are increasing."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_wakamono.png",
+    "meaningEn": "young people",
+    "registersEn": {
+      "casual": "若者 (wakamono)",
+      "formal": "若者 (wakamono)",
+      "keigo": "若者 (wakamono) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_sofubo",
+    "word": "そふぼ",
+    "kanji": "祖父母",
+    "reading": "そふぼ",
+    "romaji": "sofubo",
+    "meaning": "kakek dan nenek",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祖父母 (sofubo)",
+      "formal": "祖父母 (sofubo)",
+      "keigo": "祖父母 (sofubo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祖父母は田舎に住んでいます。",
+        "romaji": "Sofubo wa inaka ni sunde imasu.",
+        "translation": "Kakek nenek tinggal di desa.",
+        "translationEn": "My grandparents live in the countryside."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sofubo.png",
+    "meaningEn": "grandparents",
+    "registersEn": {
+      "casual": "祖父母 (sofubo)",
+      "formal": "祖父母 (sofubo)",
+      "keigo": "祖父母 (sofubo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_aishou",
+    "word": "あいしょう",
+    "kanji": "相性",
+    "reading": "あいしょう",
+    "romaji": "aishou",
+    "meaning": "kecocokan (antar orang)",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "相性 (aishou)",
+      "formal": "相性 (aishou)",
+      "keigo": "相性 (aishou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この二人は相性がいい。",
+        "romaji": "Kono futari wa aishou ga ii.",
+        "translation": "Kedua orang ini cocok satu sama lain.",
+        "translationEn": "These two people suit each other."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_aishou.png",
+    "meaningEn": "compatibility (between people)",
+    "registersEn": {
+      "casual": "相性 (aishou)",
+      "formal": "相性 (aishou)",
+      "keigo": "相性 (aishou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ikuji",
+    "word": "いくじ",
+    "kanji": "育児",
+    "reading": "いくじ",
+    "romaji": "ikuji",
+    "meaning": "mengurus anak",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "育児 (ikuji)",
+      "formal": "育児 (ikuji)",
+      "keigo": "育児 (ikuji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は育児に忙しい。",
+        "romaji": "Kanojo wa ikuji ni isogashii.",
+        "translation": "Dia sibuk mengurus anak. (bayi / anak kecil)",
+        "translationEn": "He/she is busy raising children."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ikuji.png",
+    "meaningEn": "childcare",
+    "registersEn": {
+      "casual": "育児 (ikuji)",
+      "formal": "育児 (ikuji)",
+      "keigo": "育児 (ikuji) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chichioya",
+    "word": "ちちおや",
+    "kanji": "父親",
+    "reading": "ちちおや",
+    "romaji": "chichioya",
+    "meaning": "ayah (istilah umum)",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "父親 (chichioya)",
+      "formal": "父親 (chichioya)",
+      "keigo": "父親 (chichioya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父親と話します。",
+        "romaji": "Chichioya to hanashimasu.",
+        "translation": "Saya berbicara dengan ayah.",
+        "translationEn": "I talk with my father."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chichioya.png",
+    "meaningEn": "father (general term)",
+    "registersEn": {
+      "casual": "父親 (chichioya)",
+      "formal": "父親 (chichioya)",
+      "keigo": "父親 (chichioya) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_danshi",
+    "word": "だんし",
+    "kanji": "男子",
+    "reading": "だんし",
+    "romaji": "danshi",
+    "meaning": "anak laki-laki/pria muda",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "男子 (danshi)",
+      "formal": "男子 (danshi)",
+      "keigo": "男子 (danshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "男子校に通っています。",
+        "romaji": "Danshi kou ni kayotte imasu.",
+        "translation": "Saya sekolah di sekolah khusus laki-laki.",
+        "translationEn": "I attend a boys' school."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danshi.png",
+    "meaningEn": "boy/young man",
+    "registersEn": {
+      "casual": "男子 (danshi)",
+      "formal": "男子 (danshi)",
+      "keigo": "男子 (danshi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_hahaoya",
+    "word": "ははおや",
+    "kanji": "母親",
+    "reading": "ははおや",
+    "romaji": "hahaoya",
+    "meaning": "ibu (istilah umum)",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "母親 (hahaoya)",
+      "formal": "母親 (hahaoya)",
+      "keigo": "母親 (hahaoya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母親に会います。",
+        "romaji": "Hahaoya ni aimasu.",
+        "translation": "Saya bertemu ibu.",
+        "translationEn": "I meet my mother."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_hahaoya.png",
+    "meaningEn": "mother (general term)",
+    "registersEn": {
+      "casual": "母親 (hahaoya)",
+      "formal": "母親 (hahaoya)",
+      "keigo": "母親 (hahaoya) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ikka",
+    "word": "いっか",
+    "kanji": "一家",
+    "reading": "いっか",
+    "romaji": "ikka",
+    "meaning": "satu keluarga",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一家 (ikka)",
+      "formal": "一家 (ikka)",
+      "keigo": "一家 (ikka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一家で旅行します。",
+        "romaji": "Ikka de ryokou shimasu.",
+        "translation": "Bepergian sekeluarga.",
+        "translationEn": "Traveling as a whole family."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ikka.png",
+    "meaningEn": "one family",
+    "registersEn": {
+      "casual": "一家 (ikka)",
+      "formal": "一家 (ikka)",
+      "keigo": "一家 (ikka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_mikata",
+    "word": "みかた",
+    "kanji": "味方",
+    "reading": "みかた",
+    "romaji": "mikata",
+    "meaning": "sekutu/pendukung",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "味方 (mikata)",
+      "formal": "味方 (mikata)",
+      "keigo": "味方 (mikata) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は私の味方です。",
+        "romaji": "Kare wa watashi no mikata desu.",
+        "translation": "Dia adalah sekutu saya.",
+        "translationEn": "He/she is my ally."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_mikata.png",
+    "meaningEn": "ally/supporter",
+    "registersEn": {
+      "casual": "味方 (mikata)",
+      "formal": "味方 (mikata)",
+      "keigo": "味方 (mikata) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_seinen",
+    "word": "せいねん",
+    "kanji": "青年",
+    "reading": "せいねん",
+    "romaji": "seinen",
+    "meaning": "pemuda",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "青年 (seinen)",
+      "formal": "青年 (seinen)",
+      "keigo": "青年 (seinen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "青年が集まっています。",
+        "romaji": "Seinen ga atsumatte imasu.",
+        "translation": "Para pemuda berkumpul.",
+        "translationEn": "Young adults gather."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_seinen.png",
+    "meaningEn": "young man/youth",
+    "registersEn": {
+      "casual": "青年 (seinen)",
+      "formal": "青年 (seinen)",
+      "keigo": "青年 (seinen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shoujo",
+    "word": "しょうじょ",
+    "kanji": "少女",
+    "reading": "しょうじょ",
+    "romaji": "shoujo",
+    "meaning": "gadis muda",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "少女 (shoujo)",
+      "formal": "少女 (shoujo)",
+      "keigo": "少女 (shoujo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "少女が歌っています。",
+        "romaji": "Shoujo ga utatte imasu.",
+        "translation": "Gadis muda sedang menyanyi.",
+        "translationEn": "A young girl is singing."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shoujo.png",
+    "meaningEn": "young girl",
+    "registersEn": {
+      "casual": "少女 (shoujo)",
+      "formal": "少女 (shoujo)",
+      "keigo": "少女 (shoujo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shounen",
+    "word": "しょうねん",
+    "kanji": "少年",
+    "reading": "しょうねん",
+    "romaji": "shounen",
+    "meaning": "anak laki-laki/remaja",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "少年 (shounen)",
+      "formal": "少年 (shounen)",
+      "keigo": "少年 (shounen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "少年が野球をします。",
+        "romaji": "Shounen ga yakyuu o shimasu.",
+        "translation": "Remaja laki-laki bermain bisbol.",
+        "translationEn": "A teenage boy plays baseball."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shounen.png",
+    "meaningEn": "boy/young man",
+    "registersEn": {
+      "casual": "少年 (shounen)",
+      "formal": "少年 (shounen)",
+      "keigo": "少年 (shounen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chuujitsu",
+    "word": "ちゅうじつ",
+    "kanji": "忠実",
+    "reading": "ちゅうじつ",
+    "romaji": "chuujitsu",
+    "meaning": "setia/loyal",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "忠実 (chuujitsu)",
+      "formal": "忠実 (chuujitsu)",
+      "keigo": "忠実 (chuujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "忠実な部下です。",
+        "romaji": "Chuujitsu na buka desu.",
+        "translation": "Bawahan yang loyal.",
+        "translationEn": "A loyal subordinate."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chuujitsu.png",
+    "meaningEn": "loyal/faithful",
+    "registersEn": {
+      "casual": "忠実 (chuujitsu)",
+      "formal": "忠実 (chuujitsu)",
+      "keigo": "忠実 (chuujitsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_doushi",
+    "word": "どうし",
+    "kanji": "同士",
+    "reading": "どうし",
+    "romaji": "doushi",
+    "meaning": "sesama/rekan",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "同士 (doushi)",
+      "formal": "同士 (doushi)",
+      "keigo": "同士 (doushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "友人同士で話します。",
+        "romaji": "Yuujin doushi de hanashimasu.",
+        "translation": "Berbicara sesama teman.",
+        "translationEn": "Talking among friends."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_doushi.png",
+    "meaningEn": "fellow (people)",
+    "registersEn": {
+      "casual": "同士 (doushi)",
+      "formal": "同士 (doushi)",
+      "keigo": "同士 (doushi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chounan",
+    "word": "ちょうなん",
+    "kanji": "長男",
+    "reading": "ちょうなん",
+    "romaji": "chounan",
+    "meaning": "anak laki-laki tertua",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "長男 (chounan)",
+      "formal": "長男 (chounan)",
+      "keigo": "長男 (chounan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は長男です。",
+        "romaji": "Kare wa chounan desu.",
+        "translation": "Dia anak laki-laki tertua.",
+        "translationEn": "He's the eldest son."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chounan.png",
+    "meaningEn": "eldest son",
+    "registersEn": {
+      "casual": "長男 (chounan)",
+      "formal": "長男 (chounan)",
+      "keigo": "長男 (chounan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_fubo",
+    "word": "ふぼ",
+    "kanji": "父母",
+    "reading": "ふぼ",
+    "romaji": "fubo",
+    "meaning": "ayah dan ibu",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "父母 (fubo)",
+      "formal": "父母 (fubo)",
+      "keigo": "父母 (fubo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父母に感謝します。",
+        "romaji": "Fubo ni kansha shimasu.",
+        "translation": "Berterima kasih pada orang tua.",
+        "translationEn": "Being thankful to one's parents."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fubo.png",
+    "meaningEn": "father and mother",
+    "registersEn": {
+      "casual": "父母 (fubo)",
+      "formal": "父母 (fubo)",
+      "keigo": "父母 (fubo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_seishounen",
+    "word": "せいしょうねん",
+    "kanji": "青少年",
+    "reading": "せいしょうねん",
+    "romaji": "seishounen",
+    "meaning": "remaja/pemuda",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "青少年 (seishounen)",
+      "formal": "青少年 (seishounen)",
+      "keigo": "青少年 (seishounen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "青少年の教育が大切です。",
+        "romaji": "Seishounen no kyouiku ga taisetsu desu.",
+        "translation": "Pendidikan remaja itu penting.",
+        "translationEn": "Youth education matters."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_seishounen.png",
+    "meaningEn": "youth/young people",
+    "registersEn": {
+      "casual": "青少年 (seishounen)",
+      "formal": "青少年 (seishounen)",
+      "keigo": "青少年 (seishounen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_dansei",
+    "word": "だんせい",
+    "kanji": "男性",
+    "reading": "だんせい",
+    "romaji": "dansei",
+    "meaning": "laki-laki (formal)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "男性 (dansei)",
+      "formal": "男性 (dansei)",
+      "keigo": "男性 (dansei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "男性用のトイレです。",
+        "romaji": "Dansei-you no toire desu.",
+        "translation": "Ini toilet untuk laki-laki.",
+        "translationEn": "This is the men's restroom."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_dansei.png",
+    "meaningEn": "man (formal)",
+    "registersEn": {
+      "casual": "男性 (dansei)",
+      "formal": "男性 (dansei)",
+      "keigo": "男性 (dansei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kanai",
+    "word": "かない",
+    "kanji": "家内",
+    "reading": "かない",
+    "romaji": "kanai",
+    "meaning": "istri saya",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家内 (kanai)",
+      "formal": "家内 (kanai)",
+      "keigo": "家内 (kanai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家内と話します。",
+        "romaji": "Kanai to hanashimasu.",
+        "translation": "Berbicara dengan istri saya.",
+        "translationEn": "Talking with my wife."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kanai.png",
+    "meaningEn": "my wife",
+    "registersEn": {
+      "casual": "家内 (kanai)",
+      "formal": "家内 (kanai)",
+      "keigo": "家内 (kanai) — no special keigo form for this noun"
+    }
+  }
+]

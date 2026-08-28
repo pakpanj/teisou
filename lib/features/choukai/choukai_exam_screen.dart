@@ -34,6 +34,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
     int score,
     int total,
     List<QuizReviewEntry> wrongAnswers,
+    List<GradedAnswer> answers,
   ) async {
     final user = ref.read(appStartupProvider).valueOrNull;
     final result = SimpleExamResult(
@@ -42,6 +43,13 @@ class ChoukaiExamScreen extends ConsumerWidget {
       score: score,
       total: total,
       completedAt: DateTime.now(),
+      answers: answers
+          .map((a) => {
+                'contentId': a.contentId,
+                'selectedIndex': a.selectedIndex,
+                'submittedText': a.submittedText,
+              })
+          .toList(),
     );
     if (user != null) {
       try {
@@ -98,8 +106,9 @@ class ChoukaiExamScreen extends ConsumerWidget {
           optionsOf: (index) => clip.questions[index].options,
           correctIndexOf: (index) => clip.questions[index].correctIndex,
           questionLabelOf: (index) => clip.questions[index].prompt,
-          onComplete: (score, total, wrongAnswers) =>
-              _onComplete(context, ref, score, total, wrongAnswers),
+          contentIdOf: (index) => '${clip.id}|${clip.questions[index].id}',
+          onComplete: (score, total, wrongAnswers, answers) => _onComplete(
+              context, ref, score, total, wrongAnswers, answers),
         ),
       ),
     );

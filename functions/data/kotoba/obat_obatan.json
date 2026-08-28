@@ -1,0 +1,839 @@
+[
+  {
+    "id": "kotoba_obat_obatan_kusuri",
+    "word": "くすり",
+    "kanji": "薬",
+    "reading": "くすり",
+    "romaji": "kusuri",
+    "meaning": "obat",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "薬 (kusuri)",
+      "formal": "薬 (kusuri)",
+      "keigo": "薬 (kusuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "薬を飲みます。",
+        "romaji": "Kusuri o nomimasu.",
+        "translation": "Saya minum obat.",
+        "translationEn": "I take medicine."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kusuri.png",
+    "meaningEn": "medicine",
+    "registersEn": {
+      "casual": "薬 (kusuri)",
+      "formal": "薬 (kusuri)",
+      "keigo": "薬 (kusuri) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_byouin",
+    "word": "びょういん",
+    "kanji": "病院",
+    "reading": "びょういん",
+    "romaji": "byouin",
+    "meaning": "rumah sakit",
+    "jlptLevel": "N5",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "病院 (byouin)",
+      "formal": "病院 (byouin)",
+      "keigo": "病院 (byouin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "病院に行きます。",
+        "romaji": "Byouin ni ikimasu.",
+        "translation": "Saya pergi ke rumah sakit.",
+        "translationEn": "I go to the hospital."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_byouin.png",
+    "meaningEn": "hospital",
+    "registersEn": {
+      "casual": "病院 (byouin)",
+      "formal": "病院 (byouin)",
+      "keigo": "病院 (byouin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_isha",
+    "word": "いしゃ",
+    "kanji": "医者",
+    "reading": "いしゃ",
+    "romaji": "isha",
+    "meaning": "dokter",
+    "jlptLevel": "N5",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "医者 (isha)",
+      "formal": "医者 (isha)",
+      "keigo": "医者 (isha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医者に診てもらいます。",
+        "romaji": "Isha ni mite moraimasu.",
+        "translation": "Saya diperiksa oleh dokter.",
+        "translationEn": "I'm examined by a doctor."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_isha.png",
+    "meaningEn": "doctor",
+    "registersEn": {
+      "casual": "医者 (isha)",
+      "formal": "医者 (isha)",
+      "keigo": "医者 (isha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_kangoshi",
+    "word": "かんごし",
+    "kanji": "看護師",
+    "reading": "かんごし",
+    "romaji": "kangoshi",
+    "meaning": "perawat",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "看護師 (kangoshi)",
+      "formal": "看護師 (kangoshi)",
+      "keigo": "看護師 (kangoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "看護師さんが優しいです。",
+        "romaji": "Kangoshi-san ga yasashii desu.",
+        "translation": "Perawatnya baik hati.",
+        "translationEn": "The nurse is kind."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kangoshi.png",
+    "meaningEn": "nurse",
+    "registersEn": {
+      "casual": "看護師 (kangoshi)",
+      "formal": "看護師 (kangoshi)",
+      "keigo": "看護師 (kangoshi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_yakkyoku",
+    "word": "やっきょく",
+    "kanji": "薬局",
+    "reading": "やっきょく",
+    "romaji": "yakkyoku",
+    "meaning": "apotek",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "薬局 (yakkyoku)",
+      "formal": "薬局 (yakkyoku)",
+      "keigo": "薬局 (yakkyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "薬局で薬を買います。",
+        "romaji": "Yakkyoku de kusuri o kaimasu.",
+        "translation": "Saya membeli obat di apotek.",
+        "translationEn": "I buy medicine at the pharmacy."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yakkyoku.png",
+    "meaningEn": "pharmacy",
+    "registersEn": {
+      "casual": "薬局 (yakkyoku)",
+      "formal": "薬局 (yakkyoku)",
+      "keigo": "薬局 (yakkyoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_chuusha",
+    "word": "ちゅうしゃ",
+    "kanji": "注射",
+    "reading": "ちゅうしゃ",
+    "romaji": "chuusha",
+    "meaning": "suntikan",
+    "jlptLevel": "N3",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "注射 (chuusha)",
+      "formal": "注射 (chuusha)",
+      "keigo": "注射 (chuusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "注射をします。",
+        "romaji": "Chuusha o shimasu.",
+        "translation": "Saya disuntik.",
+        "translationEn": "I get an injection."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_chuusha.png",
+    "meaningEn": "injection/shot",
+    "registersEn": {
+      "casual": "注射 (chuusha)",
+      "formal": "注射 (chuusha)",
+      "keigo": "注射 (chuusha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_bansoukou",
+    "word": "ばんそうこう",
+    "kanji": "絆創膏",
+    "reading": "ばんそうこう",
+    "romaji": "bansoukou",
+    "meaning": "plester luka (band-aid)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "絆創膏 (bansoukou)",
+      "formal": "絆創膏 (bansoukou)",
+      "keigo": "絆創膏 (bansoukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "絆創膏を貼ります。",
+        "romaji": "Bansoukou o harimasu.",
+        "translation": "Saya menempelkan plester.",
+        "translationEn": "I apply a bandage."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_bansoukou.png",
+    "meaningEn": "bandage (band-aid)",
+    "registersEn": {
+      "casual": "絆創膏 (bansoukou)",
+      "formal": "絆創膏 (bansoukou)",
+      "keigo": "絆創膏 (bansoukou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_taionkei",
+    "word": "たいおんけい",
+    "kanji": "体温計",
+    "reading": "たいおんけい",
+    "romaji": "taionkei",
+    "meaning": "termometer",
+    "jlptLevel": "N3",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体温計 (taionkei)",
+      "formal": "体温計 (taionkei)",
+      "keigo": "体温計 (taionkei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体温計で熱を測ります。",
+        "romaji": "Taionkei de netsu o hakarimasu.",
+        "translation": "Saya mengukur demam dengan termometer.",
+        "translationEn": "I measure my fever with a thermometer."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_taionkei.png",
+    "meaningEn": "thermometer",
+    "registersEn": {
+      "casual": "体温計 (taionkei)",
+      "formal": "体温計 (taionkei)",
+      "keigo": "体温計 (taionkei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_masuku",
+    "word": "マスク",
+    "kanji": null,
+    "reading": "マスク",
+    "romaji": "masuku",
+    "meaning": "masker",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "マスク (masuku)",
+      "formal": "マスク (masuku)",
+      "keigo": "マスク (masuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "マスクをつけます。",
+        "romaji": "Masuku o tsukemasu.",
+        "translation": "Saya memakai masker.",
+        "translationEn": "I wear a mask."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masuku.png",
+    "meaningEn": "mask",
+    "registersEn": {
+      "casual": "マスク (masuku)",
+      "formal": "マスク (masuku)",
+      "keigo": "マスク (masuku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_kenshin",
+    "word": "けんしん",
+    "kanji": "検診",
+    "reading": "けんしん",
+    "romaji": "kenshin",
+    "meaning": "pemeriksaan kesehatan",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検診 (kenshin)",
+      "formal": "検診 (kenshin)",
+      "keigo": "検診 (kenshin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎年検診を受けます。",
+        "romaji": "Maitoshi kenshin o ukemasu.",
+        "translation": "Saya menjalani pemeriksaan kesehatan setiap tahun.",
+        "translationEn": "I get a health checkup every year."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenshin.png",
+    "meaningEn": "health checkup",
+    "registersEn": {
+      "casual": "検診 (kenshin)",
+      "formal": "検診 (kenshin)",
+      "keigo": "検診 (kenshin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_shohou",
+    "word": "しょほう",
+    "kanji": "処方",
+    "reading": "しょほう",
+    "romaji": "shohou",
+    "meaning": "resep (obat)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "処方 (shohou)",
+      "formal": "処方 (shohou)",
+      "keigo": "処方 (shohou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医者が薬を処方しました。",
+        "romaji": "Isha ga kusuri o shohou shimashita.",
+        "translation": "Dokter meresepkan obat.",
+        "translationEn": "The doctor prescribes medicine."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shohou.png",
+    "meaningEn": "prescription",
+    "registersEn": {
+      "casual": "処方 (shohou)",
+      "formal": "処方 (shohou)",
+      "keigo": "処方 (shohou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_fukusayou",
+    "word": "ふくさよう",
+    "kanji": "副作用",
+    "reading": "ふくさよう",
+    "romaji": "fukusayou",
+    "meaning": "efek samping",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "副作用 (fukusayou)",
+      "formal": "副作用 (fukusayou)",
+      "keigo": "副作用 (fukusayou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この薬には副作用があります。",
+        "romaji": "Kono kusuri ni wa fukusayou ga arimasu.",
+        "translation": "Obat ini punya efek samping.",
+        "translationEn": "This medicine has a side effect."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukusayou.png",
+    "meaningEn": "side effect",
+    "registersEn": {
+      "casual": "副作用 (fukusayou)",
+      "formal": "副作用 (fukusayou)",
+      "keigo": "副作用 (fukusayou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_fukuyou",
+    "word": "ふくよう",
+    "kanji": "服用",
+    "reading": "ふくよう",
+    "romaji": "fukuyou",
+    "meaning": "meminum (obat, formal)",
+    "jlptLevel": "N1",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "服用 (fukuyou)",
+      "formal": "服用 (fukuyou)",
+      "keigo": "服用 (fukuyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "食後にこの薬を服用してください。",
+        "romaji": "Shokugo ni kono kusuri o fukuyou shite kudasai.",
+        "translation": "Tolong minum obat ini setelah makan.",
+        "translationEn": "Please take this medicine after eating."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukuyou.png",
+    "meaningEn": "taking (medicine, formal)",
+    "registersEn": {
+      "casual": "服用 (fukuyou)",
+      "formal": "服用 (fukuyou)",
+      "keigo": "服用 (fukuyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_masui",
+    "word": "ますい",
+    "kanji": "麻酔",
+    "reading": "ますい",
+    "romaji": "masui",
+    "meaning": "anestesi/bius",
+    "jlptLevel": "N1",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "麻酔 (masui)",
+      "formal": "麻酔 (masui)",
+      "keigo": "麻酔 (masui) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手術の前に麻酔をかけます。",
+        "romaji": "Shujutsu no mae ni masui o kakemasu.",
+        "translation": "Sebelum operasi, dilakukan pembiusan.",
+        "translationEn": "Before the surgery, anesthesia is administered."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masui.png",
+    "meaningEn": "anesthesia",
+    "registersEn": {
+      "casual": "麻酔 (masui)",
+      "formal": "麻酔 (masui)",
+      "keigo": "麻酔 (masui) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_shoudoku",
+    "word": "しょうどく",
+    "kanji": "消毒",
+    "reading": "しょうどく",
+    "romaji": "shoudoku",
+    "meaning": "disinfeksi",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "消毒 (shoudoku)",
+      "formal": "消毒 (shoudoku)",
+      "keigo": "消毒 (shoudoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "傷口を消毒します。",
+        "romaji": "Kizuguchi o shoudoku shimasu.",
+        "translation": "Saya mendisinfeksi luka.",
+        "translationEn": "I disinfect the wound."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shoudoku.png",
+    "meaningEn": "disinfection",
+    "registersEn": {
+      "casual": "消毒 (shoudoku)",
+      "formal": "消毒 (shoudoku)",
+      "keigo": "消毒 (shoudoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_houtai",
+    "word": "ほうたい",
+    "kanji": "包帯",
+    "reading": "ほうたい",
+    "romaji": "houtai",
+    "meaning": "perban",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "包帯 (houtai)",
+      "formal": "包帯 (houtai)",
+      "keigo": "包帯 (houtai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "傷に包帯を巻きます。",
+        "romaji": "Kizu ni houtai o makimasu.",
+        "translation": "Saya membalut luka dengan perban.",
+        "translationEn": "I wrap the wound with a bandage."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_houtai.png",
+    "meaningEn": "bandage",
+    "registersEn": {
+      "casual": "包帯 (houtai)",
+      "formal": "包帯 (houtai)",
+      "keigo": "包帯 (houtai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_jouzai",
+    "word": "じょうざい",
+    "kanji": "錠剤",
+    "reading": "じょうざい",
+    "romaji": "jouzai",
+    "meaning": "tablet/pil",
+    "jlptLevel": "N1",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "錠剤 (jouzai)",
+      "formal": "錠剤 (jouzai)",
+      "keigo": "錠剤 (jouzai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この錠剤を一日三回飲みます。",
+        "romaji": "Kono jouzai o ichinichi sankai nomimasu.",
+        "translation": "Saya minum tablet ini tiga kali sehari.",
+        "translationEn": "I take this tablet three times a day."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_jouzai.png",
+    "meaningEn": "tablet/pill",
+    "registersEn": {
+      "casual": "錠剤 (jouzai)",
+      "formal": "錠剤 (jouzai)",
+      "keigo": "錠剤 (jouzai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_eiyou",
+    "word": "えいよう",
+    "kanji": "栄養",
+    "reading": "えいよう",
+    "romaji": "eiyou",
+    "meaning": "gizi/nutrisi",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "栄養 (eiyou)",
+      "formal": "栄養 (eiyou)",
+      "keigo": "栄養 (eiyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "栄養をしっかり取ります。",
+        "romaji": "Eiyou o shikkari torimasu.",
+        "translation": "Mengonsumsi nutrisi dengan baik.",
+        "translationEn": "Getting proper nutrition."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_eiyou.png",
+    "meaningEn": "nutrition",
+    "registersEn": {
+      "casual": "栄養 (eiyou)",
+      "formal": "栄養 (eiyou)",
+      "keigo": "栄養 (eiyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_kango",
+    "word": "かんご",
+    "kanji": "看護",
+    "reading": "かんご",
+    "romaji": "kango",
+    "meaning": "perawatan (medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "看護 (kango)",
+      "formal": "看護 (kango)",
+      "keigo": "看護 (kango) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母を看護しています。",
+        "romaji": "Haha o kango shite imasu.",
+        "translation": "Saya merawat ibu.",
+        "translationEn": "I care for my mother."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kango.png",
+    "meaningEn": "nursing care",
+    "registersEn": {
+      "casual": "看護 (kango)",
+      "formal": "看護 (kango)",
+      "keigo": "看護 (kango) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_kenkou",
+    "word": "けんこう",
+    "kanji": "健康",
+    "reading": "けんこう",
+    "romaji": "kenkou",
+    "meaning": "kesehatan",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "健康 (kenkou)",
+      "formal": "健康 (kenkou)",
+      "keigo": "健康 (kenkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "健康が大切です。",
+        "romaji": "Kenkou ga taisetsu desu.",
+        "translation": "Kesehatan itu penting.",
+        "translationEn": "Health matters."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenkou.png",
+    "meaningEn": "health",
+    "registersEn": {
+      "casual": "健康 (kenkou)",
+      "formal": "健康 (kenkou)",
+      "keigo": "健康 (kenkou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_kensa",
+    "word": "けんさ",
+    "kanji": "検査",
+    "reading": "けんさ",
+    "romaji": "kensa",
+    "meaning": "pemeriksaan",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検査 (kensa)",
+      "formal": "検査 (kensa)",
+      "keigo": "検査 (kensa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "荷物を検査します。",
+        "romaji": "Nimotsu o kensa shimasu.",
+        "translation": "Memeriksa barang. (kesehatan, mesin, kalitas)",
+        "translationEn": "Inspecting the item."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kensa.png",
+    "meaningEn": "examination/inspection",
+    "registersEn": {
+      "casual": "検査 (kensa)",
+      "formal": "検査 (kensa)",
+      "keigo": "検査 (kensa) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_shujutsu",
+    "word": "しゅじゅつ",
+    "kanji": "手術",
+    "reading": "しゅじゅつ",
+    "romaji": "shujutsu",
+    "meaning": "operasi (medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "手術 (shujutsu)",
+      "formal": "手術 (shujutsu)",
+      "keigo": "手術 (shujutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手術を受けました。",
+        "romaji": "Shujutsu o ukemashita.",
+        "translation": "Menjalani operasi.",
+        "translationEn": "Undergoing surgery."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shujutsu.png",
+    "meaningEn": "surgery (medical)",
+    "registersEn": {
+      "casual": "手術 (shujutsu)",
+      "formal": "手術 (shujutsu)",
+      "keigo": "手術 (shujutsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_kurumaisu",
+    "word": "くるまいす",
+    "kanji": "車椅子",
+    "reading": "くるまいす",
+    "romaji": "kurumaisu",
+    "meaning": "kursi roda",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "車椅子 (kurumaisu)",
+      "formal": "車椅子 (kurumaisu)",
+      "keigo": "車椅子 (kurumaisu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車椅子を押します。",
+        "romaji": "Kurumaisu o oshimasu.",
+        "translation": "Mendorong kursi roda.",
+        "translationEn": "Pushing a wheelchair."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kurumaisu.png",
+    "meaningEn": "wheelchair",
+    "registersEn": {
+      "casual": "車椅子 (kurumaisu)",
+      "formal": "車椅子 (kurumaisu)",
+      "keigo": "車椅子 (kurumaisu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_geka",
+    "word": "げか",
+    "kanji": "外科",
+    "reading": "げか",
+    "romaji": "geka",
+    "meaning": "bedah (bidang medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外科 (geka)",
+      "formal": "外科 (geka)",
+      "keigo": "外科 (geka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "外科で手術します。",
+        "romaji": "Geka de shujutsu shimasu.",
+        "translation": "Operasi di bagian bedah.",
+        "translationEn": "Surgery in the surgical department."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_geka.png",
+    "meaningEn": "surgery (medical field)",
+    "registersEn": {
+      "casual": "外科 (geka)",
+      "formal": "外科 (geka)",
+      "keigo": "外科 (geka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_naika",
+    "word": "ないか",
+    "kanji": "内科",
+    "reading": "ないか",
+    "romaji": "naika",
+    "meaning": "penyakit dalam (bidang medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "内科 (naika)",
+      "formal": "内科 (naika)",
+      "keigo": "内科 (naika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "内科に行きます。",
+        "romaji": "Naika ni ikimasu.",
+        "translation": "Pergi ke dokter penyakit dalam.",
+        "translationEn": "Going to an internal medicine doctor."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_naika.png",
+    "meaningEn": "internal medicine (medical field)",
+    "registersEn": {
+      "casual": "内科 (naika)",
+      "formal": "内科 (naika)",
+      "keigo": "内科 (naika) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_yuketsu",
+    "word": "ゆけつ",
+    "kanji": "輸血",
+    "reading": "ゆけつ",
+    "romaji": "yuketsu",
+    "meaning": "transfusi darah",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "輸血 (yuketsu)",
+      "formal": "輸血 (yuketsu)",
+      "keigo": "輸血 (yuketsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "輸血を受けます。",
+        "romaji": "Yuketsu o ukemasu.",
+        "translation": "Menerima transfusi darah.",
+        "translationEn": "Receiving a blood transfusion."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yuketsu.png",
+    "meaningEn": "blood transfusion",
+    "registersEn": {
+      "casual": "輸血 (yuketsu)",
+      "formal": "輸血 (yuketsu)",
+      "keigo": "輸血 (yuketsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_obat_obatan_nyuuin",
+    "word": "にゅういん",
+    "kanji": "入院",
+    "reading": "にゅういん",
+    "romaji": "nyuuin",
+    "meaning": "dirawat di RS",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入院 (nyuuin)",
+      "formal": "入院 (nyuuin)",
+      "keigo": "入院 (nyuuin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "入院しました。",
+        "romaji": "Nyuuin shimashita.",
+        "translation": "Dirawat di rumah sakit.",
+        "translationEn": "Being hospitalized."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_nyuuin.png",
+    "meaningEn": "hospitalization",
+    "registersEn": {
+      "casual": "入院 (nyuuin)",
+      "formal": "入院 (nyuuin)",
+      "keigo": "入院 (nyuuin) — no special keigo form for this noun"
+    }
+  }
+]

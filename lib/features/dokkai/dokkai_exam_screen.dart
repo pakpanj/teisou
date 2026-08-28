@@ -54,6 +54,7 @@ class DokkaiExamScreen extends ConsumerWidget {
     int score,
     int total,
     List<QuizReviewEntry> wrongAnswers,
+    List<GradedAnswer> answers,
   ) async {
     final user = ref.read(appStartupProvider).valueOrNull;
     final result = SimpleExamResult(
@@ -62,6 +63,13 @@ class DokkaiExamScreen extends ConsumerWidget {
       score: score,
       total: total,
       completedAt: DateTime.now(),
+      answers: answers
+          .map((a) => {
+                'contentId': a.contentId,
+                'selectedIndex': a.selectedIndex,
+                'submittedText': a.submittedText,
+              })
+          .toList(),
     );
     if (user != null) {
       try {
@@ -123,8 +131,10 @@ class DokkaiExamScreen extends ConsumerWidget {
           optionsOf: (index) => items[index].question.options,
           correctIndexOf: (index) => items[index].question.correctIndex,
           questionLabelOf: (index) => items[index].question.prompt,
-          onComplete: (score, total, wrongAnswers) =>
-              _onComplete(context, ref, score, total, wrongAnswers),
+          contentIdOf: (index) =>
+              '${items[index].passage.id}|${items[index].question.id}',
+          onComplete: (score, total, wrongAnswers, answers) => _onComplete(
+              context, ref, score, total, wrongAnswers, answers),
         ),
       ),
     );

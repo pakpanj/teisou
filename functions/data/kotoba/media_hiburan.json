@@ -1,0 +1,870 @@
+[
+  {
+    "id": "kotoba_media_hiburan_terebi",
+    "word": "テレビ",
+    "kanji": null,
+    "reading": "テレビ",
+    "romaji": "terebi",
+    "meaning": "televisi",
+    "jlptLevel": "N5",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "テレビ (terebi)",
+      "formal": "テレビ (terebi)",
+      "keigo": "テレビ (terebi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テレビを見ます。",
+        "romaji": "Terebi o mimasu.",
+        "translation": "Saya menonton televisi.",
+        "translationEn": "I watch television."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_terebi.png",
+    "meaningEn": "television",
+    "registersEn": {
+      "casual": "テレビ (terebi)",
+      "formal": "テレビ (terebi)",
+      "keigo": "テレビ (terebi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_manga",
+    "word": "まんが",
+    "kanji": "漫画",
+    "reading": "まんが",
+    "romaji": "manga",
+    "meaning": "komik (manga)",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "漫画 (manga)",
+      "formal": "漫画 (manga)",
+      "keigo": "漫画 (manga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "漫画を読みます。",
+        "romaji": "Manga o yomimasu.",
+        "translation": "Saya membaca komik.",
+        "translationEn": "I read comics."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_manga.png",
+    "meaningEn": "comic (manga)",
+    "registersEn": {
+      "casual": "漫画 (manga)",
+      "formal": "漫画 (manga)",
+      "keigo": "漫画 (manga) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_anime",
+    "word": "アニメ",
+    "kanji": null,
+    "reading": "アニメ",
+    "romaji": "anime",
+    "meaning": "animasi (anime)",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "アニメ (anime)",
+      "formal": "アニメ (anime)",
+      "keigo": "アニメ (anime) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "アニメが好きです。",
+        "romaji": "Anime ga suki desu.",
+        "translation": "Saya suka anime.",
+        "translationEn": "I like anime."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_anime.png",
+    "meaningEn": "animation (anime)",
+    "registersEn": {
+      "casual": "アニメ (anime)",
+      "formal": "アニメ (anime)",
+      "keigo": "アニメ (anime) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_shinbun",
+    "word": "しんぶん",
+    "kanji": "新聞",
+    "reading": "しんぶん",
+    "romaji": "shinbun",
+    "meaning": "koran",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "新聞 (shinbun)",
+      "formal": "新聞 (shinbun)",
+      "keigo": "新聞 (shinbun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新聞を読みます。",
+        "romaji": "Shinbun o yomimasu.",
+        "translation": "Saya membaca koran.",
+        "translationEn": "I read the newspaper."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shinbun.png",
+    "meaningEn": "newspaper",
+    "registersEn": {
+      "casual": "新聞 (shinbun)",
+      "formal": "新聞 (shinbun)",
+      "keigo": "新聞 (shinbun) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_zasshi",
+    "word": "ざっし",
+    "kanji": "雑誌",
+    "reading": "ざっし",
+    "romaji": "zasshi",
+    "meaning": "majalah",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "雑誌 (zasshi)",
+      "formal": "雑誌 (zasshi)",
+      "keigo": "雑誌 (zasshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雑誌を買いました。",
+        "romaji": "Zasshi o kaimashita.",
+        "translation": "Saya membeli majalah.",
+        "translationEn": "I buy a magazine."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_zasshi.png",
+    "meaningEn": "magazine",
+    "registersEn": {
+      "casual": "雑誌 (zasshi)",
+      "formal": "雑誌 (zasshi)",
+      "keigo": "雑誌 (zasshi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_rajio",
+    "word": "ラジオ",
+    "kanji": null,
+    "reading": "ラジオ",
+    "romaji": "rajio",
+    "meaning": "radio",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ラジオ (rajio)",
+      "formal": "ラジオ (rajio)",
+      "keigo": "ラジオ (rajio) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ラジオを聴きます。",
+        "romaji": "Rajio o kikimasu.",
+        "translation": "Saya mendengarkan radio.",
+        "translationEn": "I listen to the radio."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rajio.png",
+    "meaningEn": "radio",
+    "registersEn": {
+      "casual": "ラジオ (rajio)",
+      "formal": "ラジオ (rajio)",
+      "keigo": "ラジオ (rajio) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_nyuusu",
+    "word": "ニュース",
+    "kanji": null,
+    "reading": "ニュース",
+    "romaji": "nyuusu",
+    "meaning": "berita",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ニュース (nyuusu)",
+      "formal": "ニュース (nyuusu)",
+      "keigo": "ニュース (nyuusu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ニュースを見ます。",
+        "romaji": "Nyuusu o mimasu.",
+        "translation": "Saya menonton berita.",
+        "translationEn": "I watch the news."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_nyuusu.png",
+    "meaningEn": "news",
+    "registersEn": {
+      "casual": "ニュース (nyuusu)",
+      "formal": "ニュース (nyuusu)",
+      "keigo": "ニュース (nyuusu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_dorama",
+    "word": "ドラマ",
+    "kanji": null,
+    "reading": "ドラマ",
+    "romaji": "dorama",
+    "meaning": "drama (serial TV)",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ドラマ (dorama)",
+      "formal": "ドラマ (dorama)",
+      "keigo": "ドラマ (dorama) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ドラマを見ます。",
+        "romaji": "Dorama o mimasu.",
+        "translation": "Saya menonton drama.",
+        "translationEn": "I watch a drama."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_dorama.png",
+    "meaningEn": "TV drama",
+    "registersEn": {
+      "casual": "ドラマ (dorama)",
+      "formal": "ドラマ (dorama)",
+      "keigo": "ドラマ (dorama) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_yuuchuubu",
+    "word": "ユーチューブ",
+    "kanji": null,
+    "reading": "ユーチューブ",
+    "romaji": "yuuchuubu",
+    "meaning": "YouTube",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ユーチューブ (yuuchuubu)",
+      "formal": "ユーチューブ (yuuchuubu)",
+      "keigo": "ユーチューブ (yuuchuubu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ユーチューブで動画を見ます。",
+        "romaji": "Yuuchuubu de douga o mimasu.",
+        "translation": "Saya menonton video di YouTube.",
+        "translationEn": "I watch videos on YouTube."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_yuuchuubu.png",
+    "meaningEn": "YouTube",
+    "registersEn": {
+      "casual": "ユーチューブ (yuuchuubu)",
+      "formal": "ユーチューブ (yuuchuubu)",
+      "keigo": "ユーチューブ (yuuchuubu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_sns",
+    "word": "SNS",
+    "kanji": null,
+    "reading": "SNS",
+    "romaji": "esu-enu-esu",
+    "meaning": "media sosial",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "SNS (esu-enu-esu)",
+      "formal": "SNS (esu-enu-esu)",
+      "keigo": "SNS (esu-enu-esu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "SNSを使います。",
+        "romaji": "SNS o tsukaimasu.",
+        "translation": "Saya menggunakan media sosial.",
+        "translationEn": "I use social media."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_sns.png",
+    "meaningEn": "social media",
+    "registersEn": {
+      "casual": "SNS (esu-enu-esu)",
+      "formal": "SNS (esu-enu-esu)",
+      "keigo": "SNS (esu-enu-esu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_ken'etsu",
+    "word": "けんえつ",
+    "kanji": "検閲",
+    "reading": "けんえつ",
+    "romaji": "ken'etsu",
+    "meaning": "sensor (media/pers)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検閲 (ken'etsu)",
+      "formal": "検閲 (ken'etsu)",
+      "keigo": "検閲 (ken'etsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その国では報道が検閲されています。",
+        "romaji": "Sono kuni de wa houdou ga ken'etsu sarete imasu.",
+        "translation": "Di negara itu, pemberitaan disensor.",
+        "translationEn": "In that country, the news is censored."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_ken'etsu.png",
+    "meaningEn": "censorship (media/press)",
+    "registersEn": {
+      "casual": "検閲 (ken'etsu)",
+      "formal": "検閲 (ken'etsu)",
+      "keigo": "検閲 (ken'etsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_netsuzou",
+    "word": "ねつぞう",
+    "kanji": "捏造",
+    "reading": "ねつぞう",
+    "romaji": "netsuzou",
+    "meaning": "pemalsuan/rekayasa (berita)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "捏造 (netsuzou)",
+      "formal": "捏造 (netsuzou)",
+      "keigo": "捏造 (netsuzou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その記事は捏造だと分かりました。",
+        "romaji": "Sono kiji wa netsuzou da to wakarimashita.",
+        "translation": "Artikel itu ternyata rekayasa/palsu.",
+        "translationEn": "That article turned out to be fabricated/fake."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_netsuzou.png",
+    "meaningEn": "fabrication (of news)",
+    "registersEn": {
+      "casual": "捏造 (netsuzou)",
+      "formal": "捏造 (netsuzou)",
+      "keigo": "捏造 (netsuzou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_inpei",
+    "word": "いんぺい",
+    "kanji": "隠蔽",
+    "reading": "いんぺい",
+    "romaji": "inpei",
+    "meaning": "penyembunyian/penutupan (fakta)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "隠蔽 (inpei)",
+      "formal": "隠蔽 (inpei)",
+      "keigo": "隠蔽 (inpei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社は問題を隠蔽していました。",
+        "romaji": "Kaisha wa mondai o inpei shite imashita.",
+        "translation": "Perusahaan itu menutup-nutupi masalahnya.",
+        "translationEn": "That company is covering up its problem."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_inpei.png",
+    "meaningEn": "cover-up/concealment (of facts)",
+    "registersEn": {
+      "casual": "隠蔽 (inpei)",
+      "formal": "隠蔽 (inpei)",
+      "keigo": "隠蔽 (inpei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_okusoku",
+    "word": "おくそく",
+    "kanji": "憶測",
+    "reading": "おくそく",
+    "romaji": "okusoku",
+    "meaning": "spekulasi/dugaan",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "憶測 (okusoku)",
+      "formal": "憶測 (okusoku)",
+      "keigo": "憶測 (okusoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "憶測で記事を書くべきではありません。",
+        "romaji": "Okusoku de kiji o kaku beki de wa arimasen.",
+        "translation": "Tidak seharusnya menulis artikel berdasarkan spekulasi.",
+        "translationEn": "You shouldn't write an article based on speculation."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_okusoku.png",
+    "meaningEn": "speculation/conjecture",
+    "registersEn": {
+      "casual": "憶測 (okusoku)",
+      "formal": "憶測 (okusoku)",
+      "keigo": "憶測 (okusoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_rotei",
+    "word": "ろてい",
+    "kanji": "露呈",
+    "reading": "ろてい",
+    "romaji": "rotei",
+    "meaning": "terbongkarnya/terungkapnya (kelemahan)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "露呈 (rotei)",
+      "formal": "露呈 (rotei)",
+      "keigo": "露呈 (rotei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会見で問題点が露呈しました。",
+        "romaji": "Kaiken de mondaiten ga rotei shimashita.",
+        "translation": "Titik masalahnya terungkap dalam konferensi pers.",
+        "translationEn": "The problem's core was revealed at the press conference."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rotei.png",
+    "meaningEn": "exposure (of a flaw)",
+    "registersEn": {
+      "casual": "露呈 (rotei)",
+      "formal": "露呈 (rotei)",
+      "keigo": "露呈 (rotei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_koukoku",
+    "word": "こうこく",
+    "kanji": "広告",
+    "reading": "こうこく",
+    "romaji": "koukoku",
+    "meaning": "iklan",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "広告 (koukoku)",
+      "formal": "広告 (koukoku)",
+      "keigo": "広告 (koukoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テレビで広告を見ます。",
+        "romaji": "Terebi de koukoku o mimasu.",
+        "translation": "Saya melihat iklan di televisi.",
+        "translationEn": "I see an ad on television."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_koukoku.png",
+    "meaningEn": "advertisement",
+    "registersEn": {
+      "casual": "広告 (koukoku)",
+      "formal": "広告 (koukoku)",
+      "keigo": "広告 (koukoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_housou",
+    "word": "ほうそう",
+    "kanji": "放送",
+    "reading": "ほうそう",
+    "romaji": "housou",
+    "meaning": "siaran",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "放送 (housou)",
+      "formal": "放送 (housou)",
+      "keigo": "放送 (housou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この番組は毎週放送されます。",
+        "romaji": "Kono bangumi wa maishuu housou saremasu.",
+        "translation": "Acara ini disiarkan setiap minggu.",
+        "translationEn": "This program is broadcast every week."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_housou.png",
+    "meaningEn": "broadcast",
+    "registersEn": {
+      "casual": "放送 (housou)",
+      "formal": "放送 (housou)",
+      "keigo": "放送 (housou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_haishin",
+    "word": "はいしん",
+    "kanji": "配信",
+    "reading": "はいしん",
+    "romaji": "haishin",
+    "meaning": "streaming/distribusi (konten)",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "配信 (haishin)",
+      "formal": "配信 (haishin)",
+      "keigo": "配信 (haishin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しいドラマが配信されました。",
+        "romaji": "Atarashii dorama ga haishin saremashita.",
+        "translation": "Drama baru sudah dirilis untuk streaming.",
+        "translationEn": "The new drama has been released for streaming."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_haishin.png",
+    "meaningEn": "streaming/distribution (of content)",
+    "registersEn": {
+      "casual": "配信 (haishin)",
+      "formal": "配信 (haishin)",
+      "keigo": "配信 (haishin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_eizou",
+    "word": "えいぞう",
+    "kanji": "映像",
+    "reading": "えいぞう",
+    "romaji": "eizou",
+    "meaning": "rekaman video/visual",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "映像 (eizou)",
+      "formal": "映像 (eizou)",
+      "keigo": "映像 (eizou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その映像はとても美しいです。",
+        "romaji": "Sono eizou wa totemo utsukushii desu.",
+        "translation": "Rekaman visual itu sangat indah.",
+        "translationEn": "That video footage is very beautiful."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_eizou.png",
+    "meaningEn": "video footage/visual",
+    "registersEn": {
+      "casual": "映像 (eizou)",
+      "formal": "映像 (eizou)",
+      "keigo": "映像 (eizou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_kiji",
+    "word": "きじ",
+    "kanji": "記事",
+    "reading": "きじ",
+    "romaji": "kiji",
+    "meaning": "artikel (berita)",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記事 (kiji)",
+      "formal": "記事 (kiji)",
+      "keigo": "記事 (kiji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新聞の記事を読みます。",
+        "romaji": "Shinbun no kiji o yomimasu.",
+        "translation": "Membaca artikel koran.",
+        "translationEn": "Reading a newspaper article."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_kiji.png",
+    "meaningEn": "(news) article",
+    "registersEn": {
+      "casual": "記事 (kiji)",
+      "formal": "記事 (kiji)",
+      "keigo": "記事 (kiji) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_genkou",
+    "word": "げんこう",
+    "kanji": "原稿",
+    "reading": "げんこう",
+    "romaji": "genkou",
+    "meaning": "naskah",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "原稿 (genkou)",
+      "formal": "原稿 (genkou)",
+      "keigo": "原稿 (genkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "原稿を書いています。",
+        "romaji": "Genkou o kaite imasu.",
+        "translation": "Sedang menulis naskah.",
+        "translationEn": "Writing a script."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_genkou.png",
+    "meaningEn": "manuscript/draft",
+    "registersEn": {
+      "casual": "原稿 (genkou)",
+      "formal": "原稿 (genkou)",
+      "keigo": "原稿 (genkou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_senden",
+    "word": "せんでん",
+    "kanji": "宣伝",
+    "reading": "せんでん",
+    "romaji": "senden",
+    "meaning": "iklan/promosi",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宣伝 (senden)",
+      "formal": "宣伝 (senden)",
+      "keigo": "宣伝 (senden) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新商品を宣伝します。",
+        "romaji": "Shin shouhin o senden shimasu.",
+        "translation": "Mengiklankan produk baru.",
+        "translationEn": "Advertising a new product."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_senden.png",
+    "meaningEn": "advertising/promotion",
+    "registersEn": {
+      "casual": "宣伝 (senden)",
+      "formal": "宣伝 (senden)",
+      "keigo": "宣伝 (senden) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_toujou",
+    "word": "とうじょう",
+    "kanji": "登場",
+    "reading": "とうじょう",
+    "romaji": "toujou",
+    "meaning": "kemunculan/tampil",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "登場 (toujou)",
+      "formal": "登場 (toujou)",
+      "keigo": "登場 (toujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先生が教室に登場しました。",
+        "romaji": "Sensei ga kyoushitsu ni toujou shimashita.",
+        "translation": "Guru muncul di kelas. (acara, cerita,film panggung)",
+        "translationEn": "The teacher appears in class."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_toujou.png",
+    "meaningEn": "appearance/entrance",
+    "registersEn": {
+      "casual": "登場 (toujou)",
+      "formal": "登場 (toujou)",
+      "keigo": "登場 (toujou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_monogatari",
+    "word": "ものがたり",
+    "kanji": "物語",
+    "reading": "ものがたり",
+    "romaji": "monogatari",
+    "meaning": "cerita/dongeng",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "物語 (monogatari)",
+      "formal": "物語 (monogatari)",
+      "keigo": "物語 (monogatari) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "面白い物語を読みました。",
+        "romaji": "Omoshiroi monogatari o yomimashita.",
+        "translation": "Saya membaca cerita yang menarik. (Dongeng)",
+        "translationEn": "I read an interesting story."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_monogatari.png",
+    "meaningEn": "story/tale",
+    "registersEn": {
+      "casual": "物語 (monogatari)",
+      "formal": "物語 (monogatari)",
+      "keigo": "物語 (monogatari) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_shuukan",
+    "word": "しゅうかん",
+    "kanji": "週刊",
+    "reading": "しゅうかん",
+    "romaji": "shuukan",
+    "meaning": "terbitan mingguan",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "週刊 (shuukan)",
+      "formal": "週刊 (shuukan)",
+      "keigo": "週刊 (shuukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "週刊誌を読みます。",
+        "romaji": "Shuukanshi o yomimasu.",
+        "translation": "Membaca majalah mingguan.",
+        "translationEn": "Reading a weekly magazine."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shuukan.png",
+    "meaningEn": "weekly publication",
+    "registersEn": {
+      "casual": "週刊 (shuukan)",
+      "formal": "週刊 (shuukan)",
+      "keigo": "週刊 (shuukan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_shasetsu",
+    "word": "しゃせつ",
+    "kanji": "社説",
+    "reading": "しゃせつ",
+    "romaji": "shasetsu",
+    "meaning": "editorial (koran)",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "社説 (shasetsu)",
+      "formal": "社説 (shasetsu)",
+      "keigo": "社説 (shasetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社説を読みます。",
+        "romaji": "Shasetsu o yomimasu.",
+        "translation": "Membaca editorial.",
+        "translationEn": "Reading an editorial."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shasetsu.png",
+    "meaningEn": "editorial (newspaper)",
+    "registersEn": {
+      "casual": "社説 (shasetsu)",
+      "formal": "社説 (shasetsu)",
+      "keigo": "社説 (shasetsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_bangumi",
+    "word": "ばんぐみ",
+    "kanji": "番組",
+    "reading": "ばんぐみ",
+    "romaji": "bangumi",
+    "meaning": "acara (TV/radio)",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "番組 (bangumi)",
+      "formal": "番組 (bangumi)",
+      "keigo": "番組 (bangumi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テレビ番組を見ます。",
+        "romaji": "Terebi bangumi o mimasu.",
+        "translation": "Menonton acara TV.",
+        "translationEn": "Watching a TV program."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_bangumi.png",
+    "meaningEn": "(TV/radio) program",
+    "registersEn": {
+      "casual": "番組 (bangumi)",
+      "formal": "番組 (bangumi)",
+      "keigo": "番組 (bangumi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_media_hiburan_shousetsu",
+    "word": "しょうせつ",
+    "kanji": "小説",
+    "reading": "しょうせつ",
+    "romaji": "shousetsu",
+    "meaning": "novel",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "小説 (shousetsu)",
+      "formal": "小説 (shousetsu)",
+      "keigo": "小説 (shousetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "小説を読みます。",
+        "romaji": "Shousetsu o yomimasu.",
+        "translation": "Membaca novel.",
+        "translationEn": "Reading a novel."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shousetsu.png",
+    "meaningEn": "novel",
+    "registersEn": {
+      "casual": "小説 (shousetsu)",
+      "formal": "小説 (shousetsu)",
+      "keigo": "小説 (shousetsu) — no special keigo form for this noun"
+    }
+  }
+]

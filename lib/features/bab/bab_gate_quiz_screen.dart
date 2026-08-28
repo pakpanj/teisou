@@ -110,7 +110,11 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
     int score,
     int total,
     List<QuizReviewEntry> wrongAnswers,
+    List<GradedAnswer> answers,
   ) async {
+    // Unused: the gate quiz's result never feeds Global Points/Weekly
+    // Ranking, so it has no server-grading concern — see McQuizFlow's own
+    // `contentIdOf` doc comment for why this parameter exists at all.
     final passed = total > 0 && score >= gatePassMark(total);
     if (passed) {
       final uid = ref.read(appStartupProvider).valueOrNull?.uid;

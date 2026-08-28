@@ -259,6 +259,36 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Trusted exam-grading result — Exam-History Authority fix (see
+    // TEISOU_ROADMAP_MASTER.md's "Exam-History Authority" audit + design
+    // + implementation sections). The raw, client-writable
+    // `examHistory`/`dokkaiExamHistory`/`choukaiExamHistory`/
+    // `kanjiComboExamHistory` documents (covered by the generic
+    // `users/{uid}/{document=**}` owner-write wildcard below, and
+    // DELIBERATELY left unconstrained by this fix — see this rules
+    // file's own history for why an unvalidated raw submission stays
+    // functional: content honesty is enforced downstream by re-grading,
+    // not by locking the raw write) still carry a client-reported
+    // `score`/`total` that Cloud Functions no longer trusts for anything
+    // monetary. `examHistoryGraded/{historyDocId}` is the trusted,
+    // server-only result of independently re-grading that raw submission
+    // against this project's own bundled content
+    // (`functions/exam_grading.js`), written exactly once per
+    // `historyDocId` inside `global_points.js`'s
+    // `awardPointsForHistoryDoc` transaction — same reasoning as
+    // `globalScorePeriods` above: there is no legitimate client write
+    // path at all, so every write is denied unconditionally, for every
+    // field, always. Reads are owner-only (not public like
+    // `globalScorePeriods`) since this doc's own `uid` field lets it
+    // double as a per-user audit trail of what the server actually
+    // graded, which has no reason to be world-readable the way a public
+    // ranking number does.
+    match /examHistoryGraded/{historyDocId} {
+      allow read: if request.auth != null
+          && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+
     // `leaderboard/{uid}.globalScore` itself is DELIBERATELY left
     // unrestricted by this implementation — evaluated and explicitly
     // rejected, not an oversight:

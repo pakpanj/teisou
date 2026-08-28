@@ -1,0 +1,684 @@
+[
+  {
+    "id": "kotoba_hewan_darat_inu",
+    "word": "いぬ",
+    "kanji": "犬",
+    "reading": "いぬ",
+    "romaji": "inu",
+    "meaning": "anjing",
+    "jlptLevel": "N5",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いぬ (inu)",
+      "formal": "いぬ (inu)",
+      "keigo": "いぬ (inu) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "犬が好きです。",
+        "romaji": "Inu ga suki desu.",
+        "translation": "Saya suka anjing.",
+        "translationEn": "I like dogs."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_inu.png",
+    "meaningEn": "dog",
+    "registersEn": {
+      "casual": "いぬ (inu)",
+      "formal": "いぬ (inu)",
+      "keigo": "いぬ (inu) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_neko",
+    "word": "ねこ",
+    "kanji": "猫",
+    "reading": "ねこ",
+    "romaji": "neko",
+    "meaning": "kucing",
+    "jlptLevel": "N5",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ねこ (neko)",
+      "formal": "ねこ (neko)",
+      "keigo": "ねこ (neko) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "猫はかわいいです。",
+        "romaji": "Neko wa kawaii desu.",
+        "translation": "Kucing itu lucu.",
+        "translationEn": "That cat is cute."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_neko.png",
+    "meaningEn": "cat",
+    "registersEn": {
+      "casual": "ねこ (neko)",
+      "formal": "ねこ (neko)",
+      "keigo": "ねこ (neko) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_usagi",
+    "word": "うさぎ",
+    "kanji": null,
+    "reading": "うさぎ",
+    "romaji": "usagi",
+    "meaning": "kelinci",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "うさぎ (usagi)",
+      "formal": "うさぎ (usagi)",
+      "keigo": "うさぎ (usagi) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "うさぎは耳が長いです。",
+        "romaji": "Usagi wa mimi ga nagai desu.",
+        "translation": "Kelinci telinganya panjang.",
+        "translationEn": "Rabbits have long ears."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_usagi.png",
+    "meaningEn": "rabbit",
+    "registersEn": {
+      "casual": "うさぎ (usagi)",
+      "formal": "うさぎ (usagi)",
+      "keigo": "うさぎ (usagi) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_zou",
+    "word": "ぞう",
+    "kanji": "象",
+    "reading": "ぞう",
+    "romaji": "zou",
+    "meaning": "gajah",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ぞう (zou)",
+      "formal": "ぞう (zou)",
+      "keigo": "ぞう (zou) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "象は大きいです。",
+        "romaji": "Zou wa ookii desu.",
+        "translation": "Gajah itu besar.",
+        "translationEn": "Elephants are big."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_zou.png",
+    "meaningEn": "elephant",
+    "registersEn": {
+      "casual": "ぞう (zou)",
+      "formal": "ぞう (zou)",
+      "keigo": "ぞう (zou) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_raion",
+    "word": "ライオン",
+    "kanji": null,
+    "reading": "ライオン",
+    "romaji": "raion",
+    "meaning": "singa",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ライオン (raion)",
+      "formal": "ライオン (raion)",
+      "keigo": "ライオン (raion) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ライオンは強いです。",
+        "romaji": "Raion wa tsuyoi desu.",
+        "translation": "Singa itu kuat.",
+        "translationEn": "Lions are strong."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_raion.png",
+    "meaningEn": "lion",
+    "registersEn": {
+      "casual": "ライオン (raion)",
+      "formal": "ライオン (raion)",
+      "keigo": "ライオン (raion) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_tora",
+    "word": "とら",
+    "kanji": "虎",
+    "reading": "とら",
+    "romaji": "tora",
+    "meaning": "harimau",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "とら (tora)",
+      "formal": "とら (tora)",
+      "keigo": "とら (tora) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "虎は森にいます。",
+        "romaji": "Tora wa mori ni imasu.",
+        "translation": "Harimau ada di hutan.",
+        "translationEn": "There's a tiger in the forest."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_tora.png",
+    "meaningEn": "tiger",
+    "registersEn": {
+      "casual": "とら (tora)",
+      "formal": "とら (tora)",
+      "keigo": "とら (tora) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_kuma",
+    "word": "くま",
+    "kanji": "熊",
+    "reading": "くま",
+    "romaji": "kuma",
+    "meaning": "beruang",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くま (kuma)",
+      "formal": "くま (kuma)",
+      "keigo": "くま (kuma) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "熊に注意してください。",
+        "romaji": "Kuma ni chuui shite kudasai.",
+        "translation": "Tolong hati-hati terhadap beruang.",
+        "translationEn": "Please be careful of bears."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kuma.png",
+    "meaningEn": "bear",
+    "registersEn": {
+      "casual": "くま (kuma)",
+      "formal": "くま (kuma)",
+      "keigo": "くま (kuma) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_saru",
+    "word": "さる",
+    "kanji": "猿",
+    "reading": "さる",
+    "romaji": "saru",
+    "meaning": "monyet",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さる (saru)",
+      "formal": "さる (saru)",
+      "keigo": "さる (saru) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "猿が木に登ります。",
+        "romaji": "Saru ga ki ni noborimasu.",
+        "translation": "Monyet memanjat pohon.",
+        "translationEn": "A monkey climbs the tree."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_saru.png",
+    "meaningEn": "monkey",
+    "registersEn": {
+      "casual": "さる (saru)",
+      "formal": "さる (saru)",
+      "keigo": "さる (saru) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_uma",
+    "word": "うま",
+    "kanji": "馬",
+    "reading": "うま",
+    "romaji": "uma",
+    "meaning": "kuda",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "うま (uma)",
+      "formal": "うま (uma)",
+      "keigo": "うま (uma) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "牧場に馬がいます。",
+        "romaji": "Bokujou ni uma ga imasu.",
+        "translation": "Ada kuda di peternakan.",
+        "translationEn": "There's a horse at the farm."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_uma.png",
+    "meaningEn": "horse",
+    "registersEn": {
+      "casual": "うま (uma)",
+      "formal": "うま (uma)",
+      "keigo": "うま (uma) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_ushi",
+    "word": "うし",
+    "kanji": "牛",
+    "reading": "うし",
+    "romaji": "ushi",
+    "meaning": "sapi",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "うし (ushi)",
+      "formal": "うし (ushi)",
+      "keigo": "うし (ushi) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "牧場に牛がいます。",
+        "romaji": "Bokujou ni ushi ga imasu.",
+        "translation": "Ada sapi di peternakan.",
+        "translationEn": "There's a cow at the farm."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_ushi.png",
+    "meaningEn": "cow",
+    "registersEn": {
+      "casual": "うし (ushi)",
+      "formal": "うし (ushi)",
+      "keigo": "うし (ushi) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_buta",
+    "word": "ぶた",
+    "kanji": "豚",
+    "reading": "ぶた",
+    "romaji": "buta",
+    "meaning": "babi",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ぶた (buta)",
+      "formal": "ぶた (buta)",
+      "keigo": "ぶた (buta) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "牧場に豚がいます。",
+        "romaji": "Bokujou ni buta ga imasu.",
+        "translation": "Ada babi di peternakan.",
+        "translationEn": "There's a pig at the farm."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_buta.png",
+    "meaningEn": "pig",
+    "registersEn": {
+      "casual": "ぶた (buta)",
+      "formal": "ぶた (buta)",
+      "keigo": "ぶた (buta) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_hitsuji",
+    "word": "ひつじ",
+    "kanji": "羊",
+    "reading": "ひつじ",
+    "romaji": "hitsuji",
+    "meaning": "domba",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ひつじ (hitsuji)",
+      "formal": "ひつじ (hitsuji)",
+      "keigo": "ひつじ (hitsuji) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "羊の毛は白いです。",
+        "romaji": "Hitsuji no ke wa shiroi desu.",
+        "translation": "Bulu domba berwarna putih.",
+        "translationEn": "Sheep's wool is white."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_hitsuji.png",
+    "meaningEn": "sheep",
+    "registersEn": {
+      "casual": "ひつじ (hitsuji)",
+      "formal": "ひつじ (hitsuji)",
+      "keigo": "ひつじ (hitsuji) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_panda",
+    "word": "パンダ",
+    "kanji": null,
+    "reading": "パンダ",
+    "romaji": "panda",
+    "meaning": "panda",
+    "jlptLevel": "N5",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "パンダ (panda)",
+      "formal": "パンダ (panda)",
+      "keigo": "パンダ (panda) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パンダが好きです。",
+        "romaji": "Panda ga suki desu.",
+        "translation": "Saya suka panda.",
+        "translationEn": "I like pandas."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_panda.png",
+    "meaningEn": "panda",
+    "registersEn": {
+      "casual": "パンダ (panda)",
+      "formal": "パンダ (panda)",
+      "keigo": "パンダ (panda) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_kirin",
+    "word": "キリン",
+    "kanji": null,
+    "reading": "キリン",
+    "romaji": "kirin",
+    "meaning": "jerapah",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "キリン (kirin)",
+      "formal": "キリン (kirin)",
+      "keigo": "キリン (kirin) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "キリンは首が長いです。",
+        "romaji": "Kirin wa kubi ga nagai desu.",
+        "translation": "Jerapah lehernya panjang.",
+        "translationEn": "Giraffes have long necks."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kirin.png",
+    "meaningEn": "giraffe",
+    "registersEn": {
+      "casual": "キリン (kirin)",
+      "formal": "キリン (kirin)",
+      "keigo": "キリン (kirin) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_nezumi",
+    "word": "ねずみ",
+    "kanji": null,
+    "reading": "ねずみ",
+    "romaji": "nezumi",
+    "meaning": "tikus",
+    "jlptLevel": "N4",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ねずみ (nezumi)",
+      "formal": "ねずみ (nezumi)",
+      "keigo": "ねずみ (nezumi) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家にねずみがいます。",
+        "romaji": "Ie ni nezumi ga imasu.",
+        "translation": "Ada tikus di rumah.",
+        "translationEn": "There's a mouse in the house."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_nezumi.png",
+    "meaningEn": "mouse",
+    "registersEn": {
+      "casual": "ねずみ (nezumi)",
+      "formal": "ねずみ (nezumi)",
+      "keigo": "ねずみ (nezumi) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_shika",
+    "word": "しか",
+    "kanji": "鹿",
+    "reading": "しか",
+    "romaji": "shika",
+    "meaning": "rusa",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しか (shika)",
+      "formal": "しか (shika)",
+      "keigo": "しか (shika) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "公園に鹿がいます。",
+        "romaji": "Kouen ni shika ga imasu.",
+        "translation": "Ada rusa di taman.",
+        "translationEn": "There's a deer at the park."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_shika.png",
+    "meaningEn": "deer",
+    "registersEn": {
+      "casual": "しか (shika)",
+      "formal": "しか (shika)",
+      "keigo": "しか (shika) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_koala",
+    "word": "コアラ",
+    "kanji": null,
+    "reading": "コアラ",
+    "romaji": "koala",
+    "meaning": "koala",
+    "jlptLevel": "N5",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "コアラ (koala)",
+      "formal": "コアラ (koala)",
+      "keigo": "コアラ (koala) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "コアラはかわいいです。",
+        "romaji": "Koala wa kawaii desu.",
+        "translation": "Koala itu lucu.",
+        "translationEn": "That koala is cute."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_koala.png",
+    "meaningEn": "koala",
+    "registersEn": {
+      "casual": "コアラ (koala)",
+      "formal": "コアラ (koala)",
+      "keigo": "コアラ (koala) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_kame",
+    "word": "かめ",
+    "kanji": "亀",
+    "reading": "かめ",
+    "romaji": "kame",
+    "meaning": "kura-kura",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かめ (kame)",
+      "formal": "かめ (kame)",
+      "keigo": "かめ (kame) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "亀はゆっくり歩きます。",
+        "romaji": "Kame wa yukkuri arukimasu.",
+        "translation": "Kura-kura berjalan pelan.",
+        "translationEn": "A turtle walks slowly."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kame.png",
+    "meaningEn": "turtle",
+    "registersEn": {
+      "casual": "かめ (kame)",
+      "formal": "かめ (kame)",
+      "keigo": "かめ (kame) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_hebi",
+    "word": "へび",
+    "kanji": "蛇",
+    "reading": "へび",
+    "romaji": "hebi",
+    "meaning": "ular",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "へび (hebi)",
+      "formal": "へび (hebi)",
+      "keigo": "へび (hebi) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "蛇は怖いです。",
+        "romaji": "Hebi wa kowai desu.",
+        "translation": "Ular itu menakutkan.",
+        "translationEn": "That snake is scary."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_hebi.png",
+    "meaningEn": "snake",
+    "registersEn": {
+      "casual": "へび (hebi)",
+      "formal": "へび (hebi)",
+      "keigo": "へび (hebi) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_kaeru",
+    "word": "かえる",
+    "kanji": "蛙",
+    "reading": "かえる",
+    "romaji": "kaeru",
+    "meaning": "katak",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かえる (kaeru)",
+      "formal": "かえる (kaeru)",
+      "keigo": "かえる (kaeru) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "田んぼに蛙がいます。",
+        "romaji": "Tanbo ni kaeru ga imasu.",
+        "translation": "Ada katak di sawah.",
+        "translationEn": "There's a frog in the rice field."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kaeru.png",
+    "meaningEn": "frog",
+    "registersEn": {
+      "casual": "かえる (kaeru)",
+      "formal": "かえる (kaeru)",
+      "keigo": "かえる (kaeru) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_risu",
+    "word": "リス",
+    "kanji": null,
+    "reading": "リス",
+    "romaji": "risu",
+    "meaning": "tupai",
+    "jlptLevel": "N3",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "リス (risu)",
+      "formal": "リス (risu)",
+      "keigo": "リス (risu) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "木にリスがいます。",
+        "romaji": "Ki ni risu ga imasu.",
+        "translation": "Ada tupai di pohon.",
+        "translationEn": "There's a squirrel in the tree."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_risu.png",
+    "meaningEn": "squirrel",
+    "registersEn": {
+      "casual": "リス (risu)",
+      "formal": "リス (risu)",
+      "keigo": "リス (risu) — no special keigo form for land animal names"
+    }
+  },
+  {
+    "id": "kotoba_hewan_darat_ookami",
+    "word": "おおかみ",
+    "kanji": "狼",
+    "reading": "おおかみ",
+    "romaji": "ookami",
+    "meaning": "serigala",
+    "jlptLevel": "N2",
+    "category": "hewan_darat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "おおかみ (ookami)",
+      "formal": "おおかみ (ookami)",
+      "keigo": "おおかみ (ookami) — tidak ada bentuk keigo khusus untuk nama hewan darat"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "狼は森にいます。",
+        "romaji": "Ookami wa mori ni imasu.",
+        "translation": "Serigala ada di hutan.",
+        "translationEn": "There's a wolf in the forest."
+      }
+    ],
+    "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_ookami.png",
+    "meaningEn": "wolf",
+    "registersEn": {
+      "casual": "おおかみ (ookami)",
+      "formal": "おおかみ (ookami)",
+      "keigo": "おおかみ (ookami) — no special keigo form for land animal names"
+    }
+  }
+]

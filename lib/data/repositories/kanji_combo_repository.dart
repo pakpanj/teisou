@@ -426,6 +426,12 @@ class KanjiComboRepository {
         options: options,
         correctIndex: options.indexOf(correctAnswer),
         promptLabel: promptLabel,
+        // Combination mode's prompt already IS the bare compound-word
+        // kanji string (see generateQuestions' promptOf: (w) => w.kanji!)
+        // — no separate, more-elaborate display form exists for this
+        // mode the way single-kanji reading questions have.
+        contentKey: promptOf(item),
+        promptKind: 'reading',
       );
     });
   }
@@ -558,6 +564,11 @@ class KanjiComboRepository {
         options: options,
         correctIndex: options.indexOf(displayAnswer),
         promptLabel: askReading ? labels.reading : labels.meaning,
+        // The bare kanji character — distinct from `prompt`, which for a
+        // reading question is `_readingPrompt`'s more elaborate display
+        // form, not the character alone.
+        contentKey: item.character,
+        promptKind: askReading ? 'reading' : 'meaning',
       );
     });
   }

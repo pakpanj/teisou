@@ -1,0 +1,2141 @@
+[
+  {
+    "id": "kotoba_mata_pelajaran_kokugo",
+    "word": "こくご",
+    "kanji": "国語",
+    "reading": "こくご",
+    "romaji": "kokugo",
+    "meaning": "bahasa nasional (mapel Jepang)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国語 (kokugo)",
+      "formal": "国語 (kokugo)",
+      "keigo": "国語 (kokugo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国語のテストがあります。",
+        "romaji": "Kokugo no tesuto ga arimasu.",
+        "translation": "Ada tes bahasa Jepang.",
+        "translationEn": "There's a Japanese language test."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kokugo.png",
+    "meaningEn": "Japanese language (school subject)",
+    "registersEn": {
+      "casual": "国語 (kokugo)",
+      "formal": "国語 (kokugo)",
+      "keigo": "国語 (kokugo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_suugaku",
+    "word": "すうがく",
+    "kanji": "数学",
+    "reading": "すうがく",
+    "romaji": "suugaku",
+    "meaning": "matematika",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "数学 (suugaku)",
+      "formal": "数学 (suugaku)",
+      "keigo": "数学 (suugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "数学は難しいです。",
+        "romaji": "Suugaku wa muzukashii desu.",
+        "translation": "Matematika itu sulit.",
+        "translationEn": "Math is difficult."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_suugaku.png",
+    "meaningEn": "mathematics",
+    "registersEn": {
+      "casual": "数学 (suugaku)",
+      "formal": "数学 (suugaku)",
+      "keigo": "数学 (suugaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rika",
+    "word": "りか",
+    "kanji": "理科",
+    "reading": "りか",
+    "romaji": "rika",
+    "meaning": "IPA (sains)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "理科 (rika)",
+      "formal": "理科 (rika)",
+      "keigo": "理科 (rika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "理科の実験をします。",
+        "romaji": "Rika no jikken o shimasu.",
+        "translation": "Saya melakukan eksperimen IPA.",
+        "translationEn": "I do a science experiment."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rika.png",
+    "meaningEn": "science",
+    "registersEn": {
+      "casual": "理科 (rika)",
+      "formal": "理科 (rika)",
+      "keigo": "理科 (rika) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shakai",
+    "word": "しゃかい",
+    "kanji": "社会",
+    "reading": "しゃかい",
+    "romaji": "shakai",
+    "meaning": "IPS (sosial)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "社会 (shakai)",
+      "formal": "社会 (shakai)",
+      "keigo": "社会 (shakai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社会の授業があります。",
+        "romaji": "Shakai no jugyou ga arimasu.",
+        "translation": "Ada pelajaran IPS.",
+        "translationEn": "There's a social studies class."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shakai.png",
+    "meaningEn": "social studies",
+    "registersEn": {
+      "casual": "社会 (shakai)",
+      "formal": "社会 (shakai)",
+      "keigo": "社会 (shakai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_eigo",
+    "word": "えいご",
+    "kanji": "英語",
+    "reading": "えいご",
+    "romaji": "eigo",
+    "meaning": "bahasa Inggris",
+    "jlptLevel": "N5",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "英語 (eigo)",
+      "formal": "英語 (eigo)",
+      "keigo": "英語 (eigo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "英語を勉強します。",
+        "romaji": "Eigo o benkyou shimasu.",
+        "translation": "Saya belajar bahasa Inggris.",
+        "translationEn": "I study English."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_eigo.png",
+    "meaningEn": "English",
+    "registersEn": {
+      "casual": "英語 (eigo)",
+      "formal": "英語 (eigo)",
+      "keigo": "英語 (eigo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_nihongo",
+    "word": "にほんご",
+    "kanji": "日本語",
+    "reading": "にほんご",
+    "romaji": "nihongo",
+    "meaning": "bahasa Jepang",
+    "jlptLevel": "N5",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "日本語 (nihongo)",
+      "formal": "日本語 (nihongo)",
+      "keigo": "日本語 (nihongo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本語が好きです。",
+        "romaji": "Nihongo ga suki desu.",
+        "translation": "Saya suka bahasa Jepang.",
+        "translationEn": "I like Japanese."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nihongo.png",
+    "meaningEn": "Japanese language",
+    "registersEn": {
+      "casual": "日本語 (nihongo)",
+      "formal": "日本語 (nihongo)",
+      "keigo": "日本語 (nihongo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_taiiku",
+    "word": "たいいく",
+    "kanji": "体育",
+    "reading": "たいいく",
+    "romaji": "taiiku",
+    "meaning": "olahraga (mapel PE)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体育 (taiiku)",
+      "formal": "体育 (taiiku)",
+      "keigo": "体育 (taiiku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体育で走ります。",
+        "romaji": "Taiiku de hashirimasu.",
+        "translation": "Saya lari saat pelajaran olahraga.",
+        "translationEn": "I run during PE class."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_taiiku.png",
+    "meaningEn": "physical education",
+    "registersEn": {
+      "casual": "体育 (taiiku)",
+      "formal": "体育 (taiiku)",
+      "keigo": "体育 (taiiku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_bijutsu",
+    "word": "びじゅつ",
+    "kanji": "美術",
+    "reading": "びじゅつ",
+    "romaji": "bijutsu",
+    "meaning": "seni rupa",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "美術 (bijutsu)",
+      "formal": "美術 (bijutsu)",
+      "keigo": "美術 (bijutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "美術の授業で絵を描きます。",
+        "romaji": "Bijutsu no jugyou de e o kakimasu.",
+        "translation": "Saya menggambar di pelajaran seni.",
+        "translationEn": "I draw in art class."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bijutsu.png",
+    "meaningEn": "fine arts",
+    "registersEn": {
+      "casual": "美術 (bijutsu)",
+      "formal": "美術 (bijutsu)",
+      "keigo": "美術 (bijutsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rekishi",
+    "word": "れきし",
+    "kanji": "歴史",
+    "reading": "れきし",
+    "romaji": "rekishi",
+    "meaning": "sejarah",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歴史 (rekishi)",
+      "formal": "歴史 (rekishi)",
+      "keigo": "歴史 (rekishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "歴史を勉強します。",
+        "romaji": "Rekishi o benkyou shimasu.",
+        "translation": "Saya belajar sejarah.",
+        "translationEn": "I study history."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rekishi.png",
+    "meaningEn": "history",
+    "registersEn": {
+      "casual": "歴史 (rekishi)",
+      "formal": "歴史 (rekishi)",
+      "keigo": "歴史 (rekishi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kagaku",
+    "word": "かがく",
+    "kanji": "化学",
+    "reading": "かがく",
+    "romaji": "kagaku",
+    "meaning": "kimia",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "化学 (kagaku)",
+      "formal": "化学 (kagaku)",
+      "keigo": "化学 (kagaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "化学は面白いです。",
+        "romaji": "Kagaku wa omoshiroi desu.",
+        "translation": "Kimia itu menarik.",
+        "translationEn": "Chemistry is interesting."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kagaku.png",
+    "meaningEn": "chemistry",
+    "registersEn": {
+      "casual": "化学 (kagaku)",
+      "formal": "化学 (kagaku)",
+      "keigo": "化学 (kagaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_senkou",
+    "word": "せんこう",
+    "kanji": "専攻",
+    "reading": "せんこう",
+    "romaji": "senkou",
+    "meaning": "jurusan/spesialisasi (kuliah)",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "専攻 (senkou)",
+      "formal": "専攻 (senkou)",
+      "keigo": "専攻 (senkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学で経済学を専攻しています。",
+        "romaji": "Daigaku de keizaigaku o senkou shite imasu.",
+        "translation": "Saya berkuliah jurusan ekonomi.",
+        "translationEn": "I major in economics at university."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_senkou.png",
+    "meaningEn": "major/specialization",
+    "registersEn": {
+      "casual": "専攻 (senkou)",
+      "formal": "専攻 (senkou)",
+      "keigo": "専攻 (senkou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rishuu",
+    "word": "りしゅう",
+    "kanji": "履修",
+    "reading": "りしゅう",
+    "romaji": "rishuu",
+    "meaning": "pengambilan mata kuliah",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "履修 (rishuu)",
+      "formal": "履修 (rishuu)",
+      "keigo": "履修 (rishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来学期、この科目を履修します。",
+        "romaji": "Rai gakki, kono kamoku o rishuu shimasu.",
+        "translation": "Semester depan, saya akan mengambil mata kuliah ini.",
+        "translationEn": "Next semester, I'll take this course."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rishuu.png",
+    "meaningEn": "taking a course",
+    "registersEn": {
+      "casual": "履修 (rishuu)",
+      "formal": "履修 (rishuu)",
+      "keigo": "履修 (rishuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shingaku",
+    "word": "しんがく",
+    "kanji": "進学",
+    "reading": "しんがく",
+    "romaji": "shingaku",
+    "meaning": "melanjutkan pendidikan",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "進学 (shingaku)",
+      "formal": "進学 (shingaku)",
+      "keigo": "進学 (shingaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学に進学するつもりです。",
+        "romaji": "Daigaku ni shingaku suru tsumori desu.",
+        "translation": "Saya berniat melanjutkan ke perguruan tinggi.",
+        "translationEn": "I intend to go on to higher education."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shingaku.png",
+    "meaningEn": "advancing to higher education",
+    "registersEn": {
+      "casual": "進学 (shingaku)",
+      "formal": "進学 (shingaku)",
+      "keigo": "進学 (shingaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_keizai",
+    "word": "けいざい",
+    "kanji": "経済",
+    "reading": "けいざい",
+    "romaji": "keizai",
+    "meaning": "ekonomi",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "経済 (keizai)",
+      "formal": "経済 (keizai)",
+      "keigo": "経済 (keizai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "経済を勉強しています。",
+        "romaji": "Keizai o benkyou shite imasu.",
+        "translation": "Saya sedang belajar ekonomi.",
+        "translationEn": "I'm studying economics."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_keizai.png",
+    "meaningEn": "economics",
+    "registersEn": {
+      "casual": "経済 (keizai)",
+      "formal": "経済 (keizai)",
+      "keigo": "経済 (keizai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_butsuri",
+    "word": "ぶつり",
+    "kanji": "物理",
+    "reading": "ぶつり",
+    "romaji": "butsuri",
+    "meaning": "fisika",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "物理 (butsuri)",
+      "formal": "物理 (butsuri)",
+      "keigo": "物理 (butsuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "物理は難しいです。",
+        "romaji": "Butsuri wa muzukashii desu.",
+        "translation": "Fisika itu sulit.",
+        "translationEn": "Physics is difficult."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_butsuri.png",
+    "meaningEn": "physics",
+    "registersEn": {
+      "casual": "物理 (butsuri)",
+      "formal": "物理 (butsuri)",
+      "keigo": "物理 (butsuri) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_seibutsu",
+    "word": "せいぶつ",
+    "kanji": "生物",
+    "reading": "せいぶつ",
+    "romaji": "seibutsu",
+    "meaning": "biologi",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "生物 (seibutsu)",
+      "formal": "生物 (seibutsu)",
+      "keigo": "生物 (seibutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "生物の授業が好きです。",
+        "romaji": "Seibutsu no jugyou ga suki desu.",
+        "translation": "Saya suka pelajaran biologi.",
+        "translationEn": "I like biology class."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_seibutsu.png",
+    "meaningEn": "biology",
+    "registersEn": {
+      "casual": "生物 (seibutsu)",
+      "formal": "生物 (seibutsu)",
+      "keigo": "生物 (seibutsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_chiri",
+    "word": "ちり",
+    "kanji": "地理",
+    "reading": "ちり",
+    "romaji": "chiri",
+    "meaning": "geografi",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地理 (chiri)",
+      "formal": "地理 (chiri)",
+      "keigo": "地理 (chiri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地理のテストがあります。",
+        "romaji": "Chiri no tesuto ga arimasu.",
+        "translation": "Ada tes geografi.",
+        "translationEn": "There's a geography test."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_chiri.png",
+    "meaningEn": "geography",
+    "registersEn": {
+      "casual": "地理 (chiri)",
+      "formal": "地理 (chiri)",
+      "keigo": "地理 (chiri) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rinri",
+    "word": "りんり",
+    "kanji": "倫理",
+    "reading": "りんり",
+    "romaji": "rinri",
+    "meaning": "etika",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "倫理 (rinri)",
+      "formal": "倫理 (rinri)",
+      "keigo": "倫理 (rinri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "倫理について議論します。",
+        "romaji": "Rinri ni tsuite giron shimasu.",
+        "translation": "Kami berdiskusi tentang etika.",
+        "translationEn": "We discuss ethics."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rinri.png",
+    "meaningEn": "ethics",
+    "registersEn": {
+      "casual": "倫理 (rinri)",
+      "formal": "倫理 (rinri)",
+      "keigo": "倫理 (rinri) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_tetsugaku",
+    "word": "てつがく",
+    "kanji": "哲学",
+    "reading": "てつがく",
+    "romaji": "tetsugaku",
+    "meaning": "filsafat",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "哲学 (tetsugaku)",
+      "formal": "哲学 (tetsugaku)",
+      "keigo": "哲学 (tetsugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学で哲学を学びました。",
+        "romaji": "Daigaku de tetsugaku o manabimashita.",
+        "translation": "Saya belajar filsafat di universitas.",
+        "translationEn": "I study philosophy at university."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tetsugaku.png",
+    "meaningEn": "philosophy",
+    "registersEn": {
+      "casual": "哲学 (tetsugaku)",
+      "formal": "哲学 (tetsugaku)",
+      "keigo": "哲学 (tetsugaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kateika",
+    "word": "かていか",
+    "kanji": "家庭科",
+    "reading": "かていか",
+    "romaji": "kateika",
+    "meaning": "tata boga/prakarya",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家庭科 (kateika)",
+      "formal": "家庭科 (kateika)",
+      "keigo": "家庭科 (kateika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家庭科でクッキーを作りました。",
+        "romaji": "Kateika de kukkii o tsukurimashita.",
+        "translation": "Kami membuat kue di pelajaran tata boga.",
+        "translationEn": "We make cakes in home economics class."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kateika.png",
+    "meaningEn": "home economics",
+    "registersEn": {
+      "casual": "家庭科 (kateika)",
+      "formal": "家庭科 (kateika)",
+      "keigo": "家庭科 (kateika) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakubu",
+    "word": "がくぶ",
+    "kanji": "学部",
+    "reading": "がくぶ",
+    "romaji": "gakubu",
+    "meaning": "fakultas",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学部 (gakubu)",
+      "formal": "学部 (gakubu)",
+      "keigo": "学部 (gakubu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "経済学部に入ります。",
+        "romaji": "Keizai gakubu ni hairimasu.",
+        "translation": "Masuk fakultas ekonomi.",
+        "translationEn": "Entering the economics faculty."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakubu.png",
+    "meaningEn": "faculty (university)",
+    "registersEn": {
+      "casual": "学部 (gakubu)",
+      "formal": "学部 (gakubu)",
+      "keigo": "学部 (gakubu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakki",
+    "word": "がっき",
+    "kanji": "学期",
+    "reading": "がっき",
+    "romaji": "gakki",
+    "meaning": "semester",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学期 (gakki)",
+      "formal": "学期 (gakki)",
+      "keigo": "学期 (gakki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい学期が始まります。",
+        "romaji": "Atarashii gakki ga hajimarimasu.",
+        "translation": "Semester baru dimulai.",
+        "translationEn": "The new semester begins."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakki.png",
+    "meaningEn": "semester",
+    "registersEn": {
+      "casual": "学期 (gakki)",
+      "formal": "学期 (gakki)",
+      "keigo": "学期 (gakki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kiso",
+    "word": "きそ",
+    "kanji": "基礎",
+    "reading": "きそ",
+    "romaji": "kiso",
+    "meaning": "dasar/pondasi",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "基礎 (kiso)",
+      "formal": "基礎 (kiso)",
+      "keigo": "基礎 (kiso) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本語の基礎を勉強します。",
+        "romaji": "Nihongo no kiso o benkyou shimasu.",
+        "translation": "Belajar dasar bahasa Jepang. (pondasi ilmu/skill)",
+        "translationEn": "Studying the basics of Japanese."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kiso.png",
+    "meaningEn": "basics/foundation",
+    "registersEn": {
+      "casual": "基礎 (kiso)",
+      "formal": "基礎 (kiso)",
+      "keigo": "基礎 (kiso) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kihon",
+    "word": "きほん",
+    "kanji": "基本",
+    "reading": "きほん",
+    "romaji": "kihon",
+    "meaning": "dasar/pokok",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "基本 (kihon)",
+      "formal": "基本 (kihon)",
+      "keigo": "基本 (kihon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "基本を覚えてください。",
+        "romaji": "Kihon o oboete kudasai.",
+        "translation": "Tolong hafalkan dasar. (aturan main/ prinsip, konsep)",
+        "translationEn": "Please memorize the basics."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kihon.png",
+    "meaningEn": "basics/fundamentals",
+    "registersEn": {
+      "casual": "基本 (kihon)",
+      "formal": "基本 (kihon)",
+      "keigo": "基本 (kihon) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gengo",
+    "word": "げんご",
+    "kanji": "言語",
+    "reading": "げんご",
+    "romaji": "gengo",
+    "meaning": "bahasa",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "言語 (gengo)",
+      "formal": "言語 (gengo)",
+      "keigo": "言語 (gengo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "言語を学びます。",
+        "romaji": "Gengo o manabimasu.",
+        "translation": "Mempelajari bahasa.",
+        "translationEn": "Studying a language."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gengo.png",
+    "meaningEn": "language",
+    "registersEn": {
+      "casual": "言語 (gengo)",
+      "formal": "言語 (gengo)",
+      "keigo": "言語 (gengo) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kouki",
+    "word": "こうき",
+    "kanji": "後期",
+    "reading": "こうき",
+    "romaji": "kouki",
+    "meaning": "semester kedua",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "後期 (kouki)",
+      "formal": "後期 (kouki)",
+      "keigo": "後期 (kouki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "後期が始まりました。",
+        "romaji": "Kouki ga hajimarimashita.",
+        "translation": "Semester kedua dimulai.",
+        "translationEn": "The second semester begins."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kouki.png",
+    "meaningEn": "second semester",
+    "registersEn": {
+      "casual": "後期 (kouki)",
+      "formal": "後期 (kouki)",
+      "keigo": "後期 (kouki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kougi",
+    "word": "こうぎ",
+    "kanji": "講義",
+    "reading": "こうぎ",
+    "romaji": "kougi",
+    "meaning": "kuliah",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "講義 (kougi)",
+      "formal": "講義 (kougi)",
+      "keigo": "講義 (kougi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学で講義を受けます。",
+        "romaji": "Daigaku de kougi o ukemasu.",
+        "translation": "Mengikuti kuliah di kampus.",
+        "translationEn": "Attending a lecture on campus."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kougi.png",
+    "meaningEn": "(university) lecture",
+    "registersEn": {
+      "casual": "講義 (kougi)",
+      "formal": "講義 (kougi)",
+      "keigo": "講義 (kougi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_goukaku",
+    "word": "ごうかく",
+    "kanji": "合格",
+    "reading": "ごうかく",
+    "romaji": "goukaku",
+    "meaning": "kelulusan",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "合格 (goukaku)",
+      "formal": "合格 (goukaku)",
+      "keigo": "合格 (goukaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "試験に合格しました。",
+        "romaji": "Shiken ni goukaku shimashita.",
+        "translation": "Lulus ujian.",
+        "translationEn": "Passing the exam."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_goukaku.png",
+    "meaningEn": "passing (an exam)",
+    "registersEn": {
+      "casual": "合格 (goukaku)",
+      "formal": "合格 (goukaku)",
+      "keigo": "合格 (goukaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_sansuu",
+    "word": "さんすう",
+    "kanji": "算数",
+    "reading": "さんすう",
+    "romaji": "sansuu",
+    "meaning": "matematika dasar",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "算数 (sansuu)",
+      "formal": "算数 (sansuu)",
+      "keigo": "算数 (sansuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "算数を勉強します。",
+        "romaji": "Sansuu o benkyou shimasu.",
+        "translation": "Belajar matematika dasar. (+-X:)",
+        "translationEn": "Studying basic arithmetic."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_sansuu.png",
+    "meaningEn": "arithmetic",
+    "registersEn": {
+      "casual": "算数 (sansuu)",
+      "formal": "算数 (sansuu)",
+      "keigo": "算数 (sansuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shiken",
+    "word": "しけん",
+    "kanji": "試験",
+    "reading": "しけん",
+    "romaji": "shiken",
+    "meaning": "ujian/tes",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "試験 (shiken)",
+      "formal": "試験 (shiken)",
+      "keigo": "試験 (shiken) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "明日試験があります。",
+        "romaji": "Ashita shiken ga arimasu.",
+        "translation": "Besok ada ujian.",
+        "translationEn": "There's an exam tomorrow."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shiken.png",
+    "meaningEn": "exam/test",
+    "registersEn": {
+      "casual": "試験 (shiken)",
+      "formal": "試験 (shiken)",
+      "keigo": "試験 (shiken) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shidou",
+    "word": "しどう",
+    "kanji": "指導",
+    "reading": "しどう",
+    "romaji": "shidou",
+    "meaning": "bimbingan",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "指導 (shidou)",
+      "formal": "指導 (shidou)",
+      "keigo": "指導 (shidou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先生が指導します。",
+        "romaji": "Sensei ga shidou shimasu.",
+        "translation": "Guru membimbing.",
+        "translationEn": "The teacher gives guidance."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shidou.png",
+    "meaningEn": "guidance",
+    "registersEn": {
+      "casual": "指導 (shidou)",
+      "formal": "指導 (shidou)",
+      "keigo": "指導 (shidou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_juken",
+    "word": "じゅけん",
+    "kanji": "受験",
+    "reading": "じゅけん",
+    "romaji": "juken",
+    "meaning": "mengikuti ujian",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "受験 (juken)",
+      "formal": "受験 (juken)",
+      "keigo": "受験 (juken) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "JLPTを受験します。",
+        "romaji": "JLPT o juken shimasu.",
+        "translation": "mengikuti ujian JLPT",
+        "translationEn": "Taking the JLPT exam."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_juken.png",
+    "meaningEn": "taking an exam",
+    "registersEn": {
+      "casual": "受験 (juken)",
+      "formal": "受験 (juken)",
+      "keigo": "受験 (juken) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_seikai",
+    "word": "せいかい",
+    "kanji": "正解",
+    "reading": "せいかい",
+    "romaji": "seikai",
+    "meaning": "jawaban benar",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "正解 (seikai)",
+      "formal": "正解 (seikai)",
+      "keigo": "正解 (seikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "正解しました。",
+        "romaji": "Seikai shimashita.",
+        "translation": "Jawabannya benar.",
+        "translationEn": "The answer is correct."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_seikai.png",
+    "meaningEn": "correct answer",
+    "registersEn": {
+      "casual": "正解 (seikai)",
+      "formal": "正解 (seikai)",
+      "keigo": "正解 (seikai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_tango",
+    "word": "たんご",
+    "kanji": "単語",
+    "reading": "たんご",
+    "romaji": "tango",
+    "meaning": "kosakata",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "単語 (tango)",
+      "formal": "単語 (tango)",
+      "keigo": "単語 (tango) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "単語を覚えます。",
+        "romaji": "Tango o oboemasu.",
+        "translation": "Menghafal kosakata.",
+        "translationEn": "Memorizing vocabulary."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tango.png",
+    "meaningEn": "vocabulary word",
+    "registersEn": {
+      "casual": "単語 (tango)",
+      "formal": "単語 (tango)",
+      "keigo": "単語 (tango) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_tsuugaku",
+    "word": "つうがく",
+    "kanji": "通学",
+    "reading": "つうがく",
+    "romaji": "tsuugaku",
+    "meaning": "pergi ke sekolah (naik kendaraan)",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "通学 (tsuugaku)",
+      "formal": "通学 (tsuugaku)",
+      "keigo": "通学 (tsuugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車で通学します。",
+        "romaji": "Densha de tsuugaku shimasu.",
+        "translation": "Pergi sekolah naik kereta.",
+        "translationEn": "Going to school by train."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tsuugaku.png",
+    "meaningEn": "commuting to school",
+    "registersEn": {
+      "casual": "通学 (tsuugaku)",
+      "formal": "通学 (tsuugaku)",
+      "keigo": "通学 (tsuugaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_nyuumon",
+    "word": "にゅうもん",
+    "kanji": "入門",
+    "reading": "にゅうもん",
+    "romaji": "nyuumon",
+    "meaning": "pengenalan dasar/perkenalan pelajaran",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入門 (nyuumon)",
+      "formal": "入門 (nyuumon)",
+      "keigo": "入門 (nyuumon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本語を入門しました。",
+        "romaji": "Nihongo o nyuumon shimashita.",
+        "translation": "Saya mulai belajar dasar bahasa Jepang.",
+        "translationEn": "I'm starting to learn the basics of Japanese."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nyuumon.png",
+    "meaningEn": "introduction (to a subject)",
+    "registersEn": {
+      "casual": "入門 (nyuumon)",
+      "formal": "入門 (nyuumon)",
+      "keigo": "入門 (nyuumon) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_hatsuon",
+    "word": "はつおん",
+    "kanji": "発音",
+    "reading": "はつおん",
+    "romaji": "hatsuon",
+    "meaning": "pelafalan",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "発音 (hatsuon)",
+      "formal": "発音 (hatsuon)",
+      "keigo": "発音 (hatsuon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "発音を練習します。",
+        "romaji": "Hatsuon o renshuu shimasu.",
+        "translation": "Saya melatih pelafalan.",
+        "translationEn": "I practice pronunciation."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_hatsuon.png",
+    "meaningEn": "pronunciation",
+    "registersEn": {
+      "casual": "発音 (hatsuon)",
+      "formal": "発音 (hatsuon)",
+      "keigo": "発音 (hatsuon) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_moji",
+    "word": "もじ",
+    "kanji": "文字",
+    "reading": "もじ",
+    "romaji": "moji",
+    "meaning": "huruf/karakter",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文字 (moji)",
+      "formal": "文字 (moji)",
+      "keigo": "文字 (moji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この文字は難しいです。",
+        "romaji": "Kono moji wa muzukashii desu.",
+        "translation": "Huruf ini sulit.",
+        "translationEn": "This character is difficult."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_moji.png",
+    "meaningEn": "letter/character",
+    "registersEn": {
+      "casual": "文字 (moji)",
+      "formal": "文字 (moji)",
+      "keigo": "文字 (moji) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shinnyuusei",
+    "word": "しんにゅうせい",
+    "kanji": "新入生",
+    "reading": "しんにゅうせい",
+    "romaji": "shinnyuusei",
+    "meaning": "siswa baru",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "新入生 (shinnyuusei)",
+      "formal": "新入生 (shinnyuusei)",
+      "keigo": "新入生 (shinnyuusei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新入生を歓迎します。",
+        "romaji": "Shin'nyuusei o kangei shimasu.",
+        "translation": "Kami menyambut siswa baru.",
+        "translationEn": "We welcome new students."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shinnyuusei.png",
+    "meaningEn": "new student",
+    "registersEn": {
+      "casual": "新入生 (shinnyuusei)",
+      "formal": "新入生 (shinnyuusei)",
+      "keigo": "新入生 (shinnyuusei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_daigakuin",
+    "word": "だいがくいん",
+    "kanji": "大学院",
+    "reading": "だいがくいん",
+    "romaji": "daigakuin",
+    "meaning": "sekolah pascasarjana",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大学院 (daigakuin)",
+      "formal": "大学院 (daigakuin)",
+      "keigo": "大学院 (daigakuin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は大学院で勉強しています。",
+        "romaji": "Kare wa daigakuin de benkyou shite imasu.",
+        "translation": "Dia belajar di sekolah pascasarjana. 修士課程 S2 博はく士課程 S3",
+        "translationEn": "He/she studies in graduate school."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_daigakuin.png",
+    "meaningEn": "graduate school",
+    "registersEn": {
+      "casual": "大学院 (daigakuin)",
+      "formal": "大学院 (daigakuin)",
+      "keigo": "大学院 (daigakuin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_anki",
+    "word": "あんき",
+    "kanji": "暗記",
+    "reading": "あんき",
+    "romaji": "anki",
+    "meaning": "menghafal",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "暗記 (anki)",
+      "formal": "暗記 (anki)",
+      "keigo": "暗記 (anki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "単語を暗記します。",
+        "romaji": "Tango o anki shimasu.",
+        "translation": "Saya menghafal kosakata.",
+        "translationEn": "I memorize vocabulary."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_anki.png",
+    "meaningEn": "memorization",
+    "registersEn": {
+      "casual": "暗記 (anki)",
+      "formal": "暗記 (anki)",
+      "keigo": "暗記 (anki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_chuugaku",
+    "word": "ちゅうがく",
+    "kanji": "中学",
+    "reading": "ちゅうがく",
+    "romaji": "chuugaku",
+    "meaning": "SMP",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中学 (chuugaku)",
+      "formal": "中学 (chuugaku)",
+      "keigo": "中学 (chuugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "中学に入学します。",
+        "romaji": "Chuugaku ni nyuugaku shimasu.",
+        "translation": "Saya masuk SMP.",
+        "translationEn": "I enter middle school."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_chuugaku.png",
+    "meaningEn": "junior high school",
+    "registersEn": {
+      "casual": "中学 (chuugaku)",
+      "formal": "中学 (chuugaku)",
+      "keigo": "中学 (chuugaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakumon",
+    "word": "がくもん",
+    "kanji": "学問",
+    "reading": "がくもん",
+    "romaji": "gakumon",
+    "meaning": "ilmu pengetahuan",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学問 (gakumon)",
+      "formal": "学問 (gakumon)",
+      "keigo": "学問 (gakumon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学問を深めます。",
+        "romaji": "Gakumon o fukamemasu.",
+        "translation": "Saya memperdalam ilmu pengetahuan.",
+        "translationEn": "I deepen my knowledge."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakumon.png",
+    "meaningEn": "scholarship/academics",
+    "registersEn": {
+      "casual": "学問 (gakumon)",
+      "formal": "学問 (gakumon)",
+      "keigo": "学問 (gakumon) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakushuu",
+    "word": "がくしゅう",
+    "kanji": "学習",
+    "reading": "がくしゅう",
+    "romaji": "gakushuu",
+    "meaning": "pembelajaran",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学習 (gakushuu)",
+      "formal": "学習 (gakushuu)",
+      "keigo": "学習 (gakushuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本語を学習します。",
+        "romaji": "Nihongo o gakushuu shimasu.",
+        "translation": "Saya belajar bahasa Jepang.",
+        "translationEn": "I study Japanese."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakushuu.png",
+    "meaningEn": "learning/study",
+    "registersEn": {
+      "casual": "学習 (gakushuu)",
+      "formal": "学習 (gakushuu)",
+      "keigo": "学習 (gakushuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gogaku",
+    "word": "ごがく",
+    "kanji": "語学",
+    "reading": "ごがく",
+    "romaji": "gogaku",
+    "meaning": "studi bahasa asing",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "語学 (gogaku)",
+      "formal": "語学 (gogaku)",
+      "keigo": "語学 (gogaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "語学が得意です。",
+        "romaji": "Gogaku ga tokui desu.",
+        "translation": "Saya mahir dalam bahasa asing.",
+        "translationEn": "I'm skilled in foreign languages."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gogaku.png",
+    "meaningEn": "foreign language study",
+    "registersEn": {
+      "casual": "語学 (gogaku)",
+      "formal": "語学 (gogaku)",
+      "keigo": "語学 (gogaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kamoku",
+    "word": "かもく",
+    "kanji": "科目",
+    "reading": "かもく",
+    "romaji": "kamoku",
+    "meaning": "mata pelajaran (kurikulum)",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "科目 (kamoku)",
+      "formal": "科目 (kamoku)",
+      "keigo": "科目 (kamoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "好きな科目は何ですか。",
+        "romaji": "Sukina kamoku wa nan desu ka.",
+        "translation": "Mata pelajaran favoritmu apa?",
+        "translationEn": "What's your favorite subject?"
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kamoku.png",
+    "meaningEn": "(curriculum) subject",
+    "registersEn": {
+      "casual": "科目 (kamoku)",
+      "formal": "科目 (kamoku)",
+      "keigo": "科目 (kamoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_ryuugaku",
+    "word": "りゅうがく",
+    "kanji": "留学",
+    "reading": "りゅうがく",
+    "romaji": "ryuugaku",
+    "meaning": "belajar di luar negeri",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "留学 (ryuugaku)",
+      "formal": "留学 (ryuugaku)",
+      "keigo": "留学 (ryuugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "アメリカに留学します。",
+        "romaji": "Amerika ni ryuugaku shimasu.",
+        "translation": "Belajar ke Amerika.",
+        "translationEn": "Studying abroad in America."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_ryuugaku.png",
+    "meaningEn": "studying abroad",
+    "registersEn": {
+      "casual": "留学 (ryuugaku)",
+      "formal": "留学 (ryuugaku)",
+      "keigo": "留学 (ryuugaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shougakukin",
+    "word": "しょうがくきん",
+    "kanji": "奨学金",
+    "reading": "しょうがくきん",
+    "romaji": "shougakukin",
+    "meaning": "beasiswa",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "奨学金 (shougakukin)",
+      "formal": "奨学金 (shougakukin)",
+      "keigo": "奨学金 (shougakukin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "奨学金をもらいました。",
+        "romaji": "Shougakukin o moraimashita.",
+        "translation": "Menerima beasiswa.",
+        "translationEn": "Receiving a scholarship."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shougakukin.png",
+    "meaningEn": "scholarship (money)",
+    "registersEn": {
+      "casual": "奨学金 (shougakukin)",
+      "formal": "奨学金 (shougakukin)",
+      "keigo": "奨学金 (shougakukin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_jissen",
+    "word": "じっせん",
+    "kanji": "実践",
+    "reading": "じっせん",
+    "romaji": "jissen",
+    "meaning": "praktik (penerapan nyata)",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "実践 (jissen)",
+      "formal": "実践 (jissen)",
+      "keigo": "実践 (jissen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "理論を実践します。",
+        "romaji": "Riron o jissen shimasu.",
+        "translation": "Mempraktikkan teori.",
+        "translationEn": "Putting theory into practice."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jissen.png",
+    "meaningEn": "practice (real application)",
+    "registersEn": {
+      "casual": "実践 (jissen)",
+      "formal": "実践 (jissen)",
+      "keigo": "実践 (jissen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kadai",
+    "word": "かだい",
+    "kanji": "課題",
+    "reading": "かだい",
+    "romaji": "kadai",
+    "meaning": "tugas/isu",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "課題 (kadai)",
+      "formal": "課題 (kadai)",
+      "keigo": "課題 (kadai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "課題を提出します。",
+        "romaji": "Kadai o teishutsu shimasu.",
+        "translation": "Menyerahkan tugas.",
+        "translationEn": "Submitting an assignment."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kadai.png",
+    "meaningEn": "assignment/issue",
+    "registersEn": {
+      "casual": "課題 (kadai)",
+      "formal": "課題 (kadai)",
+      "keigo": "課題 (kadai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_ensoku",
+    "word": "えんそく",
+    "kanji": "遠足",
+    "reading": "えんそく",
+    "romaji": "ensoku",
+    "meaning": "tamasya sekolah",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "遠足 (ensoku)",
+      "formal": "遠足 (ensoku)",
+      "keigo": "遠足 (ensoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "遠足に行きます。",
+        "romaji": "Ensoku ni ikimasu.",
+        "translation": "Pergi tamasya sekolah.",
+        "translationEn": "Going on a school field trip."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_ensoku.png",
+    "meaningEn": "school excursion",
+    "registersEn": {
+      "casual": "遠足 (ensoku)",
+      "formal": "遠足 (ensoku)",
+      "keigo": "遠足 (ensoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakka",
+    "word": "がっか",
+    "kanji": "学科",
+    "reading": "がっか",
+    "romaji": "gakka",
+    "meaning": "jurusan/mata kuliah",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学科 (gakka)",
+      "formal": "学科 (gakka)",
+      "keigo": "学科 (gakka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学科を選びます。",
+        "romaji": "Gakka o erabimasu.",
+        "translation": "Memilih jurusan.",
+        "translationEn": "Choosing a major."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakka.png",
+    "meaningEn": "(university) department",
+    "registersEn": {
+      "casual": "学科 (gakka)",
+      "formal": "学科 (gakka)",
+      "keigo": "学科 (gakka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakkai",
+    "word": "がっかい",
+    "kanji": "学会",
+    "reading": "がっかい",
+    "romaji": "gakkai",
+    "meaning": "himpunan akademik",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学会 (gakkai)",
+      "formal": "学会 (gakkai)",
+      "keigo": "学会 (gakkai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学会に出席します。",
+        "romaji": "Gakkai ni shusseki shimasu.",
+        "translation": "Menghadiri konferensi akademik.",
+        "translationEn": "Attending an academic conference."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakkai.png",
+    "meaningEn": "academic society",
+    "registersEn": {
+      "casual": "学会 (gakkai)",
+      "formal": "学会 (gakkai)",
+      "keigo": "学会 (gakkai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakuryoku",
+    "word": "がくりょく",
+    "kanji": "学力",
+    "reading": "がくりょく",
+    "romaji": "gakuryoku",
+    "meaning": "kemampuan akademik",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学力 (gakuryoku)",
+      "formal": "学力 (gakuryoku)",
+      "keigo": "学力 (gakuryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学力を伸ばします。",
+        "romaji": "Gakuryoku o nobashimasu.",
+        "translation": "Meningkatkan kemampuan akademik.",
+        "translationEn": "Improving academic ability."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakuryoku.png",
+    "meaningEn": "academic ability",
+    "registersEn": {
+      "casual": "学力 (gakuryoku)",
+      "formal": "学力 (gakuryoku)",
+      "keigo": "学力 (gakuryoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_jishuu",
+    "word": "じしゅう",
+    "kanji": "自習",
+    "reading": "じしゅう",
+    "romaji": "jishuu",
+    "meaning": "belajar mandiri",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "自習 (jishuu)",
+      "formal": "自習 (jishuu)",
+      "keigo": "自習 (jishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "図書館で自習します。",
+        "romaji": "Toshokan de jishuu shimasu.",
+        "translation": "Belajar mandiri di perpustakaan.",
+        "translationEn": "Self-studying in the library."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jishuu.png",
+    "meaningEn": "self-study",
+    "registersEn": {
+      "casual": "自習 (jishuu)",
+      "formal": "自習 (jishuu)",
+      "keigo": "自習 (jishuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_jisshuu",
+    "word": "じっしゅう",
+    "kanji": "実習",
+    "reading": "じっしゅう",
+    "romaji": "jisshuu",
+    "meaning": "praktik/pelatihan",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "実習 (jisshuu)",
+      "formal": "実習 (jisshuu)",
+      "keigo": "実習 (jisshuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "実習を行います。",
+        "romaji": "Jisshuu o okonaimasu.",
+        "translation": "Melakukan praktik.",
+        "translationEn": "Doing practical training."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jisshuu.png",
+    "meaningEn": "practical training",
+    "registersEn": {
+      "casual": "実習 (jisshuu)",
+      "formal": "実習 (jisshuu)",
+      "keigo": "実習 (jisshuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kengaku",
+    "word": "けんがく",
+    "kanji": "見学",
+    "reading": "けんがく",
+    "romaji": "kengaku",
+    "meaning": "kunjungan observasi",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "見学 (kengaku)",
+      "formal": "見学 (kengaku)",
+      "keigo": "見学 (kengaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "工場を見学します。",
+        "romaji": "Koujou o kengaku shimasu.",
+        "translation": "Mengunjungi pabrik untuk observasi.",
+        "translationEn": "Visiting a factory for observation."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kengaku.png",
+    "meaningEn": "observational visit",
+    "registersEn": {
+      "casual": "見学 (kengaku)",
+      "formal": "見学 (kengaku)",
+      "keigo": "見学 (kengaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_bungaku",
+    "word": "ぶんがく",
+    "kanji": "文学",
+    "reading": "ぶんがく",
+    "romaji": "bungaku",
+    "meaning": "sastra",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文学 (bungaku)",
+      "formal": "文学 (bungaku)",
+      "keigo": "文学 (bungaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "文学を勉強します。",
+        "romaji": "Bungaku o benkyou shimasu.",
+        "translation": "Belajar sastra.",
+        "translationEn": "Studying literature."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bungaku.png",
+    "meaningEn": "literature",
+    "registersEn": {
+      "casual": "文学 (bungaku)",
+      "formal": "文学 (bungaku)",
+      "keigo": "文学 (bungaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_bunpou",
+    "word": "ぶんぽう",
+    "kanji": "文法",
+    "reading": "ぶんぽう",
+    "romaji": "bunpou",
+    "meaning": "tata bahasa",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文法 (bunpou)",
+      "formal": "文法 (bunpou)",
+      "keigo": "文法 (bunpou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "文法を勉強します。",
+        "romaji": "Bunpou o benkyou shimasu.",
+        "translation": "Belajar tata bahasa.",
+        "translationEn": "Studying grammar."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bunpou.png",
+    "meaningEn": "grammar",
+    "registersEn": {
+      "casual": "文法 (bunpou)",
+      "formal": "文法 (bunpou)",
+      "keigo": "文法 (bunpou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_daigakusei",
+    "word": "だいがくせい",
+    "kanji": "大学生",
+    "reading": "だいがくせい",
+    "romaji": "daigakusei",
+    "meaning": "mahasiswa",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大学生 (daigakusei)",
+      "formal": "大学生 (daigakusei)",
+      "keigo": "大学生 (daigakusei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学生になりました。",
+        "romaji": "Daigakusei ni narimashita.",
+        "translation": "Menjadi mahasiswa.",
+        "translationEn": "Becoming a university student."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_daigakusei.png",
+    "meaningEn": "university student",
+    "registersEn": {
+      "casual": "大学生 (daigakusei)",
+      "formal": "大学生 (daigakusei)",
+      "keigo": "大学生 (daigakusei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_fukushuu",
+    "word": "ふくしゅう",
+    "kanji": "復習",
+    "reading": "ふくしゅう",
+    "romaji": "fukushuu",
+    "meaning": "mengulang pelajaran",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "復習 (fukushuu)",
+      "formal": "復習 (fukushuu)",
+      "keigo": "復習 (fukushuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "授業の復習をします。",
+        "romaji": "Jugyou no fukushuu o shimasu.",
+        "translation": "Mengulang materi pelajaran.",
+        "translationEn": "Reviewing the class material."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_fukushuu.png",
+    "meaningEn": "review (of lessons)",
+    "registersEn": {
+      "casual": "復習 (fukushuu)",
+      "formal": "復習 (fukushuu)",
+      "keigo": "復習 (fukushuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_honyaku",
+    "word": "ほんやく",
+    "kanji": "翻訳",
+    "reading": "ほんやく",
+    "romaji": "honyaku",
+    "meaning": "terjemahan",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "翻訳 (honyaku)",
+      "formal": "翻訳 (honyaku)",
+      "keigo": "翻訳 (honyaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "本を翻訳します。",
+        "romaji": "Hon o honyaku shimasu.",
+        "translation": "Menerjemahkan buku.",
+        "translationEn": "Translating a book."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_honyaku.png",
+    "meaningEn": "translation",
+    "registersEn": {
+      "casual": "翻訳 (honyaku)",
+      "formal": "翻訳 (honyaku)",
+      "keigo": "翻訳 (honyaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_igaku",
+    "word": "いがく",
+    "kanji": "医学",
+    "reading": "いがく",
+    "romaji": "igaku",
+    "meaning": "ilmu kedokteran",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "医学 (igaku)",
+      "formal": "医学 (igaku)",
+      "keigo": "医学 (igaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医学を学びます。",
+        "romaji": "Igaku o manabimasu.",
+        "translation": "Belajar ilmu kedokteran.",
+        "translationEn": "Studying medicine."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_igaku.png",
+    "meaningEn": "medicine (as a field)",
+    "registersEn": {
+      "casual": "医学 (igaku)",
+      "formal": "医学 (igaku)",
+      "keigo": "医学 (igaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kaiwa",
+    "word": "かいわ",
+    "kanji": "会話",
+    "reading": "かいわ",
+    "romaji": "kaiwa",
+    "meaning": "percakapan",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会話 (kaiwa)",
+      "formal": "会話 (kaiwa)",
+      "keigo": "会話 (kaiwa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会話を練習します。",
+        "romaji": "Kaiwa o renshuu shimasu.",
+        "translation": "Berlatih percakapan.",
+        "translationEn": "Practicing conversation."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kaiwa.png",
+    "meaningEn": "conversation",
+    "registersEn": {
+      "casual": "会話 (kaiwa)",
+      "formal": "会話 (kaiwa)",
+      "keigo": "会話 (kaiwa) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kenkyuu",
+    "word": "けんきゅう",
+    "kanji": "研究",
+    "reading": "けんきゅう",
+    "romaji": "kenkyuu",
+    "meaning": "penelitian",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "研究 (kenkyuu)",
+      "formal": "研究 (kenkyuu)",
+      "keigo": "研究 (kenkyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "研究をしています。",
+        "romaji": "Kenkyuu o shite imasu.",
+        "translation": "Melakukan penelitian.",
+        "translationEn": "Conducting research."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kenkyuu.png",
+    "meaningEn": "research",
+    "registersEn": {
+      "casual": "研究 (kenkyuu)",
+      "formal": "研究 (kenkyuu)",
+      "keigo": "研究 (kenkyuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kyouiku",
+    "word": "きょういく",
+    "kanji": "教育",
+    "reading": "きょういく",
+    "romaji": "kyouiku",
+    "meaning": "pendidikan",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教育 (kyouiku)",
+      "formal": "教育 (kyouiku)",
+      "keigo": "教育 (kyouiku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "教育を受けます。",
+        "romaji": "Kyouiku o ukemasu.",
+        "translation": "Menerima pendidikan.",
+        "translationEn": "Receiving an education."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kyouiku.png",
+    "meaningEn": "education",
+    "registersEn": {
+      "casual": "教育 (kyouiku)",
+      "formal": "教育 (kyouiku)",
+      "keigo": "教育 (kyouiku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_nyuugaku",
+    "word": "にゅうがく",
+    "kanji": "入学",
+    "reading": "にゅうがく",
+    "romaji": "nyuugaku",
+    "meaning": "masuk sekolah",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入学 (nyuugaku)",
+      "formal": "入学 (nyuugaku)",
+      "keigo": "入学 (nyuugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学に入学します。",
+        "romaji": "Daigaku ni nyuugaku shimasu.",
+        "translation": "Masuk universitas.",
+        "translationEn": "Entering university."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nyuugaku.png",
+    "meaningEn": "school enrollment",
+    "registersEn": {
+      "casual": "入学 (nyuugaku)",
+      "formal": "入学 (nyuugaku)",
+      "keigo": "入学 (nyuugaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_sotsugyou",
+    "word": "そつぎょう",
+    "kanji": "卒業",
+    "reading": "そつぎょう",
+    "romaji": "sotsugyou",
+    "meaning": "kelulusan",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "卒業 (sotsugyou)",
+      "formal": "卒業 (sotsugyou)",
+      "keigo": "卒業 (sotsugyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学を卒業します。",
+        "romaji": "Daigaku o sotsugyou shimasu.",
+        "translation": "Lulus dari universitas.",
+        "translationEn": "Graduating from university."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_sotsugyou.png",
+    "meaningEn": "graduation",
+    "registersEn": {
+      "casual": "卒業 (sotsugyou)",
+      "formal": "卒業 (sotsugyou)",
+      "keigo": "卒業 (sotsugyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_mata_pelajaran_yoshuu",
+    "word": "よしゅう",
+    "kanji": "予習",
+    "reading": "よしゅう",
+    "romaji": "yoshuu",
+    "meaning": "belajar sebelum kelas",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "予習 (yoshuu)",
+      "formal": "予習 (yoshuu)",
+      "keigo": "予習 (yoshuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "予習をします。",
+        "romaji": "Yoshuu o shimasu.",
+        "translation": "Belajar sebelum kelas (pra-belajar).",
+        "translationEn": "Preparing before class."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_yoshuu.png",
+    "meaningEn": "preparing before class",
+    "registersEn": {
+      "casual": "予習 (yoshuu)",
+      "formal": "予習 (yoshuu)",
+      "keigo": "予習 (yoshuu) — no special keigo form for this noun"
+    }
+  }
+]

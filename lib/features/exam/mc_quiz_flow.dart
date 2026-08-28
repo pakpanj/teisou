@@ -24,8 +24,22 @@ class McQuizFlow extends ConsumerStatefulWidget {
   final Widget Function(BuildContext context, int index) headerBuilder;
   final List<String> Function(int index) optionsOf;
   final int Function(int index) correctIndexOf;
-  final void Function(int score, int total, List<QuizReviewEntry> wrongAnswers)
+  final void Function(
+    int score,
+    int total,
+    List<QuizReviewEntry> wrongAnswers,
+    List<GradedAnswer> answers,
+  )
   onComplete;
+
+  /// Real, server-verifiable content identity for question [index] — the
+  /// passage/question id, clip/question id, or kanji/word string the
+  /// server can independently look up a true correct answer for. Null for
+  /// callers with no server-grading concern (the Bab gate quiz, whose
+  /// result never feeds Global Points/Weekly Ranking) — [GradedAnswer]s
+  /// are still collected in that case, just with an empty `contentId`,
+  /// since nothing ever reads them.
+  final String Function(int index)? contentIdOf;
 
   /// A plain-text version of whatever [headerBuilder] renders for one
   /// question, used only to build the "what was asked" line in the
@@ -63,12 +77,37 @@ class McQuizFlow extends ConsumerStatefulWidget {
     required this.correctIndexOf,
     required this.onComplete,
     required this.questionLabelOf,
+    this.contentIdOf,
     this.showFurigana = false,
     this.timeLimit,
   });
 
   @override
   ConsumerState<McQuizFlow> createState() => _McQuizFlowState();
+}
+
+/// One submitted answer, real enough for a server to independently grade:
+/// which real content item ([contentId], from [McQuizFlow.contentIdOf])
+/// was asked about, which option index the learner picked, and the
+/// option's own display TEXT at that index ([submittedText]). The text is
+/// necessary, not redundant with [selectedIndex]: for Dokkai/Choukai the
+/// options list is a static, bundled-dataset field the server has its own
+/// copy of, so an index alone would be enough — but Kanji-Kombinasi
+/// generates its distractors fresh, client-side, every session, so the
+/// server has no matching "options[index]" to look up; only the actual
+/// submitted string can be compared against the real reading/meaning it
+/// independently derives. Carries no correctness judgement of its own —
+/// grading it is the server's job, not this widget's; this is only ever
+/// what was *submitted*.
+class GradedAnswer {
+  final String contentId;
+  final int selectedIndex;
+  final String submittedText;
+  const GradedAnswer({
+    required this.contentId,
+    required this.selectedIndex,
+    required this.submittedText,
+  });
 }
 
 class _McQuizFlowState extends ConsumerState<McQuizFlow> {
@@ -84,6 +123,11 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   /// [widget.onComplete] so the result screen can offer a review, without
   /// this widget needing to know anything about how that's displayed.
   final List<QuizReviewEntry> _wrongAnswers = [];
+
+  /// Every submitted answer this session, in order — see [GradedAnswer]'s
+  /// own doc comment for why this widget collects them but never judges
+  /// them itself.
+  final List<GradedAnswer> _answers = [];
 
   /// Held by the state, not rebuilt per frame: it remembers the run of
   /// correct answers and what it said last, and both would reset on every
@@ -137,6 +181,16 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     final correctIndex = widget.correctIndexOf(_index);
     final correct = optionIndex == correctIndex;
     if (correct) _score++;
+    final selectedOptions = widget.optionsOf(_index);
+    _answers.add(
+      GradedAnswer(
+        contentId: widget.contentIdOf?.call(_index) ?? '',
+        selectedIndex: optionIndex,
+        submittedText: optionIndex >= 0 && optionIndex < selectedOptions.length
+            ? selectedOptions[optionIndex]
+            : '',
+      ),
+    );
 
     final options = widget.optionsOf(_index);
     // Guarded rather than indexed straight, same reasoning as the coach's
@@ -188,11 +242,22 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
             : '',
       ),
     );
+    // -1: no option was ever selected before time ran out — a real,
+    // never-matches-any-real-index sentinel the server-side grader
+    // recognizes as "answered nothing", not a fabricatable "guessed
+    // right" value.
+    _answers.add(
+      GradedAnswer(
+        contentId: widget.contentIdOf?.call(_index) ?? '',
+        selectedIndex: -1,
+        submittedText: '',
+      ),
+    );
 
     final isLast = _index >= widget.totalQuestions - 1;
     if (isLast) {
       _finished = true;
-      widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
+      widget.onComplete(_score, widget.totalQuestions, _wrongAnswers, _answers);
       return;
     }
     setState(() {
@@ -208,7 +273,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     if (isLast) {
       if (_finished) return;
       _finished = true;
-      widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
+      widget.onComplete(_score, widget.totalQuestions, _wrongAnswers, _answers);
       return;
     }
     setState(() {

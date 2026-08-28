@@ -1,0 +1,157 @@
+[
+  {
+    "id": "kotoba_musim_haru",
+    "word": "はる",
+    "kanji": "春",
+    "reading": "はる",
+    "romaji": "haru",
+    "meaning": "musim semi",
+    "jlptLevel": "N5",
+    "category": "musim",
+    "wordType": "noun",
+    "registers": {
+      "casual": "春 (haru)",
+      "formal": "春 (haru)",
+      "keigo": "春 (haru) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "春に桜が咲きます。",
+        "romaji": "Haru ni sakura ga sakimasu.",
+        "translation": "Di musim semi, bunga sakura mekar.",
+        "translationEn": "In spring, cherry blossoms bloom."
+      }
+    ],
+    "imagePath": "kotoba_images/musim/kotoba_musim_haru.png",
+    "meaningEn": "spring",
+    "registersEn": {
+      "casual": "春 (haru)",
+      "formal": "春 (haru)",
+      "keigo": "春 (haru) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_musim_natsu",
+    "word": "なつ",
+    "kanji": "夏",
+    "reading": "なつ",
+    "romaji": "natsu",
+    "meaning": "musim panas",
+    "jlptLevel": "N5",
+    "category": "musim",
+    "wordType": "noun",
+    "registers": {
+      "casual": "夏 (natsu)",
+      "formal": "夏 (natsu)",
+      "keigo": "夏 (natsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏は暑いです。",
+        "romaji": "Natsu wa atsui desu.",
+        "translation": "Musim panas itu panas.",
+        "translationEn": "Summer is hot."
+      }
+    ],
+    "imagePath": "kotoba_images/musim/kotoba_musim_natsu.png",
+    "meaningEn": "summer",
+    "registersEn": {
+      "casual": "夏 (natsu)",
+      "formal": "夏 (natsu)",
+      "keigo": "夏 (natsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_musim_aki",
+    "word": "あき",
+    "kanji": "秋",
+    "reading": "あき",
+    "romaji": "aki",
+    "meaning": "musim gugur",
+    "jlptLevel": "N5",
+    "category": "musim",
+    "wordType": "noun",
+    "registers": {
+      "casual": "秋 (aki)",
+      "formal": "秋 (aki)",
+      "keigo": "秋 (aki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "秋に紅葉が綺麗です。",
+        "romaji": "Aki ni kouyou ga kirei desu.",
+        "translation": "Di musim gugur, daun berwarna indah.",
+        "translationEn": "In autumn, the leaves are beautifully colored."
+      }
+    ],
+    "imagePath": "kotoba_images/musim/kotoba_musim_aki.png",
+    "meaningEn": "autumn/fall",
+    "registersEn": {
+      "casual": "秋 (aki)",
+      "formal": "秋 (aki)",
+      "keigo": "秋 (aki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_musim_fuyu",
+    "word": "ふゆ",
+    "kanji": "冬",
+    "reading": "ふゆ",
+    "romaji": "fuyu",
+    "meaning": "musim dingin",
+    "jlptLevel": "N5",
+    "category": "musim",
+    "wordType": "noun",
+    "registers": {
+      "casual": "冬 (fuyu)",
+      "formal": "冬 (fuyu)",
+      "keigo": "冬 (fuyu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "冬は寒いです。",
+        "romaji": "Fuyu wa samui desu.",
+        "translation": "Musim dingin itu dingin.",
+        "translationEn": "Winter is cold."
+      }
+    ],
+    "imagePath": "kotoba_images/musim/kotoba_musim_fuyu.png",
+    "meaningEn": "winter",
+    "registersEn": {
+      "casual": "冬 (fuyu)",
+      "formal": "冬 (fuyu)",
+      "keigo": "冬 (fuyu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_musim_kisetsu",
+    "word": "きせつ",
+    "kanji": "季節",
+    "reading": "きせつ",
+    "romaji": "kisetsu",
+    "meaning": "musim (kata umum)",
+    "jlptLevel": "N4",
+    "category": "musim",
+    "wordType": "noun",
+    "registers": {
+      "casual": "季節 (kisetsu)",
+      "formal": "季節 (kisetsu)",
+      "keigo": "季節 (kisetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "どの季節が好きですか。",
+        "romaji": "Dono kisetsu ga suki desu ka.",
+        "translation": "Musim apa yang kamu suka?",
+        "translationEn": "Which season do you like?"
+      }
+    ],
+    "imagePath": "kotoba_images/musim/kotoba_musim_kisetsu.png",
+    "meaningEn": "season (general term)",
+    "registersEn": {
+      "casual": "季節 (kisetsu)",
+      "formal": "季節 (kisetsu)",
+      "keigo": "季節 (kisetsu) — no special keigo form for this noun"
+    }
+  }
+]

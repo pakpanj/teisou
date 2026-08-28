@@ -1,0 +1,560 @@
+[
+  {
+    "id": "kotoba_perayaan_haribesar_oshougatsu",
+    "word": "おしょうがつ",
+    "kanji": "お正月",
+    "reading": "おしょうがつ",
+    "romaji": "oshougatsu",
+    "meaning": "Tahun Baru (Jepang)",
+    "jlptLevel": "N4",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お正月 (oshougatsu)",
+      "formal": "お正月 (oshougatsu)",
+      "keigo": "お正月 (oshougatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お正月に家族と過ごします。",
+        "romaji": "Oshougatsu ni kazoku to sugoshimasu.",
+        "translation": "Saya menghabiskan Tahun Baru dengan keluarga.",
+        "translationEn": "I spend New Year with my family."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_oshougatsu.png",
+    "meaningEn": "Japanese New Year",
+    "registersEn": {
+      "casual": "お正月 (oshougatsu)",
+      "formal": "お正月 (oshougatsu)",
+      "keigo": "お正月 (oshougatsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_tanjoubi",
+    "word": "たんじょうび",
+    "kanji": "誕生日",
+    "reading": "たんじょうび",
+    "romaji": "tanjoubi",
+    "meaning": "ulang tahun",
+    "jlptLevel": "N5",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "誕生日 (tanjoubi)",
+      "formal": "誕生日 (tanjoubi)",
+      "keigo": "誕生日 (tanjoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "誕生日おめでとう。",
+        "romaji": "Tanjoubi omedetou.",
+        "translation": "Selamat ulang tahun.",
+        "translationEn": "Happy birthday."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_tanjoubi.png",
+    "meaningEn": "birthday",
+    "registersEn": {
+      "casual": "誕生日 (tanjoubi)",
+      "formal": "誕生日 (tanjoubi)",
+      "keigo": "誕生日 (tanjoubi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kurisumasu",
+    "word": "クリスマス",
+    "kanji": null,
+    "reading": "クリスマス",
+    "romaji": "kurisumasu",
+    "meaning": "Natal",
+    "jlptLevel": "N4",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "クリスマス (kurisumasu)",
+      "formal": "クリスマス (kurisumasu)",
+      "keigo": "クリスマス (kurisumasu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "クリスマスを祝います。",
+        "romaji": "Kurisumasu o iwaimasu.",
+        "translation": "Saya merayakan Natal.",
+        "translationEn": "I celebrate Christmas."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kurisumasu.png",
+    "meaningEn": "Christmas",
+    "registersEn": {
+      "casual": "クリスマス (kurisumasu)",
+      "formal": "クリスマス (kurisumasu)",
+      "keigo": "クリスマス (kurisumasu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_hinamatsuri",
+    "word": "ひなまつり",
+    "kanji": "雛祭り",
+    "reading": "ひなまつり",
+    "romaji": "hinamatsuri",
+    "meaning": "Hina Matsuri (festival boneka, 3 Maret)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "雛祭り (hinamatsuri)",
+      "formal": "雛祭り (hinamatsuri)",
+      "keigo": "雛祭り (hinamatsuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "3月3日はひな祭りです。",
+        "romaji": "Sangatsu mikka wa hinamatsuri desu.",
+        "translation": "3 Maret adalah Hina Matsuri.",
+        "translationEn": "March 3rd is Hina Matsuri."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_hinamatsuri.png",
+    "meaningEn": "Hina Matsuri (doll festival, March 3)",
+    "registersEn": {
+      "casual": "雛祭り (hinamatsuri)",
+      "formal": "雛祭り (hinamatsuri)",
+      "keigo": "雛祭り (hinamatsuri) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_tanabata",
+    "word": "たなばた",
+    "kanji": "七夕",
+    "reading": "たなばた",
+    "romaji": "tanabata",
+    "meaning": "Tanabata (festival bintang, 7 Juli)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "七夕 (tanabata)",
+      "formal": "七夕 (tanabata)",
+      "keigo": "七夕 (tanabata) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "七夕に願い事をします。",
+        "romaji": "Tanabata ni negaigoto o shimasu.",
+        "translation": "Saat Tanabata, saya membuat permohonan.",
+        "translationEn": "During Tanabata, I make a wish."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_tanabata.png",
+    "meaningEn": "Tanabata (star festival, July 7)",
+    "registersEn": {
+      "casual": "七夕 (tanabata)",
+      "formal": "七夕 (tanabata)",
+      "keigo": "七夕 (tanabata) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_obon",
+    "word": "おぼん",
+    "kanji": "お盆",
+    "reading": "おぼん",
+    "romaji": "obon",
+    "meaning": "Obon (festival arwah leluhur)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お盆 (obon)",
+      "formal": "お盆 (obon)",
+      "keigo": "お盆 (obon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お盆に田舎に帰ります。",
+        "romaji": "Obon ni inaka ni kaerimasu.",
+        "translation": "Saat Obon, saya pulang kampung.",
+        "translationEn": "During Obon, I go back to my hometown."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_obon.png",
+    "meaningEn": "Obon (ancestral spirits festival)",
+    "registersEn": {
+      "casual": "お盆 (obon)",
+      "formal": "お盆 (obon)",
+      "keigo": "お盆 (obon) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kekkonshiki",
+    "word": "けっこんしき",
+    "kanji": "結婚式",
+    "reading": "けっこんしき",
+    "romaji": "kekkonshiki",
+    "meaning": "pernikahan/pesta pernikahan",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "結婚式 (kekkonshiki)",
+      "formal": "結婚式 (kekkonshiki)",
+      "keigo": "結婚式 (kekkonshiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "結婚式に招待されました。",
+        "romaji": "Kekkonshiki ni shoutai saremashita.",
+        "translation": "Saya diundang ke pernikahan.",
+        "translationEn": "I was invited to a wedding."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kekkonshiki.png",
+    "meaningEn": "wedding ceremony",
+    "registersEn": {
+      "casual": "結婚式 (kekkonshiki)",
+      "formal": "結婚式 (kekkonshiki)",
+      "keigo": "結婚式 (kekkonshiki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_oiwai",
+    "word": "おいわい",
+    "kanji": "お祝い",
+    "reading": "おいわい",
+    "romaji": "oiwai",
+    "meaning": "perayaan/selamat",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お祝い (oiwai)",
+      "formal": "お祝い (oiwai)",
+      "keigo": "お祝い (oiwai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お祝いのプレゼントを買います。",
+        "romaji": "Oiwai no purezento o kaimasu.",
+        "translation": "Saya membeli hadiah perayaan.",
+        "translationEn": "I buy a celebration gift."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_oiwai.png",
+    "meaningEn": "celebration",
+    "registersEn": {
+      "casual": "お祝い (oiwai)",
+      "formal": "お祝い (oiwai)",
+      "keigo": "お祝い (oiwai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_hanabi",
+    "word": "はなび",
+    "kanji": "花火",
+    "reading": "はなび",
+    "romaji": "hanabi",
+    "meaning": "kembang api",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "花火 (hanabi)",
+      "formal": "花火 (hanabi)",
+      "keigo": "花火 (hanabi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏に花火を見ます。",
+        "romaji": "Natsu ni hanabi o mimasu.",
+        "translation": "Saya menonton kembang api di musim panas.",
+        "translationEn": "I watch fireworks in summer."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_hanabi.png",
+    "meaningEn": "fireworks",
+    "registersEn": {
+      "casual": "花火 (hanabi)",
+      "formal": "花火 (hanabi)",
+      "keigo": "花火 (hanabi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_ramadan",
+    "word": "ラマダン",
+    "kanji": null,
+    "reading": "ラマダン",
+    "romaji": "ramadan",
+    "meaning": "Ramadan (bulan puasa)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ラマダン (ramadan)",
+      "formal": "ラマダン (ramadan)",
+      "keigo": "ラマダン (ramadan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ラマダン中は断食します。",
+        "romaji": "Ramadan-chuu wa danjiki shimasu.",
+        "translation": "Selama Ramadan, orang berpuasa.",
+        "translationEn": "During Ramadan, people fast."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_ramadan.png",
+    "meaningEn": "Ramadan",
+    "registersEn": {
+      "casual": "ラマダン (ramadan)",
+      "formal": "ラマダン (ramadan)",
+      "keigo": "ラマダン (ramadan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_barentaindee",
+    "word": "バレンタインデー",
+    "kanji": null,
+    "reading": "バレンタインデー",
+    "romaji": "barentaindee",
+    "meaning": "Hari Valentine",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バレンタインデー (barentaindee)",
+      "formal": "バレンタインデー (barentaindee)",
+      "keigo": "バレンタインデー (barentaindee) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バレンタインデーにチョコレートをあげます。",
+        "romaji": "Barentaindee ni chokoreeto o agemasu.",
+        "translation": "Saat Hari Valentine, saya memberi cokelat.",
+        "translationEn": "On Valentine's Day, I give chocolate."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_barentaindee.png",
+    "meaningEn": "Valentine's Day",
+    "registersEn": {
+      "casual": "バレンタインデー (barentaindee)",
+      "formal": "バレンタインデー (barentaindee)",
+      "keigo": "バレンタインデー (barentaindee) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_shukuga",
+    "word": "しゅくが",
+    "kanji": "祝賀",
+    "reading": "しゅくが",
+    "romaji": "shukuga",
+    "meaning": "perayaan/ucapan selamat (formal)",
+    "jlptLevel": "N1",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祝賀 (shukuga)",
+      "formal": "祝賀 (shukuga)",
+      "keigo": "祝賀 (shukuga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "創立百周年の祝賀会が開かれました。",
+        "romaji": "Souritsu hyakushuunen no shukugakai ga hirakaremashita.",
+        "translation": "Perayaan seratus tahun pendirian diadakan.",
+        "translationEn": "A hundredth-anniversary celebration is held."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shukuga.png",
+    "meaningEn": "celebration/congratulations (formal)",
+    "registersEn": {
+      "casual": "祝賀 (shukuga)",
+      "formal": "祝賀 (shukuga)",
+      "keigo": "祝賀 (shukuga) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kinenbi",
+    "word": "きねんび",
+    "kanji": "記念日",
+    "reading": "きねんび",
+    "romaji": "kinenbi",
+    "meaning": "hari peringatan/anniversary",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記念日 (kinenbi)",
+      "formal": "記念日 (kinenbi)",
+      "keigo": "記念日 (kinenbi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "結婚記念日をお祝いします。",
+        "romaji": "Kekkon kinenbi o oiwai shimasu.",
+        "translation": "Kami merayakan hari peringatan pernikahan.",
+        "translationEn": "We celebrate our wedding anniversary."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kinenbi.png",
+    "meaningEn": "anniversary",
+    "registersEn": {
+      "casual": "記念日 (kinenbi)",
+      "formal": "記念日 (kinenbi)",
+      "keigo": "記念日 (kinenbi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_seijinshiki",
+    "word": "せいじんしき",
+    "kanji": "成人式",
+    "reading": "せいじんしき",
+    "romaji": "seijinshiki",
+    "meaning": "upacara kedewasaan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "成人式 (seijinshiki)",
+      "formal": "成人式 (seijinshiki)",
+      "keigo": "成人式 (seijinshiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来年、成人式に出ます。",
+        "romaji": "Rainen, seijinshiki ni demasu.",
+        "translation": "Tahun depan, saya akan mengikuti upacara kedewasaan.",
+        "translationEn": "Next year, I'll attend the coming-of-age ceremony."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_seijinshiki.png",
+    "meaningEn": "coming-of-age ceremony",
+    "registersEn": {
+      "casual": "成人式 (seijinshiki)",
+      "formal": "成人式 (seijinshiki)",
+      "keigo": "成人式 (seijinshiki) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kinen",
+    "word": "きねん",
+    "kanji": "記念",
+    "reading": "きねん",
+    "romaji": "kinen",
+    "meaning": "kenangan/peringatan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記念 (kinen)",
+      "formal": "記念 (kinen)",
+      "keigo": "記念 (kinen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "記念写真を撮ります。",
+        "romaji": "Kinen shashin o torimasu.",
+        "translation": "Mengambil foto kenangan.",
+        "translationEn": "Taking a commemorative photo."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kinen.png",
+    "meaningEn": "commemoration",
+    "registersEn": {
+      "casual": "記念 (kinen)",
+      "formal": "記念 (kinen)",
+      "keigo": "記念 (kinen) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_shoutai",
+    "word": "しょうたい",
+    "kanji": "招待",
+    "reading": "しょうたい",
+    "romaji": "shoutai",
+    "meaning": "undangan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "招待 (shoutai)",
+      "formal": "招待 (shoutai)",
+      "keigo": "招待 (shoutai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パーティーに招待されました。",
+        "romaji": "Paatii ni shoutai saremashita.",
+        "translation": "Diundang ke pesta.",
+        "translationEn": "Invited to a party."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shoutai.png",
+    "meaningEn": "invitation",
+    "registersEn": {
+      "casual": "招待 (shoutai)",
+      "formal": "招待 (shoutai)",
+      "keigo": "招待 (shoutai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_enkai",
+    "word": "えんかい",
+    "kanji": "宴会",
+    "reading": "えんかい",
+    "romaji": "enkai",
+    "meaning": "pesta/jamuan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宴会 (enkai)",
+      "formal": "宴会 (enkai)",
+      "keigo": "宴会 (enkai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "宴会に参加します。",
+        "romaji": "Enkai ni sanka shimasu.",
+        "translation": "Ikut pesta jamuan.",
+        "translationEn": "Joining a banquet party."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_enkai.png",
+    "meaningEn": "banquet/party",
+    "registersEn": {
+      "casual": "宴会 (enkai)",
+      "formal": "宴会 (enkai)",
+      "keigo": "宴会 (enkai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kaikai",
+    "word": "かいかい",
+    "kanji": "開会",
+    "reading": "かいかい",
+    "romaji": "kaikai",
+    "meaning": "pembukaan acara",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "開会 (kaikai)",
+      "formal": "開会 (kaikai)",
+      "keigo": "開会 (kaikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "開会のあいさつをします。",
+        "romaji": "Kaikai no aisatsu o shimasu.",
+        "translation": "Menyampaikan sambutan pembukaan.",
+        "translationEn": "Giving an opening address."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kaikai.png",
+    "meaningEn": "opening (of an event)",
+    "registersEn": {
+      "casual": "開会 (kaikai)",
+      "formal": "開会 (kaikai)",
+      "keigo": "開会 (kaikai) — no special keigo form for this noun"
+    }
+  }
+]

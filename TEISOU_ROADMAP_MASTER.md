@@ -5102,3 +5102,250 @@ two still-untracked, not-committed temporary audit test files from the
 P0 audit immediately above) and confirmed unchanged after — this
 section only edited `TEISOU_ROADMAP_MASTER.md`. **Production code
 changes made by this design task: 0.**
+
+---
+
+## Exam-History Authority — P0 FIX IMPLEMENTED (hybrid server-side grading, NOT DEPLOYED)
+
+Follow-up to the two sections immediately above (the P0 audit that
+proved the exploit, and the server-side-grading design that recommended
+Option C). This section records the actual implementation.
+
+### Architecture (Option C, as approved — not redesigned)
+
+The client's exam screens (Kana, Dokkai, Choukai, Kanji-Kombinasi) now
+submit their raw per-question `answers` (contentId + the exact text the
+learner submitted) alongside the existing, now purely-display/optimistic
+`score`/`total` fields, via a new `answers` field on `ExamResult` /
+`SimpleExamResult`. `McQuizFlow` — shared by all three MC-based exams and
+the Bab gate quiz — collects a `GradedAnswer` per question (`contentId`,
+`selectedIndex`, `submittedText`) and passes them through `onComplete`'s
+new 4th parameter. `KanjiComboQuestion` gained `contentKey`/`promptKind`
+so its content can be identified server-side even though its distractor
+set — and therefore its whole `options` array — is generated fresh
+client-side every session; grading compares `submittedText` against the
+real, independently-known correct value, never an index into a list the
+server never generated. The Bab gate quiz screen accepts (and ignores)
+the new `answers` parameter — it does not feed Global Points, out of
+scope by the task's own instruction.
+
+`functions/exam_grading.js` (new) is the server's own re-grader. It
+mirrors this project's bundled content
+(`functions/data/{kana,dokkai,choukai,kanji}_data.json` +
+`functions/data/kotoba/*.json`, copied from `assets/data/`) and grades a
+raw `answers` array against it — a lookup against real, static, authored
+content, never a live re-computation of any exam UI's own
+question-selection/distractor logic. `dedupeAndCap` deduplicates by
+`contentId` and caps at each module's real session-size ceiling
+(`MAX_TOTAL`: kana 10, dokkai/choukai/kanjiCombo 50) BEFORE grading, so
+`serverTotal` is a server-counted value the client cannot inflate by
+submitting the same real id hundreds of times or an implausibly long
+array.
+
+`functions/global_points.js`'s `awardPointsForHistoryDoc` no longer
+reads `docData.score` at all — `correct` now comes from
+`gradeAttempt(moduleType, docData.answers).serverScore`, computed fresh
+inside the same transaction that already handles idempotency
+(`markerRef`), the repeat-cycle (`cycleRef`), the leaderboard increment
+(`leaderboardRef`), and the weekly-period increment (`periodRef`). A new
+`examHistoryGraded/{historyDocId}` document (server-only-writable, see
+Rules below) is written in the SAME transaction, reusing the exact same
+`historyDocId` that already gates the points award — "graded once" and
+"awarded once" are the same guarantee, not two independently-maintained
+ones. Trusted fields only: `uid`, `moduleType`, `historyDocId`,
+`serverScore`, `serverTotal`, `gradingVersion`, `gradedAt`.
+
+### Per-engine grading status
+
+All four modules are gradeable exactly, server-side, from currently
+available mirrored data — no module was approximated or skipped:
+
+- **Kana**: `contentId` = kana id, compares `submittedText` to the real
+  romaji.
+- **Dokkai/Choukai**: `contentId` = `"{passageOrClipId}|{questionId}"`,
+  compares `submittedText` to `options[correctIndex]`.
+- **Kanji-Kombinasi**: `contentId` = `"{contentKey}|{promptKind}"`
+  (`contentKey` is a bare kanji character or a compound word's kanji
+  string; `promptKind` is `reading`/`meaning`). A submitted answer is
+  correct if it equals ANY of the real onyomi/kunyomi (reading prompts,
+  okurigana marker stripped) or either language's real meaning (meaning
+  prompts) for that exact kanji, or the real reading for a compound-word
+  (Kotoba-sourced) reading prompt — not just whichever single reading a
+  particular session's own distractor generator happened to target,
+  since any of a kanji's real readings is genuinely correct regardless.
+
+### Residual, deliberately out-of-scope gap
+
+`docData[spec.difficultyField]` (kana's `type`, the other three's
+`jlptLevel`) and `repeatKeyFor`'s `itemId` are still read directly from
+the client-supplied history document, unvalidated against the graded
+answers' own real content. A forged `jlptLevel: 'n1'` on an easy attempt
+still inflates `difficultyMultiplier` — bounded (~2.2x max, per
+`difficultyMultiplierFor`'s fixed table), a materially smaller and still
+bounded gap, nothing like the P0 fix's previously-unlimited multiplier.
+Left unaddressed per this task's explicit "close score/total, do not
+redesign the wider Formula C/repeat-cycle mechanics" instruction —
+documented in `global_points.js`'s own top doc comment and here, not
+fixed silently.
+
+### Idempotency
+
+Unchanged mechanism, extended to cover grading too: the SAME
+`pointsAwarded` marker (`globalPointsState/{uid}/pointsAwarded/{historyDocId}`)
+gates both grading and point-awarding in one transaction. A replayed
+`historyDocId` (Eventarc redelivery, or a client re-writing the
+identical document) is a no-op for both. A NEW, distinct
+`historyDocId` is still processed independently (unchanged, per-document
+idempotency, exactly as before this fix) — but since it now carries no
+real answers unless the client genuinely has some, being "a new
+document" no longer manufactures points by itself the way the pre-fix
+exploit allowed.
+
+### Firestore Rules
+
+`examHistoryGraded/{historyDocId}` (new block, `firestore.rules`):
+`allow write: if false` unconditionally (server-only, Admin SDK); `allow
+read` is owner-only (`resource.data.uid == request.auth.uid`), unlike
+the public-read `globalScorePeriods`, since this doc doubles as a
+per-user audit trail with no reason to be world-readable. The raw
+`examHistory`/`dokkaiExamHistory`/`choukaiExamHistory`/
+`kanjiComboExamHistory` collections are DELIBERATELY left exactly as
+unconstrained as before — the raw submission flow must remain
+functional (Phase 6's own instruction), and content honesty is now
+enforced downstream by re-grading, not by locking the raw write.
+Confirmed both ways by
+`firestore_rules_tests/exam_history_authority_rules.test.js` (7 tests,
+all passing against the live Rules Emulator): raw collections stay
+freely create/update/delete-able; `examHistoryGraded` cannot be
+created, updated, or deleted by any client, and is readable only by its
+own `uid`.
+
+### Tests — permanent, replacing the temporary audit files
+
+- `functions/exam_grading.test.js` (new, 16 tests): unit coverage of
+  `gradeAttempt`/`gradeKana`/`gradeDokkai`/`gradeChoukai`/
+  `gradeKanjiCombo`/`dedupeAndCap` against the real mirrored datasets —
+  correct answers for all four modules, wrong answers, forged
+  score/total fields mixed into an answer entry ignored, missing/
+  malformed `answers` grades 0/0, a nonexistent `contentId` counts
+  toward `serverTotal` but never `serverScore`, the 500x-same-id and
+  200-distinct-fake-ids farming classes both capped at the module's real
+  ceiling, an unknown `moduleType` throws rather than silently grading
+  0.
+- `functions/exam_history_authority.test.js` (new, 11 tests): the
+  permanent replacement for the removed `_audit_exam_history_authority.test.js`,
+  same scenario letters A-H kept for traceability, every assertion now
+  proving the FIXED (safe) behaviour: (A) a legitimate attempt is
+  awarded real points and a trusted grading result is recorded; (B/B2)
+  a forged score=999999 is worth 0 with no real answers, and is graded
+  from real answers when some are attached, never from the claimed
+  score; (C/C2) farming via many fake documents is defeated (0 each),
+  while farming via the SAME real answer set is still bounded by the
+  pre-existing, unrelated repeat-cycle decay; (D) points no longer scale
+  with a client-chosen score value at all; (E) timestamp authority still
+  holds unchanged; (F1/F2) replay idempotency holds, and a new
+  fabricated document no longer manufactures points by itself; (G)
+  end-to-end, honest learners with real answers correctly outrank a
+  forger in `awardTopGlobalCoinsOnce`'s own real ranking query — the
+  former P0 exploit reproduction (attacker wins 1st place) now fails
+  safely; (H) a genuine forced mid-transaction conflict (deterministic
+  interleaving via `FakeFirestore`'s `beforeCommit` pause hook, same
+  proof shape already established by
+  `global_points_reliability.test.js`) still converges to exactly ONE
+  trusted grading result and ONE points award, never a duplicate or a
+  partial one.
+- `firestore_rules_tests/exam_history_authority_rules.test.js` (new, 7
+  tests, replaces the removed `_audit_exam_history_rules.test.js`) — see
+  Rules section above.
+- `functions/global_points_reliability.test.js` /
+  `global_points_period_write.test.js` — existing fixtures updated to
+  carry a real `answers` array (9 correct + 1 wrong out of the real
+  mirrored kana dataset) instead of bare `score`/`total`, so these
+  suites keep proving nonzero, meaningful point accumulation under the
+  new grading-first behaviour rather than silently degrading to 0+0=0
+  assertions that would technically still pass without proving anything.
+
+Both removed temporary files
+(`functions/_audit_exam_history_authority.test.js`,
+`firestore_rules_tests/_audit_exam_history_rules.test.js`) were never
+committed — deleted from the working tree only once the permanent files
+above existed and passed.
+
+### FAIL → PASS proof
+
+Before this fix landed, the (now-removed) temporary audit file's tests
+A-G all PASSED proving the exploit — including forged `score: 999999`
+awarding 9,999,990 points, 10 fabricated documents farming >20,000
+points, and a single forged document winning 1st place in a real
+`awardTopGlobalCoinsOnce` ranking ahead of three honest learners. After
+this fix landed, running the exact same suite (before conversion to the
+permanent file) produced 7 concrete, expected FAILURES — the exploit
+assertions that used to pass now correctly fail, because the exploit no
+longer works (e.g. `9999990 !== 0`, `999999x !== 0x`). The new permanent
+`exam_history_authority.test.js` proves the SAFE side of the same
+before/after contrast directly (scenario D explicitly varies the
+claimed score across four orders of magnitude and asserts the award
+stays constant), and scenario A/legitimate-attempt tests throughout the
+suite confirm a real exam still earns real points.
+
+### Verification — all four suites, zero failures
+
+- **Functions**: `node --test` in `functions/` — **397/397 pass** (full
+  suite, including the two new files above and the updated fixture
+  files).
+- **Rules**: `node --test --test-concurrency=1 *.test.js` in
+  `firestore_rules_tests/`, against a live Firestore Rules Emulator
+  (started via Android Studio's bundled JBR `java.exe` — this
+  environment has no `java` on `PATH` otherwise, worth remembering for a
+  future session that hits "Could not spawn java -version" trying to
+  start this same emulator) — **98/98 pass** (full suite, including the
+  new 7-test file, run sequentially per this project's own documented
+  Rules-Emulator-contention gotcha).
+- **Dart**: `flutter test --concurrency=1` — **901 tests, "All tests
+  passed!"** (full suite; 1 pre-existing skip unrelated to this task).
+- **Analyze**: `flutter analyze` — **No issues found!**
+
+### Weekly payout safety — verified, not deployed
+
+`exam_history_authority.test.js`'s scenario G proves directly, through
+the real `awardTopGlobalCoinsOnce` function (the exact one
+`award_top_coins.js`'s scheduled `awardTopGlobalCoins` invokes in
+production), that a forger with a fabricated `score: 999999` and no
+real answers can no longer win 1st place — three honest learners with
+real, server-graded answer counts correctly outrank them. The existing,
+unmodified Weekly Global Ranking scheduler
+(`PAYOUT_SCHEDULE_CRON`/`awardTopGlobalCoins`, deployed earlier this
+project's history) was NOT touched by this task, per its own explicit
+instruction — this fix closes the gap in what feeds `globalScorePeriods`
+(the ranking source that scheduler already reads from), not the
+scheduler itself.
+
+### Production safety
+
+**NO deployment performed in this task.** `firebase deploy` was never
+run. Production Rules, production Firestore data, and the live
+`awardTopGlobalCoins`/`globalPointsTriggerFor` Cloud Functions are
+completely unchanged — this fix exists only in this git commit, on
+`master`, locally. RISK-3, AdMob config, Play Console, the Clan feature,
+and Rank Skip were untouched, confirmed via the reviewed diff (17
+modified + 54 new files, all within the scope described above).
+
+**WEEKLY PAYOUT REMAINS A PRODUCTION BLOCKER UNTIL THIS FIX IS DEPLOYED
+AND VERIFIED.** The live, already-deployed `awardTopGlobalCoins`
+function (scheduled Monday 00:10 WIB) still runs against the OLD,
+vulnerable `global_points.js` until this commit's `functions/` code is
+actually deployed via `firebase deploy --only functions` and
+`firestore.rules` is deployed via `firebase deploy --only
+firestore:rules` — neither happened in this task, per its own explicit
+instruction not to deploy.
+
+### Not done in this task, on purpose
+
+- No retroactive re-grading or migration of existing production
+  `examHistory`-shaped documents, and no production Firestore read of
+  any kind — Phase 7's own instruction.
+- The Weekly Global Ranking scheduler itself was not touched.
+- The `difficultyField`/`repeatKeyFor` residual gap (see above) was not
+  closed.
+- JFT/JLPT work was not touched, per this task's own explicit
+  instruction to stay off it entirely.

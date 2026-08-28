@@ -18,7 +18,7 @@ void main() {
   /// Three questions with an obvious right answer, so the flow can be
   /// driven by tapping text rather than by index bookkeeping.
   Widget wrap(
-          {void Function(int score, int total, List<QuizReviewEntry> wrong)?
+          {void Function(int score, int total, List<QuizReviewEntry> wrong, List<GradedAnswer> answers)?
               onComplete}) =>
       ProviderScope(
         child: MaterialApp(
@@ -30,7 +30,7 @@ void main() {
               optionsOf: (i) => ['benar $i', 'salah $i'],
               correctIndexOf: (i) => 0,
               questionLabelOf: (i) => 'soal $i',
-              onComplete: onComplete ?? (_, _, _) {},
+              onComplete: onComplete ?? (_, _, _, _) {},
             ),
           ),
         ),
@@ -132,7 +132,7 @@ void main() {
     // _select that tallies the score.
     int? score;
     int? total;
-    await tester.pumpWidget(wrap(onComplete: (s, t, _) {
+    await tester.pumpWidget(wrap(onComplete: (s, t, _, _) {
       score = s;
       total = t;
     }));

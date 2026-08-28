@@ -1,0 +1,1428 @@
+[
+  {
+    "id": "kotoba_profesi_sensei",
+    "word": "せんせい",
+    "kanji": "先生",
+    "reading": "せんせい",
+    "romaji": "sensei",
+    "meaning": "guru/dosen",
+    "jlptLevel": "N5",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "先生 (sensei)",
+      "formal": "先生 (sensei)",
+      "keigo": "先生 (sensei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先生に質問します。",
+        "romaji": "Sensei ni shitsumon shimasu.",
+        "translation": "Saya bertanya kepada guru.",
+        "translationEn": "I ask the teacher."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sensei.png",
+    "meaningEn": "teacher/professor",
+    "registersEn": {
+      "casual": "先生 (sensei)",
+      "formal": "先生 (sensei)",
+      "keigo": "先生 (sensei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_gakusei",
+    "word": "がくせい",
+    "kanji": "学生",
+    "reading": "がくせい",
+    "romaji": "gakusei",
+    "meaning": "siswa/mahasiswa",
+    "jlptLevel": "N5",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学生 (gakusei)",
+      "formal": "学生 (gakusei)",
+      "keigo": "学生 (gakusei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私は学生です。",
+        "romaji": "Watashi wa gakusei desu.",
+        "translation": "Saya seorang siswa.",
+        "translationEn": "I'm a student."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusei.png",
+    "meaningEn": "student",
+    "registersEn": {
+      "casual": "学生 (gakusei)",
+      "formal": "学生 (gakusei)",
+      "keigo": "学生 (gakusei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kaishain",
+    "word": "かいしゃいん",
+    "kanji": "会社員",
+    "reading": "かいしゃいん",
+    "romaji": "kaishain",
+    "meaning": "karyawan perusahaan",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会社員 (kaishain)",
+      "formal": "会社員 (kaishain)",
+      "keigo": "会社員 (kaishain) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父は会社員です。",
+        "romaji": "Chichi wa kaishain desu.",
+        "translation": "Ayah saya karyawan perusahaan.",
+        "translationEn": "My father is a company employee."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaishain.png",
+    "meaningEn": "company employee",
+    "registersEn": {
+      "casual": "会社員 (kaishain)",
+      "formal": "会社員 (kaishain)",
+      "keigo": "会社員 (kaishain) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_keisatsukan",
+    "word": "けいさつかん",
+    "kanji": "警察官",
+    "reading": "けいさつかん",
+    "romaji": "keisatsukan",
+    "meaning": "polisi",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "警察官 (keisatsukan)",
+      "formal": "警察官 (keisatsukan)",
+      "keigo": "警察官 (keisatsukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "警察官が交通整理をします。",
+        "romaji": "Keisatsukan ga koutsuu seiri o shimasu.",
+        "translation": "Polisi mengatur lalu lintas.",
+        "translationEn": "The police officer directs traffic."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsukan.png",
+    "meaningEn": "police officer",
+    "registersEn": {
+      "casual": "警察官 (keisatsukan)",
+      "formal": "警察官 (keisatsukan)",
+      "keigo": "警察官 (keisatsukan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_shouboushi",
+    "word": "しょうぼうし",
+    "kanji": "消防士",
+    "reading": "しょうぼうし",
+    "romaji": "shouboushi",
+    "meaning": "pemadam kebakaran",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "消防士 (shouboushi)",
+      "formal": "消防士 (shouboushi)",
+      "keigo": "消防士 (shouboushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "消防士は勇敢です。",
+        "romaji": "Shouboushi wa yuukan desu.",
+        "translation": "Pemadam kebakaran itu berani.",
+        "translationEn": "That firefighter is brave."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shouboushi.png",
+    "meaningEn": "firefighter",
+    "registersEn": {
+      "casual": "消防士 (shouboushi)",
+      "formal": "消防士 (shouboushi)",
+      "keigo": "消防士 (shouboushi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_ryourinin",
+    "word": "りょうりにん",
+    "kanji": "料理人",
+    "reading": "りょうりにん",
+    "romaji": "ryourinin",
+    "meaning": "koki/juru masak",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "料理人 (ryourinin)",
+      "formal": "料理人 (ryourinin)",
+      "keigo": "料理人 (ryourinin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理人は料理を作ります。",
+        "romaji": "Ryourinin wa ryouri o tsukurimasu.",
+        "translation": "Koki membuat masakan.",
+        "translationEn": "The chef makes a dish."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_ryourinin.png",
+    "meaningEn": "cook/chef",
+    "registersEn": {
+      "casual": "料理人 (ryourinin)",
+      "formal": "料理人 (ryourinin)",
+      "keigo": "料理人 (ryourinin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_bengoshi",
+    "word": "べんごし",
+    "kanji": "弁護士",
+    "reading": "べんごし",
+    "romaji": "bengoshi",
+    "meaning": "pengacara",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弁護士 (bengoshi)",
+      "formal": "弁護士 (bengoshi)",
+      "keigo": "弁護士 (bengoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "弁護士に相談します。",
+        "romaji": "Bengoshi ni soudan shimasu.",
+        "translation": "Saya berkonsultasi dengan pengacara.",
+        "translationEn": "I consult with a lawyer."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_bengoshi.png",
+    "meaningEn": "lawyer",
+    "registersEn": {
+      "casual": "弁護士 (bengoshi)",
+      "formal": "弁護士 (bengoshi)",
+      "keigo": "弁護士 (bengoshi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_enjinia",
+    "word": "エンジニア",
+    "kanji": null,
+    "reading": "エンジニア",
+    "romaji": "enjinia",
+    "meaning": "insinyur/engineer",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "エンジニア (enjinia)",
+      "formal": "エンジニア (enjinia)",
+      "keigo": "エンジニア (enjinia) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼はエンジニアです。",
+        "romaji": "Kare wa enjinia desu.",
+        "translation": "Dia seorang insinyur.",
+        "translationEn": "He's an engineer."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_enjinia.png",
+    "meaningEn": "engineer",
+    "registersEn": {
+      "casual": "エンジニア (enjinia)",
+      "formal": "エンジニア (enjinia)",
+      "keigo": "エンジニア (enjinia) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_nouka",
+    "word": "のうか",
+    "kanji": "農家",
+    "reading": "のうか",
+    "romaji": "nouka",
+    "meaning": "petani",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "農家 (nouka)",
+      "formal": "農家 (nouka)",
+      "keigo": "農家 (nouka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "農家は野菜を育てます。",
+        "romaji": "Nouka wa yasai o sodatemasu.",
+        "translation": "Petani menanam sayuran.",
+        "translationEn": "The farmer grows vegetables."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_nouka.png",
+    "meaningEn": "farmer",
+    "registersEn": {
+      "casual": "農家 (nouka)",
+      "formal": "農家 (nouka)",
+      "keigo": "農家 (nouka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_untenshu",
+    "word": "うんてんしゅ",
+    "kanji": "運転手",
+    "reading": "うんてんしゅ",
+    "romaji": "untenshu",
+    "meaning": "supir",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "運転手 (untenshu)",
+      "formal": "運転手 (untenshu)",
+      "keigo": "運転手 (untenshu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バスの運転手です。",
+        "romaji": "Basu no untenshu desu.",
+        "translation": "Dia supir bus.",
+        "translationEn": "He's a bus driver."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_untenshu.png",
+    "meaningEn": "driver",
+    "registersEn": {
+      "casual": "運転手 (untenshu)",
+      "formal": "運転手 (untenshu)",
+      "keigo": "運転手 (untenshu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_shufu",
+    "word": "しゅふ",
+    "kanji": "主婦",
+    "reading": "しゅふ",
+    "romaji": "shufu",
+    "meaning": "ibu rumah tangga",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "主婦 (shufu)",
+      "formal": "主婦 (shufu)",
+      "keigo": "主婦 (shufu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母は主婦です。",
+        "romaji": "Haha wa shufu desu.",
+        "translation": "Ibu saya adalah ibu rumah tangga.",
+        "translationEn": "My mother is a homemaker."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shufu.png",
+    "meaningEn": "housewife",
+    "registersEn": {
+      "casual": "主婦 (shufu)",
+      "formal": "主婦 (shufu)",
+      "keigo": "主婦 (shufu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kashu",
+    "word": "かしゅ",
+    "kanji": "歌手",
+    "reading": "かしゅ",
+    "romaji": "kashu",
+    "meaning": "penyanyi",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歌手 (kashu)",
+      "formal": "歌手 (kashu)",
+      "keigo": "歌手 (kashu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は有名な歌手です。",
+        "romaji": "Kanojo wa yuumei na kashu desu.",
+        "translation": "Dia penyanyi terkenal.",
+        "translationEn": "She's a famous singer."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kashu.png",
+    "meaningEn": "singer",
+    "registersEn": {
+      "casual": "歌手 (kashu)",
+      "formal": "歌手 (kashu)",
+      "keigo": "歌手 (kashu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_juuji",
+    "word": "じゅうじ",
+    "kanji": "従事",
+    "reading": "じゅうじ",
+    "romaji": "juuji",
+    "meaning": "menekuni (pekerjaan)",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "従事 (juuji)",
+      "formal": "従事 (juuji)",
+      "keigo": "従事 (juuji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "農業に従事しています。",
+        "romaji": "Nougyou ni juuji shite imasu.",
+        "translation": "Saya menekuni bidang pertanian.",
+        "translationEn": "I'm engaged in agriculture."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juuji.png",
+    "meaningEn": "engaging in (an occupation)",
+    "registersEn": {
+      "casual": "従事 (juuji)",
+      "formal": "従事 (juuji)",
+      "keigo": "従事 (juuji) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_tekisei",
+    "word": "てきせい",
+    "kanji": "適性",
+    "reading": "てきせい",
+    "romaji": "tekisei",
+    "meaning": "bakat/kesesuaian (profesi)",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "適性 (tekisei)",
+      "formal": "適性 (tekisei)",
+      "keigo": "適性 (tekisei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この仕事に適性があります。",
+        "romaji": "Kono shigoto ni tekisei ga arimasu.",
+        "translation": "Saya punya bakat untuk pekerjaan ini.",
+        "translationEn": "I have an aptitude for this job."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tekisei.png",
+    "meaningEn": "aptitude (for a job)",
+    "registersEn": {
+      "casual": "適性 (tekisei)",
+      "formal": "適性 (tekisei)",
+      "keigo": "適性 (tekisei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_tenshoku",
+    "word": "てんしょく",
+    "kanji": "転職",
+    "reading": "てんしょく",
+    "romaji": "tenshoku",
+    "meaning": "pindah kerja/ganti profesi",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "転職 (tenshoku)",
+      "formal": "転職 (tenshoku)",
+      "keigo": "転職 (tenshoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来月転職します。",
+        "romaji": "Raigetsu tenshoku shimasu.",
+        "translation": "Bulan depan saya pindah kerja.",
+        "translationEn": "Next month I'm changing jobs."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenshoku.png",
+    "meaningEn": "changing jobs",
+    "registersEn": {
+      "casual": "転職 (tenshoku)",
+      "formal": "転職 (tenshoku)",
+      "keigo": "転職 (tenshoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kengyou",
+    "word": "けんぎょう",
+    "kanji": "兼業",
+    "reading": "けんぎょう",
+    "romaji": "kengyou",
+    "meaning": "pekerjaan sampingan",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兼業 (kengyou)",
+      "formal": "兼業 (kengyou)",
+      "keigo": "兼業 (kengyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "農家と兼業しています。",
+        "romaji": "Nouka to kengyou shite imasu.",
+        "translation": "Saya menjalankan usaha sampingan sebagai petani.",
+        "translationEn": "I run a side business as a farmer."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kengyou.png",
+    "meaningEn": "side job",
+    "registersEn": {
+      "casual": "兼業 (kengyou)",
+      "formal": "兼業 (kengyou)",
+      "keigo": "兼業 (kengyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_tsuuyaku",
+    "word": "つうやく",
+    "kanji": "通訳",
+    "reading": "つうやく",
+    "romaji": "tsuuyaku",
+    "meaning": "juru bahasa/penerjemah lisan",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "通訳 (tsuuyaku)",
+      "formal": "通訳 (tsuuyaku)",
+      "keigo": "通訳 (tsuuyaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は通訳をしています。",
+        "romaji": "Kanojo wa tsuuyaku o shite imasu.",
+        "translation": "Dia bekerja sebagai juru bahasa.",
+        "translationEn": "He works as an interpreter."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tsuuyaku.png",
+    "meaningEn": "interpreter",
+    "registersEn": {
+      "casual": "通訳 (tsuuyaku)",
+      "formal": "通訳 (tsuuyaku)",
+      "keigo": "通訳 (tsuuyaku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_juui",
+    "word": "じゅうい",
+    "kanji": "獣医",
+    "reading": "じゅうい",
+    "romaji": "juui",
+    "meaning": "dokter hewan",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "獣医 (juui)",
+      "formal": "獣医 (juui)",
+      "keigo": "獣医 (juui) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "獣医に犬を診てもらいます。",
+        "romaji": "Juui ni inu o mite moraimasu.",
+        "translation": "Saya membawa anjing ke dokter hewan.",
+        "translationEn": "I take my dog to the vet."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juui.png",
+    "meaningEn": "veterinarian",
+    "registersEn": {
+      "casual": "獣医 (juui)",
+      "formal": "獣医 (juui)",
+      "keigo": "獣医 (juui) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_biyoushi",
+    "word": "びようし",
+    "kanji": "美容師",
+    "reading": "びようし",
+    "romaji": "biyoushi",
+    "meaning": "penata rambut",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "美容師 (biyoushi)",
+      "formal": "美容師 (biyoushi)",
+      "keigo": "美容師 (biyoushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "美容師に髪を切ってもらいます。",
+        "romaji": "Biyoushi ni kami o kitte moraimasu.",
+        "translation": "Saya minta penata rambut memotong rambut saya.",
+        "translationEn": "I ask the hairstylist to cut my hair."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_biyoushi.png",
+    "meaningEn": "hairstylist",
+    "registersEn": {
+      "casual": "美容師 (biyoushi)",
+      "formal": "美容師 (biyoushi)",
+      "keigo": "美容師 (biyoushi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kisha",
+    "word": "きしゃ",
+    "kanji": "記者",
+    "reading": "きしゃ",
+    "romaji": "kisha",
+    "meaning": "wartawan",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記者 (kisha)",
+      "formal": "記者 (kisha)",
+      "keigo": "記者 (kisha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "記者が質問をします。",
+        "romaji": "Kisha ga shitsumon o shimasu.",
+        "translation": "Wartawan mengajukan pertanyaan.",
+        "translationEn": "The reporter asks a question."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kisha.png",
+    "meaningEn": "journalist",
+    "registersEn": {
+      "casual": "記者 (kisha)",
+      "formal": "記者 (kisha)",
+      "keigo": "記者 (kisha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_gaka",
+    "word": "がか",
+    "kanji": "画家",
+    "reading": "がか",
+    "romaji": "gaka",
+    "meaning": "pelukis",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "画家 (gaka)",
+      "formal": "画家 (gaka)",
+      "keigo": "画家 (gaka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な画家です。",
+        "romaji": "Kare wa yuumei na gaka desu.",
+        "translation": "Dia pelukis terkenal.",
+        "translationEn": "He's a famous painter."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gaka.png",
+    "meaningEn": "painter",
+    "registersEn": {
+      "casual": "画家 (gaka)",
+      "formal": "画家 (gaka)",
+      "keigo": "画家 (gaka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_ishi",
+    "word": "いし",
+    "kanji": "医師",
+    "reading": "いし",
+    "romaji": "ishi",
+    "meaning": "dokter (istilah formal)",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "医師 (ishi)",
+      "formal": "医師 (ishi)",
+      "keigo": "医師 (ishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医師に相談します。",
+        "romaji": "Ishi ni soudan shimasu.",
+        "translation": "Saya berkonsultasi dengan dokter.",
+        "translationEn": "I consult with a doctor."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_ishi.png",
+    "meaningEn": "doctor (formal term)",
+    "registersEn": {
+      "casual": "医師 (ishi)",
+      "formal": "医師 (ishi)",
+      "keigo": "医師 (ishi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_koumuin",
+    "word": "こうむいん",
+    "kanji": "公務員",
+    "reading": "こうむいん",
+    "romaji": "koumuin",
+    "meaning": "pegawai negeri",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "公務員 (koumuin)",
+      "formal": "公務員 (koumuin)",
+      "keigo": "公務員 (koumuin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄は公務員です。",
+        "romaji": "Ani wa koumuin desu.",
+        "translation": "Kakak laki-laki saya seorang pegawai negeri.",
+        "translationEn": "My older brother is a civil servant."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_koumuin.png",
+    "meaningEn": "civil servant",
+    "registersEn": {
+      "casual": "公務員 (koumuin)",
+      "formal": "公務員 (koumuin)",
+      "keigo": "公務員 (koumuin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kyoushi",
+    "word": "きょうし",
+    "kanji": "教師",
+    "reading": "きょうし",
+    "romaji": "kyoushi",
+    "meaning": "guru/pengajar (istilah profesi)",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教師 (kyoushi)",
+      "formal": "教師 (kyoushi)",
+      "keigo": "教師 (kyoushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は教師です。",
+        "romaji": "Kanojo wa kyoushi desu.",
+        "translation": "Dia seorang guru.",
+        "translationEn": "He's a teacher."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kyoushi.png",
+    "meaningEn": "teacher (professional term)",
+    "registersEn": {
+      "casual": "教師 (kyoushi)",
+      "formal": "教師 (kyoushi)",
+      "keigo": "教師 (kyoushi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kaikeishi",
+    "word": "かいけいし",
+    "kanji": "会計士",
+    "reading": "かいけいし",
+    "romaji": "kaikeishi",
+    "meaning": "akuntan",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会計士 (kaikeishi)",
+      "formal": "会計士 (kaikeishi)",
+      "keigo": "会計士 (kaikeishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は会計士として働いています。",
+        "romaji": "Kare wa kaikeishi to shite hataraite imasu.",
+        "translation": "Dia bekerja sebagai akuntan.",
+        "translationEn": "He works as an accountant."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaikeishi.png",
+    "meaningEn": "accountant",
+    "registersEn": {
+      "casual": "会計士 (kaikeishi)",
+      "formal": "会計士 (kaikeishi)",
+      "keigo": "会計士 (kaikeishi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_yakuzaishi",
+    "word": "やくざいし",
+    "kanji": "薬剤師",
+    "reading": "やくざいし",
+    "romaji": "yakuzaishi",
+    "meaning": "apoteker",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "薬剤師 (yakuzaishi)",
+      "formal": "薬剤師 (yakuzaishi)",
+      "keigo": "薬剤師 (yakuzaishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "薬剤師に薬について聞きます。",
+        "romaji": "Yakuzaishi ni kusuri ni tsuite kikimasu.",
+        "translation": "Saya menanyakan obat kepada apoteker.",
+        "translationEn": "I ask the pharmacist about the medicine."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_yakuzaishi.png",
+    "meaningEn": "pharmacist",
+    "registersEn": {
+      "casual": "薬剤師 (yakuzaishi)",
+      "formal": "薬剤師 (yakuzaishi)",
+      "keigo": "薬剤師 (yakuzaishi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kachou",
+    "word": "かちょう",
+    "kanji": "課長",
+    "reading": "かちょう",
+    "romaji": "kachou",
+    "meaning": "kepala bagian",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "課長 (kachou)",
+      "formal": "課長 (kachou)",
+      "keigo": "課長 (kachou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "課長に報告します。",
+        "romaji": "Kachou ni houkoku shimasu.",
+        "translation": "Saya melapor ke kepala bagian.",
+        "translationEn": "I report to the section chief."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kachou.png",
+    "meaningEn": "section chief",
+    "registersEn": {
+      "casual": "課長 (kachou)",
+      "formal": "課長 (kachou)",
+      "keigo": "課長 (kachou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_keikan",
+    "word": "けいかん",
+    "kanji": "警官",
+    "reading": "けいかん",
+    "romaji": "keikan",
+    "meaning": "polisi (istilah sapaan)",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "警官 (keikan)",
+      "formal": "警官 (keikan)",
+      "keigo": "警官 (keikan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "警官に聞きました。",
+        "romaji": "Keikan ni kikimashita.",
+        "translation": "Bertanya pada pak polisi. (Gelar) (お巡りさんmenyapa.C)",
+        "translationEn": "Asking the police officer."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keikan.png",
+    "meaningEn": "police officer (address term)",
+    "registersEn": {
+      "casual": "警官 (keikan)",
+      "formal": "警官 (keikan)",
+      "keigo": "警官 (keikan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_keisatsu",
+    "word": "けいさつ",
+    "kanji": "警察",
+    "reading": "けいさつ",
+    "romaji": "keisatsu",
+    "meaning": "kepolisian (institusi)",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "警察 (keisatsu)",
+      "formal": "警察 (keisatsu)",
+      "keigo": "警察 (keisatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "警察を呼びます。",
+        "romaji": "Keisatsu o yobimasu.",
+        "translation": "Memanggil kepolisian. (isntitusi)",
+        "translationEn": "Calling the police."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsu.png",
+    "meaningEn": "police (institution)",
+    "registersEn": {
+      "casual": "警察 (keisatsu)",
+      "formal": "警察 (keisatsu)",
+      "keigo": "警察 (keisatsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_sakusha",
+    "word": "さくしゃ",
+    "kanji": "作者",
+    "reading": "さくしゃ",
+    "romaji": "sakusha",
+    "meaning": "pengarang",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "作者 (sakusha)",
+      "formal": "作者 (sakusha)",
+      "keigo": "作者 (sakusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "作者の名前を書きます。",
+        "romaji": "Sakusha no namae o kakimasu.",
+        "translation": "Menulis nama pengarang.",
+        "translationEn": "Writing the author's name."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sakusha.png",
+    "meaningEn": "author",
+    "registersEn": {
+      "casual": "作者 (sakusha)",
+      "formal": "作者 (sakusha)",
+      "keigo": "作者 (sakusha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_sakka",
+    "word": "さっか",
+    "kanji": "作家",
+    "reading": "さっか",
+    "romaji": "sakka",
+    "meaning": "penulis",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "作家 (sakka)",
+      "formal": "作家 (sakka)",
+      "keigo": "作家 (sakka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な作家です。",
+        "romaji": "Kare wa yuumei na sakka desu.",
+        "translation": "Dia penulis terkenal.",
+        "translationEn": "He's a famous writer."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sakka.png",
+    "meaningEn": "writer",
+    "registersEn": {
+      "casual": "作家 (sakka)",
+      "formal": "作家 (sakka)",
+      "keigo": "作家 (sakka) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_shichou",
+    "word": "しちょう",
+    "kanji": "市長",
+    "reading": "しちょう",
+    "romaji": "shichou",
+    "meaning": "wali kota",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "市長 (shichou)",
+      "formal": "市長 (shichou)",
+      "keigo": "市長 (shichou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "市長が来ました。",
+        "romaji": "Shichou ga kimashita.",
+        "translation": "Wali kota datang.",
+        "translationEn": "The mayor arrives."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shichou.png",
+    "meaningEn": "mayor",
+    "registersEn": {
+      "casual": "市長 (shichou)",
+      "formal": "市長 (shichou)",
+      "keigo": "市長 (shichou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_tenchou",
+    "word": "てんちょう",
+    "kanji": "店長",
+    "reading": "てんちょう",
+    "romaji": "tenchou",
+    "meaning": "kepala toko",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "店長 (tenchou)",
+      "formal": "店長 (tenchou)",
+      "keigo": "店長 (tenchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "店長に相談しました。",
+        "romaji": "Tenchou ni soudan shimashita.",
+        "translation": "Saya berkonsultasi dengan kepala toko.",
+        "translationEn": "I consult with the store manager."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenchou.png",
+    "meaningEn": "store manager",
+    "registersEn": {
+      "casual": "店長 (tenchou)",
+      "formal": "店長 (tenchou)",
+      "keigo": "店長 (tenchou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_nougyou",
+    "word": "のうぎょう",
+    "kanji": "農業",
+    "reading": "のうぎょう",
+    "romaji": "nougyou",
+    "meaning": "pertanian",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "農業 (nougyou)",
+      "formal": "農業 (nougyou)",
+      "keigo": "農業 (nougyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祖父は農業をしています。",
+        "romaji": "Sofu wa nougyou o shite imasu.",
+        "translation": "Kakek bekerja di bidang pertanian.",
+        "translationEn": "My grandfather works in agriculture."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_nougyou.png",
+    "meaningEn": "agriculture",
+    "registersEn": {
+      "casual": "農業 (nougyou)",
+      "formal": "農業 (nougyou)",
+      "keigo": "農業 (nougyou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_gakusha",
+    "word": "がくしゃ",
+    "kanji": "学者",
+    "reading": "がくしゃ",
+    "romaji": "gakusha",
+    "meaning": "sarjana/cendekiawan",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学者 (gakusha)",
+      "formal": "学者 (gakusha)",
+      "keigo": "学者 (gakusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "有名な学者です。",
+        "romaji": "Yuumei na gakusha desu.",
+        "translation": "Dia sarjana terkenal.",
+        "translationEn": "He's a famous scholar."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusha.png",
+    "meaningEn": "scholar",
+    "registersEn": {
+      "casual": "学者 (gakusha)",
+      "formal": "学者 (gakusha)",
+      "keigo": "学者 (gakusha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_heishi",
+    "word": "へいし",
+    "kanji": "兵士",
+    "reading": "へいし",
+    "romaji": "heishi",
+    "meaning": "tentara/prajurit",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兵士 (heishi)",
+      "formal": "兵士 (heishi)",
+      "keigo": "兵士 (heishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兵士が行進します。",
+        "romaji": "Heishi ga koushin shimasu.",
+        "translation": "Prajurit berbaris.",
+        "translationEn": "The soldiers march."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_heishi.png",
+    "meaningEn": "soldier",
+    "registersEn": {
+      "casual": "兵士 (heishi)",
+      "formal": "兵士 (heishi)",
+      "keigo": "兵士 (heishi) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_juugyouin",
+    "word": "じゅうぎょういん",
+    "kanji": "従業員",
+    "reading": "じゅうぎょういん",
+    "romaji": "juugyouin",
+    "meaning": "karyawan",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "従業員 (juugyouin)",
+      "formal": "従業員 (juugyouin)",
+      "keigo": "従業員 (juugyouin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "従業員を採用します。",
+        "romaji": "Juugyouin o saiyou shimasu.",
+        "translation": "Merekrut karyawan.",
+        "translationEn": "Recruiting employees."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juugyouin.png",
+    "meaningEn": "employee",
+    "registersEn": {
+      "casual": "従業員 (juugyouin)",
+      "formal": "従業員 (juugyouin)",
+      "keigo": "従業員 (juugyouin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_shikai",
+    "word": "しかい",
+    "kanji": "司会",
+    "reading": "しかい",
+    "romaji": "shikai",
+    "meaning": "pembawa acara/MC",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "司会 (shikai)",
+      "formal": "司会 (shikai)",
+      "keigo": "司会 (shikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "司会を務めます。",
+        "romaji": "Shikai o tsutomemasu.",
+        "translation": "Menjadi pembawa acara.",
+        "translationEn": "Becoming the emcee."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shikai.png",
+    "meaningEn": "emcee/host",
+    "registersEn": {
+      "casual": "司会 (shikai)",
+      "formal": "司会 (shikai)",
+      "keigo": "司会 (shikai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_buchou",
+    "word": "ぶちょう",
+    "kanji": "部長",
+    "reading": "ぶちょう",
+    "romaji": "buchou",
+    "meaning": "kepala departemen",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "部長 (buchou)",
+      "formal": "部長 (buchou)",
+      "keigo": "部長 (buchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "部長に報告します。",
+        "romaji": "Buchou ni houkoku shimasu.",
+        "translation": "Melapor ke kepala departemen.",
+        "translationEn": "Reporting to the department head."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_buchou.png",
+    "meaningEn": "department head",
+    "registersEn": {
+      "casual": "部長 (buchou)",
+      "formal": "部長 (buchou)",
+      "keigo": "部長 (buchou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_dorobou",
+    "word": "どろぼう",
+    "kanji": "泥棒",
+    "reading": "どろぼう",
+    "romaji": "dorobou",
+    "meaning": "pencuri",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "泥棒 (dorobou)",
+      "formal": "泥棒 (dorobou)",
+      "keigo": "泥棒 (dorobou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "泥棒に気をつけてください。",
+        "romaji": "Dorobou ni ki o tsukete kudasai.",
+        "translation": "Waspada terhadap pencuri.",
+        "translationEn": "Watch out for thieves."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_dorobou.png",
+    "meaningEn": "thief",
+    "registersEn": {
+      "casual": "泥棒 (dorobou)",
+      "formal": "泥棒 (dorobou)",
+      "keigo": "泥棒 (dorobou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_haisha",
+    "word": "はいしゃ",
+    "kanji": "歯医者",
+    "reading": "はいしゃ",
+    "romaji": "haisha",
+    "meaning": "dokter gigi",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歯医者 (haisha)",
+      "formal": "歯医者 (haisha)",
+      "keigo": "歯医者 (haisha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "歯医者に行きます。",
+        "romaji": "Haisha ni ikimasu.",
+        "translation": "Pergi ke dokter gigi.",
+        "translationEn": "Going to the dentist."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_haisha.png",
+    "meaningEn": "dentist",
+    "registersEn": {
+      "casual": "歯医者 (haisha)",
+      "formal": "歯医者 (haisha)",
+      "keigo": "歯医者 (haisha) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kangofu",
+    "word": "かんごふ",
+    "kanji": "看護婦",
+    "reading": "かんごふ",
+    "romaji": "kangofu",
+    "meaning": "perawat (perempuan)",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "看護婦 (kangofu)",
+      "formal": "看護婦 (kangofu)",
+      "keigo": "看護婦 (kangofu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "看護婦さんが優しいです。",
+        "romaji": "Kangofu-san ga yasashii desu.",
+        "translation": "Perawatnya baik hati.",
+        "translationEn": "The nurse is kind."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kangofu.png",
+    "meaningEn": "nurse (female)",
+    "registersEn": {
+      "casual": "看護婦 (kangofu)",
+      "formal": "看護婦 (kangofu)",
+      "keigo": "看護婦 (kangofu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_kouchou",
+    "word": "こうちょう",
+    "kanji": "校長",
+    "reading": "こうちょう",
+    "romaji": "kouchou",
+    "meaning": "kepala sekolah",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "校長 (kouchou)",
+      "formal": "校長 (kouchou)",
+      "keigo": "校長 (kouchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "校長先生に会います。",
+        "romaji": "Kouchou sensei ni aimasu.",
+        "translation": "Bertemu kepala sekolah.",
+        "translationEn": "Meeting the school principal."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kouchou.png",
+    "meaningEn": "school principal",
+    "registersEn": {
+      "casual": "校長 (kouchou)",
+      "formal": "校長 (kouchou)",
+      "keigo": "校長 (kouchou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_shachou",
+    "word": "しゃちょう",
+    "kanji": "社長",
+    "reading": "しゃちょう",
+    "romaji": "shachou",
+    "meaning": "presiden direktur",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "社長 (shachou)",
+      "formal": "社長 (shachou)",
+      "keigo": "社長 (shachou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社長に会います。",
+        "romaji": "Shachou ni aimasu.",
+        "translation": "Bertemu presiden direktur.",
+        "translationEn": "Meeting the company president."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shachou.png",
+    "meaningEn": "company president",
+    "registersEn": {
+      "casual": "社長 (shachou)",
+      "formal": "社長 (shachou)",
+      "keigo": "社長 (shachou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_tenin",
+    "word": "てんいん",
+    "kanji": "店員",
+    "reading": "てんいん",
+    "romaji": "tenin",
+    "meaning": "pegawai toko",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "店員 (tenin)",
+      "formal": "店員 (tenin)",
+      "keigo": "店員 (tenin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "店員に聞きます。",
+        "romaji": "Ten'in ni kikimasu.",
+        "translation": "Bertanya kepada pegawai toko.",
+        "translationEn": "Asking the store clerk."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenin.png",
+    "meaningEn": "shop clerk",
+    "registersEn": {
+      "casual": "店員 (tenin)",
+      "formal": "店員 (tenin)",
+      "keigo": "店員 (tenin) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_profesi_tokoya",
+    "word": "とこや",
+    "kanji": "床屋",
+    "reading": "とこや",
+    "romaji": "tokoya",
+    "meaning": "tukang cukur",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "床屋 (tokoya)",
+      "formal": "床屋 (tokoya)",
+      "keigo": "床屋 (tokoya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "床屋で髪を切ります。",
+        "romaji": "Tokoya de kami o kirimasu.",
+        "translation": "Memotong rambut di tukang cukur.",
+        "translationEn": "Getting a haircut at the barber."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tokoya.png",
+    "meaningEn": "barbershop/barber",
+    "registersEn": {
+      "casual": "床屋 (tokoya)",
+      "formal": "床屋 (tokoya)",
+      "keigo": "床屋 (tokoya) — no special keigo form for this noun"
+    }
+  }
+]

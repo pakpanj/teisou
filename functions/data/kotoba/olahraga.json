@@ -1,0 +1,808 @@
+[
+  {
+    "id": "kotoba_olahraga_supootsu",
+    "word": "スポーツ",
+    "kanji": null,
+    "reading": "スポーツ",
+    "romaji": "supootsu",
+    "meaning": "olahraga",
+    "jlptLevel": "N5",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "スポーツ (supootsu)",
+      "formal": "スポーツ (supootsu)",
+      "keigo": "スポーツ (supootsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "スポーツが好きです。",
+        "romaji": "Supootsu ga suki desu.",
+        "translation": "Saya suka olahraga.",
+        "translationEn": "I like sports."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_supootsu.png",
+    "meaningEn": "sports",
+    "registersEn": {
+      "casual": "スポーツ (supootsu)",
+      "formal": "スポーツ (supootsu)",
+      "keigo": "スポーツ (supootsu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_sakkaa",
+    "word": "サッカー",
+    "kanji": null,
+    "reading": "サッカー",
+    "romaji": "sakkaa",
+    "meaning": "sepak bola",
+    "jlptLevel": "N5",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "サッカー (sakkaa)",
+      "formal": "サッカー (sakkaa)",
+      "keigo": "サッカー (sakkaa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "サッカーをします。",
+        "romaji": "Sakkaa o shimasu.",
+        "translation": "Saya bermain sepak bola.",
+        "translationEn": "I play soccer."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_sakkaa.png",
+    "meaningEn": "soccer/football",
+    "registersEn": {
+      "casual": "サッカー (sakkaa)",
+      "formal": "サッカー (sakkaa)",
+      "keigo": "サッカー (sakkaa) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_yakyuu",
+    "word": "やきゅう",
+    "kanji": "野球",
+    "reading": "やきゅう",
+    "romaji": "yakyuu",
+    "meaning": "bisbol",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "野球 (yakyuu)",
+      "formal": "野球 (yakyuu)",
+      "keigo": "野球 (yakyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "野球を見ます。",
+        "romaji": "Yakyuu o mimasu.",
+        "translation": "Saya menonton bisbol.",
+        "translationEn": "I watch baseball."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_yakyuu.png",
+    "meaningEn": "baseball",
+    "registersEn": {
+      "casual": "野球 (yakyuu)",
+      "formal": "野球 (yakyuu)",
+      "keigo": "野球 (yakyuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_basukettobooru",
+    "word": "バスケットボール",
+    "kanji": null,
+    "reading": "バスケットボール",
+    "romaji": "basuketto booru",
+    "meaning": "bola basket",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バスケットボール (basuketto booru)",
+      "formal": "バスケットボール (basuketto booru)",
+      "keigo": "バスケットボール (basuketto booru) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バスケットボールをします。",
+        "romaji": "Basuketto booru o shimasu.",
+        "translation": "Saya bermain bola basket.",
+        "translationEn": "I play basketball."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_basukettobooru.png",
+    "meaningEn": "basketball",
+    "registersEn": {
+      "casual": "バスケットボール (basuketto booru)",
+      "formal": "バスケットボール (basuketto booru)",
+      "keigo": "バスケットボール (basuketto booru) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_suiei",
+    "word": "すいえい",
+    "kanji": "水泳",
+    "reading": "すいえい",
+    "romaji": "suiei",
+    "meaning": "renang",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "水泳 (suiei)",
+      "formal": "水泳 (suiei)",
+      "keigo": "水泳 (suiei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "水泳が得意です。",
+        "romaji": "Suiei ga tokui desu.",
+        "translation": "Saya jago berenang.",
+        "translationEn": "I'm good at swimming."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_suiei.png",
+    "meaningEn": "swimming",
+    "registersEn": {
+      "casual": "水泳 (suiei)",
+      "formal": "水泳 (suiei)",
+      "keigo": "水泳 (suiei) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_tenisu",
+    "word": "テニス",
+    "kanji": null,
+    "reading": "テニス",
+    "romaji": "tenisu",
+    "meaning": "tenis",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "テニス (tenisu)",
+      "formal": "テニス (tenisu)",
+      "keigo": "テニス (tenisu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テニスをします。",
+        "romaji": "Tenisu o shimasu.",
+        "translation": "Saya bermain tenis.",
+        "translationEn": "I play tennis."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tenisu.png",
+    "meaningEn": "tennis",
+    "registersEn": {
+      "casual": "テニス (tenisu)",
+      "formal": "テニス (tenisu)",
+      "keigo": "テニス (tenisu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_ranningu",
+    "word": "ランニング",
+    "kanji": null,
+    "reading": "ランニング",
+    "romaji": "ranningu",
+    "meaning": "lari (running)",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ランニング (ranningu)",
+      "formal": "ランニング (ranningu)",
+      "keigo": "ランニング (ranningu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎朝ランニングをします。",
+        "romaji": "Maiasa ranningu o shimasu.",
+        "translation": "Saya lari setiap pagi.",
+        "translationEn": "I run every morning."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_ranningu.png",
+    "meaningEn": "running",
+    "registersEn": {
+      "casual": "ランニング (ranningu)",
+      "formal": "ランニング (ranningu)",
+      "keigo": "ランニング (ranningu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_juudou",
+    "word": "じゅうどう",
+    "kanji": "柔道",
+    "reading": "じゅうどう",
+    "romaji": "juudou",
+    "meaning": "judo",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "柔道 (juudou)",
+      "formal": "柔道 (juudou)",
+      "keigo": "柔道 (juudou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "柔道を習っています。",
+        "romaji": "Juudou o naratte imasu.",
+        "translation": "Saya sedang belajar judo.",
+        "translationEn": "I'm learning judo."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_juudou.png",
+    "meaningEn": "judo",
+    "registersEn": {
+      "casual": "柔道 (juudou)",
+      "formal": "柔道 (juudou)",
+      "keigo": "柔道 (juudou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_karate",
+    "word": "からて",
+    "kanji": "空手",
+    "reading": "からて",
+    "romaji": "karate",
+    "meaning": "karate",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "空手 (karate)",
+      "formal": "空手 (karate)",
+      "keigo": "空手 (karate) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "空手は日本の武道です。",
+        "romaji": "Karate wa Nihon no budou desu.",
+        "translation": "Karate adalah bela diri Jepang.",
+        "translationEn": "Karate is a Japanese martial art."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_karate.png",
+    "meaningEn": "karate",
+    "registersEn": {
+      "casual": "空手 (karate)",
+      "formal": "空手 (karate)",
+      "keigo": "空手 (karate) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_sumou",
+    "word": "すもう",
+    "kanji": "相撲",
+    "reading": "すもう",
+    "romaji": "sumou",
+    "meaning": "sumo",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "相撲 (sumou)",
+      "formal": "相撲 (sumou)",
+      "keigo": "相撲 (sumou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "相撲を見るのが好きです。",
+        "romaji": "Sumou o miru no ga suki desu.",
+        "translation": "Saya suka menonton sumo.",
+        "translationEn": "I like watching sumo."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_sumou.png",
+    "meaningEn": "sumo",
+    "registersEn": {
+      "casual": "相撲 (sumou)",
+      "formal": "相撲 (sumou)",
+      "keigo": "相撲 (sumou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_taisou",
+    "word": "たいそう",
+    "kanji": "体操",
+    "reading": "たいそう",
+    "romaji": "taisou",
+    "meaning": "senam",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体操 (taisou)",
+      "formal": "体操 (taisou)",
+      "keigo": "体操 (taisou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎朝体操をします。",
+        "romaji": "Maiasa taisou o shimasu.",
+        "translation": "Saya senam setiap pagi.",
+        "translationEn": "I do calisthenics every morning."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_taisou.png",
+    "meaningEn": "gymnastics/calisthenics",
+    "registersEn": {
+      "casual": "体操 (taisou)",
+      "formal": "体操 (taisou)",
+      "keigo": "体操 (taisou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_undou",
+    "word": "うんどう",
+    "kanji": "運動",
+    "reading": "うんどう",
+    "romaji": "undou",
+    "meaning": "olahraga/gerak badan",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "運動 (undou)",
+      "formal": "運動 (undou)",
+      "keigo": "運動 (undou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "運動は健康にいいです。",
+        "romaji": "Undou wa kenkou ni ii desu.",
+        "translation": "Olahraga baik untuk kesehatan.",
+        "translationEn": "Exercise is good for health."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_undou.png",
+    "meaningEn": "exercise/physical activity",
+    "registersEn": {
+      "casual": "運動 (undou)",
+      "formal": "運動 (undou)",
+      "keigo": "運動 (undou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_tanren",
+    "word": "たんれん",
+    "kanji": "鍛錬",
+    "reading": "たんれん",
+    "romaji": "tanren",
+    "meaning": "penempaan/pelatihan (fisik/mental)",
+    "jlptLevel": "N1",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鍛錬 (tanren)",
+      "formal": "鍛錬 (tanren)",
+      "keigo": "鍛錬 (tanren) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎日体を鍛錬しています。",
+        "romaji": "Mainichi karada o tanren shite imasu.",
+        "translation": "Saya melatih tubuh setiap hari.",
+        "translationEn": "I train my body every day."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tanren.png",
+    "meaningEn": "(physical/mental) training",
+    "registersEn": {
+      "casual": "鍛錬 (tanren)",
+      "formal": "鍛錬 (tanren)",
+      "keigo": "鍛錬 (tanren) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_jikyuuryoku",
+    "word": "じきゅうりょく",
+    "kanji": "持久力",
+    "reading": "じきゅうりょく",
+    "romaji": "jikyuuryoku",
+    "meaning": "daya tahan (fisik)",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "持久力 (jikyuuryoku)",
+      "formal": "持久力 (jikyuuryoku)",
+      "keigo": "持久力 (jikyuuryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "マラソンには持久力が必要です。",
+        "romaji": "Marason ni wa jikyuuryoku ga hitsuyou desu.",
+        "translation": "Maraton membutuhkan daya tahan.",
+        "translationEn": "A marathon requires endurance."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_jikyuuryoku.png",
+    "meaningEn": "endurance/stamina",
+    "registersEn": {
+      "casual": "持久力 (jikyuuryoku)",
+      "formal": "持久力 (jikyuuryoku)",
+      "keigo": "持久力 (jikyuuryoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_kinryoku",
+    "word": "きんりょく",
+    "kanji": "筋力",
+    "reading": "きんりょく",
+    "romaji": "kinryoku",
+    "meaning": "kekuatan otot",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "筋力 (kinryoku)",
+      "formal": "筋力 (kinryoku)",
+      "keigo": "筋力 (kinryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "筋力トレーニングをします。",
+        "romaji": "Kinryoku toreeningu o shimasu.",
+        "translation": "Saya melakukan latihan kekuatan otot.",
+        "translationEn": "I do strength training."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kinryoku.png",
+    "meaningEn": "muscle strength",
+    "registersEn": {
+      "casual": "筋力 (kinryoku)",
+      "formal": "筋力 (kinryoku)",
+      "keigo": "筋力 (kinryoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_takkyuu",
+    "word": "たっきゅう",
+    "kanji": "卓球",
+    "reading": "たっきゅう",
+    "romaji": "takkyuu",
+    "meaning": "tenis meja",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "卓球 (takkyuu)",
+      "formal": "卓球 (takkyuu)",
+      "keigo": "卓球 (takkyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "卓球をします。",
+        "romaji": "Takkyuu o shimasu.",
+        "translation": "Saya bermain tenis meja.",
+        "translationEn": "I play table tennis."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_takkyuu.png",
+    "meaningEn": "table tennis",
+    "registersEn": {
+      "casual": "卓球 (takkyuu)",
+      "formal": "卓球 (takkyuu)",
+      "keigo": "卓球 (takkyuu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_rikujou",
+    "word": "りくじょう",
+    "kanji": "陸上",
+    "reading": "りくじょう",
+    "romaji": "rikujou",
+    "meaning": "atletik",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "陸上 (rikujou)",
+      "formal": "陸上 (rikujou)",
+      "keigo": "陸上 (rikujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "陸上部に入っています。",
+        "romaji": "Rikujou-bu ni haitte imasu.",
+        "translation": "Saya ikut klub atletik.",
+        "translationEn": "I'm in the track and field club."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_rikujou.png",
+    "meaningEn": "track and field/athletics",
+    "registersEn": {
+      "casual": "陸上 (rikujou)",
+      "formal": "陸上 (rikujou)",
+      "keigo": "陸上 (rikujou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_yuushou",
+    "word": "ゆうしょう",
+    "kanji": "優勝",
+    "reading": "ゆうしょう",
+    "romaji": "yuushou",
+    "meaning": "juara/kemenangan (kompetisi)",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "優勝 (yuushou)",
+      "formal": "優勝 (yuushou)",
+      "keigo": "優勝 (yuushou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大会で優勝しました。",
+        "romaji": "Taikai de yuushou shimashita.",
+        "translation": "Saya juara di kompetisi itu.",
+        "translationEn": "I won that competition."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_yuushou.png",
+    "meaningEn": "championship/victory",
+    "registersEn": {
+      "casual": "優勝 (yuushou)",
+      "formal": "優勝 (yuushou)",
+      "keigo": "優勝 (yuushou) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_shiai",
+    "word": "しあい",
+    "kanji": "試合",
+    "reading": "しあい",
+    "romaji": "shiai",
+    "meaning": "pertandingan",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "試合 (shiai)",
+      "formal": "試合 (shiai)",
+      "keigo": "試合 (shiai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "明日試合があります。",
+        "romaji": "Ashita shiai ga arimasu.",
+        "translation": "Besok ada pertandingan.",
+        "translationEn": "There's a match tomorrow."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_shiai.png",
+    "meaningEn": "match/game",
+    "registersEn": {
+      "casual": "試合 (shiai)",
+      "formal": "試合 (shiai)",
+      "keigo": "試合 (shiai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_senshu",
+    "word": "せんしゅ",
+    "kanji": "選手",
+    "reading": "せんしゅ",
+    "romaji": "senshu",
+    "meaning": "atlet",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "選手 (senshu)",
+      "formal": "選手 (senshu)",
+      "keigo": "選手 (senshu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な選手です。",
+        "romaji": "Kare wa yuumei na senshu desu.",
+        "translation": "Dia atlet terkenal.",
+        "translationEn": "He's a famous athlete."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_senshu.png",
+    "meaningEn": "athlete/player",
+    "registersEn": {
+      "casual": "選手 (senshu)",
+      "formal": "選手 (senshu)",
+      "keigo": "選手 (senshu) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_kouhan",
+    "word": "こうはん",
+    "kanji": "後半",
+    "reading": "こうはん",
+    "romaji": "kouhan",
+    "meaning": "babak kedua",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "後半 (kouhan)",
+      "formal": "後半 (kouhan)",
+      "keigo": "後半 (kouhan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "試合の後半が始まりました。",
+        "romaji": "Shiai no kouhan ga hajimarimashita.",
+        "translation": "Babak kedua pertandingan dimulai.",
+        "translationEn": "The second half of the match begins."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kouhan.png",
+    "meaningEn": "second half",
+    "registersEn": {
+      "casual": "後半 (kouhan)",
+      "formal": "後半 (kouhan)",
+      "keigo": "後半 (kouhan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_zenhan",
+    "word": "ぜんはん",
+    "kanji": "前半",
+    "reading": "ぜんはん",
+    "romaji": "zenhan",
+    "meaning": "babak pertama",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "前半 (zenhan)",
+      "formal": "前半 (zenhan)",
+      "keigo": "前半 (zenhan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "前半は簡単でした。",
+        "romaji": "Zenhan wa kantan deshita.",
+        "translation": "Bagian separoh pertama mudah.",
+        "translationEn": "The first half was easy."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_zenhan.png",
+    "meaningEn": "first half",
+    "registersEn": {
+      "casual": "前半 (zenhan)",
+      "formal": "前半 (zenhan)",
+      "keigo": "前半 (zenhan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_tairyoku",
+    "word": "たいりょく",
+    "kanji": "体力",
+    "reading": "たいりょく",
+    "romaji": "tairyoku",
+    "meaning": "stamina/daya tahan",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体力 (tairyoku)",
+      "formal": "体力 (tairyoku)",
+      "keigo": "体力 (tairyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体力をつけたいです。",
+        "romaji": "Tairyoku o tsuketai desu.",
+        "translation": "Ingin meningkatkan stamina.",
+        "translationEn": "I want to improve my stamina."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tairyoku.png",
+    "meaningEn": "physical strength/stamina",
+    "registersEn": {
+      "casual": "体力 (tairyoku)",
+      "formal": "体力 (tairyoku)",
+      "keigo": "体力 (tairyoku) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_tozan",
+    "word": "とざん",
+    "kanji": "登山",
+    "reading": "とざん",
+    "romaji": "tozan",
+    "meaning": "mendaki gunung",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "登山 (tozan)",
+      "formal": "登山 (tozan)",
+      "keigo": "登山 (tozan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "週末に登山します。",
+        "romaji": "Shuumatsu ni tozan shimasu.",
+        "translation": "Akhir pekan saya mendaki gunung.",
+        "translationEn": "On weekends I go hiking."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tozan.png",
+    "meaningEn": "mountain climbing",
+    "registersEn": {
+      "casual": "登山 (tozan)",
+      "formal": "登山 (tozan)",
+      "keigo": "登山 (tozan) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_taikai",
+    "word": "たいかい",
+    "kanji": "大会",
+    "reading": "たいかい",
+    "romaji": "taikai",
+    "meaning": "kompetisi/turnamen besar",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大会 (taikai)",
+      "formal": "大会 (taikai)",
+      "keigo": "大会 (taikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大会に出場します。",
+        "romaji": "Taikai ni shutsujou shimasu.",
+        "translation": "Ikut kompetisi.",
+        "translationEn": "Joining the competition."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_taikai.png",
+    "meaningEn": "tournament/competition",
+    "registersEn": {
+      "casual": "大会 (taikai)",
+      "formal": "大会 (taikai)",
+      "keigo": "大会 (taikai) — no special keigo form for this noun"
+    }
+  },
+  {
+    "id": "kotoba_olahraga_hitteki",
+    "word": "ひってき",
+    "kanji": "匹敵",
+    "reading": "ひってき",
+    "romaji": "hitteki",
+    "meaning": "setanding/sebanding",
+    "jlptLevel": "N1",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "匹敵 (hitteki)",
+      "formal": "匹敵 (hitteki)",
+      "keigo": "匹敵 (hitteki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼の実力に匹敵します。",
+        "romaji": "Kare no jitsuryoku ni hitteki shimasu.",
+        "translation": "Setanding dengan kemampuannya.",
+        "translationEn": "Matching his/her ability."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_hitteki.png",
+    "meaningEn": "comparable/rivaling",
+    "registersEn": {
+      "casual": "匹敵 (hitteki)",
+      "formal": "匹敵 (hitteki)",
+      "keigo": "匹敵 (hitteki) — no special keigo form for this noun"
+    }
+  }
+]

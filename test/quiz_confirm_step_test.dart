@@ -16,7 +16,7 @@ import 'package:kana_master/data/models/quiz_review_entry.dart';
 /// Now the tap only moves the highlight and the button grades.
 void main() {
   Widget harness({
-    required void Function(int score, int total, List<QuizReviewEntry> wrong)
+    required void Function(int score, int total, List<QuizReviewEntry> wrong, List<GradedAnswer> answers)
         onComplete,
   }) {
     return ProviderScope(
@@ -37,7 +37,7 @@ void main() {
 
   testWidgets('a pick can be changed until it is confirmed', (tester) async {
     var score = -1;
-    await tester.pumpWidget(harness(onComplete: (s, _, _) => score = s));
+    await tester.pumpWidget(harness(onComplete: (s, _, _, _) => score = s));
     await tester.pumpAndSettle();
 
     final s = AppStrings(AppLanguage.indonesian);
@@ -74,7 +74,7 @@ void main() {
 
   testWidgets('a confirmed answer is final', (tester) async {
     var score = -1;
-    await tester.pumpWidget(harness(onComplete: (s, _, _) => score = s));
+    await tester.pumpWidget(harness(onComplete: (s, _, _, _) => score = s));
     await tester.pumpAndSettle();
     final s = AppStrings(AppLanguage.indonesian);
 

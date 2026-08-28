@@ -24,31 +24,40 @@
  * together for one attempt: was this already awarded, what's `n` now,
  * and does the points at that `n` clear a 30-day-old cycle first.
  *
- * **Known, documented, deliberately out-of-scope gap: exam-history
- * CONTENT honesty is not fully closed.** This file's `correct =
- * Number(docData.score) || 0` (in [awardPointsForHistoryDoc] below)
- * trusts the exam-history document's own `score`/`total` fields, which
- * are still self-reported by the client at submit time — this file (and
- * the Weekly Global Ranking payout built on top of it, see
- * `award_top_coins.js`) only closes the *write-authority* gap for the
- * `globalPoints`/`globalScorePeriods` fields THEMSELVES (nothing but
- * this Cloud Function can ever set them), not the *grading honesty* of
- * the underlying exam submission those fields are computed from. This
- * was an explicit, acknowledged trade-off when Formula C was first
- * designed (see `GLOBAL_POINTS_FINAL_DECISION_MEMO.md`'s own admission
- * of this exact gap) and remains explicitly out of scope for the Weekly
- * Global Ranking implementation too, per that task's own instruction not
- * to redesign exam grading or exam-history security as part of this P0
- * fix. Recorded here as a pointer for whoever picks this up next — not a
- * new finding, not something this file's own security fix claims to
- * have closed, and not something to fix silently as a side effect of an
- * unrelated change.
+ * **Exam-history CONTENT honesty — CLOSED for score/total (P0 fix).**
+ * This paragraph used to say `correct = Number(docData.score) || 0`
+ * trusted the client's own self-reported score outright — that gap is
+ * now closed. `correct` is `graded.serverScore`, computed by
+ * [exam_grading.js]'s `gradeAttempt` independently re-grading
+ * `docData.answers` (raw submitted answers, untrusted, but objectively
+ * checkable) against this project's own bundled/mirrored content. A
+ * forged `score`/`total` (the P0 audit's exact `score: 999999`
+ * reproduction) no longer has any path into Global Points or the Weekly
+ * Global Ranking payout — see `TEISOU_ROADMAP_MASTER.md`'s
+ * "Exam-History Authority" audit + design + implementation sections for
+ * the full history.
+ *
+ * **Still open, deliberately, and out of THIS fix's scope: the
+ * `difficultyField`/repeat-key fields** (`docData[spec.difficultyField]`
+ * below — kana's `type`, Dokkai/Choukai/Kanji-Kombinasi's `jlptLevel`,
+ * plus `repeatKeyFor`'s `itemId`) are still read directly from the
+ * client-supplied history document, unvalidated against
+ * `graded`/`exam_grading.js`'s own content lookup. A forged
+ * `jlptLevel: 'n1'` on an easy attempt still inflates
+ * `difficultyMultiplier` (bounded — at most ~2.2x, per
+ * `difficultyMultiplierFor`'s own fixed table — a materially smaller,
+ * still-bounded gap, not the P0 fix's previously-unlimited one). Left
+ * unaddressed here per this fix's own explicit instruction to close
+ * score/total specifically and not redesign the wider Formula C/repeat-
+ * cycle mechanics; recorded as a known residual gap for whoever picks
+ * this up next, not something to fix silently as a side effect.
  */
 
 const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 const logger = require("firebase-functions/logger");
 const {wibWeekId} = require("./wib_week");
+const {gradeAttempt, GRADING_VERSION} = require("./exam_grading");
 
 /** Points per correct answer at the lowest difficulty tier. */
 const K = 10;
@@ -335,7 +344,21 @@ async function awardPointsForHistoryDoc(
   const firestore = options.firestore || db();
   const source = options.source || "live";
 
-  const correct = Number(docData.score) || 0;
+  // Server-authoritative — Exam-History Authority fix (see
+  // TEISOU_ROADMAP_MASTER.md's P0 audit + design + implementation
+  // sections). `docData.score`/`docData.total` are client-reported,
+  // display-only fields as of this fix — Global Points now consumes
+  // ONLY `graded.serverScore`, computed here by independently regrading
+  // `docData.answers` (also client-submitted, but raw and unjudged —
+  // see exam_grading.js's own top doc comment for why a raw answer
+  // array, unlike a self-reported score, can be objectively checked
+  // against real content this function has its own copy of) against
+  // this project's own bundled/mirrored content datasets. A client
+  // that submits a document with no `answers` at all, or answers that
+  // don't match anything real, is graded `serverScore: 0` — exactly
+  // the P0 audit's forged `score: 999999` case, now worth nothing.
+  const graded = gradeAttempt(moduleType, docData.answers);
+  const correct = graded.serverScore;
   const difficulty = difficultyMultiplierFor(docData[spec.difficultyField]);
   const repeatKey = repeatKeyFor(moduleType, docData);
   const completedAtMs = toEpochMs(docData.completedAt);
@@ -358,6 +381,14 @@ async function awardPointsForHistoryDoc(
     .collection("repeatCycles")
     .doc(repeatKey);
   const leaderboardRef = firestore.collection("leaderboard").doc(uid);
+  // Trusted grading result — Exam-History Authority fix. Server-only
+  // writable (see firestore.rules' own `examHistoryGraded` block), keyed
+  // by the exact same `historyDocId` used as the points-idempotency key
+  // above, so "graded once" and "awarded once" are the SAME guarantee,
+  // not two separate ones to keep in sync — see this file's own doc
+  // comment further up for why that reuse was chosen over a second,
+  // independent idempotency mechanism.
+  const gradedRef = firestore.collection("examHistoryGraded").doc(historyDocId);
   const periodRef = periodId ?
     firestore
       .collection("globalScorePeriods")
@@ -396,6 +427,15 @@ async function awardPointsForHistoryDoc(
       awardedAt: FieldValue.serverTimestamp(),
     });
     transaction.set(cycleRef, result.newCycle);
+    transaction.set(gradedRef, {
+      uid,
+      moduleType,
+      historyDocId,
+      serverScore: graded.serverScore,
+      serverTotal: graded.serverTotal,
+      gradingVersion: GRADING_VERSION,
+      gradedAt: FieldValue.serverTimestamp(),
+    });
     transaction.set(
       leaderboardRef,
       {
