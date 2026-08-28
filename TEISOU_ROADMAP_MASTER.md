@@ -17,7 +17,7 @@ in place rather than leaving two contradictory rows.
 | Phase | Scope | Status |
 |---|---|---|
 | RISK-1 | Cosmetic equip reentrancy (avatar/frame/card-skin double-tap) | ✅ DONE (code+tests committed; live-app rollout status — see Production Readiness) |
-| RISK-2 | Cosmetic identity spoofing via leaderboard/clan/friend mirrors (`firestore.rules`) | ✅ CODE DONE / COMMITTED — **explicitly NOT deployed** (see Production Readiness §A) |
+| RISK-2 | Cosmetic identity spoofing via leaderboard/clan/friend mirrors (`firestore.rules`) | ✅ **CODE COMPLETE / DEPLOYED / PRODUCTION DEPLOYMENT CONFIRMED** — 2026-08-28 (see Production Readiness §A) |
 | RISK-3 | Self-healing subscription backstop (`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`) | ✅ CODE DONE / COMMITTED — **deployment status UNKNOWN** (see Production Readiness §B) |
 | RISK-4 | Premium purchase (IAP) reentrancy | ✅ DONE (client-side fix — ships with next app build/release, see Production Readiness §D) |
 | RISK-5 | Coin-purchase reentrancy (Avatar/Frame/Cover pickers) + `spend_coins.js` DI seam | ✅ DONE |
@@ -26,7 +26,7 @@ in place rather than leaving two contradictory rows.
 | RISK-8 | Global async-action/reentrancy audit (app-wide inventory) | ✅ DONE |
 | RISK-9 | Fix RISK-8's 3 confirmed bugs (clan kick/leave/invite/friend-request reentrancy) | ✅ DONE |
 | Q3 | Kanji defense-in-depth around `_invalidStartMora`/`isValidKotobaStart` | ✅ VERIFIED / CLOSED |
-| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — audit complete, deployment/verification still needed (all user-owned actions)** |
+| **Production Readiness** | Firestore Rules / Functions / AdMob SSV / Play Purchase — code-vs-deployed-vs-verified audit | 🔶 **ACTIVE — Firestore Rules (RISK-2) deployed 2026-08-28; Functions/AdMob/Play deployment still pending** |
 
 ## RISK-2 and RISK-3 — corrected (this file's own earlier placeholder was wrong)
 
@@ -37,10 +37,9 @@ The Production Readiness audit (below) traced both precisely:
 - **RISK-2** = commit `cb3fcf1` ("fix: close cosmetic identity spoofing
   via leaderboard/clan/friend mirrors", per `AUDIT_COSMETIC_PROFILE_SHOP.md`
   — a `firestore.rules` fix, 11 new emulator tests, confirmed via the
-  real Firestore Rules Emulator). **The commit message itself states:
-  "Not deployed — per this project's standing convention, a
-  firestore.rules change in git takes effect only once deployed via the
-  Firebase CLI or Console, which remains the user's own action."**
+  real Firestore Rules Emulator). The commit message itself originally
+  stated "Not deployed..." — **this is now stale: deployed to
+  production 2026-08-28, see §A below for the full record.**
 - **RISK-3** = commit `9260517` ("feat: add self-healing subscription
   backstop", per `AUDIT_SUBSCRIPTION_RECOVERY*.md`) — two new scheduled
   Cloud Functions + one new Firestore composite index, 12 new test
@@ -408,32 +407,107 @@ project's own history has already shown these are NOT the same thing —
 see the `firestore.indexes.json` file's own comment: *"the clan feature
 already shipped once with rules that were right here and absent from
 the live project, and every write silently permission-denied."* This
-environment cannot run `firebase deploy` (no reliable Firebase CLI
-here, and deploying is explicitly the user's own action per this
-project's standing convention — see RISK-2's commit message) — every
-"Deployed"/"Production Verified" answer below is evidence-based, not
-assumed from "the commit exists."
+environment's bare `firebase` binary crashes on its own first-run
+welcome script (confirmed again, reproducibly, when this was actually
+attempted — see §A below); `npx firebase-tools@latest` is a working
+workaround, already documented in `firestore_rules_tests/README.md`.
+Every "Deployed"/"Production Verified" answer below is evidence-based,
+not assumed from "the commit exists" — as of §A, one row now has a
+genuine deployment confirmation from a live `firebase deploy` run, not
+just a commit.
 
-### A. Firestore Rules (RISK-2)
+### A. Firestore Rules (RISK-2) — ✅ DEPLOYED 2026-08-28
 
-- **Commit**: `cb3fcf1` exists in `HEAD`'s ancestry (confirmed via
-  `git merge-base --is-ancestor`). `git diff -- firestore.rules` against
-  the working tree is empty — **no uncommitted local changes**, the
-  working copy matches the committed version exactly.
-- **Deployed**: **NO — explicit, first-person confirmation in the
-  commit message itself**: *"Not deployed — per this project's standing
-  convention, a firestore.rules change in git takes effect only once
-  deployed via the Firebase CLI or Console, which remains the user's
-  own action."*
-- **Production Verified**: **NO** (can't verify something not deployed).
-- **Verdict**: **CODE READY / COMMITTED — NOT DEPLOYED.**
-- **Remaining action (user-owned)**: `firebase deploy --only
-  firestore:rules` (or paste into the Firebase Console's Rules tab and
-  publish), then re-confirm via the Rules Playground or a live write
-  attempt that the mirror-write protection (`mirrorsOwnCosmetics`) is
-  actually enforced in the live project — the emulator tests (73/73)
-  only prove the rules file itself is correct, not that the live
-  project is running it.
+**Update 2026-08-28**: deployed to production, per an explicit,
+scoped user request ("PRODUCTION DEPLOYMENT — FIRESTORE RULES
+(RISK-2)"). Full record:
+
+- **Commit deployed**: `cb3fcf1` — confirmed still in `HEAD`'s ancestry
+  (`git merge-base --is-ancestor cb3fcf1 HEAD`) immediately before
+  deploying, and `git diff -- firestore.rules` against the working tree
+  was empty (no uncommitted local changes) — the file deployed is
+  exactly what `cb3fcf1` committed, nothing drifted since.
+- **Pre-flight**: repo root `C:\Users\LENOVO\teisou`, branch `master`,
+  HEAD `4f10e2d` at the time of deploy. `firebase.json` confirmed
+  `firestore.rules` is the configured rules target for project
+  `teisou-kana-master` (`.firebaserc`).
+- **Tooling note, worth keeping**: the bare `firebase` command crashes
+  immediately on this machine — `SyntaxError: Unexpected end of JSON
+  input` inside its own bundled `welcome.js`, before reaching any real
+  command, reproduced twice (plain and with `CI=true`). This matches
+  `firestore_rules_tests/README.md`'s own documented note about this
+  exact environment. **`npx --yes firebase-tools@latest`** is the
+  working substitute — confirmed via `--version` (15.28.2) and
+  `login:list` (already authenticated as the project owner,
+  `gilanggarind1975@gmail.com`) before attempting the real deploy.
+- **Deploy command run**: `npx --yes firebase-tools@latest deploy
+  --only firestore:rules` (exactly this, nothing else in scope).
+- **Deployment output** (verbatim, relevant lines):
+  ```
+  === Deploying to 'teisou-kana-master'...
+  i  deploying firestore
+  i  firestore: reading indexes from firestore.indexes.json...
+  i  cloud.firestore: checking firestore.rules for compilation errors...
+  +  cloud.firestore: rules file firestore.rules compiled successfully
+  i  firestore: uploading rules firestore.rules...
+  +  firestore: released rules firestore.rules to cloud.firestore
+  +  Deploy complete!
+  Project Console: https://console.firebase.google.com/project/teisou-kana-master/overview
+  ```
+  No warnings, no errors. Indexes were only *read* (a standard prep
+  step for any `firestore` deploy target) — never uploaded/released;
+  only the `rules` line shows an actual write action. No Functions, no
+  Hosting, no Storage were touched — confirmed by the output itself
+  only ever naming `firestore`/`cloud.firestore`.
+- **Firebase project target**: `teisou-kana-master` (matches
+  `.firebaserc`'s `default` project — no ambiguity, no wrong-project
+  risk).
+- **Deployment timestamp**: 2026-08-28 03:32:54 UTC (≈ 10:32:54 WIB).
+- **Deployed = ✅ CONFIRMED BY FIREBASE DEPLOYMENT OUTPUT.** This is a
+  stronger claim than "the command exited 0" — the CLI's own
+  compile-success and release-success lines are the actual evidence.
+
+**Emulator verification (Rules Emulator, real CEL engine — not
+production, but the strongest same-day proof the deployed rules
+content is behaviorally correct)**:
+- `firestore_rules_tests/rules.test.js`: **73/73 PASS**, 0 failures —
+  including the exact RISK-2 group, `"cosmetic identity mirrors must
+  match users/{uid}.profile"`, covering all three fixed boundaries
+  (leaderboard, clan roster, friend row): DENIED for a spoofed
+  premium-only avatar/cardSkin, ALLOWED for a legitimate mirror sync
+  matching `users/{uid}.profile`, ALLOWED for delete (leave clan /
+  unfriend), unaffected.
+- `firestore_rules_tests/wildcard_probe.test.js`: **1/1 PASS** —
+  confirms the unrelated recursive-wildcard-bypass regression guard
+  still holds.
+- **Total: 74/74 emulator tests PASS.** Run via `npx --yes
+  firebase-tools@latest emulators:exec --only firestore --project
+  demo-teisou-rules-test "..."` — a `demo-*` project id, no real GCP
+  project/credentials touched, no production data read or written by
+  the test run itself.
+
+- **Production behavior verified**: **still UNKNOWN, by design of what
+  this check can prove.** The emulator confirms the *rules file's own
+  logic* is correct against the real CEL engine — it does not, and
+  cannot, confirm the *live* `teisou-kana-master` project is actually
+  enforcing it post-deploy (that would require a real authenticated
+  write attempt against production, which this audit deliberately did
+  not do — "Jangan mencoba spoofing cosmetic pada akun production" was
+  an explicit constraint). The Firebase deployment output's own
+  `released rules ... to cloud.firestore` line is the evidence that the
+  live project now has this exact ruleset; whether a real client write
+  against it behaves as the emulator predicts has not been separately
+  confirmed with a live probe.
+- **Verdict: CODE COMPLETE / DEPLOYED / PRODUCTION DEPLOYMENT
+  CONFIRMED.** Production *behavior* verification remains a distinct,
+  separate, still-open item — do not conflate the two.
+- **Remaining action**: none required to close RISK-2's deployment gap
+  — it's closed. Optional follow-up, not requested this session: a
+  single live read/write probe against `teisou-kana-master` (e.g. via
+  the Firebase Console's Rules Playground, which can simulate a write
+  against live rules without touching real data) would upgrade
+  "deployed" to "production behavior verified" with zero risk to real
+  user data.
 
 ### B. RISK-3 Subscription Backstop
 
@@ -548,24 +622,32 @@ plus `AUDIT_SUBSCRIPTION_RECOVERY.md`/`AUDIT_SUBSCRIPTION_RECOVERY_DESIGN.md`/
 
 | Component | Code | Tests | Committed | Deployed | Production Verified | Evidence | Remaining Action |
 |---|---|---|---|---|---|---|---|
-| `firestore.rules` (RISK-2 mirror-write fix) | ✅ | ✅ 73/73 emulator | ✅ `cb3fcf1` | ❌ **explicitly NOT** | ❌ | commit message | `firebase deploy --only firestore:rules`, then re-verify |
+| `firestore.rules` (RISK-2 mirror-write fix) | ✅ | ✅ 74/74 emulator (2026-08-28) | ✅ `cb3fcf1` | ✅ **CONFIRMED 2026-08-28** | ❓ UNKNOWN (deployed, live behavior not separately probed) | Firebase deploy output + emulator re-run, this session | optional: a live Rules Playground probe to close the "behavior verified" gap |
 | Subscription backstop Functions (RISK-3) | ✅ | ✅ 12 new / 314 total | ✅ `9260517` | ❓ UNKNOWN | ❌ | no deploy claim found | deploy functions, dry-run one cycle, then enable |
 | Firestore indexes (RISK-3's composite index) | ✅ | N/A | ✅ `9260517` | ❓ UNKNOWN | ❌ | same as above | `firebase deploy --only firestore:indexes` |
 | AdMob SSV (`adRewards`/`consumeAdReward`) | ✅ | ✅ 22/22 | ✅ `796bf19` | ❓ UNKNOWN | 🚫 **BLOCKED** (no live-test per instruction) | B3's own "future steps" list | deploy function, register SSV URL in console, confirm reward amount, one deliberate on-device test |
 | `verifyPurchase` / `onPlayRtdn` | ✅ | ✅ (part of 314) | ✅ (pre-RISK-N) | ❓ UNKNOWN | ❌ (last known real attempt failed at Play's own dialog, root cause Play-Console-only) | `AUDIT_SUBSCRIPTION_RECOVERY.md`, `AUDIT_PLAY_ITEM_UNAVAILABLE.md` | Play Console config + Play-signed build + device + real purchase |
 | Premium purchase flow (client, incl. RISK-4 reentrancy fix) | ✅ | ✅ 7/7 | ✅ `913347e` | N/A (ships with next app build) | ❌ | this session's own verification | needs a released app build to reach any real user |
 
-**Reading this matrix**: every row is "commit exists" ✅ and "tests
-pass" ✅. **Zero rows are confirmed "Production Verified."** This is not
-a code-quality problem — every fix audited across RISK-1 through Q3
-this session is well-tested and defensible on its own terms. It is
-entirely a **deployment/operational gap**: nothing in this environment
-can run `firebase deploy`, install a Play-signed build, or touch Play
-Console, and this project's own history (the Clan-rules incident) shows
-that assuming "committed" means "live" has already caused a real
-production bug once.
+**Reading this matrix (updated 2026-08-28)**: every row is "commit
+exists" ✅ and "tests pass" ✅. **One row (`firestore.rules`) is now
+confirmed Deployed** — see §A. **Zero rows are confirmed "Production
+Verified"** in the stricter sense (a live, real-traffic behavior probe)
+— deploying is not the same claim, and this file is deliberately keeping
+the two separate. This is not a code-quality problem — every fix
+audited across RISK-1 through Q3 this session is well-tested and
+defensible on its own terms. The remaining gap is **deployment/
+operational**, not "impossible from this environment" as originally
+assumed — `npx --yes firebase-tools@latest` (see §A) works for Firestore
+Rules/Functions/indexes; a Play-signed build and Play Console access
+remain genuinely outside this environment either way. This project's
+own history (the Clan-rules incident) is exactly why this file keeps
+insisting on evidence over assumption for every row above.
 
 ### F. New findings from this audit (not previously tracked)
+
+**Kept as the historical record of the read-only audit phase — see the
+"Update 2026-08-28" note right after for what changed since.**
 
 - **No new code bug found.** This phase was read-only by design and
   found none.
@@ -586,6 +668,23 @@ production bug once.
   row where the code fix is 100% code-complete/tested AND the
   deployment step is a single, well-understood command, not blocked on
   external Play/AdMob console configuration the way B/C/D are.
+
+**Update 2026-08-28**: two of the above are now resolved, per an
+explicit, scoped user request to deploy RISK-2's rules fix specifically.
+1. **The "no live infrastructure access" premise above was wrong** — it
+   assumed the bare `firebase` CLI's crash meant deployment was
+   impossible from this environment. It wasn't: `npx --yes
+   firebase-tools@latest` (already documented in
+   `firestore_rules_tests/README.md`, just not connected to the deploy
+   question until this session) works cleanly and was already
+   authenticated as the project owner. Worth remembering for B/C/D too
+   — their "deployment status UNKNOWN" verdicts were never blocked by
+   environment access, only by not having been asked to deploy them.
+2. **RISK-2's deployment blocker is closed** — see §A above for the
+   full record (deploy output, timestamp, 74/74 emulator re-verification).
+   The distinction between "deployed" and "production behavior verified"
+   still holds and is called out explicitly in §A — deploying closes the
+   first, not automatically the second.
 
 ## G. Safety confirmation
 
