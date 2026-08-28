@@ -1473,7 +1473,7 @@ already have, so the fix's own regression tests don't need a
 touched by this audit and its scheduled-invocation checkpoint remains
 a separate, unrelated pending item.
 
-## Rank-Skip Fix Phase (2026-08-29, same day) — BOTH P2 bugs FIXED, NOT DEPLOYED
+## Rank-Skip Fix Phase (2026-08-29, same day) — BOTH P2 bugs FIXED; PARTIAL deploy, see "Rank-Skip Deployment" section below
 
 Both bugs from the audit above are now fixed in code, with permanent
 regression coverage, per explicit user authorization for a scoped
@@ -1685,20 +1685,144 @@ more scenarios the audit-only phase never had permanent coverage for.
 
 ### Deployment status — explicit, do not skim past this
 
-- **`functions/rank_skip.js`**: **NOT DEPLOYED.** The live project is
-  still running the vulnerable version from before this fix phase.
-  Both P2 bugs (the cooldown-wipe race and the promotion-failure
-  session loss) **remain live in production** until a human runs
-  `firebase deploy --only functions:startRankSkipExam,functions:
-  submitRankSkipExam` (or a broader Functions deploy) with explicit
-  authorization.
-- **Production verification = NOT DONE**, and cannot be, until that
-  deploy actually ships — this phase was code + test only, no
-  `firebase deploy`, no Play Console action, no production Firestore
-  write, per the explicit task constraint.
+- **`functions/rank_skip.js`**: **PARTIALLY DEPLOYED as of a later,
+  separately-authorized deploy task the same day — see the dedicated
+  "Rank-Skip Deployment" section below** for the full record (this
+  paragraph originally said NOT DEPLOYED at the time this fix-phase
+  section was first written; corrected in place rather than left
+  stale). Short version: `submitRankSkipExam` (BUG #2's fix) is live;
+  `startRankSkipExam` (needed for BUG #1's fix to be effective) failed
+  to deploy twice and is still running the old code.
+- **Production verification = NOT DONE** for either function — this
+  phase itself was code + test only; the later deploy task explicitly
+  did not execute a real Rank Skip against production either, per its
+  own instruction.
 - **`firestore.rules` is unchanged** — confirmed via `git diff
   firestore.rules` showing zero lines touched throughout this phase, as
   required.
+
+### Rank-Skip Deployment (2026-08-29, later same day) — PARTIAL, one
+function blocked
+
+Explicit, separately-authorized deploy task: deploy ONLY the two
+Rank-Skip Functions (`startRankSkipExam`, `submitRankSkipExam`,
+source: commit `432717b`), nothing else. No source was modified as
+part of this task.
+
+**Pre-flight**: branch `master`; `git merge-base --is-ancestor
+432717b HEAD` confirmed; `git diff --stat functions/rank_skip.js`
+empty (zero local drift); `.firebaserc` confirmed
+`"default": "teisou-kana-master"`; `functions/index.js` confirmed
+`exports.startRankSkipExam`/`exports.submitRankSkipExam` map directly
+to `rank_skip.js`'s own exports (same names as the deployed
+functions); connectivity probed once (`curl` against
+`cloudfunctions.googleapis.com`/`iam.googleapis.com`/
+`firebase.googleapis.com`, all fast TCP/TLS connects — reachable);
+pre-deploy state captured via `firebase functions:list` — both
+functions already live, v2, callable, `us-central1`, 256MB,
+`nodejs22`.
+
+**Pre-deploy tests**: `functions/rank_skip.test.js` +
+`functions/battle_stars.test.js` — **46/46 pass**, immediately before
+deploying.
+
+**Deploy attempt 1** (`firebase deploy --only
+functions:startRankSkipExam,functions:submitRankSkipExam`):
+**mixed result**.
+- `submitRankSkipExam`: **"Successful update operation."** — deployed
+  cleanly.
+- `startRankSkipExam`: **failed** — `Build failed with status:
+  CANCELLED and message: An unexpected error occurred`, Cloud Build id
+  `99711d85-6ddd-474b-9bea-7c37db2127c1` (region `us-central1`,
+  project `329692614759`).
+- A trailing, unrelated, non-fatal warning also appeared (same class
+  already documented for RISK-3's own Functions deploy): "could not
+  set up cleanup policy in location us-east1" — a container-image
+  retention-policy notice for an unrelated region, not a Rank-Skip
+  failure.
+
+**Diagnosis before retrying** (per the task's explicit "probe once, no
+endless blind retries" instruction): `submitRankSkipExam` succeeding
+in the SAME invocation confirmed the deploy pipeline, auth, and network
+path all work end-to-end — the failure is specific to
+`startRankSkipExam`'s own build, not a systemic block. This read as a
+plausible one-off Cloud Build hiccup, not a persistent blocker, so
+**one** bounded retry of just the failed function was made.
+
+**Deploy attempt 2** (`firebase deploy --only
+functions:startRankSkipExam`, retry): **failed again**, same shape —
+`Build failed with status: CANCELLED and message: An unexpected error
+occurred`, a **different** Cloud Build id
+(`4bc4ffaf-f15f-4211-8201-84c411504927`), confirming this was not a
+cached/repeated report of the same stale failure but a genuinely new
+build attempt that also failed the same way.
+
+**Stopped here.** Two independent failures, both vague ("CANCELLED...
+unexpected error", no further detail in the CLI's own output), both
+specific to the same single function, is exactly the pattern the task
+instruction's "no endless blind retries" line exists to guard against.
+No `gcloud` CLI is available in this environment to pull the actual
+Cloud Build logs for deeper diagnosis (`which gcloud` — not found) —
+the two build console URLs are recorded above for a future session (or
+the user, via the Firebase/GCP Console directly) to inspect.
+
+**Post-attempt safety check**: `firebase functions:list` re-run after
+both failures — **both functions still listed, healthy, v2, callable,
+us-central1** — confirms Cloud Functions deploys are atomic per
+function: a failed build never replaces the currently-serving
+revision. **No broken/crashed state, no outage** — `startRankSkipExam`
+is simply still serving its OLD (pre-fix) code, exactly as it was
+before this task began.
+
+**Practical consequence — BUG #1's fix is NOT yet effective in
+production**, even though its own file-level source (`rank_skip.js`)
+is unchanged and correct in the repo: BUG #1's fix depends on BOTH
+`startRankSkipExamFor` and `submitRankSkipExamFor` participating in
+the same transaction on `rankSkipExams/{uid}` for Firestore's
+optimistic concurrency to correctly serialize them. With
+`startRankSkipExam` still on the old, non-transactional code, a
+concurrent old-start racing the new, fixed submit is not actually
+protected — the old start's plain `.set()` write has no participation
+in transaction-based conflict detection at all and can still land at
+any time, including after a fresh lock, silently overwriting it. **BUG
+#1 must be treated as still live in production** until
+`startRankSkipExam` itself successfully deploys.
+
+**BUG #2's fix status**: `submitRankSkipExam` alone is sufficient for
+BUG #2's own fix (session-not-deleted-before-promotion is entirely
+`submitRankSkipExam`'s own internal logic, no dependency on
+`startRankSkipExam`) — **BUG #2's fix IS live in production** as of
+this deploy.
+
+**Production behavior**: not directly probed either way, per explicit
+instruction — no real Rank Skip attempt was executed against
+production to prove either fix. Status for `submitRankSkipExam`:
+**DEPLOYED — BEHAVIOR NOT DIRECTLY PROBED**. Status for
+`startRankSkipExam`: **DEPLOY FAILED — STILL RUNNING PRE-FIX CODE**.
+
+**Distinguishing the five states explicitly, per instruction**:
+| | startRankSkipExam | submitRankSkipExam |
+|---|---|---|
+| CODE COMPLETE | yes (432717b) | yes (432717b) |
+| TEST COMPLETE | yes (46/46 + full suites) | yes (46/46 + full suites) |
+| DEPLOYED | **no — 2 failed attempts** | **yes** |
+| PRODUCTION EXECUTED | no | no |
+| PRODUCTION VERIFIED | no | no |
+
+**Scope discipline**: no `firestore.rules`, no other Cloud Function, no
+Dart source, no Play Console/AdMob change, no production Firestore
+write, no destructive git command. RISK-3 enforcement was not touched
+(still dry-run/disabled, unrelated to this task). The `joinClan` Dart
+fix was not released. No new RISK opened.
+
+**Files changed by this task**: `TEISOU_ROADMAP_MASTER.md` only —
+`functions/rank_skip.js` was (partially) deployed, not edited.
+
+**Recommended next action**: retry `firebase deploy --only
+functions:startRankSkipExam` again after some time has passed (Cloud
+Build transient issues often clear on their own), or inspect the two
+recorded Cloud Build console URLs directly for the actual failure
+cause before retrying blind a third time.
 
 ### Remaining UNKNOWN
 
