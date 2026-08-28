@@ -720,6 +720,18 @@ tests only," so none was invented per instruction).
   `PLAY_VERIFICATION_ENABLED` somehow isn't live, which would itself be
   worth flagging) before drawing any conclusion about live behavior.
 
+**Checkpoint 2026-08-28 04:47 UTC (≈11:47 WIB, still same day)**: an
+explicit early re-check, requested ahead of the expected window. Time
+math alone already ruled it out (2026-08-29 03:00 WIB = 2026-08-28
+20:00 UTC — about 15 hours away at check time), but the same log grep
+(`functions:log --only sweepNearExpirySubscriptions,
+sweepAllPremiumSubscriptions -n 500`, searching for
+`sweep (starting|complete|skipped)`/`dry.?run`/`downgrad`/`reconfirm`)
+was re-run rather than trusting arithmetic alone — **zero matches,
+same as before.** Nothing else checked or changed. **Still: DEPLOYED —
+WAITING FOR SCHEDULED INVOCATION.** No PASS claimed. Next real
+checkpoint remains any time after 2026-08-29 03:00 WIB.
+
 ### C. AdMob SSV / `adRewards`
 
 Verified directly from `functions/ad_rewards.js` (full read) +
