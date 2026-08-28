@@ -18,7 +18,7 @@ in place rather than leaving two contradictory rows.
 |---|---|---|
 | RISK-1 | Cosmetic equip reentrancy (avatar/frame/card-skin double-tap) | ✅ DONE (code+tests committed; live-app rollout status — see Production Readiness) |
 | RISK-2 | Cosmetic identity spoofing via leaderboard/clan/friend mirrors (`firestore.rules`) | ✅ **CODE COMPLETE / DEPLOYED / PRODUCTION DEPLOYMENT CONFIRMED** — 2026-08-28 (see Production Readiness §A) |
-| RISK-3 | Self-healing subscription backstop (`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`) | 🔶 **INDEX DEPLOYED 2026-08-28 / FUNCTIONS DEPLOY FAILED (network egress, not code)** — enforcement correctly still disabled (see Production Readiness §B) |
+| RISK-3 | Self-healing subscription backstop (`sweepNearExpirySubscriptions`/`sweepAllPremiumSubscriptions`) | 🔶 **INDEX + FUNCTIONS DEPLOYED 2026-08-28 — DEPLOYED / PRODUCTION EXECUTION NOT YET OBSERVED**, enforcement correctly still disabled (see Production Readiness §B) |
 | RISK-4 | Premium purchase (IAP) reentrancy | ✅ DONE (client-side fix — ships with next app build/release, see Production Readiness §D) |
 | RISK-5 | Coin-purchase reentrancy (Avatar/Frame/Cover pickers) + `spend_coins.js` DI seam | ✅ DONE |
 | RISK-6 | Cross-function race audit (spendCoins vs claimXpReward vs verifyPurchase) | ✅ DONE (audit-only, no bug found) |
@@ -573,48 +573,90 @@ environment limitation. Full record:
   Storage, or unrelated Functions were touched (the deploy output only
   ever names `firestore`/indexes; rules were syntax-checked as a
   standard prep step, never re-released).
-- **Functions deployment: ❌ FAILED — genuine environment limitation, not
-  a code/config/permission problem.** `npx --yes firebase-tools@latest
-  deploy --only
-  functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions`
+- **Functions deployment attempt #1 (this same day, earlier): ❌ FAILED**
+  — kept as historical record. `npx --yes firebase-tools@latest deploy
+  --only functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions`
   failed twice, identically, with `Error: An unexpected error has
   occurred.` (exit code 2). `firebase-debug.log` traced the real cause
   both times: a `ConnectTimeoutError` (TCP connect timeout, 10s) to
   `iam.googleapis.com` and `firebase.googleapis.com`'s `adminSdkConfig`
-  endpoint — both genuine Google IPs, not a DNS/auth failure.
-  `cloudresourcemanager.googleapis.com` and `firestore.googleapis.com`
-  (used successfully for the Rules/Indexes deploys) both worked fine in
-  the same run. **This is a network-egress restriction specific to this
-  sandboxed environment** for the wider Google API surface Functions
-  deployment needs (IAM permission checks, Cloud Build, Artifact
-  Registry, Admin SDK config) that Firestore Rules/Indexes deploys don't
-  touch — not something a retry fixes (confirmed: identical failure on
-  a second attempt), and not something this environment can resolve.
-  **No functions were created, updated, or deleted** — the deploy never
-  got past its own pre-flight API checks.
-- **Enforcement**: **NOT enabled** — trivially true, since nothing was
-  deployed at all; `SUBSCRIPTION_BACKSTOP_ENABLED` was never touched,
-  still absent from `functions/.env`.
-- **Production execution observed**: **NO — cannot be, the functions
-  are not deployed.** Not "not yet observed" (which would imply a
-  deployed-but-idle scheduler) — there is no live scheduler to observe.
-- **Production behavior verified**: **NO / N/A** for the same reason.
-- **Verdict**: **CODE COMPLETE ✅ / TEST COMPLETE ✅ / INDEX DEPLOYED ✅ /
-  FUNCTIONS DEPLOYED ❌ / ENFORCEMENT ENABLED ❌ (correctly, per
-  instruction) / PRODUCTION EXECUTION OBSERVED ❌ (not possible yet) /
-  PRODUCTION BEHAVIOR VERIFIED ❌.**
-- **Remaining action (user-owned)**: deploy
-  `functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions`
-  from an environment with full network egress to
-  `iam.googleapis.com`/`firebase.googleapis.com` (a normal developer
-  machine, Cloud Shell, or Codemagic — anywhere outside this specific
-  sandbox). Once deployed: leave `SUBSCRIPTION_BACKSTOP_ENABLED` unset
-  (dry run) for at least one full daily+weekly cycle, read Cloud
-  Functions logs to confirm candidate counts/decisions look sane against
-  real data and no purchase token appears in any log line, **then** set
-  `SUBSCRIPTION_BACKSTOP_ENABLED="true"` and redeploy before it can
-  actually downgrade anyone. The Firestore index is already live and
-  needs no further action.
+  endpoint. `cloudresourcemanager.googleapis.com` and
+  `firestore.googleapis.com` (used for the Rules/Indexes deploys) both
+  worked fine in the same runs. No functions were created/updated/deleted
+  by that attempt.
+
+**Update 2026-08-28, same day, later — Functions deployment: ✅
+SUCCESS.** A follow-up task explicitly asked to check network status
+once (not retry blindly) before attempting again:
+- **Connectivity check** (single lightweight probe, not a full deploy
+  retry): `curl --connect-timeout 8` against
+  `https://iam.googleapis.com/` and `https://firebase.googleapis.com/`
+  — both returned `HTTP 404` (the expected response for hitting an API
+  host's bare root with no valid request — the meaningful signal is a
+  *fast TCP+TLS connection*, not the status code) in 0.08s/0.23s,
+  a complete contrast to the earlier 10s hard timeout. **Network access
+  to both previously-blocking hosts was confirmed available before
+  attempting the deploy again** — this was not a blind retry.
+- **Deploy command**: `npx --yes firebase-tools@latest deploy --only
+  functions:sweepNearExpirySubscriptions,functions:sweepAllPremiumSubscriptions`
+  (identical command to the failed attempt).
+- **Deploy output** (relevant lines): `functions: Loaded environment
+  variables from functions\.env` → `functions: functions source
+  uploaded successfully` → `creating Node.js 22 (2nd Gen) function
+  sweepNearExpirySubscriptions(us-central1)...` →
+  `sweepAllPremiumSubscriptions(us-central1)...` →
+  **`functions[sweepNearExpirySubscriptions(us-central1)] Successful
+  create operation.`** → **`functions[sweepAllPremiumSubscriptions(us-central1)]
+  Successful create operation.`**
+- **A trailing, separate, non-fatal error was also printed** (worth
+  recording honestly, not glossed over): `Functions successfully
+  deployed but could not set up cleanup policy in location us-east1.`
+  — an Artifact Registry container-image cleanup-policy warning for a
+  *different* region (`us-east1`, not `us-central1` where these two
+  functions actually deployed) — cosmetic/billing-lifecycle only, not a
+  functional failure of either function. **Not acted on** (running
+  `functions:artifacts:setpolicy` was outside this task's two-function
+  scope) — flagged here as a real, still-open cosmetic item, not
+  silently fixed or silently ignored.
+- **Independent confirmation, not just trusting the deploy output**:
+  `firebase functions:list` immediately after shows both
+  `sweepNearExpirySubscriptions` and `sweepAllPremiumSubscriptions` live
+  — `v2`, `scheduled`, `us-central1`, `nodejs22`, alongside the
+  already-existing `sweepAbandonedBattleMatches`.
+- **Timestamp**: deploy completed and independently re-confirmed
+  ≈2026-08-28 04:19 UTC.
+- **`.env` unchanged**: `git diff -- functions/.env` empty before and
+  after — `SUBSCRIPTION_BACKSTOP_ENABLED` was never added,
+  `PLAY_VERIFICATION_ENABLED=true` is the only flag present, exactly as
+  before. The deploy output's own `Loaded environment variables from
+  functions\.env` line confirms this exact file (dry-run default) is
+  what shipped.
+- **Enforcement**: **NOT enabled** — confirmed, per explicit
+  instruction not to enable it in this task.
+- **Production execution observed**: **NO.** Both functions are
+  `scheduled` (Cloud Scheduler-triggered — daily/weekly per their own
+  cron config), so they will not run again until their next scheduled
+  time; no invocation has happened yet since this deploy. Marked
+  **DEPLOYED — PRODUCTION EXECUTION NOT YET OBSERVED**, not "verified."
+- **Production behavior verified**: **NO / UNKNOWN** — cannot be
+  claimed until at least one real scheduled invocation's Cloud Functions
+  logs have actually been read.
+- **Verdict: CODE COMPLETE ✅ / TEST COMPLETE ✅ / INDEX DEPLOYED ✅ /
+  FUNCTIONS DEPLOYED ✅ (2026-08-28) / ENFORCEMENT ENABLED ❌ (correctly,
+  per instruction) / PRODUCTION EXECUTION OBSERVED ❌ (not yet — next
+  scheduled run hasn't happened) / PRODUCTION BEHAVIOR VERIFIED ❌.**
+- **Remaining action (user-owned)**: wait for (or manually trigger, via
+  the Cloud Scheduler console/CLI, a user-owned action not attempted
+  here) the next scheduled daily/weekly run, then read the Cloud
+  Functions logs for `sweepNearExpirySubscriptions`/
+  `sweepAllPremiumSubscriptions` to confirm: candidate counts look sane
+  against real data, every outcome is a dry-run decision
+  (`would_remain_premium`/`would_downgrade`, never an actual write),
+  and no purchase token appears in any log line. Only after that
+  observation looks correct should `SUBSCRIPTION_BACKSTOP_ENABLED="true"`
+  be set and the functions redeployed. Optionally, close the separate
+  `us-east1` cleanup-policy warning via `firebase
+  functions:artifacts:setpolicy` (cosmetic, not blocking).
 
 ### C. AdMob SSV / `adRewards`
 
@@ -701,7 +743,7 @@ plus `AUDIT_SUBSCRIPTION_RECOVERY.md`/`AUDIT_SUBSCRIPTION_RECOVERY_DESIGN.md`/
 | Component | Code | Tests | Committed | Deployed | Production Verified | Evidence | Remaining Action |
 |---|---|---|---|---|---|---|---|
 | `firestore.rules` (RISK-2 mirror-write fix) | ✅ | ✅ 74/74 emulator (2026-08-28) | ✅ `cb3fcf1` | ✅ **CONFIRMED 2026-08-28** | ❓ UNKNOWN (deployed, live behavior not separately probed) | Firebase deploy output + emulator re-run, this session | optional: a live Rules Playground probe to close the "behavior verified" gap |
-| Subscription backstop Functions (RISK-3) | ✅ | ✅ 16 new / 314 total | ✅ `9260517` | ❌ **FAILED 2026-08-28** (network egress to iam/firebase.googleapis.com, not code) | ❌ N/A — not deployed | deploy attempt + `firebase-debug.log`, this session | redeploy from an environment with full Google API egress |
+| Subscription backstop Functions (RISK-3) | ✅ | ✅ 16 new / 314 total | ✅ `9260517` | ✅ **CONFIRMED 2026-08-28** (retried after confirming network access, `functions:list` re-verified) | ❌ **NOT YET** — deployed but no scheduled invocation observed yet | deploy output + `functions:list`, this session | wait for/trigger a scheduled run, read Cloud Functions logs, then decide on enabling enforcement |
 | Firestore indexes (RISK-3's composite index) | ✅ | N/A | ✅ `9260517` | ✅ **CONFIRMED 2026-08-28** | N/A (an index has no "behavior" to verify beyond existing) | Firebase deploy output + live `firestore:indexes` re-read, this session | none |
 | AdMob SSV (`adRewards`/`consumeAdReward`) | ✅ | ✅ 22/22 | ✅ `796bf19` | ✅ **CONFIRMED live** (`firebase functions:list`, this session — found incidentally while auditing RISK-3, not independently pursued) | 🚫 **BLOCKED** (no live-test per instruction) | `functions:list` output, this session | register/confirm SSV URL in AdMob console, confirm reward amount, one deliberate on-device test |
 | `verifyPurchase` / `onPlayRtdn` | ✅ | ✅ (part of 314) | ✅ (pre-RISK-N) | ✅ **CONFIRMED live** (`firebase functions:list`, this session) | ❌ (last known real attempt failed at Play's own dialog, root cause Play-Console-only) | `functions:list` output; `AUDIT_SUBSCRIPTION_RECOVERY.md`, `AUDIT_PLAY_ITEM_UNAVAILABLE.md` | Play Console config + Play-signed build + device + real purchase |
@@ -720,16 +762,23 @@ behavior probe) — deploying is not the same claim, and this file is
 deliberately keeping the two separate. This is not a code-quality
 problem — every fix audited across RISK-1 through Q3 this session is
 well-tested and defensible on its own terms. **`npx --yes
-firebase-tools@latest` works for Firestore Rules and Firestore Indexes
-from this environment (proven twice) but NOT for Functions** (proven:
-two identical, reproducible `ConnectTimeoutError`s to
-`iam.googleapis.com`/`firebase.googleapis.com` — a narrower API surface
-than Rules/Indexes deploys touch) — a real, specific, now-documented
-limit of this sandbox, not a blanket "nothing can deploy" claim as
-earlier phrased. A Play-signed build and Play Console access remain
-genuinely outside this environment either way. This project's
-own history (the Clan-rules incident) is exactly why this file keeps
-insisting on evidence over assumption for every row above.
+firebase-tools@latest` works for Firestore Rules, Firestore Indexes,
+AND Functions from this environment** — the earlier Functions failure
+(two identical `ConnectTimeoutError`s to
+`iam.googleapis.com`/`firebase.googleapis.com`) turned out to be a
+**transient** network-egress gap in this sandbox, not a permanent one:
+a same-day follow-up first confirmed those exact two hosts were
+reachable again (a single lightweight connectivity probe, not a blind
+retry), then deployed both scheduled Functions successfully. The
+lesson worth keeping: this sandbox's network egress to the wider Google
+API surface Functions deployment needs (beyond what Rules/Indexes
+touch) is **not reliably available at all times** — check connectivity
+before a deploy attempt and before assuming a prior failure is
+permanent, rather than assuming either "always broken" or "always
+fine." A Play-signed build and Play Console access remain genuinely
+outside this environment either way. This project's own history (the
+Clan-rules incident) is exactly why this file keeps insisting on
+evidence over assumption for every row above.
 
 ### F. New findings from this audit (not previously tracked)
 
