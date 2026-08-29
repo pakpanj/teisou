@@ -385,3 +385,186 @@ test("H. a genuine mid-transaction conflict on the SAME historyDocId " +
       "exactly one, correctly-graded trusted result — not two, not " +
       "zero, not a half-written one");
 });
+
+// ---------------------------------------------------------------------
+// I/J/K. Compatibility with the OLD (pre-03e879f) app build — see
+// TEISOU_ROADMAP_MASTER.md's "Exam-History Authority — P0 FIX
+// IMPLEMENTED" and the follow-up "AUDIT + DESIGN — P0 Exam-History
+// Deployment Compatibility" sections. Old `ExamResult.toMap()`/
+// `SimpleExamResult.toMap()` (pre-fix) never wrote an `answers` key at
+// all — everything else (score/total/type/completedAt/etc.) is
+// byte-identical to the current format. These tests name that exact
+// shape explicitly, rather than leaving it implicit in the generic
+// "missing answers" cases scenario B already covers, since the
+// compatibility audit found this specific scenario had no permanent
+// test asserting it by name.
+// ---------------------------------------------------------------------
+
+/** The exact document shape an app build predating 03e879f writes for
+ * a completed kana exam — every field `ExamResult.toMap()` used to
+ * emit, and nothing more; no `answers` key exists in this shape at
+ * all (it did not exist in the model before this fix). */
+function oldFormatKanaDoc(overrides = {}) {
+  return {
+    type: "hiragana",
+    score: 9,
+    total: 10,
+    percentage: 90,
+    correctCount: 9,
+    wrongCount: 1,
+    completedAt: "2026-01-01T00:00:00.000Z",
+    ...overrides,
+    // deliberately no `answers` field anywhere in this shape
+  };
+}
+
+test("I. OLD CLIENT (pre-03e879f format, no `answers` field at all): " +
+    "raw processing does not crash, a trusted graded document IS " +
+    "still created, serverScore/serverTotal are both 0, and the " +
+    "client-reported score=9/total=10 has zero effect on the award", async () => {
+  const fake = new FakeFirestore();
+  const uid = "old-client-user";
+  const result = await awardPointsForHistoryDoc(
+      uid, "kana", "old-format-doc-1", oldFormatKanaDoc(),
+      {firestore: fake, eventTimeMs: EVENT_TIME_MS},
+  );
+
+  // 1. does not crash — reaching this line at all proves it.
+  assert.strictEqual(result.awarded, true);
+
+  // 2/3/4. a trusted graded document is created, and BOTH serverScore
+  // and serverTotal reflect the established secure default: 0.
+  const graded = await gradedDoc(fake, "old-format-doc-1");
+  assert.strictEqual(graded.exists, true,
+      "a trusted result must still be recorded even for an old-format " +
+      "document — 'ungraded' is not a valid outcome, 'graded as 0' is");
+  assert.strictEqual(graded.data().serverScore, 0);
+  assert.strictEqual(graded.data().serverTotal, 0);
+
+  // 5. Global Points awarded for this document are 0.
+  assert.strictEqual(result.points, 0);
+  assert.strictEqual(await leaderboardPoints(fake, uid), 0);
+  assert.strictEqual(await periodPoints(fake, PERIOD_ID, uid), 0,
+      "the weekly-ranking collection award_top_coins.js's real payout " +
+      "reads from is also unaffected by the old client's self-reported " +
+      "score=9/total=10");
+
+  // 6. client-provided score must not affect the result — re-run the
+  // identical old-format shape but with an implausible score, and
+  // confirm the award is byte-identical (still 0), not merely "low".
+  const fakeB = new FakeFirestore();
+  const inflatedOldFormat = await awardPointsForHistoryDoc(
+      "old-client-user-2", "kana", "old-format-doc-2",
+      oldFormatKanaDoc({score: 999999, total: 1}),
+      {firestore: fakeB, eventTimeMs: EVENT_TIME_MS},
+  );
+  assert.strictEqual(inflatedOldFormat.points, 0,
+      "an old-format document with an inflated self-reported score " +
+      "earns exactly as much as one with an honest score — zero, " +
+      "because neither is ever consulted");
+});
+
+test("J. MIXED OLD + NEW submissions from the SAME user: the " +
+    "old-format document (no answers) and the current-format " +
+    "document (real answers) are graded completely independently — " +
+    "one earns 0, the other earns its real, correct points, with no " +
+    "cross-document contamination in either direction", async () => {
+  const fake = new FakeFirestore();
+  const uid = "mixed-format-user";
+
+  const oldResult = await awardPointsForHistoryDoc(
+      uid, "kana", "mixed-old-doc", oldFormatKanaDoc(),
+      {firestore: fake, eventTimeMs: EVENT_TIME_MS},
+  );
+  const newResult = await awardPointsForHistoryDoc(
+      uid, "kana", "mixed-new-doc",
+      {
+        type: "hiragana", completedAt: "2026-01-01T00:00:00.000Z",
+        answers: REAL_KANA_ANSWERS, // 9 correct, 1 wrong — see top of file
+      },
+      {firestore: fake, eventTimeMs: EVENT_TIME_MS + 1000},
+  );
+
+  // Old document graded to 0, exactly as test I proves in isolation.
+  assert.strictEqual(oldResult.points, 0);
+  const oldGraded = await gradedDoc(fake, "mixed-old-doc");
+  assert.strictEqual(oldGraded.data().serverScore, 0);
+
+  // New document graded correctly from its own real answers — this is
+  // this SAME user's second attempt, so the repeat-cycle decay applies
+  // (n=2, same "kana:hiragana" repeatKey) exactly as it would for two
+  // consecutive real attempts; the old document's zero score does not
+  // pull the new one down any further than normal decay already would.
+  assert.ok(Math.abs(newResult.points - 54) < 0.001, // 90 * 0.6, n=2
+      "the new document's own real answers (9/10 correct) still earn " +
+      "the normal decayed amount for a 2nd attempt in the cycle — not " +
+      "reduced further, and not contaminated by the old document's 0");
+
+  // No cross-document contamination: the leaderboard total is exactly
+  // the sum of the two independent awards, and the old document's own
+  // graded result was never touched by processing the new one.
+  assert.strictEqual(
+      await leaderboardPoints(fake, uid), oldResult.points + newResult.points);
+  const oldGradedAfter = await gradedDoc(fake, "mixed-old-doc");
+  assert.strictEqual(oldGradedAfter.data().serverScore, 0,
+      "processing the new document must not retroactively change the " +
+      "old document's already-recorded trusted result");
+});
+
+test("K. CLIENT UPDATE AFTER AN OLD SUBMISSION: an old-format exam " +
+    "graded under current secure rules stays permanently unchanged " +
+    "— there is no retroactive re-grading — and a LATER, current-" +
+    "format submission from the same user grades normally and is the " +
+    "only one of the two that earns points", async () => {
+  const fake = new FakeFirestore();
+  const uid = "updated-client-user";
+
+  // 1. User submits an old-format exam (pre-update).
+  const oldResult = await awardPointsForHistoryDoc(
+      uid, "kana", "before-update-doc", oldFormatKanaDoc(),
+      {firestore: fake, eventTimeMs: EVENT_TIME_MS},
+  );
+  assert.strictEqual(oldResult.points, 0);
+  const gradedBeforeUpdate = await gradedDoc(fake, "before-update-doc");
+  const snapshotOfOldResult = {
+    serverScore: gradedBeforeUpdate.data().serverScore,
+    serverTotal: gradedBeforeUpdate.data().serverTotal,
+    gradedAt: gradedBeforeUpdate.data().gradedAt,
+  };
+
+  // 2. (Simulated) the user updates their app — nothing in this
+  // system re-processes the old document as a result; it is only
+  // ever written once, by the original trigger invocation above.
+
+  // 3. User later submits a current-format exam with valid answers.
+  const newResult = await awardPointsForHistoryDoc(
+      uid, "kana", "after-update-doc",
+      {
+        type: "hiragana", completedAt: "2026-02-01T00:00:00.000Z",
+        answers: REAL_KANA_ANSWERS,
+      },
+      {firestore: fake, eventTimeMs: EVENT_TIME_MS + 7 * 24 * 60 * 60 * 1000},
+  );
+
+  // The old graded document remains unchanged at its original result —
+  // explicitly re-read and compared field-by-field against the
+  // snapshot taken right after it was first graded.
+  const gradedAfterUpdate = await gradedDoc(fake, "before-update-doc");
+  assert.strictEqual(
+      gradedAfterUpdate.data().serverScore, snapshotOfOldResult.serverScore);
+  assert.strictEqual(
+      gradedAfterUpdate.data().serverTotal, snapshotOfOldResult.serverTotal);
+  assert.strictEqual(
+      gradedAfterUpdate.data().gradedAt, snapshotOfOldResult.gradedAt,
+      "no retroactive re-grading — the old document's trusted result, " +
+      "including its own gradedAt timestamp, is untouched by any later " +
+      "activity from the same user");
+
+  // Only the new submission earns points; the old one still earns 0.
+  assert.strictEqual(oldResult.points, 0);
+  assert.ok(newResult.points > 0,
+      "the new, current-format submission grades normally from its " +
+      "own real answers");
+  assert.strictEqual(
+      await leaderboardPoints(fake, uid), oldResult.points + newResult.points);
+});
