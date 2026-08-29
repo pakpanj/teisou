@@ -65,13 +65,55 @@ class UserAvatar extends StatelessWidget {
 
     final photoUrl = user?.photoURL;
     if (photoUrl != null && photoUrl.isNotEmpty) {
-      return CircleAvatar(radius: radius, backgroundImage: NetworkImage(photoUrl));
+      return _NetworkPhotoCircle(photoUrl: photoUrl, radius: radius);
     }
 
     return CircleAvatar(
       radius: radius,
       backgroundColor: _defaultBackground,
       child: Text(_defaultEmoji, style: TextStyle(fontSize: radius * 0.9)),
+    );
+  }
+}
+
+/// A Google profile photo, with the same never-blank guarantee
+/// [AvatarPresetArt] already has for a bundled preset — found missing
+/// here while investigating a "avatar tidak muncul di Mode Kartu di iOS"
+/// report. `CircleAvatar(backgroundImage: NetworkImage(...))` has no
+/// error handling of its own: a failed load (a stale/expired Google
+/// photo URL, a transient network error, or iOS's App Transport
+/// Security being stricter than Android about the exact response) just
+/// paints an empty circle — no fallback emoji, nothing — which is
+/// silent and easy to mistake for "the avatar isn't there" rather than
+/// "the photo failed to load." `Image.network`'s `errorBuilder`, unlike
+/// `CircleAvatar`'s `backgroundImage`, is a real fallback: it always
+/// renders something.
+class _NetworkPhotoCircle extends StatelessWidget {
+  const _NetworkPhotoCircle({required this.photoUrl, required this.radius});
+
+  final String photoUrl;
+  final double radius;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = radius * 2;
+    return ClipOval(
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: Image.network(
+          photoUrl,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => Container(
+            color: UserAvatar._defaultBackground,
+            alignment: Alignment.center,
+            child: Text(
+              UserAvatar._defaultEmoji,
+              style: TextStyle(fontSize: radius * 0.9),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

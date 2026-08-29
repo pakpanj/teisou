@@ -681,9 +681,25 @@ class LeaderboardAvatar extends StatelessWidget {
 
     final photoUrl = entry.photoUrl;
     if (photoUrl != null && photoUrl.isNotEmpty) {
-      return CircleAvatar(
-        radius: size / 2,
-        backgroundImage: NetworkImage(photoUrl),
+      // `errorBuilder`, not a bare `backgroundImage: NetworkImage(...)` —
+      // the latter has no fallback of its own and paints a blank circle
+      // on a failed load, silently, which is easy to mistake for "the
+      // avatar isn't there." See `_NetworkPhotoCircle`'s doc comment in
+      // `user_avatar.dart` for the report this was found investigating.
+      return ClipOval(
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: Image.network(
+            photoUrl,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => Container(
+              color: context.palette.hiraganaCardBg,
+              alignment: Alignment.center,
+              child: Text('🐱', style: TextStyle(fontSize: size * 0.5)),
+            ),
+          ),
+        ),
       );
     }
     return CircleAvatar(

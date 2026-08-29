@@ -825,7 +825,25 @@ class _GoogleAvatarTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            CircleAvatar(radius: 24, backgroundImage: NetworkImage(photoUrl)),
+            // errorBuilder, not a bare backgroundImage: NetworkImage(...) —
+            // see _NetworkPhotoCircle's doc comment in user_avatar.dart for
+            // why that combination silently paints a blank circle on a
+            // failed load instead of falling back to anything.
+            ClipOval(
+              child: SizedBox(
+                width: 48,
+                height: 48,
+                child: Image.network(
+                  photoUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => CircleAvatar(
+                    radius: 24,
+                    backgroundColor: context.palette.hiraganaCardBg,
+                    child: const Icon(Icons.person),
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Text(
