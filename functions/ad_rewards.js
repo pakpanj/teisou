@@ -96,8 +96,13 @@ const KNOWN_AD_UNITS = new Set([
 // reward_amount always arrives as a numeric-looking string.
 const EXPECTED_REWARD_AMOUNT = "1";
 
+// www is required here, not cosmetic — the bare `gstatic.com` host
+// 301-redirects to this exact URL (confirmed live), and while Node's
+// `fetch` follows redirects by default, requesting the canonical URL
+// directly removes an unnecessary hop and a variable during the
+// signature-verification investigation above.
 const VERIFIER_KEYS_URL =
-  "https://gstatic.com/admob/reward/verifier-keys.json";
+  "https://www.gstatic.com/admob/reward/verifier-keys.json";
 const KEY_CACHE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 // Defense-in-depth only — the real replay guard is the transaction_id
@@ -111,19 +116,36 @@ const MAX_TIMESTAMP_FUTURE_SKEW_MS = 5 * 60 * 1000;
 const REWARD_DURATION_MS = 24 * 60 * 60 * 1000;
 
 /**
- * Splits a raw (undecoded) SSV query string into the content that was
- * actually signed, the still-URL-encoded signature, and key_id — a
- * direct translation of Google's own Java reference algorithm
- * (`queryString.substring(0, i - 1)` up to the `&signature=` marker).
+ * Splits a raw SSV query string into the content that was actually
+ * signed, the decoded signature, and key_id.
+ *
+ * **The content AdMob signs is the URL-DECODED query string**, not the
+ * raw bytes on the wire — confirmed empirically 2026-08-30 against a
+ * real production callback (a signature that verified successfully
+ * only once `custom_data`'s `%7B%22...%22%7D` was decoded back to
+ * `{"..."}` before hashing; verification failed 100% of the time
+ * beforehand, which is why no reward had ever been granted since this
+ * endpoint shipped). Google's own Java reference sample reads as if it
+ * signs the raw substring (`queryString.substring(0, i - 1)`), but that
+ * sample's `queryString` there is already `request.getQueryString()`
+ * *after* the servlet container's own automatic decoding — the raw
+ * substring in Java's world is this function's decoded one. Applying
+ * `decodeURIComponent` to the whole content string is safe here: every
+ * param **name** in an SSV callback is a fixed plain-ASCII identifier
+ * (never percent-encoded to begin with), so only param *values* are
+ * ever affected, and none of AdMob's own values legitimately decode to
+ * a literal `&`/`=` that could be confused with a delimiter.
+ *
  * Returns null for anything that doesn't look like a real SSV callback
- * at all (no signature/key_id present) rather than throwing.
+ * at all (no signature/key_id present, or an undecodable %-sequence)
+ * rather than throwing.
  */
 function extractSignedContent(rawQueryString) {
   const sigMarker = "&signature=";
   const sigIdx = rawQueryString.indexOf(sigMarker);
   if (sigIdx === -1) return null;
 
-  const content = rawQueryString.substring(0, sigIdx);
+  const rawContent = rawQueryString.substring(0, sigIdx);
   const afterSig = rawQueryString.substring(sigIdx + sigMarker.length);
 
   const keyIdMarker = "&key_id=";
@@ -134,9 +156,11 @@ function extractSignedContent(rawQueryString) {
   const keyIdEncoded = afterSig.substring(keyIdIdx + keyIdMarker.length);
   if (signatureEncoded.length === 0 || keyIdEncoded.length === 0) return null;
 
+  let content;
   let signatureBase64;
   let keyId;
   try {
+    content = decodeURIComponent(rawContent);
     signatureBase64 = decodeURIComponent(signatureEncoded);
     keyId = decodeURIComponent(keyIdEncoded);
   } catch (_) {
@@ -266,7 +290,9 @@ async function evaluateCallback({
   }
 
   if (!verifySignature(parts.content, parts.signatureBase64, matchedKey.pem)) {
-    log("warn", "adRewards: signature verification failed");
+    log("warn", "adRewards: signature verification failed", {
+      keyId: parts.keyId,
+    });
     return {httpStatus: 400, outcome: "rejected", reason: "invalid_signature"};
   }
 

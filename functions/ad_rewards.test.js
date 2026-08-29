@@ -6,6 +6,7 @@ const {
   evaluateCallback,
   extractSignedContent,
   parseCustomData,
+  verifySignature,
   KNOWN_REWARD_KEYS,
 } = require("./ad_rewards");
 const {FakeFirestore} = require("./test_helpers/fake_firestore");
@@ -51,19 +52,40 @@ function baseParams(overrides = {}) {
   };
 }
 
+/** The percent-encoded form actually sent on the wire. */
 function queryString(params) {
   return Object.entries(params)
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join("&");
 }
 
-/** Builds a genuinely, correctly signed callback for [params]. */
+/**
+ * The literal, unencoded form — what AdMob actually signs (confirmed
+ * against a real production callback 2026-08-30: signature verification
+ * only succeeds once `custom_data`'s `%7B%22...%22%7D` is decoded back
+ * to `{"..."}` before hashing). Kept as a separate function from
+ * [queryString], never derived from it via `decodeURIComponent`, so a
+ * bug in [extractSignedContent]'s own decode step can't cancel out
+ * against an equal-and-opposite bug here and hide a regression.
+ */
+function decodedQueryString(params) {
+  return Object.entries(params)
+    .map(([k, v]) => `${k}=${v}`)
+    .join("&");
+}
+
+/**
+ * Builds a genuinely, correctly signed callback for [params] — signs
+ * the DECODED content (what AdMob actually signs) but transmits the
+ * ENCODED content (what actually arrives over HTTP), exactly mirroring
+ * the real wire format this file's own header comment documents.
+ */
 function signedCallback(params) {
-  const content = queryString(params);
-  const signature = signContent(content);
+  const wireContent = queryString(params);
+  const signature = signContent(decodedQueryString(params));
   return {
     rawQueryString:
-      `${content}&signature=${encodeURIComponent(signature)}` +
+      `${wireContent}&signature=${encodeURIComponent(signature)}` +
       `&key_id=${encodeURIComponent(KEY_ID)}`,
     query: {...params},
   };
@@ -310,6 +332,55 @@ test("extractSignedContent finds content/signature/key_id in order", () => {
 
 test("extractSignedContent returns null when signature/key_id are absent", () => {
   assert.strictEqual(extractSignedContent("a=1&b=2"), null);
+});
+
+test("extractSignedContent decodes the content before returning it — this is the regression test for the original bug", () => {
+  // Content on the wire is percent-encoded (custom_data's JSON braces
+  // and quotes); the returned `content` must be the DECODED form, since
+  // that's what AdMob actually signed. Verifying against the raw,
+  // still-encoded string (the original bug, live in production from
+  // this endpoint's first deploy until 2026-08-30) made every real
+  // callback fail signature verification, silently, forever.
+  const parts = extractSignedContent(
+    "custom_data=%7B%22rewardKey%22%3A%22kaiwa%22%7D&signature=SIG&key_id=42",
+  );
+  assert.deepStrictEqual(parts, {
+    content: 'custom_data={"rewardKey":"kaiwa"}',
+    signatureBase64: "SIG",
+    keyId: "42",
+  });
+});
+
+test("REGRESSION: verifies a real captured production AdMob SSV callback", () => {
+  // A genuine callback captured from Cloud Functions logs 2026-08-29,
+  // AdMob's real signing key (fetched live from
+  // https://www.gstatic.com/admob/reward/verifier-keys.json, keyId
+  // 3335741209) and a genuine signature — not synthetic. This is the
+  // exact data that proved the original bug (verification always
+  // failed against the raw, undecoded content) and proves the fix
+  // (verification succeeds once the content is decoded first). If this
+  // ever goes red again, ad rewards are broken in production again.
+  const rawQueryString =
+    "ad_network=5450213213286189855&ad_unit=3809909145&custom_data=" +
+    "%7B%22rewardKey%22%3A%22choukai%22%2C%22nonce%22%3A%22ad61956ba48354" +
+    "97%22%7D&reward_amount=1&reward_item=Reward&timestamp=1788035523915" +
+    "&transaction_id=00065a35722fd953054b848a39105cdf&user_id=" +
+    "Ci5Q25pmbwNRlLo5MTX8hucxI5C2&signature=MEUCIGxtbd35EquQf5ft6i6XDW7d" +
+    "UGRHr0dlpUBm8ddXjlCjAiEAzUilmyv_mJF1HXX4RJqegHQYh7OXd3HCX0ht93VUNh4" +
+    "&key_id=3335741209";
+  const realAdMobPem =
+    "-----BEGIN PUBLIC KEY-----\n" +
+    "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+nzvoGqvDeB9+SzE6igTl7TyK4JB\n" +
+    "bglwir9oTcQta8NuG26ZpZFxt+F2NDk7asTE6/2Yc8i1ATcGIqtuS5hv0Q==\n" +
+    "-----END PUBLIC KEY-----";
+
+  const parts = extractSignedContent(rawQueryString);
+  assert.ok(parts, "expected a well-formed callback");
+  assert.strictEqual(
+    verifySignature(parts.content, parts.signatureBase64, realAdMobPem),
+    true,
+    "a real AdMob-signed callback must verify against AdMob's real key",
+  );
 });
 
 test("parseCustomData rejects an extra unexpected field", () => {
