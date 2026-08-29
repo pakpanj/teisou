@@ -44,14 +44,15 @@ import '../../core/widgets/keyboard_look.dart';
 /// "uji jalur cepatnya dulu secara manual... tanpa Cloud Function sama
 /// sekali" — this screen is exactly that manual test surface.
 ///
-/// **Deliberately simpler than the full design in one respect**: the
-/// waiting player doesn't get a transient "lawan menjawab: benar!" flash
-/// the instant an answer lands — showing that correctly needs tracking a
-/// round that has already been superseded by the next one (the same
-/// write that records an answer also advances `currentRound`), which
-/// adds real timing complexity for a first pass. Instead every resolved
-/// round's correctness feeds the running score shown in the header, so
-/// the outcome is still visible, just not as an animated moment.
+/// **Correction — the limitation this paragraph used to describe is
+/// fixed (see C4 in `AUDIT_PHASE_C_BATTLE_RELIABILITY.md`).** Both
+/// players now get a transient "Benar!"/"Salah!" badge, a colour flash,
+/// and (for whoever actually answered) a haptic tap the moment a round
+/// resolves — held on screen for [_BattleScreenState._feedbackHoldDuration]
+/// via [_BattleScreenState._heldRound], specifically so the round that
+/// has already been superseded by `currentRound` advancing still gets
+/// shown before the next card takes over. See
+/// [_BattleScreenState._showRoundFeedback] for the mechanism.
 class BattleScreen extends ConsumerStatefulWidget {
   final String matchId;
 
