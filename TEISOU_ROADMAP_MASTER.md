@@ -5349,3 +5349,141 @@ instruction not to deploy.
   closed.
 - JFT/JLPT work was not touched, per this task's own explicit
   instruction to stay off it entirely.
+
+---
+
+## Global-Points Metadata Authority — P0 FIX IMPLEMENTED (commit `3ab61ad`, NOT DEPLOYED)
+
+Direct follow-up to the "residual gap" the section above named — a
+later, dedicated re-audit found that gap was mischaracterized as
+"~2.2x, bounded" and was in fact a SECOND, independently unbounded P0
+monetary vulnerability, distinct from the score-forgery fix above.
+
+### Root cause
+
+`global_points.js`'s `awardPointsForHistoryDoc` read
+`docData[spec.difficultyField]`/`docData[spec.repeatField]` (client-
+supplied `type`/`jlptLevel`/`itemId`) directly for both the Formula C
+difficulty multiplier and `repeatKeyFor`'s anti-farming repeat-cycle
+key. Since `repeatKeyFor` accepted any raw client string with zero
+validation, an attacker could invent a fresh, never-before-seen
+repeat-key value on every fabricated `examHistory` document — bypassing
+the `0.6^(n-1)` decay indefinitely while reusing the same small set of
+real, once-obtained correct answers.
+
+**Confirmed unbounded, not bounded**, via read-only reproduction probes
+run against the real `awardPointsForHistoryDoc` (`FakeFirestore`, real
+mirrored content, never touching production):
+- Kana: 50 fabricated documents, 2 real correct answers reused, a
+  distinct garbage `type` string per document → **1000 points**, vs.
+  **~50** for the identical submissions with a fixed real `type` — 20x,
+  scaling linearly with document count, no ceiling found.
+- Choukai: 20 documents, 1 real correct answer, unique `itemId` each
+  time → **200** vs. **~25** — 8x.
+- Dokkai: 5 documents, `jlptLevel` cycled N5→N1 → **77** vs. **~23** —
+  the decay-bypass compounding with the (real, but smaller) difficulty-
+  escalation angle the original residual-gap note had already flagged.
+
+### Fix
+
+`functions/exam_grading.js`'s `gradeAttempt` now derives both
+`difficultyValue` and `repeatValue` from the SAME deduplicated/capped
+answer list already used for scoring (no independent, divergence-prone
+second pipeline) — resolving each answer's `contentId` against the
+real mirrored content (every dataset already carried a real `type`/
+`jlptLevel` per item, confirmed before writing any code) and taking a
+deterministic majority:
+- **Kana**: set-based, not majority — `hiragana`/`katakana` if every
+  valid answer is that script, `mixed` if both genuinely appear (all
+  three map to the same 1.0 multiplier regardless, so there's nothing
+  to escalate here, only decay-bypass to close).
+- **Dokkai**: majority real `jlptLevel` (its own `itemId` was already
+  known to be a session timestamp, never a legitimate repeat key —
+  unchanged by this fix).
+- **Choukai**: difficulty from majority `jlptLevel`; repeat identity
+  from majority real **clip id** (its `itemId` was always meant to be
+  `clip.id`, just needed deriving instead of trusting).
+- **KanjiCombo**: difficulty from majority `jlptLevel`; repeat identity
+  reproduces the existing `"{mode}_{level}"` shape (`single_n5`/
+  `combo_n1`), `mode` inferred from whether the resolved content is a
+  bare kanji character or a compound word.
+
+Ties resolve to the lexicographically smallest candidate — deterministic,
+no randomness, confirmed by 5 repeated runs of the same tied input
+(`test P`) all producing the identical result.
+
+`global_points.js`'s single call site now reads
+`difficultyMultiplierFor(graded.difficultyValue)` and
+`repeatKeyFor(moduleType, {[spec.repeatField]: graded.repeatValue})` —
+`repeatKeyFor`/`difficultyMultiplierFor` themselves are untouched, pure,
+and still separately unit-tested (`global_points.test.js`); only what
+they're called *with* changed, from `docData` directly to the server-
+derived value.
+
+### Verified: no other scoring path, no new write authority
+
+Static search (Phase 9): `repeatKeyFor(`/`difficultyMultiplierFor(`
+each have exactly one call site, both using server-derived values, not
+`docData`. Every remaining `docData.jlptLevel`/`itemId`/`type` mention
+in the file is inside a comment. `award_top_coins.js` has zero diff.
+No new Firestore write introduced (only in-memory `Map.set()` calls in
+the diff).
+
+### Tests
+
+`functions/exam_history_authority.test.js` gained 6 new permanent
+tests (L-Q): difficulty escalation defeated (real N5 content, claimed
+N1, server derives N5); the exact confirmed Kana/Choukai/Dokkai farming
+attacks reproduced and asserted to now earn **exactly** the honest
+baseline (not merely "less than the old exploit total"); tie-break
+determinism across 5 repeated runs; missing/empty/malformed answers
+confirmed to resolve to the documented `UNGRADED` sentinel under the
+new derivation path specifically. `functions/exam_grading.test.js`'s
+existing 16 tests were updated from `assert.deepStrictEqual(result,
+{serverScore, serverTotal})` to field-level `assert.strictEqual` calls
+— required because `gradeAttempt`'s return shape grew additively
+(`difficultyValue`/`repeatValue`), not a weakening of any assertion.
+One existing compatibility test (`exam_history_authority.test.js`'s
+scenario J) needed its expected point value corrected from 54 to 90:
+under the OLD repeat-key logic an old-format (no-`answers`) document
+and a real hiragana document happened to share one `kana:hiragana`
+bucket purely because both claimed the same client-supplied `type`
+string; under the fix, the old-format document derives `ungraded`
+(zero valid answers) and no longer shares a bucket with real content at
+all — stronger isolation than before, not a regression.
+
+### Verification
+
+- Functions: **400/400 pass** (full suite).
+- Rules Emulator: **not re-run** — no `firestore.rules` file was
+  touched by this fix (confirmed via diff), so there was nothing for
+  the emulator suite to regress; already verified clean twice earlier
+  this session against the unrelated `examHistoryGraded` addition.
+- Dart: **not run** — no Dart file was touched (confirmed via
+  `git status`).
+- `flutter analyze`: **not run** — Functions-only change.
+
+### Deployment status
+
+**NOT DEPLOYED.** Commit `3ab61ad`, on top of `03e879f`/`5aa7c04`, all
+local to `master`, none pushed to any remote or deployed to production.
+Recommend deploying this fix together with `03e879f` in the same
+eventual `firebase deploy` round, not as two separate deploys — both
+live in the same, still-undeployed Cloud Functions, and deploying the
+score-forgery fix alone would leave this decay-bypass vector live
+against the same weekly payout in the gap between two deploys.
+
+### Residual gaps, explicitly not addressed by this fix
+
+- A submission mixing real content from two different real levels/clips
+  in one document (only possible via a direct/forged Firestore write,
+  never through the app's own UI) resolves deterministically via
+  majority/tie-break rather than being rejected outright — bounded by
+  the same `MAX_TOTAL` ceiling any single-content submission already
+  has, not a new farming vector, just worth knowing the exact resolved
+  behavior if it's ever investigated.
+- Whether this vector was exploited before this fix and `03e879f` are
+  both deployed cannot be assessed from this environment (no production
+  Firestore read access) — a manual review of unusually high per-user
+  weekly `globalScorePeriods` totals may be worth the product owner's
+  attention post-deploy, separately from this fix.
