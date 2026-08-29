@@ -86,9 +86,19 @@ const KNOWN_REWARD_KEYS = new Set([
 // PREMIUM_PRODUCT: "there is no build step that could enforce it across
 // the language boundary"). Only ad units this app's own code can ever
 // request a rewarded ad from.
+//
+// **Bare numeric suffix, not the full `ca-app-pub-.../...` id** —
+// confirmed against a real production callback 2026-08-30: AdMob's SSV
+// `ad_unit` query param arrives as just `"3809909145"`, not
+// `"ca-app-pub-7168330620893919/3809909145"` (the format the app's own
+// `RewardedAd.load(adUnitId: ...)` uses to *request* the ad). Every
+// real callback was rejected with `unrecognised_ad_unit` until this was
+// fixed — a second, independent bug from the signature-content one
+// above, found only once that first bug stopped masking everything
+// after it.
 const KNOWN_AD_UNITS = new Set([
-  "ca-app-pub-7168330620893919/3809909145", // Android rewarded
-  "ca-app-pub-7168330620893919/3939122841", // iOS rewarded
+  "3809909145", // Android rewarded
+  "3939122841", // iOS rewarded
 ]);
 
 // "1 Reward" per the AdMob console's rewarded-ad-unit setting, confirmed

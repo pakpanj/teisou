@@ -34,7 +34,10 @@ function signContent(content) {
   return signer.sign({key: privateKey, dsaEncoding: "der"}).toString("base64");
 }
 
-const AD_UNIT = "ca-app-pub-7168330620893919/3809909145";
+// Bare numeric suffix — this is genuinely what AdMob's SSV callback
+// sends (confirmed against real production data 2026-08-30), not the
+// full `ca-app-pub-.../...` id the app uses to *request* an ad.
+const AD_UNIT = "3809909145";
 const NOW = Date.parse("2026-08-26T12:00:00Z");
 const EXPECTED_REWARD_AMOUNT = "1";
 
