@@ -25,6 +25,18 @@
  * client submits. Submitting the same real, easy contentId 500 times, or
  * submitting more entries than a real session could ever contain, has no
  * effect beyond the module's own real ceiling.
+ *
+ * **`gradeAttempt` also derives `difficultyValue`/`repeatValue`** — the
+ * Global-Points Metadata Authority follow-up fix (see
+ * `TEISOU_ROADMAP_MASTER.md`'s own section by that name). A confirmed
+ * P0 farming vector let a client bypass the 0.6^(n-1) repeat-cycle
+ * decay indefinitely by inventing a fresh `type`/`jlptLevel`/`itemId`
+ * string per fabricated document — this file now derives both values
+ * from the SAME real, dataset-verified content `answers` actually
+ * reference, collapsing the repeat-key space to the finite set of real
+ * content identities instead of any client-invented string. See
+ * `majorityOf`/`deriveKanaType`/`deriveMajorityLevel`/
+ * `deriveChoukaiClipId`/`deriveKanjiComboRepeatValue` below.
  */
 
 const fs = require("fs");
@@ -46,17 +58,24 @@ const MAX_TOTAL = {
 };
 
 let _kanaMap = null;
-/** @return {Map<string, string>} kana id -> romaji */
+/** @return {Map<string, {romaji: string, type: string}>} kana id ->
+ * {romaji, type} — `type` (`hiragana`/`katakana`) is the same trusted
+ * field the P0 metadata-authority fix derives Kana's difficulty/repeat
+ * identity from, so it travels alongside `romaji` in the one map rather
+ * than needing a second lookup. */
 function loadKana() {
   if (_kanaMap) return _kanaMap;
   const raw = JSON.parse(
       fs.readFileSync(path.join(DATA_DIR, "kana_data.json"), "utf8"));
-  _kanaMap = new Map(raw.map((k) => [k.id, k.romaji]));
+  _kanaMap = new Map(raw.map((k) => [k.id, {romaji: k.romaji, type: k.type}]));
   return _kanaMap;
 }
 
-/** @return {Map<string, {options: string[], correctIndex: number}>}
- * "{passageId}|{questionId}" -> the real question, for Dokkai. */
+/** @return {Map<string, {options: string[], correctIndex: number,
+ *   jlptLevel: string}>} "{passageId}|{questionId}" -> the real
+ *   question, for Dokkai — `jlptLevel` is the passage's own real level,
+ *   carried alongside the grading fields for the same reason as
+ *   [loadKana]'s `type`. */
 let _dokkaiMap = null;
 function loadDokkai() {
   if (_dokkaiMap) return _dokkaiMap;
@@ -67,13 +86,18 @@ function loadDokkai() {
     for (const q of passage.questions) {
       _dokkaiMap.set(`${passage.id}|${q.id}`, {
         options: q.options, correctIndex: q.correctIndex,
+        jlptLevel: passage.jlptLevel,
       });
     }
   }
   return _dokkaiMap;
 }
 
-/** Same shape as [loadDokkai], for Choukai — "{clipId}|{questionId}". */
+/** Same shape as [loadDokkai], for Choukai — "{clipId}|{questionId}" ->
+ * {options, correctIndex, jlptLevel, clipId}. `clipId` is carried
+ * explicitly (not just re-derived by re-splitting the map key later)
+ * since Choukai's repeat identity is the real clip id itself, not its
+ * level — see this file's own `deriveChoukaiClipId`. */
 let _choukaiMap = null;
 function loadChoukai() {
   if (_choukaiMap) return _choukaiMap;
@@ -84,6 +108,7 @@ function loadChoukai() {
     for (const q of clip.questions) {
       _choukaiMap.set(`${clip.id}|${q.id}`, {
         options: q.options, correctIndex: q.correctIndex,
+        jlptLevel: clip.jlptLevel, clipId: clip.id,
       });
     }
   }
@@ -91,11 +116,13 @@ function loadChoukai() {
 }
 
 /** @return {Map<string, {onyomi: string[], kunyomi: string[],
- *   meanings: string[], meaningsEn: string[]}>} kanji character -> entry.
- *   Kanji characters are unique across the whole dataset (confirmed by
- *   this project's own `kanji_char_lists.py`-locked authoring discipline
- *   — no character appears at two JLPT levels), so a bare `Map` keyed by
- *   character alone is exact, not approximate. */
+ *   meanings: string[], meaningsEn: string[], jlptLevel: string}>} kanji
+ *   character -> entry. Kanji characters are unique across the whole
+ *   dataset (confirmed by this project's own `kanji_char_lists.py`-
+ *   locked authoring discipline — no character appears at two JLPT
+ *   levels), so a bare `Map` keyed by character alone is exact, not
+ *   approximate. `jlptLevel` is the character's own real level, used by
+ *   the P0 metadata-authority fix's difficulty derivation. */
 let _kanjiMap = null;
 function loadKanjiByCharacter() {
   if (_kanjiMap) return _kanjiMap;
@@ -106,19 +133,21 @@ function loadKanjiByCharacter() {
     kunyomi: k.kunyomi || [],
     meanings: k.meanings || [],
     meaningsEn: k.meaningsEn || [],
+    jlptLevel: k.jlptLevel,
   }]));
   return _kanjiMap;
 }
 
-/** @return {Map<string, string>} compound-word kanji string -> its real
- * reading, built once from every `functions/data/kotoba/*.json` category
- * file (mirroring `assets/data/kotoba/*.json`, the same files
+/** @return {Map<string, {reading: string, jlptLevel: string}>}
+ * compound-word kanji string -> {reading, jlptLevel}, built once from
+ * every `functions/data/kotoba/*.json` category file (mirroring
+ * `assets/data/kotoba/*.json`, the same files
  * `KanjiComboRepository._compoundPool` draws from). If more than one
  * word happens to share the same kanji string (not expected, not
  * asserted elsewhere in this dataset either), the first one found wins —
  * an acceptable, documented simplification: whichever real word the
- * client's own pool search would have found is what its `reading` is
- * checked against either way. */
+ * client's own pool search would have found is what its `reading`/
+ * `jlptLevel` are checked against either way. */
 let _kotobaByKanji = null;
 function loadKotobaByKanji() {
   if (_kotobaByKanji) return _kotobaByKanji;
@@ -130,7 +159,7 @@ function loadKotobaByKanji() {
         fs.readFileSync(path.join(kotobaDir, file), "utf8"));
     for (const w of raw) {
       if (w.kanji && !_kotobaByKanji.has(w.kanji)) {
-        _kotobaByKanji.set(w.kanji, w.reading);
+        _kotobaByKanji.set(w.kanji, {reading: w.reading, jlptLevel: w.jlptLevel});
       }
     }
   }
@@ -168,15 +197,91 @@ function dedupeAndCap(answers, max) {
   return result;
 }
 
+/** Neutral sentinel returned for `difficultyValue`/`repeatValue` when a
+ * submission has zero valid (dataset-resolvable) answers to derive
+ * anything from — old-client/malformed submissions, per the P0
+ * metadata-authority fix. Deliberately not `null`/`undefined`: this
+ * value only ever reaches `repeatKeyFor(moduleType, {[field]: value})`/
+ * `difficultyMultiplierFor(value)`, and `serverScore` is already 0 for
+ * every submission that hits this path, so the resulting points are `0
+ * × anything = 0` regardless — this sentinel exists purely so the
+ * stored `examHistoryGraded` record and the repeat-cycle bucket it
+ * lands in are legible ("ungraded", not "undefined" or a stringified
+ * `null`), not because its exact value is scoring-relevant.
+ */
+const UNGRADED = "ungraded";
+
+/**
+ * Deterministic majority vote over [values] (already filtered to only
+ * the real, dataset-resolved values — never raw client strings). Ties
+ * resolve to the lexicographically smallest candidate, so the same
+ * input always produces the same output with no randomness — see the
+ * P0 metadata-authority design's own tie-break rule.
+ *
+ * @param {string[]} values
+ * @return {string|null} the majority value, or `null` if [values] is
+ *   empty (caller substitutes [UNGRADED]).
+ */
+function majorityOf(values) {
+  if (values.length === 0) return null;
+  const counts = new Map();
+  for (const v of values) counts.set(v, (counts.get(v) || 0) + 1);
+  let best = null;
+  let bestCount = -1;
+  for (const [value, count] of counts) {
+    if (count > bestCount || (count === bestCount && value < best)) {
+      best = value;
+      bestCount = count;
+    }
+  }
+  return best;
+}
+
+/**
+ * Kana's difficulty AND repeat identity are the same concept (`type`),
+ * unlike the other three modules — see `global_points.js`'s own
+ * `MODULES` doc comment for why. Derived from the REAL `type` of every
+ * valid (dataset-resolved) answer, via set membership rather than
+ * majority: `hiragana` if every valid answer is hiragana, `katakana` if
+ * every valid answer is katakana, `mixed` if both scripts genuinely
+ * appear — `mixed` is a real, legitimate composition category (all
+ * three map to the identical 1.0 difficulty multiplier, so there is
+ * nothing to escalate here either way), not an attacker's chosen label,
+ * so a majority vote would be the wrong tool: a 9-hiragana/1-katakana
+ * REAL session is genuinely mixed, not "mostly hiragana".
+ *
+ * @param {Array<{contentId: string}>} deduped
+ * @param {Map<string, {type: string}>} kanaMap
+ * @return {string} `hiragana`/`katakana`/`mixed`/[UNGRADED]
+ */
+function deriveKanaType(deduped, kanaMap) {
+  let sawHiragana = false;
+  let sawKatakana = false;
+  for (const a of deduped) {
+    const entry = kanaMap.get(a.contentId);
+    if (!entry) continue;
+    if (entry.type === "hiragana") sawHiragana = true;
+    else if (entry.type === "katakana") sawKatakana = true;
+  }
+  if (sawHiragana && sawKatakana) return "mixed";
+  if (sawHiragana) return "hiragana";
+  if (sawKatakana) return "katakana";
+  return UNGRADED;
+}
+
 function gradeKana(answers) {
   const kana = loadKana();
   const deduped = dedupeAndCap(answers, MAX_TOTAL.kana);
   let score = 0;
   for (const a of deduped) {
-    const romaji = kana.get(a.contentId);
-    if (romaji !== undefined && a.submittedText === romaji) score++;
+    const entry = kana.get(a.contentId);
+    if (entry !== undefined && a.submittedText === entry.romaji) score++;
   }
-  return {serverScore: score, serverTotal: deduped.length};
+  const type = deriveKanaType(deduped, kana);
+  return {
+    serverScore: score, serverTotal: deduped.length,
+    difficultyValue: type, repeatValue: type,
+  };
 }
 
 function gradeIndexed(datasetMap, answers, max) {
@@ -188,15 +293,73 @@ function gradeIndexed(datasetMap, answers, max) {
     const correctText = q.options[q.correctIndex];
     if (correctText !== undefined && a.submittedText === correctText) score++;
   }
-  return {serverScore: score, serverTotal: deduped.length};
+  return {deduped, score};
+}
+
+/** Majority real `jlptLevel` among [deduped]'s valid, dataset-resolved
+ * answers — shared by Dokkai (difficulty AND repeat identity),
+ * Choukai's difficulty, and KanjiCombo's difficulty. See
+ * `majorityOf`'s own doc comment for the tie-break rule; a document
+ * mixing content from two real levels (never possible via the app's own
+ * UI, only via a direct/forged Firestore write) still resolves
+ * deterministically rather than being rejected outright — the result
+ * is bounded by the same real levels the content actually belongs to,
+ * never a client-invented one.
+ *
+ * @param {Array<{contentId: string}>} deduped
+ * @param {Map<string, {jlptLevel: string}>} datasetMap
+ * @return {string} a real `N5`.."N1" value, or [UNGRADED].
+ */
+function deriveMajorityLevel(deduped, datasetMap) {
+  const levels = [];
+  for (const a of deduped) {
+    const entry = datasetMap.get(a.contentId);
+    if (entry && entry.jlptLevel) levels.push(entry.jlptLevel);
+  }
+  return majorityOf(levels) ?? UNGRADED;
 }
 
 function gradeDokkai(answers) {
-  return gradeIndexed(loadDokkai(), answers, MAX_TOTAL.dokkai);
+  const dokkai = loadDokkai();
+  const {deduped, score} = gradeIndexed(dokkai, answers, MAX_TOTAL.dokkai);
+  const level = deriveMajorityLevel(deduped, dokkai);
+  return {
+    serverScore: score, serverTotal: deduped.length,
+    // Dokkai's difficulty AND repeat identity are both `jlptLevel` (its
+    // own `itemId` is a fresh timestamp every session and was never a
+    // legitimate repeat key — see `global_points.js`'s `MODULES` doc
+    // comment, unchanged by this fix), so the same derived level serves
+    // both, exactly mirroring the pre-fix `repeatField===difficultyField`
+    // design intent, just server-derived instead of client-trusted.
+    difficultyValue: level, repeatValue: level,
+  };
+}
+
+/** Majority real clip id among [deduped]'s valid Choukai answers —
+ * Choukai's repeat identity (unlike Dokkai's) is the clip itself, not
+ * its level, since `itemId` was always meant to be the real, stable
+ * `clip.id` (confirmed via `choukai_exam_screen.dart`'s own
+ * `itemId: clip.id`) rather than a per-session value. Deriving it from
+ * `answers` closes the farming vector while collapsing the repeat-key
+ * space to exactly the dataset's own finite, real clip ids (150 today)
+ * instead of any client-invented string. */
+function deriveChoukaiClipId(deduped, choukaiMap) {
+  const clipIds = [];
+  for (const a of deduped) {
+    const entry = choukaiMap.get(a.contentId);
+    if (entry && entry.clipId) clipIds.push(entry.clipId);
+  }
+  return majorityOf(clipIds) ?? UNGRADED;
 }
 
 function gradeChoukai(answers) {
-  return gradeIndexed(loadChoukai(), answers, MAX_TOTAL.choukai);
+  const choukai = loadChoukai();
+  const {deduped, score} = gradeIndexed(choukai, answers, MAX_TOTAL.choukai);
+  return {
+    serverScore: score, serverTotal: deduped.length,
+    difficultyValue: deriveMajorityLevel(deduped, choukai),
+    repeatValue: deriveChoukaiClipId(deduped, choukai),
+  };
 }
 
 /**
@@ -212,16 +375,59 @@ function gradeChoukai(answers) {
  * real readings is a genuinely correct answer regardless of which one a
  * particular session's question was built around.
  */
+/** Resolves one `{contentKey}|{promptKind}` answer's `key` half against
+ * both trusted content maps, returning which one matched and that
+ * entry's own real `jlptLevel` — shared between grading and the P0
+ * metadata-authority derivation below, so both read the exact same
+ * resolution instead of two independently-written lookups that could
+ * drift apart.
+ *
+ * @return {{mode: "single"|"combo", jlptLevel: string}|null}
+ */
+function resolveKanjiComboKey(key, kanji, kotoba) {
+  const kanjiEntry = kanji.get(key);
+  if (kanjiEntry) return {mode: "single", jlptLevel: kanjiEntry.jlptLevel};
+  const kotobaEntry = kotoba.get(key);
+  if (kotobaEntry) return {mode: "combo", jlptLevel: kotobaEntry.jlptLevel};
+  return null;
+}
+
+/**
+ * KanjiCombo's repeat identity reproduces the existing, already-real
+ * `itemId` shape (`single_n5`/`combo_n1`, see
+ * `KanjiComboExamScreen._onComplete`'s own `itemId:` construction) —
+ * `mode` (single kanji vs. compound word) and `level` are both derived
+ * from the majority of [deduped]'s real, resolved content rather than
+ * trusted from `docData.itemId` directly, closing the P0 metadata-
+ * authority farming vector while keeping the bucket shape a learner's
+ * own history would already recognize.
+ *
+ * @param {Array<{mode: string, jlptLevel: string}>} resolved every
+ *   valid answer's own [resolveKanjiComboKey] result.
+ * @return {string} `"{mode}_{level}"` lowercased, or [UNGRADED].
+ */
+function deriveKanjiComboRepeatValue(resolved) {
+  if (resolved.length === 0) return UNGRADED;
+  const mode = majorityOf(resolved.map((r) => r.mode));
+  const level = majorityOf(resolved.map((r) => r.jlptLevel).filter(Boolean));
+  if (!mode || !level) return UNGRADED;
+  return `${mode}_${level.toLowerCase()}`;
+}
+
 function gradeKanjiCombo(answers) {
   const kanji = loadKanjiByCharacter();
   const kotoba = loadKotobaByKanji();
   const deduped = dedupeAndCap(answers, MAX_TOTAL.kanjiCombo);
   let score = 0;
+  const resolved = [];
   for (const a of deduped) {
     const sep = a.contentId.lastIndexOf("|");
     if (sep === -1) continue;
     const key = a.contentId.slice(0, sep);
     const kind = a.contentId.slice(sep + 1);
+
+    const match = resolveKanjiComboKey(key, kanji, kotoba);
+    if (match) resolved.push(match);
 
     let candidates = [];
     const kanjiEntry = kanji.get(key);
@@ -232,11 +438,18 @@ function gradeKanjiCombo(answers) {
     } else if (kotoba.has(key)) {
       // Combination mode is always a reading question — see
       // `_buildQuestions`' own `answerOf: (w) => w.reading` call site.
-      candidates = [kotoba.get(key)];
+      candidates = [kotoba.get(key).reading];
     }
     if (candidates.includes(a.submittedText)) score++;
   }
-  return {serverScore: score, serverTotal: deduped.length};
+  return {
+    serverScore: score, serverTotal: deduped.length,
+    // Reuses the SAME `resolved` list the repeat-identity derivation
+    // below builds from — one resolution pass, not two independently-
+    // written lookups that could drift apart (Phase 3's own instruction).
+    difficultyValue: majorityOf(resolved.map((r) => r.jlptLevel).filter(Boolean)) ?? UNGRADED,
+    repeatValue: deriveKanjiComboRepeatValue(resolved),
+  };
 }
 
 /**
@@ -244,7 +457,17 @@ function gradeKanjiCombo(answers) {
  *   keys.
  * @param {Array<{contentId: string, submittedText: string}>} answers raw,
  *   client-submitted, untrusted.
- * @return {{serverScore: number, serverTotal: number}}
+ * @return {{serverScore: number, serverTotal: number, difficultyValue:
+ *   string, repeatValue: string}} `difficultyValue`/`repeatValue` are the
+ *   P0 metadata-authority fix's server-derived replacements for
+ *   `docData[spec.difficultyField]`/`docData[spec.repeatField]` — see
+ *   `TEISOU_ROADMAP_MASTER.md`'s "Global-Points Metadata Authority"
+ *   sections. Both are derived from the SAME deduplicated/capped answer
+ *   list [dedupeAndCap] already produces for grading (Phase 3's own
+ *   "avoid three independent pipelines" instruction), never from
+ *   `answers`' un-deduped raw form and never from any client-supplied
+ *   field. [UNGRADED] when zero valid answers exist — harmless, since
+ *   `serverScore` is already 0 in that case and `0 × anything = 0`.
  */
 function gradeAttempt(moduleType, answers) {
   switch (moduleType) {
@@ -270,13 +493,19 @@ const GRADING_VERSION = 1;
 module.exports = {
   MAX_TOTAL,
   GRADING_VERSION,
+  UNGRADED,
   dedupeAndCap,
   stripOkuriganaMarker,
+  majorityOf,
   loadKana,
   loadDokkai,
   loadChoukai,
   loadKanjiByCharacter,
   loadKotobaByKanji,
+  deriveKanaType,
+  deriveMajorityLevel,
+  deriveChoukaiClipId,
+  deriveKanjiComboRepeatValue,
   gradeKana,
   gradeDokkai,
   gradeChoukai,

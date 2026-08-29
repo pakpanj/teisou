@@ -37,20 +37,25 @@
  * "Exam-History Authority" audit + design + implementation sections for
  * the full history.
  *
- * **Still open, deliberately, and out of THIS fix's scope: the
- * `difficultyField`/repeat-key fields** (`docData[spec.difficultyField]`
- * below — kana's `type`, Dokkai/Choukai/Kanji-Kombinasi's `jlptLevel`,
- * plus `repeatKeyFor`'s `itemId`) are still read directly from the
- * client-supplied history document, unvalidated against
- * `graded`/`exam_grading.js`'s own content lookup. A forged
- * `jlptLevel: 'n1'` on an easy attempt still inflates
- * `difficultyMultiplier` (bounded — at most ~2.2x, per
- * `difficultyMultiplierFor`'s own fixed table — a materially smaller,
- * still-bounded gap, not the P0 fix's previously-unlimited one). Left
- * unaddressed here per this fix's own explicit instruction to close
- * score/total specifically and not redesign the wider Formula C/repeat-
- * cycle mechanics; recorded as a known residual gap for whoever picks
- * this up next, not something to fix silently as a side effect.
+ * **Difficulty/repeat-key metadata authority — CLOSED (follow-up P0
+ * fix, "Global-Points Metadata Authority").** The paragraph above only
+ * closed `score`/`total`; `docData[spec.difficultyField]`/
+ * `docData[spec.repeatField]` were left reading raw, client-supplied
+ * `type`/`jlptLevel`/`itemId` unvalidated — a SEPARATE, later-audited P0
+ * vulnerability, not the bounded ~2.2x gap this paragraph originally
+ * estimated. The real severity: `repeatKeyFor`'s entire anti-farming
+ * defense was a client-invented string with no validation, so an
+ * attacker could bypass the `0.6^(n-1)` decay indefinitely by inventing
+ * a fresh value per fabricated document, reusing the same real (once-
+ * obtained) correct answers — proven unbounded (linear amplification
+ * with no ceiling, confirmed empirically at 20x/50 docs for Kana, 8x/20
+ * docs for Choukai), not merely bounded. Fixed by deriving both
+ * `difficulty`/`repeatKey` (below) from `graded.difficultyValue`/
+ * `graded.repeatValue` — [exam_grading.js]'s `gradeAttempt` now derives
+ * both from the SAME real, dataset-verified content the deduplicated
+ * `answers` actually reference, never from `docData` directly. See
+ * `TEISOU_ROADMAP_MASTER.md`'s "Global-Points Metadata Authority" audit
+ * + design + implementation sections for the full history.
  */
 
 const {onDocumentCreated} = require("firebase-functions/v2/firestore");
@@ -359,8 +364,24 @@ async function awardPointsForHistoryDoc(
   // the P0 audit's forged `score: 999999` case, now worth nothing.
   const graded = gradeAttempt(moduleType, docData.answers);
   const correct = graded.serverScore;
-  const difficulty = difficultyMultiplierFor(docData[spec.difficultyField]);
-  const repeatKey = repeatKeyFor(moduleType, docData);
+
+  // Global-Points Metadata Authority fix (see TEISOU_ROADMAP_MASTER.md's
+  // section by that name). `docData[spec.difficultyField]`/
+  // `docData[spec.repeatField]` used to be trusted directly here — a
+  // confirmed P0 farming vector, since a client could invent a fresh
+  // `type`/`jlptLevel`/`itemId` string on every fabricated document to
+  // bypass the 0.6^(n-1) repeat-cycle decay indefinitely (proven:
+  // unbounded amplification, scaling linearly with fabricated-document
+  // count, no ceiling). `difficultyValue`/`repeatValue` are now derived
+  // by `gradeAttempt` itself, from the SAME real, dataset-verified
+  // content the deduplicated `answers` actually reference — never from
+  // `docData` directly. `repeatKeyFor` is still used unchanged (its own
+  // pure `${moduleType}:${value}` logic and test coverage are untouched)
+  // but is now called with a synthetic single-field object carrying the
+  // SERVER-derived value under the same `spec.repeatField` name, rather
+  // than `docData` itself.
+  const difficulty = difficultyMultiplierFor(graded.difficultyValue);
+  const repeatKey = repeatKeyFor(moduleType, {[spec.repeatField]: graded.repeatValue});
   const completedAtMs = toEpochMs(docData.completedAt);
 
   // Server-authoritative only — see this function's own doc comment on

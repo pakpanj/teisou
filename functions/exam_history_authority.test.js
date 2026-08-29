@@ -490,15 +490,21 @@ test("J. MIXED OLD + NEW submissions from the SAME user: the " +
   const oldGraded = await gradedDoc(fake, "mixed-old-doc");
   assert.strictEqual(oldGraded.data().serverScore, 0);
 
-  // New document graded correctly from its own real answers — this is
-  // this SAME user's second attempt, so the repeat-cycle decay applies
-  // (n=2, same "kana:hiragana" repeatKey) exactly as it would for two
-  // consecutive real attempts; the old document's zero score does not
-  // pull the new one down any further than normal decay already would.
-  assert.ok(Math.abs(newResult.points - 54) < 0.001, // 90 * 0.6, n=2
-      "the new document's own real answers (9/10 correct) still earn " +
-      "the normal decayed amount for a 2nd attempt in the cycle — not " +
-      "reduced further, and not contaminated by the old document's 0");
+  // New document graded correctly from its own real answers. Since the
+  // Global-Points Metadata Authority fix, the repeat-cycle bucket is
+  // server-derived from real content, not from `docData.type` — the old
+  // document has zero valid answers to derive a real `type` from, so it
+  // lands in its own "kana:ungraded" bucket, genuinely distinct from the
+  // new document's real "kana:hiragana" bucket. The new document is
+  // therefore this user's first REAL attempt in that bucket (n=1, full
+  // undecayed value) — even stronger isolation than before this fix,
+  // when both documents shared one repeat bucket purely because they
+  // happened to claim the same client-supplied `type` string.
+  assert.strictEqual(newResult.points, 90,
+      "the new document's own real answers (9/10 correct) earn the " +
+      "full, undecayed n=1 value — the old (ungraded) document's " +
+      "distinct repeat bucket means it can no longer even partially " +
+      "decay a real attempt it never contributed real content to");
 
   // No cross-document contamination: the leaderboard total is exactly
   // the sum of the two independent awards, and the old document's own
@@ -567,4 +573,212 @@ test("K. CLIENT UPDATE AFTER AN OLD SUBMISSION: an old-format exam " +
       "own real answers");
   assert.strictEqual(
       await leaderboardPoints(fake, uid), oldResult.points + newResult.points);
+});
+
+// ---------------------------------------------------------------------
+// L-P. Global-Points Metadata Authority fix — see
+// TEISOU_ROADMAP_MASTER.md's section by that name. `docData.type`/
+// `docData.jlptLevel`/`docData.itemId` used to be trusted directly for
+// the difficulty multiplier and the anti-farming repeat-cycle key; a
+// client could invent a fresh value per fabricated document to bypass
+// the 0.6^(n-1) decay indefinitely (proven unbounded — 20x amplification
+// at 50 fabricated Kana documents, 8x at 20 Choukai documents, scaling
+// linearly with no ceiling). Both values are now derived by
+// `exam_grading.js`'s `gradeAttempt` from the SAME real, dataset-
+// verified content the deduplicated `answers` actually reference.
+// ---------------------------------------------------------------------
+
+test("L. DIFFICULTY ESCALATION DEFEATED: real N5 Dokkai content, " +
+    "client claims jlptLevel=\"N1\" — the server derives the real N5 " +
+    "level (1.0x) from the answers themselves, never the claimed N1 " +
+    "(2.2x)", async () => {
+  const fake = new FakeFirestore();
+  const result = await awardPointsForHistoryDoc(
+      "escalation-user", "dokkai", "escalation-doc",
+      {
+        itemId: "forged-session", jlptLevel: "N1", // forged — real content is N5
+        completedAt: "2026-01-01T00:00:00.000Z",
+        answers: [{
+          contentId: "dokkai_surat_sahabat_pena|dokkai_surat_sahabat_pena_q0",
+          submittedText: "アメリカ",
+        }],
+      },
+      {firestore: fake, eventTimeMs: EVENT_TIME_MS},
+  );
+  // correct=1, REAL difficulty(N5)=1.0, K=10, n=1 -> 10, not 22 (N1's 2.2x).
+  assert.strictEqual(result.points, 10,
+      "the forged N1 claim must have zero effect — real content is N5");
+  const graded = await gradedDoc(fake, "escalation-doc");
+  assert.strictEqual(graded.data().serverScore, 1);
+});
+
+test("M. KANA REPEAT-KEY FARMING DEFEATED: the exact confirmed 50-" +
+    "document attack (same 2 real correct answers reused, a distinct " +
+    "fabricated `type` string per document) now earns EXACTLY the same " +
+    "total as the honest baseline (same content, same real `type` every " +
+    "time) — not merely less than the old exploit total", async () => {
+  const attackerAnswers = [
+    {contentId: "hiragana_a", submittedText: "a"},
+    {contentId: "hiragana_i", submittedText: "i"},
+  ];
+  const N = 50;
+
+  const fakeAttack = new FakeFirestore();
+  let attackTotal = 0;
+  for (let i = 0; i < N; i++) {
+    const r = await awardPointsForHistoryDoc(
+        "farm-kana-attacker", "kana", `attack-doc-${i}`,
+        {type: `not-a-real-mode-${i}`, completedAt: "2026-01-01T00:00:00.000Z", answers: attackerAnswers},
+        {firestore: fakeAttack, eventTimeMs: EVENT_TIME_MS},
+    );
+    attackTotal += r.points;
+  }
+
+  const fakeHonest = new FakeFirestore();
+  let honestTotal = 0;
+  for (let i = 0; i < N; i++) {
+    const r = await awardPointsForHistoryDoc(
+        "farm-kana-honest", "kana", `honest-doc-${i}`,
+        {type: "hiragana", completedAt: "2026-01-01T00:00:00.000Z", answers: attackerAnswers},
+        {firestore: fakeHonest, eventTimeMs: EVENT_TIME_MS},
+    );
+    honestTotal += r.points;
+  }
+
+  assert.strictEqual(attackTotal, honestTotal,
+      "fabricating a distinct `type` string per document must earn " +
+      "EXACTLY what a real, honestly-labeled repeat of the same " +
+      "content would — not the pre-fix 1000 vs ~50 (20x)");
+  assert.ok(attackTotal < 100,
+      "sanity ceiling: 50 documents of 2 real correct answers, fully " +
+      "decayed, must stay well under 100 total — confirms decay is " +
+      "genuinely applying, not just 'equal to itself by coincidence'");
+});
+
+test("N. CHOUKAI REPEAT-KEY FARMING DEFEATED: the exact confirmed 20-" +
+    "document attack (same real answer reused, a distinct fabricated " +
+    "`itemId` per document) earns EXACTLY the honest baseline, not the " +
+    "pre-fix 8x amplification", async () => {
+  const answer = [{
+    contentId: "choukai_n5_jam_berapa|choukai_n5_jam_berapa_q1",
+    submittedText: "三時半",
+  }];
+  const N = 20;
+
+  const fakeAttack = new FakeFirestore();
+  let attackTotal = 0;
+  for (let i = 0; i < N; i++) {
+    const r = await awardPointsForHistoryDoc(
+        "farm-choukai-attacker", "choukai", `attack-doc-${i}`,
+        {itemId: `arbitrary-attacker-string-${i}`, jlptLevel: "N5", completedAt: "2026-01-01T00:00:00.000Z", answers: answer},
+        {firestore: fakeAttack, eventTimeMs: EVENT_TIME_MS},
+    );
+    attackTotal += r.points;
+  }
+
+  const fakeHonest = new FakeFirestore();
+  let honestTotal = 0;
+  for (let i = 0; i < N; i++) {
+    const r = await awardPointsForHistoryDoc(
+        "farm-choukai-honest", "choukai", `honest-doc-${i}`,
+        {itemId: "choukai_n5_jam_berapa", jlptLevel: "N5", completedAt: "2026-01-01T00:00:00.000Z", answers: answer},
+        {firestore: fakeHonest, eventTimeMs: EVENT_TIME_MS},
+    );
+    honestTotal += r.points;
+  }
+
+  assert.strictEqual(attackTotal, honestTotal,
+      "client `itemId` has zero effect on which repeat bucket a real " +
+      "clip lands in — the pre-fix result here was 200 vs ~25 (8x)");
+});
+
+test("O. DOKKAI REPEAT-KEY/DIFFICULTY FARMING DEFEATED: the exact " +
+    "confirmed 5-document attack (same real N5 answer reused, " +
+    "`jlptLevel` cycled N5->N4->N3->N2->N1) earns EXACTLY the honest " +
+    "baseline (same content, same real N5 label every time) — the " +
+    "combined decay-bypass AND difficulty-escalation attack neutralized " +
+    "at once", async () => {
+  const answer = [{
+    contentId: "dokkai_surat_sahabat_pena|dokkai_surat_sahabat_pena_q0",
+    submittedText: "アメリカ",
+  }];
+  const levels = ["N5", "N4", "N3", "N2", "N1"];
+
+  const fakeAttack = new FakeFirestore();
+  let attackTotal = 0;
+  for (let i = 0; i < levels.length; i++) {
+    const r = await awardPointsForHistoryDoc(
+        "farm-dokkai-attacker", "dokkai", `attack-doc-${i}`,
+        {itemId: `sess${i}`, jlptLevel: levels[i], completedAt: "2026-01-01T00:00:00.000Z", answers: answer},
+        {firestore: fakeAttack, eventTimeMs: EVENT_TIME_MS},
+    );
+    attackTotal += r.points;
+  }
+
+  const fakeHonest = new FakeFirestore();
+  let honestTotal = 0;
+  for (let i = 0; i < levels.length; i++) {
+    const r = await awardPointsForHistoryDoc(
+        "farm-dokkai-honest", "dokkai", `honest-doc-${i}`,
+        {itemId: `sess${i}`, jlptLevel: "N5", completedAt: "2026-01-01T00:00:00.000Z", answers: answer},
+        {firestore: fakeHonest, eventTimeMs: EVENT_TIME_MS},
+    );
+    honestTotal += r.points;
+  }
+
+  assert.strictEqual(attackTotal, honestTotal,
+      "claiming N4/N3/N2/N1 on real N5 content neither escalates the " +
+      "multiplier nor resets decay — the pre-fix result here was 77 " +
+      "vs ~23");
+});
+
+test("P. TIE-BREAK DETERMINISM: a submission with exactly one real " +
+    "answer from an N4 passage and one from an N5 passage (a 1-1 tie) " +
+    "always resolves to the lexicographically smaller level (\"N4\"), " +
+    "never randomly, across repeated runs", async () => {
+  const tiedAnswers = [
+    {
+      contentId: "dokkai_mensetsu_kekka|dokkai_mensetsu_kekka_q0",
+      submittedText: "来週の月曜日",
+    },
+    {
+      contentId: "dokkai_surat_sahabat_pena|dokkai_surat_sahabat_pena_q0",
+      submittedText: "アメリカ",
+    },
+  ];
+  for (let run = 0; run < 5; run++) {
+    const fake = new FakeFirestore();
+    const result = await awardPointsForHistoryDoc(
+        `tie-user-${run}`, "dokkai", "tie-doc",
+        {completedAt: "2026-01-01T00:00:00.000Z", answers: tiedAnswers},
+        {firestore: fake, eventTimeMs: EVENT_TIME_MS},
+    );
+    // correct=2, difficulty(N4)=1.2 (not N5's 1.0), K=10, n=1 -> 24.
+    assert.strictEqual(result.points, 24,
+        `run ${run}: tie must always resolve to N4 (lexicographically ` +
+        "smaller than N5), never vary between runs");
+  }
+});
+
+test("Q. MISSING/EMPTY/MALFORMED ANSWERS still produce zero points " +
+    "under the new derivation path specifically — not just because " +
+    "serverScore is 0, but because difficultyValue/repeatValue both " +
+    "resolve to the documented UNGRADED sentinel rather than any real " +
+    "or attacker-favorable value", async () => {
+  const cases = [
+    ["missing", undefined],
+    ["empty", []],
+    ["malformed", "not an array"],
+  ];
+  for (const [label, answers] of cases) {
+    const fake = new FakeFirestore();
+    const result = await awardPointsForHistoryDoc(
+        `q-${label}`, "kana", `q-${label}-doc`,
+        {type: "hiragana", completedAt: "2026-01-01T00:00:00.000Z", answers},
+        {firestore: fake, eventTimeMs: EVENT_TIME_MS},
+    );
+    assert.strictEqual(result.points, 0, `${label}: must earn 0`);
+    const graded = await gradedDoc(fake, `q-${label}-doc`);
+    assert.strictEqual(graded.data().serverScore, 0);
+  }
 });

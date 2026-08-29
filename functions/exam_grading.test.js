@@ -27,13 +27,15 @@ const {
 // ---------------------------------------------------------------------
 test("gradeKana: a real, correct hiragana answer scores 1/1", () => {
   const result = gradeKana([{contentId: "hiragana_a", submittedText: "a"}]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeKana: a real but WRONG answer scores 0/1 — the submitted " +
     "text must match, not just the contentId existing", () => {
   const result = gradeKana([{contentId: "hiragana_a", submittedText: "zzz"}]);
-  assert.deepStrictEqual(result, {serverScore: 0, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 0);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeDokkai: a real, correct question option scores 1/1", () => {
@@ -41,7 +43,8 @@ test("gradeDokkai: a real, correct question option scores 1/1", () => {
     contentId: "dokkai_surat_sahabat_pena|dokkai_surat_sahabat_pena_q0",
     submittedText: "アメリカ",
   }]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeDokkai: a real question, wrong option text scores 0/1", () => {
@@ -49,7 +52,8 @@ test("gradeDokkai: a real question, wrong option text scores 0/1", () => {
     contentId: "dokkai_surat_sahabat_pena|dokkai_surat_sahabat_pena_q0",
     submittedText: "中国",
   }]);
-  assert.deepStrictEqual(result, {serverScore: 0, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 0);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeChoukai: a real, correct question option scores 1/1", () => {
@@ -57,14 +61,16 @@ test("gradeChoukai: a real, correct question option scores 1/1", () => {
     contentId: "choukai_n5_jam_berapa|choukai_n5_jam_berapa_q1",
     submittedText: "三時半",
   }]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeKanjiCombo: a real kanji reading (onyomi) is accepted", () => {
   const result = gradeKanjiCombo([
     {contentId: "一|reading", submittedText: "イチ"},
   ]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeKanjiCombo: a real kanji reading (kunyomi, okurigana marker " +
@@ -73,7 +79,8 @@ test("gradeKanjiCombo: a real kanji reading (kunyomi, okurigana marker " +
   const result = gradeKanjiCombo([
     {contentId: "一|reading", submittedText: "ひとつ"}, // marker stripped from "ひと-つ"
   ]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeKanjiCombo: a real kanji meaning (either language) is " +
@@ -81,7 +88,8 @@ test("gradeKanjiCombo: a real kanji meaning (either language) is " +
   const result = gradeKanjiCombo([
     {contentId: "一|meaning", submittedText: "one"},
   ]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeKanjiCombo: a real compound-word (Kotoba-sourced) reading " +
@@ -89,7 +97,8 @@ test("gradeKanjiCombo: a real compound-word (Kotoba-sourced) reading " +
   const result = gradeKanjiCombo([
     {contentId: "宗教|reading", submittedText: "しゅうきょう"},
   ]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 // ---------------------------------------------------------------------
@@ -102,23 +111,23 @@ test("gradeAttempt ignores any score/total-shaped fields mixed into an " +
     contentId: "hiragana_a", submittedText: "a",
     score: 999999, total: 1, // attacker noise, must be ignored
   }]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 1});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 1);
 });
 
 test("gradeAttempt: a fabricated document with NO real answers at all " +
     "(or a missing/malformed answers field) grades to 0/0 — the exact " +
     "P0 exploit's score=999999 case is now worth nothing", () => {
-  assert.deepStrictEqual(gradeAttempt("kana", undefined),
-      {serverScore: 0, serverTotal: 0});
-  assert.deepStrictEqual(gradeAttempt("kana", null),
-      {serverScore: 0, serverTotal: 0});
-  assert.deepStrictEqual(gradeAttempt("kana", "not an array"),
-      {serverScore: 0, serverTotal: 0});
-  assert.deepStrictEqual(
-      gradeAttempt("kana", [{contentId: "hiragana_a", submittedText: "999999"}]),
-      {serverScore: 0, serverTotal: 1},
-      "a bogus submittedText is graded exactly like any other wrong answer",
-  );
+  assert.strictEqual(gradeAttempt("kana", undefined).serverScore, 0);
+  assert.strictEqual(gradeAttempt("kana", undefined).serverTotal, 0);
+  assert.strictEqual(gradeAttempt("kana", null).serverScore, 0);
+  assert.strictEqual(gradeAttempt("kana", null).serverTotal, 0);
+  assert.strictEqual(gradeAttempt("kana", "not an array").serverScore, 0);
+  assert.strictEqual(gradeAttempt("kana", "not an array").serverTotal, 0);
+  const bogus = gradeAttempt("kana", [{contentId: "hiragana_a", submittedText: "999999"}]);
+  assert.strictEqual(bogus.serverScore, 0,
+      "a bogus submittedText is graded exactly like any other wrong answer");
+  assert.strictEqual(bogus.serverTotal, 1);
 });
 
 test("gradeAttempt: an answer citing a contentId that doesn't exist in " +
@@ -128,7 +137,8 @@ test("gradeAttempt: an answer citing a contentId that doesn't exist in " +
     {contentId: "hiragana_a", submittedText: "a"},
     {contentId: "no_such_kana_id", submittedText: "whatever"},
   ]);
-  assert.deepStrictEqual(result, {serverScore: 1, serverTotal: 2});
+  assert.strictEqual(result.serverScore, 1);
+  assert.strictEqual(result.serverTotal, 2);
 });
 
 // ---------------------------------------------------------------------
