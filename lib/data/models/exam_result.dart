@@ -39,9 +39,9 @@ class ExamResult {
   /// decide whether to celebrate with confetti on ExamResultScreen.
   final int newlyMasteredCount;
 
-  /// Raw, per-question submissions — `[{contentId, selectedIndex: -1,
-  /// submittedAnswer}]` — every question's kana id and the exact romaji
-  /// string the learner picked, correct or not (unlike [wrongAnswers]
+  /// Raw, per-question submissions — `[{contentId, submittedText}]` —
+  /// every question's kana id and the exact romaji string the learner
+  /// picked, correct or not (unlike [wrongAnswers]
   /// above, which only records mistakes). **Untrusted, exactly like
   /// [score]/[total]**: lets a server-side grader independently recompute
   /// the true score from its own copy of `kana_data.json`, rather than

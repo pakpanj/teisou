@@ -260,7 +260,7 @@ class ExamRepository {
       answers: answers
           .map((a) => {
                 'contentId': a.question.kana.id,
-                'submittedAnswer': a.selectedAnswer,
+                'submittedText': a.selectedAnswer,
               })
           .toList(),
     );
