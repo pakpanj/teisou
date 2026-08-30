@@ -8,6 +8,7 @@ import '../../../core/providers.dart';
 import '../../../core/services/coin_purchase_flow.dart';
 import '../../../core/services/iap_service.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../../core/widgets/purchase_success_snackbar.dart';
 
 /// The three coin packs, plus an explainer for the other way to earn
 /// coins (placing top 1-3 on Skor Global each week — see
@@ -26,6 +27,18 @@ class _CoinTopUpSheetState extends ConsumerState<CoinTopUpSheet> {
   StreamSubscription<IapOutcome>? _outcomeSub;
   String? _buying;
 
+  /// Which pack the *last* buy attempt was for — kept separate from
+  /// [_buying] on purpose. [_buying] is only "is the store sheet still
+  /// opening" state: `_buy`'s own trailing cleanup clears it the moment
+  /// `IapService.buyCoinPack` returns, which for a real Play purchase
+  /// happens as soon as the store sheet is *launched*, not when the
+  /// purchase actually completes — the real `IapOutcome` can arrive
+  /// long after that, by which point `_buying` is already back to
+  /// `null`. This field is never cleared by `_buy`, only ever
+  /// overwritten by the next attempt, so it survives long enough for the
+  /// outcome listener below to still know which pack succeeded.
+  String? _lastAttemptedProductId;
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +48,7 @@ class _CoinTopUpSheetState extends ConsumerState<CoinTopUpSheet> {
     });
     _outcomeSub = _purchase.outcomes.listen((outcome) {
       if (!mounted) return;
+      final boughtProductId = _lastAttemptedProductId;
       setState(() => _buying = null);
       final s = ref.read(appStringsProvider);
       final message = switch (outcome) {
@@ -52,9 +66,30 @@ class _CoinTopUpSheetState extends ConsumerState<CoinTopUpSheet> {
         // exhaustiveness reason as pendingVerification above.
         IapOutcome.accountMismatch => s.purchaseAccountMismatch,
       };
+      if (outcome == IapOutcome.delivered) {
+        // The one, polished success moment — see
+        // `showPurchaseSuccessSnackBar`'s own doc comment for why every
+        // purchase-success bar in the app shares this instead of a bare
+        // SnackBar. Falls back to the generic message if this sheet was
+        // never actually the one that bought anything (a `delivered` for
+        // some other purchase entirely reaching this listener, which
+        // `IapOutcome` being one shared app-wide stream makes possible in
+        // principle) — `_lastAttemptedProductId` is never set to
+        // anything outside `IapProducts.coinPackAmounts`'s own keys.
+        final amount = IapProducts.coinPackAmounts[boughtProductId];
+        showPurchaseSuccessSnackBar(
+          context,
+          message: amount != null ? s.coinTopUpSuccess(amount) : message,
+          icon: Icons.monetization_on,
+        );
+        Navigator.of(context).maybePop();
+        return;
+      }
+      // Every non-success outcome (cancelled/unavailable/failed/pending/
+      // mismatch) keeps the exact plain SnackBar it always has — only the
+      // success path gets the new treatment.
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
-      if (outcome == IapOutcome.delivered) Navigator.of(context).maybePop();
     });
   }
 
@@ -66,6 +101,7 @@ class _CoinTopUpSheetState extends ConsumerState<CoinTopUpSheet> {
 
   Future<void> _buy(String productId) async {
     setState(() => _buying = productId);
+    _lastAttemptedProductId = productId;
     final s = ref.read(appStringsProvider);
     await _purchase.buy(context, s, productId);
     // A failure that never opened the sheet (no uid, store unavailable)

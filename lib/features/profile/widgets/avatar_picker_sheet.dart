@@ -7,6 +7,7 @@ import '../../../core/providers.dart';
 import '../../../core/services/coin_spend_service.dart';
 import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../../core/widgets/purchase_success_snackbar.dart';
 import '../../../data/models/app_language.dart';
 import '../../../data/models/unlocked_cosmetics.dart';
 import '../../../data/models/user_profile.dart';
@@ -316,9 +317,7 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
         // exactly one place (the provider) avoids a second, hand-maintained
         // copy that could drift from it.
         if (!context.mounted) return;
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+        showPurchaseSuccessSnackBar(context, message: s.coinBuySuccess);
       } on CoinSpendException catch (e) {
         if (!context.mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
@@ -611,9 +610,7 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
         // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
         // watches the exact `xp.unlockedFrameIds` field this write lands in.
         if (!context.mounted) return;
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+        showPurchaseSuccessSnackBar(context, message: s.coinBuySuccess);
       } on CoinSpendException catch (e) {
         if (!context.mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(

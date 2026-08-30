@@ -117,6 +117,13 @@ class AppStrings {
     return _t('$grouped Koin', '$grouped Coins');
   }
 
+  /// The polished success feedback a completed Top Up shows — distinct
+  /// from [purchaseDelivered] (used for every other purchase kind) so a
+  /// coin pack's own amount can be named, matching [coinBalanceAmount]'s
+  /// "$amount koin"/"$amount coins" wording.
+  String coinTopUpSuccess(int amount) =>
+      _t('+$amount koin ditambahkan!', '+$amount coins added!');
+
   String get coinEarnFromRankTitle =>
       _t('Hadiah Skor Global mingguan', 'Weekly Skor Global reward');
   String get coinEarnFromRankSubtitle => _t(

@@ -7,6 +7,7 @@ import '../../../data/models/unlocked_cosmetics.dart';
 import '../../../core/providers.dart';
 import '../../../core/services/coin_spend_service.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../../core/widgets/purchase_success_snackbar.dart';
 import '../../paywall/paywall_screen.dart';
 import 'avatar_picker_sheet.dart' show PickerSectionTitle;
 
@@ -202,9 +203,7 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
         // ._buyWithCoins`'s identical note; `unlockedCosmeticsProvider`
         // watches the exact `xp.unlockedCoverIds` field this write lands in.
         if (!context.mounted) return;
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+        showPurchaseSuccessSnackBar(context, message: s.coinBuySuccess);
       } on CoinSpendException catch (e) {
         if (!context.mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(

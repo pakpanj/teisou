@@ -9,6 +9,7 @@ import '../../core/providers.dart';
 import '../../core/services/coin_spend_service.dart';
 import '../../core/services/iap_service.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/purchase_success_snackbar.dart';
 
 /// The shop — now a till, not just a window.
 ///
@@ -65,12 +66,29 @@ class _ShopTabState extends ConsumerState<ShopTab> {
 
   void _onOutcome(IapOutcome outcome) {
     if (!mounted) return;
+    // **Load-bearing, not defensive-only.** `IapService.outcomes` is one
+    // app-wide broadcast stream shared by every purchase this app sells —
+    // this listener stays subscribed for as long as `ShopTab` is alive,
+    // which (per `ShopScreen`'s `IndexedStack`) is the screen's whole
+    // lifetime, not just while this specific tab is showing. Without this
+    // guard, an *unrelated* purchase completing elsewhere — most notably
+    // a coin Top Up via `CoinTopUpSheet`, opened from the same
+    // `ShopScreen` — was also observed here and produced a second,
+    // redundant SnackBar for a purchase this widget never initiated.
+    // `_buying` is only ever non-null between this widget's own `_buy`
+    // starting and its outcome arriving, so this makes the listener react
+    // only to purchases *this* widget is actually waiting on.
+    if (_buying == null) return;
     final s = ref.read(appStringsProvider);
     setState(() => _buying = null);
+    if (outcome == IapOutcome.delivered) {
+      showPurchaseSuccessSnackBar(context, message: s.purchaseDelivered);
+      return;
+    }
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(switch (outcome) {
-          IapOutcome.delivered => s.purchaseDelivered,
+          IapOutcome.delivered => s.purchaseDelivered, // unreachable, see above
           IapOutcome.cancelled => s.purchaseCancelled,
           IapOutcome.unavailable => s.storeUnavailable,
           IapOutcome.failed => s.purchaseFailed,
@@ -132,8 +150,7 @@ class _ShopTabState extends ConsumerState<ShopTab> {
     try {
       await ref.read(coinSpendServiceProvider).buy(CoinSpendKind.skin, skin.id);
       if (!mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      showPurchaseSuccessSnackBar(context, message: s.coinBuySuccess);
     } on CoinSpendException catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
