@@ -77,6 +77,26 @@ NavigationDestination _navIcon(String asset, String label, IconData fallback) {
 
 class _CardGameShellState extends ConsumerState<CardGameShell> {
   late int _tab = widget.initialTab;
+  late final _pageController = PageController(initialPage: widget.initialTab);
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  /// Both the nav bar and [_LobbyTab]'s own "find opponent" button need to
+  /// jump to a tab programmatically — swiping is the other way [_tab]
+  /// changes, via [PageView.onPageChanged] below. Kept as one method so
+  /// both paths agree on how a jump animates.
+  void _goToTab(int index) {
+    setState(() => _tab = index);
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,22 +117,44 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
       child: Scaffold(
       backgroundColor: palette.background,
       appBar: AppBar(title: Text(titles[_tab])),
-      // IndexedStack, not a swapped child: the Battle tab holds a live
-      // matchmaking countdown and a queue listener, and rebuilding it on
-      // every tab change would cancel a search the moment a learner
-      // glanced at their skins.
-      body: IndexedStack(
-        index: _tab,
+      // A real PageView, so swiping left/right also switches tabs —
+      // mirrors HomeScreen's own bottom-tab PageView exactly, including
+      // the same reason each page is wrapped in `_KeepAlivePage`: the
+      // Battle tab holds a live matchmaking countdown and a queue
+      // listener, and losing that state on every tab change would cancel
+      // a search the moment a learner swiped over to glance at their
+      // skins. `_KeepAlivePage`'s `AutomaticKeepAliveClientMixin` keeps
+      // every tab built exactly once and never torn down, the same
+      // guarantee `IndexedStack` gave for free before this.
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) => setState(() => _tab = index),
+        // Off specifically while Skin (index 3) is showing —
+        // `CardSkinPickerBody` has its own horizontal filter-chip strip
+        // (`SingleChildScrollView(scrollDirection: Axis.horizontal)`),
+        // and a horizontal drag over it would otherwise compete with
+        // this PageView for the same gesture, in exactly the shape
+        // `AUDIT_GESTURE_CONFLICT.md` found and fixed for Toko's
+        // TabBarView-inside-PageView nesting. Unlike Toko, the chip
+        // strip's own scroll can't just be turned off — there's no
+        // second, tap-only way to reach a chip that overflows the
+        // screen — so this disables the *outer* swipe instead, only for
+        // this one tab: reaching or leaving Skin still works via the
+        // bottom nav, matching the tradeoff that audit's own "option 1"
+        // already accepted for this exact conflict shape.
+        physics: _tab == 3
+            ? const NeverScrollableScrollPhysics()
+            : const PageScrollPhysics(),
         children: [
-          _LobbyTab(onFindOpponent: () => setState(() => _tab = 2)),
-          const DeckTab(),
-          const BattleMatchmakingBody(),
-          const CardSkinPickerBody(),
+          _KeepAlivePage(child: _LobbyTab(onFindOpponent: () => _goToTab(2))),
+          const _KeepAlivePage(child: DeckTab()),
+          const _KeepAlivePage(child: BattleMatchmakingBody()),
+          const _KeepAlivePage(child: CardSkinPickerBody()),
         ],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _tab,
-        onDestinationSelected: (i) => setState(() => _tab = i),
+        onDestinationSelected: _goToTab,
         destinations: [
           _navIcon('nav_beranda', s.cardGameTabHome, Icons.home_outlined),
           _navIcon('nav_deck', s.cardGameTabDeck, Icons.style_outlined),
@@ -123,6 +165,32 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
       ),
       ),
     );
+  }
+}
+
+/// Keeps a tab's state alive once built, so swiping away and back doesn't
+/// lose scroll position or rebuild it from scratch — same shape and same
+/// reason as `home_screen.dart`'s private `_KeepAlivePage`, duplicated
+/// here rather than exported, matching this codebase's existing
+/// small-private-helper-per-file convention.
+class _KeepAlivePage extends StatefulWidget {
+  final Widget child;
+
+  const _KeepAlivePage({required this.child});
+
+  @override
+  State<_KeepAlivePage> createState() => _KeepAlivePageState();
+}
+
+class _KeepAlivePageState extends State<_KeepAlivePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return widget.child;
   }
 }
 
