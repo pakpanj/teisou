@@ -13,13 +13,12 @@ import 'kana_exam_mode_picker_screen.dart';
 /// needs a JLPT level first, so it opens its own level-picker home screen
 /// instead of being flattened into one shared list.
 ///
-/// Dokkai and Choukai used to be picker cards here too. Dokkai is reading-
-/// *practice* material (500 real passages), not an exam — it now lives in
-/// Home's "Latihan" section (`ModulesSection`) alongside Kaiwa instead.
-/// Choukai is removed entirely for now, not just moved — it has zero
-/// authored content (architecture-only, see CLAUDE.md), so showing it here
-/// promised a category that does nothing yet. Re-add it once it has real
-/// clips.
+/// Dokkai and Choukai used to be picker cards here too. Both are
+/// *practice* material, not exams, so both now live in Home's own module
+/// list (`ModulesSection`) instead — Dokkai (500 real passages) alongside
+/// Kaiwa, Choukai (500 real clips, 100 per JLPT level, fully authored —
+/// correction to a stale claim this comment used to make about it having
+/// "zero authored content") with its own `ChoukaiHomeScreen`.
 class ExamModePickerScreen extends ConsumerWidget {
   const ExamModePickerScreen({super.key});
 

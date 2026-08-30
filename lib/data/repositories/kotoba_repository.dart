@@ -92,29 +92,51 @@ class KotobaRepository {
     return all;
   }
 
-  /// Case-insensitive search across word, reading, romaji, and meaning.
+  bool _matches(KotobaEntry k, String trimmed) {
+    if (k.placeholder) return false;
+    if (k.word.toLowerCase().contains(trimmed)) return true;
+    if (k.kanji?.toLowerCase().contains(trimmed) ?? false) return true;
+    if (k.reading.toLowerCase().contains(trimmed)) return true;
+    if (k.romaji.toLowerCase().contains(trimmed)) return true;
+    if (k.meaning.toLowerCase().contains(trimmed)) return true;
+    if ((k.meaningEn ?? '').toLowerCase().contains(trimmed)) return true;
+    return false;
+  }
+
+  /// Case-insensitive search across word, reading, romaji, and meaning —
+  /// across the **whole** dictionary, not just [_loadAll]'s ~30-entry
+  /// legacy seed. `SearchScreen` (the app's main Kamus feature) calls this
+  /// directly, so before this fix a search here could only ever find
+  /// ~30 of the real 1,682 vocab-module words — the same class of gap
+  /// [getById] was already fixed for, just never applied here too. Legacy
+  /// entries are checked first (cheap, already in memory) and the vocab
+  /// module's ids are skipped if a legacy entry with the same id already
+  /// matched, so an id present in both can't appear twice in the results.
   Future<List<KotobaEntry>> search(String query) async {
     final trimmed = query.trim().toLowerCase();
     if (trimmed.isEmpty) return [];
-    final all = await _loadAll();
-    return all.where((k) {
-      if (k.placeholder) return false;
-      if (k.word.toLowerCase().contains(trimmed)) return true;
-      if (k.kanji?.toLowerCase().contains(trimmed) ?? false) return true;
-      if (k.reading.toLowerCase().contains(trimmed)) return true;
-      if (k.romaji.toLowerCase().contains(trimmed)) return true;
-      if (k.meaning.toLowerCase().contains(trimmed)) return true;
-      if ((k.meaningEn ?? '').toLowerCase().contains(trimmed)) return true;
-      return false;
-    }).toList();
+    final legacy = await _loadAll();
+    final results = legacy.where((k) => _matches(k, trimmed)).toList();
+    final seenIds = results.map((k) => k.id).toSet();
+    for (final entry in await getAllVocab()) {
+      if (seenIds.contains(entry.id)) continue;
+      if (_matches(entry, trimmed)) results.add(entry);
+    }
+    return results;
   }
 
   /// Exact match on [word] or [kanji] — used by the Cam Detector lookup,
   /// where the scanned text should map to one specific entry rather than
-  /// a fuzzy search result list.
+  /// a fuzzy search result list. Same legacy-then-vocab-module fallback as
+  /// [search] — a scanned word outside the ~30-entry legacy seed used to
+  /// silently miss even when it's one of the 1,682 real vocab-module words.
   Future<KotobaEntry?> findExact(String text) async {
-    final all = await _loadAll();
-    for (final entry in all) {
+    final legacy = await _loadAll();
+    for (final entry in legacy) {
+      if (entry.placeholder) continue;
+      if (entry.word == text || entry.kanji == text) return entry;
+    }
+    for (final entry in await getAllVocab()) {
       if (entry.placeholder) continue;
       if (entry.word == text || entry.kanji == text) return entry;
     }
