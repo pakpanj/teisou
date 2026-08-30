@@ -155,9 +155,35 @@ class IapService {
     );
 
     final response = await _store.queryProductDetails(ids);
+    // A subscription with more than one base plan/offer in Play Console
+    // returns one ProductDetails PER base-plan/offer combination, all
+    // sharing the same product id — the underlying platform channel's
+    // `GooglePlayProductDetails` carries a distinct `offerToken` per
+    // entry even though `id` repeats (found by reading the installed
+    // in_app_purchase_android plugin source, not assumed; see
+    // AUDIT_PLAY_ITEM_UNAVAILABLE.md's §5). `_products` is keyed by id
+    // alone, so this silently kept only whichever entry Play happened to
+    // list last — no log, no error, nothing to distinguish it from "the
+    // right one" being picked on purpose. Kept the same last-wins
+    // behavior (still the only reasonable default without a UI to pick
+    // an offer), but a duplicate is now at least visible if this is ever
+    // actually hit — today it either means Play Console genuinely has
+    // more than one offer configured, or is otherwise harmless.
+    final byId = <String, ProductDetails>{};
+    for (final p in response.productDetails) {
+      if (byId.containsKey(p.id)) {
+        debugPrint(
+          'IAP: product id "${p.id}" returned more than one offer from '
+          'the store — keeping the last one seen, discarding an earlier '
+          'match. This usually means Play Console has more than one base '
+          'plan/offer for this product; check AUDIT_PLAY_ITEM_UNAVAILABLE.md.',
+        );
+      }
+      byId[p.id] = p;
+    }
     _products
       ..clear()
-      ..addEntries(response.productDetails.map((p) => MapEntry(p.id, p)));
+      ..addEntries(byId.entries);
     missingProducts
       ..clear()
       ..addAll(response.notFoundIDs);
