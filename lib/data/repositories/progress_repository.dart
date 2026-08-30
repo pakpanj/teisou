@@ -20,6 +20,17 @@ import '../models/unlocked_cosmetics.dart';
 import '../models/user_profile.dart';
 import '../models/xp_progress.dart';
 
+/// Value equality for [Subscription] — [ProgressRepository.watchSubscription]'s
+/// `.distinct()` comparator. A top-level function, not an inline lambda, so
+/// it can be unit-tested directly without spinning up Firestore: see
+/// `test/global_refresh_glitch_test.dart`. [Subscription] itself has
+/// no `==` override (nothing else in this codebase compares two instances),
+/// so this compares the three fields that actually make up its value.
+bool subscriptionValueEquals(Subscription a, Subscription b) =>
+    a.tier == b.tier &&
+    a.purchasedAt == b.purchasedAt &&
+    a.expiresAt == b.expiresAt;
+
 /// Reads and writes per-user progress (profile + per-kana learning state)
 /// stored on the `users/{uid}` document.
 class ProgressRepository {
@@ -237,12 +248,33 @@ class ProgressRepository {
     );
   }
 
+  /// **`.distinct()` is load-bearing, not a micro-optimisation.** This
+  /// listens on the whole `users/{uid}` document (see `_userDoc`), the
+  /// same document `watchCoinBalance`/`watchOwnedSkins`/every other
+  /// `watch*` method here also listens to — so a write to `coins` or
+  /// `entitlements` (a coin top-up, a coin-spent cosmetic) re-delivers a
+  /// snapshot to *this* listener too, even though `subscription` itself
+  /// never changed. Without `.distinct()`, that re-emits a **new**
+  /// `Subscription` object through `subscriptionProvider` on every such
+  /// write — and `planIntroShouldShowProvider` (`core/providers.dart`)
+  /// watches `subscriptionProvider.future`, so it re-runs and briefly
+  /// re-enters loading, which `main.dart`'s `_PlanIntroGate` turns into a
+  /// full teardown/remount of `HomeScreen` (`_navIndex` resets to the
+  /// Home tab) — confirmed root cause of the "buy a coin pack / spend
+  /// coins on a cosmetic and get bounced back to the Home tab" bug. The
+  /// comparator is by value (tier/purchasedAt/expiresAt), not object
+  /// identity, since `Subscription` has no `==` override and every
+  /// `.fromMap()` call already returns a new instance regardless of
+  /// whether the underlying data changed.
   Stream<Subscription> watchSubscription(String uid) {
-    return _userDoc(uid).snapshots().map(
-      (snapshot) => Subscription.fromMap(
-        snapshot.data()?['subscription'] as Map<String, dynamic>?,
-      ),
-    );
+    return _userDoc(uid)
+        .snapshots()
+        .map(
+          (snapshot) => Subscription.fromMap(
+            snapshot.data()?['subscription'] as Map<String, dynamic>?,
+          ),
+        )
+        .distinct(subscriptionValueEquals);
   }
 
   Future<Subscription> getSubscription(String uid) async {

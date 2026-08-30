@@ -12,6 +12,7 @@ import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/count_badge.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../core/widgets/sakura_fall_widget.dart';
+import '../bab/bab_providers.dart' show babNextUpProvider;
 import '../exam/exam_mode_picker_screen.dart';
 import '../leaderboard/chat_providers.dart';
 import '../leaderboard/friend_providers.dart';
@@ -141,7 +142,22 @@ class _HomeTabBody extends ConsumerWidget {
               children: [
                 Expanded(
                   child: AppRefreshIndicator(
-                    onRefresh: () => ref.refresh(appStartupProvider.future),
+                    // Was `ref.refresh(appStartupProvider.future)` —
+                    // refreshed the app's root sign-in provider just to
+                    // update this tab, which (via
+                    // `planIntroShouldShowProvider`, which watches
+                    // `appStartupProvider.future`) briefly re-collapsed
+                    // `main.dart`'s `_PlanIntroGate` to its loading
+                    // branch, tearing down and remounting the whole
+                    // `HomeScreen` subtree — on this specific tab that
+                    // reads as nothing happening (the tab was already
+                    // Home), but it's the same defect Profile/Toko hit
+                    // visibly. Everything this tab shows (XP, card-game
+                    // rank, module-access gating) is already a live
+                    // Firestore stream; the one genuinely one-shot fetch
+                    // is the Bab "what's next" suggestion the mascot
+                    // guide reads — see `babNextUpProvider`.
+                    onRefresh: () => ref.refresh(babNextUpProvider.future),
                     child: SingleChildScrollView(
                       physics: const AlwaysScrollableScrollPhysics(),
                       padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),

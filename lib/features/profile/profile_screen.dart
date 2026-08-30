@@ -27,6 +27,7 @@ import '../leaderboard/leaderboard_screen.dart';
 import '../leaderboard/public_profile_screen.dart' show BabProgressBody;
 import '../saved_words/saved_words_screen.dart';
 import 'about_screen.dart';
+import 'exam_history_providers.dart' show fullExamHistoryProvider;
 import 'exam_history_screen.dart';
 import 'language_screen.dart';
 import 'theme_screen.dart';
@@ -104,7 +105,21 @@ class _ProfileBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppRefreshIndicator(
-      onRefresh: () => ref.refresh(appStartupProvider.future),
+      // Was `ref.refresh(appStartupProvider.future)` — refreshed the
+      // app's root sign-in provider just to update this screen, which
+      // (via `planIntroShouldShowProvider`, which watches
+      // `appStartupProvider.future`) briefly re-collapsed `main.dart`'s
+      // `_PlanIntroGate` to its loading branch, tearing down and
+      // remounting the whole `HomeScreen` subtree and resetting the
+      // bottom-nav tab back to Home. Everything else this screen shows
+      // (profile, XP, streak, subscription, coin balance) is already a
+      // live Firestore stream that updates on its own; the one thing
+      // that genuinely needs a manual refresh is the one-shot exam
+      // history fetch this screen's "3 terakhir" list derives from — see
+      // `fullExamHistoryProvider`'s own doc comment, and
+      // `exam_history_screen.dart`'s identical `onRefresh` for the full
+      // list this mirrors.
+      onRefresh: () => ref.refresh(fullExamHistoryProvider.future),
       child: ListView(
         physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.all(20),
