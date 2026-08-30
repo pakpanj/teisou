@@ -62,9 +62,10 @@
  * See audit_premium_exclusive_impact.js's own header for how to get a
  * service-account key if you don't already have one downloaded.
  */
-const admin = require("firebase-admin");
-admin.initializeApp();
-const db = admin.firestore();
+const {initializeApp} = require("firebase-admin/app");
+const {getFirestore, FieldValue} = require("firebase-admin/firestore");
+initializeApp();
+const db = getFirestore();
 
 const PREMIUM_ONLY = {
   avatar: ["neko_astronaut", "neko_gamer", "neko_lion"],
@@ -158,19 +159,19 @@ async function main() {
         const auditRef = db.collection("migrationAuditLog").doc();
         if (c.docType === "ledger") {
           batch.update(userRef, {
-            [`xp.${LEDGER_FIELD[c.kind]}`]: admin.firestore.FieldValue.arrayRemove(c.id),
+            [`xp.${LEDGER_FIELD[c.kind]}`]: FieldValue.arrayRemove(c.id),
           });
           batch.set(auditRef, {
             uid, field: `xp.${LEDGER_FIELD[c.kind]}`,
             oldValue: c.id, newValue: null, kind: "arrayRemove",
-            scriptRunId: SCRIPT_RUN_ID, at: admin.firestore.FieldValue.serverTimestamp(),
+            scriptRunId: SCRIPT_RUN_ID, at: FieldValue.serverTimestamp(),
           });
         } else {
           batch.update(userRef, {[`profile.${EQUIPPED_FIELD[c.kind]}`]: null});
           batch.set(auditRef, {
             uid, field: `profile.${EQUIPPED_FIELD[c.kind]}`,
             oldValue: c.oldValue, newValue: null, kind: "reset",
-            scriptRunId: SCRIPT_RUN_ID, at: admin.firestore.FieldValue.serverTimestamp(),
+            scriptRunId: SCRIPT_RUN_ID, at: FieldValue.serverTimestamp(),
           });
         }
       }

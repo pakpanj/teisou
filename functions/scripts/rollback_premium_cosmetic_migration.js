@@ -22,9 +22,10 @@
  *      GOOGLE_APPLICATION_CREDENTIALS="C:/path/to/key.json" \
  *        node scripts/rollback_premium_cosmetic_migration.js <scriptRunId> --write
  */
-const admin = require("firebase-admin");
-admin.initializeApp();
-const db = admin.firestore();
+const {initializeApp} = require("firebase-admin/app");
+const {getFirestore, FieldValue} = require("firebase-admin/firestore");
+initializeApp();
+const db = getFirestore();
 
 const WRITE = process.argv.includes("--write");
 const scriptRunId = process.argv[2];
@@ -71,7 +72,7 @@ async function main() {
     for (const r of group) {
       const userRef = db.collection("users").doc(r.uid);
       if (r.kind === "arrayRemove") {
-        batch.update(userRef, {[r.field]: admin.firestore.FieldValue.arrayUnion(r.oldValue)});
+        batch.update(userRef, {[r.field]: FieldValue.arrayUnion(r.oldValue)});
       } else {
         batch.update(userRef, {[r.field]: r.oldValue});
       }

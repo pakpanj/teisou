@@ -48,9 +48,10 @@
  * script's PREMIUM_ONLY constant again — it is not derived automatically
  * from the Dart source, since that would mean parsing Dart from Node.
  */
-const admin = require("firebase-admin");
-admin.initializeApp();
-const db = admin.firestore();
+const {initializeApp} = require("firebase-admin/app");
+const {getFirestore} = require("firebase-admin/firestore");
+initializeApp();
+const db = getFirestore();
 
 const PREMIUM_ONLY = {
   avatar: ["neko_astronaut", "neko_gamer", "neko_lion"],
