@@ -2215,6 +2215,21 @@ class AppStrings {
       _t('Pilih kartu untuk lawan', 'Pick a card for your opponent');
   String get battleOpponentChoosing =>
       _t('Lawan sedang memilih kartu...', 'Opponent is picking a card...');
+  // 30-second reconnect grace period (2026-08-30).
+  String get battleOpponentAbandonedTitle => _t(
+    'Lawan terputus dari pertandingan',
+    'Opponent got disconnected',
+  );
+  String battleOpponentAbandonedCountdown(int seconds) => _t(
+    'Menunggu $seconds detik lagi sebelum kamu menang otomatis...',
+    'Waiting $seconds more seconds before you win automatically...',
+  );
+  String get battleResumableTitle =>
+      _t('Pertandingan masih berlangsung', 'A match is still in progress');
+  String battleResumableCountdown(int seconds) =>
+      _t('Waktu tersisa: $seconds detik', 'Time left: $seconds seconds');
+  String get battleResumableCta =>
+      _t('Kembali ke Pertandingan', 'Return to Match');
   // Skin kartu — satu-satunya kosmetik yang dilihat lawan.
   // Mode Kartu — bottom nav dan dua tab barunya.
   String get cardGameTabHome => _t('Beranda', 'Home');

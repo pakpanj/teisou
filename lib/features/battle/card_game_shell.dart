@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,7 +13,9 @@ import '../../data/repositories/onboarding_repository.dart';
 import '../../data/models/card_game_rank.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import '../../core/widgets/user_avatar.dart';
+import 'battle_invite_providers.dart' show battleResumableMatchProvider;
 import 'battle_matchmaking_screen.dart';
+import 'battle_screen.dart';
 import 'card_skin_picker_screen.dart';
 import '../onboarding/coach_mark_tour.dart';
 import '../onboarding/first_visit_tutorial.dart';
@@ -194,6 +198,184 @@ class _KeepAlivePageState extends State<_KeepAlivePage>
   }
 }
 
+/// "Pertandingan masih berlangsung" — the 30-second reconnect grace
+/// period's own resume entry point (2026-08-30). See
+/// `BattleRepository.findResumableMatch`'s doc comment for the query
+/// this is built on, and `battle_screen.dart`'s own `initState`/app-
+/// resume handling for what "resuming" actually does once this is
+/// tapped — pushing the *same* `matchId`, never a new one.
+///
+/// Renders nothing at all while there is no resumable match — the
+/// common case, so this must never reserve visible space for itself
+/// when idle.
+class _ResumableMatchCard extends ConsumerWidget {
+  const _ResumableMatchCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final match = ref.watch(battleResumableMatchProvider).valueOrNull;
+    if (match == null) return const SizedBox.shrink();
+    final s = ref.watch(appStringsProvider);
+    final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
+    final abandon = match.abandon;
+    // Only meaningful while *this* player is the one the grace period is
+    // actually counting down against — a match that is simply still
+    // active (no abandon mark at all, or the opponent's own mark, not
+    // this device's) is still resumable, just without an urgent
+    // countdown to show for it.
+    final showsCountdown = abandon != null && myUid != null && abandon.uid == myUid;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: showsCountdown
+          ? _ResumableMatchCountdown(
+              strings: s,
+              matchId: match.id,
+              since: abandon.since,
+            )
+          : _ResumableMatchStatic(strings: s, matchId: match.id),
+    );
+  }
+}
+
+class _ResumableMatchStatic extends StatelessWidget {
+  const _ResumableMatchStatic({required this.strings, required this.matchId});
+
+  final AppStrings strings;
+  final String matchId;
+
+  @override
+  Widget build(BuildContext context) {
+    return _ResumableMatchShell(
+      strings: strings,
+      matchId: matchId,
+      subtitle: null,
+    );
+  }
+}
+
+/// The version with a live "Waktu tersisa: Ns" countdown — its own tiny
+/// `StatefulWidget` so the 1-second tick only rebuilds this card, not
+/// the whole lobby.
+class _ResumableMatchCountdown extends StatefulWidget {
+  const _ResumableMatchCountdown({
+    required this.strings,
+    required this.matchId,
+    required this.since,
+  });
+
+  final AppStrings strings;
+  final String matchId;
+  final DateTime? since;
+
+  @override
+  State<_ResumableMatchCountdown> createState() =>
+      _ResumableMatchCountdownState();
+}
+
+class _ResumableMatchCountdownState extends State<_ResumableMatchCountdown> {
+  Timer? _tick;
+
+  @override
+  void initState() {
+    super.initState();
+    _tick = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _tick?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final since = widget.since;
+    final elapsed = since == null ? Duration.zero : DateTime.now().difference(since);
+    final remaining =
+        const Duration(seconds: kBattleAbandonGracePeriodSeconds) - elapsed;
+    final secondsLeft = remaining.isNegative ? 0 : remaining.inSeconds + 1;
+    return _ResumableMatchShell(
+      strings: widget.strings,
+      matchId: widget.matchId,
+      subtitle: widget.strings.battleResumableCountdown(secondsLeft),
+    );
+  }
+}
+
+class _ResumableMatchShell extends StatelessWidget {
+  const _ResumableMatchShell({
+    required this.strings,
+    required this.matchId,
+    required this.subtitle,
+  });
+
+  final AppStrings strings;
+  final String matchId;
+  final String? subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: palette.tertiaryAmberCardBg,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.replay_circle_filled, color: palette.primaryCoral),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  strings.battleResumableTitle,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: palette.textNavy,
+                  ),
+                ),
+                if (subtitle != null)
+                  Text(
+                    subtitle!,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: palette.textNavy.withValues(alpha: 0.7),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: palette.primaryCoral,
+            ),
+            // Pushes the exact same matchId — never
+            // BattleRepository.createMatch, so this can never spawn a
+            // duplicate match. BattleScreen's own initState clears this
+            // player's abandon mark the instant it mounts (see its
+            // `_clearOwnAbandonMark`), which is what actually cancels
+            // the grace period — this button only navigates.
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => BattleScreen(matchId: matchId),
+              ),
+            ),
+            child: Text(strings.battleResumableCta),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// The first thing you see: who you are, where you stand, and one button.
 ///
 /// Follows the redesign's lobby panel. Three of its pieces are
@@ -224,6 +406,7 @@ class _LobbyTab extends ConsumerWidget {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: [
+          const _ResumableMatchCard(),
           TutorialTarget(
             id: kTutorialCardGameHeader,
             child: _LobbyHeader(rank: rank, starTotal: starTotal, strings: s),

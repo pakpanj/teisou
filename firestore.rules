@@ -801,7 +801,42 @@ service cloud.firestore {
           // tidak dibekukan — itu justru yang ditulis pemain tiap
           // giliran. Yang dibekukan adalah isi tangannya, supaya tidak
           // ada yang menukar kartunya di tengah pertandingan.
-          && request.resource.data.get('decks', {}) == resource.data.get('decks', {});
+          && request.resource.data.get('decks', {}) == resource.data.get('decks', {})
+          // `abandon` — penanda "saya baru saja meninggalkan pertandingan
+          // ini" (2026-08-30, 30-second reconnect grace period). Field
+          // ini SENGAJA tidak dibekukan sepenuhnya seperti field lain di
+          // atas — pemain sendiri yang menulisnya, langsung dari client,
+          // saat menutup/meninggalkan layar Battle. Tapi hanya tiga
+          // bentuk perubahan yang diizinkan, supaya seorang pemain tidak
+          // bisa menandai LAWANNYA sebagai "pergi" untuk mencuri
+          // kemenangan:
+          //   1. tidak berubah sama sekali (mayoritas tulisan lain di
+          //      match ini — playCard/submitAnswer/dst.);
+          //   2. menandai DIRI SENDIRI sebagai pergi, hanya dari kosong
+          //      (`resource.data.abandon` harus null dulu — tidak bisa
+          //      menimpa tanda milik lawan), dan `since` harus benar-
+          //      benar jam server (`request.time`), bukan angka yang
+          //      dikarang client;
+          //   3. menghapus tanda milik DIRI SENDIRI (kembali ke null),
+          //      hanya kalau match masih `active` — begitu Cloud Function
+          //      `resolveBattleAbandonment` sudah menuliskan `result`,
+          //      match tidak lagi `active` dan `abandon` di titik itu
+          //      sepenuhnya milik Cloud Function, klien tidak boleh
+          //      menyentuhnya lagi.
+          // Cloud Function (Admin SDK) sendiri melewati rule ini
+          // sepenuhnya — inilah yang menulis `result`/`status` begitu
+          // 30 detiknya habis, lihat functions/battle_abandonment_sweep.js.
+          && (
+            request.resource.data.get('abandon', null) == resource.data.get('abandon', null)
+            || (request.resource.data.abandon != null
+                && request.resource.data.abandon.uid == request.auth.uid
+                && request.resource.data.abandon.since == request.time
+                && resource.data.get('abandon', null) == null)
+            || (request.resource.data.get('abandon', null) == null
+                && resource.data.get('abandon', null) != null
+                && resource.data.abandon.uid == request.auth.uid
+                && resource.data.status == 'active')
+          );
 
       // Write-once — no update/delete, so a submitted answer can never
       // be edited after the fact. Deliberately NOT restricted to

@@ -18,7 +18,16 @@ void main() {
         File('lib/features/battle/battle_screen.dart').readAsStringSync();
     final start = source.indexOf('Widget _buildResult(');
     expect(start, greaterThan(-1), reason: 'the result builder is gone');
-    final body = source.substring(start);
+    // Bounded to _buildResult's own method, not "the rest of the file" —
+    // an unbounded substring here would also (correctly) flag any later,
+    // unrelated widget's own legitimate DateTime.now() use (e.g. the
+    // 30-second reconnect grace period's own live countdown banner,
+    // added 2026-08-30, which lives further down this same file and has
+    // nothing to do with the result screen's duration figure) as if it
+    // were this bug reappearing.
+    final end = source.indexOf('\n  /// Every round that actually resolved');
+    expect(end, greaterThan(start), reason: '_reviewCards marker moved');
+    final body = source.substring(start, end);
 
     expect(
       body.contains('DateTime.now()'),

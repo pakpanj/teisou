@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../core/firebase/firestore_paths.dart';
@@ -151,6 +153,72 @@ class LeaderboardRepository {
       );
     }
     return results;
+  }
+
+  /// Live counterpart to [getMany], for exactly 2 uids — Card Game
+  /// Mode's own opponent-identity lookup
+  /// (`battle_invite_providers.dart`'s `battleOpponentsProvider`).
+  ///
+  /// **Why this exists: [getMany] is a one-shot fetch, and that raced a
+  /// real self-heal write.** `_republishMyCardSkin`/`_republishMyAvatar`
+  /// repair *this device's own* `leaderboard/{uid}.cardSkinId` the
+  /// moment a match starts — but that repair runs on the account whose
+  /// mirror was stale, not on the opponent's device watching it. If the
+  /// opponent's own repair write landed even a moment after this
+  /// device's one-shot `getMany` had already read their (still stale)
+  /// row, this device would show the wrong/default skin for the
+  /// opponent's whole match, with nothing left to ever correct it —
+  /// `FutureProvider.family` never re-fetches on its own. Watching the
+  /// same two docs live means a late-arriving correction still reaches
+  /// this device the moment it lands, the same way any other live
+  /// Firestore listener in this app already self-corrects.
+  ///
+  /// Deliberately not built on [getMany]'s own chunked `whereIn` (no
+  /// live `snapshots()` equivalent for a `whereIn` query in this SDK
+  /// version worth relying on for just 2 ids) — two individual document
+  /// listeners, merged, is simpler and cheaper for a match that only
+  /// ever has 2 players.
+  Stream<List<LeaderboardEntry>> watchMany(List<String> uids) {
+    if (uids.isEmpty) return Stream.value(const []);
+    // A hand-rolled combine-latest rather than reaching for a new
+    // dependency (`rxdart`) just for this one call site — a handful of
+    // uids (in practice always exactly 2, a match's own player list)
+    // makes tracking "the latest value seen from each source stream" by
+    // hand entirely reasonable, and this project has no existing rxdart
+    // dependency to build on instead.
+    late final StreamController<List<LeaderboardEntry>> controller;
+    final subs = <StreamSubscription<void>>[];
+    final latest = List<LeaderboardEntry?>.filled(uids.length, null);
+    final seen = List<bool>.filled(uids.length, false);
+
+    void emitIfReady() {
+      if (seen.any((s) => !s)) return;
+      controller.add(latest.whereType<LeaderboardEntry>().toList());
+    }
+
+    controller = StreamController<List<LeaderboardEntry>>.broadcast(
+      onListen: () {
+        for (var i = 0; i < uids.length; i++) {
+          final index = i;
+          subs.add(
+            _collection.doc(uids[index]).snapshots().listen((snap) {
+              latest[index] = snap.exists && snap.data() != null
+                  ? LeaderboardEntry.fromMap(uids[index], snap.data()!)
+                  : null;
+              seen[index] = true;
+              emitIfReady();
+            }),
+          );
+        }
+      },
+      onCancel: () async {
+        for (final sub in subs) {
+          await sub.cancel();
+        }
+        subs.clear();
+      },
+    );
+    return controller.stream;
   }
 
   /// Sorts a pre-fetched list by global score, descending — for rankings

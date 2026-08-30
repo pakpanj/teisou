@@ -374,3 +374,12 @@ exports.consumeAdReward = require("./ad_rewards").consumeAdReward;
 // functions/battle_abandonment_sweep.js.
 exports.sweepAbandonedBattleMatches =
   require("./battle_abandonment_sweep").sweepAbandonedBattleMatches;
+
+// The 30-second explicit "leaving the match" grace period (2026-08-30) —
+// called by the still-present opponent's own client once its local
+// countdown off the match's `abandon` marker reaches zero. The 2-minute
+// sweep above also checks this on every cycle, as the backstop for when
+// neither player is present to call it directly. See
+// functions/battle_abandonment_sweep.js's own doc comments.
+exports.resolveBattleAbandonment =
+  require("./battle_abandonment_sweep").resolveBattleAbandonment;

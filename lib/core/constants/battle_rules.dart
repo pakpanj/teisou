@@ -58,3 +58,18 @@ const kBattleMinimumSeconds = 10;
 /// dead seconds every other round would be the longest part of a bot
 /// match.
 const kBattleCardChoiceSeconds = 10;
+
+/// The 30-second reconnect grace period (2026-08-30) — how long a
+/// player who has left an active match stays "away" before their
+/// opponent's client (or the server-side sweep, as a backstop) is
+/// allowed to finalize the match as an abandonment loss. Mirrors
+/// `functions/battle_abandonment_sweep.js`'s `ABANDON_GRACE_PERIOD_MS`,
+/// the same cross-language split every other constant in this file
+/// already carries.
+///
+/// **Distinct from every timer above** — those bound one *round*; this
+/// bounds the whole match staying resumable after an explicit leave
+/// (back/Home navigation, the app backgrounding — see
+/// `battle_screen.dart`'s lifecycle observer). See `BattleMatch.abandon`
+/// for the marker this counts down from.
+const kBattleAbandonGracePeriodSeconds = 30;

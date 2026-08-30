@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/battle_invite.dart';
+import '../../data/models/battle_match.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 
@@ -27,20 +28,48 @@ final myPendingBattleInvitesProvider =
 ///
 /// `family` on the player list rather than on a single uid, so both
 /// sides come back in one query instead of two round trips.
+///
+/// **A live stream, not a one-shot fetch — this is the fix for the
+/// "opponent's equipped card skin visible inconsistently" report
+/// (2026-08-30, observed on iOS).** A one-shot `FutureProvider.family`
+/// fetched `leaderboard/{opponentUid}` exactly once, at match entry.
+/// That raced the opponent's *own* self-heal repair below
+/// (`_republishMyCardSkin`) — a write that runs on *their* device, not
+/// this one — so whichever side's read happened to land first saw a
+/// stale/default skin for the opponent, permanently, since nothing ever
+/// re-fetched. Watching both players' rows live via
+/// `LeaderboardRepository.watchMany` means a correction landing even a
+/// moment later still reaches this device automatically, the same
+/// self-correcting behavior every other live Firestore listener in this
+/// app already has. See `battle_screen.dart`'s `_skinFor` for why the
+/// opponent's skin is trusted from this mirror at all rather than a
+/// live entitlement re-check (a separate, still-true security
+/// boundary this change does not touch).
 final battleOpponentsProvider =
-    FutureProvider.family<Map<String, LeaderboardEntry>, List<String>>((
+    StreamProvider.family<Map<String, LeaderboardEntry>, List<String>>((
   ref,
   players,
-) async {
+) async* {
   final real = players.where((uid) => uid != battleBotUid).toList();
-  if (real.isEmpty) return const {};
+  if (real.isEmpty) {
+    yield const {};
+    return;
+  }
   final repository = ref.read(leaderboardRepositoryProvider);
-  final entries = await repository.getMany(real);
-  final byUid = {for (final e in entries) e.uid: e};
 
+  // The one-shot self-heal check stays exactly as it was — see
+  // _republishMyCardSkin/_republishMyAvatar's own doc comments — just
+  // run once, off a plain getMany, rather than on every live snapshot
+  // below (which would be redundant: once synced, it is a no-op every
+  // time anyway, but there is no reason to keep re-checking).
+  final initial = await repository.getMany(real);
+  final byUid = {for (final e in initial) e.uid: e};
   await _republishMyCardSkin(ref, byUid);
   await _republishMyAvatar(ref, byUid);
-  return byUid;
+
+  yield* repository
+      .watchMany(real)
+      .map((entries) => {for (final e in entries) e.uid: e});
 });
 
 /// Re-publishes this player's own card skin onto their public row if the
@@ -122,3 +151,18 @@ Future<void> _republishMyAvatar(
     // The next match tries again.
   }
 }
+
+/// The match the "Kembali ke Pertandingan" card offers a return to — see
+/// `BattleRepository.findResumableMatch`'s own doc comment for the
+/// query. `autoDispose`, so re-entering the Card Game lobby (from Home,
+/// from the app cold-starting, or just switching tabs and back) always
+/// asks fresh rather than trusting a value that could already be stale
+/// — a match that resolved (naturally, or via the 30-second grace period
+/// finalizing) while the lobby wasn't on screen must stop being offered
+/// the moment it's looked at again.
+final battleResumableMatchProvider = FutureProvider.autoDispose<BattleMatch?>((
+  ref,
+) async {
+  final user = await ref.watch(appStartupProvider.future);
+  return ref.watch(battleRepositoryProvider).findResumableMatch(user.uid);
+});

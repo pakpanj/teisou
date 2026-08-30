@@ -159,6 +159,22 @@ class BattleMatch {
   /// both players can already see.
   final BattleInviteState inviteState;
 
+  /// Who last left this match, and when — the 30-second reconnect grace
+  /// period's own marker (2026-08-30). `null` while nobody has left, or
+  /// once the disconnected player has come back (see
+  /// `BattleRepository.clearAbandoning`) or the grace period has already
+  /// been resolved one way or the other (see `resolveOneAbandonment` in
+  /// `functions/battle_abandonment_sweep.js`, which clears/overwrites it
+  /// the moment it finalizes the match).
+  ///
+  /// **Client-writable, unlike `result`/`officialScore`/`scoredRounds`**
+  /// — a player marks *themselves* leaving directly, no Cloud Function
+  /// round trip needed for that half. `firestore.rules` restricts the
+  /// three legal transitions (unchanged / self-mark-from-null /
+  /// self-clear-while-still-active) so a player can never mark or clear
+  /// their *opponent's* mark — see that rule's own comment.
+  final BattleAbandonMarker? abandon;
+
   BattleMatch({
     required this.id,
     required this.players,
@@ -177,6 +193,7 @@ class BattleMatch {
     this.playedCards = const {},
     this.inviteState = BattleInviteState.none,
     this.createdAt,
+    this.abandon,
   });
 
   /// Nobody should be playing this match yet — the invited player has
@@ -184,6 +201,13 @@ class BattleMatch {
   /// by the accept (see `BattleRepository.respondToMatchInvite`), so a
   /// challenge left sitting for a minute does not eat the first round.
   bool get isAwaitingAccept => inviteState == BattleInviteState.pending;
+
+  /// A match neither finished nor awaiting an invite's accept — the
+  /// shape `BattleRepository.findResumableMatch` looks for, and what the
+  /// Card Game lobby's "Kembali ke Pertandingan" card is offered a
+  /// return to.
+  bool get isResumable =>
+      status == BattleMatchStatus.active && result == null && !isAwaitingAccept;
 
   /// The card actually in play for [round]: the owner's choice if they
   /// made one, otherwise the card dealt to that round at creation.
@@ -263,6 +287,11 @@ class BattleMatch {
           const {},
       inviteState: BattleInviteStateX.fromKey(map['inviteState'] as String?),
       createdAt: _toDateTime(map['createdAt']),
+      abandon: map['abandon'] is Map
+          ? BattleAbandonMarker.fromMap(
+              Map<String, dynamic>.from(map['abandon'] as Map),
+            )
+          : null,
     );
   }
 
@@ -361,4 +390,35 @@ class BattleStarResult {
     season: 0,
     winStreak: winStreak,
   );
+}
+
+/// "Who left this match, and when" — see [BattleMatch.abandon]'s own
+/// doc comment for the full reasoning.
+class BattleAbandonMarker {
+  final String uid;
+  final DateTime? since;
+
+  const BattleAbandonMarker({required this.uid, this.since});
+
+  factory BattleAbandonMarker.fromMap(Map<String, dynamic> map) {
+    return BattleAbandonMarker(
+      uid: map['uid'] as String? ?? '',
+      since: _abandonSince(map['since']),
+    );
+  }
+
+  /// How long ago this player left, or `null` if the timestamp hasn't
+  /// landed yet (a `serverTimestamp()` sentinel briefly reads back as
+  /// absent from the client that just wrote it, before the server's own
+  /// value round-trips back down — the same latency-compensation gap
+  /// every other `serverTimestamp()` field in this app already has).
+  Duration? elapsedSince(DateTime now) =>
+      since == null ? null : now.difference(since!);
+}
+
+DateTime? _abandonSince(dynamic value) {
+  if (value == null) return null;
+  if (value is Timestamp) return value.toDate();
+  if (value is DateTime) return value;
+  return null;
 }

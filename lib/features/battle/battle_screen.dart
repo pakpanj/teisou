@@ -62,7 +62,8 @@ class BattleScreen extends ConsumerStatefulWidget {
   ConsumerState<BattleScreen> createState() => _BattleScreenState();
 }
 
-class _BattleScreenState extends ConsumerState<BattleScreen> {
+class _BattleScreenState extends ConsumerState<BattleScreen>
+    with WidgetsBindingObserver {
   /// What has been typed for the current card. One buffer, not one per
   /// answer type — both keyboards are this app's own now, so there is no
   /// `TextEditingController` left to keep in step with it.
@@ -119,10 +120,57 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   /// was already won.
   DateTime? _finishedAt;
 
+  /// The most recently seen match state — updated every `build()`, read
+  /// from `dispose()` (which cannot itself watch a provider) to decide
+  /// whether leaving this screen right now should mark this player as
+  /// having abandoned an active match. See [_maybeMarkAbandoningOnLeave].
+  BattleMatch? _lastKnownMatch;
+
+  /// Reconnect grace period (2026-08-30) — mirrors [_timeoutHandledForRound]'s
+  /// shape: which opponent-abandon episode this device has already
+  /// scheduled a resolve call for, so a rebuild while the same countdown
+  /// is still running doesn't start a second one. Reset to null whenever
+  /// `match.abandon` itself goes back to null (a reconnect, or a
+  /// finalize that already landed).
+  DateTime? _abandonResolveScheduledFor;
+  Timer? _abandonResolveTimer;
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _subscribeToAnswers();
+    // Covers returning to an already-open BattleScreen instance (a quick
+    // background/foreground cycle) as well as arriving fresh via the
+    // "Kembali ke Pertandingan" resume card — either way, the very first
+    // thing this screen does is say "I'm here" for its own uid.
+    _clearOwnAbandonMark();
+  }
+
+  void _clearOwnAbandonMark() {
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (myUid == null) return;
+    ref.read(battleRepositoryProvider).clearAbandoning(widget.matchId);
+  }
+
+  /// Backgrounding/foregrounding while this screen stays mounted — the
+  /// other half of leaving/returning that `dispose()`/`initState()` alone
+  /// cannot see, since neither fires just from the app losing focus.
+  /// **A true force-kill of the app is not covered by either path** —
+  /// there is no reliable client-side hook for that on any platform, so
+  /// that case still falls through to the older, unmodified per-round
+  /// staleness sweep exactly as it always has (see
+  /// `functions/battle_abandonment_sweep.js`'s own doc comment on this
+  /// exact gap).
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _clearOwnAbandonMark();
+    } else if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      _maybeMarkAbandoningOnLeave();
+    }
+    super.didChangeAppLifecycleState(state);
   }
 
   /// Split out of [initState] so a stream error can re-subscribe itself
@@ -159,11 +207,71 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _maybeMarkAbandoningOnLeave();
     _timer?.cancel();
     _choiceDeadlineTimer?.cancel();
     _feedbackHoldTimer?.cancel();
+    _abandonResolveTimer?.cancel();
     _answersSub?.cancel();
     super.dispose();
+  }
+
+  /// Marks this player away — back press, Home navigation, or any other
+  /// way this screen stops being on top. Deliberately skipped once the
+  /// match already has a `result`/is `finished`, or once this device's
+  /// own fast-path already showed the conclusion screen
+  /// ([_localClientResult] set): leaving a screen that is already over
+  /// is not abandoning anything, it is just leaving.
+  ///
+  /// `dispose()` cannot `await` — Flutter tears the widget down
+  /// synchronously right after this returns — so [BattleRepository
+  /// .markAbandoning]'s own fire-and-forget write is exactly the shape
+  /// this needs; nothing here waits for it to land.
+  void _maybeMarkAbandoningOnLeave() {
+    if (_localClientResult != null) return;
+    final match = _lastKnownMatch;
+    if (match == null) return;
+    if (match.status != BattleMatchStatus.active || match.result != null) {
+      return;
+    }
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (myUid == null) return;
+    ref.read(battleRepositoryProvider).markAbandoning(widget.matchId, myUid);
+  }
+
+  /// Starts (once) a local countdown to the moment [match.abandon]'s
+  /// grace period is up, then asks the server to actually finalize it —
+  /// see [BattleRepository.resolveAbandonmentIfDue]'s own doc comment
+  /// for why the client only ever *asks*, never decides. Only ever
+  /// scheduled for the *opponent's* mark, never this device's own — a
+  /// player cannot be the one who notices and resolves their own
+  /// abandonment, they're the one who left.
+  void _ensureAbandonResolveScheduled(BattleMatch match, String myUid) {
+    final abandon = match.abandon;
+    if (abandon == null || abandon.uid == myUid) {
+      _abandonResolveTimer?.cancel();
+      _abandonResolveTimer = null;
+      _abandonResolveScheduledFor = null;
+      return;
+    }
+    if (_abandonResolveScheduledFor == abandon.since) return;
+    _abandonResolveScheduledFor = abandon.since;
+    _abandonResolveTimer?.cancel();
+
+    final since = abandon.since;
+    final grace = const Duration(seconds: kBattleAbandonGracePeriodSeconds);
+    // No known `since` yet (the serverTimestamp sentinel hasn't round-
+    // tripped back down to this device) — fall back to the full grace
+    // period from now; the next snapshot carrying a real timestamp will
+    // reschedule this correctly.
+    final delay = since == null
+        ? grace
+        : grace - DateTime.now().difference(since);
+    _abandonResolveTimer = Timer(delay.isNegative ? Duration.zero : delay, () {
+      if (!mounted) return;
+      ref.read(battleRepositoryProvider).resolveAbandonmentIfDue(widget.matchId);
+    });
   }
 
   Future<void> _onAnswersUpdate(Map<int, BattleAnswer> answers) async {
@@ -439,11 +547,15 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(s.battleTitle)),
       body: matchAsync.when(
-        data: (match) => cardDataAsync.when(
-          data: (cardData) => _buildBody(context, s, match, cardData, myUid),
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (e, _) => Center(child: Text(s.battleLoadCardDataError(e))),
-        ),
+        data: (match) {
+          _lastKnownMatch = match;
+          if (myUid != null) _ensureAbandonResolveScheduled(match, myUid);
+          return cardDataAsync.when(
+            data: (cardData) => _buildBody(context, s, match, cardData, myUid),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (e, _) => Center(child: Text(s.battleLoadCardDataError(e))),
+          );
+        },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text(s.battleLoadMatchError(e))),
       ),
@@ -549,6 +661,11 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         bottom: false,
         child: Column(
           children: [
+            if (match.abandon != null && match.abandon!.uid != myUid)
+              _OpponentAbandonBanner(
+                strings: s,
+                abandon: match.abandon!,
+              ),
             BattleScorePanel(
               strings: s,
               round: match.currentRound + 1,
@@ -1293,6 +1410,88 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       );
     }
     return cards;
+  }
+}
+
+/// The 30-second reconnect grace period's own visible countdown — shown
+/// on the *still-present* player's screen only, above the score panel,
+/// while `match.abandon` names the *other* player. Purely cosmetic:
+/// nothing here decides when the match actually ends —
+/// [_BattleScreenState._ensureAbandonResolveScheduled] does that,
+/// independently, off the same [abandon] marker's own server timestamp.
+class _OpponentAbandonBanner extends StatefulWidget {
+  const _OpponentAbandonBanner({required this.strings, required this.abandon});
+
+  final AppStrings strings;
+  final BattleAbandonMarker abandon;
+
+  @override
+  State<_OpponentAbandonBanner> createState() => _OpponentAbandonBannerState();
+}
+
+class _OpponentAbandonBannerState extends State<_OpponentAbandonBanner> {
+  Timer? _tick;
+
+  @override
+  void initState() {
+    super.initState();
+    _tick = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _tick?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    final since = widget.abandon.since;
+    final elapsed = since == null ? Duration.zero : DateTime.now().difference(since);
+    final remaining =
+        const Duration(seconds: kBattleAbandonGracePeriodSeconds) - elapsed;
+    final secondsLeft = remaining.isNegative ? 0 : remaining.inSeconds + 1;
+
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: palette.tertiaryAmberCardBg,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.wifi_off, color: palette.textNavy, size: 18),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  widget.strings.battleOpponentAbandonedTitle,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    color: palette.textNavy,
+                  ),
+                ),
+                Text(
+                  widget.strings.battleOpponentAbandonedCountdown(secondsLeft),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: palette.textNavy.withValues(alpha: 0.7),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

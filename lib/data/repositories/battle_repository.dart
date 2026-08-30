@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 import '../../core/firebase/firestore_paths.dart';
 import '../../core/services/battle_turn_order_builder.dart';
@@ -33,10 +34,22 @@ const battleBotUid = 'BOT';
 class BattleRepository {
   final FirebaseFirestore _firestore;
   final Random _random;
+  // Lazily resolved, same reasoning as `IapService._fx`: constructing a
+  // `BattleRepository` (done eagerly, at provider-creation time) must
+  // never require `Firebase.initializeApp()` to already have run — only
+  // actually resolving/clearing an abandonment does.
+  final FirebaseFunctions? _functionsOverride;
+  FirebaseFunctions? _functions;
+  FirebaseFunctions get _fx =>
+      _functions ??= _functionsOverride ?? FirebaseFunctions.instance;
 
-  BattleRepository({FirebaseFirestore? firestore, Random? random})
-    : _firestore = firestore ?? FirebaseFirestore.instance,
-      _random = random ?? Random();
+  BattleRepository({
+    FirebaseFirestore? firestore,
+    Random? random,
+    FirebaseFunctions? functions,
+  }) : _firestore = firestore ?? FirebaseFirestore.instance,
+       _random = random ?? Random(),
+       _functionsOverride = functions;
 
   CollectionReference<Map<String, dynamic>> get _matches =>
       _firestore.collection(FirestorePaths.battleMatches);
@@ -317,5 +330,94 @@ class BattleRepository {
       if (data == null) return null;
       return BattleAnswer.fromMap(data);
     });
+  }
+
+  // -------------------------------------------------------------------
+  // 30-second reconnect grace period (2026-08-30) — see
+  // `BattleMatch.abandon`'s own doc comment for the full mechanism.
+  // -------------------------------------------------------------------
+
+  /// Marks [uid] as having just left [matchId] — the server timestamp
+  /// this writes is what the 30-second grace period counts down from.
+  ///
+  /// **Best-effort by design, never allowed to throw into a caller.**
+  /// This is fired from places that cannot usefully await a failure —
+  /// `dispose()`, an app-lifecycle callback — and `firestore.rules`
+  /// itself will legitimately reject this write in cases that are not
+  /// bugs (the match already concluded, or someone already marked
+  /// themselves and this is a second, redundant call from the same
+  /// leave). A rejected write here simply means the older mechanism
+  /// (`functions/battle_abandonment_sweep.js`'s pre-existing per-round
+  /// staleness sweep) is still watching, same as it always has been.
+  Future<void> markAbandoning(String matchId, String uid) async {
+    try {
+      await _matchDoc(matchId).set({
+        'abandon': {'uid': uid, 'since': FieldValue.serverTimestamp()},
+      }, SetOptions(merge: true));
+    } catch (_) {
+      // See doc comment — a failed mark is not a crash, just a missed
+      // fast path.
+    }
+  }
+
+  /// Clears an abandon mark on return — "I'm back". Best-effort for the
+  /// same reason [markAbandoning] is: called from a screen's own
+  /// `initState`/app-resume path, where nothing useful can be done with
+  /// a thrown error, and `firestore.rules` already refuses this exact
+  /// write once the match has actually concluded (the grace period ran
+  /// out before this call landed) — that is the correct outcome, not a
+  /// bug to surface.
+  Future<void> clearAbandoning(String matchId) async {
+    try {
+      await _matchDoc(matchId).set({
+        'abandon': null,
+      }, SetOptions(merge: true));
+    } catch (_) {
+      // See doc comment.
+    }
+  }
+
+  /// Asks the server whether [matchId]'s grace period is actually up
+  /// yet, and finalizes it (the abandoning player loses) if so — see
+  /// `functions/battle_abandonment_sweep.js`'s `resolveBattleAbandonment`
+  /// for the authoritative check this performs; nothing about *when*
+  /// the match actually ends is decided here on the client, only when to
+  /// ask. Safe to call early, call twice, or call for a match with no
+  /// abandon marker at all — every one of those is a defined, harmless
+  /// no-op server-side (see that function's own doc comment).
+  ///
+  /// Returns `true` once the server confirms it actually finalized the
+  /// match this call, `false` for every other outcome (not due yet, the
+  /// player already reconnected, the match already concluded some other
+  /// way).
+  Future<bool> resolveAbandonmentIfDue(String matchId) async {
+    try {
+      final result = await _fx
+          .httpsCallable('resolveBattleAbandonment')
+          .call({'matchId': matchId});
+      final data = result.data;
+      return data is Map && data['finalized'] == true;
+    } catch (_) {
+      // A network hiccup here just means the opponent's next countdown
+      // tick (or the server-side sweep backstop) tries again.
+      return false;
+    }
+  }
+
+  /// The most recent match [uid] can still resume — the one behind the
+  /// Card Game lobby's "Kembali ke Pertandingan" card. Reuses
+  /// [recentMatches]'s exact query (same `players` array-contains +
+  /// `createdAt` descending index, so this needs no new composite
+  /// index), filtering down to [BattleMatch.isResumable] client-side —
+  /// Firestore alone can't express "active AND not awaiting an invite
+  /// accept" as an extra clause without a *second* new composite index,
+  /// and the recent-matches list this already fetches is small enough
+  /// (default 5) that a client-side filter costs nothing extra.
+  Future<BattleMatch?> findResumableMatch(String uid) async {
+    final recent = await recentMatches(uid, limit: 5);
+    for (final match in recent) {
+      if (match.isResumable) return match;
+    }
+    return null;
   }
 }

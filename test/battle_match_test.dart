@@ -242,5 +242,101 @@ void main() {
       );
       expect(match.currentAnswererUid, isNull);
     });
+
+    group('abandon (30-second reconnect grace period)', () {
+      test('fromMap parses uid + a real Timestamp since', () {
+        final since = Timestamp.fromDate(DateTime.utc(2026, 8, 30, 12, 0, 0));
+        final match = BattleMatch.fromMap('m', {
+          'abandon': {'uid': 'uid-a', 'since': since},
+        });
+        expect(match.abandon, isNotNull);
+        expect(match.abandon!.uid, 'uid-a');
+        expect(match.abandon!.since, since.toDate());
+      });
+
+      test('fromMap leaves abandon null when absent, not throwing', () {
+        final match = BattleMatch.fromMap('m', {});
+        expect(match.abandon, isNull);
+      });
+
+      test('fromMap leaves abandon null when explicitly null', () {
+        final match = BattleMatch.fromMap('m', {'abandon': null});
+        expect(match.abandon, isNull);
+      });
+
+      test('elapsedSince computes a real Duration once since is known', () {
+        final since = DateTime.utc(2026, 8, 30, 12, 0, 0);
+        final marker = BattleAbandonMarker(uid: 'uid-a', since: since);
+        final elapsed = marker.elapsedSince(since.add(const Duration(seconds: 12)));
+        expect(elapsed, const Duration(seconds: 12));
+      });
+
+      test('elapsedSince is null while the serverTimestamp sentinel has '
+          'not round-tripped back down yet', () {
+        const marker = BattleAbandonMarker(uid: 'uid-a');
+        expect(marker.elapsedSince(DateTime.now()), isNull);
+      });
+
+      test('toCreateMap never includes abandon — a fresh match starts '
+          'with nobody marked away', () {
+        final match = BattleMatch(
+          id: '',
+          players: ['uid-a', 'uid-b'],
+          status: BattleMatchStatus.active,
+          currentRound: 0,
+          turnOrder: [
+            TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+          ],
+          officialScore: {'uid-a': 0, 'uid-b': 0},
+        );
+        expect(match.toCreateMap().containsKey('abandon'), isFalse);
+      });
+    });
+
+    group('isResumable', () {
+      BattleMatch baseMatch({
+        BattleMatchStatus status = BattleMatchStatus.active,
+        String? result,
+        BattleInviteState inviteState = BattleInviteState.none,
+      }) =>
+          BattleMatch(
+            id: 'm',
+            players: ['uid-a', 'uid-b'],
+            status: status,
+            currentRound: 3,
+            turnOrder: [
+              TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+            ],
+            officialScore: {'uid-a': 0, 'uid-b': 0},
+            result: result,
+            inviteState: inviteState,
+          );
+
+      test('an active match with no result and no pending invite is '
+          'resumable', () {
+        expect(baseMatch().isResumable, isTrue);
+      });
+
+      test('a finished match is never resumable', () {
+        expect(
+          baseMatch(status: BattleMatchStatus.finished, result: 'uid-a')
+              .isResumable,
+          isFalse,
+        );
+      });
+
+      test('an active match that already has a result (about to be '
+          'finished, or a race mid-write) is not resumable', () {
+        expect(baseMatch(result: 'uid-a').isResumable, isFalse);
+      });
+
+      test('a friend/clan challenge still awaiting its accept is not '
+          'resumable — there is no live battle to return to yet', () {
+        expect(
+          baseMatch(inviteState: BattleInviteState.pending).isResumable,
+          isFalse,
+        );
+      });
+    });
   });
 }
