@@ -10,6 +10,7 @@ import 'package:kana_master/features/exam/exam_mode_picker_screen.dart';
 import 'package:kana_master/features/kanji/kanji_level_screen.dart';
 import 'package:kana_master/features/kotoba/kotoba_home_screen.dart';
 import 'package:kana_master/features/particle/particle_home_screen.dart';
+import 'package:kana_master/features/paywall/module_access.dart';
 import 'package:kana_master/features/paywall/paywall_screen.dart';
 
 void main() {
@@ -80,21 +81,35 @@ void main() {
   testWidgets(
     'ParticleHomeScreen app bar title switches language',
     (WidgetTester tester) async {
+      // ModuleAccessGate (RISK-04 defense-in-depth) now wraps this screen
+      // and would otherwise show its own loading/redirect state — this
+      // override simulates an already-unlocked account, the state the
+      // real gated tap site would only ever reach this screen in.
+      final unlockedOverride = moduleAccessProvider.overrideWith(
+        (ref, moduleId) async => true,
+      );
+
       await tester.pumpWidget(
         ProviderScope(
           key: UniqueKey(),
+          overrides: [unlockedOverride],
           child: const MaterialApp(home: ParticleHomeScreen()),
         ),
       );
+      await tester.pump();
       expect(find.text('Partikel'), findsOneWidget);
 
       await tester.pumpWidget(
         ProviderScope(
           key: UniqueKey(),
-          overrides: [languageProvider.overrideWith((ref) => AppLanguage.english)],
+          overrides: [
+            unlockedOverride,
+            languageProvider.overrideWith((ref) => AppLanguage.english),
+          ],
           child: const MaterialApp(home: ParticleHomeScreen()),
         ),
       );
+      await tester.pump();
       expect(find.text('Particles'), findsOneWidget);
       expect(find.text('Partikel'), findsNothing);
     },

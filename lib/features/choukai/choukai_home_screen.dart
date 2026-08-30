@@ -19,14 +19,28 @@ import '../../data/repositories/onboarding_repository.dart';
 import '../../features/onboarding/coach_mark_tour.dart';
 import '../../features/onboarding/first_visit_tutorial.dart';
 import '../../features/onboarding/module_tours.dart';
+import '../paywall/module_access.dart';
 
-/// Entry point for Choukai (listening comprehension) within Ujian: JLPT
-/// level picker, mirrors `DokkaiHomeScreen`. Every level currently shows
-/// "Segera" — the architecture is ready (see `ChoukaiRepository`), content
-/// hasn't been authored yet, same as Kaiwa's N4-N1 levels before they were.
+/// Entry point for Choukai (listening comprehension): JLPT level picker,
+/// mirrors `DokkaiHomeScreen`. All 5 levels are fully authored now (100
+/// real clips each, 500 total) — correction to a stale claim this comment
+/// used to make about every level showing "Segera"/no content yet.
 class ChoukaiHomeScreen extends ConsumerWidget {
   const ChoukaiHomeScreen({super.key});
 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Defense-in-depth (RISK-04) — see ModuleAccessGate's own doc
+    // comment.
+    return ModuleAccessGate(
+      moduleId: PremiumModules.choukai,
+      moduleTitle: 'Choukai',
+      child: _ChoukaiHomeContent(),
+    );
+  }
+}
+
+class _ChoukaiHomeContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final levelsAsync = ref.watch(choukaiLevelsProvider);

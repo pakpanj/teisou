@@ -17,6 +17,7 @@ import '../../data/repositories/onboarding_repository.dart';
 import '../../features/onboarding/coach_mark_tour.dart';
 import '../../features/onboarding/first_visit_tutorial.dart';
 import '../../features/onboarding/module_tours.dart';
+import '../paywall/module_access.dart';
 
 enum _SortMode { urutan, goresan }
 
@@ -72,6 +73,26 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Defense-in-depth (RISK-04, AUDIT_QUIZ_TUTORIAL_GLOBALSCORE.md /
+    // the master monetization audit) — see ModuleAccessGate's own doc
+    // comment. `KanjiHomeScreen`'s own tap-site already checks
+    // isFreeLevel/moduleAccessProvider before pushing this screen; this
+    // re-checks the same decision here, so a future navigation path that
+    // forgets that check can't silently reach N3-N1 content for free.
+    // Free levels (N5-N4) need no gate at all — mirrors the tap site's
+    // own "premium is checked before the progress gate" ordering exactly.
+    final free = isFreeLevel(widget.jlptLevel, freeThrough: kKanjiFreeThrough);
+    if (free) return _buildContent(context);
+    return ModuleAccessGate(
+      moduleId: PremiumModules.kanji,
+      moduleTitle: ref
+          .read(appStringsProvider)
+          .kanjiLevelCardTitle(widget.levelName),
+      child: _buildContent(context),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
     final kanjiAsync = ref.watch(kanjiByLevelProvider(widget.jlptLevel));
     final learnedIds =
         ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};

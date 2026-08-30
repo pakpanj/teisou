@@ -21,6 +21,7 @@ import '../../data/repositories/onboarding_repository.dart';
 import '../../features/onboarding/coach_mark_tour.dart';
 import '../../features/onboarding/first_visit_tutorial.dart';
 import '../../features/onboarding/module_tours.dart';
+import '../paywall/module_access.dart';
 
 /// Entry point for the Kaiwa module: JLPT level picker (N5-N1), mirroring
 /// `BunpouHomeScreen`. Only levels with a real dataset are tappable; the
@@ -30,6 +31,22 @@ import '../../features/onboarding/module_tours.dart';
 class KaiwaHomeScreen extends ConsumerWidget {
   const KaiwaHomeScreen({super.key});
 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Defense-in-depth (RISK-04) — see ModuleAccessGate's own doc
+    // comment. The Home card that opens this screen already checks
+    // moduleAccessProvider; this re-checks it again here, so a future
+    // second navigation path into KaiwaHomeScreen can't silently skip
+    // the gate.
+    return ModuleAccessGate(
+      moduleId: PremiumModules.kaiwa,
+      moduleTitle: 'Kaiwa',
+      child: _KaiwaHomeContent(),
+    );
+  }
+}
+
+class _KaiwaHomeContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final levelsAsync = ref.watch(kaiwaLevelsProvider);

@@ -96,4 +96,59 @@ void main() {
       }
     });
   });
+
+  group('defense-in-depth — the destination screens re-check too '
+      '(RISK-04, closed)', () {
+    /// Before this, `moduleAccessProvider` was only ever asked at the
+    /// *tap site* (the card on Home) — once `KaiwaHomeScreen`/
+    /// `ChoukaiHomeScreen`/`ParticleHomeScreen` itself was on screen,
+    /// nothing checked again. Not exploitable through this app's own UI
+    /// (only one navigation path exists into any of them), but a single
+    /// point of enforcement rather than layered ones — a future second
+    /// path (a deep link, a notification tap) could silently reopen the
+    /// module for free. `ModuleAccessGate` closes it by re-asking the
+    /// same question inside the screen itself.
+    test('every whole-module screen wraps its own content in '
+        'ModuleAccessGate', () {
+      for (final entry in {
+        'lib/features/kaiwa/kaiwa_home_screen.dart': PremiumModules.kaiwa,
+        'lib/features/choukai/choukai_home_screen.dart':
+            PremiumModules.choukai,
+        'lib/features/particle/particle_home_screen.dart':
+            PremiumModules.particle,
+      }.entries) {
+        final source = File(entry.key).readAsStringSync();
+        expect(
+          source.contains('ModuleAccessGate('),
+          isTrue,
+          reason: '${entry.key} has no internal re-check — a second '
+              'navigation path into it would skip the gate entirely',
+        );
+        expect(
+          source.contains("moduleId: PremiumModules.${entry.value}"),
+          isTrue,
+          reason: '${entry.key} wraps with ModuleAccessGate but for the '
+              'wrong moduleId',
+        );
+      }
+    });
+
+    /// Kanji's own destination screen (`KanjiLevelScreen`, reached with a
+    /// specific `jlptLevel` already chosen) needs the same re-check, but
+    /// shaped differently — free levels must never even ask
+    /// `moduleAccessProvider`, only the paid ones route through
+    /// `ModuleAccessGate`, mirroring the tap site's own
+    /// free-before-premium ordering exactly.
+    test('KanjiLevelScreen re-checks the level-gate, not just the module '
+        'list', () {
+      final source =
+          File('lib/features/kanji/kanji_level_screen.dart').readAsStringSync();
+      expect(source.contains('isFreeLevel('), isTrue,
+          reason: 'must skip the gate entirely for free levels (N5-N4)');
+      expect(source.contains('ModuleAccessGate('), isTrue,
+          reason: 'must gate the paid levels (N3-N1) with the same '
+              'backstop the whole-module screens use');
+      expect(source.contains('moduleId: PremiumModules.kanji'), isTrue);
+    });
+  });
 }

@@ -14,6 +14,7 @@ import '../../data/models/particle_category_info.dart';
 import 'particle_category_screen.dart';
 import 'particle_providers.dart';
 import '../../core/widgets/app_loading.dart';
+import '../paywall/module_access.dart';
 
 /// Entry point for the Partikel module: category picker (Kasus /
 /// Keterangan / Akhir Kalimat). Only categories with a real dataset are
@@ -22,6 +23,19 @@ import '../../core/widgets/app_loading.dart';
 class ParticleHomeScreen extends ConsumerWidget {
   const ParticleHomeScreen({super.key});
 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Defense-in-depth (RISK-04) — see ModuleAccessGate's own doc
+    // comment.
+    return ModuleAccessGate(
+      moduleId: PremiumModules.particle,
+      moduleTitle: 'Partikel',
+      child: _ParticleHomeContent(),
+    );
+  }
+}
+
+class _ParticleHomeContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(particleCategoriesProvider);
