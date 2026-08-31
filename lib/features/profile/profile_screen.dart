@@ -176,7 +176,7 @@ class _HeaderCard extends ConsumerWidget {
       final result = await ref.read(authServiceProvider).linkWithGoogle();
       if (result == null) return; // user cancelled the account picker
       if (!context.mounted) return;
-      await _syncAfterGoogleSignIn(ref, result);
+      await _syncAfterGoogleSignIn(context, ref, result);
     } on GoogleAccountConflictException catch (e) {
       if (!context.mounted) return;
       await _handleGoogleAccountConflict(context, ref, e);
@@ -225,7 +225,7 @@ class _HeaderCard extends ConsumerWidget {
           .read(authServiceProvider)
           .confirmSwitchToExistingGoogleAccount(conflict.credential);
       if (result == null || !context.mounted) return;
-      await _syncAfterGoogleSignIn(ref, result);
+      await _syncAfterGoogleSignIn(context, ref, result);
     } catch (_) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(
@@ -253,7 +253,11 @@ class _HeaderCard extends ConsumerWidget {
   /// three copies need it, not just the leaderboard. Syncing only the
   /// leaderboard here left clan rosters and friends' chat lists calling
   /// this learner "Pelajar Kana" for ever.
-  Future<void> _syncAfterGoogleSignIn(WidgetRef ref, User result) async {
+  Future<void> _syncAfterGoogleSignIn(
+    BuildContext context,
+    WidgetRef ref,
+    User result,
+  ) async {
     final profile = ref.read(userProfileProvider).valueOrNull;
     await syncIdentityEverywhere(
       ref,
@@ -265,6 +269,18 @@ class _HeaderCard extends ConsumerWidget {
       avatarType: profile?.avatarType ?? AvatarType.google,
       avatarValue: profile?.avatarValue,
     );
+    // `syncIdentityEverywhere` above is several sequential Firestore
+    // writes — real time for the caller to have navigated away (or for
+    // this whole screen to have been popped) before it resolves. `ref`
+    // is tied to this widget's element exactly like `context` is; using
+    // it after the element is gone throws "Cannot use ref after the
+    // widget was disposed" — reproduced live (Moto G52J, 2026-08-31):
+    // sign in with Google, immediately switch tabs before the sync
+    // finishes, and this line fired that exact FlutterError. The
+    // sign-in and the Firestore sync had both already succeeded by
+    // then, so there was nothing to roll back — just this one
+    // now-unsafe invalidate to skip.
+    if (!context.mounted) return;
     ref.invalidate(appStartupProvider);
   }
 
