@@ -224,6 +224,24 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// ([_localClientResult] set): leaving a screen that is already over
   /// is not abandoning anything, it is just leaving.
   ///
+  /// **[_lastKnownMatch] being `null` is NOT the same as "not active",
+  /// and must not be treated as a reason to skip** — it only means this
+  /// screen has not yet received its first snapshot from
+  /// [battleMatchProvider], which can genuinely happen: a challenge is
+  /// accepted, this screen mounts, and the very first Firestore listen
+  /// has not resolved yet (even from local cache) before the screen is
+  /// left again — a real gap this project's own reconnect-testing found
+  /// live, orphaning a match with no `abandon` marker ever written for
+  /// it, permanently, since nothing else was ever going to write one.
+  /// Attempting the mark anyway when the match state is unknown is
+  /// always safe: `firestore.rules`' `abandon` clause and the eventual
+  /// resolve/sweep both already treat a target that turns out to not
+  /// need it (already concluded, or a uid that isn't actually a player)
+  /// as a harmless no-op — the whole reconnect design was already built
+  /// to re-derive every fact server-side rather than trust what the
+  /// client asserts, so there's nothing this optimistic attempt could
+  /// get wrong that the server wouldn't have caught anyway.
+  ///
   /// `dispose()` cannot `await` — Flutter tears the widget down
   /// synchronously right after this returns — so [BattleRepository
   /// .markAbandoning]'s own fire-and-forget write is exactly the shape
@@ -231,8 +249,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   void _maybeMarkAbandoningOnLeave() {
     if (_localClientResult != null) return;
     final match = _lastKnownMatch;
-    if (match == null) return;
-    if (match.status != BattleMatchStatus.active || match.result != null) {
+    if (match != null &&
+        (match.status != BattleMatchStatus.active || match.result != null)) {
       return;
     }
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
