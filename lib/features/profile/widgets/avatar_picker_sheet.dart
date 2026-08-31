@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/avatars.dart';
 import '../../../core/constants/frames.dart';
+import '../../../core/navigation/root_navigator_key.dart';
 import '../../../core/providers.dart';
 import '../../../core/services/coin_spend_service.dart';
 import '../identity_sync.dart';
@@ -228,9 +229,13 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
         return;
       }
       // Every denormalized copy — leaderboard, clan rosters, friends — each
-      // best-effort and independent of the others.
+      // best-effort and independent of the others. Root container, not
+      // this sheet's own `ref` — see `identity_sync.dart`'s doc comment:
+      // a bottom sheet is exactly the kind of widget likely to be
+      // swiped away right after a selection, before these sequential
+      // writes finish.
       await syncIdentityEverywhere(
-        ref,
+        rootProviderContainer(),
         uid: uid,
         displayName: displayName,
         photoUrl: photoUrl,

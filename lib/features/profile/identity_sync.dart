@@ -25,8 +25,21 @@ import '../../data/models/user_profile.dart';
 /// already succeeded, and one mirror failing must not skip the others — a
 /// single try around all three would let a clan hiccup silently cost the
 /// friend sync as well.
+///
+/// **Takes a [ProviderContainer], not a [WidgetRef], on purpose.** This is
+/// three sequential awaits, real time for the screen that triggered the
+/// sync (a dialog, a bottom sheet, the profile's own Google-link button) to
+/// have been popped or navigated away from before it finishes — every
+/// caller used to pass its own `WidgetRef`, and a `WidgetRef` throws "Cannot
+/// use ref after the widget was disposed" the moment any of these three
+/// `ref.read()` calls runs after that widget is gone. Reproduced live
+/// (Moto G52J, 2026-08-31) via the Google-link path specifically: linking,
+/// then switching tabs before the sync finished. A [ProviderContainer] has
+/// no such lifetime — callers resolve one via `rootNavigatorKey` (see that
+/// key's own doc comment for the identical reasoning, already established
+/// for FCM navigation) instead of their own widget's `ref`.
 Future<void> syncIdentityEverywhere(
-  WidgetRef ref, {
+  ProviderContainer container, {
   required String uid,
   required String displayName,
   String? photoUrl,
@@ -41,25 +54,31 @@ Future<void> syncIdentityEverywhere(
     }
   }
 
-  await attempt(() => ref.read(leaderboardRepositoryProvider).syncProfileInfo(
-        uid: uid,
-        displayName: displayName,
-        photoUrl: photoUrl,
-        avatarType: avatarType,
-        avatarValue: avatarValue,
-      ));
-  await attempt(() => ref.read(clanRepositoryProvider).syncMemberInfo(
-        uid: uid,
-        displayName: displayName,
-        photoUrl: photoUrl,
-        avatarType: avatarType,
-        avatarValue: avatarValue,
-      ));
-  await attempt(() => ref.read(friendRepositoryProvider).syncFriendInfo(
-        uid: uid,
-        displayName: displayName,
-        photoUrl: photoUrl,
-        avatarType: avatarType,
-        avatarValue: avatarValue,
-      ));
+  await attempt(
+    () => container.read(leaderboardRepositoryProvider).syncProfileInfo(
+          uid: uid,
+          displayName: displayName,
+          photoUrl: photoUrl,
+          avatarType: avatarType,
+          avatarValue: avatarValue,
+        ),
+  );
+  await attempt(
+    () => container.read(clanRepositoryProvider).syncMemberInfo(
+          uid: uid,
+          displayName: displayName,
+          photoUrl: photoUrl,
+          avatarType: avatarType,
+          avatarValue: avatarValue,
+        ),
+  );
+  await attempt(
+    () => container.read(friendRepositoryProvider).syncFriendInfo(
+          uid: uid,
+          displayName: displayName,
+          photoUrl: photoUrl,
+          avatarType: avatarType,
+          avatarValue: avatarValue,
+        ),
+  );
 }

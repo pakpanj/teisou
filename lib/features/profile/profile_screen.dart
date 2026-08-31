@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/covers.dart';
 import '../../core/localization/app_strings.dart';
+import '../../core/navigation/root_navigator_key.dart';
 import '../../core/providers.dart';
 import '../../core/services/auth_service.dart' show GoogleAccountConflictException;
 import '../../core/theme/app_palette.dart';
@@ -259,8 +260,16 @@ class _HeaderCard extends ConsumerWidget {
     User result,
   ) async {
     final profile = ref.read(userProfileProvider).valueOrNull;
+    // A stable container, not this widget's own `ref` — see
+    // `identity_sync.dart`'s doc comment for the crash this replaces
+    // (reproduced live, Moto G52J, 2026-08-31: sign in with Google,
+    // immediately switch tabs before the sync finishes, "Cannot use ref
+    // after the widget was disposed"). Resolved once, before the first
+    // await, so it's captured even if this widget is gone by the time
+    // any of the writes below actually run.
+    final container = rootProviderContainer();
     await syncIdentityEverywhere(
-      ref,
+      container,
       uid: result.uid,
       displayName:
           profile?.resolveDisplayName(result) ??
@@ -269,19 +278,20 @@ class _HeaderCard extends ConsumerWidget {
       avatarType: profile?.avatarType ?? AvatarType.google,
       avatarValue: profile?.avatarValue,
     );
-    // `syncIdentityEverywhere` above is several sequential Firestore
-    // writes — real time for the caller to have navigated away (or for
-    // this whole screen to have been popped) before it resolves. `ref`
-    // is tied to this widget's element exactly like `context` is; using
-    // it after the element is gone throws "Cannot use ref after the
-    // widget was disposed" — reproduced live (Moto G52J, 2026-08-31):
-    // sign in with Google, immediately switch tabs before the sync
-    // finishes, and this line fired that exact FlutterError. The
-    // sign-in and the Firestore sync had both already succeeded by
-    // then, so there was nothing to roll back — just this one
-    // now-unsafe invalidate to skip.
-    if (!context.mounted) return;
-    ref.invalidate(appStartupProvider);
+    // Every uid-dependent provider in the app (friends, clan
+    // memberships, the resumable-match query, ...) reads its uid from
+    // `appStartupProvider`, a plain `FutureProvider` that only resolves
+    // once and stays cached until this invalidation runs — it is not a
+    // live listener on Firebase Auth. Skipping this (as the pre-fix
+    // crash effectively did, and as a `context.mounted`-guarded skip
+    // would still do) leaves the entire app silently querying with the
+    // uid from *before* this sign-in/account-switch, for every provider
+    // that already resolved once, until the app is fully restarted —
+    // exactly what made "Kembali ke Pertandingan" and the friends/clan
+    // lists stay empty after a Google-account-conflict switch on the
+    // same device. Using the root container here (not `ref`) means this
+    // always runs, regardless of whether this screen is still mounted.
+    container.invalidate(appStartupProvider);
   }
 
   /// Google Sign-In failures are usually device/OAuth-config issues (bad

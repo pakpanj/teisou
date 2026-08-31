@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/navigation/root_navigator_key.dart';
 import '../../../core/providers.dart';
 import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
@@ -44,8 +45,12 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
   Future<void> _syncIdentity(String uid, String name) async {
     final profile = ref.read(userProfileProvider).valueOrNull;
     final user = ref.read(appStartupProvider).valueOrNull;
+    // Root container, not this dialog's own `ref` — see
+    // `identity_sync.dart`'s doc comment: a dialog is exactly the kind of
+    // widget likely to be popped (or its sheet dismissed) right after the
+    // save button is tapped, before these sequential writes finish.
     await syncIdentityEverywhere(
-      ref,
+      rootProviderContainer(),
       uid: uid,
       displayName: name,
       photoUrl: user?.photoURL,
