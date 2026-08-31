@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 
 import '../../core/firebase/firestore_paths.dart';
 import '../../core/services/battle_turn_order_builder.dart';
@@ -354,9 +355,13 @@ class BattleRepository {
       await _matchDoc(matchId).set({
         'abandon': {'uid': uid, 'since': FieldValue.serverTimestamp()},
       }, SetOptions(merge: true));
-    } catch (_) {
+    } catch (e) {
       // See doc comment — a failed mark is not a crash, just a missed
-      // fast path.
+      // fast path. Logged (not surfaced) so a real regression here is
+      // at least visible in a debug session instead of indistinguishable
+      // from "nobody left" — this call has no other observable effect
+      // when it fails.
+      debugPrint('markAbandoning($matchId) failed: $e');
     }
   }
 
@@ -372,8 +377,9 @@ class BattleRepository {
       await _matchDoc(matchId).set({
         'abandon': null,
       }, SetOptions(merge: true));
-    } catch (_) {
+    } catch (e) {
       // See doc comment.
+      debugPrint('clearAbandoning($matchId) failed: $e');
     }
   }
 
