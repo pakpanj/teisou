@@ -951,6 +951,29 @@ class AppStrings {
       _t('Apa artinya kanji ini?', "What does this kanji mean?");
   String get kanjiComboReadingPrompt =>
       _t('Bagaimana bacaan kanji ini?', 'How is this kanji read?');
+  // Locked placeholder entries only — no content behind either yet (see
+  // ExamModePickerScreen's own doc comment). Mirrors the exact
+  // "entry exists, tap explains why it's not open yet" pattern this
+  // codebase already used for Choukai before it had content, and for
+  // Cam Detector's own locked card.
+  String get jftCategoryTitle => 'JFT-Basic';
+  String get jftCategorySubtitle => _t(
+    'Japan Foundation Test — segera hadir',
+    'Japan Foundation Test — coming soon',
+  );
+  String get jftCategoryLockedReason => _t(
+    'Ujian JFT-Basic sedang disiapkan, belum bisa dikerjakan.',
+    'The JFT-Basic exam is still being prepared and cannot be taken yet.',
+  );
+  String get jlptCategoryTitle => 'JLPT';
+  String get jlptCategorySubtitle => _t(
+    'Simulasi ujian JLPT N5-N1 — segera hadir',
+    'JLPT N5-N1 mock exam — coming soon',
+  );
+  String get jlptCategoryLockedReason => _t(
+    'Simulasi ujian JLPT sedang disiapkan, belum bisa dikerjakan.',
+    'The JLPT mock exam is still being prepared and cannot be taken yet.',
+  );
   String get kanjiComboCompoundPrompt =>
       _t('Bagaimana bacaan kata ini?', 'How is this word read?');
   String get kanaExamTitle => _t('Ujian Kana', 'Kana Exam');
