@@ -305,7 +305,7 @@ class _ResumableMatchCountdownState extends State<_ResumableMatchCountdown> {
   }
 }
 
-class _ResumableMatchShell extends StatelessWidget {
+class _ResumableMatchShell extends StatefulWidget {
   const _ResumableMatchShell({
     required this.strings,
     required this.matchId,
@@ -315,6 +315,35 @@ class _ResumableMatchShell extends StatelessWidget {
   final AppStrings strings;
   final String matchId;
   final String? subtitle;
+
+  @override
+  State<_ResumableMatchShell> createState() => _ResumableMatchShellState();
+}
+
+class _ResumableMatchShellState extends State<_ResumableMatchShell> {
+  // A fast repeated tap on this exact button was pushing more than one
+  // BattleScreen onto the Navigator stack — every other entry point into
+  // BattleScreen already guarded against this (`_accept`'s `_responding`,
+  // `BattleInviteWaitingScreen`'s `_opened`, matchmaking's push living
+  // inside its own state machine), this one didn't. The orphaned second
+  // instance kept its own Timer/answers subscription alive underneath the
+  // one actually on screen, which is what surfaced later as a "Cannot use
+  // ref after the widget was disposed" error scattered across several of
+  // BattleScreen's own callbacks once it was finally popped.
+  bool _isOpeningBattle = false;
+
+  Future<void> _openBattle() async {
+    if (_isOpeningBattle) return;
+    // Set before the push starts, not after — a second tap arriving
+    // while the first push is still in flight must see this immediately,
+    // not race it.
+    setState(() => _isOpeningBattle = true);
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => BattleScreen(matchId: widget.matchId)));
+    if (!mounted) return;
+    setState(() => _isOpeningBattle = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -335,15 +364,15 @@ class _ResumableMatchShell extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  strings.battleResumableTitle,
+                  widget.strings.battleResumableTitle,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: palette.textNavy,
                   ),
                 ),
-                if (subtitle != null)
+                if (widget.subtitle != null)
                   Text(
-                    subtitle!,
+                    widget.subtitle!,
                     style: TextStyle(
                       fontSize: 12,
                       color: palette.textNavy.withValues(alpha: 0.7),
@@ -363,12 +392,8 @@ class _ResumableMatchShell extends StatelessWidget {
             // player's abandon mark the instant it mounts (see its
             // `_clearOwnAbandonMark`), which is what actually cancels
             // the grace period — this button only navigates.
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => BattleScreen(matchId: matchId),
-              ),
-            ),
-            child: Text(strings.battleResumableCta),
+            onPressed: _isOpeningBattle ? null : _openBattle,
+            child: Text(widget.strings.battleResumableCta),
           ),
         ],
       ),
