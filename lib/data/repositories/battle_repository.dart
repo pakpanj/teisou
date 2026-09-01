@@ -410,18 +410,54 @@ class BattleRepository {
     }
   }
 
-  /// The most recent match [uid] can still resume — the one behind the
-  /// Card Game lobby's "Kembali ke Pertandingan" card. Reuses
-  /// [recentMatches]'s exact query (same `players` array-contains +
-  /// `createdAt` descending index, so this needs no new composite
-  /// index), filtering down to [BattleMatch.isResumable] client-side —
-  /// Firestore alone can't express "active AND not awaiting an invite
-  /// accept" as an extra clause without a *second* new composite index,
-  /// and the recent-matches list this already fetches is small enough
-  /// (default 5) that a client-side filter costs nothing extra.
+  /// The match [uid] can still resume — the one behind the Card Game
+  /// lobby's "Kembali ke Pertandingan" card.
+  ///
+  /// **Deliberately its own query, not a slice of [recentMatches].**
+  /// An earlier version reused [recentMatches]' last-5-overall list and
+  /// filtered it client-side — which meant a match that was still
+  /// genuinely open became permanently invisible to this card the
+  /// moment 5 *newer* matches existed of any kind (finished, declined,
+  /// bot games), since it had already fallen out of that window.
+  /// Confirmed to reproduce in real testing, not just in theory — see
+  /// the audit this fixed.
+  ///
+  /// Filters server-side on `status` (an equality clause Firestore can
+  /// combine with `players`/`createdAt`), then narrows to
+  /// [BattleMatch.isResumable] client-side for `result`/`inviteState` —
+  /// Firestore can't express those as further clauses on the same
+  /// query without another composite index each, and the number of
+  /// simultaneously `active` matches for one player is expected to
+  /// stay small regardless.
+  ///
+  /// **Needs a new composite index**: `players` (array-contains) +
+  /// `status` (==) + `createdAt` (desc) — see `firestore.indexes.json`.
+  /// Not yet deployed; this file being correct is not the same as the
+  /// index being live (same standing caveat every entry in that file
+  /// already carries).
+  ///
+  /// [createMatch] has no guard against a player already holding
+  /// another active match, so more than one truly resumable match can
+  /// exist for the same uid at once — this is not assumed away.
+  /// `orderBy('createdAt', descending: true)` makes the pick
+  /// deterministic rather than arbitrary in that case: the newest one
+  /// wins, i.e. whichever match this player left most recently.
+  ///
+  /// Deliberately no `limit()` here. A cap — any cap, 5 or 50 — reopens
+  /// the exact bug this query replaced: a genuinely resumable match
+  /// aging out of an arbitrary "N most recent active" window once
+  /// enough other active matches exist. `status == active` already
+  /// bounds the result to matches that are actually still open, which
+  /// is the only bound this query should have.
   Future<BattleMatch?> findResumableMatch(String uid) async {
-    final recent = await recentMatches(uid, limit: 5);
-    for (final match in recent) {
+    final snapshot = await _firestore
+        .collection(FirestorePaths.battleMatches)
+        .where('players', arrayContains: uid)
+        .where('status', isEqualTo: BattleMatchStatus.active.key)
+        .orderBy('createdAt', descending: true)
+        .get();
+    for (final doc in snapshot.docs) {
+      final match = BattleMatch.fromMap(doc.id, doc.data());
       if (match.isResumable) return match;
     }
     return null;

@@ -645,11 +645,35 @@ final presenceProvider = StreamProvider.family<PresenceStatus, String>((
   return ref.watch(presenceServiceProvider).watchPresence(uid);
 });
 
-/// Live view of one `battleMatches/{matchId}` doc — not consumed
-/// anywhere yet (no match screen exists to watch it from), same
-/// "infrastructure ready ahead of the screen that needs it" shape as
-/// [presenceProvider]/[kanaKeyboardInputProvider].
-final battleMatchProvider = StreamProvider.family<BattleMatch, String>((
+/// Live view of one `battleMatches/{matchId}` doc — watched by
+/// [BattleScreen] and [BattleInviteWaitingScreen].
+///
+/// `autoDispose`, so the underlying Firestore listener actually closes
+/// once nothing is watching it — a plain (non-autoDispose)
+/// `StreamProvider.family` keeps a distinct instance, and its listener,
+/// alive **forever** per matchId once first watched, for the rest of
+/// the process's life, even after every screen that opened it is long
+/// gone. Every match a learner ever opens in one app session would
+/// otherwise leak its own open realtime connection.
+///
+/// Safe with the challenger's own pre-warm-then-replace flow
+/// (`BattleInviteWaitingScreen` watches this, then
+/// `AppNavigator.replaceFadeScale`s into `BattleScreen`, which watches
+/// the same matchId): `replaceFadeScale` keeps the outgoing route
+/// mounted through its transition, so the watcher count never actually
+/// drops to zero mid-swap — Riverpod keeps the same instance (and its
+/// already-received cached snapshot) alive rather than tearing it down
+/// and re-subscribing cold.
+///
+/// Not read by `BattleScreen._maybeMarkAbandoningOnLeave` — that
+/// method reads its own widget-local `_lastKnownMatch` cache instead,
+/// specifically so the abandon-marking fix (`1d229aa`) never depends
+/// on this provider's own lifecycle. Every `ref.read` of this provider
+/// elsewhere in `BattleScreen` is guarded by `if (!mounted) return;`
+/// immediately before it, so it is only ever read while the same
+/// widget's `build()` still holds its own `ref.watch` — this provider
+/// is never read after nothing is watching it any more.
+final battleMatchProvider = StreamProvider.autoDispose.family<BattleMatch, String>((
   ref,
   matchId,
 ) {

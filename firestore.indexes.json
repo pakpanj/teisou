@@ -30,6 +30,35 @@
     },
     {
       "_comment": [
+        "\"Kembali ke Pertandingan\" resumable-match lookup",
+        "(BattleRepository.findResumableMatch):",
+        "  where('players', arrayContains: uid)",
+        "      .where('status', '==', 'active')",
+        "      .orderBy('createdAt', desc)",
+        "Deliberately separate from the plain recent-matches index just",
+        "above — that one has no status filter and backs the history",
+        "list, which correctly wants every match regardless of status.",
+        "This one exists so a resumable match is found directly by",
+        "status instead of hoping it still sits inside history's",
+        "most-recent-N window, which is exactly the bug this replaced",
+        "(a genuinely open match could age out of a last-5 slice once",
+        "5 newer matches of any kind existed).",
+        "NOT YET DEPLOYED — same standing rule as every other index in",
+        "this file: being correct here is not the same as being live;",
+        "deploying needs `firebase deploy --only firestore:indexes` as",
+        "a separate, explicit action this change deliberately does not",
+        "take."
+      ],
+      "collectionGroup": "battleMatches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "players", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "_comment": [
         "RISK-3 subscription backstop's daily near-expiry sweep",
         "(functions/subscription_backstop.js, findNearExpiryCandidates):",
         "  where('subscription.tier', '==', 'premium')",
