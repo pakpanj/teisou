@@ -62,14 +62,52 @@ class _BattleMatchmakingBodyState extends ConsumerState<BattleMatchmakingBody> {
   Timer? _countdownTimer;
   CardGameTier? _queuedTier;
 
+  /// **Why the `ref.read()` cleanup lives here and not in [dispose] — this
+  /// used to be the exact opposite, and it was a guaranteed crash, not a
+  /// race.** Confirmed straight from the Flutter SDK this project builds
+  /// against (`framework.dart`): `StatefulElement.unmount()` calls
+  /// `super.unmount()` — which marks the element `defunct` as the very
+  /// last thing it does — *before* calling `state.dispose()`. So by the
+  /// time any `ConsumerState.dispose()` runs, `flutter_riverpod`'s own
+  /// `WidgetRef.read()`/`.watch()` (`consumer.dart`'s
+  /// `_assertNotDisposed()`, which checks exactly that "already defunct"
+  /// flag) throws `StateError: Cannot use "ref" after the widget was
+  /// disposed.` **every single time** — not occasionally, not under
+  /// load, literally every time this widget was torn down. See
+  /// `LAPORAN_AKAR_MASALAH_BATTLEMATCHMAKINGBODY.md` for the full
+  /// SDK-source-verified chain, including how that guaranteed throw was
+  /// also *why* this widget's own `cardGameRankProvider` watch (in
+  /// [build]) leaked forever — the exception escaped from inside
+  /// `ConsumerStatefulElement.unmount()`'s own call to `super.unmount()`,
+  /// before that method's subsequent listener-cleanup loop ever ran.
+  ///
+  /// `deactivate()` is the fix, not a `mounted`-style guard *inside*
+  /// `dispose()` — checking `mounted` there would not have helped:
+  /// `State.mounted` (`_element != null`) only goes false *after*
+  /// `dispose()` returns (`framework.dart` nulls it a few lines below the
+  /// `state.dispose()` call), so it reads `true` for the entire duration
+  /// of `dispose()`, guard or not. `deactivate()` runs strictly earlier —
+  /// before the element is ever marked `defunct` — so `ref.read()` here
+  /// is genuinely safe, not just quieter about failing.
+  ///
+  /// Confirmed safe to do the *work* here, not just set a flag: this
+  /// widget sits inside `_KeepAlivePage`/`AutomaticKeepAliveClientMixin`
+  /// in [CardGameShell]'s `PageView`, but that mixin only protects a page
+  /// from being discarded while its siblings are scrolled to — switching
+  /// tabs within one still-open `CardGameShell` never deactivates this
+  /// widget at all (confirmed on-device: its `_KeepAlivePage` wrapper is
+  /// created once and only torn down when the whole shell is popped). So
+  /// `deactivate()` here is never the "moved, not removed" case; every
+  /// real call is immediately followed by `dispose()`, never reactivated.
   @override
-  void dispose() {
-    _resultSubscription?.cancel();
-    _countdownTimer?.cancel();
+  void deactivate() {
     // Best-effort cleanup if the learner navigates away mid-search —
     // matches this app's standing "a leftover queue/result node is a
     // harmless no-op for the next attempt, never a correctness problem"
-    // trade-off (see MatchmakingRepository's own doc comments).
+    // trade-off (see MatchmakingRepository's own doc comments) — that
+    // trade-off is what makes it safe for this to run more than once in
+    // the (unconfirmed-reachable, see above) event this widget is ever
+    // reactivated instead of disposed.
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     final tier = _queuedTier;
     if (myUid != null && tier != null) {
@@ -78,6 +116,15 @@ class _BattleMatchmakingBodyState extends ConsumerState<BattleMatchmakingBody> {
           .leaveQueue(tier: tier, uid: myUid);
       ref.read(matchmakingRepositoryProvider).clearMatchResult(myUid);
     }
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    // No `ref` here — see [deactivate]'s own doc comment for why every
+    // `ref.read()` this widget's teardown needs already ran there.
+    _resultSubscription?.cancel();
+    _countdownTimer?.cancel();
     super.dispose();
   }
 

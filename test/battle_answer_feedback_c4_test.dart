@@ -158,7 +158,7 @@ void main() {
         ),
       );
       expect(body, contains('setState(() => _heldRound = null);'));
-      expect(body, contains('if (!mounted) return;'));
+      expect(body, contains('if (_isClosing || !mounted) return;'));
     });
 
     test('_feedbackHoldDuration is the locked ~700ms target', () {
@@ -293,17 +293,23 @@ void main() {
         final loopStart =
             body.indexOf('for (final e in answers.entries) {');
         expect(loopStart, greaterThan(-1));
-        // The loop's own closing brace sits one indent level deeper (4
-        // spaces) than the method body (2 spaces) — the first `if
-        // (!mounted) return;` after the loop starts is the one right
-        // after it closes (see the method's own structure: the loop,
-        // then this guard, then the feedback trigger).
-        final postLoopGuard =
-            body.indexOf('if (!mounted) return;', loopStart);
+        // A lifecycle guard also sits *inside* the loop now (right after
+        // the `await romajiConverter.convert(...)` call, which is a
+        // genuine suspension point) — so the guard this test cares about
+        // (the one right after the loop closes, gating the feedback
+        // trigger) is not simply the first occurrence after [loopStart]
+        // any more. Anchored instead from `if (latestNewRound != null)`
+        // backwards, which is unambiguous regardless of how many guards
+        // sit earlier in the function.
+        final gateStart =
+            body.indexOf('if (latestNewRound != null) {', loopStart);
+        expect(gateStart, greaterThan(loopStart));
+        final postLoopGuard = body.lastIndexOf(
+          'if (_isClosing || !mounted) return;',
+          gateStart,
+        );
         expect(postLoopGuard, greaterThan(loopStart));
 
-        final gateStart =
-            body.indexOf('if (latestNewRound != null) {', postLoopGuard);
         final callStart = body.indexOf('_showRoundFeedback(', postLoopGuard);
         expect(gateStart, greaterThan(postLoopGuard),
             reason: 'the call must be gated, not unconditional');

@@ -38,8 +38,10 @@ void main() {
       expect(handlerBody, contains('_answersSub?.cancel()'));
       expect(handlerBody, contains('_subscribeToAnswers()'));
       // Must bail out on a disposed widget rather than touching `ref`/
-      // `setState` after the fact.
-      expect(handlerBody, contains('if (!mounted) return;'));
+      // `setState` after the fact. `_isClosing` closes a race `mounted`
+      // alone does not — see `_isClosing`'s own doc comment in
+      // battle_screen.dart.
+      expect(handlerBody, contains('if (_isClosing || !mounted) return;'));
     });
 
     test('dispose cancels every timer and subscription this screen owns',

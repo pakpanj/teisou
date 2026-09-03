@@ -64,6 +64,40 @@ class BattleScreen extends ConsumerStatefulWidget {
 
 class _BattleScreenState extends ConsumerState<BattleScreen>
     with WidgetsBindingObserver {
+  /// True from the moment this screen starts being torn down — set as
+  /// the very first thing [deactivate] does — until the widget is gone
+  /// for good.
+  ///
+  /// **Why `mounted` alone is not enough, proven by repeated on-device
+  /// reproduction (see `LAPORAN_VERIFIKASI_TIMER_ENSURETIMERFOR*.md` and
+  /// `LAPORAN_PERBAIKAN_BATTLESCREEN_LIFECYCLE_GATE.md`):** `State.mounted`
+  /// reflects `_element != null`, which the framework only clears at the
+  /// very end of `Element.unmount()` — but `unmount()` marks the element
+  /// `defunct` (the flag `Element.markNeedsBuild()` actually checks) as
+  /// one of its very first steps, *before* calling `state.dispose()` and
+  /// long before `_element` is nulled. A `Timer`/`StreamSubscription`
+  /// callback that happens to get its own event-loop turn in that window
+  /// reads `mounted == true` and still crashes trying to `setState`/
+  /// `ref.read` against an element the framework has already marked
+  /// defunct — this is exactly the "guard exists, guard passes, still
+  /// crashes" pattern both verification reports document with full stack
+  /// traces, at several separate call sites, all guarded by `mounted`
+  /// already.
+  ///
+  /// `_isClosing` sidesteps the framework's own internal bookkeeping
+  /// order entirely — it is a plain field this class sets itself, the
+  /// instant [deactivate] runs (which always precedes `unmount()`/
+  /// `dispose()` for a route-pushed screen like this one — confirmed by
+  /// auditing every call site that creates a [BattleScreen]: always a
+  /// fresh `Navigator...push(MaterialPageRoute(...))`, never an
+  /// `IndexedStack`/`PageView`/keep-alive/`GlobalKey`-reparented child,
+  /// so `deactivate()` here is never the "moved, not removed" case — see
+  /// [deactivate]'s own doc comment). Once true, it stays true for the
+  /// rest of this State's life; there is no framework-internal step left
+  /// that could make a callback's read of it stale the way `mounted` can
+  /// be.
+  bool _isClosing = false;
+
   /// What has been typed for the current card. One buffer, not one per
   /// answer type — both keyboards are this app's own now, so there is no
   /// `TextEditingController` left to keep in step with it.
@@ -200,13 +234,50 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// error) before firing again.
   void _onAnswersError(Object error, StackTrace stackTrace) {
     debugPrint('BattleScreen: answers stream error, re-subscribing: $error');
-    if (!mounted) return;
+    // Part of the same answers-stream machinery as [_onAnswersUpdate] —
+    // re-subscribing after closing would leave a fresh, never-cancelled
+    // subscription behind, so this checks [_isClosing] too.
+    if (_isClosing || !mounted) return;
     _answersSub?.cancel();
     _subscribeToAnswers();
   }
 
+  /// The real gate — see [_isClosing]'s own doc comment for why this,
+  /// not [dispose], is where the flag gets set. `deactivate()` always
+  /// runs before `dispose()`/`unmount()` for a [BattleScreen] (audited:
+  /// every call site pushes it as a fresh route, never reparents it), so
+  /// setting the flag here closes the race as early as this screen's own
+  /// code can possibly know about the teardown — strictly earlier than
+  /// waiting for `dispose()` itself to run.
+  ///
+  /// Deliberately does **not** cancel `_timer`/`_answersSub`/etc. here —
+  /// that stays in [dispose], unchanged, exactly where it already was.
+  /// Setting a bool has no side effect to undo if this widget were ever
+  /// reactivated instead of removed (see [activate]); moving the actual
+  /// cancellation here would.
+  @override
+  void deactivate() {
+    _isClosing = true;
+    super.deactivate();
+  }
+
+  /// Defensive only — confirmed unreachable for [BattleScreen] today
+  /// (see [_isClosing]'s doc comment: this screen is never reparented),
+  /// kept so [_isClosing] cannot end up permanently stuck `true` for a
+  /// screen that is still genuinely alive if that ever changes.
+  @override
+  void activate() {
+    super.activate();
+    _isClosing = false;
+  }
+
   @override
   void dispose() {
+    // Redundant with [deactivate] under every path this screen is
+    // actually used today — kept so `dispose()` is correct standing on
+    // its own, without relying on the reader trusting that
+    // `deactivate()` always ran first.
+    _isClosing = true;
     WidgetsBinding.instance.removeObserver(this);
     _maybeMarkAbandoningOnLeave();
     _timer?.cancel();
@@ -293,7 +364,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   }
 
   Future<void> _onAnswersUpdate(Map<int, BattleAnswer> answers) async {
-    if (!mounted) return;
+    if (_isClosing || !mounted) return;
     final match = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
     final cardData = ref.read(battleCardDataProvider).valueOrNull;
     if (match == null || cardData == null) return;
@@ -332,6 +403,13 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
         romaji = '';
       } else if (card.answerInHiragana) {
         romaji = (await romajiConverter.convert(typed)).trim().toLowerCase();
+        // The `await` above is the one place in this loop this function
+        // can suspend — a screen leave landing in that gap is not caught
+        // by the guard at the top of this function, since that guard ran
+        // before the suspension ever happened. Checks [_isClosing]
+        // alongside `mounted` for the same reason every other guard in
+        // this screen now does — see [_isClosing]'s own doc comment.
+        if (_isClosing || !mounted) return;
       } else {
         romaji = typed.toLowerCase();
       }
@@ -347,7 +425,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
         latestNewByUid = e.value.byUid;
       }
     }
-    if (!mounted) return;
+    if (_isClosing || !mounted) return;
     if (latestNewRound != null) {
       _showRoundFeedback(
         round: latestNewRound,
@@ -401,7 +479,13 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     _flashWasCorrect = correct;
     _flashUntil = DateTime.now().add(_feedbackHoldDuration);
     _feedbackHoldTimer = Timer(_feedbackHoldDuration, () {
-      if (!mounted) return;
+      // Same lifecycle gate as every other Timer/Stream callback in this
+      // screen — see [_isClosing]'s own doc comment. Confirmed crashing
+      // with a plain `mounted` guard during the lifecycle-gate work's own
+      // post-fix reproduction (LAPORAN_PERBAIKAN_BATTLESCREEN_LIFECYCLE_GATE.md,
+      // section 5a): `mounted` alone races the same way it did for the
+      // call sites that motivated `_isClosing` in the first place.
+      if (_isClosing || !mounted) return;
       setState(() => _heldRound = null);
     });
 
@@ -480,7 +564,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     final anchor = match.turnStartedAt ?? DateTime.now();
 
     void tick() {
-      if (!mounted) return;
+      if (_isClosing || !mounted) return;
       var remaining = limit - DateTime.now().difference(anchor);
       if (remaining.isNegative) remaining = Duration.zero;
       setState(() => _remaining = remaining);
@@ -628,7 +712,12 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     final iChoose = entry.deckOwnerUid == myUid;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) _ensureTimerFor(match);
+      // Guards against starting a brand-new Timer.periodic for a screen
+      // that has begun closing since this callback was scheduled a
+      // frame ago — [_isClosing] is checked here for the same reason it
+      // is checked inside `_ensureTimerFor.tick` itself: `mounted` alone
+      // was proven insufficient by repeated reproduction.
+      if (!_isClosing && mounted) _ensureTimerFor(match);
     });
     if (choosing) _scheduleChoiceDeadline(match, ownerIsBot: ownerIsBot);
     // Opened for the player rather than waiting to be asked for. The
@@ -929,7 +1018,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
         cardChoiceWindow(ownerIsBot: ownerIsBot) - _sinceTurnStart(match);
     _choiceDeadlineTimer?.cancel();
     _choiceDeadlineTimer = Timer(left.isNegative ? Duration.zero : left, () {
-      if (!mounted) return;
+      if (_isClosing || !mounted) return;
       final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
       if (current == null) return;
       if (current.currentRound != round) return;
