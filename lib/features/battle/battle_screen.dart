@@ -117,6 +117,60 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   StreamSubscription<Map<int, BattleAnswer>>? _answersSub;
   String? _localClientResult;
 
+  /// Manually-managed replacement for `ref.watch(battleMatchProvider(...))`
+  /// — see `LAPORAN_FIX_FEEDBACKHOLDTIMER_DAN_AUDIT_FORENSIK_RIVERPOD.md`'s
+  /// "Proposal Fix Riverpod, Opsi 2" for the forensic evidence this closes.
+  /// `ref.watch()` inside `build()` registers a listener via
+  /// `ConsumerStatefulElement` that Riverpod never removed on this screen's
+  /// `dispose()` when the same match is resumed repeatedly — confirmed
+  /// directly on-device with dedicated logging instrumentation: the
+  /// provider's builder ran exactly once for a whole session's worth of
+  /// resumes (ten `BattleScreen` instances sharing one match id), its
+  /// `ref.onCancel`/`ref.onResume` never fired even once, and stale
+  /// listeners kept throwing `_ElementLifecycle.defunct` minutes after the
+  /// instance that owned them had already disposed cleanly — a real,
+  /// reproducible leak, not a hypothesis. Mirrors [_answersSub] exactly:
+  /// same repository, same manual `.listen()`, same `_isClosing`/`mounted`
+  /// guards this screen already uses everywhere else — so this screen now
+  /// owns its match subscription outright instead of going through
+  /// `ConsumerStatefulElement`'s own listener bookkeeping for it.
+  /// `battleMatchProvider` itself is untouched: `BattleInviteWaitingScreen`
+  /// still watches it normally, and is unaffected by this change.
+  StreamSubscription<BattleMatch>? _matchSub;
+
+  /// Latest value from [_matchSub] — the `AsyncValue.valueOrNull`
+  /// equivalent every read site in this file used to get from
+  /// `ref.read(battleMatchProvider(...))`. Also this screen's single
+  /// source of truth for "what was the match doing right before I left"
+  /// (replaces the old, separate `_lastKnownMatch` field — both existed
+  /// only to give [dispose] something to read without watching a
+  /// provider, so one field does the job now).
+  ///
+  /// **`null` is NOT the same as "not active", and must not be treated as
+  /// a reason to skip [_maybeMarkAbandoningOnLeave]** — it only means this
+  /// screen has not yet received its first snapshot, which can genuinely
+  /// happen: a challenge is accepted, this screen mounts, and the very
+  /// first Firestore listen has not resolved yet (even from local cache)
+  /// before the screen is left again — a real gap this project's own
+  /// reconnect-testing found live, orphaning a match with no `abandon`
+  /// marker ever written for it, permanently, since nothing else was ever
+  /// going to write one. Attempting the mark anyway when the match state
+  /// is unknown is always safe: `firestore.rules`' `abandon` clause and
+  /// the eventual resolve/sweep both already treat a target that turns
+  /// out to not need it (already concluded, or a uid that isn't actually
+  /// a player) as a harmless no-op — the whole reconnect design was
+  /// already built to re-derive every fact server-side rather than trust
+  /// what the client asserts, so there's nothing this optimistic attempt
+  /// could get wrong that the server wouldn't have caught anyway.
+  BattleMatch? _match;
+
+  /// Latest error from [_matchSub], if the most recent event was an error
+  /// rather than data — mirrors `AsyncValue.when`'s own default
+  /// precedence (error shown over a possibly-stale previous value) so
+  /// `build()`'s branching below behaves identically to the old
+  /// `matchAsync.when(...)`.
+  Object? _matchError;
+
   /// C4 fix — how long the just-resolved round's card stays on screen
   /// after `match.currentRound` has already moved past it. See
   /// [_showRoundFeedback]'s doc comment for why this exists at all.
@@ -154,12 +208,6 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// was already won.
   DateTime? _finishedAt;
 
-  /// The most recently seen match state — updated every `build()`, read
-  /// from `dispose()` (which cannot itself watch a provider) to decide
-  /// whether leaving this screen right now should mark this player as
-  /// having abandoned an active match. See [_maybeMarkAbandoningOnLeave].
-  BattleMatch? _lastKnownMatch;
-
   /// Reconnect grace period (2026-08-30) — mirrors [_timeoutHandledForRound]'s
   /// shape: which opponent-abandon episode this device has already
   /// scheduled a resolve call for, so a rebuild while the same countdown
@@ -174,6 +222,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _subscribeToAnswers();
+    _subscribeToMatch();
     // Covers returning to an already-open BattleScreen instance (a quick
     // background/foreground cycle) as well as arriving fresh via the
     // "Kembali ke Pertandingan" resume card — either way, the very first
@@ -242,6 +291,37 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     _subscribeToAnswers();
   }
 
+  /// Split out of [initState] the same way [_subscribeToAnswers] is, for
+  /// the same reason — a stream error can re-subscribe itself without
+  /// duplicating the `listen(...)` call. See [_matchSub]'s own doc
+  /// comment for why this screen owns this subscription manually now,
+  /// instead of `ref.watch(battleMatchProvider(...))`.
+  void _subscribeToMatch() {
+    _matchSub = ref
+        .read(battleRepositoryProvider)
+        .watchMatch(widget.matchId)
+        .listen(_onMatchUpdate, onError: _onMatchError);
+  }
+
+  void _onMatchUpdate(BattleMatch match) {
+    if (_isClosing || !mounted) return;
+    setState(() {
+      _match = match;
+      _matchError = null;
+    });
+  }
+
+  /// Mirrors [_onAnswersError] exactly — same reasoning applies verbatim
+  /// (a real, plausible stream error deserves one bounded re-subscribe
+  /// attempt, not silence and not a retry loop).
+  void _onMatchError(Object error, StackTrace stackTrace) {
+    debugPrint('BattleScreen: match stream error, re-subscribing: $error');
+    if (_isClosing || !mounted) return;
+    setState(() => _matchError = error);
+    _matchSub?.cancel();
+    _subscribeToMatch();
+  }
+
   /// The real gate — see [_isClosing]'s own doc comment for why this,
   /// not [dispose], is where the flag gets set. `deactivate()` always
   /// runs before `dispose()`/`unmount()` for a [BattleScreen] (audited:
@@ -285,6 +365,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     _feedbackHoldTimer?.cancel();
     _abandonResolveTimer?.cancel();
     _answersSub?.cancel();
+    _matchSub?.cancel();
     super.dispose();
   }
 
@@ -295,23 +376,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// ([_localClientResult] set): leaving a screen that is already over
   /// is not abandoning anything, it is just leaving.
   ///
-  /// **[_lastKnownMatch] being `null` is NOT the same as "not active",
-  /// and must not be treated as a reason to skip** — it only means this
-  /// screen has not yet received its first snapshot from
-  /// [battleMatchProvider], which can genuinely happen: a challenge is
-  /// accepted, this screen mounts, and the very first Firestore listen
-  /// has not resolved yet (even from local cache) before the screen is
-  /// left again — a real gap this project's own reconnect-testing found
-  /// live, orphaning a match with no `abandon` marker ever written for
-  /// it, permanently, since nothing else was ever going to write one.
-  /// Attempting the mark anyway when the match state is unknown is
-  /// always safe: `firestore.rules`' `abandon` clause and the eventual
-  /// resolve/sweep both already treat a target that turns out to not
-  /// need it (already concluded, or a uid that isn't actually a player)
-  /// as a harmless no-op — the whole reconnect design was already built
-  /// to re-derive every fact server-side rather than trust what the
-  /// client asserts, so there's nothing this optimistic attempt could
-  /// get wrong that the server wouldn't have caught anyway.
+  /// **[_match] being `null` is NOT the same as "not active", and must
+  /// not be treated as a reason to skip** — see [_match]'s own doc
+  /// comment for why that gap is real and always safe to attempt anyway.
   ///
   /// `dispose()` cannot `await` — Flutter tears the widget down
   /// synchronously right after this returns — so [BattleRepository
@@ -319,7 +386,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// this needs; nothing here waits for it to land.
   void _maybeMarkAbandoningOnLeave() {
     if (_localClientResult != null) return;
-    final match = _lastKnownMatch;
+    final match = _match;
     if (match != null &&
         (match.status != BattleMatchStatus.active || match.result != null)) {
       return;
@@ -365,7 +432,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
 
   Future<void> _onAnswersUpdate(Map<int, BattleAnswer> answers) async {
     if (_isClosing || !mounted) return;
-    final match = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
+    final match = _match;
     final cardData = ref.read(battleCardDataProvider).valueOrNull;
     if (match == null || cardData == null) return;
     final romajiConverter = ref.read(romajiConverterProvider);
@@ -641,26 +708,34 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
 
   @override
   Widget build(BuildContext context) {
-    final matchAsync = ref.watch(battleMatchProvider(widget.matchId));
     final cardDataAsync = ref.watch(battleCardDataProvider);
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     final s = ref.watch(appStringsProvider);
 
+    // Mirrors `matchAsync.when(...)`'s own default precedence exactly
+    // (error shown over a possibly-stale previous value, same as
+    // AsyncValue.when without `skipError`) — [_match]/[_matchError] are
+    // now fed by [_matchSub] instead of `ref.watch(battleMatchProvider
+    // (...))`, see [_matchSub]'s own doc comment for why.
+    final matchError = _matchError;
+    final match = _match;
+    final Widget body;
+    if (matchError != null) {
+      body = Center(child: Text(s.battleLoadMatchError(matchError)));
+    } else if (match != null) {
+      if (myUid != null) _ensureAbandonResolveScheduled(match, myUid);
+      body = cardDataAsync.when(
+        data: (cardData) => _buildBody(context, s, match, cardData, myUid),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(child: Text(s.battleLoadCardDataError(e))),
+      );
+    } else {
+      body = const Center(child: CircularProgressIndicator());
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text(s.battleTitle)),
-      body: matchAsync.when(
-        data: (match) {
-          _lastKnownMatch = match;
-          if (myUid != null) _ensureAbandonResolveScheduled(match, myUid);
-          return cardDataAsync.when(
-            data: (cardData) => _buildBody(context, s, match, cardData, myUid),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) => Center(child: Text(s.battleLoadCardDataError(e))),
-          );
-        },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text(s.battleLoadMatchError(e))),
-      ),
+      body: body,
     );
   }
 
@@ -1019,7 +1094,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     _choiceDeadlineTimer?.cancel();
     _choiceDeadlineTimer = Timer(left.isNegative ? Duration.zero : left, () {
       if (_isClosing || !mounted) return;
-      final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
+      final current = _match;
       if (current == null) return;
       if (current.currentRound != round) return;
       if (current.playedCards.containsKey(round)) return;
@@ -1085,7 +1160,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     // `playCard` ignores a second write for a round that already has a
     // card, but asking for one at all would be asking about a round that
     // is no longer being played.
-    final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
+    final current = _match;
     if (current == null || current.currentRound != round) return;
     if (current.playedCards.containsKey(round)) return;
     await ref
