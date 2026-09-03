@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../core/constants/battle_rules.dart';
 import 'card_game_rank.dart';
 import 'turn_order_entry.dart';
 
@@ -202,12 +203,44 @@ class BattleMatch {
   /// challenge left sitting for a minute does not eat the first round.
   bool get isAwaitingAccept => inviteState == BattleInviteState.pending;
 
-  /// A match neither finished nor awaiting an invite's accept — the
-  /// shape `BattleRepository.findResumableMatch` looks for, and what the
-  /// Card Game lobby's "Kembali ke Pertandingan" card is offered a
-  /// return to.
-  bool get isResumable =>
-      status == BattleMatchStatus.active && result == null && !isAwaitingAccept;
+  /// A match neither finished nor awaiting an invite's accept, and not
+  /// old enough that it should already have resolved one way or another
+  /// — the shape `BattleRepository.findResumableMatch` looks for, and
+  /// what the Card Game lobby's "Kembali ke Pertandingan" card is offered
+  /// a return to.
+  ///
+  /// [now] is a parameter (defaulting to the real clock) rather than an
+  /// implicit `DateTime.now()` purely so this stays a pure, testable
+  /// function — every call site outside tests can ignore it entirely.
+  ///
+  /// **The age ceiling** (AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md's
+  /// Bagian 4 finding M3): `status`/`result` alone used to be the whole
+  /// definition, with no notion of "too old to still genuinely be worth
+  /// resuming" — a match `createdAt` days ago that somehow never reached
+  /// `finished` (every legitimate path to that either resolves within the
+  /// 30-second [kBattleAbandonGracePeriodSeconds] grace period, or, if
+  /// that marker was never written at all, within the bounded worst case
+  /// `functions/battle_abandonment_sweep.js`'s own per-round staleness
+  /// sweep guarantees — see that file's own doc comment for the
+  /// derivation) would otherwise be offered as "still in progress"
+  /// forever, indistinguishable from a match genuinely still being
+  /// played this minute. [kBattleResumableMaxAge] is set well past that
+  /// worst case specifically so a legitimately slow-but-real match is
+  /// never the one this cuts off — see that constant's own doc comment
+  /// for the actual arithmetic. A match with no `createdAt` at all (every
+  /// match created before that field existed) is treated as too old
+  /// rather than ageless, matching the existing "no timestamp, no
+  /// duration shown" precedent the result screen already has for the
+  /// same field.
+  bool isResumable({DateTime? now}) {
+    if (status != BattleMatchStatus.active) return false;
+    if (result != null) return false;
+    if (isAwaitingAccept) return false;
+    final since = createdAt;
+    if (since == null) return false;
+    final age = (now ?? DateTime.now()).difference(since);
+    return age <= kBattleResumableMaxAge;
+  }
 
   /// The card actually in play for [round]: the owner's choice if they
   /// made one, otherwise the card dealt to that round at creation.

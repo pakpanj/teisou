@@ -2247,6 +2247,15 @@ class AppStrings {
     'Menunggu $seconds detik lagi sebelum kamu menang otomatis...',
     'Waiting $seconds more seconds before you win automatically...',
   );
+  // Presence integration (AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md) —
+  // shown while the opponent's own presence/{uid} looks offline but they
+  // haven't (yet, or at all) explicitly left the screen — see
+  // _OpponentPresenceBanner's own doc comment for why this never affects
+  // the match's actual outcome.
+  String get battleOpponentConnectionLooksDown => _t(
+    'Koneksi lawan tampak terputus',
+    "Opponent's connection looks dropped",
+  );
   String get battleResumableTitle =>
       _t('Pertandingan masih berlangsung', 'A match is still in progress');
   String battleResumableCountdown(int seconds) =>

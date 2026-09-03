@@ -847,7 +847,18 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
               _OpponentAbandonBanner(
                 strings: s,
                 abandon: match.abandon!,
-              ),
+              )
+            // Presence is consulted here purely as an honest status
+            // indicator, never as a trigger — see
+            // AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md's Bagian
+            // H2/L3 and its proposal in Bagian 6. Deliberately shown only
+            // once the abandon banner above has nothing to say: a player
+            // who has actually left the screen already gets the more
+            // specific, actionable countdown, and showing both at once
+            // would just be noise. Never shown against the bot, which has
+            // no `presence/{uid}` node at all.
+            else if (opponentUid != battleBotUid)
+              _OpponentPresenceBanner(strings: s, opponentUid: opponentUid),
             BattleScorePanel(
               strings: s,
               round: match.currentRound + 1,
@@ -1669,6 +1680,79 @@ class _OpponentAbandonBannerState extends State<_OpponentAbandonBanner> {
                   ),
                 ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// An honest "your opponent's connection looks dropped" notice — the
+/// presence-integration piece named in
+/// AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md's Bagian H2/L3 and
+/// its Bagian 6 proposal. Reads the same app-wide `presence/{uid}` RTDB
+/// node the friend/clan "Tantang" screen's green dot already reads
+/// (`presenceProvider`, `PresenceService`) — infrastructure that was
+/// already live but that `BattleScreen` never consulted at all before
+/// this.
+///
+/// **Deliberately never drives the round timer, the abandon marker, or
+/// any forfeit decision** — only [BattleMatch.abandon] and the existing
+/// per-round countdown do that, unchanged. Presence has real latency
+/// (`onDisconnect()` needs the server to actually notice the socket
+/// drop) and a real false-positive shape (a snapshot that reads
+/// "offline" is indistinguishable from "no presence node written yet" —
+/// see [PresenceStatus.fromSnapshotValue]'s own doc comment) — sound
+/// enough for a badge that corrects itself the moment a real snapshot
+/// lands, not sound enough to end a match on. A player who is merely
+/// slow to type still gets exactly the same per-round timeout treatment
+/// as before; this banner just tells the truth about the network while
+/// that clock runs, instead of leaving the waiting player to guess.
+class _OpponentPresenceBanner extends ConsumerWidget {
+  const _OpponentPresenceBanner({
+    required this.strings,
+    required this.opponentUid,
+  });
+
+  final AppStrings strings;
+  final String opponentUid;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final online =
+        ref.watch(presenceProvider(opponentUid)).valueOrNull?.isOnline;
+    // `null` means the presence stream hasn't delivered its first
+    // snapshot yet — genuinely unknown, not "offline". Rendering nothing
+    // here (rather than defaulting to either state) is what keeps a
+    // match's opening moment from flashing a false notice before the
+    // real value arrives.
+    if (online != false) return const SizedBox.shrink();
+
+    final palette = context.palette;
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: palette.tertiaryAmberCardBg,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.signal_wifi_statusbar_connected_no_internet_4,
+            color: palette.textNavy,
+            size: 18,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              strings.battleOpponentConnectionLooksDown,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 13,
+                color: palette.textNavy,
+              ),
             ),
           ),
         ],

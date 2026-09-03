@@ -29,8 +29,26 @@ class MatchmakingRepository {
   /// Writes [uid] into [tier]'s queue — the client-side half of
   /// "Pemasangan lawan publik". `onValueCreated` on this exact path is
   /// what `functions/battle_matchmaking.js`'s trigger listens for.
-  Future<void> joinQueue({required CardGameTier tier, required String uid}) {
-    return _queueRef(tier, uid).set({'joinedAt': ServerValue.timestamp});
+  ///
+  /// **Registers `onDisconnect().remove()` first, same ordering
+  /// [PresenceService.goOnline] already uses and for the identical
+  /// reason** (a disconnect landing in the gap between the two writes
+  /// must still leave the right thing behind) — closing a real gap this
+  /// entry point had and `presence/{uid}` never did: force-closing the
+  /// app, or losing signal outright, while genuinely alone in a tier's
+  /// queue (nobody has claimed this uid yet) used to leave the queue
+  /// entry orphaned forever, since nothing else was ever going to write
+  /// or remove it. `functions/battle_matchmaking.js`'s trigger has no way
+  /// to tell an abandoned entry from a genuinely waiting one — it would
+  /// happily pair a real, present player against this ghost the next
+  /// time someone joined the same tier, minutes, hours, or days later.
+  /// The Realtime Database server itself now guarantees the removal the
+  /// instant the socket drops, the same guarantee presence already
+  /// leans on — no server-side sweep needed for this path at all.
+  Future<void> joinQueue({required CardGameTier tier, required String uid}) async {
+    final ref = _queueRef(tier, uid);
+    await ref.onDisconnect().remove();
+    await ref.set({'joinedAt': ServerValue.timestamp});
   }
 
   /// Removes [uid] from [tier]'s queue — called either when the caller
@@ -40,8 +58,17 @@ class MatchmakingRepository {
   /// Function's own claim transaction already removes both queue
   /// entries as part of pairing, so this is usually a harmless no-op by
   /// the time it runs after a successful match).
-  Future<void> leaveQueue({required CardGameTier tier, required String uid}) {
-    return _queueRef(tier, uid).remove();
+  ///
+  /// Cancels the pending `onDisconnect().remove()` [joinQueue] registered
+  /// too — leaving it armed after a voluntary leave would not corrupt
+  /// anything (removing an already-empty path is a harmless no-op), but
+  /// a stale registration per abandoned queue attempt is exactly the
+  /// kind of thing worth not letting accumulate for the rest of the
+  /// connection's life.
+  Future<void> leaveQueue({required CardGameTier tier, required String uid}) async {
+    final ref = _queueRef(tier, uid);
+    await ref.onDisconnect().cancel();
+    await ref.remove();
   }
 
   /// Live — fires once `functions/battle_matchmaking.js` pairs [uid]

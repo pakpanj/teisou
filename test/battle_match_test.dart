@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:kana_master/core/constants/battle_rules.dart';
 import 'package:kana_master/data/models/battle_answer.dart';
 import 'package:kana_master/data/models/battle_match.dart';
 import 'package:kana_master/data/models/card_game_rank.dart';
@@ -294,10 +295,13 @@ void main() {
     });
 
     group('isResumable', () {
+      final fixedNow = DateTime(2026, 1, 1, 12);
+
       BattleMatch baseMatch({
         BattleMatchStatus status = BattleMatchStatus.active,
         String? result,
         BattleInviteState inviteState = BattleInviteState.none,
+        DateTime? createdAt,
       }) =>
           BattleMatch(
             id: 'm',
@@ -310,32 +314,78 @@ void main() {
             officialScore: {'uid-a': 0, 'uid-b': 0},
             result: result,
             inviteState: inviteState,
+            createdAt: createdAt ?? fixedNow.subtract(const Duration(minutes: 5)),
           );
 
       test('an active match with no result and no pending invite is '
           'resumable', () {
-        expect(baseMatch().isResumable, isTrue);
+        expect(baseMatch().isResumable(now: fixedNow), isTrue);
       });
 
       test('a finished match is never resumable', () {
         expect(
           baseMatch(status: BattleMatchStatus.finished, result: 'uid-a')
-              .isResumable,
+              .isResumable(now: fixedNow),
           isFalse,
         );
       });
 
       test('an active match that already has a result (about to be '
           'finished, or a race mid-write) is not resumable', () {
-        expect(baseMatch(result: 'uid-a').isResumable, isFalse);
+        expect(
+          baseMatch(result: 'uid-a').isResumable(now: fixedNow),
+          isFalse,
+        );
       });
 
       test('a friend/clan challenge still awaiting its accept is not '
           'resumable — there is no live battle to return to yet', () {
         expect(
-          baseMatch(inviteState: BattleInviteState.pending).isResumable,
+          baseMatch(
+            inviteState: BattleInviteState.pending,
+          ).isResumable(now: fixedNow),
           isFalse,
         );
+      });
+
+      // M3 (AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md) — the age
+      // ceiling: a match this old should already have resolved through
+      // the abandon grace period or the abandonment sweep, whichever
+      // applies, so it is no longer offered as "still in progress".
+      test('a match right at the age ceiling is still resumable', () {
+        final match = baseMatch(
+          createdAt: fixedNow.subtract(kBattleResumableMaxAge),
+        );
+        expect(match.isResumable(now: fixedNow), isTrue);
+      });
+
+      test('a match one second past the age ceiling is not resumable', () {
+        final match = baseMatch(
+          createdAt: fixedNow.subtract(
+            kBattleResumableMaxAge + const Duration(seconds: 1),
+          ),
+        );
+        expect(match.isResumable(now: fixedNow), isFalse);
+      });
+
+      test('a match with no createdAt at all is not resumable — treated '
+          'as too old rather than ageless, matching the result screen\'s '
+          'own "no timestamp, no duration shown" precedent for the same '
+          'field', () {
+        final match = BattleMatch(
+          id: 'm',
+          players: ['uid-a', 'uid-b'],
+          status: BattleMatchStatus.active,
+          currentRound: 3,
+          turnOrder: [
+            TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+          ],
+          officialScore: {'uid-a': 0, 'uid-b': 0},
+          // createdAt deliberately omitted — every match created before
+          // that field existed reads back this way.
+        );
+        expect(match.createdAt, isNull);
+        expect(match.isResumable(now: fixedNow), isFalse);
       });
     });
   });

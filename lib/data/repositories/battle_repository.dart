@@ -424,11 +424,16 @@ class BattleRepository {
   ///
   /// Filters server-side on `status` (an equality clause Firestore can
   /// combine with `players`/`createdAt`), then narrows to
-  /// [BattleMatch.isResumable] client-side for `result`/`inviteState` —
-  /// Firestore can't express those as further clauses on the same
+  /// [BattleMatch.isResumable] client-side for `result`/`inviteState`/age
+  /// — Firestore can't express those as further clauses on the same
   /// query without another composite index each, and the number of
   /// simultaneously `active` matches for one player is expected to
-  /// stay small regardless.
+  /// stay small regardless. The age check
+  /// (`kBattleResumableMaxAge`, AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md's
+  /// M3) does not reopen the "no limit()" reasoning below — it is a
+  /// per-document semantic check ("is this one still plausibly live"),
+  /// not a count-based window a genuinely fresh match could ever fall
+  /// out of.
   ///
   /// **Needs a new composite index**: `players` (array-contains) +
   /// `status` (==) + `createdAt` (desc) — see `firestore.indexes.json`.
@@ -458,7 +463,7 @@ class BattleRepository {
         .get();
     for (final doc in snapshot.docs) {
       final match = BattleMatch.fromMap(doc.id, doc.data());
-      if (match.isResumable) return match;
+      if (match.isResumable()) return match;
     }
     return null;
   }

@@ -73,3 +73,33 @@ const kBattleCardChoiceSeconds = 10;
 /// `battle_screen.dart`'s lifecycle observer). See `BattleMatch.abandon`
 /// for the marker this counts down from.
 const kBattleAbandonGracePeriodSeconds = 30;
+
+/// How old an `active` match may be before the "Kembali ke Pertandingan"
+/// card stops offering it at all — `BattleMatch.isResumable`'s age
+/// ceiling (AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md's Bagian 4
+/// finding M3). Client-side only: it changes what this player's own
+/// lobby *advertises*, never what the server considers `active` — a
+/// match past this age is not touched, deleted, or forced to conclude by
+/// this constant at all, only quietly stopped from being offered as
+/// "still in progress" to the one screen that reads it this way.
+///
+/// **Derived from `functions/battle_abandonment_sweep.js`'s own
+/// documented worst case, not picked arbitrarily.** Every legitimate path
+/// to a match staying `active` this long already has a bound:
+/// - An explicit leave (`BattleMatch.abandon` written) resolves within
+///   [kBattleAbandonGracePeriodSeconds] of whichever client or sweep
+///   cycle notices it — minutes at most.
+/// - No explicit leave at all (a true force-kill with no `paused`
+///   transition ever firing) falls to the sweep's per-round staleness
+///   check: `STALE_THRESHOLD_MS` (3 minutes) per round, one round
+///   forfeited per 2-minute sweep cycle, up to `STAGE2_TRIGGER_ROUND`
+///   (round 19) — worst case around 19 * 5 = 95 minutes before Stage 2's
+///   bulk pass (which is fast once triggered) can even start.
+///
+/// So nothing that is actually still capable of concluding on its own
+/// should ever reach two hours, let alone six — a match still `active`
+/// past this ceiling is one where something else already went wrong
+/// (this environment's own testing history has produced exactly such
+/// orphaned matches), and offering it as "still in progress" forever
+/// would only be misleading, not useful.
+const kBattleResumableMaxAge = Duration(hours: 6);
