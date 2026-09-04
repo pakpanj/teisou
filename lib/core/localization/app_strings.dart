@@ -2239,13 +2239,25 @@ class AppStrings {
   String get battleOpponentChoosing =>
       _t('Lawan sedang memilih kartu...', 'Opponent is picking a card...');
   // 30-second reconnect grace period (2026-08-30).
-  String get battleOpponentAbandonedTitle => _t(
-    'Lawan terputus dari pertandingan',
-    'Opponent got disconnected',
-  );
-  String battleOpponentAbandonedCountdown(int seconds) => _t(
-    'Menunggu $seconds detik lagi sebelum kamu menang otomatis...',
-    'Waiting $seconds more seconds before you win automatically...',
+  // Two-sided absence / pause system (2026-09) — shown full-screen to
+  // whichever player is still present on `BattleScreen`, in place of the
+  // normal game, once `BattleMatch.absenceOf(opponentUid)` is non-null.
+  // See `_MatchPausedView`'s own doc comment for why this replaces the
+  // whole body instead of layering over it.
+  String get battleMatchPausedTitle =>
+      _t('Pertandingan Dijeda', 'Match Paused');
+  String get battleMatchPausedWaiting =>
+      _t('Menunggu lawan kembali...', 'Waiting for opponent to return...');
+  String battleMatchPausedCountdown(int seconds) =>
+      _t('00:${seconds.toString().padLeft(2, '0')}', '00:${seconds.toString().padLeft(2, '0')}');
+  // A match nobody came back to in time — no winner, no loser, and (see
+  // `functions/battle_stars.js`'s own `result == null` gate) no star
+  // movement for either player.
+  String get battleResultAbandoned =>
+      _t('Pertandingan Dibatalkan', 'Match Abandoned');
+  String get battleResultAbandonedExplanation => _t(
+    'Kedua pemain sempat keluar dan tidak kembali tepat waktu. Tidak ada yang menang atau kalah.',
+    'Both players left and neither returned in time. Nobody won or lost.',
   );
   // Presence integration (AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md) —
   // shown while the opponent's own presence/{uid} looks offline but they

@@ -4,13 +4,45 @@ import '../../core/constants/battle_rules.dart';
 import 'card_game_rank.dart';
 import 'turn_order_entry.dart';
 
-enum BattleMatchStatus { active, finished }
+/// `abandoned` (2026-09) — added alongside the two-sided [BattleMatch.absence]
+/// system, see that field's own doc comment for the full design. A match
+/// reaches this status only when BOTH players were simultaneously absent
+/// and neither returned before their own grace period ran out — no
+/// winner, no loser, `result` stays `null` forever. Written only by
+/// `functions/battle_abandonment_sweep.js`, the same Cloud-Function-only
+/// treatment `finished` already has; a client can no more set this than
+/// it can set `finished`.
+///
+/// **Deliberately not a literal `paused` value**, even though the design
+/// this status supports is very much a pause/resume system — see
+/// `AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md`'s follow-up
+/// implementation notes for the full reasoning. In short: `status` has
+/// been 100% frozen against client writes since this schema's very first
+/// version (`firestore.rules`' `battleMatches` update rule), and that
+/// freeze is exactly what makes `finished`/`result` trustworthy — a
+/// client that could flip `status` to a new value itself would need a
+/// second, narrower carve-out audited just as carefully as the existing
+/// one. Representing "paused" as a *derived* condition instead —
+/// `status == active && absence.isNotEmpty`, see [BattleMatch.isPaused] —
+/// gets every behavior the spec asks for (frozen input while paused,
+/// resumable once everyone's back, no winner if nobody comes back)
+/// without touching that freeze at all. `absence` is the only field this
+/// system needed to make client-writable, and it already was (as
+/// `abandon`) before this change.
+enum BattleMatchStatus { active, finished, abandoned }
 
 extension BattleMatchStatusX on BattleMatchStatus {
-  String get key => this == BattleMatchStatus.finished ? 'finished' : 'active';
+  String get key => switch (this) {
+    BattleMatchStatus.finished => 'finished',
+    BattleMatchStatus.abandoned => 'abandoned',
+    BattleMatchStatus.active => 'active',
+  };
 
-  static BattleMatchStatus fromKey(String? key) =>
-      key == 'finished' ? BattleMatchStatus.finished : BattleMatchStatus.active;
+  static BattleMatchStatus fromKey(String? key) => switch (key) {
+    'finished' => BattleMatchStatus.finished,
+    'abandoned' => BattleMatchStatus.abandoned,
+    _ => BattleMatchStatus.active,
+  };
 }
 
 /// Whether a match is still waiting on an invited player to say yes.
@@ -160,21 +192,30 @@ class BattleMatch {
   /// both players can already see.
   final BattleInviteState inviteState;
 
-  /// Who last left this match, and when — the 30-second reconnect grace
-  /// period's own marker (2026-08-30). `null` while nobody has left, or
-  /// once the disconnected player has come back (see
-  /// `BattleRepository.clearAbandoning`) or the grace period has already
-  /// been resolved one way or the other (see `resolveOneAbandonment` in
-  /// `functions/battle_abandonment_sweep.js`, which clears/overwrites it
-  /// the moment it finalizes the match).
+  /// Who is currently away from this match, and since when — keyed by
+  /// uid, so Player A's and Player B's presence are tracked completely
+  /// independently (2026-09; replaces the old single-slot `abandon`
+  /// field from the 2026-08-30 reconnect-grace-period design). A key's
+  /// mere presence means that uid is away; its absence means present.
+  /// Mirrors [officialScore]/[decks]/[starResult]'s own established
+  /// "map keyed by uid" shape for exactly the same reason those are
+  /// shaped that way — two players, two independent slots, no boolean
+  /// that can only describe one of them at a time.
+  ///
+  /// **This is also how "paused" is represented** — see
+  /// [BattleMatchStatus.abandoned]'s doc comment for why there is no
+  /// separate literal status value for it: `isPaused` below is simply
+  /// `status == active && absence.isNotEmpty`.
   ///
   /// **Client-writable, unlike `result`/`officialScore`/`scoredRounds`**
-  /// — a player marks *themselves* leaving directly, no Cloud Function
-  /// round trip needed for that half. `firestore.rules` restricts the
-  /// three legal transitions (unchanged / self-mark-from-null /
-  /// self-clear-while-still-active) so a player can never mark or clear
-  /// their *opponent's* mark — see that rule's own comment.
-  final BattleAbandonMarker? abandon;
+  /// — a player marks *themselves* away directly, no Cloud Function
+  /// round trip needed for that half; only the eventual *conclusion*
+  /// (someone's 30-second window running out) is Cloud-Function-only.
+  /// `firestore.rules` restricts a write to exactly one shape: adding or
+  /// removing the key matching `request.auth.uid`, nothing else — a
+  /// player can never mark or clear their *opponent's* key. See that
+  /// rule's own comment for the `.diff()`-based check this relies on.
+  final Map<String, BattleAbsenceMarker> absence;
 
   BattleMatch({
     required this.id,
@@ -194,7 +235,7 @@ class BattleMatch {
     this.playedCards = const {},
     this.inviteState = BattleInviteState.none,
     this.createdAt,
-    this.abandon,
+    this.absence = const {},
   });
 
   /// Nobody should be playing this match yet — the invited player has
@@ -202,6 +243,18 @@ class BattleMatch {
   /// by the accept (see `BattleRepository.respondToMatchInvite`), so a
   /// challenge left sitting for a minute does not eat the first round.
   bool get isAwaitingAccept => inviteState == BattleInviteState.pending;
+
+  /// The match is genuinely paused — at least one player is currently
+  /// away and the match hasn't already concluded some other way. See
+  /// [absence]'s own doc comment for why this is computed rather than a
+  /// literal status value.
+  bool get isPaused => status == BattleMatchStatus.active && absence.isNotEmpty;
+
+  /// [uid]'s own absence marker, or `null` if they're currently present.
+  BattleAbsenceMarker? absenceOf(String uid) => absence[uid];
+
+  /// The uids currently marked away, in no particular order.
+  Iterable<String> get absentUids => absence.keys;
 
   /// A match neither finished nor awaiting an invite's accept, and not
   /// old enough that it should already have resolved one way or another
@@ -218,7 +271,7 @@ class BattleMatch {
   /// definition, with no notion of "too old to still genuinely be worth
   /// resuming" — a match `createdAt` days ago that somehow never reached
   /// `finished` (every legitimate path to that either resolves within the
-  /// 30-second [kBattleAbandonGracePeriodSeconds] grace period, or, if
+  /// 30-second [kBattleAbsenceGracePeriodSeconds] grace period, or, if
   /// that marker was never written at all, within the bounded worst case
   /// `functions/battle_abandonment_sweep.js`'s own per-round staleness
   /// sweep guarantees — see that file's own doc comment for the
@@ -232,14 +285,38 @@ class BattleMatch {
   /// rather than ageless, matching the existing "no timestamp, no
   /// duration shown" precedent the result screen already has for the
   /// same field.
-  bool isResumable({DateTime? now}) {
+  ///
+  /// **[uid] — added alongside the two-sided [absence] system.** Whether
+  /// a match is still worth offering "Kembali ke Pertandingan" for now
+  /// depends on *which* player is asking: [uid]'s own absence marker (if
+  /// they're the one currently away) has its own 30-second window, and
+  /// once that has run out, resuming is moot — the server is about to
+  /// (or already did) decide this in [uid]'s opponent's favor, and
+  /// showing "you can still come back" at that point would be a lie the
+  /// UI cannot back up. This has no bearing on [uid]'s *opponent* being
+  /// away instead, or on both being away — either of those still leaves
+  /// [uid] free to resume, which is exactly [BattleMatch.isPaused]'s
+  /// "waiting for the other side" state from [uid]'s point of view.
+  bool isResumable({required String uid, DateTime? now}) {
     if (status != BattleMatchStatus.active) return false;
     if (result != null) return false;
     if (isAwaitingAccept) return false;
-    final since = createdAt;
-    if (since == null) return false;
-    final age = (now ?? DateTime.now()).difference(since);
-    return age <= kBattleResumableMaxAge;
+    final createdSince = createdAt;
+    if (createdSince == null) return false;
+    final effectiveNow = now ?? DateTime.now();
+    if (effectiveNow.difference(createdSince) > kBattleResumableMaxAge) {
+      return false;
+    }
+    final myAbsence = absence[uid];
+    if (myAbsence != null) {
+      final since = myAbsence.since;
+      if (since != null &&
+          effectiveNow.difference(since) >=
+              const Duration(seconds: kBattleAbsenceGracePeriodSeconds)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /// The card actually in play for [round]: the owner's choice if they
@@ -320,11 +397,13 @@ class BattleMatch {
           const {},
       inviteState: BattleInviteStateX.fromKey(map['inviteState'] as String?),
       createdAt: _toDateTime(map['createdAt']),
-      abandon: map['abandon'] is Map
-          ? BattleAbandonMarker.fromMap(
-              Map<String, dynamic>.from(map['abandon'] as Map),
-            )
-          : null,
+      absence: (map['absence'] as Map?)?.map(
+            (k, v) => MapEntry(
+              k as String,
+              BattleAbsenceMarker.fromMap(Map<String, dynamic>.from(v as Map)),
+            ),
+          ) ??
+          const {},
     );
   }
 
@@ -425,19 +504,19 @@ class BattleStarResult {
   );
 }
 
-/// "Who left this match, and when" — see [BattleMatch.abandon]'s own
-/// doc comment for the full reasoning.
-class BattleAbandonMarker {
-  final String uid;
+/// "Since when has this one player been away" — the value half of
+/// [BattleMatch.absence]'s `Map<uid, BattleAbsenceMarker>`. No `uid`
+/// field of its own any more (2026-09) — unlike the old single-slot
+/// `BattleAbandonMarker` this replaces, the uid is now the map key it's
+/// stored under, so repeating it inside the value would just be a second
+/// place the same fact could disagree with itself.
+class BattleAbsenceMarker {
   final DateTime? since;
 
-  const BattleAbandonMarker({required this.uid, this.since});
+  const BattleAbsenceMarker({this.since});
 
-  factory BattleAbandonMarker.fromMap(Map<String, dynamic> map) {
-    return BattleAbandonMarker(
-      uid: map['uid'] as String? ?? '',
-      since: _abandonSince(map['since']),
-    );
+  factory BattleAbsenceMarker.fromMap(Map<String, dynamic> map) {
+    return BattleAbsenceMarker(since: _absenceSince(map['since']));
   }
 
   /// How long ago this player left, or `null` if the timestamp hasn't
@@ -449,7 +528,7 @@ class BattleAbandonMarker {
       since == null ? null : now.difference(since!);
 }
 
-DateTime? _abandonSince(dynamic value) {
+DateTime? _absenceSince(dynamic value) {
   if (value == null) return null;
   if (value is Timestamp) return value.toDate();
   if (value is DateTime) return value;

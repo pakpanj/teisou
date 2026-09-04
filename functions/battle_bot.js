@@ -307,6 +307,14 @@ exports.onBattleMatchWritten = onDocumentWritten(
       if (!after || !after.exists) return; // deleted
       const match = after.data();
       if (match.result) return; // already concluded
+      // FASE C — a match with anyone in `absence` is paused (see
+      // `BattleMatch.absence`'s own doc comment), and this had no
+      // awareness of that at all before this check: `result` stays null
+      // for the whole pause, so without this the bot would keep playing
+      // turns while the human opponent's own 30-second recovery window
+      // was still open, racing ahead of a match `battle_screen.dart`
+      // itself was showing as fully frozen.
+      if (match.absence && Object.keys(match.absence).length > 0) return;
 
       const players = match.players || [];
       if (!players.includes(BOT_UID)) return; // not a bot match

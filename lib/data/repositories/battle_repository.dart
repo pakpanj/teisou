@@ -334,52 +334,92 @@ class BattleRepository {
   }
 
   // -------------------------------------------------------------------
-  // 30-second reconnect grace period (2026-08-30) — see
-  // `BattleMatch.abandon`'s own doc comment for the full mechanism.
+  // Two-sided absence / pause system (2026-08-30, generalized 2026-09) —
+  // see `BattleMatch.absence`'s own doc comment for the full mechanism.
   // -------------------------------------------------------------------
 
   /// Marks [uid] as having just left [matchId] — the server timestamp
-  /// this writes is what the 30-second grace period counts down from.
+  /// this writes is what their own 30-second grace period counts down
+  /// from. A transaction, not a plain merge write: it has to read the
+  /// current `absence` map first, both to avoid clobbering the
+  /// *opponent's* own entry if they happen to already be marked away
+  /// too, and to refuse to act at all once the match is no longer
+  /// `active` (a `finished`/`abandoned` match must never be reopened
+  /// into a paused one by a straggling leave-write landing late).
   ///
   /// **Best-effort by design, never allowed to throw into a caller.**
   /// This is fired from places that cannot usefully await a failure —
   /// `dispose()`, an app-lifecycle callback — and `firestore.rules`
   /// itself will legitimately reject this write in cases that are not
-  /// bugs (the match already concluded, or someone already marked
-  /// themselves and this is a second, redundant call from the same
-  /// leave). A rejected write here simply means the older mechanism
-  /// (`functions/battle_abandonment_sweep.js`'s pre-existing per-round
-  /// staleness sweep) is still watching, same as it always has been.
-  Future<void> markAbandoning(String matchId, String uid) async {
+  /// bugs (the match already concluded, or this exact uid already has an
+  /// entry from an earlier, still-pending leave). A rejected write here
+  /// simply means the older mechanism (`functions/battle_abandonment_sweep.js`'s
+  /// pre-existing per-round staleness sweep) is still watching, same as
+  /// it always has been.
+  Future<void> markAbsent(String matchId, String uid) async {
     try {
-      await _matchDoc(matchId).set({
-        'abandon': {'uid': uid, 'since': FieldValue.serverTimestamp()},
-      }, SetOptions(merge: true));
+      final matchRef = _matchDoc(matchId);
+      await _firestore.runTransaction((transaction) async {
+        final snapshot = await transaction.get(matchRef);
+        final data = snapshot.data();
+        if (data == null) return;
+        if ((data['status'] as String? ?? 'active') != 'active') return;
+        final absence = Map<String, dynamic>.from(
+          data['absence'] as Map? ?? const {},
+        );
+        if (absence.containsKey(uid)) return; // already marked, don't refresh
+        absence[uid] = {'since': FieldValue.serverTimestamp()};
+        transaction.update(matchRef, {'absence': absence});
+      });
     } catch (e) {
       // See doc comment — a failed mark is not a crash, just a missed
       // fast path. Logged (not surfaced) so a real regression here is
       // at least visible in a debug session instead of indistinguishable
       // from "nobody left" — this call has no other observable effect
       // when it fails.
-      debugPrint('markAbandoning($matchId) failed: $e');
+      debugPrint('markAbsent($matchId, $uid) failed: $e');
     }
   }
 
-  /// Clears an abandon mark on return — "I'm back". Best-effort for the
-  /// same reason [markAbandoning] is: called from a screen's own
-  /// `initState`/app-resume path, where nothing useful can be done with
-  /// a thrown error, and `firestore.rules` already refuses this exact
-  /// write once the match has actually concluded (the grace period ran
-  /// out before this call landed) — that is the correct outcome, not a
-  /// bug to surface.
-  Future<void> clearAbandoning(String matchId) async {
+  /// Clears [uid]'s own absence mark on return — "I'm back". A
+  /// transaction for the same reason [markAbsent] is one, plus one more:
+  /// when clearing this uid's key empties the `absence` map entirely
+  /// (the *other* player, if they were ever away at all, is already
+  /// back too), this also refreshes `turnStartedAt` in the same write —
+  /// see [BattleMatch.isPaused]'s own doc comment for why resuming must
+  /// give the round a fresh full budget rather than picking up wherever
+  /// the clock happened to be when the pause began.
+  ///
+  /// Best-effort for the same reason [markAbsent] is: called from a
+  /// screen's own `initState`/app-resume path, where nothing useful can
+  /// be done with a thrown error, and `firestore.rules` already refuses
+  /// this exact write once the match has actually concluded (every
+  /// grace period involved ran out before this call landed) — that is
+  /// the correct outcome, not a bug to surface.
+  Future<void> clearAbsence(String matchId, String uid) async {
     try {
-      await _matchDoc(matchId).set({
-        'abandon': null,
-      }, SetOptions(merge: true));
+      final matchRef = _matchDoc(matchId);
+      await _firestore.runTransaction((transaction) async {
+        final snapshot = await transaction.get(matchRef);
+        final data = snapshot.data();
+        if (data == null) return;
+        final absence = Map<String, dynamic>.from(
+          data['absence'] as Map? ?? const {},
+        );
+        if (!absence.containsKey(uid)) return; // nothing to clear
+        absence.remove(uid);
+        final updates = <String, dynamic>{'absence': absence};
+        if (absence.isEmpty) {
+          // Everyone is present again — the round that was frozen mid-
+          // pause gets a fresh full budget rather than resuming a clock
+          // that may have already run out while nobody could act on it.
+          updates['turnStartedAt'] = FieldValue.serverTimestamp();
+        }
+        transaction.update(matchRef, updates);
+      });
     } catch (e) {
       // See doc comment.
-      debugPrint('clearAbandoning($matchId) failed: $e');
+      debugPrint('clearAbsence($matchId, $uid) failed: $e');
     }
   }
 
@@ -463,7 +503,7 @@ class BattleRepository {
         .get();
     for (final doc in snapshot.docs) {
       final match = BattleMatch.fromMap(doc.id, doc.data());
-      if (match.isResumable()) return match;
+      if (match.isResumable(uid: uid)) return match;
     }
     return null;
   }

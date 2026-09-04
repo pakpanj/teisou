@@ -244,41 +244,80 @@ void main() {
       expect(match.currentAnswererUid, isNull);
     });
 
-    group('abandon (30-second reconnect grace period)', () {
-      test('fromMap parses uid + a real Timestamp since', () {
+    group('absence (two-sided reconnect grace period)', () {
+      test('fromMap parses a real Timestamp since, keyed by uid', () {
         final since = Timestamp.fromDate(DateTime.utc(2026, 8, 30, 12, 0, 0));
         final match = BattleMatch.fromMap('m', {
-          'abandon': {'uid': 'uid-a', 'since': since},
+          'absence': {
+            'uid-a': {'since': since},
+          },
         });
-        expect(match.abandon, isNotNull);
-        expect(match.abandon!.uid, 'uid-a');
-        expect(match.abandon!.since, since.toDate());
+        expect(match.absenceOf('uid-a'), isNotNull);
+        expect(match.absenceOf('uid-a')!.since, since.toDate());
+        expect(match.absenceOf('uid-b'), isNull);
       });
 
-      test('fromMap leaves abandon null when absent, not throwing', () {
+      test('fromMap leaves absence empty when absent, not throwing', () {
         final match = BattleMatch.fromMap('m', {});
-        expect(match.abandon, isNull);
+        expect(match.absence, isEmpty);
+        expect(match.isPaused, isFalse);
       });
 
-      test('fromMap leaves abandon null when explicitly null', () {
-        final match = BattleMatch.fromMap('m', {'abandon': null});
-        expect(match.abandon, isNull);
+      test('both players can each have their own independent entry', () {
+        final sinceA = Timestamp.fromDate(DateTime.utc(2026, 9, 1, 10));
+        final sinceB = Timestamp.fromDate(DateTime.utc(2026, 9, 1, 10, 0, 5));
+        final match = BattleMatch.fromMap('m', {
+          'absence': {
+            'uid-a': {'since': sinceA},
+            'uid-b': {'since': sinceB},
+          },
+        });
+        expect(match.absentUids.toSet(), {'uid-a', 'uid-b'});
+        expect(match.absenceOf('uid-a')!.since, sinceA.toDate());
+        expect(match.absenceOf('uid-b')!.since, sinceB.toDate());
+      });
+
+      test('isPaused is true whenever anyone is away, false once the map '
+          'is empty — and it never depends on which uid is asking, unlike '
+          'absenceOf', () {
+        final active = BattleMatch.fromMap('m', {
+          'status': 'active',
+        });
+        expect(active.isPaused, isFalse);
+        final paused = BattleMatch.fromMap('m', {
+          'status': 'active',
+          'absence': {
+            'uid-a': {'since': null},
+          },
+        });
+        expect(paused.isPaused, isTrue);
+      });
+
+      test('isPaused is false once the match has concluded, even with a '
+          'stale absence entry still on the doc — status wins', () {
+        final match = BattleMatch.fromMap('m', {
+          'status': 'finished',
+          'absence': {
+            'uid-a': {'since': null},
+          },
+        });
+        expect(match.isPaused, isFalse);
       });
 
       test('elapsedSince computes a real Duration once since is known', () {
         final since = DateTime.utc(2026, 8, 30, 12, 0, 0);
-        final marker = BattleAbandonMarker(uid: 'uid-a', since: since);
+        final marker = BattleAbsenceMarker(since: since);
         final elapsed = marker.elapsedSince(since.add(const Duration(seconds: 12)));
         expect(elapsed, const Duration(seconds: 12));
       });
 
       test('elapsedSince is null while the serverTimestamp sentinel has '
           'not round-tripped back down yet', () {
-        const marker = BattleAbandonMarker(uid: 'uid-a');
+        const marker = BattleAbsenceMarker();
         expect(marker.elapsedSince(DateTime.now()), isNull);
       });
 
-      test('toCreateMap never includes abandon — a fresh match starts '
+      test('toCreateMap never includes absence — a fresh match starts '
           'with nobody marked away', () {
         final match = BattleMatch(
           id: '',
@@ -290,7 +329,35 @@ void main() {
           ],
           officialScore: {'uid-a': 0, 'uid-b': 0},
         );
-        expect(match.toCreateMap().containsKey('abandon'), isFalse);
+        expect(match.toCreateMap().containsKey('absence'), isFalse);
+      });
+    });
+
+    group('abandoned status', () {
+      test('key/fromKey round-trip the new terminal status', () {
+        expect(BattleMatchStatus.abandoned.key, 'abandoned');
+        expect(
+          BattleMatchStatusX.fromKey('abandoned'),
+          BattleMatchStatus.abandoned,
+        );
+      });
+
+      test('an abandoned match is never resumable', () {
+        final match = BattleMatch(
+          id: 'm',
+          players: ['uid-a', 'uid-b'],
+          status: BattleMatchStatus.abandoned,
+          currentRound: 3,
+          turnOrder: [
+            TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+          ],
+          officialScore: {'uid-a': 0, 'uid-b': 0},
+          createdAt: DateTime(2026, 1, 1),
+        );
+        expect(
+          match.isResumable(uid: 'uid-a', now: DateTime(2026, 1, 1, 0, 1)),
+          isFalse,
+        );
       });
     });
 
@@ -302,6 +369,7 @@ void main() {
         String? result,
         BattleInviteState inviteState = BattleInviteState.none,
         DateTime? createdAt,
+        Map<String, BattleAbsenceMarker> absence = const {},
       }) =>
           BattleMatch(
             id: 'm',
@@ -315,17 +383,18 @@ void main() {
             result: result,
             inviteState: inviteState,
             createdAt: createdAt ?? fixedNow.subtract(const Duration(minutes: 5)),
+            absence: absence,
           );
 
       test('an active match with no result and no pending invite is '
           'resumable', () {
-        expect(baseMatch().isResumable(now: fixedNow), isTrue);
+        expect(baseMatch().isResumable(uid: 'uid-a', now: fixedNow), isTrue);
       });
 
       test('a finished match is never resumable', () {
         expect(
           baseMatch(status: BattleMatchStatus.finished, result: 'uid-a')
-              .isResumable(now: fixedNow),
+              .isResumable(uid: 'uid-a', now: fixedNow),
           isFalse,
         );
       });
@@ -333,7 +402,7 @@ void main() {
       test('an active match that already has a result (about to be '
           'finished, or a race mid-write) is not resumable', () {
         expect(
-          baseMatch(result: 'uid-a').isResumable(now: fixedNow),
+          baseMatch(result: 'uid-a').isResumable(uid: 'uid-a', now: fixedNow),
           isFalse,
         );
       });
@@ -343,20 +412,20 @@ void main() {
         expect(
           baseMatch(
             inviteState: BattleInviteState.pending,
-          ).isResumable(now: fixedNow),
+          ).isResumable(uid: 'uid-a', now: fixedNow),
           isFalse,
         );
       });
 
       // M3 (AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md) — the age
       // ceiling: a match this old should already have resolved through
-      // the abandon grace period or the abandonment sweep, whichever
+      // the absence grace period or the abandonment sweep, whichever
       // applies, so it is no longer offered as "still in progress".
       test('a match right at the age ceiling is still resumable', () {
         final match = baseMatch(
           createdAt: fixedNow.subtract(kBattleResumableMaxAge),
         );
-        expect(match.isResumable(now: fixedNow), isTrue);
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isTrue);
       });
 
       test('a match one second past the age ceiling is not resumable', () {
@@ -365,7 +434,7 @@ void main() {
             kBattleResumableMaxAge + const Duration(seconds: 1),
           ),
         );
-        expect(match.isResumable(now: fixedNow), isFalse);
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isFalse);
       });
 
       test('a match with no createdAt at all is not resumable — treated '
@@ -385,7 +454,58 @@ void main() {
           // that field existed reads back this way.
         );
         expect(match.createdAt, isNull);
-        expect(match.isResumable(now: fixedNow), isFalse);
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isFalse);
+      });
+
+      // Two-sided absence, from the caller's own perspective — KASUS 1/2's
+      // "my own 30-second window is up" rule. Only ever gates *this*
+      // uid's own resumability; it never looks at the opponent's entry.
+      test('a match is still resumable for me while my own absence is '
+          'inside the grace period', () {
+        final match = baseMatch(
+          absence: {
+            'uid-a': BattleAbsenceMarker(
+              since: fixedNow.subtract(const Duration(seconds: 10)),
+            ),
+          },
+        );
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isTrue);
+      });
+
+      test('a match is no longer resumable for me once my own absence has '
+          'run past the grace period', () {
+        final match = baseMatch(
+          absence: {
+            'uid-a': BattleAbsenceMarker(
+              since: fixedNow.subtract(
+                const Duration(seconds: kBattleAbsenceGracePeriodSeconds + 1),
+              ),
+            ),
+          },
+        );
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isFalse);
+      });
+
+      test('the opponent being past their own grace period does not '
+          'affect my own resumability — each player is judged only by '
+          'their own entry', () {
+        final match = baseMatch(
+          absence: {
+            'uid-b': BattleAbsenceMarker(
+              since: fixedNow.subtract(
+                const Duration(seconds: kBattleAbsenceGracePeriodSeconds + 30),
+              ),
+            ),
+          },
+        );
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isTrue);
+      });
+
+      test('a match with no known `since` yet for my own entry (the '
+          'serverTimestamp sentinel has not round-tripped down) is still '
+          'resumable — a fresh mark, not a stale one', () {
+        final match = baseMatch(absence: {'uid-a': const BattleAbsenceMarker()});
+        expect(match.isResumable(uid: 'uid-a', now: fixedNow), isTrue);
       });
     });
   });

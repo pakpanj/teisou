@@ -90,8 +90,9 @@ const STAGE2_TRIGGER_ROUND = 19;
 const STALE_THRESHOLD_MS = 3 * 60 * 1000;
 
 /**
- * The new (2026-08-30) explicit "leaving the match" grace period —
- * mirrors `lib/core/constants/battle_rules.dart`'s `kBattleAbandonGracePeriodSeconds`
+ * The two-sided "leaving the match" grace period (2026-08-30, generalized
+ * from a single-slot marker 2026-09) — mirrors
+ * `lib/core/constants/battle_rules.dart`'s `kBattleAbsenceGracePeriodSeconds`
  * (kept in sync by hand, the same split every other cross-language
  * constant in this pair of files already carries).
  *
@@ -99,16 +100,17 @@ const STALE_THRESHOLD_MS = 3 * 60 * 1000;
  * it.** That threshold detects a round nobody is answering (silence with
  * no explicit signal either way) and forfeits *one round* at a time — a
  * genuinely abandoned match can still take many sweep cycles to reach a
- * result. This one instead watches an explicit `abandon` marker
- * (`lib/data/repositories/battle_repository.dart`'s `markAbandoning`,
- * written when a player's own device notices them leave — back/Home
- * navigation, or the app backgrounding, see `battle_screen.dart`'s
- * lifecycle observer) and, once the grace period is up, ends the whole
- * match immediately rather than forfeiting it round by round. A player
- * who force-kills the app (no chance for their own device to write
- * `abandon` at all) is not covered by this path — that case still falls
- * through to [STALE_THRESHOLD_MS]'s slower, unmodified sweep, which
- * remains the backstop it always was.
+ * result. This one instead watches `BattleMatch.absence` — a map keyed by
+ * uid, each entry written by that player's own device the moment it
+ * notices them leave (`lib/data/repositories/battle_repository.dart`'s
+ * `markAbsent`, called from `battle_screen.dart`'s `dispose()`/lifecycle
+ * observer) — and, once the *relevant* grace period(s) are up, ends the
+ * whole match immediately (a win for whoever is still present, or
+ * `abandoned` if nobody ever came back) rather than forfeiting it round by
+ * round. A player who force-kills the app (no chance for their own device
+ * to write an `absence` entry at all) is not covered by this path — that
+ * case still falls through to [STALE_THRESHOLD_MS]'s slower, unmodified
+ * sweep, which remains the backstop it always was.
  */
 const ABANDON_GRACE_PERIOD_MS = 30 * 1000;
 
@@ -117,29 +119,53 @@ function db() {
 }
 
 /**
- * Ends [matchId] outright once its `abandon` marker's grace period has
- * elapsed — the disconnected player loses, their opponent wins, exactly
- * like any other concluded match. Writes `result`/`status` the same way
- * `battle_scoring.js` does for a normally-finished match, which is what
- * lets `battle_stars.js`'s `onBattleMatchConcluded` trigger (already
- * built to watch for `result` appearing "from ANY source") pay stars
- * through its own existing, unmodified `starsApplied` idempotency
- * transaction — nothing new is needed there.
+ * Resolves [matchId]'s absence state once enough of the relevant grace
+ * period(s) have elapsed — the server-authoritative half of the
+ * two-sided pause system (`BattleMatch.absence`'s own doc comment has
+ * the full picture this implements).
  *
- * Returns a reason string; `"finalized"` is the only outcome that
- * actually wrote anything. Every other outcome is a deliberate,
- * observable no-op — including `"reconnected"`, when the disconnected
- * player's own device already cleared `abandon` (see
- * `battle_repository.dart`'s `clearAbandoning`) before this transaction
- * ran: whichever write actually lands first in Firestore is definitive,
- * so a player who returns at, say, 29.9 seconds and a sweep/callable
- * racing to finalize at the same moment resolve deterministically to
- * whichever one Firestore committed first — this function re-reads
- * `abandon` fresh *inside* the transaction rather than trusting a
- * snapshot taken before it started, specifically so that race can never
- * be won by stale data.
+ * Re-reads `absence` fresh *inside* the transaction every time, the same
+ * way the single-sided version this replaces always did — so a player
+ * reconnecting (their own client's `clearAbsence` removing their key)
+ * always wins any race against a sweep/callable invocation trying to
+ * finalize at the same moment, whichever write Firestore actually
+ * commits first.
+ *
+ * Three shapes, entirely driven by how many of `match.players` currently
+ * have an entry in `absence`:
+ *   - **zero** — nothing to resolve: `"no_absence"`.
+ *   - **one** (KASUS 1/2) — once that one player's own grace period is
+ *     up, the *other* player wins and this one loses (`result`/
+ *     `status: "finished"`, same shape `battle_scoring.js` already
+ *     writes for a normal conclusion, so `battle_stars.js`'s
+ *     `onBattleMatchConcluded` trigger pays stars through its own
+ *     existing, unmodified `starsApplied` idempotency transaction —
+ *     nothing new needed there). This is also what a KASUS 3 sub-case
+ *     (3A/3B) naturally becomes the instant one of two absent players
+ *     returns — `clearAbsence` removes their key, shrinking the map to
+ *     one, and the very next time this runs it is simply this branch
+ *     again, off the remaining player's own original `since` timestamp.
+ *     No special transition handling was needed for that case.
+ *   - **two** (KASUS 3, neither has returned) — resolves only once the
+ *     LATER of the two players' own individual deadlines has passed
+ *     (i.e. *both* have separately run out), and only ever to
+ *     `"abandoned"`: no winner, no loser, `result` deliberately never
+ *     gets written (stays absent/null), which is what makes
+ *     `battle_stars.js`'s own `if (!match.result) return;` gate skip
+ *     this match automatically — no star movement, no code change
+ *     needed there either. If only one of the two deadlines has passed
+ *     so far, this returns `"not_yet_due"` — the match stays paused
+ *     rather than resolving off half the picture.
+ *
+ * Returns a reason string; `"finalized_win"`/`"finalized_abandoned"` are
+ * the only outcomes that actually wrote anything. Every other outcome —
+ * including a uid present in `absence` that somehow isn't one of
+ * `match.players` (should be unreachable, `firestore.rules` only ever
+ * lets a player add/remove their own key) — is a deliberate, observable
+ * no-op: safe to call early, safe to call twice, safe to call
+ * concurrently, safe to call for a match nobody has ever left.
  */
-async function resolveOneAbandonment(matchId, now, dbInstance = db()) {
+async function resolveOneMatchAbsence(matchId, now, dbInstance = db()) {
   const matchRef = dbInstance.collection("battleMatches").doc(matchId);
   return dbInstance.runTransaction(async (transaction) => {
     const snap = await transaction.get(matchRef);
@@ -148,50 +174,75 @@ async function resolveOneAbandonment(matchId, now, dbInstance = db()) {
     if (match.status !== "active" || match.result) {
       return "already_concluded";
     }
-    const abandon = match.abandon;
-    if (!abandon || !abandon.uid) return "reconnected";
-
-    const since = abandon.since;
-    const sinceMs = since ?
-        (typeof since.toMillis === "function" ? since.toMillis() : since.getTime()) :
-        null;
-    if (sinceMs === null) return "no_timestamp";
-    if (now - sinceMs < ABANDON_GRACE_PERIOD_MS) return "not_yet_due";
 
     const players = match.players || [];
-    const loser = abandon.uid;
-    // If the abandoning uid is somehow not a real player on this match
-    // (should be unreachable — firestore.rules only lets a player mark
-    // themselves), fall back to leaving the match alone rather than
-    // guessing a winner.
-    if (!players.includes(loser)) return "unknown_player";
-    const winner = players.find((p) => p !== loser) || loser;
+    const absence = match.absence || {};
+    const absentUids = players.filter(
+        (p) => Object.prototype.hasOwnProperty.call(absence, p),
+    );
+    if (absentUids.length === 0) return "no_absence";
+
+    const deadlineOf = (uid) => {
+      const since = absence[uid] && absence[uid].since;
+      if (!since) return null;
+      const sinceMs = typeof since.toMillis === "function" ?
+          since.toMillis() : since.getTime();
+      return sinceMs + ABANDON_GRACE_PERIOD_MS;
+    };
+
+    if (absentUids.length === 1) {
+      const loser = absentUids[0];
+      const deadline = deadlineOf(loser);
+      if (deadline === null) return "no_timestamp";
+      if (now < deadline) return "not_yet_due";
+
+      const winner = players.find((p) => p !== loser);
+      if (!winner) return "unknown_player";
+
+      transaction.set(matchRef, {
+        result: winner,
+        status: "finished",
+        abandonedBy: loser,
+      }, {merge: true});
+      return "finalized_win";
+    }
+
+    // KASUS 3 — every player currently on this match is absent. Only
+    // ever resolves to "abandoned", and only once *both* players' own
+    // deadlines have separately elapsed — the later of the two, never
+    // the earlier, so a match where the two players left seconds apart
+    // is not finalized off just the first one's clock running out.
+    const deadlines = absentUids.map(deadlineOf);
+    if (deadlines.some((d) => d === null)) return "no_timestamp";
+    const latestDeadline = Math.max(...deadlines);
+    if (now < latestDeadline) return "not_yet_due";
 
     transaction.set(matchRef, {
-      result: winner,
-      status: "finished",
-      abandonedBy: loser,
+      status: "abandoned",
+      abandonedBy: absentUids,
     }, {merge: true});
-    return "finalized";
+    return "finalized_abandoned";
   });
 }
 
 /**
- * The client-callable half — the disconnected player's opponent (still
- * on the battle screen, watching `abandon` via its own live match
- * listener) calls this the moment its own local ~30s countdown reaches
- * zero, giving near-exact grace-period precision whenever at least one
- * participant is actually present to trigger it. [sweepOnce] below is
- * the backstop for when neither player is present to call this at all.
+ * The client-callable half — the still-present player's own
+ * `BattleScreen` (watching `absence` via its own live match listener)
+ * calls this the moment its own local countdown for the *opponent's*
+ * entry reaches zero, giving near-exact grace-period precision whenever
+ * at least one participant is actually present to trigger it. [sweepOnce]
+ * below is the backstop for when neither player is present to call this
+ * at all.
  *
- * Deliberately takes no other input than [matchId] — the caller does
- * not get to assert who lost or when; every fact this needs
- * (`abandon.uid`, `abandon.since`, the 30s deadline) is re-derived
- * entirely from the match document itself, inside the same transaction
- * [resolveOneAbandonment] always uses. A malicious or buggy client
- * calling this early, calling it twice, or calling it for a match with
- * no `abandon` marker at all can only ever produce a safe no-op — never
- * an early or fabricated result.
+ * Deliberately takes no other input than [matchId] — the caller does not
+ * get to assert who lost, who's still absent, or when; every fact this
+ * needs (who is in `absence`, each entry's own `since`, each one's own
+ * deadline) is re-derived entirely from the match document itself,
+ * inside the same transaction [resolveOneMatchAbsence] always uses. A
+ * malicious or buggy client calling this early, calling it twice, or
+ * calling it for a match with an empty `absence` map can only ever
+ * produce a safe no-op — never an early or fabricated result, and never
+ * a result the client itself gets to pick.
  */
 const resolveBattleAbandonment = onCall(async (request) => {
   const matchId = request.data && request.data.matchId;
@@ -201,8 +252,11 @@ const resolveBattleAbandonment = onCall(async (request) => {
   if (!request.auth) {
     throw new HttpsError("unauthenticated", "sign-in required");
   }
-  const outcome = await resolveOneAbandonment(matchId, Date.now());
-  return {outcome, finalized: outcome === "finalized"};
+  const outcome = await resolveOneMatchAbsence(matchId, Date.now());
+  return {
+    outcome,
+    finalized: outcome === "finalized_win" || outcome === "finalized_abandoned",
+  };
 });
 
 /**
@@ -294,6 +348,20 @@ async function forfeitOneStaleRound(matchId, now, dbInstance = db()) {
     const inviteState = match.inviteState;
     if (inviteState === "pending" || inviteState === "declined") {
       return {status: "not_started"};
+    }
+
+    // FASE C/D — a match with anyone in `absence` is paused, and a
+    // paused match's round clock must not run: `turnStartedAt` is
+    // deliberately frozen while this is true (see `clearAbsence`'s own
+    // doc comment — it refreshes `turnStartedAt` only once *nobody* is
+    // left absent), so treating a stale `turnStartedAt` as evidence of
+    // real abandonment here would double-punish a player who is already
+    // being handled by [resolveOneMatchAbsence]'s own, more specific
+    // 30-second window. This sweep's own staleness path resumes acting
+    // on this match automatically the moment `absence` empties out
+    // again, with no special re-arming needed.
+    if (match.absence && Object.keys(match.absence).length > 0) {
+      return {status: "paused"};
     }
 
     const round = match.currentRound || 0;
@@ -431,17 +499,23 @@ async function sweepOnce(dbInstance = db(), now = Date.now()) {
   for (const doc of activeSnap.docs) {
     inspected++;
     try {
-      // The explicit-abandon path runs first and, on its own, skips the
+      // The explicit-absence path runs first and, on its own, skips the
       // staleness check entirely for this match this cycle — a match
       // that just got finalized this way has nothing left for
       // [forfeitOneStaleRound] to usefully do (`already_concluded` is
       // its own safe no-op if it ran anyway, but there is no reason to
-      // pay for the extra transaction).
-      const abandonOutcome = await resolveOneAbandonment(doc.id, now, dbInstance);
-      if (abandonOutcome === "finalized") {
+      // pay for the extra transaction). A match still paused but not yet
+      // past its deadline(s) falls straight through to that same
+      // no-op — [forfeitOneStaleRound]'s own `absence`-non-empty guard
+      // (see its doc comment) is what actually skips the round-clock
+      // check for it.
+      const absenceOutcome = await resolveOneMatchAbsence(doc.id, now, dbInstance);
+      if (absenceOutcome === "finalized_win" ||
+          absenceOutcome === "finalized_abandoned") {
         abandonedFinalized++;
-        logger.info("battle_abandonment_sweep: finalized an abandoned match", {
+        logger.info("battle_abandonment_sweep: finalized a match via absence", {
           matchId: doc.id,
+          outcome: absenceOutcome,
         });
         continue;
       }
@@ -485,7 +559,7 @@ exports._internal = {
   sweepOnce,
   bulkForfeitRemainingRounds,
   forfeitRoundUnconditionally,
-  resolveOneAbandonment,
+  resolveOneMatchAbsence,
   STALE_THRESHOLD_MS,
   MAX_ROUNDS,
   STAGE2_TRIGGER_ROUND,

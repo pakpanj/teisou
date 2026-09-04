@@ -69,6 +69,27 @@ class _StarResultCardState extends State<StarResultCard> {
     final s = widget.strings;
     final palette = context.palette;
 
+    // An abandoned match (both players left, neither returned in time —
+    // see `BattleMatch.absence`'s own doc comment) never gets a
+    // `starResult` at all: `battle_stars.js`'s `onBattleMatchConcluded`
+    // trigger gates on `result` being non-null, and an abandoned match
+    // deliberately never writes one. Without this branch, `result` below
+    // would stay permanently null and this card would sit on
+    // "menghitung..." until [_patienceLimit], then settle on "masih
+    // diperbarui" forever — technically not wrong, but misleading: there
+    // is nothing to wait for here, the match simply never decided a
+    // winner.
+    if (widget.match.status == BattleMatchStatus.abandoned) {
+      return _wrap(
+        context,
+        Text(
+          s.battleResultAbandonedExplanation,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: palette.textNavy.withValues(alpha: 0.7)),
+        ),
+      );
+    }
+
     // Friend and clan matches never move stars, by design — their card
     // content is freely chosen, so ranking them would be a shortcut. Say
     // so plainly instead of leaving a gap where a number belongs.

@@ -217,21 +217,23 @@ class _ResumableMatchCard extends ConsumerWidget {
     if (match == null) return const SizedBox.shrink();
     final s = ref.watch(appStringsProvider);
     final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
-    final abandon = match.abandon;
-    // Only meaningful while *this* player is the one the grace period is
-    // actually counting down against — a match that is simply still
-    // active (no abandon mark at all, or the opponent's own mark, not
-    // this device's) is still resumable, just without an urgent
-    // countdown to show for it.
-    final showsCountdown = abandon != null && myUid != null && abandon.uid == myUid;
+    // Only meaningful while *this specific player* has their own entry in
+    // `absence` — a match that is simply still active (no absence entries
+    // at all, or only the opponent's) is still resumable, just without an
+    // urgent countdown to show for it. This is FASE D's "departed player"
+    // side — the offer to return, with the remaining time, that this
+    // card's own doc comment already describes; the still-present
+    // player's side of a pause lives on `BattleScreen` itself
+    // (`_MatchPausedView`), not here.
+    final myAbsence = myUid == null ? null : match.absenceOf(myUid);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
-      child: showsCountdown
+      child: myAbsence != null
           ? _ResumableMatchCountdown(
               strings: s,
               matchId: match.id,
-              since: abandon.since,
+              since: myAbsence.since,
             )
           : _ResumableMatchStatic(strings: s, matchId: match.id),
     );
@@ -295,7 +297,7 @@ class _ResumableMatchCountdownState extends State<_ResumableMatchCountdown> {
     final since = widget.since;
     final elapsed = since == null ? Duration.zero : DateTime.now().difference(since);
     final remaining =
-        const Duration(seconds: kBattleAbandonGracePeriodSeconds) - elapsed;
+        const Duration(seconds: kBattleAbsenceGracePeriodSeconds) - elapsed;
     final secondsLeft = remaining.isNegative ? 0 : remaining.inSeconds + 1;
     return _ResumableMatchShell(
       strings: widget.strings,
@@ -389,8 +391,8 @@ class _ResumableMatchShellState extends State<_ResumableMatchShell> {
             // Pushes the exact same matchId — never
             // BattleRepository.createMatch, so this can never spawn a
             // duplicate match. BattleScreen's own initState clears this
-            // player's abandon mark the instant it mounts (see its
-            // `_clearOwnAbandonMark`), which is what actually cancels
+            // player's absence entry the instant it mounts (see its
+            // `_clearOwnAbsenceMark`), which is what actually cancels
             // the grace period — this button only navigates.
             onPressed: _isOpeningBattle ? null : _openBattle,
             child: Text(widget.strings.battleResumableCta),

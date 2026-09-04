@@ -59,10 +59,13 @@ const kBattleMinimumSeconds = 10;
 /// match.
 const kBattleCardChoiceSeconds = 10;
 
-/// The 30-second reconnect grace period (2026-08-30) — how long a
-/// player who has left an active match stays "away" before their
-/// opponent's client (or the server-side sweep, as a backstop) is
-/// allowed to finalize the match as an abandonment loss. Mirrors
+/// The 30-second reconnect grace period (2026-08-30, generalized to a
+/// two-sided per-player system 2026-09) — how long a player who has left
+/// an active match stays "away" before that specific player's own
+/// deadline lets the match conclude in the other side's favor (or, if
+/// both players are away, before the match is left `abandoned` once
+/// *both* windows have run out — see `BattleMatch.absence`'s own doc
+/// comment for the full two-sided design). Mirrors
 /// `functions/battle_abandonment_sweep.js`'s `ABANDON_GRACE_PERIOD_MS`,
 /// the same cross-language split every other constant in this file
 /// already carries.
@@ -70,9 +73,9 @@ const kBattleCardChoiceSeconds = 10;
 /// **Distinct from every timer above** — those bound one *round*; this
 /// bounds the whole match staying resumable after an explicit leave
 /// (back/Home navigation, the app backgrounding — see
-/// `battle_screen.dart`'s lifecycle observer). See `BattleMatch.abandon`
-/// for the marker this counts down from.
-const kBattleAbandonGracePeriodSeconds = 30;
+/// `battle_screen.dart`'s lifecycle observer). See `BattleMatch.absence`
+/// for the per-player markers this counts down from independently.
+const kBattleAbsenceGracePeriodSeconds = 30;
 
 /// How old an `active` match may be before the "Kembali ke Pertandingan"
 /// card stops offering it at all — `BattleMatch.isResumable`'s age
@@ -86,9 +89,11 @@ const kBattleAbandonGracePeriodSeconds = 30;
 /// **Derived from `functions/battle_abandonment_sweep.js`'s own
 /// documented worst case, not picked arbitrarily.** Every legitimate path
 /// to a match staying `active` this long already has a bound:
-/// - An explicit leave (`BattleMatch.abandon` written) resolves within
-///   [kBattleAbandonGracePeriodSeconds] of whichever client or sweep
-///   cycle notices it — minutes at most.
+/// - An explicit leave (a `BattleMatch.absence` entry written) resolves
+///   within [kBattleAbsenceGracePeriodSeconds] of whichever client or
+///   sweep cycle notices it — minutes at most, even in the two-sided
+///   case where both players left and the later of their two deadlines
+///   is the one that decides it.
 /// - No explicit leave at all (a true force-kill with no `paused`
 ///   transition ever firing) falls to the sweep's per-round staleness
 ///   check: `STALE_THRESHOLD_MS` (3 minutes) per round, one round

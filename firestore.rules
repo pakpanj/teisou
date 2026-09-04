@@ -802,40 +802,82 @@ service cloud.firestore {
           // giliran. Yang dibekukan adalah isi tangannya, supaya tidak
           // ada yang menukar kartunya di tengah pertandingan.
           && request.resource.data.get('decks', {}) == resource.data.get('decks', {})
-          // `abandon` — penanda "saya baru saja meninggalkan pertandingan
-          // ini" (2026-08-30, 30-second reconnect grace period). Field
-          // ini SENGAJA tidak dibekukan sepenuhnya seperti field lain di
-          // atas — pemain sendiri yang menulisnya, langsung dari client,
-          // saat menutup/meninggalkan layar Battle. Tapi hanya tiga
-          // bentuk perubahan yang diizinkan, supaya seorang pemain tidak
-          // bisa menandai LAWANNYA sebagai "pergi" untuk mencuri
-          // kemenangan:
-          //   1. tidak berubah sama sekali (mayoritas tulisan lain di
-          //      match ini — playCard/submitAnswer/dst.);
-          //   2. menandai DIRI SENDIRI sebagai pergi, hanya dari kosong
-          //      (`resource.data.abandon` harus null dulu — tidak bisa
-          //      menimpa tanda milik lawan), dan `since` harus benar-
-          //      benar jam server (`request.time`), bukan angka yang
-          //      dikarang client;
-          //   3. menghapus tanda milik DIRI SENDIRI (kembali ke null),
-          //      hanya kalau match masih `active` — begitu Cloud Function
-          //      `resolveBattleAbandonment` sudah menuliskan `result`,
-          //      match tidak lagi `active` dan `abandon` di titik itu
-          //      sepenuhnya milik Cloud Function, klien tidak boleh
-          //      menyentuhnya lagi.
-          // Cloud Function (Admin SDK) sendiri melewati rule ini
-          // sepenuhnya — inilah yang menulis `result`/`status` begitu
-          // 30 detiknya habis, lihat functions/battle_abandonment_sweep.js.
+          // `absence` — a map keyed by uid, one entry per player currently
+          // marked "just left this match" (generalized 2026-09 from the
+          // original single-slot `abandon` field to a genuinely two-sided
+          // system — see `BattleMatch.absence`'s own doc comment). This
+          // field is SENGAJA not frozen the way the fields above are —
+          // each player writes their own entry directly from the client,
+          // on leaving/returning to the Battle screen. But only two shapes
+          // of change are allowed, so one player can never mark the OTHER
+          // as away (which would let them steal a win) or clear the
+          // OTHER's own mark (which would let them silently cancel an
+          // opponent's forfeit clock):
+          //   1. unchanged (the overwhelming majority of other writes to
+          //      this match — playCard/submitAnswer/etc.);
+          //   2. adding EXACTLY the caller's own key, and only if it
+          //      wasn't already there (can't refresh/extend their own
+          //      grace period by re-marking), with `since` genuinely the
+          //      server clock (`request.time`), never a client-supplied
+          //      value — and only while the match is still `active`, so a
+          //      finished/abandoned match can never be reopened into a
+          //      paused one by a late-arriving leave write;
+          //   3. removing EXACTLY the caller's own key, only while the
+          //      match is still `active` — once a Cloud Function
+          //      (`resolveBattleAbandonment`/`battle_abandonment_sweep.js`)
+          //      has concluded it, `absence` at that point belongs to the
+          //      Cloud Function alone, and the client must not touch it.
+          // Cloud Functions (Admin SDK) bypass this rule entirely — that
+          // is what actually finalizes a match once every relevant grace
+          // period is up, see the two files named above.
           && (
-            request.resource.data.get('abandon', null) == resource.data.get('abandon', null)
-            || (request.resource.data.abandon != null
-                && request.resource.data.abandon.uid == request.auth.uid
-                && request.resource.data.abandon.since == request.time
-                && resource.data.get('abandon', null) == null)
-            || (request.resource.data.get('abandon', null) == null
-                && resource.data.get('abandon', null) != null
-                && resource.data.abandon.uid == request.auth.uid
-                && resource.data.status == 'active')
+            request.resource.data.get('absence', {}) == resource.data.get('absence', {})
+            || (
+              // `.hasOnly([request.auth.uid])` rather than an equality
+              // check against a set literal — this project's own
+              // pre-existing rules only ever compare an `affectedKeys()`
+              // result via `.hasOnly([...])` (see `clans/{code}`'s update
+              // rule above), and this mirrors that exact, already-proven
+              // idiom rather than introducing an unverified one. Combined
+              // with the two membership checks right below, "no key other
+              // than mine was affected" plus "mine went from absent to
+              // present" together mean exactly one thing changed: my own
+              // key was added.
+              request.resource.data.get('absence', {})
+                  .diff(resource.data.get('absence', {}))
+                  .affectedKeys().hasOnly([request.auth.uid])
+              && !(request.auth.uid in resource.data.get('absence', {}))
+              && request.auth.uid in request.resource.data.get('absence', {})
+              && request.resource.data.absence[request.auth.uid].since == request.time
+              && resource.data.status == 'active'
+            )
+            || (
+              request.resource.data.get('absence', {})
+                  .diff(resource.data.get('absence', {}))
+                  .affectedKeys().hasOnly([request.auth.uid])
+              && request.auth.uid in resource.data.get('absence', {})
+              && !(request.auth.uid in request.resource.data.get('absence', {}))
+              && resource.data.status == 'active'
+            )
+          )
+          // A match with anyone in `absence` (before or after this write)
+          // is paused — `currentRound`/`playedCards` must not move while
+          // that is true, closing off the one cheat this generalization
+          // would otherwise open: a client continuing to force rounds
+          // forward while the opponent has an open recovery window.
+          // **Pre-existing gap, not introduced or fully closed here**:
+          // outside a pause, this rule still lets either player write any
+          // value to `currentRound`/`playedCards` unconditionally — see
+          // FASE A's audit findings for the full accounting of that.
+          && (
+            (resource.data.get('absence', {}) == {}
+                && request.resource.data.get('absence', {}) == {})
+            || (
+              request.resource.data.get('currentRound', 0) ==
+                  resource.data.get('currentRound', 0)
+              && request.resource.data.get('playedCards', {}) ==
+                  resource.data.get('playedCards', {})
+            )
           );
 
       // Write-once — no update/delete, so a submitted answer can never

@@ -19,7 +19,8 @@ import '../../data/models/turn_order_entry.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
 import '../../data/models/leaderboard_entry.dart';
-import '../../data/repositories/battle_repository.dart' show battleBotUid;
+import '../../data/repositories/battle_repository.dart'
+    show battleBotUid, BattleRepository;
 import '../../core/constants/card_skins.dart';
 import '../../core/widgets/mascot_widget.dart';
 import 'battle_card_picker_screen.dart';
@@ -147,15 +148,15 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// provider, so one field does the job now).
   ///
   /// **`null` is NOT the same as "not active", and must not be treated as
-  /// a reason to skip [_maybeMarkAbandoningOnLeave]** — it only means this
+  /// a reason to skip [_maybeMarkAbsentOnLeave]** — it only means this
   /// screen has not yet received its first snapshot, which can genuinely
   /// happen: a challenge is accepted, this screen mounts, and the very
   /// first Firestore listen has not resolved yet (even from local cache)
   /// before the screen is left again — a real gap this project's own
-  /// reconnect-testing found live, orphaning a match with no `abandon`
-  /// marker ever written for it, permanently, since nothing else was ever
+  /// reconnect-testing found live, orphaning a match with no `absence`
+  /// entry ever written for it, permanently, since nothing else was ever
   /// going to write one. Attempting the mark anyway when the match state
-  /// is unknown is always safe: `firestore.rules`' `abandon` clause and
+  /// is unknown is always safe: `firestore.rules`' `absence` clause and
   /// the eventual resolve/sweep both already treat a target that turns
   /// out to not need it (already concluded, or a uid that isn't actually
   /// a player) as a harmless no-op — the whole reconnect design was
@@ -208,32 +209,69 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// was already won.
   DateTime? _finishedAt;
 
-  /// Reconnect grace period (2026-08-30) — mirrors [_timeoutHandledForRound]'s
-  /// shape: which opponent-abandon episode this device has already
-  /// scheduled a resolve call for, so a rebuild while the same countdown
-  /// is still running doesn't start a second one. Reset to null whenever
-  /// `match.abandon` itself goes back to null (a reconnect, or a
-  /// finalize that already landed).
+  /// Reconnect grace period (2026-08-30, generalized to the two-sided
+  /// `absence` map 2026-09) — mirrors [_timeoutHandledForRound]'s shape:
+  /// which opponent-absence episode this device has already scheduled a
+  /// resolve call for, so a rebuild while the same countdown is still
+  /// running doesn't start a second one. Reset to null whenever
+  /// `match.absenceOf(opponentUid)` itself goes back to null (the
+  /// opponent reconnected, or a finalize that already landed) — see
+  /// [_ensureAbandonResolveScheduled].
   DateTime? _abandonResolveScheduledFor;
   Timer? _abandonResolveTimer;
+
+  /// Snapshot of everything [_maybeMarkAbsentOnLeave] needs from `ref`,
+  /// taken while `ref` is still guaranteed usable — never read fresh from
+  /// `dispose()` itself.
+  ///
+  /// **Root cause this exists to close, confirmed on-device via
+  /// `[ABSENCE_TRACE]` logging (2026-09-04)**: `dispose()` calling
+  /// `ref.read(appStartupProvider)`/`ref.read(battleRepositoryProvider)`
+  /// throws `Bad state: Cannot use "ref" after the widget was disposed.`
+  /// — silently, since nothing in the `dispose()` → `_maybeMarkAbsentOnLeave()`
+  /// chain wraps it in a try/catch, and Flutter's own framework-level error
+  /// zone swallows it into a bare `FlutterError:` log line rather than a
+  /// crash. So `markAbsent()` was **never actually reached** from a real
+  /// leave, despite every earlier guard clause in `_maybeMarkAbsentOnLeave`
+  /// evaluating correctly. Riverpod's own element teardown
+  /// (`ConsumerStatefulElement.unmount()`) invalidates `ref` before
+  /// `State.dispose()` runs, even though textually `dispose()` still reads
+  /// as part of the same widget lifecycle.
+  ///
+  /// Captured in [initState] rather than only in [deactivate] — a second,
+  /// independent reason on top of the one above: [_maybeMarkAbsentOnLeave]
+  /// has **two** call sites, not one. [didChangeAppLifecycleState] (app
+  /// backgrounded/detached) calls it while this screen is still fully
+  /// mounted, `ref` still perfectly valid — capturing only in [deactivate]
+  /// would leave these fields `null` the first time that path fires
+  /// (deactivate hasn't run yet), silently breaking app-backgrounding
+  /// absence detection. `initState` runs unconditionally, exactly once,
+  /// before either call site can ever fire, so both are covered. Also
+  /// re-captured in [deactivate] (redundant with this, by design) as a
+  /// defensive refresh immediately before the leave path specifically —
+  /// see [deactivate]'s own doc comment.
+  String? _uidForLeave;
+  BattleRepository? _repositoryForLeave;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _uidForLeave = ref.read(appStartupProvider).valueOrNull?.uid;
+    _repositoryForLeave = ref.read(battleRepositoryProvider);
     _subscribeToAnswers();
     _subscribeToMatch();
     // Covers returning to an already-open BattleScreen instance (a quick
     // background/foreground cycle) as well as arriving fresh via the
     // "Kembali ke Pertandingan" resume card — either way, the very first
     // thing this screen does is say "I'm here" for its own uid.
-    _clearOwnAbandonMark();
+    _clearOwnAbsenceMark();
   }
 
-  void _clearOwnAbandonMark() {
+  void _clearOwnAbsenceMark() {
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (myUid == null) return;
-    ref.read(battleRepositoryProvider).clearAbandoning(widget.matchId);
+    ref.read(battleRepositoryProvider).clearAbsence(widget.matchId, myUid);
   }
 
   /// Backgrounding/foregrounding while this screen stays mounted — the
@@ -248,10 +286,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      _clearOwnAbandonMark();
+      _clearOwnAbsenceMark();
     } else if (state == AppLifecycleState.paused ||
         state == AppLifecycleState.detached) {
-      _maybeMarkAbandoningOnLeave();
+      _maybeMarkAbsentOnLeave();
     }
     super.didChangeAppLifecycleState(state);
   }
@@ -309,6 +347,16 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
       _match = match;
       _matchError = null;
     });
+    // FASE D — the one call site that actually notices a server-only
+    // conclusion (the absence/pause system's KASUS 1/2 timeout win, or
+    // KASUS 3D's `abandoned`) the moment it happens, rather than only
+    // when this device's own answers stream produces a new round to
+    // tally. See [_maybeConclude]'s own fallback for why that matters:
+    // this screen has no other path that ever reads `match.result`/
+    // `match.status` directly. Safe to call unconditionally here — like
+    // every other call site, [_maybeConclude] itself is a no-op the
+    // instant `_localClientResult` is already set.
+    _maybeConclude(match);
   }
 
   /// Mirrors [_onAnswersError] exactly — same reasoning applies verbatim
@@ -337,6 +385,17 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   /// cancellation here would.
   @override
   void deactivate() {
+    // Re-capture immediately before the leave path specifically — `ref`
+    // is still valid here (this runs strictly before `dispose()`, see
+    // [_uidForLeave]'s own doc comment for why `dispose()` itself must
+    // never touch `ref` again). Redundant with [initState]'s own capture
+    // under every path audited today (uid/repository are stable for a
+    // signed-in session's whole lifetime), but this is the literal
+    // "last safe moment" for this specific field, kept as a defensive
+    // refresh rather than trusting a capture taken possibly minutes
+    // earlier never needs updating.
+    _uidForLeave = ref.read(appStartupProvider).valueOrNull?.uid;
+    _repositoryForLeave = ref.read(battleRepositoryProvider);
     _isClosing = true;
     super.deactivate();
   }
@@ -359,7 +418,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     // `deactivate()` always ran first.
     _isClosing = true;
     WidgetsBinding.instance.removeObserver(this);
-    _maybeMarkAbandoningOnLeave();
+    _maybeMarkAbsentOnLeave();
     _timer?.cancel();
     _choiceDeadlineTimer?.cancel();
     _feedbackHoldTimer?.cancel();
@@ -382,41 +441,64 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   ///
   /// `dispose()` cannot `await` — Flutter tears the widget down
   /// synchronously right after this returns — so [BattleRepository
-  /// .markAbandoning]'s own fire-and-forget write is exactly the shape
-  /// this needs; nothing here waits for it to land.
-  void _maybeMarkAbandoningOnLeave() {
+  /// .markAbsent]'s own fire-and-forget write is exactly the shape this
+  /// needs; nothing here waits for it to land.
+  void _maybeMarkAbsentOnLeave() {
     if (_localClientResult != null) return;
     final match = _match;
     if (match != null &&
         (match.status != BattleMatchStatus.active || match.result != null)) {
       return;
     }
-    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    // Deliberately not read live off `ref` here — see [_uidForLeave]'s own
+    // doc comment for exactly why: by the time `dispose()` calls this
+    // method, Riverpod's `ref` is already unusable even though this State
+    // object has not technically finished tearing down yet. Both values
+    // were captured earlier, while `ref` was still guaranteed valid
+    // ([initState], re-confirmed in [deactivate]).
+    final myUid = _uidForLeave;
     if (myUid == null) return;
-    ref.read(battleRepositoryProvider).markAbandoning(widget.matchId, myUid);
+    final repository = _repositoryForLeave;
+    if (repository == null) {
+      // Should be unreachable — captured unconditionally in `initState`
+      // — but a missing repository is not something to guess a fallback
+      // for, so this stays a safe no-op like every other guard here.
+      return;
+    }
+    repository.markAbsent(widget.matchId, myUid);
   }
 
-  /// Starts (once) a local countdown to the moment [match.abandon]'s
-  /// grace period is up, then asks the server to actually finalize it —
-  /// see [BattleRepository.resolveAbandonmentIfDue]'s own doc comment
-  /// for why the client only ever *asks*, never decides. Only ever
-  /// scheduled for the *opponent's* mark, never this device's own — a
-  /// player cannot be the one who notices and resolves their own
-  /// abandonment, they're the one who left.
+  /// Starts (once) a local countdown to the moment the *opponent's* own
+  /// entry in `match.absence` has its grace period up, then asks the
+  /// server to actually resolve it — see [BattleRepository
+  /// .resolveAbandonmentIfDue]'s own doc comment for why the client only
+  /// ever *asks*, never decides. Only ever scheduled off the opponent's
+  /// own marker, never this device's own — a player cannot be the one
+  /// who notices and resolves their own absence, they're the one who
+  /// left. Whether *this* device's own uid also happens to be in
+  /// `absence` at the same moment (both players away, and this one has
+  /// just come back but the clear hasn't landed yet) is irrelevant here:
+  /// asking the server to check is always safe and idempotent regardless
+  /// — see that method's own doc comment — and the server alone decides
+  /// what "due" actually means once both players' markers are in play.
   void _ensureAbandonResolveScheduled(BattleMatch match, String myUid) {
-    final abandon = match.abandon;
-    if (abandon == null || abandon.uid == myUid) {
+    final opponentUid = match.players.firstWhere(
+      (p) => p != myUid,
+      orElse: () => myUid,
+    );
+    final opponentAbsence = match.absenceOf(opponentUid);
+    if (opponentAbsence == null) {
       _abandonResolveTimer?.cancel();
       _abandonResolveTimer = null;
       _abandonResolveScheduledFor = null;
       return;
     }
-    if (_abandonResolveScheduledFor == abandon.since) return;
-    _abandonResolveScheduledFor = abandon.since;
+    if (_abandonResolveScheduledFor == opponentAbsence.since) return;
+    _abandonResolveScheduledFor = opponentAbsence.since;
     _abandonResolveTimer?.cancel();
 
-    final since = abandon.since;
-    final grace = const Duration(seconds: kBattleAbandonGracePeriodSeconds);
+    final since = opponentAbsence.since;
+    final grace = const Duration(seconds: kBattleAbsenceGracePeriodSeconds);
     // No known `since` yet (the serverTimestamp sentinel hasn't round-
     // tripped back down to this device) — fall back to the full grace
     // period from now; the next snapshot carrying a real timestamp will
@@ -599,17 +681,54 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
       turnOrder: match.turnOrder,
       correctByRound: _correctByRound,
     );
-    final conclusion = conclusionAt(
+    var conclusion = conclusionAt(
       players: match.players,
       tally: tally,
       currentRound: match.currentRound,
     );
+    // FASE D fallback — a match the server ended through the absence/
+    // pause system (KASUS 1/2's timeout win, or KASUS 3D's `abandoned`)
+    // never has a decisive local tally: the still-present player's own
+    // device stops seeing new rounds resolve the moment the opponent
+    // leaves, so [tallyScores]/[conclusionAt] above have nothing to work
+    // with and correctly return null forever. Every *other* way this
+    // screen has ever concluded a match (a decisive score, all 40 rounds
+    // exhausted) is something the still-present player's own client
+    // watched happen live, round by round, via the same answers stream
+    // that already feeds [tallyScores] — so this fallback only ever
+    // fires for the one case nothing else here can see: the server
+    // deciding the match while this device was not receiving new rounds
+    // to tally at all.
+    if (conclusion == null && match.status != BattleMatchStatus.active) {
+      if (match.status == BattleMatchStatus.abandoned) {
+        conclusion = 'abandoned';
+      } else if (match.result != null) {
+        conclusion = match.result;
+      }
+    }
     if (conclusion == null) return;
     _localClientResult = conclusion;
     _finishedAt = DateTime.now();
-    ref
-        .read(battleRepositoryProvider)
-        .setClientResult(widget.matchId, conclusion);
+    // `'abandoned'` is a purely local sentinel this screen invents to
+    // drive its own result view — it is not one of the two shapes
+    // `BattleMatch.clientResult`/`recent_matches_providers.dart`'s
+    // `outcomeFor` understand (a real uid, or the literal `'draw'`).
+    // `outcomeFor` already reads `match.result` first and only falls
+    // back to `clientResult` when that is null — exactly the shape an
+    // abandoned match has (`result` deliberately never gets written, see
+    // `BattleMatch.absence`'s own doc comment) — so persisting
+    // `'abandoned'` there would make `outcomeFor` misread it as neither
+    // `uid` nor `'draw'` and silently report a **loss for both players**
+    // in their own Recent Matches history, exactly the win/loss-stats
+    // corruption the spec explicitly rules out. Leaving `clientResult`
+    // unwritten here means `outcomeFor` falls through to its own,
+    // already-correct `result == null` → [MatchOutcome.unfinished] path
+    // instead.
+    if (conclusion != 'abandoned') {
+      ref
+          .read(battleRepositoryProvider)
+          .setClientResult(widget.matchId, conclusion);
+    }
     // The lobby's recent-matches list is read from a tab the card game
     // shell keeps alive in an `IndexedStack`, so it is never disposed and
     // would otherwise still be showing the list from before this match.
@@ -752,6 +871,48 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     if (_localClientResult != null) {
       return _buildResult(context, s, match, myUid);
     }
+    // Computed once, up here, specifically so the pause check below can
+    // use it too — the two used to be duplicated (one copy inline in the
+    // pre-pause `Column`, a second one further down for the score panel);
+    // now there is exactly one.
+    final opponentUid = match.players.firstWhere(
+      (p) => p != myUid,
+      orElse: () => myUid,
+    );
+    // FASE D — the still-present player's own screen. Checked *before*
+    // anything else in this method touches the round: `_ensureTimerFor`,
+    // `_scheduleChoiceDeadline`, and `_maybeOpenCardPicker` are all only
+    // ever reached further down, past this `return`, so none of them can
+    // start while the opponent is away — the round timer genuinely never
+    // ticks, no card-choice deadline is scheduled, and no input reaches
+    // `submitAnswer` while this branch is on screen. Deliberately keyed
+    // on the *opponent's* own entry, not `match.isPaused` — if only this
+    // device's own uid is in `absence` (a stale mark on the way to being
+    // cleared by [_clearOwnAbsenceMark], the normal shape right after a
+    // resume), the player looking at this screen is plainly present and
+    // should see the ordinary game, not a paused one. This also handles
+    // KASUS 3 (both players away) correctly with no special-casing: once
+    // I've come back but the opponent hasn't, `absenceOf(opponentUid)` is
+    // still non-null, so I keep seeing "menunggu lawan kembali" until
+    // *their* own entry clears too — exactly the "resume only once both
+    // are present" rule.
+    //
+    // The explicit `status == active` guard is belt-and-suspenders, not
+    // load-bearing today: the server never clears a loser's stale
+    // `absence` entry on finalizing (see `resolveOneMatchAbsence`'s own
+    // doc comment — nothing downstream needs it cleared), so without
+    // this guard a finalized match's absence entry would otherwise still
+    // read as "opponent away". The `_localClientResult != null` check
+    // above already intercepts first in practice, once [_onMatchUpdate]'s
+    // own [_maybeConclude] call notices the same status change — this
+    // guard just means this branch can never show a stale pause on its
+    // own even if that ordering ever changes.
+    final opponentAbsence = match.status == BattleMatchStatus.active
+        ? match.absenceOf(opponentUid)
+        : null;
+    if (opponentAbsence != null) {
+      return _buildPaused(context, s, opponentAbsence);
+    }
     if (match.currentRound >= match.turnOrder.length) {
       // Every round is played and the result has not been worked out
       // yet. Concluding was previously driven only by the answers
@@ -813,10 +974,6 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
       turnOrder: match.turnOrder,
       correctByRound: _correctByRound,
     );
-    final opponentUid = match.players.firstWhere(
-      (p) => p != myUid,
-      orElse: () => myUid,
-    );
     final identities = ref
         .watch(battleOpponentsProvider(match.players))
         .valueOrNull;
@@ -843,21 +1000,19 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
         bottom: false,
         child: Column(
           children: [
-            if (match.abandon != null && match.abandon!.uid != myUid)
-              _OpponentAbandonBanner(
-                strings: s,
-                abandon: match.abandon!,
-              )
             // Presence is consulted here purely as an honest status
             // indicator, never as a trigger — see
             // AUDIT_ARSITEKTUR_PRESENCE_LIFECYCLE_MODE_KARTU.md's Bagian
-            // H2/L3 and its proposal in Bagian 6. Deliberately shown only
-            // once the abandon banner above has nothing to say: a player
-            // who has actually left the screen already gets the more
-            // specific, actionable countdown, and showing both at once
-            // would just be noise. Never shown against the bot, which has
-            // no `presence/{uid}` node at all.
-            else if (opponentUid != battleBotUid)
+            // H2/L3 and its proposal in Bagian 6. By the time this Column
+            // is reached, `opponentAbsence` above was already null — a
+            // genuine `absence` entry for the opponent is handled by the
+            // full-screen `_buildPaused` branch instead, before any of
+            // this method's return value is built — so this banner only
+            // ever fires for the lighter, no-formal-mark-yet case: a
+            // presence read that looks offline with nothing else saying
+            // so. Never shown against the bot, which has no
+            // `presence/{uid}` node at all.
+            if (opponentUid != battleBotUid)
               _OpponentPresenceBanner(strings: s, opponentUid: opponentUid),
             BattleScorePanel(
               strings: s,
@@ -1414,6 +1569,20 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     );
   }
 
+  /// FASE D's "still-present player" screen — see the pause check inside
+  /// [_buildBody] for exactly when this is reached, and [_MatchPausedView]
+  /// for what it actually renders. A thin wrapper rather than inlining
+  /// the widget directly at the call site purely so `_buildBody` reads as
+  /// a flat sequence of "is it this state? return its view" checks, the
+  /// same shape [_buildResult] already gives the conclusion screen.
+  Widget _buildPaused(
+    BuildContext context,
+    AppStrings s,
+    BattleAbsenceMarker opponentAbsence,
+  ) {
+    return _MatchPausedView(strings: s, absence: opponentAbsence);
+  }
+
   Widget _buildResult(
     BuildContext context,
     AppStrings s,
@@ -1425,6 +1594,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
       turnOrder: match.turnOrder,
       correctByRound: _correctByRound,
     );
+    // `'abandoned'` is [_maybeConclude]'s own local sentinel for KASUS
+    // 3D (both players left, neither returned in time) — checked before
+    // the other two so it can never be mistaken for a real draw/loss.
+    final isAbandoned = _localClientResult == 'abandoned';
     final isDraw = _localClientResult == 'draw';
     final iWon = _localClientResult == myUid;
     final opponentUid = match.players.firstWhere(
@@ -1459,8 +1632,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     // Never `sad`, even on a loss — the same rule MascotCoach already
     // follows for wrong answers: the audience is children, and a mascot
     // that looks let down by them is the thing this app decided not to
-    // do.
-    final resultMood = isDraw
+    // do. An abandoned match gets the same neutral mood a draw does —
+    // nobody won and nobody lost, so neither the celebratory nor the
+    // reassuring pose fits.
+    final resultMood = isAbandoned || isDraw
         ? MascotMood.curious
         : (iWon ? MascotMood.cheering : MascotMood.encouraging);
     // `encouraging` has no costumed pose yet, and reusing one of the
@@ -1486,9 +1661,12 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
           const SizedBox(height: 8),
           Center(
             child: Text(
-              isDraw
-                  ? s.battleResultDraw
-                  : (iWon ? s.battleResultWin : s.battleResultLose),
+              isAbandoned
+                  ? s.battleResultAbandoned
+                  : (isDraw
+                        ? s.battleResultDraw
+                        : (iWon ? s.battleResultWin : s.battleResultLose)),
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
@@ -1496,6 +1674,17 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
               ),
             ),
           ),
+          if (isAbandoned) ...[
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Text(
+                s.battleResultAbandonedExplanation,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: palette.textNavy.withValues(alpha: 0.7)),
+              ),
+            ),
+          ],
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1606,23 +1795,43 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   }
 }
 
-/// The 30-second reconnect grace period's own visible countdown — shown
-/// on the *still-present* player's screen only, above the score panel,
-/// while `match.abandon` names the *other* player. Purely cosmetic:
-/// nothing here decides when the match actually ends —
-/// [_BattleScreenState._ensureAbandonResolveScheduled] does that,
-/// independently, off the same [abandon] marker's own server timestamp.
-class _OpponentAbandonBanner extends StatefulWidget {
-  const _OpponentAbandonBanner({required this.strings, required this.abandon});
+/// FASE D — the full-screen "match paused" state shown to whichever
+/// player is still present on this screen, in place of the entire normal
+/// game body, while the opponent has an entry in `BattleMatch.absence`.
+///
+/// **Returned instead of layered over the game, deliberately.** A banner
+/// strip above an otherwise-live game would still let `_ensureTimerFor`'s
+/// round `Timer.periodic` run, the card-choice deadline fire, and taps
+/// reach `submitAnswer` underneath it — none of which FASE D allows while
+/// a player is missing. Replacing the whole body is what actually
+/// guarantees the round clock never ticks, no input is possible, and the
+/// score cannot change during a pause: none of that code is ever built or
+/// scheduled while this widget is what `_buildBody` returned.
+///
+/// **The countdown is cosmetic, never authoritative** — it renders
+/// [absence]'s own server `since` timestamp plus the fixed grace period,
+/// ticked by a local [Timer.periodic] purely to repaint once a second, in
+/// case the deadline itself changed underneath it (a device wobble,
+/// clock drift). It decides nothing: [_BattleScreenState
+/// ._ensureAbandonResolveScheduled] asks the server independently, off
+/// that same `since` value, and the server
+/// (`resolveBattleAbandonment`/`battle_abandonment_sweep.js`) is the only
+/// thing that can actually conclude the match. If this device's clock is
+/// off, or the app is asleep through the last second, this label simply
+/// reads "00:00" for a little longer than it should — it can never
+/// produce a wrong conclusion, since the conclusion never comes from
+/// here.
+class _MatchPausedView extends StatefulWidget {
+  const _MatchPausedView({required this.strings, required this.absence});
 
   final AppStrings strings;
-  final BattleAbandonMarker abandon;
+  final BattleAbsenceMarker absence;
 
   @override
-  State<_OpponentAbandonBanner> createState() => _OpponentAbandonBannerState();
+  State<_MatchPausedView> createState() => _MatchPausedViewState();
 }
 
-class _OpponentAbandonBannerState extends State<_OpponentAbandonBanner> {
+class _MatchPausedViewState extends State<_MatchPausedView> {
   Timer? _tick;
 
   @override
@@ -1642,47 +1851,55 @@ class _OpponentAbandonBannerState extends State<_OpponentAbandonBanner> {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    final since = widget.abandon.since;
-    final elapsed = since == null ? Duration.zero : DateTime.now().difference(since);
+    final since = widget.absence.since;
+    final elapsed = since == null
+        ? Duration.zero
+        : DateTime.now().difference(since);
     final remaining =
-        const Duration(seconds: kBattleAbandonGracePeriodSeconds) - elapsed;
+        const Duration(seconds: kBattleAbsenceGracePeriodSeconds) - elapsed;
     final secondsLeft = remaining.isNegative ? 0 : remaining.inSeconds + 1;
 
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: palette.tertiaryAmberCardBg,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          Icon(Icons.wifi_off, color: palette.textNavy, size: 18),
-          const SizedBox(width: 10),
-          Expanded(
+    return BattleBackdrop(
+      child: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                const MascotWidget(mood: MascotMood.thinking, size: 96),
+                const SizedBox(height: 20),
                 Text(
-                  widget.strings.battleOpponentAbandonedTitle,
+                  widget.strings.battleMatchPausedTitle,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    fontSize: 13,
                     color: palette.textNavy,
                   ),
                 ),
+                const SizedBox(height: 8),
                 Text(
-                  widget.strings.battleOpponentAbandonedCountdown(secondsLeft),
+                  widget.strings.battleMatchPausedWaiting,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 12,
-                    color: palette.textNavy.withValues(alpha: 0.7),
+                    fontSize: 15,
+                    color: palette.textNavy.withValues(alpha: 0.75),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  widget.strings.battleMatchPausedCountdown(secondsLeft),
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: palette.primaryCoral,
                   ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -1697,8 +1914,8 @@ class _OpponentAbandonBannerState extends State<_OpponentAbandonBanner> {
 /// already live but that `BattleScreen` never consulted at all before
 /// this.
 ///
-/// **Deliberately never drives the round timer, the abandon marker, or
-/// any forfeit decision** — only [BattleMatch.abandon] and the existing
+/// **Deliberately never drives the round timer, the absence map, or
+/// any forfeit decision** — only [BattleMatch.absence] and the existing
 /// per-round countdown do that, unchanged. Presence has real latency
 /// (`onDisconnect()` needs the server to actually notice the socket
 /// drop) and a real false-positive shape (a snapshot that reads
