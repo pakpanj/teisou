@@ -194,16 +194,47 @@ class BattleRepository {
   /// One-shot rather than a live listener: a finished match never changes
   /// again, so there is nothing to listen for — the same reasoning the
   /// clan ranking already uses.
+  ///
+  /// **Read forced to the server, never the local cache** — the same fix,
+  /// for the same reason, as `MinVersionRepository.fetchMinBuildNumber`.
+  /// A one-shot `.get()` with no `GetOptions` can still resolve from
+  /// Firestore's on-device persistence cache, which keeps a memory of this
+  /// exact query shape (`players` array-contains + `createdAt` desc) across
+  /// app restarts — a device that has run this history query before can
+  /// keep answering it from that stale cache indefinitely, so a match
+  /// finalized after the cache was last warm (in particular one resolved
+  /// by the abandonment sweep while the app was closed, never by an
+  /// on-screen client write) stays invisible in "Pertandingan terakhir" no
+  /// matter how long the player waits or how many times they pull to
+  /// refresh. `GetOptions(source: Source.server)` is what forces a real
+  /// round trip; dropping it would still compile and mostly work, which is
+  /// exactly the kind of regression a code reviewer could miss without
+  /// this comment. Offline, this throws instead of silently answering from
+  /// cache — already handled by [recentMatchesProvider]'s own catch, which
+  /// treats that the same as a missing index: an empty list rather than a
+  /// broken screen.
+  ///
+  /// **Excludes matches still genuinely in progress.** `status` carries no
+  /// query-level filter here on purpose — an `abandoned` match must still
+  /// come back, and a second composite index just to add one is not worth
+  /// it for a list this size — so a currently-active match is dropped
+  /// client-side instead, after the fetch. Without this, a match the
+  /// player can already resume via the lobby's own "Kembali ke
+  /// Pertandingan" card would *also* render here as "Belum selesai",
+  /// showing the same unfinished match twice under two different names.
+  /// `abandoned` and `finished` both pass through untouched; only `active`
+  /// (including a currently *paused* one — still `active` under the hood,
+  /// see [BattleMatch.isPaused]) is ever removed.
   Future<List<BattleMatch>> recentMatches(String uid, {int limit = 5}) async {
     final snapshot = await _firestore
         .collection(FirestorePaths.battleMatches)
         .where('players', arrayContains: uid)
         .orderBy('createdAt', descending: true)
         .limit(limit)
-        .get();
+        .get(const GetOptions(source: Source.server));
     return [
       for (final doc in snapshot.docs) BattleMatch.fromMap(doc.id, doc.data()),
-    ];
+    ]..removeWhere((match) => match.status == BattleMatchStatus.active);
   }
 
   Future<BattleMatch?> getMatch(String matchId) async {
