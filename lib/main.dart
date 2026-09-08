@@ -11,6 +11,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'core/navigation/root_navigator_key.dart';
 import 'core/navigation/tts_stop_observer.dart';
 import 'core/providers.dart';
+import 'features/battle/global_resumable_match_popup.dart';
 import 'core/theme/app_theme.dart';
 import 'data/models/app_theme_mode.dart';
 import 'data/repositories/language_repository.dart';
@@ -198,6 +199,18 @@ class _KanaMasterAppState extends ConsumerState<KanaMasterApp>
       // anything a future Firestore Rules cutover could otherwise break
       // it against.
       home: const MinVersionGate(child: _AudienceGate()),
+      // Draws `GlobalResumableMatchPopup` above the entire navigated app
+      // — every gate screen, every module, every pushed route — rather
+      // than inside any one of them, which is what lets the "Kembali ke
+      // Pertandingan" popup follow the learner to whatever tab or screen
+      // they're on instead of staying scoped to Card Game Mode's own
+      // lobby. `child` is the Navigator `MaterialApp` itself builds; the
+      // popup sits as this Stack's other, non-positioned-until-it-has-
+      // something-to-show sibling, so it renders on top without
+      // intercepting a single touch anywhere it has nothing to say.
+      builder: (context, child) => Stack(
+        children: [?child, const GlobalResumableMatchPopup()],
+      ),
     );
   }
 }

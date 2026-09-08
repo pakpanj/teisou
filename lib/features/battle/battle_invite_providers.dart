@@ -152,17 +152,66 @@ Future<void> _republishMyAvatar(
   }
 }
 
-/// The match the "Kembali ke Pertandingan" card offers a return to — see
-/// `BattleRepository.findResumableMatch`'s own doc comment for the
-/// query. `autoDispose`, so re-entering the Card Game lobby (from Home,
-/// from the app cold-starting, or just switching tabs and back) always
-/// asks fresh rather than trusting a value that could already be stale
-/// — a match that resolved (naturally, or via the 30-second grace period
-/// finalizing) while the lobby wasn't on screen must stop being offered
-/// the moment it's looked at again.
-final battleResumableMatchProvider = FutureProvider.autoDispose<BattleMatch?>((
+/// The match the app-wide "Kembali ke Pertandingan" popup
+/// (`GlobalResumableMatchPopup`, `global_resumable_match_popup.dart`)
+/// offers a return to — live, and global rather than scoped to the Card
+/// Game lobby, so it's the same value regardless of which tab or screen
+/// asks. Replaces the older `battleResumableMatchProvider`
+/// (`FutureProvider.autoDispose`, one-shot per lobby visit) now that the
+/// popup itself follows the player everywhere: a one-shot fetch was
+/// enough when the only reader was a screen the player had to visit to
+/// see it, but a global popup has to notice a match resolving on its own,
+/// not just on the next time someone happens to open the Card Game tab.
+///
+/// **Polls, then watches.** There is no live Firestore query for "does a
+/// resumable match now exist for this uid" — only a snapshot listener on
+/// a single already-known document (see
+/// `BattleRepository.findResumableMatch`'s own doc comment for why that
+/// query is deliberately a one-shot `.get()`, never a `.snapshots()`).
+/// So this alternates between the two: while no resumable match is
+/// known, it re-runs the one-shot lookup every [_pollInterval]; the
+/// moment one turns up, it switches to
+/// [BattleRepository.watchMatch] on that exact id and stays there,
+/// re-checking [BattleMatch.isResumable] on every update — which is what
+/// makes the popup disappear the instant the match *actually* resolves,
+/// rather than only when a client-side countdown guesses it has — until
+/// the match stops being resumable, at which point it falls back to
+/// polling.
+///
+/// Kept alive for as long as anything watches it — in practice, for as
+/// long as `GlobalResumableMatchPopup` is mounted, which per `main.dart`'s
+/// `MaterialApp.builder` is the entire time the app is signed in.
+/// [_pollInterval] is a deliberate cost/latency tradeoff, not a guess:
+/// short enough that a match becoming resumable (a player backgrounding
+/// or navigating away from an active match) is reflected on every other
+/// screen within a handful of seconds, long enough that it costs one
+/// small composite query every few seconds rather than something tighter
+/// this project has no live-query mechanism to express anyway.
+const _pollInterval = Duration(seconds: 8);
+
+final liveResumableMatchProvider = StreamProvider.autoDispose<BattleMatch?>((
   ref,
-) async {
+) async* {
   final user = await ref.watch(appStartupProvider.future);
-  return ref.watch(battleRepositoryProvider).findResumableMatch(user.uid);
+  final repository = ref.watch(battleRepositoryProvider);
+  while (true) {
+    final found = await repository.findResumableMatch(user.uid);
+    if (found == null) {
+      yield null;
+      await Future.delayed(_pollInterval);
+      continue;
+    }
+    yield found;
+    await for (final updated in repository.watchMatch(found.id)) {
+      if (!updated.isResumable(uid: user.uid)) {
+        yield null;
+        break;
+      }
+      yield updated;
+    }
+    // The match stopped being resumable (or the live stream itself ended)
+    // — loop straight back to a fresh lookup rather than waiting out
+    // [_pollInterval] first, since something is already known to have
+    // just changed.
+  }
 });

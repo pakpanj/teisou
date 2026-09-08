@@ -59,6 +59,21 @@ class BattleScreen extends ConsumerStatefulWidget {
 
   const BattleScreen({super.key, required this.matchId});
 
+  /// The `matchId` of whichever `BattleScreen` instance is currently
+  /// mounted, or `null` — set in `initState`, cleared in `dispose`.
+  ///
+  /// Mirrors `FcmService.currentOpenChatKey`'s static-field pattern
+  /// exactly, for the identical reason: `GlobalResumableMatchPopup`
+  /// (`global_resumable_match_popup.dart`) needs to know whether the
+  /// match it would offer to resume is the exact one already on screen,
+  /// so it doesn't show a redundant "return to match" banner floating
+  /// over the match itself. A plain static field sidesteps `dispose()`'s
+  /// own `ref`-unavailability gap (see `_BattleScreenState.dispose`'s
+  /// doc comment on `_maybeMarkAbsentOnLeave` for why `ref` cannot be
+  /// trusted there) — nothing here needs Riverpod, just a value read and
+  /// written from plain Dart.
+  static String? currentlyOpenMatchId;
+
   @override
   ConsumerState<BattleScreen> createState() => _BattleScreenState();
 }
@@ -257,6 +272,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    BattleScreen.currentlyOpenMatchId = widget.matchId;
     _uidForLeave = ref.read(appStartupProvider).valueOrNull?.uid;
     _repositoryForLeave = ref.read(battleRepositoryProvider);
     _subscribeToAnswers();
@@ -417,6 +433,13 @@ class _BattleScreenState extends ConsumerState<BattleScreen>
     // its own, without relying on the reader trusting that
     // `deactivate()` always ran first.
     _isClosing = true;
+    // Guarded rather than an unconditional `= null`: if a second
+    // BattleScreen (a different match) somehow mounted before this one
+    // finished tearing down, its own `initState` already overwrote this
+    // with its own matchId, and this dispose must not clobber that.
+    if (BattleScreen.currentlyOpenMatchId == widget.matchId) {
+      BattleScreen.currentlyOpenMatchId = null;
+    }
     WidgetsBinding.instance.removeObserver(this);
     _maybeMarkAbsentOnLeave();
     _timer?.cancel();

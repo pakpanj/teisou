@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,9 +11,7 @@ import '../../data/repositories/onboarding_repository.dart';
 import '../../data/models/card_game_rank.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import '../../core/widgets/user_avatar.dart';
-import 'battle_invite_providers.dart' show battleResumableMatchProvider;
 import 'battle_matchmaking_screen.dart';
-import 'battle_screen.dart';
 import 'card_skin_picker_screen.dart';
 import '../onboarding/coach_mark_tour.dart';
 import '../onboarding/first_visit_tutorial.dart';
@@ -198,211 +194,6 @@ class _KeepAlivePageState extends State<_KeepAlivePage>
   }
 }
 
-/// "Pertandingan masih berlangsung" — the 30-second reconnect grace
-/// period's own resume entry point (2026-08-30). See
-/// `BattleRepository.findResumableMatch`'s doc comment for the query
-/// this is built on, and `battle_screen.dart`'s own `initState`/app-
-/// resume handling for what "resuming" actually does once this is
-/// tapped — pushing the *same* `matchId`, never a new one.
-///
-/// Renders nothing at all while there is no resumable match — the
-/// common case, so this must never reserve visible space for itself
-/// when idle.
-class _ResumableMatchCard extends ConsumerWidget {
-  const _ResumableMatchCard();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final match = ref.watch(battleResumableMatchProvider).valueOrNull;
-    if (match == null) return const SizedBox.shrink();
-    final s = ref.watch(appStringsProvider);
-    final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
-    // Only meaningful while *this specific player* has their own entry in
-    // `absence` — a match that is simply still active (no absence entries
-    // at all, or only the opponent's) is still resumable, just without an
-    // urgent countdown to show for it. This is FASE D's "departed player"
-    // side — the offer to return, with the remaining time, that this
-    // card's own doc comment already describes; the still-present
-    // player's side of a pause lives on `BattleScreen` itself
-    // (`_MatchPausedView`), not here.
-    final myAbsence = myUid == null ? null : match.absenceOf(myUid);
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: myAbsence != null
-          ? _ResumableMatchCountdown(
-              strings: s,
-              matchId: match.id,
-              since: myAbsence.since,
-            )
-          : _ResumableMatchStatic(strings: s, matchId: match.id),
-    );
-  }
-}
-
-class _ResumableMatchStatic extends StatelessWidget {
-  const _ResumableMatchStatic({required this.strings, required this.matchId});
-
-  final AppStrings strings;
-  final String matchId;
-
-  @override
-  Widget build(BuildContext context) {
-    return _ResumableMatchShell(
-      strings: strings,
-      matchId: matchId,
-      subtitle: null,
-    );
-  }
-}
-
-/// The version with a live "Waktu tersisa: Ns" countdown — its own tiny
-/// `StatefulWidget` so the 1-second tick only rebuilds this card, not
-/// the whole lobby.
-class _ResumableMatchCountdown extends StatefulWidget {
-  const _ResumableMatchCountdown({
-    required this.strings,
-    required this.matchId,
-    required this.since,
-  });
-
-  final AppStrings strings;
-  final String matchId;
-  final DateTime? since;
-
-  @override
-  State<_ResumableMatchCountdown> createState() =>
-      _ResumableMatchCountdownState();
-}
-
-class _ResumableMatchCountdownState extends State<_ResumableMatchCountdown> {
-  Timer? _tick;
-
-  @override
-  void initState() {
-    super.initState();
-    _tick = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (mounted) setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    _tick?.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final since = widget.since;
-    final elapsed = since == null ? Duration.zero : DateTime.now().difference(since);
-    final remaining =
-        const Duration(seconds: kBattleAbsenceGracePeriodSeconds) - elapsed;
-    final secondsLeft = remaining.isNegative ? 0 : remaining.inSeconds + 1;
-    return _ResumableMatchShell(
-      strings: widget.strings,
-      matchId: widget.matchId,
-      subtitle: widget.strings.battleResumableCountdown(secondsLeft),
-    );
-  }
-}
-
-class _ResumableMatchShell extends StatefulWidget {
-  const _ResumableMatchShell({
-    required this.strings,
-    required this.matchId,
-    required this.subtitle,
-  });
-
-  final AppStrings strings;
-  final String matchId;
-  final String? subtitle;
-
-  @override
-  State<_ResumableMatchShell> createState() => _ResumableMatchShellState();
-}
-
-class _ResumableMatchShellState extends State<_ResumableMatchShell> {
-  // A fast repeated tap on this exact button was pushing more than one
-  // BattleScreen onto the Navigator stack — every other entry point into
-  // BattleScreen already guarded against this (`_accept`'s `_responding`,
-  // `BattleInviteWaitingScreen`'s `_opened`, matchmaking's push living
-  // inside its own state machine), this one didn't. The orphaned second
-  // instance kept its own Timer/answers subscription alive underneath the
-  // one actually on screen, which is what surfaced later as a "Cannot use
-  // ref after the widget was disposed" error scattered across several of
-  // BattleScreen's own callbacks once it was finally popped.
-  bool _isOpeningBattle = false;
-
-  Future<void> _openBattle() async {
-    if (_isOpeningBattle) return;
-    // Set before the push starts, not after — a second tap arriving
-    // while the first push is still in flight must see this immediately,
-    // not race it.
-    setState(() => _isOpeningBattle = true);
-    await Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (_) => BattleScreen(matchId: widget.matchId)));
-    if (!mounted) return;
-    setState(() => _isOpeningBattle = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final palette = context.palette;
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: palette.tertiaryAmberCardBg,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Icon(Icons.replay_circle_filled, color: palette.primaryCoral),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  widget.strings.battleResumableTitle,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: palette.textNavy,
-                  ),
-                ),
-                if (widget.subtitle != null)
-                  Text(
-                    widget.subtitle!,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: palette.textNavy.withValues(alpha: 0.7),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 8),
-          FilledButton(
-            style: FilledButton.styleFrom(
-              backgroundColor: palette.primaryCoral,
-            ),
-            // Pushes the exact same matchId — never
-            // BattleRepository.createMatch, so this can never spawn a
-            // duplicate match. BattleScreen's own initState clears this
-            // player's absence entry the instant it mounts (see its
-            // `_clearOwnAbsenceMark`), which is what actually cancels
-            // the grace period — this button only navigates.
-            onPressed: _isOpeningBattle ? null : _openBattle,
-            child: Text(widget.strings.battleResumableCta),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 /// The first thing you see: who you are, where you stand, and one button.
 ///
 /// Follows the redesign's lobby panel. Three of its pieces are
@@ -433,7 +224,12 @@ class _LobbyTab extends ConsumerWidget {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: [
-          const _ResumableMatchCard(),
+          // The "Kembali ke Pertandingan" card used to live here, scoped
+          // to just this tab. It's now `GlobalResumableMatchPopup`
+          // (`lib/features/battle/global_resumable_match_popup.dart`),
+          // shown app-wide via `MaterialApp.builder` in `main.dart` — so
+          // it still appears here too, just without a duplicate,
+          // tab-local copy.
           TutorialTarget(
             id: kTutorialCardGameHeader,
             child: _LobbyHeader(rank: rank, starTotal: starTotal, strings: s),

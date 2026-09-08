@@ -445,7 +445,13 @@ void main() {
         'lib/features/battle/battle_challenge.dart',
         'lib/features/battle/battle_matchmaking_screen.dart',
         'lib/features/battle/battle_invite_waiting_screen.dart',
-        'lib/features/battle/card_game_shell.dart',
+        // The "Kembali ke Pertandingan" resume push used to live in
+        // card_game_shell.dart, scoped to the Card Game lobby tab — it
+        // moved to the app-wide GlobalResumableMatchPopup (2026-09-08,
+        // see that file's own doc comment) so it follows the player to
+        // every tab/screen instead. card_game_shell.dart itself no
+        // longer constructs a BattleScreen at all.
+        'lib/features/battle/global_resumable_match_popup.dart',
       ]) {
         final fileSource = File(path).readAsStringSync();
         expect(

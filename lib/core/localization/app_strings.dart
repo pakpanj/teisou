@@ -2274,6 +2274,9 @@ class AppStrings {
       _t('Waktu tersisa: $seconds detik', 'Time left: $seconds seconds');
   String get battleResumableCta =>
       _t('Kembali ke Pertandingan', 'Return to Match');
+  // The app-wide popup's own X — dismisses it for this one match only,
+  // see `GlobalResumableMatchPopup`'s own doc comment.
+  String get battleResumableDismiss => _t('Tutup', 'Dismiss');
   // Skin kartu — satu-satunya kosmetik yang dilihat lawan.
   // Mode Kartu — bottom nav dan dua tab barunya.
   String get cardGameTabHome => _t('Beranda', 'Home');
